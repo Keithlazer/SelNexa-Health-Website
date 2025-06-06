@@ -28,6 +28,7 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            background-color: #fafafa;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -151,9 +152,19 @@
             align-items: center;
         }
         
+        /* Enhanced Logo Styling */
         .logo img {
-            height: 40px;
+            height: 50px;
             margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+        
+        .logo-glow {
+            filter: drop-shadow(0 5px 15px rgba(230, 57, 70, 0.2));
         }
         
         .nav-links {
@@ -292,10 +303,28 @@
             position: relative;
         }
         
-        .about-image img {
-            width: 100%;
+        /* About Logo Container */
+        .about-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .about-logo-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .about-logo {
+            max-width: 80%;
+            max-height: 300px;
+            object-fit: contain;
         }
         
         .about-stats {
@@ -836,6 +865,15 @@
             .stat-item {
                 margin: 10px 0;
             }
+            
+            /* Responsive logo adjustments */
+            .logo img {
+                height: 40px;
+            }
+            
+            .about-logo {
+                max-width: 70%;
+            }
         }
         
         @media (max-width: 576px) {
@@ -854,6 +892,14 @@
             .section-title h2 {
                 font-size: 1.8rem;
             }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .about-logo {
+                max-width: 90%;
+            }
         }
     </style>
 </head>
@@ -863,8 +909,8 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <img src="styles/scripts/assets/SelNexa Health Logo Full.jpg" alt="">
-                    
+                    <!-- Header logo with enhancements -->
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'%3E%3Crect width='300' height='60' fill='%23ffffff'/%3E%3Ctext x='150' y='35' font-family='Montserrat' font-weight='700' font-size='24' text-anchor='middle' fill='%23e63946'%3ESelNexa Health%3C/text%3E%3C/svg%3E" alt="SelNexa Health Logo" class="logo-glow">
                 </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -872,7 +918,6 @@
                     <li><a href="#solution">Solution</a></li>
                     <li><a href="#technology">Technology</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
-                    <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -916,7 +961,10 @@
                     <p>Blockchain technology is seamlessly integrated into SelNexa's infrastructure to ensure secure, transparent, and tamper-proof management of health records and financial transactions. This fosters trust among users, facilitates compliance with data protection regulations, and provides a robust foundation for interoperability across healthcare systems.</p>
                 </div>
                 <div class="about-image">
-                    <img src="styles/scripts/assets/SelNexa Logo.jpg" alt="Healthcare in Africa">
+                    <!-- About section logo container with enhancements -->
+                    <div class="about-logo-container">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'%3E%3Ccircle cx='125' cy='125' r='120' fill='%23e63946'/%3E%3Ctext x='125' y='140' font-family='Montserrat' font-weight='700' font-size='40' text-anchor='middle' fill='white'%3ESN%3C/text%3E%3C/svg%3E" alt="SelNexa Logo" class="about-logo logo-glow">
+                    </div>
                 </div>
             </div>
             <div class="about-stats">
@@ -1095,83 +1143,195 @@
     <section class="section roadmap" id="roadmap">
         <div class="container">
             <div class="section-title">
-            <h2>Our Roadmap</h2>
-            <p>Building on our early successes, SelNexa is poised for accelerated expansion</p>
-        </div>
-        <div class="timeline">
-            <!-- Existing Phases -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">2023-2024</div>
-                    <h3>Phase 1: Pilot Program Expansion</h3>
-                    <ul>
-                        <li>Extended rural district coverage</li>
-                        <li>Mobile payment integration testing</li>
-                        <li>Health education hub development</li>
-                    </ul>
-                </div>
+                <h2>Our Roadmap</h2>
+                <p>Building on our early successes, SelNexa is poised for accelerated expansion</p>
             </div>
-
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">2024-2025</div>
-                    <h3>Phase 2: Urban Center Expansion</h3>
-                    <ul>
-                        <li>Integration with major urban hospitals</li>
-                        <li>IoT-enabled remote monitoring rollout</li>
-                        <li>Cross-provider data interoperability</li>
-                    </ul>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-2024</div>
+                        <h3>Phase 1: Pilot Program Expansion</h3>
+                        <ul>
+                            <li>Extended rural district coverage</li>
+                            <li>Mobile payment integration testing</li>
+                            <li>Health education hub development</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">2025-2026</div>
-                    <h3>Phase 3: Regional Leadership</h3>
-                    <ul>
-                        <li>Southern Africa expansion (Zambia, Malawi)</li>
-                        <li>Government health system integration</li>
-                        <li>AI-powered epidemiological tracking</li>
-                    </ul>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024-2025</div>
+                        <h3>Phase 2: Urban Center Expansion</h3>
+                        <ul>
+                            <li>Integration with major urban hospitals</li>
+                            <li>IoT-enabled remote monitoring rollout</li>
+                            <li>Cross-provider data interoperability</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- New Phases -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">2026-2027</div>
-                    <h3>Phase 4: Continental Scale</h3>
-                    <ul>
-                        <li>West/East Africa deployment</li>
-                        <li>Pan-African health data network</li>
-                        <li>WHO partnership initiatives</li>
-                    </ul>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025-2026</div>
+                        <h3>Phase 3: Regional Leadership</h3>
+                        <ul>
+                            <li>Southern Africa expansion (Zambia, Malawi)</li>
+                            <li>Government health system integration</li>
+                            <li>AI-powered epidemiological tracking</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">2027-2028</div>
-                    <h3>Phase 5: Global Integration</h3>
-                    <ul>
-                        <li>International telemedicine partnerships</li>
-                        <li>Blockchain health passport system</li>
-                        <li>AI-driven global health analytics</li>
-                    </ul>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026-2027</div>
+                        <h3>Phase 4: Continental Scale</h3>
+                        <ul>
+                            <li>West/East Africa deployment</li>
+                            <li>Pan-African health data network</li>
+                            <li>WHO partnership initiatives</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">2028+</div>
-                    <h3>Sustainable Future Vision</h3>
-                    <ul>
-                        <li>Renewable energy-powered clinics</li>
-                        <li>Neural network diagnostics system</li>
-                        <li>Universal health coverage integration</li>
-                    </ul>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2027-2028</div>
+                        <h3>Phase 5: Global Integration</h3>
+                        <ul>
+                            <li>International telemedicine partnerships</li>
+                            <li>Blockchain health passport system</li>
+                            <li>AI-driven global health analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2028+</div>
+                        <h3>Sustainable Future Vision</h3>
+                        <ul>
+                            <li>Renewable energy-powered clinics</li>
+                            <li>Neural network diagnostics system</li>
+                            <li>Universal health coverage integration</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Join Us in Transforming Healthcare</h2>
+            <p>Be part of the revolution that's bringing accessible, affordable healthcare to underserved communities across Africa</p>
+            <div class="hero-btns">
+                <a href="#" class="btn">Partner With Us</a>
+                <a href="#" class="btn btn-outline">Request a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About SelNexa</h3>
+                    <p>Revolutionizing healthcare delivery through innovative technology solutions that bridge accessibility gaps and empower communities.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#solution">Our Solutions</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Telemedicine</a></li>
+                        <li><a href="#">Health Education</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">Blockchain Solutions</a></li>
+                        <li><a href="#">Remote Monitoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Harare, Zimbabwe</p>
+                    <p><i class="fas fa-phone"></i> +263 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> info@selnexahealth.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8AM - 5PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 SelNexa Health. All rights reserved. | Transforming Healthcare, Empowering Lives</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Tab functionality for solution section
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
