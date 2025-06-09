@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+    <!-- Hide the GitHub footer -->
+  <style>
+    .site-footer-credits,
+    footer {
+      display: none !important;
+    }
+  </style>
+  <!-- End hide CSS -->
+
   <!-- ✨ SEO Meta Tags -->
   <title>...</title>
   <meta name="description" content="...">
@@ -1356,5 +1364,15 @@
             });
         });
     </script>
+      <!-- Remove GitHub footer via JS -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Remove any footer GitHub injects
+      const el = document.querySelector('.site-footer-credits') || document.querySelector('footer');
+      if (el) el.remove();
+    });
+  </script>
+  <!-- End JS removal -->
+
 </body>
 </html>
