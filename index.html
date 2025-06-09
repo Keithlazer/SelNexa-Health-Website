@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SelNexa | Transforming Healthcare in Africa</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Hide the GitHub footer -->
+  <style>
+    .site-footer-credits,
+    footer {
+      display: none !important;
+    }
+  </style>
+  <!-- End hide CSS -->
+
+  <!-- ✨ SEO Meta Tags -->
+  <title>...</title>
+  <meta name="description" content="...">
+  <link rel="canonical" href="https://selnexahealth.com/">
+
+  <!-- 🔗 Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="...">
+  <meta property="og:description" content="...">
+  <meta property="og:image" content="https://selnexahealth.com/images/selnexa-logo.png">
+  <meta property="og:url" content="https://selnexahealth.com/">
+  <meta property="og:type" content="website">
+
+  <!-- 🐦 Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@SelNexaHealth">
+  <meta name="twitter:title" content="...">
+  <meta name="twitter:description" content="...">
+  <meta name="twitter:image" content="https://selnexahealth.com/images/selnexa-logo.png">
+
+  <!-- 🔖 Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- 💅 Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -910,7 +941,7 @@
             <nav class="navbar">
                 <a href="#" class="logo">
                     <!-- Header logo with enhancements -->
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='60' viewBox='0 0 300 60'%3E%3Crect width='300' height='60' fill='%23ffffff'/%3E%3Ctext x='150' y='35' font-family='Montserrat' font-weight='700' font-size='24' text-anchor='middle' fill='%23e63946'%3ESelNexa Health%3C/text%3E%3C/svg%3E" alt="SelNexa Health Logo" class="logo-glow">
+                    <img src="styles/scripts/assets/SelNexa Health Logo Full.jpg"  >
                 </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -1265,14 +1296,14 @@
                 </div>
                 <div class="footer-col footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Harare, Zimbabwe</p>
-                    <p><i class="fas fa-phone"></i> +263 123 456 789</p>
-                    <p><i class="fas fa-envelope"></i> info@selnexahealth.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                    <p><i class="fas fa-phone"></i> +263 777 726 065</p>
+                    <p><i class="fas fa-envelope"></i> keithtafangombe@selnexahealth.com</p>
                     <p><i class="fas fa-clock"></i> Mon-Fri: 8AM - 5PM</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 SelNexa Health. All rights reserved. | Transforming Healthcare, Empowering Lives</p>
+                <p>&copy; 2024 SelNexa Health. All rights reserved. | Transforming Healthcare, Empowering Lives</p>
             </div>
         </div>
     </footer>
@@ -1333,5 +1364,15 @@
             });
         });
     </script>
+      <!-- Remove GitHub footer via JS -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Remove any footer GitHub injects
+      const el = document.querySelector('.site-footer-credits') || document.querySelector('footer');
+      if (el) el.remove();
+    });
+  </script>
+  <!-- End JS removal -->
+
 </body>
 </html>
