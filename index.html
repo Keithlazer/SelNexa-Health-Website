@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SelNexa Health | Transforming Healthcare in Africa</title>
+    <link rel="icon" type="image/jpeg" href="styles/scripts/assets/SelNexa Logo.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #0e3ba0;
-            --primary-light: #1e5ae9;
-            --secondary: #f0f7ff;
-            --dark: #0a1a3a;
+            --primary: #e63946;
+            --primary-light: #ff4d5a;
+            --primary-dark: #c1121f;
+            --secondary: #fff1f2;
+            --dark: #1d3557;
             --light: #ffffff;
             --gray: #f8f9fa;
             --dark-gray: #6c757d;
-            --accent: #00b894;
+            --accent: #2a9d8f;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e63946;
+            --gradient-primary: linear-gradient(135deg, #e63946 0%, #ff4d5a 100%);
+            --gradient-dark: linear-gradient(135deg, #1d3557 0%, #2a3f54 100%);
+            --shadow-sm: 0 2px 8px rgba(230, 57, 70, 0.1);
+            --shadow-md: 0 5px 15px rgba(230, 57, 70, 0.15);
+            --shadow-lg: 0 10px 30px rgba(230, 57, 70, 0.2);
         }
         
         * {
@@ -211,14 +221,31 @@
         .hero {
             height: 100vh;
             min-height: 700px;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(14, 59, 160, 0.85), rgba(14, 59, 160, 0.75));
+            z-index: 0;
         }
         
         .hero-content {
@@ -226,13 +253,15 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            color: white;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: white;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .hero h1 span {
@@ -242,7 +271,7 @@
         .hero p {
             font-size: 1.25rem;
             margin-bottom: 30px;
-            color: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .hero-btns {
@@ -250,6 +279,18 @@
             justify-content: center;
             gap: 20px;
             margin-top: 40px;
+        }
+        
+        .hero-btns .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+        }
+        
+        .hero-btns .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
         
         .scroll-down {
@@ -402,82 +443,83 @@
         /* Solution Section */
         .solution {
             background-color: var(--secondary);
+            padding: 120px 0;
         }
         
-        .solution-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .tab-btn {
-            padding: 12px 25px;
-            background-color: white;
-            border: none;
-            border-radius: 30px;
-            margin: 0 10px 15px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            font-size: 15px;
-        }
-        
-        .tab-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .solution-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            background-color: white;
-            border-radius: 10px;
+        .solution-card {
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
         }
         
-        .solution-image {
-            flex: 1;
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
-        .solution-image img {
+        .solution-card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .solution-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
-        .solution-text {
-            flex: 1;
-            padding: 40px;
+        .solution-card:hover .solution-card-image img {
+            transform: scale(1.1);
         }
         
-        .solution-text h3 {
+        .solution-card-content {
+            padding: 30px;
+        }
+        
+        .solution-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--primary);
+        }
+        
+        .solution-card p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .solution-card .btn {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .solution-card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(14, 59, 160, 0.3);
         }
         
         /* Technology Section */
@@ -891,6 +933,10 @@
             .about-logo {
                 max-width: 70%;
             }
+            
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -918,6 +964,537 @@
                 max-width: 90%;
             }
         }
+
+        .appointment {
+            background: linear-gradient(rgba(14, 59, 160, 0.95), rgba(14, 59, 160, 0.95)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .appointment-content h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .appointment-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .appointment-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .appointment-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .appointment-form h3 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 59, 160, 0.1);
+        }
+
+        @media (max-width: 992px) {
+            .appointment-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .appointment-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .fab-button {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(14, 59, 160, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fab-button:hover {
+            transform: scale(1.1);
+            background: var(--primary-light);
+        }
+
+        .fab-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+            min-width: 200px;
+        }
+
+        .fab-menu.active {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        .fab-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .fab-menu-item:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        .fab-menu-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .floating-action {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Dark Mode Styles */
+        [data-theme="dark"] {
+            --primary: #ff4d5a;
+            --primary-light: #ff6b76;
+            --secondary: #1a1a1a;
+            --dark: #ffffff;
+            --light: #2d2d2d;
+            --gray: #333333;
+            --dark-gray: #cccccc;
+            --gradient-primary: linear-gradient(135deg, #ff4d5a 0%, #ff6b76 100%);
+            --gradient-dark: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+        }
+
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--light);
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-switcher button {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .theme-switcher button.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--secondary);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Section Transitions */
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Live Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            background: var(--primary-light);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 180px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: var(--light);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chat-header {
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            margin-left: auto;
+        }
+
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 15px;
+            background: var(--secondary);
+            color: var(--dark);
+        }
+
+        .message.user .message-content {
+            background: var(--primary);
+            color: white;
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .chat-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .chat-window {
+                width: calc(100% - 40px);
+                height: calc(100% - 200px);
+                bottom: 100px;
+                right: 20px;
+            }
+        }
+
+        /* Health Calculator Section */
+        .health-calculator {
+            background: var(--secondary);
+            padding: 100px 0;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .calculator-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .calculator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .calculator-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .calculator-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .calculator-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .calculator-form label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .calculator-form input {
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-form input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+            outline: none;
+        }
+
+        .calculator-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--secondary);
+            display: none;
+        }
+
+        .calculator-result.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .result-category {
+            font-size: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .calculator-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -926,7 +1503,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <img src="https://www.selnexahealth.com/images/logo.png" alt="SelNexa Health Logo">
+                    <img src="styles/scripts/assets/SelNexa Health Logo Full.jpg" alt="SelNexa Health Logo">
                 </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -945,6 +1522,10 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://www.selnexahealth.com/videos/hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <h1>Transforming Healthcare, <span>Empowering Lives</span></h1>
@@ -954,9 +1535,6 @@
                     <a href="#contact" class="btn btn-outline">Get In Touch</a>
                 </div>
             </div>
-            <a href="#about" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
         </div>
     </section>
 
@@ -979,7 +1557,7 @@
                 </div>
                 <div class="about-image">
                     <div class="about-logo-container">
-                        <img src="https://www.selnexahealth.com/images/logo.png" alt="SelNexa Logo" class="about-logo">
+                        <img src="styles/scripts/assets/SelNexa Logo.jpg" alt="SelNexa Logo" class="about-logo">
                     </div>
                 </div>
             </div>
@@ -1050,59 +1628,48 @@
     <section class="section solution" id="solution">
         <div class="container">
             <div class="section-title">
-                <h2>Our Solution</h2>
+                <h2>Our Solutions</h2>
                 <p>SelNexa is a transformative healthcare platform that integrates cutting-edge technologies to address Zimbabwe's most pressing healthcare challenges</p>
             </div>
-            <div class="solution-tabs">
-                <button class="tab-btn active" data-tab="telemedicine">Telemedicine</button>
-                <button class="tab-btn" data-tab="preventative">Preventative Care</button>
-                <button class="tab-btn" data-tab="data">Data Analytics</button>
-                <button class="tab-btn" data-tab="blockchain">Blockchain</button>
-            </div>
-            <div class="tab-content active" id="telemedicine">
-                <div class="solution-item">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Telemedicine">
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-card-image">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Telemedicine">
+                        <div class="solution-card-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
                     </div>
-                    <div class="solution-text">
-                        <h3>Bridge Accessibility Gaps</h3>
-                        <p>Our Telehealth Services enable real-time, remote consultations with certified healthcare providers, ensuring that even those in the most remote areas can access quality care. Through AI-driven virtual assistants and online platforms, we connect patients with the best possible medical advice, overcoming barriers of distance and resource scarcity.</p>
+                    <div class="solution-card-content">
+                        <h3>Telemedicine Services</h3>
+                        <p>Connect with healthcare providers remotely through our secure video consultation platform. Get expert medical advice from the comfort of your home.</p>
                         <a href="#" class="btn">Learn More</a>
                     </div>
                 </div>
-            </div>
-            <div class="tab-content" id="preventative">
-                <div class="solution-item">
-                    <div class="solution-image">
+                
+                <div class="solution-card">
+                    <div class="solution-card-image">
                         <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Preventative Care">
+                        <div class="solution-card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
                     </div>
-                    <div class="solution-text">
-                        <h3>Empower Preventative Care</h3>
-                        <p>The Health Education Hub within SelNexa promotes early detection and prevention through accessible content on common diseases, nutrition, wellness, and mental health. Our platform encourages proactive health management, offering personalized wellness plans, dietary advice, and vaccination reminders, particularly focusing on communities with limited access to health education.</p>
+                    <div class="solution-card-content">
+                        <h3>Preventative Care</h3>
+                        <p>Access personalized health education, wellness plans, and early detection tools to maintain optimal health and prevent diseases.</p>
                         <a href="#" class="btn">Learn More</a>
                     </div>
                 </div>
-            </div>
-            <div class="tab-content" id="data">
-                <div class="solution-item">
-                    <div class="solution-image">
+                
+                <div class="solution-card">
+                    <div class="solution-card-image">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Data Analytics">
+                        <div class="solution-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
                     </div>
-                    <div class="solution-text">
-                        <h3>Leverage Data for Public Health Impact</h3>
-                        <p>By harnessing AI and Big Data Analytics, SelNexa generates actionable insights into healthcare trends, patient behavior, and disease outbreaks. These insights empower health ministries, NGOs, and healthcare providers to make data-driven decisions for resource allocation, health interventions, and policy formulation, ensuring efficient use of limited healthcare resources.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-content" id="blockchain">
-                <div class="solution-item">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Blockchain">
-                    </div>
-                    <div class="solution-text">
-                        <h3>Streamline Care Delivery With Blockchain</h3>
-                        <p>SelNexa ensures secure, transparent management of health data, fostering trust and compliance. By integrating mobile money systems and smart contracts, we provide seamless payment options for users, making healthcare more affordable and accessible. Additionally, automated appointment scheduling and medication reminders improve treatment adherence, ensuring patients stay on track with their prescribed care plans.</p>
+                    <div class="solution-card-content">
+                        <h3>Data Analytics</h3>
+                        <p>Leverage AI-powered insights to make informed healthcare decisions and improve patient outcomes through predictive analytics.</p>
                         <a href="#" class="btn">Learn More</a>
                     </div>
                 </div>
@@ -1295,6 +1862,262 @@
         </div>
     </section>
 
+    <!-- Appointment Section -->
+    <section class="appointment" id="appointment">
+        <div class="container">
+            <div class="appointment-container">
+                <div class="appointment-content">
+                    <h2>Book Your Appointment</h2>
+                    <p>Schedule a consultation with our healthcare professionals and take the first step towards better health.</p>
+                    <div class="appointment-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Quick & Easy Booking</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Availability</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Secure Platform</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Instant Confirmation</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="appointment-form">
+                    <h3>Schedule Now</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Your Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Type</label>
+                            <select id="service" required>
+                                <option value="">Select Service</option>
+                                <option value="telemedicine">Telemedicine Consultation</option>
+                                <option value="preventative">Preventative Care</option>
+                                <option value="followup">Follow-up Visit</option>
+                                <option value="emergency">Emergency Consultation</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" required>
+                                <option value="">Select Time</option>
+                                <option value="morning">Morning (8AM - 12PM)</option>
+                                <option value="afternoon">Afternoon (1PM - 5PM)</option>
+                                <option value="evening">Evening (6PM - 9PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Additional Notes</label>
+                        <textarea id="message" placeholder="Any specific concerns or requirements?" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button -->
+    <div class="floating-action">
+        <div class="fab-button" id="fabButton">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="fab-menu" id="fabMenu">
+            <a href="#appointment" class="fab-menu-item">
+                <i class="fas fa-calendar-check"></i>
+                Book Appointment
+            </a>
+            <a href="#contact" class="fab-menu-item">
+                <i class="fas fa-envelope"></i>
+                Contact Us
+            </a>
+            <a href="#" class="fab-menu-item">
+                <i class="fas fa-phone"></i>
+                Emergency
+            </a>
+            <a href="#" class="fab-menu-item">
+                <i class="fas fa-user-md"></i>
+                Find Doctor
+            </a>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="active" data-theme="light">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button data-theme="dark">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>Live Chat Support</h3>
+                <button class="chat-close" id="chatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message">
+                    <div class="message-content">
+                        Hello! How can we help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="chatInput">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Health Calculator Section -->
+    <section class="section health-calculator" id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Health Calculators</h2>
+                <p>Use our interactive health calculators to assess your health metrics</p>
+            </div>
+            <div class="calculator-grid">
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <h3 class="calculator-title">BMI Calculator</h3>
+                    </div>
+                    <form class="calculator-form" id="bmiForm">
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" required min="20" max="300" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Height (cm)</label>
+                            <input type="number" id="height" required min="100" max="250" step="0.1">
+                        </div>
+                        <button type="submit" class="btn">Calculate BMI</button>
+                    </form>
+                    <div class="calculator-result" id="bmiResult">
+                        <div class="result-value">Your BMI: <span id="bmiValue">0</span></div>
+                        <div class="result-category" id="bmiCategory">Category: -</div>
+                    </div>
+                    <div class="calculator-info">
+                        BMI (Body Mass Index) is a measure of body fat based on height and weight.
+                    </div>
+                </div>
+
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="calculator-title">Calorie Calculator</h3>
+                    </div>
+                    <form class="calculator-form" id="calorieForm">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" required min="15" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="activity">Activity Level</label>
+                            <select id="activity" required>
+                                <option value="sedentary">Sedentary</option>
+                                <option value="light">Lightly Active</option>
+                                <option value="moderate">Moderately Active</option>
+                                <option value="very">Very Active</option>
+                                <option value="extra">Extra Active</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Calculate Calories</button>
+                    </form>
+                    <div class="calculator-result" id="calorieResult">
+                        <div class="result-value">Daily Calories: <span id="calorieValue">0</span></div>
+                        <div class="result-category">Maintenance calories</div>
+                    </div>
+                    <div class="calculator-info">
+                        This calculator estimates your daily calorie needs based on your activity level.
+                    </div>
+                </div>
+
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <div class="calculator-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="calculator-title">Heart Rate Calculator</h3>
+                    </div>
+                    <form class="calculator-form" id="heartRateForm">
+                        <div class="form-group">
+                            <label for="restingHR">Resting Heart Rate (bpm)</label>
+                            <input type="number" id="restingHR" required min="40" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="ageHR">Age</label>
+                            <input type="number" id="ageHR" required min="15" max="100">
+                        </div>
+                        <button type="submit" class="btn">Calculate Zones</button>
+                    </form>
+                    <div class="calculator-result" id="heartRateResult">
+                        <div class="result-value">Target Heart Rate Zones:</div>
+                        <div class="result-category">
+                            <p>Light: <span id="lightZone">0</span> bpm</p>
+                            <p>Moderate: <span id="moderateZone">0</span> bpm</p>
+                            <p>Intense: <span id="intenseZone">0</span> bpm</p>
+                        </div>
+                    </div>
+                    <div class="calculator-info">
+                        Calculate your target heart rate zones for different exercise intensities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1412,6 +2235,189 @@
                 this.reset();
             });
         }
+
+        // Floating Action Button
+        const fabButton = document.getElementById('fabButton');
+        const fabMenu = document.getElementById('fabMenu');
+
+        fabButton.addEventListener('click', () => {
+            fabMenu.classList.toggle('active');
+            fabButton.querySelector('i').classList.toggle('fa-plus');
+            fabButton.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close FAB menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!fabButton.contains(e.target) && !fabMenu.contains(e.target)) {
+                fabMenu.classList.remove('active');
+                fabButton.querySelector('i').classList.add('fa-plus');
+                fabButton.querySelector('i').classList.remove('fa-times');
+            }
+        });
+
+        // Theme Switcher
+        const themeSwitcher = document.querySelector('.theme-switcher');
+        const themeButtons = themeSwitcher.querySelectorAll('button');
+
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.dataset.theme;
+                document.documentElement.setAttribute('data-theme', theme);
+                themeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeButtons.forEach(btn => {
+            if (btn.dataset.theme === savedTheme) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Loading Animation
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loading-overlay');
+            loader.classList.add('hidden');
+        });
+
+        // Section Animations
+        const sections = document.querySelectorAll('.section');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Live Chat
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : ''}`;
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    ${message}
+                </div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendMessage.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Simulate response
+                setTimeout(() => {
+                    addMessage('Thank you for your message. Our team will get back to you shortly.');
+                }, 1000);
+            }
+        });
+
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage.click();
+            }
+        });
+
+        // Health Calculators
+        const bmiForm = document.getElementById('bmiForm');
+        const calorieForm = document.getElementById('calorieForm');
+        const heartRateForm = document.getElementById('heartRateForm');
+
+        // BMI Calculator
+        bmiForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100; // Convert to meters
+            const bmi = weight / (height * height);
+            
+            const bmiValue = document.getElementById('bmiValue');
+            const bmiCategory = document.getElementById('bmiCategory');
+            const bmiResult = document.getElementById('bmiResult');
+            
+            bmiValue.textContent = bmi.toFixed(1);
+            
+            let category = '';
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 25) category = 'Normal weight';
+            else if (bmi < 30) category = 'Overweight';
+            else category = 'Obese';
+            
+            bmiCategory.textContent = `Category: ${category}`;
+            bmiResult.classList.add('active');
+        });
+
+        // Calorie Calculator
+        calorieForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const age = parseInt(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const activity = document.getElementById('activity').value;
+            
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+            
+            const activityMultipliers = {
+                sedentary: 1.2,
+                light: 1.375,
+                moderate: 1.55,
+                very: 1.725,
+                extra: 1.9
+            };
+            
+            const calories = Math.round(bmr * activityMultipliers[activity]);
+            
+            document.getElementById('calorieValue').textContent = calories;
+            document.getElementById('calorieResult').classList.add('active');
+        });
+
+        // Heart Rate Calculator
+        heartRateForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const restingHR = parseInt(document.getElementById('restingHR').value);
+            const age = parseInt(document.getElementById('ageHR').value);
+            
+            const maxHR = 220 - age;
+            const reserve = maxHR - restingHR;
+            
+            document.getElementById('lightZone').textContent = `${Math.round(restingHR + reserve * 0.5)}-${Math.round(restingHR + reserve * 0.6)}`;
+            document.getElementById('moderateZone').textContent = `${Math.round(restingHR + reserve * 0.6)}-${Math.round(restingHR + reserve * 0.7)}`;
+            document.getElementById('intenseZone').textContent = `${Math.round(restingHR + reserve * 0.7)}-${Math.round(restingHR + reserve * 0.8)}`;
+            
+            document.getElementById('heartRateResult').classList.add('active');
+        });
     </script>
 </body>
 </html>
