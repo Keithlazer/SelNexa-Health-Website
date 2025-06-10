@@ -3,49 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Hide the GitHub footer -->
-  <style>
-    .site-footer-credits,
-    footer {
-      display: none;
-    }
-  </style>
-  <!-- End hide CSS -->
-
-  <!-- ✨ SEO Meta Tags -->
-  <title>...</title>
-  <meta name="description" content="...">
-  <link rel="canonical" href="https://selnexahealth.com/">
-
-  <!-- 🔗 Open Graph (Facebook, LinkedIn, etc.) -->
-  <meta property="og:title" content="...">
-  <meta property="og:description" content="...">
-  <meta property="og:image" content="https://selnexahealth.com/images/selnexa-logo.png">
-  <meta property="og:url" content="https://selnexahealth.com/">
-  <meta property="og:type" content="website">
-
-  <!-- 🐦 Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@SelNexaHealth">
-  <meta name="twitter:title" content="...">
-  <meta name="twitter:description" content="...">
-  <meta name="twitter:image" content="https://selnexahealth.com/images/selnexa-logo.png">
-
-  <!-- 🔖 Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- 💅 Stylesheet -->
+    <title>SelNexa Health | Transforming Healthcare in Africa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary: #e63946;
-            --primary-dark: #d62839;
-            --secondary: #f1faee;
-            --dark: #1d3557;
+            --primary: #0e3ba0;
+            --primary-light: #1e5ae9;
+            --secondary: #f0f7ff;
+            --dark: #0a1a3a;
             --light: #ffffff;
             --gray: #f8f9fa;
             --dark-gray: #6c757d;
+            --accent: #00b894;
         }
         
         * {
@@ -71,6 +40,7 @@
         p {
             margin-bottom: 1rem;
             font-weight: 400;
+            color: #555;
         }
         
         a {
@@ -80,7 +50,7 @@
         }
         
         a:hover {
-            color: var(--primary-dark);
+            color: var(--primary-light);
         }
         
         .container {
@@ -103,19 +73,21 @@
             border: none;
             cursor: pointer;
             font-size: 14px;
+            box-shadow: 0 4px 15px rgba(14, 59, 160, 0.3);
         }
         
         .btn:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-light);
             color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(14, 59, 160, 0.4);
         }
         
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
+            box-shadow: none;
         }
         
         .btn-outline:hover {
@@ -124,12 +96,12 @@
         }
         
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
         }
         
@@ -147,8 +119,16 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
+            height: 4px;
             background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
         }
         
         /* Header */
@@ -172,30 +152,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
             display: flex;
             align-items: center;
         }
         
-        /* Enhanced Logo Styling */
         .logo img {
             height: 50px;
-            margin-right: 10px;
             transition: transform 0.3s ease;
         }
         
         .logo:hover img {
             transform: scale(1.05);
-        }
-        
-        .logo-glow {
-            filter: drop-shadow(0 5px 15px rgba(230, 57, 70, 0.2));
         }
         
         .nav-links {
@@ -211,6 +182,7 @@
             color: var(--dark);
             font-weight: 600;
             position: relative;
+            font-size: 16px;
         }
         
         .nav-links a::after {
@@ -249,17 +221,6 @@
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-            z-index: -1;
-        }
-        
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
@@ -279,7 +240,7 @@
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 30px;
             color: var(--dark-gray);
         }
@@ -316,7 +277,7 @@
         
         /* About Section */
         .about {
-            background-color: var(--gray);
+            background-color: var(--secondary);
         }
         
         .about-content {
@@ -334,12 +295,11 @@
             position: relative;
         }
         
-        /* About Logo Container */
         .about-logo-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -353,7 +313,7 @@
         }
         
         .about-logo {
-            max-width: 80%;
+            max-width: 100%;
             max-height: 300px;
             object-fit: contain;
         }
@@ -362,16 +322,18 @@
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
         
         .stat-item {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             flex: 1;
-            margin: 0 10px;
+            min-width: 200px;
+            margin: 10px;
             transition: all 0.3s ease;
         }
         
@@ -405,11 +367,12 @@
         
         .problem-item {
             background-color: white;
-            padding: 30px;
+            padding: 40px 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border-top: 3px solid var(--primary);
+            text-align: center;
         }
         
         .problem-item:hover {
@@ -418,9 +381,17 @@
         }
         
         .problem-item i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
+            background: var(--secondary);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 25px;
         }
         
         .problem-item h3 {
@@ -430,7 +401,7 @@
         
         /* Solution Section */
         .solution {
-            background-color: var(--gray);
+            background-color: var(--secondary);
         }
         
         .solution-tabs {
@@ -445,11 +416,12 @@
             background-color: white;
             border: none;
             border-radius: 30px;
-            margin: 0 10px;
+            margin: 0 10px 15px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            font-size: 15px;
         }
         
         .tab-btn.active {
@@ -534,8 +506,8 @@
         }
         
         .tech-icon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background-color: var(--secondary);
             border-radius: 50%;
             display: flex;
@@ -545,94 +517,18 @@
         }
         
         .tech-icon i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
         }
         
         .tech-item h3 {
             margin-bottom: 15px;
-        }
-        
-        /* Roadmap Section */
-        .roadmap {
-            background-color: var(--gray);
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 0;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-            border-radius: 10px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            background-color: white;
-            border: 4px solid var(--primary);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::after {
-            right: -12px;
-        }
-        
-        .right::after {
-            left: -12px;
-        }
-        
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline-content h3 {
-            color: var(--primary);
-        }
-        
-        .timeline-date {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
+            font-size: 1.5rem;
         }
         
         /* Team Section */
         .team {
-            background-color: var(--light);
+            background-color: var(--secondary);
         }
         
         .team-members {
@@ -672,11 +568,12 @@
         }
         
         .member-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .member-info h3 {
             margin-bottom: 5px;
+            font-size: 1.3rem;
         }
         
         .member-role {
@@ -684,6 +581,7 @@
             font-weight: 600;
             margin-bottom: 15px;
             display: block;
+            font-size: 1rem;
         }
         
         .social-links {
@@ -709,14 +607,96 @@
             color: white;
         }
         
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 20px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 59, 160, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
         /* CTA Section */
         .cta {
-            background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9)), url('https://images.unsplash.com/photo-1581093450021-4a7360e9a7d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(14, 59, 160, 0.9), rgba(14, 59, 160, 0.9)), url('https://images.unsplash.com/photo-1581093450021-4a7360e9a7d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 0;
+            padding: 120px 0;
         }
         
         .cta h2 {
@@ -729,6 +709,7 @@
             max-width: 700px;
             margin: 0 auto 30px;
             color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
         }
         
         /* Footer */
@@ -750,6 +731,7 @@
             margin-bottom: 25px;
             position: relative;
             padding-bottom: 10px;
+            font-size: 1.5rem;
         }
         
         .footer-col h3::after {
@@ -782,7 +764,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
             transform: translateX(5px);
         }
         
@@ -818,6 +800,10 @@
             .solution-image, .solution-text {
                 flex: none;
                 width: 100%;
+            }
+            
+            .contact-container {
+                flex-direction: column;
             }
             
             .timeline::after {
@@ -917,7 +903,7 @@
             }
             
             .section {
-                padding: 60px 0;
+                padding: 80px 0;
             }
             
             .section-title h2 {
@@ -932,19 +918,6 @@
                 max-width: 90%;
             }
         }
-        /* Flex container: aligns logo and navigation side by side */
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-
-/* Logo image sizing */
-.logo img {
-  max-width: 150px;   /* Change this to resize logo */
-  width: 100%;
-  height: auto;       
     </style>
 </head>
 <body>
@@ -953,15 +926,14 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <!-- Header logo with enhancements -->
-                    <img src="styles/scripts/assets/SelNexa Health Logo Full.jpg"
+                    <img src="https://www.selnexahealth.com/images/logo.png" alt="SelNexa Health Logo">
                 </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#problem">Problem</a></li>
                     <li><a href="#solution">Solution</a></li>
                     <li><a href="#technology">Technology</a></li>
-                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu-btn">
@@ -993,6 +965,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>About SelNexa</h2>
+                <p>Revolutionizing healthcare delivery through innovative technology solutions</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -1005,9 +978,8 @@
                     <p>Blockchain technology is seamlessly integrated into SelNexa's infrastructure to ensure secure, transparent, and tamper-proof management of health records and financial transactions. This fosters trust among users, facilitates compliance with data protection regulations, and provides a robust foundation for interoperability across healthcare systems.</p>
                 </div>
                 <div class="about-image">
-                    <!-- About section logo container with enhancements -->
                     <div class="about-logo-container">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 250 250'%3E%3Ccircle cx='125' cy='125' r='120' fill='%23e63946'/%3E%3Ctext x='125' y='140' font-family='Montserrat' font-weight='700' font-size='40' text-anchor='middle' fill='white'%3ESN%3C/text%3E%3C/svg%3E" alt="SelNexa Logo" class="about-logo logo-glow">
+                        <img src="https://www.selnexahealth.com/images/logo.png" alt="SelNexa Logo" class="about-logo">
                     </div>
                 </div>
             </div>
@@ -1023,6 +995,10 @@
                 <div class="stat-item">
                     <div class="stat-number">500K</div>
                     <div class="stat-text">Initial funding goal (USD)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-text">Communities impacted by our pilot</div>
                 </div>
             </div>
         </div>
@@ -1060,6 +1036,11 @@
                     <i class="fas fa-shield-alt"></i>
                     <h3>Trust and Transparency Issues</h3>
                     <p>Patients often struggle to verify the quality of care or track how their data and funds are used, eroding confidence in the system.</p>
+                </div>
+                <div class="problem-item">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Healthcare Worker Shortage</h3>
+                    <p>Zimbabwe faces a critical shortage of healthcare professionals, with many migrating to other countries for better opportunities, leaving the system understaffed.</p>
                 </div>
             </div>
         </div>
@@ -1183,92 +1164,133 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section class="section roadmap" id="roadmap">
+    <!-- Team Section -->
+    <section class="section team" id="team">
         <div class="container">
             <div class="section-title">
-                <h2>Our Roadmap</h2>
-                <p>Building on our early successes, SelNexa is poised for accelerated expansion</p>
+                <h2>Our Leadership</h2>
+                <p>Meet the team driving SelNexa's healthcare revolution</p>
             </div>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023-2024</div>
-                        <h3>Phase 1: Pilot Program Expansion</h3>
-                        <ul>
-                            <li>Extended rural district coverage</li>
-                            <li>Mobile payment integration testing</li>
-                            <li>Health education hub development</li>
-                        </ul>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Keith Tafangombe</h3>
+                        <span class="member-role">Founder & CEO</span>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024-2025</div>
-                        <h3>Phase 2: Urban Center Expansion</h3>
-                        <ul>
-                            <li>Integration with major urban hospitals</li>
-                            <li>IoT-enabled remote monitoring rollout</li>
-                            <li>Cross-provider data interoperability</li>
-                        </ul>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Sarah Moyo</h3>
+                        <span class="member-role">Medical Director</span>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025-2026</div>
-                        <h3>Phase 3: Regional Leadership</h3>
-                        <ul>
-                            <li>Southern Africa expansion (Zambia, Malawi)</li>
-                            <li>Government health system integration</li>
-                            <li>AI-powered epidemiological tracking</li>
-                        </ul>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Tendai Chikomo</h3>
+                        <span class="member-role">CTO</span>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2026-2027</div>
-                        <h3>Phase 4: Continental Scale</h3>
-                        <ul>
-                            <li>West/East Africa deployment</li>
-                            <li>Pan-African health data network</li>
-                            <li>WHO partnership initiatives</li>
-                        </ul>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Team Member">
                     </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2027-2028</div>
-                        <h3>Phase 5: Global Integration</h3>
-                        <ul>
-                            <li>International telemedicine partnerships</li>
-                            <li>Blockchain health passport system</li>
-                            <li>AI-driven global health analytics</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2028+</div>
-                        <h3>Sustainable Future Vision</h3>
-                        <ul>
-                            <li>Renewable energy-powered clinics</li>
-                            <li>Neural network diagnostics system</li>
-                            <li>Universal health coverage integration</li>
-                        </ul>
+                    <div class="member-info">
+                        <h3>Nyasha Mupfumi</h3>
+                        <span class="member-role">Operations Director</span>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with our team for more information</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+263 777 726 065</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>keithtafangombe@selnexahealth.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3799.201975113312!2d31.042949315442773!3d-17.779405487889903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931b1e5e8b5b5e7%3A0x6c1c6a1f8b5b5e7!2sHarare!5e0!3m2!1sen!2szw!4v1620834567890!5m2!1sen!2szw" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="cta" id="contact">
+    <section class="cta" id="cta">
         <div class="container">
             <h2>Join Us in Transforming Healthcare</h2>
-            <p>Be part of the revolution thats bringing accessible, affordable healthcare to underserved communities across Africa</p>
+            <p>Be part of the revolution that's bringing accessible, affordable healthcare to underserved communities across Africa</p>
             <div class="hero-btns">
                 <a href="#" class="btn">Partner With Us</a>
-                <a href="#" class="btn btn-outline">Request a Demo</a>
+                <a href="#contact" class="btn btn-outline">Request a Demo</a>
             </div>
         </div>
     </section>
@@ -1293,7 +1315,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#solution">Our Solutions</a></li>
                         <li><a href="#technology">Technology</a></li>
-                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#team">Our Team</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1338,6 +1360,8 @@
         
         mobileMenuBtn.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
         });
         
         // Tab functionality for solution section
@@ -1373,18 +1397,21 @@
                     
                     // Close mobile menu if open
                     navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
                 }
             });
         });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you shortly.');
+                this.reset();
+            });
+        }
     </script>
-      <!-- Remove GitHub footer via JS -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      // Remove any footer GitHub injects
-      const el = document.querySelector('.site-footer-credits') || document.querySelector('footer');
-      if (el) el.remove();
-    });
-  </script>
-  <!-- End JS removal -->
 </body>
 </html>
