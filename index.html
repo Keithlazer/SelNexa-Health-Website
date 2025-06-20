@@ -1927,6 +1927,193 @@
       </select>
     </div>
 
+    <!-- ===================== ADVANCED FEATURES: PART 1 ===================== -->
+    <!-- 1. Patient Portal Login Modal -->
+    <div id="patientPortalModal" class="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('patientPortalModal').style.display='none'">&times;</span>
+        <h2>Patient Portal Login</h2>
+        <form aria-label="Patient Login">
+          <input type="email" placeholder="Email" required><br><br>
+          <input type="password" placeholder="Password" required><br><br>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <p style="margin-top:10px;font-size:0.95em;">Demo only. No real authentication yet.</p>
+      </div>
+    </div>
+    <!-- 2. Provider Portal Login Modal -->
+    <div id="providerPortalModal" class="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('providerPortalModal').style.display='none'">&times;</span>
+        <h2>Provider Portal Login</h2>
+        <form aria-label="Provider Login">
+          <input type="email" placeholder="Email" required><br><br>
+          <input type="password" placeholder="Password" required><br><br>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <p style="margin-top:10px;font-size:0.95em;">Demo only. No real authentication yet.</p>
+      </div>
+    </div>
+    <!-- 3. Live Video Consultation (Demo Button and Modal) -->
+    <button id="videoConsultBtn" class="btn" style="position:fixed;bottom:100px;left:30px;z-index:2000;">Video Consult</button>
+    <div id="videoConsultModal" class="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('videoConsultModal').style.display='none'">&times;</span>
+        <h2>Live Video Consultation</h2>
+        <p>Demo only. Video call integration coming soon!</p>
+        <video width="100%" height="180" controls poster="https://via.placeholder.com/320x180?text=Video+Consult+Demo">
+          <source src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <!-- 4. Health Risk Assessment Tools (Sample Quiz) -->
+    <section class="section" id="risk-assessment">
+      <div class="container">
+        <div class="section-title">
+          <h2>Health Risk Assessment</h2>
+          <p>Take a quick self-assessment (demo)</p>
+        </div>
+        <form id="riskQuiz" style="max-width:400px;margin:auto;">
+          <label>Do you smoke?</label><br>
+          <select required><option value="">Select</option><option>Yes</option><option>No</option></select><br><br>
+          <label>Do you exercise regularly?</label><br>
+          <select required><option value="">Select</option><option>Yes</option><option>No</option></select><br><br>
+          <button type="submit" class="btn">Get Risk Score</button>
+        </form>
+        <div id="riskResult" style="margin-top:20px;font-weight:600;"></div>
+      </div>
+    </section>
+    <!-- 5. Personalized Health Dashboard (Demo) -->
+    <section class="section" id="health-dashboard">
+      <div class="container">
+        <div class="section-title">
+          <h2>Your Health Dashboard</h2>
+          <p>Personalized overview (demo data)</p>
+        </div>
+        <div style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;">
+          <div style="background:#fff;padding:20px;border-radius:15px;box-shadow:var(--shadow-md);min-width:220px;">
+            <h4>Upcoming Appointments</h4>
+            <ul><li>May 30, 2024 - Dr. Smith</li></ul>
+          </div>
+          <div style="background:#fff;padding:20px;border-radius:15px;box-shadow:var(--shadow-md);min-width:220px;">
+            <h4>Medications</h4>
+            <ul><li>Metformin (8AM, 8PM)</li></ul>
+          </div>
+          <div style="background:#fff;padding:20px;border-radius:15px;box-shadow:var(--shadow-md);min-width:220px;">
+            <h4>Recent Logs</h4>
+            <ul><li>Blood Pressure: 120/80</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 6. Medication Reminder Notifications (Demo Form) -->
+    <section class="section" id="medication-reminder">
+      <div class="container">
+        <div class="section-title">
+          <h2>Medication Reminders</h2>
+          <p>Set up a reminder (demo only)</p>
+        </div>
+        <form id="reminderForm" style="max-width:400px;margin:auto;">
+          <input type="text" placeholder="Medication Name" required><br><br>
+          <input type="time" required><br><br>
+          <button type="submit" class="btn">Set Reminder</button>
+        </form>
+        <div id="reminderResult" style="margin-top:20px;font-weight:600;"></div>
+      </div>
+    </section>
+    <!-- ===================== END ADVANCED FEATURES: PART 1 ===================== -->
+
+    <!-- Add floating login buttons for Patient/Provider Portal -->
+    <div style="position:fixed;bottom:310px;right:30px;z-index:2000;display:flex;flex-direction:column;gap:10px;">
+      <button class="btn" style="background:#2a9d8f;" onclick="document.getElementById('patientPortalModal').style.display='flex'">Patient Login</button>
+      <button class="btn" style="background:#1d3557;" onclick="document.getElementById('providerPortalModal').style.display='flex'">Provider Login</button>
+    </div>
+
+    <!-- Minimal demo JS for modals, forms, and accessibility tools -->
+    <script>
+    // Video Consult Modal
+      document.getElementById('videoConsultBtn').onclick = function() {
+        document.getElementById('videoConsultModal').style.display = 'flex';
+      };
+    // Emergency Modal
+      document.getElementById('emergencyBtn').onclick = function() {
+        document.getElementById('emergencyModal').style.display = 'flex';
+      };
+    // Accessibility: Text-to-speech for selected text
+      window.speakSelection = function() {
+        if (window.getSelection) {
+          const text = window.getSelection().toString();
+          if (text) {
+            const utter = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(utter);
+          } else {
+            alert('Select some text to read aloud.');
+          }
+        }
+      };
+    // Accessibility: High contrast mode
+      if (!document.body.classList.contains('high-contrast')) {
+        const style = document.createElement('style');
+        style.innerHTML = '.high-contrast { filter: contrast(1.5) invert(1) !important; background:#000 !important; color:#fff !important; }';
+        document.head.appendChild(style);
+      }
+    // Risk Assessment Quiz Demo
+      document.getElementById('riskQuiz').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('riskResult').textContent = 'Your risk score: Low (demo only)';
+      };
+    // Medication Reminder Demo
+      document.getElementById('reminderForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('reminderResult').textContent = 'Reminder set! (demo only)';
+      };
+    // Insurance Check Demo
+      document.getElementById('insuranceForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('insuranceResult').textContent = 'Insurance accepted! (demo only)';
+      };
+    // Feedback Demo
+      document.getElementById('feedbackForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('feedbackResult').textContent = 'Thank you for your feedback! (demo only)';
+      };
+    // Push Demo
+      document.getElementById('pushDemoBtn').onclick = function() {
+        alert('Push notification demo! (No real push sent)');
+      };
+    // Offline Notice Demo
+      window.addEventListener('offline', function() {
+        document.getElementById('offlineNotice').style.display = 'block';
+      });
+      window.addEventListener('online', function() {
+        document.getElementById('offlineNotice').style.display = 'none';
+      });
+    // Resource Library Demo Data
+      const resources = [
+        {type:'article',title:'Understanding Hypertension',desc:'A guide to high blood pressure.',link:'#'},
+        {type:'video',title:'How to Use the Symptom Tracker',desc:'Video tutorial.',link:'#'},
+        {type:'guide',title:'Managing Diabetes',desc:'Step-by-step guide.',link:'#'},
+        {type:'article',title:'Telemedicine Benefits',desc:'Why telehealth matters.',link:'#'}
+      ];
+      function renderResources() {
+        const filter = document.getElementById('resourceFilter').value;
+        const search = document.getElementById('resourceSearch').value.toLowerCase();
+        const list = document.getElementById('resourceList');
+        list.innerHTML = '';
+        resources.filter(r => (filter==='all'||r.type===filter) && (r.title.toLowerCase().includes(search)||r.desc.toLowerCase().includes(search))).forEach(r => {
+          const card = document.createElement('div');
+          card.style = 'background:#fff;padding:20px;border-radius:10px;box-shadow:var(--shadow-md);min-width:180px;max-width:220px;';
+          card.innerHTML = `<h4>${r.title}</h4><p>${r.desc}</p><span style='font-size:0.9em;color:#888;'>${r.type}</span><br><a href='${r.link}' class='btn btn-outline' style='margin-top:10px;'>View</a>`;
+          list.appendChild(card);
+        });
+      }
+      document.getElementById('resourceFilter').onchange = renderResources;
+      document.getElementById('resourceSearch').oninput = renderResources;
+      renderResources();
+    </script>
+    <!-- ===================== END ADVANCED FEATURES SCRIPTS ===================== -->
+
     <script>
         // Service Worker Registration for PWA
         if ('serviceWorker' in navigator) {
