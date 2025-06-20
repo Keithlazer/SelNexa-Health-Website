@@ -1334,6 +1334,100 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Language Switcher - improved style and alignment */
+        .nav-lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        .nav-lang-switcher button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-gray);
+            padding: 4px 10px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-lang-switcher button.active, .nav-lang-switcher button:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Footer Contact Section */
+        .footer-contact {
+            background: linear-gradient(135deg, #e63946 0%, #1d3557 100%);
+            color: #fff;
+            padding: 50px 0 20px 0;
+            margin-top: 60px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        .footer-info {
+            flex: 1;
+            min-width: 220px;
+        }
+        .footer-info h4 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .footer-info p, .footer-info a {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .footer-social {
+            margin-top: 10px;
+        }
+        .footer-social a {
+            color: #fff;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--accent);
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            color: #fff;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .footer-info {
+                text-align: center;
+            }
+        }
+
+        /* Vibrant background for hero and sections */
+        .hero {
+            background: linear-gradient(120deg, #e63946 0%, #1d3557 100%);
+            color: #fff;
+        }
+        .section {
+            background: linear-gradient(120deg, #fff1f2 0%, #f8f9fa 100%);
+        }
     </style>
 </head>
 <body>
@@ -1342,7 +1436,7 @@
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
-                    <img src="styles/scripts/assets/SelNexa%20Health%20Logo%20Full.jpg" alt="SelNexa Health Logo">
+                    <img src="styles/scripts/assets/selnexa-logo-full.svg" alt="SelNexa Health Logo">
                 </a>
                 <div class="segmented-nav">
                     <button class="active">For Patients</button>
@@ -1365,6 +1459,18 @@
                 <div class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </div>
+                <div class="nav-lang-switcher">
+                    <button class="active" data-lang="en">EN</button>
+                    <button data-lang="es">ES</button>
+                    <button data-lang="fr">FR</button>
+                </div>
+                <div class="theme-toggle" id="themeToggle">
+                    <input type="checkbox" id="darkModeToggle">
+                    <label class="slider" for="darkModeToggle">
+                        <i class="fas fa-sun sun"></i>
+                        <i class="fas fa-moon moon"></i>
+                    </label>
+                </div>
             </nav>
         </div>
     </header>
@@ -1379,6 +1485,7 @@
             <div class="hero-content">
                 <h1>Transforming Healthcare, <span>Empowering Lives</span></h1>
                 <p>SelNexa is an advanced healthcare technology platform poised to transform the delivery of healthcare services in Zimbabwe and beyond. By harnessing the power of artificial intelligence (AI) and blockchain technology, we address critical challenges in accessibility, affordability, and efficiency.</p>
+                <p style="font-size:1.1rem; margin-bottom:20px;">We are committed to making quality healthcare accessible to everyone, everywhere. Our team of experts and innovative solutions are dedicated to improving patient outcomes and supporting healthcare professionals.</p>
                 <div class="hero-btns">
                     <a href="#solution" class="btn">Explore Our Solution</a>
                     <a href="#appointment" class="btn btn-outline">Book Appointment</a>
@@ -1635,22 +1742,6 @@
         </div>
     </section>
 
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" id="themeToggle">
-        <input type="checkbox" id="darkModeToggle">
-        <label class="slider" for="darkModeToggle">
-            <i class="fas fa-sun sun"></i>
-            <i class="fas fa-moon moon"></i>
-        </label>
-    </div>
-
-    <!-- Language Switcher -->
-    <div class="lang-switcher">
-        <button class="active" data-lang="en">EN</button>
-        <button data-lang="es">ES</button>
-        <button data-lang="fr">FR</button>
-    </div>
-
     <!-- Accessibility Checker -->
     <div class="accessibility-check">
         <button class="accessibility-btn" id="a11y-check">Accessibility Check</button>
@@ -1694,6 +1785,31 @@
             <button class="btn" style="margin-top: 20px;" id="modalOk">OK</button>
         </div>
     </div>
+
+    <!-- Add a visible contact section before </body> -->
+    <footer class="footer-contact" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="styles/scripts/assets/selnexa-logo-full.svg" alt="SelNexa Health Logo" style="height:40px;">
+                </div>
+                <div class="footer-info">
+                    <h4>Contact Us</h4>
+                    <p><strong>Address:</strong> 2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                    <p><strong>Email:</strong> <a href="mailto:keithtafangombe@selnexahealth.com">keithtafangombe@selnexahealth.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+263777726065">+263 777 726 065</a></p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/selnexa" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/selnexa" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/selnexa" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SelNexa Health. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Service Worker Registration for PWA
