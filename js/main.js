@@ -36,7 +36,7 @@ darkModeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   const icon = darkModeToggle.querySelector('i');
   icon.classList.toggle('fa-moon');
-  icon.classList.toggle('fa-sun');
+  icon.toggleAttribute('fa-sun');
 });
 
 // AI Chatbot
@@ -239,4 +239,116 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');
   }
+});
+
+// Back to Top Button
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.style.display = 'block';
+  } else {
+    backToTop.style.display = 'none';
+  }
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// FAQ Accordion
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const expanded = this.getAttribute('aria-expanded') === 'true';
+    faqQuestions.forEach(q => q.setAttribute('aria-expanded', 'false'));
+    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+    if (!expanded) {
+      this.setAttribute('aria-expanded', 'true');
+      this.nextElementSibling.style.display = 'block';
+    }
+  });
+});
+
+// Newsletter Signup Dummy Handler
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you for subscribing!');
+    newsletterForm.reset();
+  });
+}
+
+// Callback Form Dummy Handler
+const callbackForm = document.querySelector('.footer-callback form');
+if (callbackForm) {
+  callbackForm.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('We will call you back soon!');
+    callbackForm.reset();
+  });
+}
+
+// Blog/News Loading Spinner
+const blogSpinner = document.getElementById('blog-spinner');
+const blogFeed = document.getElementById('blog-feed');
+if (blogSpinner && blogFeed) {
+  blogSpinner.style.display = 'block';
+  setTimeout(() => {
+    blogSpinner.style.display = 'none';
+    blogFeed.style.display = 'grid';
+  }, 1200);
+}
+
+// Expanded Theme Switcher
+const themeSelect = document.getElementById('themeSelect');
+const darkModeToggle = document.getElementById('darkModeToggle');
+function applyTheme(theme) {
+  document.body.classList.remove('theme-health', 'theme-tech', 'theme-classic');
+  if (theme && theme !== 'default') {
+    document.body.classList.add('theme-' + theme);
+  }
+}
+if (themeSelect) {
+  // Load saved theme
+  const savedTheme = localStorage.getItem('themeSelect');
+  if (savedTheme) {
+    themeSelect.value = savedTheme;
+    applyTheme(savedTheme);
+  } else {
+    // System theme detection
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      darkModeToggle.checked = true;
+      document.body.classList.add('dark-mode');
+    }
+  }
+  themeSelect.addEventListener('change', function() {
+    localStorage.setItem('themeSelect', this.value);
+    applyTheme(this.value);
+  });
+}
+// Dark mode toggle
+if (darkModeToggle) {
+  darkModeToggle.addEventListener('change', function() {
+    if (this.checked) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
+// Accessibility: Keyboard navigation for FAQ
+faqQuestions.forEach(btn => {
+  btn.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = this.parentElement.nextElementSibling?.querySelector('.faq-question');
+      if (next) next.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prev = this.parentElement.previousElementSibling?.querySelector('.faq-question');
+      if (prev) prev.focus();
+    }
+  });
 }); 

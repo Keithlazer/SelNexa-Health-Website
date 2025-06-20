@@ -1429,6 +1429,12 @@
             background: linear-gradient(120deg, #fff1f2 0%, #f8f9fa 100%);
         }
     </style>
+    <!-- Animated SVG background for hero -->
+    <div class="hero-bg-svg" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;z-index:0;">
+        <path fill="#e63946" fill-opacity="0.2" d="M0,160L60,170.7C120,181,240,203,360,197.3C480,192,600,160,720,133.3C840,107,960,85,1080,101.3C1200,117,1320,171,1380,197.3L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+    </div>
 </head>
 <body>
     <!-- Header -->
@@ -1810,6 +1816,116 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top" style="display:none;position:fixed;bottom:40px;right:30px;z-index:2000;background:#e63946;color:#fff;border:none;border-radius:50%;width:50px;height:50px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:1.5rem;cursor:pointer;"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Why Choose SelNexa Section -->
+    <section class="section why-selnexa" id="why-selnexa">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose SelNexa?</h2>
+          <p>Our unique advantages for patients and providers</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card"><i class="fas fa-user-md"></i><h4>24/7 Telemedicine</h4><p>Access healthcare professionals anytime, anywhere.</p></div>
+          <div class="why-card"><i class="fas fa-microscope"></i><h4>AI Diagnostics</h4><p>Advanced AI for fast, accurate health assessments.</p></div>
+          <div class="why-card"><i class="fas fa-shield-alt"></i><h4>Secure Records</h4><p>Your health data is protected with blockchain technology.</p></div>
+          <div class="why-card"><i class="fas fa-globe-africa"></i><h4>Community Impact</h4><p>Improving healthcare access in underserved regions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners & Certifications Section -->
+    <section class="section partners" id="partners">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Partners & Certifications</h2>
+          <p>We collaborate with leading organizations</p>
+        </div>
+        <div class="partners-logos">
+          <img src="styles/scripts/assets/selnexa-logo.svg" alt="Partner 1" />
+          <img src="https://via.placeholder.com/120x60?text=Partner+2" alt="Partner 2" />
+          <img src="https://via.placeholder.com/120x60?text=Certification+1" alt="Certification 1" />
+          <img src="https://via.placeholder.com/120x60?text=Certification+2" alt="Certification 2" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Answers to common questions about SelNexa Health</p>
+        </div>
+        <div class="faq-accordion" role="tablist">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-label">What is SelNexa Health?</button>
+            <div class="faq-answer" id="faq1" role="region" aria-labelledby="faq1-label">SelNexa Health is a technology-driven healthcare platform offering telemedicine, AI diagnostics, and secure health records for Africa and beyond.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-label">How do I book an appointment?</button>
+            <div class="faq-answer" id="faq2" role="region" aria-labelledby="faq2-label">You can book appointments online through our platform or by calling our helpline.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-label">Is my health data secure?</button>
+            <div class="faq-answer" id="faq3" role="region" aria-labelledby="faq3-label">Yes, we use blockchain and advanced encryption to keep your data safe and private.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="section newsletter" id="newsletter">
+      <div class="container">
+        <div class="section-title">
+          <h2>Stay Connected</h2>
+          <p>Subscribe to our newsletter for updates and health tips</p>
+        </div>
+        <form class="newsletter-form" aria-label="Newsletter Signup">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required />
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/263777726065" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Google Maps Embed in Contact Section -->
+    <div class="footer-map" style="margin-top:20px;">
+      <iframe src="https://www.google.com/maps?q=2157+Clifton+Close,+New+Marlborough,+Harare,+Zimbabwe&output=embed" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SelNexa Health Location"></iframe>
+    </div>
+
+    <!-- Request a Callback Mini-Form in Footer -->
+    <div class="footer-callback" style="margin-top:20px;">
+      <form aria-label="Request a Callback">
+        <input type="text" placeholder="Your Name" aria-label="Name" required />
+        <input type="tel" placeholder="Phone Number" aria-label="Phone Number" required />
+        <button type="submit" class="btn btn-outline">Request Callback</button>
+      </form>
+    </div>
+
+    <!-- Loading Spinner for Blog/News Section -->
+    <div id="blog-spinner" style="display:none;text-align:center;margin:40px 0;">
+      <i class="fas fa-spinner fa-spin" style="font-size:2rem;color:#e63946;"></i>
+    </div>
+
+    <!-- Expanded Theme Switcher -->
+    <div class="theme-toggle" id="themeToggle">
+      <input type="checkbox" id="darkModeToggle" aria-label="Toggle dark mode">
+      <label class="slider" for="darkModeToggle">
+        <i class="fas fa-sun sun"></i>
+        <i class="fas fa-moon moon"></i>
+      </label>
+      <select id="themeSelect" aria-label="Select theme" style="margin-left:10px;border-radius:20px;padding:4px 10px;">
+        <option value="default">Default</option>
+        <option value="health">Health</option>
+        <option value="tech">Tech</option>
+        <option value="classic">Classic</option>
+      </select>
+    </div>
 
     <script>
         // Service Worker Registration for PWA

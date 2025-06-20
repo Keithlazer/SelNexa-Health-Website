@@ -1069,4 +1069,71 @@ footer {
     .footer-info {
         text-align: center;
     }
+}
+
+/* Animated SVG background for hero */
+.hero-bg-svg { position: absolute; top: 0; left: 0; width: 100%; height: 320px; pointer-events: none; z-index: 0; }
+
+/* Back to Top Button */
+#backToTop { transition: opacity 0.3s; }
+#backToTop.show { display: block; opacity: 1; }
+#backToTop.hide { opacity: 0; }
+
+/* Why Choose SelNexa */
+.why-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 40px; }
+.why-card { background: #fff; color: #1d3557; border-radius: 15px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); padding: 30px 24px; flex: 1 1 220px; max-width: 260px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+.why-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 12px; }
+.why-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 8px 24px rgba(44,62,80,0.12); }
+
+/* Partners & Certifications */
+.partners-logos { display: flex; gap: 30px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 30px; }
+.partners-logos img { height: 60px; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(44,62,80,0.06); padding: 8px; }
+
+/* FAQ Accordion */
+.faq-accordion { max-width: 700px; margin: 0 auto; }
+.faq-item { margin-bottom: 18px; }
+.faq-question { width: 100%; background: #f8f9fa; color: #1d3557; border: none; border-radius: 10px; padding: 18px; font-size: 1.1rem; font-weight: 600; text-align: left; cursor: pointer; transition: background 0.2s; outline: none; }
+.faq-question[aria-expanded="true"] { background: var(--primary); color: #fff; }
+.faq-answer { display: none; padding: 16px 18px; background: #fff; border-radius: 0 0 10px 10px; color: #333; box-shadow: 0 2px 8px rgba(44,62,80,0.04); }
+.faq-question:focus { outline: 2px solid var(--primary); }
+
+/* Newsletter Signup */
+.newsletter-form { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+.newsletter-form input[type="email"] { padding: 12px 18px; border-radius: 25px; border: 1px solid #ddd; font-size: 1rem; }
+.newsletter-form button { border-radius: 25px; }
+
+/* WhatsApp Floating Button */
+.whatsapp-float { position: fixed; bottom: 100px; left: 30px; background: #25d366; color: #fff; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; z-index: 2000; box-shadow: 0 4px 16px rgba(44,62,80,0.18); transition: background 0.2s; }
+.whatsapp-float:hover { background: #128c7e; color: #fff; }
+
+/* Footer Map and Callback */
+.footer-map iframe { border-radius: 12px; box-shadow: 0 2px 8px rgba(44,62,80,0.08); }
+.footer-callback form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+.footer-callback input { padding: 10px 14px; border-radius: 20px; border: 1px solid #ddd; font-size: 1rem; }
+.footer-callback button { border-radius: 20px; }
+
+/* Blog/News Loading Spinner */
+#blog-spinner { animation: fadeIn 0.5s; }
+
+/* Expanded Theme Switcher */
+#themeSelect { background: #fff; color: #1d3557; border: 1px solid #ddd; }
+
+/* Micro-interactions */
+.btn, .btn-outline, .faq-question, .why-card, .partners-logos img, .newsletter-form button, .footer-callback button, .whatsapp-float, #backToTop { transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s; }
+.btn:focus, .btn-outline:focus, .faq-question:focus, .why-card:focus, .newsletter-form input:focus, .footer-callback input:focus { outline: 2px solid var(--primary); }
+
+/* Accessibility: High contrast for focus, ARIA, etc. */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Theme Color Classes */
+body.theme-health { --primary: #43aa8b; --accent: #f9c846; --dark: #264653; --light: #f1faee; }
+body.theme-tech { --primary: #4361ee; --accent: #f72585; --dark: #22223b; --light: #f8f9fa; }
+body.theme-classic { --primary: #e76f51; --accent: #2a9d8f; --dark: #264653; --light: #fff; }
+
+body.theme-health, body.theme-tech, body.theme-classic { background: var(--light); }
+
+/* Responsive adjustments for new sections */
+@media (max-width: 900px) {
+  .why-grid { flex-direction: column; align-items: center; }
+  .partners-logos { flex-direction: column; gap: 18px; }
 } 
