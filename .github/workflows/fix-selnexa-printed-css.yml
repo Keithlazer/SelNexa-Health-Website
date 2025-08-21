@@ -1,0 +1,63 @@
+name: Fix SelNexa printed CSS & add logo
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Ensure assets directory
+        run: mkdir -p "styles/scripts/assets"
+
+      - name: Download logo JPG from live site
+        run: |
+          set -eux
+          curl -fsSL -o "styles/scripts/assets/selnexa-logo.jpg" "https://www.selnexahealth.com/styles/scripts/assets/SelNexa%20Logo.jpg"
+          ls -l styles/scripts/assets/selnexa-logo.jpg
+
+      - name: Backup target HTML files
+        run: |
+          for f in "SelNexa Website/index.html" "index.html"; do
+            if [ -f "$f" ]; then cp "$f" "$f.bak"; fi
+          done
+
+      - name: Clean printed CSS and update logo references
+        run: |
+          set -eux
+          for f in "SelNexa Website/index.html" "index.html"; do
+            [ -f "$f" ] || continue
+            perl -0777 -pe 's/-->Skip to content//gs' "$f" > "$f.tmp"
+            perl -0777 -pe 's/header\s*\{.*?\}//gs' "$f.tmp" > "$f.tmp2"
+            perl -0777 -pe 's/SelNexa%20Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/gs; s/SelNexa Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/gs' "$f.tmp2" > "$f.tmp3"
+            perl -0777 -pe 's{<img\b[^>]*class=([\"'\''"]).*?\1[^>]*>} {<picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>}igs' "$f.tmp3" > "$f.clean"
+            mv "$f.clean" "$f"
+            rm -f "$f.tmp" "$f.tmp2" "$f.tmp3"
+          done
+
+          if [ -f manifest.json ]; then
+            perl -0777 -pe 's/SelNexa%20Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/gs; s/SelNexa Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/gs' manifest.json > manifest.json.tmp && mv manifest.json.tmp manifest.json
+          fi
+
+      - name: Show git diff
+        run: git --no-pager diff --name-status
+
+      - name: Commit and push changes
+        env:
+          GIT_ALLOW_PROTOCOL: "file:http:https"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "CI: add selnexa-logo.jpg, remove printed CSS, update logo references"
+            git push
+          fi
