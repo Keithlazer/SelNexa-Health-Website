@@ -1,0 +1,30 @@
+name: Clean printed CSS and normalize logo paths
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  clean_html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run HTML cleaner
+        run: |
+          python3 .github/scripts/clean_html.py
+
+      - name: Show git status
+        run: |
+          git status --porcelain
+          git --no-pager log -n 3 --oneline || true
