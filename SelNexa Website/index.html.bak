@@ -36,8 +36,8 @@
       ]
     }
     </script>
-    <link rel="icon" type="image/jpeg" href="SelNexa Website/styles/scripts/assets/SelNexa Logo.jpg">
-    <link rel="apple-touch-icon" href="styles/scripts/assets/SelNexa%20Logo.jpg">
+    <link rel="icon" type="image/jpeg" href="SelNexa Website/styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg">
+    <link rel="apple-touch-icon" href="styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg">
     <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,9 +84,7 @@
             color: var(--dark-text);
         }
         
-        body.dark-mode header {
-            background-color: var(--dark-header);
-        }
+        body.dark-mode 
         
         body.dark-mode .section-title h2,
         body.dark-mode .section-title p,
@@ -245,16 +243,7 @@
         }
         
         /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+        
         
         header.scrolled {
             background-color: rgba(255, 255, 255, 0.98);
@@ -703,14 +692,7 @@
             animation: slideUp 0.3s ease;
         }
         
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .chat-
         
         .chat-header h3 {
             margin: 0;
@@ -815,12 +797,7 @@
             margin-top: 40px;
         }
         
-        .tracker-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+        .tracker-
         
         .tracker-form {
             display: flex;
