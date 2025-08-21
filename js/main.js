@@ -15,8 +15,29 @@ reveals.forEach(r => observer.observe(r));
 // Lazy-load images
 const imgs = document.querySelectorAll('img[loading="lazy"]');
 imgs.forEach(img => { img.onload = () => img.classList.add('loaded'); });
-// Analytics stub
-window.analytics = { track: (event, data) => { console.log('Analytics:', event, data); } };
+// Analytics stub (privacy-friendly). Replace with Plausible/GA4 as needed.
+window.analytics = {
+  track: (event, data) => {
+    try {
+      // Minimal console logging in dev; replace with network call in prod
+      console.log('Analytics:', event, data || {});
+    } catch (_) {}
+  }
+};
+
+// Track key conversions
+document.addEventListener('click', (e) => {
+  const target = e.target.closest('a, button');
+  if (!target) return;
+  if (target.matches('a[href*="#appointment"], .btn:contains("Book")')) {
+    window.analytics.track('cta_book_click');
+  }
+  if (target.matches('form button[type="submit"]')) {
+    const form = target.closest('form');
+    if (form && form.id === 'appointmentForm') window.analytics.track('appointment_submit_attempt');
+    if (form && form.closest('.contact-form')) window.analytics.track('contact_submit_attempt');
+  }
+});
 // Service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
@@ -168,7 +189,7 @@ const i18n = {
       emergency: 'Urgence'
     }
   },
-  currentLang: 'en',
+  currentLang: localStorage.getItem('selnexa:lang') || 'en',
   
   setLanguage(lang) {
     this.currentLang = lang;
@@ -176,6 +197,8 @@ const i18n = {
       const key = element.getAttribute('data-i18n');
       element.textContent = this.translations[lang][key];
     });
+    localStorage.setItem('selnexa:lang', lang);
+    document.documentElement.setAttribute('lang', lang);
   }
 };
 
@@ -188,6 +211,8 @@ langSwitcher.innerHTML = `
 `;
 langSwitcher.addEventListener('change', (e) => i18n.setLanguage(e.target.value));
 document.querySelector('.navbar').appendChild(langSwitcher);
+// Apply saved language on load
+i18n.setLanguage(i18n.currentLang);
 
 // Accessibility Checker
 class AccessibilityChecker {

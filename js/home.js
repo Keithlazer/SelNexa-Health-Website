@@ -1,5 +1,14 @@
 // Initialize components when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Configurable form endpoint (set window.SELNEXA_FORM_ENDPOINT = 'https://...')
+  const FORM_ENDPOINT = typeof window.SELNEXA_FORM_ENDPOINT === 'string' ? window.SELNEXA_FORM_ENDPOINT : '';
+
+  // Progressive performance: ensure non-critical images use lazy loading
+  document.querySelectorAll('img:not([loading])').forEach(img => {
+    // Skip likely above-the-fold hero/logo images
+    const isHero = img.closest('.hero') || img.closest('header');
+    if (!isHero) img.setAttribute('loading', 'lazy');
+  });
   // Mobile menu toggle with ARIA
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const navLinks = document.getElementById('primary-nav') || document.querySelector('.nav-links');
@@ -136,31 +145,188 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Form submissions with inline success state (replace alerts)
+  // Utility: queue submissions offline and retry when online
+  function queueSubmission(endpoint, payload) {
+    try {
+      const key = 'selnexa:queuedSubmissions';
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      list.push({ endpoint, payload, ts: Date.now() });
+      localStorage.setItem(key, JSON.stringify(list));
+    } catch (_) {}
+  }
+
+  async function flushQueue() {
+    const key = 'selnexa:queuedSubmissions';
+    let list = [];
+    try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
+    if (!list.length || !navigator.onLine) return;
+    const remaining = [];
+    for (const item of list) {
+      try {
+        await fetch(item.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(item.payload)
+        });
+      } catch (err) {
+        remaining.push(item);
+      }
+    }
+    localStorage.setItem(key, JSON.stringify(remaining));
+  }
+  window.addEventListener('online', flushQueue);
+
+  // Add honeypot field to forms
+  function ensureHoneypot(form) {
+    if (!form) return;
+    if (!form.querySelector('input[name="company"]')) {
+      const hp = document.createElement('input');
+      hp.type = 'text';
+      hp.name = 'company';
+      hp.autocomplete = 'off';
+      hp.tabIndex = -1;
+      hp.ariaHidden = 'true';
+      hp.style.position = 'absolute';
+      hp.style.left = '-10000px';
+      form.appendChild(hp);
+    }
+  }
+
   const appointmentForm = document.getElementById('appointmentForm');
   if (appointmentForm) {
-    appointmentForm.addEventListener('submit', function(e) {
+    ensureHoneypot(appointmentForm);
+    appointmentForm.addEventListener('submit', async function(e) {
       e.preventDefault();
+      // Basic validation
+      const fullName = this.querySelector('#fullName')?.value?.trim();
+      const email = this.querySelector('#email')?.value?.trim();
+      const phone = this.querySelector('#phone')?.value?.trim();
+      const doctor = this.querySelector('#doctor')?.value;
+      const date = this.querySelector('#appointmentDate')?.value;
+      const time = this.querySelector('.time-slot.selected')?.textContent?.trim();
+      const reason = this.querySelector('#reason')?.value?.trim();
+      const honey = this.querySelector('input[name="company"]')?.value;
+
       const notice = document.createElement('p');
-      notice.textContent = 'Appointment scheduled successfully!';
-      notice.style.color = 'green';
+      notice.style.marginTop = '10px';
       this.appendChild(notice);
-      setTimeout(() => notice.remove(), 4000);
-      this.reset();
+
+      if (honey) { // bot detected
+        notice.textContent = 'Submission blocked.';
+        notice.style.color = 'red';
+        return;
+      }
+      if (!fullName || !email || !phone || !doctor || !date || !time) {
+        notice.textContent = 'Please complete all required fields.';
+        notice.style.color = 'red';
+        return;
+      }
+
+      const payload = { type: 'appointment', fullName, email, phone, doctor, date, time, reason };
+
+      if (FORM_ENDPOINT) {
+        try {
+          if (!navigator.onLine) throw new Error('offline');
+          await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          notice.textContent = 'Appointment scheduled successfully!';
+          notice.style.color = 'green';
+          this.reset();
+        } catch (err) {
+          queueSubmission(FORM_ENDPOINT, payload);
+          notice.textContent = 'Saved offline. We will submit when you are online.';
+          notice.style.color = 'orange';
+        }
+      } else {
+        notice.textContent = 'Appointment scheduled (demo). Backend not configured yet.';
+        notice.style.color = 'green';
+        this.reset();
+      }
+      setTimeout(() => notice.remove(), 5000);
     });
   }
 
   const contactForm = document.querySelector('.contact-form form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    ensureHoneypot(contactForm);
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
+      const name = this.querySelector('#contact-name')?.value?.trim() || this.querySelector('#name')?.value?.trim();
+      const email = this.querySelector('#contact-email')?.value?.trim() || this.querySelector('#email')?.value?.trim();
+      const subject = this.querySelector('#contact-subject')?.value?.trim() || 'Contact Form Submission';
+      const message = this.querySelector('#contact-message')?.value?.trim() || this.querySelector('#message')?.value?.trim();
+      const honey = this.querySelector('input[name="company"]')?.value;
       const notice = document.createElement('p');
-      notice.textContent = 'Your message has been sent successfully!';
-      notice.style.color = 'green';
+      notice.style.marginTop = '10px';
       this.appendChild(notice);
-      setTimeout(() => notice.remove(), 4000);
-      this.reset();
+
+      if (honey) {
+        notice.textContent = 'Submission blocked.';
+        notice.style.color = 'red';
+        return;
+      }
+      if (!name || !email || !message) {
+        notice.textContent = 'Please complete all required fields.';
+        notice.style.color = 'red';
+        return;
+      }
+
+      const payload = { type: 'contact', name, email, subject, message };
+      if (FORM_ENDPOINT) {
+        try {
+          if (!navigator.onLine) throw new Error('offline');
+          await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          notice.textContent = 'Your message has been sent successfully!';
+          notice.style.color = 'green';
+          this.reset();
+        } catch (err) {
+          queueSubmission(FORM_ENDPOINT, payload);
+          notice.textContent = 'Saved offline. We will submit when you are online.';
+          notice.style.color = 'orange';
+        }
+      } else {
+        notice.textContent = 'Message sent (demo). Backend not configured yet.';
+        notice.style.color = 'green';
+        this.reset();
+      }
+      setTimeout(() => notice.remove(), 5000);
+    });
+  }
+
+  // Try flushing queued submissions on load
+  flushQueue();
+
+  // Cookie consent banner
+  if (!localStorage.getItem('selnexa:cookiesAccepted')) {
+    const banner = document.createElement('div');
+    banner.style.position = 'fixed';
+    banner.style.bottom = '0';
+    banner.style.left = '0';
+    banner.style.right = '0';
+    banner.style.background = '#1a1a2e';
+    banner.style.color = '#fff';
+    banner.style.padding = '14px 20px';
+    banner.style.zIndex = '3000';
+    banner.style.display = 'flex';
+    banner.style.justifyContent = 'space-between';
+    banner.style.alignItems = 'center';
+    banner.innerHTML = '<span>We use cookies for essential functionality and anonymous analytics. <a href="/privacy.html" style="color:#ffd166">Learn more</a>.</span>' +
+      '<button id="cookieAccept" class="btn" style="margin-left:12px;">Accept</button>';
+    document.body.appendChild(banner);
+    banner.querySelector('#cookieAccept').addEventListener('click', () => {
+      localStorage.setItem('selnexa:cookiesAccepted', '1');
+      banner.remove();
     });
   }
 });
+
+
 
 

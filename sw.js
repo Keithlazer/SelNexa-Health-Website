@@ -1,7 +1,9 @@
-const CACHE_NAME = 'selnexa-cache-v2';
+const CACHE_NAME = 'selnexa-cache-v3';
+const OFFLINE_URL = '/offline.html';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/offline.html',
     '/styles/home.css',
     '/js/home.js',
     '/styles/scripts/assets/SelNexa Logo.jpg',
@@ -26,24 +28,43 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
+    const request = event.request;
+    const url = new URL(request.url);
+
+    if (request.method !== 'GET') {
+        return; // let non-GET requests pass through
+    }
+
+    // HTML navigation requests: network first, fallback to cache, then offline page
+    if (request.mode === 'navigate' || (request.headers.get('accept') || '').includes('text/html')) {
+        event.respondWith(
+            fetch(request)
+                .then(response => {
+                    const copy = response.clone();
+                    caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
                     return response;
-                }
-                return fetch(event.request)
-                    .then(response => {
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-                        const responseToCache = response.clone();
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-                        return response;
-                    });
-            })
+                })
+                .catch(async () => {
+                    const cached = await caches.match(request);
+                    return cached || caches.match(OFFLINE_URL);
+                })
+        );
+        return;
+    }
+
+    // Static assets: stale-while-revalidate
+    event.respondWith(
+        caches.match(request).then(cached => {
+            const fetchPromise = fetch(request)
+                .then(networkResponse => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        const copy = networkResponse.clone();
+                        caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+                    }
+                    return networkResponse;
+                })
+                .catch(() => cached);
+            return cached || fetchPromise;
+        })
     );
 }); 
