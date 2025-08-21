@@ -45,6 +45,16 @@ Notes:
 - If your ImageMagick has direct AVIF support you can use `magick`; otherwise install `avifenc` from libavif and use it to encode AVIF.
 - After generating these files, verify they appear in `styles/scripts/assets/` and reload the site.
 
+If you'd like me to generate and commit the AVIF/WebP/@2x files for you
+ (I can add the binary images to the repo), reply with "Yes — generate and commit".
+ I can create them here and update the `<picture>` srcsets. If you prefer to run
+ the conversions locally, use the commands above.
+
+Tool availability note:
+- This environment may not have ImageMagick/libavif/ffmpeg installed by default.
+- If conversion tools are missing, install ImageMagick (Windows) or libavif and
+   run the provided PowerShell commands from the repository root.
+
 Suggested next steps
 
 - Compute SRI hashes for CDN assets and replace TODO placeholders in `index.html`.
