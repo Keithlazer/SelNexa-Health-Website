@@ -16,7 +16,8 @@ jobs:
           fetch-depth: 0
 
       - name: Ensure assets directory
-        run: mkdir -p "styles/scripts/assets"
+        run: |
+          mkdir -p "styles/scripts/assets"
 
       - name: Download logo JPG from live site
         run: |
@@ -30,29 +31,34 @@ jobs:
             if [ -f "$f" ]; then cp "$f" "$f.bak"; fi
           done
 
-      - name: Clean printed CSS and update logo references (sed/awk)
+      - name: Clean printed CSS and update logo references (write & run Python)
         run: |
           set -eux
-          picture='<picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>'
-          for f in "SelNexa Website/index.html" "index.html"; do
-            [ -f "$f" ] || continue
-            cp "$f" "$f.bak"
-            # remove the large printed CSS block starting at 'header {' until the marker '-->Skip to content'
-            sed '/header\s*{/,/-->Skip to content/ d' "$f" > "$f.tmp1"
-            # normalize legacy filenames to the new asset path
-            sed -E 's/SelNexa%20Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/g; s/SelNexa Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/g' "$f.tmp1" > "$f.tmp2"
-            # replace any line that contains the logo fallback img (class="logo-img") with the picture markup
-            awk -v pic="$picture" '{ if ($0 ~ /class="logo-img"/) { print pic } else print $0 }' "$f.tmp2" > "$f.clean"
-            mv "$f.clean" "$f"
-            rm -f "$f.tmp1" "$f.tmp2"
-          done
-          # update manifest.json if present
-          if [ -f manifest.json ]; then
-            sed -E 's/SelNexa%20Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/g; s/SelNexa Logo\.jpg/styles\/scripts\/assets\/selnexa-logo.jpg/g' manifest.json > manifest.json.tmp && mv manifest.json.tmp manifest.json
-          fi
-
-      - name: Debug: git status / remotes / diff
-        run: |
+          cat > cleanup_selnexa.py <<'PY'
+          import re, pathlib
+          files = ["SelNexa Website/index.html", "index.html"]
+          picture = '<picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>'
+          for fname in files:
+              p = pathlib.Path(fname)
+              if not p.is_file():
+                  continue
+              text = p.read_text(encoding="utf-8")
+              text = text.replace("-->Skip to content", "")
+              text = re.sub(r"header\s*\{.*?\}", "", text, flags=re.S)
+              text = re.sub(r"SelNexa%20Logo\.jpg", "styles/scripts/assets/selnexa-logo.jpg", text)
+              text = re.sub(r"SelNexa Logo\.jpg", "styles/scripts/assets/selnexa-logo.jpg", text)
+              text = re.sub(r'(?is)<img\b[^>]*class=(["\'])[^\1]*?logo-img[^\1]*?\1[^>]*>', picture, text)
+              p.write_text(text, encoding="utf-8")
+          m = pathlib.Path("manifest.json")
+          if m.is_file():
+              mt = m.read_text(encoding="utf-8")
+              mt = re.sub(r"SelNexa%20Logo\.jpg", "styles/scripts/assets/selnexa-logo.jpg", mt)
+              mt = re.sub(r"SelNexa Logo\.jpg", "styles/scripts/assets/selnexa-logo.jpg", mt)
+              m.write_text(mt, encoding="utf-8")
+          PY
+          python3 cleanup_selnexa.py
+          rm -f cleanup_selnexa.py
+              name: "Debug: git status / remotes / diff" run: | git --no-pager status --porcelain git --no-pager diff --name-status || true echo "Git remote:" git remote -v || true echo "git config:" git config --list || true echo "Show any staged changes:" git --no-pager diff --staged --name-status || true echo "List of modified HTML files:" git ls-files -m || true
           git --no-pager status --porcelain
           git --no-pager diff --name-status || true
           echo "Git remote:"
