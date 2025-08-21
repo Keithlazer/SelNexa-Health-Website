@@ -17,10 +17,33 @@ document.addEventListener('DOMContentLoaded', function() {
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', String(!expanded));
       navLinks.classList.toggle('active');
+      // Keep screen readers informed
+      navLinks.setAttribute('aria-hidden', String(expanded));
+      // When opening, move focus to first link for keyboard users
+      if (!expanded) {
+        const firstLink = navLinks.querySelector('a');
+        if (firstLink) firstLink.focus();
+      } else {
+        // When closing, return focus to the menu button
+        this.focus();
+      }
       const icon = this.querySelector('i');
       if (icon) {
         icon.classList.toggle('fa-bars');
         icon.classList.toggle('fa-times');
+      }
+    });
+    // Close menu with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        if (navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          navLinks.setAttribute('aria-hidden', 'true');
+          mobileMenuBtn.querySelector('i')?.classList?.add('fa-bars');
+          mobileMenuBtn.querySelector('i')?.classList?.remove('fa-times');
+          mobileMenuBtn.focus();
+        }
       }
     });
   }
