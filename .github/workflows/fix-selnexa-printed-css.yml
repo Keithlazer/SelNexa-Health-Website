@@ -21,7 +21,7 @@ jobs:
       - name: Download logo JPG from live site
         run: |
           set -eux
-          curl -fsSL -o "styles/scripts/assets/selnexa-logo.jpg" "https://www.selnexahealth.com/styles/scripts/assets/SelNexa%20Logo.jpg"
+          curl -fsSL -o "styles/scripts/assets/selnexa-logo.jpg" "https://www.selnexahealth.com/styles/scripts/assets/SelNexa%20Logo.jpg" || { echo "curl failed"; ls -la styles/scripts/assets || true; exit 1; }
           ls -l styles/scripts/assets/selnexa-logo.jpg
 
       - name: Backup target HTML files
@@ -30,11 +30,11 @@ jobs:
             if [ -f "$f" ]; then cp "$f" "$f.bak"; fi
           done
 
-      - name: Clean printed CSS and update logo references (Python)
+      - name: Clean printed CSS and update logo references (write & run Python)
         run: |
           set -eux
-          python3 - <<'PY'
-          import re, sys, pathlib
+          cat > cleanup_selnexa.py <<'PY'
+          import re, pathlib
           files = ["SelNexa Website/index.html", "index.html"]
           picture = '<picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>'
           for fname in files:
@@ -60,6 +60,8 @@ jobs:
               mt = re.sub(r"SelNexa Logo\.jpg", "styles/scripts/assets/selnexa-logo.jpg", mt)
               m.write_text(mt, encoding="utf-8")
           PY
+          python3 cleanup_selnexa.py
+          rm -f cleanup_selnexa.py
 
       - name: Debug: git status / remotes / diff
         run: |
