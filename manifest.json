@@ -8,8 +8,8 @@
     "background_color": "#ffffff",
     "theme_color": "#e63946",
     "icons": [
-    { "src": "/styles/scripts/assets/SelNexa%20Logo.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
-    { "src": "/styles/scripts/assets/SelNexa%20Logo.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" }
+    { "src": "/styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" }
     ],
     "shortcuts": [
         { "name": "Book Appointment", "short_name": "Book", "url": "/index.html#appointment" },

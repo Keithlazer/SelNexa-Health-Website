@@ -40,7 +40,7 @@
         <link rel="manifest" href="/manifest.json">
         <!-- Prefer SVG favicons; keep jpg fallbacks if not available -->
         <link rel="icon" href="/styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml">
-    <link rel="icon" href="/styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
+    <link rel="icon" href="/styles/scripts/assets/SelNexa%20Logo.jpg" type="image/jpeg">
         <link rel="apple-touch-icon" href="/styles/scripts/assets/selnexa-logo-full.svg">
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -222,7 +222,7 @@
                         <!-- SVG vector fallback -->
                         <source type="image/svg+xml" srcset="/styles/scripts/assets/selnexa-logo.svg">
                         <!-- JPG fallback for very old UAs -->
-                        <picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>
+                        <img class="logo-img" src="/styles/scripts/assets/SelNexa%20Health%20Logo%20Full.jpg" alt="SelNexa Health logo" width="180" height="50" loading="eager" style="height:50px; width:auto; background:transparent;">
                     </picture>
                 </a>
                 <ul class="nav-links" id="primary-nav" role="menubar">
@@ -573,7 +573,7 @@
                                                                         <source type="image/avif" srcset="/styles/scripts/assets/selnexa-logo.avif 1x, /styles/scripts/assets/selnexa-logo@2x.avif 2x">
                                                                         <source type="image/webp" srcset="/styles/scripts/assets/selnexa-logo.webp 1x, /styles/scripts/assets/selnexa-logo@2x.webp 2x">
                                                                         <source type="image/svg+xml" srcset="/styles/scripts/assets/selnexa-logo.svg">
-                                                                        <picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>
+                                                                        <img class="logo-img" src="/styles/scripts/assets/SelNexa%20Logo.jpg" alt="SelNexa Health logo" style="height:40px; width:auto;" loading="lazy">
                                                                     </picture>
                                         </a>
                 </div>
