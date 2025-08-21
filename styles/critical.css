@@ -71,5 +71,5 @@ a:hover {
 /* header, hero and other critical styles (truncated for brevity)
    The full original CSS is preserved in styles/home.css for the remaining rules. */
 
-.logo img { height:50px; transition: transform 0.3s ease; }
+.logo img { height:50px; transition: transform 0.3s ease; display:inline-block; background: rgba(255,255,255,0.9); padding:4px 8px; border-radius:6px; box-shadow: var(--shadow-sm); }
 .header { position: sticky; top:0; }
