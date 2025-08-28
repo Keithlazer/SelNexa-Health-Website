@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="400" height="140">
+  <defs>
+    <radialGradient id="heartGradient" cx="60%" cy="40%" r="80%" fx="70%" fy="30%">
+      <stop offset="0%" stop-color="#fff6f6"/>
+      <stop offset="60%" stop-color="#ff6b6b"/>
+      <stop offset="100%" stop-color="#e63946"/>
+    </radialGradient>
+  </defs>
+  <g>
+    <path
+      d="M160,200
+         C40,120 40,40 120,40
+         C160,40 160,80 160,80
+         C160,80 160,40 200,40
+         C280,40 280,120 160,200
+         Z"
+      fill="url(#heartGradient)"
+      stroke="#e63946"
+      stroke-width="4"
+    />
+    <text x="320" y="120" font-family="Montserrat, Arial, sans-serif" font-size="60" font-weight="700" fill="#222">
+      SelNexa
+    </text>
+    <text x="320" y="170" font-family="Montserrat, Arial, sans-serif" font-size="40" font-weight="500" fill="#222">
+      Health
+    </text>
+    <circle cx="570" cy="70" r="8" fill="#222"/>
+  </g>
+</svg> 

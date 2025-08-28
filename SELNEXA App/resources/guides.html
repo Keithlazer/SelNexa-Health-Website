@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Implementation Guides | SelNexa Health</title>
+    <meta name="description" content="Comprehensive guides for implementing healthcare technology solutions and best practices.">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/resources.css">
+    <link rel="stylesheet" href="../css/guides.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../styles/scripts/assets/SelNexa Logo.jpg" alt="SelNexa Health Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#solutions">Solutions</a></li>
+                <li><a href="../index.html#case-studies">Case Studies</a></li>
+                <li><a href="../index.html#resources">Resources</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../index.html#partners">Partners</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact" class="btn">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="guides-page">
+        <section class="guides-hero">
+            <div class="container">
+                <h1>Implementation Guides</h1>
+                <p>Step-by-step guides and best practices for implementing healthcare technology solutions.</p>
+                <div class="guides-search">
+                    <input type="text" id="guidesSearch" placeholder="Search guides...">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="guides-content">
+            <div class="container">
+                <div class="guides-filters">
+                    <div class="filter-group">
+                        <button class="filter-btn active" data-filter="all">All Guides</button>
+                        <button class="filter-btn" data-filter="implementation">Implementation</button>
+                        <button class="filter-btn" data-filter="security">Security</button>
+                        <button class="filter-btn" data-filter="integration">Integration</button>
+                    </div>
+                    <div class="sort-group">
+                        <select id="sortSelect">
+                            <option value="newest">Newest First</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="relevance">Relevance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="guides-grid">
+                    <div class="guide-card" data-category="implementation" data-resource-id="guide1">
+                        <div class="guide-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="guide-content">
+                            <div class="guide-meta">
+                                <span class="guide-type">Implementation Guide</span>
+                                <span class="guide-level">Beginner</span>
+                            </div>
+                            <h3>Getting Started with SelNexa Solutions</h3>
+                            <p>A comprehensive guide to implementing SelNexa healthcare technology solutions in your institution.</p>
+                            <div class="guide-stats">
+                                <span><i class="fas fa-download"></i> 1.2k downloads</span>
+                                <span><i class="fas fa-star"></i> 4.8/5 rating</span>
+                            </div>
+                            <div class="guide-tags">
+                                <span class="tag">Setup</span>
+                                <span class="tag">Configuration</span>
+                                <span class="tag">Best Practices</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">Download Guide</a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-category="security" data-resource-id="guide2">
+                        <div class="guide-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="guide-content">
+                            <div class="guide-meta">
+                                <span class="guide-type">Security Guide</span>
+                                <span class="guide-level">Advanced</span>
+                            </div>
+                            <h3>Healthcare Data Security Best Practices</h3>
+                            <p>Essential security measures and protocols for protecting sensitive healthcare information.</p>
+                            <div class="guide-stats">
+                                <span><i class="fas fa-download"></i> 2.5k downloads</span>
+                                <span><i class="fas fa-star"></i> 4.9/5 rating</span>
+                            </div>
+                            <div class="guide-tags">
+                                <span class="tag">Security</span>
+                                <span class="tag">Compliance</span>
+                                <span class="tag">HIPAA</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">Download Guide</a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-category="integration" data-resource-id="guide3">
+                        <div class="guide-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="guide-content">
+                            <div class="guide-meta">
+                                <span class="guide-type">Integration Guide</span>
+                                <span class="guide-level">Intermediate</span>
+                            </div>
+                            <h3>System Integration Guide</h3>
+                            <p>Step-by-step instructions for integrating SelNexa solutions with existing healthcare systems.</p>
+                            <div class="guide-stats">
+                                <span><i class="fas fa-download"></i> 1.8k downloads</span>
+                                <span><i class="fas fa-star"></i> 4.7/5 rating</span>
+                            </div>
+                            <div class="guide-tags">
+                                <span class="tag">Integration</span>
+                                <span class="tag">API</span>
+                                <span class="tag">Connectivity</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary">Download Guide</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guides-pagination">
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn next">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="guides-cta">
+            <div class="container">
+                <h2>Need Custom Implementation Support?</h2>
+                <p>Our team of experts is ready to help you implement and optimize your healthcare technology solutions.</p>
+                <a href="../index.html#contact" class="btn">Contact Our Team</a>
+            </div>
+        </section>
+
+        <section class="recommendations-section">
+            <div class="container">
+                <h2>Recommended Guides</h2>
+                <p>Based on your interests and previous downloads</p>
+                <div class="recommendations-container">
+                    <!-- Recommendations will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../styles/scripts/assets/SelNexa Logo.jpg" alt="SelNexa Health Logo">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Solutions</h4>
+                        <ul>
+                            <li><a href="../solutions/hospital-management.html">Hospital Management</a></li>
+                            <li><a href="../solutions/healthcare-analytics.html">Healthcare Analytics</a></li>
+                            <li><a href="../solutions/patient-management.html">Patient Management</a></li>
+                            <li><a href="../solutions/government-solutions.html">Government Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="../resources/whitepapers.html">Whitepapers</a></li>
+                            <li><a href="../resources/webinars.html">Webinars</a></li>
+                            <li><a href="../resources/guides.html">Guides</a></li>
+                            <li><a href="../blog/">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="../about.html">About Us</a></li>
+                            <li><a href="../case-studies/">Case Studies</a></li>
+                            <li><a href="../partners.html">Partners</a></li>
+                            <li><a href="../contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SelNexa Health. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/guides.js"></script>
+    <script src="../js/resource-tracking.js"></script>
+</body>
+</html> 
