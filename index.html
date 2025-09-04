@@ -5,7 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SelNexa Health | AI-Powered Healthcare Solutions for Africa</title>
     <meta name="description" content="SelNexa Health - Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions.">
+        <!-- Open Graph & Twitter Card -->
+        <meta property="og:title" content="SelNexa Health | AI-Powered Healthcare Solutions for Africa">
+        <meta property="og:description" content="Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions.">
+        <meta property="og:image" content="https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.svg">
+        <meta property="og:site_name" content="SelNexa Health">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@SelNexaHealth">
+        <meta name="twitter:title" content="SelNexa Health | AI-Powered Healthcare Solutions for Africa">
+        <meta name="twitter:description" content="Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions.">
+
+        <!-- Structured data: Organization + site SearchAction -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SelNexa Health",
+            "url": "https://www.selnexahealth.com/",
+            "logo": "https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.svg",
+            "contactPoint": [{
+                "@type": "ContactPoint",
+                "telephone": "+263777726065",
+                "contactType": "customer service",
+                "email": "keithtafangombe@gmail.com"
+            }]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://www.selnexahealth.com/",
+            "name": "SelNexa Health",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.selnexahealth.com/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+        </script>
     <meta name="theme-color" content="#0a5f7a">
+        <meta name="robots" content="index, follow">
+        <!--
+            To verify with Google Search Console, add a verification TXT record or upload the HTML file they provide.
+            After verification, submit: https://search.google.com/search-console and provide the sitemap URL: https://www.selnexahealth.com/sitemap.xml
+        -->
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1206,9 +1250,13 @@
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="/" class="logo">
-                    <i class="fas fa-clinic-medical"></i>
-                    <span>SelNexa</span> Health
+                <a href="/" class="logo" aria-label="SelNexa Health home">
+                    <picture class="site-logo">
+                        <source type="image/avif" srcset="/styles/scripts/assets/selnexa-logo.avif 1x, /styles/scripts/assets/selnexa-logo@2x.avif 2x">
+                        <source type="image/webp" srcset="/styles/scripts/assets/selnexa-logo.webp 1x, /styles/scripts/assets/selnexa-logo@2x.webp 2x">
+                        <source type="image/svg+xml" srcset="/styles/scripts/assets/selnexa-logo.svg">
+                        <img src="/styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high">
+                    </picture>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#solutions">Solutions</a></li>
@@ -1380,7 +1428,11 @@
                         <p>Our team will contact you to discuss your specific needs and how SelNexa can transform your healthcare delivery.</p>
                     </div>
                     <div class="beta-form">
-                        <form id="betaForm">
+                        <form id="betaForm" action="https://formsubmit.co/keithtafangombe@gmail.com" method="POST" data-ajax="true">
+                            <!-- FormSubmit hidden controls -->
+                            <input type="hidden" name="_subject" value="SelNexa Beta Application">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://www.selnexahealth.com/?beta=success">
                             <div class="form-group">
                                 <label for="organization">Healthcare Organization</label>
                                 <input type="text" id="organization" name="organization" placeholder="Enter organization name" required>
@@ -1751,29 +1803,35 @@
             animateBarStats();
         });
 
-        // Form Submissions
-        document.getElementById('betaForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your interest in our beta program! We will contact you soon.');
-            this.reset();
-        });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you shortly.');
-            this.reset();
-        });
-
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for subscribing to our newsletter!');
-            this.reset();
-        });
+    // Form submissions are handled centrally in js/home.js
 
         // Initialize animations on page load
         window.addEventListener('load', () => {
             animateBarStats();
         });
     </script>
+                <!-- LocalBusiness structured data (MedicalBusiness) for improved local SEO -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "MedicalOrganization",
+                    "name": "SelNexa Health",
+                    "url": "https://www.selnexahealth.com/",
+                    "logo": "https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.svg",
+                    "contactPoint": [{
+                        "@type": "ContactPoint",
+                        "telephone": "+263777726065",
+                        "contactType": "customer service",
+                        "email": "keithtafangombe@gmail.com"
+                    }],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressCountry": "ZW"
+                    },
+                    "sameAs": [
+                        "https://www.linkedin.com/company/selnexa/"
+                    ]
+                }
+                </script>
 </body>
 </html>

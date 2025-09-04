@@ -1,0 +1,22 @@
+name: FormSubmit test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-form:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test POST to FormSubmit
+        run: |
+          mkdir -p artifacts
+          echo "name,email,message" > payload.csv
+          echo "CI Test,keithtafangombe+ci@test.example,This is a test from GitHub Actions" >> payload.csv
+          RESPONSE=$(curl -s -o /tmp/formresp.txt -w "%{http_code}" -X POST "https://formsubmit.co/keithtafangombe@gmail.com" -F "_subject=CI Test" -F "name=CI Test" -F "email=keithtafangombe+ci@test.example" -F "message=This is a test from GitHub Actions" ) || true
+          echo "HTTP_CODE=$RESPONSE" > artifacts/response-meta.txt
+          cp /tmp/formresp.txt artifacts/response-body.html || true
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: formsubmit-test
+          path: artifacts/

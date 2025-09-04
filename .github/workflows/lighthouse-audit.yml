@@ -1,0 +1,31 @@
+name: Lighthouse audit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install lighthouse & chrome
+        run: |
+          npm ci --no-audit --no-fund || true
+          npm install -g lighthouse@10
+
+      - name: Run Lighthouse
+        run: |
+          npx lighthouse https://www.selnexahealth.com --output=json --output=html --output-path=./reports/lighthouse-report
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: reports/

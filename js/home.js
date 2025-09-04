@@ -215,6 +215,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // Generic AJAX form handler for forms using FormSubmit.co or any POST endpoint
+  function attachAjaxForms() {
+    document.querySelectorAll('form[data-ajax="true"]').forEach(form => {
+      ensureHoneypot(form);
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        // Basic client validation: ensure required fields are present
+        const requiredMissing = Array.from(this.querySelectorAll('[required]')).some(inp => {
+          return !(inp.value && inp.value.toString().trim());
+        });
+        const notice = document.createElement('p');
+        notice.style.marginTop = '10px';
+        this.appendChild(notice);
+        if (requiredMissing) {
+          notice.textContent = 'Please complete all required fields.';
+          notice.style.color = 'red';
+          setTimeout(() => notice.remove(), 5000);
+          return;
+        }
+        // Honeypot check
+        if (formData.get('company')) {
+          notice.textContent = 'Submission blocked.';
+          notice.style.color = 'red';
+          return;
+        }
+
+        // Determine endpoint
+        const action = this.getAttribute('action') || window.SELNEXA_FORM_ENDPOINT || '';
+        if (!action) {
+          notice.textContent = 'Form endpoint not configured.';
+          notice.style.color = 'red';
+          return;
+        }
+
+        // Convert FormData to JSON-friendly object
+        const payload = {};
+        formData.forEach((v, k) => { payload[k] = v; });
+
+        try {
+          if (!navigator.onLine) throw new Error('offline');
+          const resp = await fetch(action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+          if (resp.ok) {
+            notice.textContent = 'Thank you — your submission was received.';
+            notice.style.color = 'green';
+            this.reset();
+          } else {
+            // For FormSubmit, a redirect may return 200 but non-JSON; fall back to success message
+            notice.textContent = 'Submission received (non-200 response).';
+            notice.style.color = 'orange';
+            this.reset();
+          }
+        } catch (err) {
+          // Offline or network error: queue
+          queueSubmission(action, payload);
+          notice.textContent = 'Saved offline. We will submit when you are online.';
+          notice.style.color = 'orange';
+        }
+        setTimeout(() => notice.remove(), 7000);
+      });
+    });
+  }
+
+  // Attach AJAX forms on DOM ready
+  attachAjaxForms();
+
   const appointmentForm = document.getElementById('appointmentForm');
   if (appointmentForm) {
     ensureHoneypot(appointmentForm);

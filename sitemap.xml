@@ -36,5 +36,33 @@
   <url>
     <loc>https://www.selnexahealth.com/blog/future-healthcare-systems.html</loc>
   </url>
+  <url>
+    <loc>https://www.selnexahealth.com/blog/selnexa-telemedicine-zimbabwe.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.selnexahealth.com/blog/why-ai-diagnostics-matter.html</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.selnexahealth.com/telemedicine.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.selnexahealth.com/portal.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.selnexahealth.com/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.selnexahealth.com/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
 
