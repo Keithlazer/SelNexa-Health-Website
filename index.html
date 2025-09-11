@@ -376,6 +376,17 @@
             box-shadow: var(--box-shadow);
         }
 
+        .stats-bar[role="region"] {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px 0;
+            position: relative;
+            z-index: 5;
+            margin-top: -40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
         .stats-container {
             display: flex;
             justify-content: space-around;
@@ -1240,6 +1251,100 @@
                 height: 50px;
             }
         }
+
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1001;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Enhanced focus indicators for keyboard navigation */
+        a:focus,
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 3px solid var(--secondary);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px white, 0 0 0 5px var(--secondary);
+        }
+
+        /* High contrast focus for navigation links */
+        .nav-links a:focus {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin: -8px -12px;
+        }
+
+        /* Mobile menu button accessibility */
+        .mobile-menu-btn:focus {
+            background-color: var(--light);
+            border-radius: 4px;
+        }
+
+        /* Ensure sufficient color contrast for text */
+        .hero p {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Better contrast for form placeholders */
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus trap for mobile menu */
+        .nav-links.active a:focus {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Improved button focus states */
+        .btn:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 0 0 3px var(--secondary), var(--box-shadow);
+        }
+
+        /* Testimonial navigation accessibility */
+        .testimonial-nav button:focus {
+            outline: 2px solid var(--secondary);
+            outline-offset: 3px;
+            transform: scale(1.4);
+        }
+
+        /* Back to top button accessibility */
+        #backToTop:focus {
+            outline: 3px solid var(--secondary);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
@@ -1266,19 +1371,20 @@
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="sr-only">Menu</span>
                 </button>
             </nav>
         </div>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" role="main">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Transforming Healthcare Delivery Across Africa</h1>
+                    <h1 id="hero-heading">Transforming Healthcare Delivery Across Africa</h1>
                     <p>AI-powered solutions that streamline administration, optimize procurement, and enhance patient care for healthcare providers</p>
                     <div class="hero-btns">
                         <a href="#solutions" class="btn">Explore Solutions</a>
@@ -1292,23 +1398,24 @@
         </section>
 
         <!-- Animated Stats Bar -->
-        <div class="stats-bar">
+        <div class="stats-bar" role="region" aria-labelledby="stats-heading">
             <div class="container">
+                <h2 id="stats-heading" class="sr-only">Company Statistics</h2>
                 <div class="stats-container">
                     <div class="stat-item">
-                        <div class="stat-number" data-count="12">0</div>
+                        <div class="stat-number" data-count="12" aria-label="12 healthcare partners">0</div>
                         <div class="stat-label">Healthcare Partners</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-number" data-count="2" aria-label="2 countries served">0</div>
                         <div class="stat-label">Countries Served</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-number" data-count="50" aria-label="50 patients impacted">0</div>
                         <div class="stat-label">Patients Impacted</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-count="40">0</div>
+                        <div class="stat-number" data-count="40" aria-label="40 percent cost reduction">0</div>
                         <div class="stat-label">Cost Reduction (%)</div>
                     </div>
                 </div>
@@ -1428,45 +1535,63 @@
                         <p>Our team will contact you to discuss your specific needs and how SelNexa can transform your healthcare delivery.</p>
                     </div>
                     <div class="beta-form">
-                        <form id="betaForm" action="https://formsubmit.co/keithtafangombe@gmail.com" method="POST" data-ajax="true">
+                        <form id="betaForm" action="https://formsubmit.co/keithtafangombe@gmail.com" method="POST" data-ajax="true" aria-labelledby="beta-form-heading">
+                            <h3 id="beta-form-heading" class="sr-only">Beta Program Application Form</h3>
                             <!-- FormSubmit hidden controls -->
                             <input type="hidden" name="_subject" value="SelNexa Beta Application">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://www.selnexahealth.com/?beta=success">
+                            
+                            <fieldset>
+                                <legend class="sr-only">Organization Information</legend>
+                                <div class="form-group">
+                                    <label for="organization">Healthcare Organization *</label>
+                                    <input type="text" id="organization" name="organization" placeholder="Enter organization name" required aria-describedby="org-help">
+                                    <div id="org-help" class="sr-only">Enter the name of your healthcare organization</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="beta-name">Your Name *</label>
+                                    <input type="text" id="beta-name" name="name" placeholder="Enter your full name" required aria-describedby="name-help">
+                                    <div id="name-help" class="sr-only">Enter your full name as the primary contact</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="beta-email">Work Email *</label>
+                                    <input type="email" id="beta-email" name="email" placeholder="Enter your email" required aria-describedby="email-help">
+                                    <div id="email-help" class="sr-only">Enter your professional email address</div>
+                                </div>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <legend class="sr-only">Role and Practice Information</legend>
+                                <div class="form-group">
+                                    <label for="beta-role">Your Role *</label>
+                                    <select id="beta-role" name="role" required aria-describedby="role-help">
+                                        <option value="">Select your role</option>
+                                        <option value="administrator">Healthcare Administrator</option>
+                                        <option value="doctor">Medical Doctor</option>
+                                        <option value="nurse">Nurse</option>
+                                        <option value="it">IT Staff</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div id="role-help" class="sr-only">Select your primary role in the healthcare organization</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="beta-size">Practice Size *</label>
+                                    <select id="beta-size" name="size" required aria-describedby="size-help">
+                                        <option value="">Select practice size</option>
+                                        <option value="small">Small Clinic (1-10 staff)</option>
+                                        <option value="medium">Medium Facility (11-50 staff)</option>
+                                        <option value="large">Large Hospital (50+ staff)</option>
+                                    </select>
+                                    <div id="size-help" class="sr-only">Select the size category that best describes your healthcare facility</div>
+                                </div>
+                            </fieldset>
+                            
                             <div class="form-group">
-                                <label for="organization">Healthcare Organization</label>
-                                <input type="text" id="organization" name="organization" placeholder="Enter organization name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="beta-name">Your Name</label>
-                                <input type="text" id="beta-name" name="name" placeholder="Enter your full name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="beta-email">Work Email</label>
-                                <input type="email" id="beta-email" name="email" placeholder="Enter your email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="beta-role">Your Role</label>
-                                <select id="beta-role" name="role" required>
-                                    <option value="">Select your role</option>
-                                    <option value="administrator">Healthcare Administrator</option>
-                                    <option value="doctor">Medical Doctor</option>
-                                    <option value="nurse">Nurse</option>
-                                    <option value="it">IT Staff</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="beta-size">Practice Size</label>
-                                <select id="beta-size" name="size" required>
-                                    <option value="">Select practice size</option>
-                                    <option value="small">Small Clinic (1-10 staff)</option>
-                                    <option value="medium">Medium Facility (11-50 staff)</option>
-                                    <option value="large">Large Hospital (50+ staff)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-secondary">Apply for Beta Access</button>
+                                <button type="submit" class="btn btn-secondary" aria-describedby="submit-help">
+                                    Apply for Beta Access
+                                    <span id="submit-help" class="sr-only">Submit your application to join our beta program</span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -1627,7 +1752,7 @@
                         <span>SelNexa</span> Health
                     </div>
                     <p>Transforming healthcare delivery in Africa through innovative AI-powered solutions that streamline administration, optimize procurement, and enhance patient care.</p>
-                    <p>© 2025 SelNexa Health. All rights reserved.</p>
+                    <p> 2025 SelNexa Health. All rights reserved.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Solutions</h4>
