@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SelNexa Health | AI-Powered Healthcare Solutions for Africa</title>
     <meta name="description" content="SelNexa Health - Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions.">
+    <meta name="language" content="en">
+    <meta name="geo.region" content="ZW">
+    <meta name="geo.placename" content="Harare, Zimbabwe">
         <!-- Open Graph & Twitter Card -->
         <meta property="og:title" content="SelNexa Health | AI-Powered Healthcare Solutions for Africa">
         <meta property="og:description" content="Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions.">
@@ -1345,6 +1348,74 @@
             outline: 3px solid var(--secondary);
             outline-offset: 3px;
         }
+
+        /* Form error handling and validation styles */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .form-group input[aria-invalid="true"],
+        .form-group select[aria-invalid="true"],
+        .form-group textarea[aria-invalid="true"] {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+        }
+
+        .form-group input[aria-invalid="false"]:valid,
+        .form-group select[aria-invalid="false"]:valid,
+        .form-group textarea[aria-invalid="false"]:valid {
+            border-color: #28a745;
+        }
+
+        /* Success message styling */
+        .success-message {
+            color: #28a745;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Loading state for forms */
+        .btn.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin-left: -8px;
+            margin-top: -8px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1471,7 +1542,7 @@
                 </div>
                 <div class="benefits-content">
                     <div class="benefits-image">
-                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='350' viewBox='0 0 500 350'><rect fill='%230a5f7a' width='500' height='350' rx='10'/><rect fill='%23ffffff' x='50' y='50' width='400' height='250' rx='5'/><circle fill='%2300b4d8' cx='250' cy='175' r='50'/><text fill='%230a5f7a' font-family='Arial' font-size='20' font-weight='bold' x='250' y='185' text-anchor='middle'>Healthcare Dashboard</text></svg>" alt="SelNexa healthcare management dashboard">
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='350' viewBox='0 0 500 350'><rect fill='%230a5f7a' width='500' height='350' rx='10'/><rect fill='%23ffffff' x='50' y='50' width='400' height='250' rx='5'/><circle fill='%2300b4d8' cx='250' cy='175' r='50'/><text fill='%230a5f7a' font-family='Arial' font-size='20' font-weight='bold' x='250' y='185' text-anchor='middle'>Healthcare Dashboard</text></svg>" alt="Modern healthcare management dashboard interface showing patient data analytics, appointment scheduling, and administrative tools in a clean, user-friendly design">
                     </div>
                     <div class="benefits-list">
                         <div class="benefit-item">
@@ -1638,33 +1709,33 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="section testimonials" id="testimonials">
+        <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-heading">
             <div class="container">
                 <div class="section-title">
-                    <h2>What Healthcare Providers Say</h2>
+                    <h2 id="testimonials-heading">What Healthcare Providers Say</h2>
                     <p>Feedback from our partner organizations</p>
                 </div>
-                <div class="testimonial-container">
-                    <div class="testimonial-slide active">
-                        <p class="testimonial-text">SelNexa's administrative module reduced our paperwork by 70% and eliminated appointment scheduling errors. Our staff can now focus on patient care rather than administrative tasks.</p>
-                        <p class="testimonial-author">Dr. Farai Mawere</p>
-                        <p class="testimonial-role">Medical Doctor, Bulawayo General Hospital</p>
+                <div class="testimonial-container" role="region" aria-labelledby="testimonials-heading" aria-live="polite">
+                    <div class="testimonial-slide active" role="tabpanel" aria-labelledby="testimonial-1-tab">
+                        <p class="testimonial-text" lang="en">SelNexa's administrative module reduced our paperwork by 70% and eliminated appointment scheduling errors. Our staff can now focus on patient care rather than administrative tasks.</p>
+                        <p class="testimonial-author" lang="en">Dr. Farai Mawere</p>
+                        <p class="testimonial-role" lang="en">Medical Doctor, Bulawayo General Hospital</p>
                     </div>
-                    <div class="testimonial-slide">
-                        <p class="testimonial-text">The procurement optimization system has saved our hospital over $15,000 monthly in supply chain efficiencies and eliminated stockouts of critical medications.</p>
-                        <p class="testimonial-author">James Mbeki</p>
-                        <p class="testimonial-role">Hospital Administrator</p>
+                    <div class="testimonial-slide" role="tabpanel" aria-labelledby="testimonial-2-tab">
+                        <p class="testimonial-text" lang="en">The procurement optimization system has saved our hospital over $15,000 monthly in supply chain efficiencies and eliminated stockouts of critical medications.</p>
+                        <p class="testimonial-author" lang="en">James Mbeki</p>
+                        <p class="testimonial-role" lang="en">Hospital Administrator</p>
                     </div>
-                    <div class="testimonial-slide">
-                        <p class="testimonial-text">Implementing SelNexa's electronic health records has dramatically patient data accuracy and accessibility while maintaining strict security standards.</p>
-                        <p class="testimonial-author">Mordecai Musinahama</p>
-                        <p class="testimonial-role">IT Director, PiqueSquid</p>
+                    <div class="testimonial-slide" role="tabpanel" aria-labelledby="testimonial-3-tab">
+                        <p class="testimonial-text" lang="en">Implementing SelNexa's electronic health records has dramatically patient data accuracy and accessibility while maintaining strict security standards.</p>
+                        <p class="testimonial-author" lang="en">Mordecai Musinahama</p>
+                        <p class="testimonial-role" lang="en">IT Director, PiqueSquid</p>
                     </div>
                 </div>
-                <div class="testimonial-nav">
-                    <button class="active" data-slide="0"></button>
-                    <button data-slide="1"></button>
-                    <button data-slide="2"></button>
+                <div class="testimonial-nav" role="tablist" aria-label="Testimonial navigation">
+                    <button class="active" data-slide="0" role="tab" aria-selected="true" aria-controls="testimonial-1-tab" id="testimonial-1-tab" aria-label="View testimonial from Dr. Farai Mawere"></button>
+                    <button data-slide="1" role="tab" aria-selected="false" aria-controls="testimonial-2-tab" id="testimonial-2-tab" aria-label="View testimonial from James Mbeki"></button>
+                    <button data-slide="2" role="tab" aria-selected="false" aria-controls="testimonial-3-tab" id="testimonial-3-tab" aria-label="View testimonial from Mordecai Musinahama"></button>
                 </div>
             </div>
         </section>
@@ -1684,7 +1755,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Our Location</h4>
-                                <p>2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                                <p lang="en">2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1711,30 +1782,45 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Working Hours</h4>
-                                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                                <p>Saturday: 9:00 AM - 1:00 PM</p>
+                                <p lang="en">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                <p lang="en">Saturday: 9:00 AM - 1:00 PM</p>
                             </div>
                         </div>
                     </div>
                     <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="contact-name">Your Name</label>
-                                <input type="text" id="contact-name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email">Your Email</label>
-                                <input type="email" id="contact-email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-subject">Subject</label>
-                                <input type="text" id="contact-subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-message">Message</label>
-                                <textarea id="contact-message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn">Send Message</button>
+                        <form id="contactForm" aria-labelledby="contact-form-heading">
+                            <h3 id="contact-form-heading" class="sr-only">Contact Form</h3>
+                            <fieldset>
+                                <legend class="sr-only">Contact Information</legend>
+                                <div class="form-group">
+                                    <label for="contact-name">Your Name *</label>
+                                    <input type="text" id="contact-name" name="name" required aria-describedby="contact-name-help" aria-invalid="false">
+                                    <div id="contact-name-help" class="sr-only">Enter your full name</div>
+                                    <div class="error-message" id="contact-name-error" role="alert" aria-live="polite"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Your Email *</label>
+                                    <input type="email" id="contact-email" name="email" required aria-describedby="contact-email-help" aria-invalid="false">
+                                    <div id="contact-email-help" class="sr-only">Enter your email address</div>
+                                    <div class="error-message" id="contact-email-error" role="alert" aria-live="polite"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-subject">Subject *</label>
+                                    <input type="text" id="contact-subject" name="subject" required aria-describedby="contact-subject-help" aria-invalid="false">
+                                    <div id="contact-subject-help" class="sr-only">Enter the subject of your message</div>
+                                    <div class="error-message" id="contact-subject-error" role="alert" aria-live="polite"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-message">Message *</label>
+                                    <textarea id="contact-message" name="message" rows="5" required aria-describedby="contact-message-help" aria-invalid="false"></textarea>
+                                    <div id="contact-message-help" class="sr-only">Enter your message or inquiry</div>
+                                    <div class="error-message" id="contact-message-error" role="alert" aria-live="polite"></div>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn" aria-describedby="contact-submit-help">
+                                Send Message
+                                <span id="contact-submit-help" class="sr-only">Submit your contact form</span>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -1780,15 +1866,27 @@
                         <button type="submit">Subscribe</button>
                     </form>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Follow SelNexa Health on Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            <span class="sr-only">Facebook</span>
+                        </a>
+                        <a href="#" aria-label="Follow SelNexa Health on Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                        <a href="#" aria-label="Connect with SelNexa Health on LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                        <a href="#" aria-label="Follow SelNexa Health on Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                <p lang="en">2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
                 <p><a href="tel:+263777726065">+263 777 726 065</a> | <a href="mailto:info@selnexahealth.com">info@selnexahealth.com</a></p>
             </div>
         </div>
