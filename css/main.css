@@ -178,8 +178,8 @@ body {
     opacity: 0.1;
 }
 
-.hero-content {
-    position: relative;
+    opacity: 0; 
+    animation: logoFadeIn 1.2s ease-out forwards; 
     z-index: 1;
     text-align: center;
     max-width: 800px;
@@ -187,6 +187,47 @@ body {
 }
 
 .hero h1 {
+@keyframes logoFadeIn {
+    from { opacity: 0; transform: translateY(-16px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: sectionFadeIn 1.1s cubic-bezier(.23,.92,.56,1.01) forwards;
+    will-change: opacity, transform;
+}
+
+@keyframes sectionFadeIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn, button, input[type="submit"] {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s, color 0.2s;
+}
+.btn:hover, button:hover, input[type="submit"]:hover {
+    box-shadow: 0 4px 16px rgba(44,62,80,0.16);
+    transform: scale(1.04);
+    background: var(--primary-600, #0a5f7a);
+    color: #fff;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(44,62,80,0.10);
+    padding: 24px;
+    margin-bottom: 32px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+    box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+    transform: translateY(-4px) scale(1.02);
+}
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: var(--spacing-lg);
