@@ -126,8 +126,6 @@
         }
     }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/InertiaPlugin.min.js"></script>
     <style>
         :root {
             --primary: #0a5f7a;
@@ -396,25 +394,14 @@
             height: 100%;
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.6;
-            z-index: 1;
         }
 
-        /* Dot Grid Background Container */
-        .hero-dotgrid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
 
         .hero-content {
             max-width: 900px;
             margin: 0 auto;
             position: relative;
-            z-index: 3;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -494,6 +481,7 @@
             font-weight: 700;
             margin-bottom: 5px;
             background: linear-gradient(to right, var(--accent-light), white);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -1344,6 +1332,37 @@
             box-shadow: 0 0 0 2px white, 0 0 0 5px var(--secondary);
         }
 
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary: #000080;
+                --secondary: #ff6600;
+                --dark: #000000;
+                --light: #ffffff;
+            }
+            
+            .hero {
+                background: #000080;
+                color: #ffffff;
+            }
+            
+            .btn {
+                border: 2px solid currentColor;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
         /* High contrast focus for navigation links */
         .nav-links a:focus {
             background-color: var(--primary);
@@ -1502,7 +1521,7 @@
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+                <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links" tabindex="1">
                     <i class="fas fa-bars" aria-hidden="true"></i>
                     <span class="sr-only">Menu</span>
                 </button>
@@ -1513,7 +1532,6 @@
     <main id="main-content" role="main">
         <!-- Hero Section -->
         <section class="hero" aria-labelledby="hero-heading">
-            <div class="hero-dotgrid"></div>
             <div class="container">
                 <div class="hero-content">
                     <h1 id="hero-heading">Transforming Healthcare Delivery Across Africa</h1>
@@ -1524,8 +1542,8 @@
                     </div>
                 </div>
             </div>
-            <a href="#solutions" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
+            <a href="#solutions" class="scroll-down" aria-label="Scroll down to solutions section">
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
             </a>
         </section>
 
@@ -1953,20 +1971,64 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+    <button id="backToTop" aria-label="Back to top of page">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle with enhanced accessibility
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
         
-        mobileMenuBtn.addEventListener('click', () => {
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
             navLinks.classList.toggle('active');
-            mobileMenuBtn.setAttribute('aria-expanded', 
-                mobileMenuBtn.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            // Focus management for accessibility
+            if (!isExpanded) {
+                // Menu opened - focus first link
+                setTimeout(() => navLinksItems[0]?.focus(), 100);
+            } else {
+                // Menu closed - return focus to button
+                mobileMenuBtn.focus();
+            }
+        }
+        
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        
+        // Close menu on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
+        
+        // Trap focus within mobile menu when open
+        function trapFocus(e) {
+            if (!navLinks.classList.contains('active')) return;
+            
+            const focusableElements = navLinks.querySelectorAll('a');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        e.preventDefault();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        }
+        
+        navLinks.addEventListener('keydown', trapFocus);
 
         // Sticky Header
         window.addEventListener('scroll', () => {
@@ -1978,19 +2040,46 @@
             }
         });
 
-        // Testimonial Carousel
+        // Testimonial Carousel with enhanced accessibility
         const testimonialSlides = document.querySelectorAll('.testimonial-slide');
         const testimonialNav = document.querySelectorAll('.testimonial-nav button');
         
+        function showTestimonial(index) {
+            // Remove active class from all slides and buttons
+            testimonialSlides.forEach(slide => slide.classList.remove('active'));
+            testimonialNav.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            
+            // Add active class to current slide and button
+            if (testimonialSlides[index]) {
+                testimonialSlides[index].classList.add('active');
+            }
+            if (testimonialNav[index]) {
+                testimonialNav[index].classList.add('active');
+                testimonialNav[index].setAttribute('aria-selected', 'true');
+            }
+        }
+        
         testimonialNav.forEach((button, index) => {
             button.addEventListener('click', () => {
-                // Remove active class from all slides and buttons
-                testimonialSlides.forEach(slide => slide.classList.remove('active'));
-                testimonialNav.forEach(btn => btn.classList.remove('active'));
-                
-                // Add active class to current slide and button
-                testimonialSlides[index].classList.add('active');
-                button.classList.add('active');
+                showTestimonial(index);
+            });
+            
+            // Keyboard navigation
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    const prevIndex = index > 0 ? index - 1 : testimonialNav.length - 1;
+                    showTestimonial(prevIndex);
+                    testimonialNav[prevIndex].focus();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    const nextIndex = index < testimonialNav.length - 1 ? index + 1 : 0;
+                    showTestimonial(nextIndex);
+                    testimonialNav[nextIndex].focus();
+                }
             });
         });
 
@@ -1998,7 +2087,7 @@
         let testimonialIndex = 0;
         setInterval(() => {
             testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
-            testimonialNav[testimonialIndex].click();
+            showTestimonial(testimonialIndex);
         }, 5000);
 
         // Back to Top Button
@@ -2086,7 +2175,74 @@
             animateBarStats();
         });
 
-    // Form submissions are handled centrally in js/home.js
+    // Enhanced form validation and accessibility
+    function validateForm(form) {
+        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            const errorElement = document.getElementById(input.name + '-error');
+            
+            if (!input.value.trim()) {
+                input.setAttribute('aria-invalid', 'true');
+                if (errorElement) {
+                    errorElement.textContent = 'This field is required';
+                    errorElement.classList.add('show');
+                }
+                isValid = false;
+            } else {
+                input.setAttribute('aria-invalid', 'false');
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            }
+            
+            // Email validation
+            if (input.type === 'email' && input.value) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(input.value)) {
+                    input.setAttribute('aria-invalid', 'true');
+                    if (errorElement) {
+                        errorElement.textContent = 'Please enter a valid email address';
+                        errorElement.classList.add('show');
+                    }
+                    isValid = false;
+                }
+            }
+        });
+        
+        return isValid;
+    }
+    
+    // Add form validation to beta form
+    const betaForm = document.getElementById('betaForm');
+    if (betaForm) {
+        betaForm.addEventListener('submit', (e) => {
+            if (!validateForm(betaForm)) {
+                e.preventDefault();
+                // Focus first invalid field
+                const firstInvalid = betaForm.querySelector('[aria-invalid="true"]');
+                if (firstInvalid) {
+                    firstInvalid.focus();
+                }
+            }
+        });
+    }
+    
+    // Add form validation to contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            if (!validateForm(contactForm)) {
+                e.preventDefault();
+                // Focus first invalid field
+                const firstInvalid = contactForm.querySelector('[aria-invalid="true"]');
+                if (firstInvalid) {
+                    firstInvalid.focus();
+                }
+            }
+        });
+    }
 
         // Initialize animations on page load
         window.addEventListener('load', () => {
@@ -2129,35 +2285,6 @@
                     question.click();
                 }
             });
-        });
-    </script>
-    
-    <!-- DotGrid Component Script -->
-    <script src="/js/dotgrid.js"></script>
-    <script>
-        // Initialize DotGrid in Hero Section
-        document.addEventListener('DOMContentLoaded', function() {
-            const heroContainer = document.querySelector('.hero-dotgrid');
-            
-            if (heroContainer && typeof DotGrid !== 'undefined') {
-                // Initialize with SelNexa Health brand colors
-                const heroDotGrid = new DotGrid(heroContainer, {
-                    dotSize: 8,
-                    gap: 20,
-                    baseColor: '#ffffff',           // White dots for contrast on blue background
-                    activeColor: '#ff6b35',         // SelNexa secondary color (orange)
-                    proximity: 150,
-                    speedTrigger: 100,
-                    shockRadius: 300,
-                    shockStrength: 6,
-                    maxSpeed: 5000,
-                    resistance: 800,
-                    returnDuration: 1.8,
-                    opacity: 0.4                    // Subtle opacity for background effect
-                });
-                
-                console.log('✨ DotGrid initialized successfully in hero section');
-            }
         });
     </script>
     
