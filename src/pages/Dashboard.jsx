@@ -88,6 +88,21 @@ const Dashboard = () => {
     }
   ]
 
+  // Search/filter state
+  const [search, setSearch] = React.useState("");
+
+  // Tooltip helper
+  const renderTooltip = (text) => (
+    <span className="inline-block ml-2 text-xs text-gray-400" title={text}>ⓘ</span>
+  );
+
+  // Quick actions
+  const quickActions = [
+    { label: "Add Patient", onClick: () => alert("Add Patient clicked") },
+    { label: "Book Appointment", onClick: () => alert("Book Appointment clicked") },
+    { label: "Send Message", onClick: () => alert("Send Message clicked") },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,6 +110,26 @@ const Dashboard = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
           <p className="text-gray-600 mt-2">Welcome back! Here's what's happening with your healthcare platform.</p>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="flex flex-wrap gap-4 mb-6">
+          {quickActions.map((action) => (
+            <button key={action.label} className="btn px-4 py-2 bg-blue-600 text-white font-semibold" onClick={action.onClick}>
+              {action.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Search/Filter */}
+        <div className="mb-6 flex items-center gap-2">
+          <input
+            type="text"
+            className="border rounded px-3 py-2 w-full max-w-xs"
+            placeholder="Search patients or appointments..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
         </div>
 
         {/* Stats Grid */}
@@ -111,7 +146,10 @@ const Dashboard = () => {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
+                    <p className="text-sm font-medium text-gray-600">
+                      {stat.title}
+                      {renderTooltip(`Shows ${stat.title.toLowerCase()} for your organization`)}
+                    </p>
                     <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
                     <p className="text-sm text-green-600">{stat.change} from last month</p>
                   </div>
@@ -133,7 +171,7 @@ const Dashboard = () => {
             transition={{ duration: 0.6 }}
             className="card"
           >
-            <h3 className="text-lg font-semibold mb-4">Patient Trends</h3>
+            <h3 className="text-lg font-semibold mb-4">Patient Trends {renderTooltip("Monthly patient and appointment trends")}</h3>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -153,7 +191,7 @@ const Dashboard = () => {
             transition={{ duration: 0.6 }}
             className="card"
           >
-            <h3 className="text-lg font-semibold mb-4">Monthly Overview</h3>
+            <h3 className="text-lg font-semibold mb-4">Monthly Overview {renderTooltip("Monthly appointment totals")}</h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -173,24 +211,31 @@ const Dashboard = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="card"
         >
-          <h3 className="text-lg font-semibold mb-4">Recent Activities</h3>
+          <h3 className="text-lg font-semibold mb-4">Recent Activities {renderTooltip("Latest actions and alerts")}</h3>
           <div className="space-y-4">
-            {recentActivities.map((activity) => {
-              const Icon = activity.icon
-              return (
-                <div key={activity.id} className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                  <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center`}>
-                    <Icon className={`w-4 h-4 ${activity.color}`} />
+            {recentActivities
+              .filter(a => a.message.toLowerCase().includes(search.toLowerCase()))
+              .map((activity) => {
+                const Icon = activity.icon
+                return (
+                  <div key={activity.id} className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                    <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center`}>
+                      <Icon className={`w-4 h-4 ${activity.color}`} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-900">{activity.message}</p>
+                      <p className="text-xs text-gray-500">{activity.time}</p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">{activity.message}</p>
-                    <p className="text-xs text-gray-500">{activity.time}</p>
-                  </div>
-                </div>
-              )
-            })}
+                )
+              })}
           </div>
         </motion.div>
+
+        {/* Privacy Notice */}
+        <div className="mt-8 text-xs text-gray-400 text-center">
+          <span>Patient data is protected and visible only to authorized users. <a href="/privacy.html" className="underline">Privacy Policy</a></span>
+        </div>
       </div>
     </div>
   )
