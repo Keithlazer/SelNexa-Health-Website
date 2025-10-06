@@ -109,6 +109,14 @@ body {
     height: 60px;
     max-width: 220px;
     width: auto;
+    margin: 16px 0;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.10);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.logo img:hover {
+    box-shadow: 0 4px 24px rgba(44,62,80,0.18);
+    transform: scale(1.04);
 }
 
 .nav-links {
