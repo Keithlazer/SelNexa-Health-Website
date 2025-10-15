@@ -1,3 +1,53 @@
+/* For Funders & Partners Page Theme */
+.funders-hero {
+    background: linear-gradient(90deg, #f8fafc 0%, #e0f2fe 100%);
+    padding: 48px 0;
+}
+.funders-title {
+    font-size: 2.5rem;
+    color: #0a5f7a;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+.funders-intro {
+    font-size: 1.25rem;
+    color: #334155;
+    margin-bottom: 32px;
+    max-width: 700px;
+}
+.funders-list li {
+    margin-bottom: 12px;
+}
+.funders-card-title {
+    color: #0a5f7a;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.funders-card-desc {
+    color: #334155;
+    font-size: 1rem;
+}
+.funders-card-result {
+    color: #059669;
+    font-weight: 600;
+}
+.funders-form label {
+    font-weight: 500;
+    color: #0a5f7a;
+}
+.funders-form input,
+.funders-form textarea {
+    margin-bottom: 10px;
+}
+.funders-form .btn {
+    background: #0a5f7a;
+    color: #fff;
+    font-weight: 600;
+}
+.funders-footer {
+    color: #64748b;
+}
 /* Base Styles */
 :root {
     /* Primary Colors */
