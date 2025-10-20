@@ -13,7 +13,11 @@
     <div class="container">
       <nav class="navbar">
         <a href="/index.html" class="logo">
-          <img src="/styles/scripts/assets/selnexa-health-logo.png.png" alt="SelNexa Health Logo" class="logo-img">
+          <picture class="site-logo">
+            <source srcset="/styles/scripts/assets/selnexa-logo.avif" type="image/avif">
+            <source srcset="/styles/scripts/assets/selnexa-logo.webp" type="image/webp">
+            <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health Logo" class="logo-img" width="220" height="60">
+          </picture>
         </a>
         <ul class="nav-links">
           <li><a href="/index.html">Home</a></li>
@@ -28,17 +32,14 @@
   </header>
   <main id="main">
   <section class="fade-in pt-lg funders-hero">
-      <h1>For Funders & Partners</h1>
-  <h1 class="funders-title">For Funders & Partners</h1>
-  <p class="funders-intro">SelNexa Health is committed to global best practices in research, data management, and open-access publication. We welcome collaboration with international funders, research institutions, and national health systems.</p>
-      <ul>
-        <ul class="funders-list">
-          <li><strong>Open-Access Publication:</strong> All project results are published in open-access journals and publicly disclosed.</li>
-          <li><strong>Data Management & Sharing:</strong> Our policies align with WHO and global funder standards. Data is securely managed, shared ethically, and available for secondary analysis.</li>
-          <li><strong>Impact Reporting:</strong> Key performance indicators (KPIs) are tracked and reported quarterly, including patient outcomes, system efficiency, and equity of access.</li>
-          <li><strong>Compliance:</strong> Our platform is HIPAA-compliant, SSL-certified, and meets WCAG 2.1 AA accessibility standards.</li>
-          <li><strong>Partnership Model:</strong> We co-design research and implementation with local stakeholders, embedding projects within national health infrastructure.</li>
-        </ul>
+      <h1 class="funders-title">For Funders & Partners</h1>
+      <p class="funders-intro">SelNexa Health is committed to global best practices in research, data management, and open-access publication. We welcome collaboration with international funders, research institutions, and national health systems.</p>
+      <ul class="funders-list">
+        <li><strong>Open-Access Publication:</strong> All project results are published in open-access journals and publicly disclosed.</li>
+        <li><strong>Data Management & Sharing:</strong> Our policies align with WHO and global funder standards. Data is securely managed, shared ethically, and available for secondary analysis.</li>
+        <li><strong>Impact Reporting:</strong> Key performance indicators (KPIs) are tracked and reported quarterly, including patient outcomes, system efficiency, and equity of access.</li>
+        <li><strong>Compliance:</strong> Our platform is HIPAA-compliant, SSL-certified, and meets WCAG 2.1 AA accessibility standards.</li>
+        <li><strong>Partnership Model:</strong> We co-design research and implementation with local stakeholders, embedding projects within national health infrastructure.</li>
       </ul>
       <h2>Recent Impact</h2>
       <div class="card">
@@ -49,25 +50,27 @@
   <strong>Result:</strong> <span class="funders-card-result">30% improvement in diagnostic turnaround time, 20% increase in patient follow-up rates</span>, as measured by national health KPIs.</p>
       </div>
       <h2>Contact & Engagement</h2>
-      <form class="card" method="post" action="mailto:info@selnexahealth.com">
-        <form class="card funders-form" method="post" action="mailto:info@selnexahealth.com">
-          <form class="card funders-form" method="post" action="mailto:keithtafangombe@gmail.com">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="organization">Organization:</label>
-            <input type="text" id="organization" name="organization" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit" class="btn">Submit Inquiry</button>
-          </form>
-        </form>
+      <form class="card funders-form" method="post" action="https://formsubmit.co/keithtafangombe@gmail.com" data-ajax="true">
+        <!-- FormSubmit hidden controls -->
+        <input type="hidden" name="_subject" value="SelNexa Funder Inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://www.selnexahealth.com/?funder=success">
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="organization">Organization:</label>
+        <input type="text" id="organization" name="organization" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit" class="btn">Submit Inquiry</button>
       </form>
       <div class="mt-8 text-xs text-gray-400 text-center">
   <span class="funders-footer">SSL certificate and data protection badges displayed. See <a href="/privacy.html" class="underline">Privacy Policy</a> and <a href="/terms.html" class="underline">Terms of Use</a>.</span>
       </div>
     </section>
   </main>
+  <script src="/js/home.js"></script>
 </body>
 </html>
