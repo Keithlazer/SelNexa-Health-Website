@@ -8,7 +8,7 @@ const urlsToCache = [
     '/styles/home.css',
     '/js/home.js',
     '/styles/scripts/assets/selnexa-logo.svg',
-    '/styles/scripts/assets/selnexa-logo.jpg',
+    '/styles/scripts/assets/selnexa-logo-full.png',
     '/styles/scripts/assets/selnexa-logo.webp',
     '/styles/scripts/assets/selnexa-logo.avif',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',

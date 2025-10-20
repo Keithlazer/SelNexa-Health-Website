@@ -11,7 +11,7 @@
   <meta property="og:site_name" content="SelNexa Health">
   <meta name="twitter:card" content="summary">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"SelNexa Health","url":"https://www.selnexahealth.com/","logo":"https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.svg"}
+  {"@context":"https://schema.org","@type":"Organization","name":"SelNexa Health","url":"https://www.selnexahealth.com/","logo":"https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.png"}
   </script>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -24,7 +24,11 @@
     <div class="container">
       <nav class="navbar">
         <a href="/index.html" class="logo">
-          <img src="/styles/scripts/assets/selnexa-health-logo.png.png" alt="SelNexa Health Logo" class="logo-img">
+          <picture>
+            <source srcset="/styles/scripts/assets/selnexa-logo.avif" type="image/avif">
+            <source srcset="/styles/scripts/assets/selnexa-logo.webp" type="image/webp">
+            <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async">
+          </picture>
         </a>
         <ul class="nav-links" id="primary-nav" role="menubar">
           <li><a href="/index.html#home">Home</a></li>
@@ -87,13 +91,17 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="/styles/scripts/assets/selnexa-health-logo.png.png" alt="SelNexa Health Logo" class="logo-img">
+          <picture>
+            <source srcset="/styles/scripts/assets/selnexa-logo.avif" type="image/avif">
+            <source srcset="/styles/scripts/assets/selnexa-logo.webp" type="image/webp">
+            <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async">
+          </picture>
         </div>
         <div class="footer-social">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Facebook" aria-label="Follow SelNexa Health on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+          <a href="#" title="Twitter" aria-label="Follow SelNexa Health on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+          <a href="#" title="LinkedIn" aria-label="Connect with SelNexa Health on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a>
+          <a href="#" title="Instagram" aria-label="Follow SelNexa Health on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
         </div>
       </div>
       <div class="footer-bottom">

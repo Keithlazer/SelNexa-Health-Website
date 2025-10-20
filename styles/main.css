@@ -156,7 +156,8 @@
     justify-content: space-between;
     padding: 0 var(--space-lg);
     background: rgba( var(--clr-bg), 0.97 );
-    backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--clr-border);
     z-index: 1000;
   }
@@ -199,7 +200,8 @@
     display: flex;
     gap: var(--space-sm);
     background: rgba( var(--clr-bg), 0.9 );
-    backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
     padding: var(--space-xs);
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -222,7 +224,8 @@
   .hero-text h1 {
     font-size: 3rem;
     background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark));
-    -webkit-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   .hero-text p { color: var(--clr-text); }

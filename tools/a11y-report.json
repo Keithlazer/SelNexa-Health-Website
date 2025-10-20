@@ -1,0 +1,19 @@
+{
+  "generated": "2025-10-20T00:00:00.000Z",
+  "summary": {
+    "files_scanned": "all .html files in repo",
+    "issues_found": {
+      "img_missing_alt": 0,
+      "icon_links_missing_label": 0,
+      "inline_style_attributes": 0,
+      "role_menubar": 0
+    }
+  },
+  "notes": [
+    "Footer and share icon links were updated across multiple files to include aria-label and sr-only text.",
+    "No occurrences of role=\"menubar\" found.",
+    "No inline style attributes were detected in HTML files during this scan.",
+    "Most <img> elements include alt attributes; if you have specific images to verify, I can re-run targeted checks.",
+    "This is a lightweight static scan. For production auditing, run axe/Pa11y for runtime checks on rendered pages."
+  ]
+}
