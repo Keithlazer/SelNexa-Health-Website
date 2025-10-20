@@ -19,8 +19,8 @@
       <nav class="navbar">
         <a href="/" class="logo" aria-label="SelNexa Health home">
           <picture class="site-logo">
-            <source srcset="/styles/scripts/assets/selnexa-logo.avif" type="image/avif">
-            <source srcset="/styles/scripts/assets/selnexa-logo.webp" type="image/webp">
+            <!-- Fallback order: jpeg (if available) -> svg -->
+            <source srcset="/styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
             <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo - AI-powered healthcare for Africa" class="logo-img" width="220" height="60" decoding="async">
           </picture>
         </a>
@@ -40,7 +40,7 @@
     </div>
   </header>
   <main id="main-content" role="main">
-    <section class="fade-in pt-lg funders-hero">
+  <section class="fade-in funders-top funders-hero">
       <div class="container">
         <div class="section-title">
           <h1 class="funders-title">For Funders & Partners</h1>
@@ -84,8 +84,5 @@
     </section>
   </main>
   <script src="/js/home.js"></script>
-  <script>
-    node tools/a11y-scan.js
-  </script>
 </body>
 </html>

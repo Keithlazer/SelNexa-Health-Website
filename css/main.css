@@ -79,6 +79,11 @@
 
 /* Logo image */
 .logo-img { height: 60px; max-width: 220px; margin: 8px 0; }
+/* Ensure pages with fixed navbar start below it */
+/* Shared top spacing utility for pages with fixed navbar */
+.page-top, .funders-top { padding-top: 110px; }
+
+/* Backwards-compatible alias: .funders-top kept for older pages */
 /* Base Styles */
 :root {
     /* Primary Colors */
