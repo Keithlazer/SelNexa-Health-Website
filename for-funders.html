@@ -9,9 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Main site stylesheet + page overrides -->
-  <link rel="stylesheet" href="/styles/selnexa-main.css">
-  <link rel="stylesheet" href="/css/main.css">
+  <!-- Main site stylesheet + page overrides (relative paths for local testing) -->
+  <link rel="stylesheet" href="styles/selnexa-main.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <header id="header">
@@ -20,8 +20,8 @@
         <a href="/" class="logo" aria-label="SelNexa Health home">
           <picture class="site-logo">
             <!-- Fallback order: jpeg (if available) -> svg -->
-            <source srcset="/styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
-            <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo - AI-powered healthcare for Africa" class="logo-img" width="220" height="60" decoding="async">
+            <source srcset="styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
+            <img src="styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo - AI-powered healthcare for Africa" class="logo-img" width="220" height="60" decoding="async">
           </picture>
         </a>
         <ul class="nav-links" id="nav-links" aria-label="Main site navigation">
@@ -83,6 +83,6 @@
       </div>
     </section>
   </main>
-  <script src="/js/home.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

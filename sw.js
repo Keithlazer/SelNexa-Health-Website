@@ -1,16 +1,16 @@
 const CACHE_NAME = 'selnexa-cache-v4';
-const OFFLINE_URL = '/offline.html';
+const OFFLINE_URL = 'offline.html';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/for-funders.html',
-    '/offline.html',
-    '/styles/home.css',
-    '/js/home.js',
-    '/styles/scripts/assets/selnexa-logo.svg',
-    '/styles/scripts/assets/selnexa-logo-full.png',
-    '/styles/scripts/assets/selnexa-logo.webp',
-    '/styles/scripts/assets/selnexa-logo.avif',
+    './',
+    'index.html',
+    'for-funders.html',
+    'offline.html',
+    'styles/home.css',
+    'js/home.js',
+    'styles/scripts/assets/selnexa-logo.svg',
+    'styles/scripts/assets/selnexa-logo-full.png',
+    'styles/scripts/assets/selnexa-logo.webp',
+    'styles/scripts/assets/selnexa-logo.avif',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
     'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap'
 ];
