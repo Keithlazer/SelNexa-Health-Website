@@ -1,0 +1,9 @@
+/* Styles for blog article content to replace inline styles */
+.article-body {
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+.article-body .card.text-center { text-align:center }
