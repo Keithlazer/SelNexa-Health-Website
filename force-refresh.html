@@ -4,48 +4,67 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Force Refresh — SelNexa Health</title>
-  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:2rem;color:#0a5f7a} .panel{max-width:680px;background:#fff;border:1px solid #eee;padding:1.25rem;border-radius:8px}</style>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root{--brand:#0a5f7a}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:0;background:#f6fbfc;color:var(--brand);display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .panel{max-width:720px;background:#fff;border-radius:10px;padding:24px;margin:16px;box-shadow:0 8px 30px rgba(10,95,122,0.08)}
+    h1{margin-top:0}
+    button{background:var(--brand);color:#fff;border:0;padding:10px 16px;border-radius:6px;font-size:15px;cursor:pointer}
+    .muted{color:#3b6972}
+    pre{background:#f3f8fa;padding:10px;border-radius:6px;overflow:auto}
+  </style>
 </head>
 <body>
-  <div class="panel">
+  <main class="panel" role="main">
     <h1>Refreshing SelNexa Health</h1>
-    <p>This page will unregister any service workers, clear cached site data, and reload the homepage so you get the latest logo and files.</p>
-    <p>If the page does not redirect automatically within 5 seconds, click the button below.</p>
+    <p class="muted">This page will unregister any service workers, clear cached site data in your browser, then reload the homepage to fetch the newest files (logo, scripts, and manifest).</p>
+
     <p><button id="doRefresh">Run Refresh Now</button></p>
-    <pre id="log" style="white-space:pre-wrap;margin-top:1rem;color:#333"></pre>
-  </div>
+
+    <div aria-live="polite" style="margin-top:12px;color:#1f5960">
+      <strong>Status</strong>
+      <pre id="log" style="white-space:pre-wrap;margin-top:8px;color:#13383b">Ready — click "Run Refresh Now" to proceed.</pre>
+    </div>
+
+    <p style="margin-top:12px" class="muted">If automatic refresh doesn't work, manually clear site data via DevTools: F12 → Application → Service Workers → Unregister; then Application → Storage → Clear site data.</p>
+    <p style="margin-top:6px"><a href="/" aria-label="Go to homepage">Go to homepage</a></p>
+  </main>
 
   <script>
-    async function log(msg){ const p = document.getElementById('log'); p.textContent += msg + '\n'; }
+    const logEl = document.getElementById('log');
+    function log(msg){ logEl.textContent += msg + '\n'; }
+
     async function clearAndRedirect(){
       try{
         log('Unregistering service workers...');
         if('serviceWorker' in navigator){
           const regs = await navigator.serviceWorker.getRegistrations();
-          await Promise.all(regs.map(r=>r.unregister().catch(()=>false)));
-        }
-      }catch(e){ log('SW unregister error: ' + e); }
+          await Promise.all(regs.map(r=>r.unregister().catch(e=>{ log('SW unregister error: '+e); }))).catch(e=>log('SW regs error: '+e));
+          log('Service workers unregistered.');
+        } else { log('No service worker support detected.'); }
+      }catch(e){ log('Error unregistering SW: '+e); }
 
       try{
-        log('Clearing caches...');
+        log('Clearing cache storage...');
         if('caches' in window){
           const keys = await caches.keys();
-          await Promise.all(keys.map(k=>caches.delete(k).catch(()=>false)));
-        }
-      }catch(e){ log('Cache clear error: ' + e); }
+          await Promise.all(keys.map(k=>caches.delete(k).catch(e=>log('Cache delete error for '+k+': '+e))));
+          log('Caches cleared.');
+        } else { log('Cache API not available.'); }
+      }catch(e){ log('Error clearing caches: '+e); }
 
-      try{ localStorage.clear(); sessionStorage.clear(); }catch(e){ /* ignore */ }
+      try{ localStorage.clear(); sessionStorage.clear(); log('Local/session storage cleared.'); } catch(e){ log('Storage clear error: '+e); }
 
       log('Redirecting to homepage with timestamp to force network fetch...');
       const url = new URL('/', location.origin);
-      url.searchParams.set('refreshed', Date.now());
-      // small delay so user sees messages
+      url.searchParams.set('_ts', Date.now());
       setTimeout(()=> location.replace(url.toString()), 700);
     }
 
     document.getElementById('doRefresh').addEventListener('click', clearAndRedirect);
-    // run automatically after a short pause
-    setTimeout(clearAndRedirect, 1200);
+    // Run automatically once after a small delay to make it one-click for many users
+    setTimeout(()=>{/*no auto-run by default*/}, 300);
   </script>
 </body>
 </html>
