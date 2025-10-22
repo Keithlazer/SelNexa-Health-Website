@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Force Refresh — SelNexa Health</title>
+  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;margin:2rem;color:#0a5f7a} .panel{max-width:680px;background:#fff;border:1px solid #eee;padding:1.25rem;border-radius:8px}</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Refreshing SelNexa Health</h1>
+    <p>This page will unregister any service workers, clear cached site data, and reload the homepage so you get the latest logo and files.</p>
+    <p>If the page does not redirect automatically within 5 seconds, click the button below.</p>
+    <p><button id="doRefresh">Run Refresh Now</button></p>
+    <pre id="log" style="white-space:pre-wrap;margin-top:1rem;color:#333"></pre>
+  </div>
+
+  <script>
+    async function log(msg){ const p = document.getElementById('log'); p.textContent += msg + '\n'; }
+    async function clearAndRedirect(){
+      try{
+        log('Unregistering service workers...');
+        if('serviceWorker' in navigator){
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map(r=>r.unregister().catch(()=>false)));
+        }
+      }catch(e){ log('SW unregister error: ' + e); }
+
+      try{
+        log('Clearing caches...');
+        if('caches' in window){
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k=>caches.delete(k).catch(()=>false)));
+        }
+      }catch(e){ log('Cache clear error: ' + e); }
+
+      try{ localStorage.clear(); sessionStorage.clear(); }catch(e){ /* ignore */ }
+
+      log('Redirecting to homepage with timestamp to force network fetch...');
+      const url = new URL('/', location.origin);
+      url.searchParams.set('refreshed', Date.now());
+      // small delay so user sees messages
+      setTimeout(()=> location.replace(url.toString()), 700);
+    }
+
+    document.getElementById('doRefresh').addEventListener('click', clearAndRedirect);
+    // run automatically after a short pause
+    setTimeout(clearAndRedirect, 1200);
+  </script>
+</body>
+</html>
