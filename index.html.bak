@@ -10,7 +10,7 @@
     <meta property="og:description" content="Leading healthcare innovation in Africa with cutting-edge medical technology and patient-centered care.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.selnexahealth.com/">
-    <meta property="og:image" content="https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo-full.svg">
+    <meta property="og:image" content="styles/scripts/assets/selnexa-logo-full.png">
     <link rel="canonical" href="https://www.selnexahealth.com/">
     <script type="application/ld+json">
     {
@@ -18,7 +18,7 @@
       "@type": "MedicalOrganization",
       "name": "SelNexa Health",
       "url": "https://www.selnexahealth.com/",
-    "logo": "https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo.svg",
+    "logo": "styles/scripts/assets/selnexa-logo-full.png",
       "sameAs": [
         "https://www.facebook.com/",
         "https://www.linkedin.com/",
@@ -39,9 +39,9 @@
     </script>
         <link rel="manifest" href="/manifest.json">
         <!-- Prefer SVG favicons; keep jpg fallbacks if not available -->
-        <link rel="icon" href="/styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-logo-full.png" type="image/png">
     <link rel="icon" href="/styles/scripts/assets/styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
-        <link rel="apple-touch-icon" href="/styles/scripts/assets/selnexa-logo-full.svg">
+    <link rel="apple-touch-icon" href="/styles/scripts/assets/selnexa-logo-full.png">
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
         <!-- External libraries: add integrity attributes before production deploy -->
@@ -220,7 +220,7 @@
                         <!-- WebP fallback -->
                         <source type="image/webp" srcset="/styles/scripts/assets/selnexa-logo.webp 1x, /styles/scripts/assets/selnexa-logo@2x.webp 2x">
                         <!-- SVG vector fallback -->
-                        <source type="image/svg+xml" srcset="/styles/scripts/assets/selnexa-logo.svg">
+                        <source type="image/png" srcset="/styles/scripts/assets/selnexa-logo-full.png">
                         <!-- JPG fallback for very old UAs -->
                         <picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>
                     </picture>
@@ -572,7 +572,7 @@
                                                                     <picture>
                                                                         <source type="image/avif" srcset="/styles/scripts/assets/selnexa-logo.avif 1x, /styles/scripts/assets/selnexa-logo@2x.avif 2x">
                                                                         <source type="image/webp" srcset="/styles/scripts/assets/selnexa-logo.webp 1x, /styles/scripts/assets/selnexa-logo@2x.webp 2x">
-                                                                        <source type="image/svg+xml" srcset="/styles/scripts/assets/selnexa-logo.svg">
+                                                                        <source type="image/png" srcset="/styles/scripts/assets/selnexa-logo-full.png">
                                                                         <picture class="site-logo"><source type="image/avif" srcset="styles/scripts/assets/selnexa-logo.avif"><source type="image/webp" srcset="styles/scripts/assets/selnexa-logo.webp"><img src="styles/scripts/assets/selnexa-logo.jpg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async" fetchpriority="high"></picture>
                                                                     </picture>
                                         </a>

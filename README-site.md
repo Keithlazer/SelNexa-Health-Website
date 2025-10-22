@@ -16,8 +16,8 @@ What I changed (summary)
 
 Logo assets
 
-- `styles/scripts/assets/selnexa-logo.svg` (preferred)
-- `styles/scripts/assets/selnexa-logo-full.svg` (fallback)
+-- `styles/scripts/assets/selnexa-logo.webp` (preferred raster)
+-- `styles/scripts/assets/selnexa-logo-full.png` (fallback raster)
 - `styles/scripts/assets/SelNexa Health Logo Full.jpg` (raster fallback)
 
 Image optimization (generate AVIF/WebP + 2x raster)
