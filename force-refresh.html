@@ -13,6 +13,10 @@
     button{background:var(--brand);color:#fff;border:0;padding:10px 16px;border-radius:6px;font-size:15px;cursor:pointer}
     .muted{color:#3b6972}
     pre{background:#f3f8fa;padding:10px;border-radius:6px;overflow:auto}
+    .status-area{margin-top:12px;color:#1f5960}
+    .log{white-space:pre-wrap;margin-top:8px;color:#13383b}
+    .mt-12{margin-top:12px}
+    .mt-6{margin-top:6px}
   </style>
 </head>
 <body>
@@ -22,13 +26,13 @@
 
     <p><button id="doRefresh">Run Refresh Now</button></p>
 
-    <div aria-live="polite" style="margin-top:12px;color:#1f5960">
+    <div aria-live="polite" class="status-area">
       <strong>Status</strong>
-      <pre id="log" style="white-space:pre-wrap;margin-top:8px;color:#13383b">Ready — click "Run Refresh Now" to proceed.</pre>
+      <pre id="log" class="log">Ready — click "Run Refresh Now" to proceed.</pre>
     </div>
 
-    <p style="margin-top:12px" class="muted">If automatic refresh doesn't work, manually clear site data via DevTools: F12 → Application → Service Workers → Unregister; then Application → Storage → Clear site data.</p>
-    <p style="margin-top:6px"><a href="/" aria-label="Go to homepage">Go to homepage</a></p>
+    <p class="muted mt-12">If automatic refresh doesn't work, manually clear site data via DevTools: F12 → Application → Service Workers → Unregister; then Application → Storage → Clear site data.</p>
+    <p class="mt-6"><a href="/" aria-label="Go to homepage">Go to homepage</a></p>
   </main>
 
   <script>
