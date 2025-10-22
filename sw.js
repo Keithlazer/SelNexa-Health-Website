@@ -7,7 +7,6 @@ const urlsToCache = [
     'offline.html',
     'styles/home.css',
     'js/home.js',
-    'styles/scripts/assets/selnexa-logo.svg',
     'styles/scripts/assets/selnexa-logo-full.png',
     'styles/scripts/assets/selnexa-logo.webp',
     'styles/scripts/assets/selnexa-logo.avif',
