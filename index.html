@@ -117,17 +117,17 @@
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to content</a>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Header -->
     <header id="header">
         <div class="container">
-            <nav class="navbar">
+            <nav class="navbar" role="navigation" aria-label="Main site navigation">
                 <a href="/" class="logo" aria-label="SelNexa Health home">
                     <picture class="site-logo">
                            <source srcset="SelNexa Website/styles/scripts/assets/selnexa-health-logo pic.png" type="image/avif">
                            <source srcset="SelNexa Website/styles/scripts/assets/selnexa-health-logo pic.png" type="image/webp">
-                           <img src="SelNexa Website/styles/scripts/assets/selnexa-health-logo pic.png" alt="SelNexa Health logo" class="logo-img" width="120" height="60" decoding="async" fetchpriority="high">
+                           <img src="SelNexa Website/styles/scripts/assets/selnexa-health-logo pic.png" alt="SelNexa Health wordmark and logo mark with company name SelNexa Health; site identity used in header and footer; tone professional and trustworthy" class="logo-img" width="120" height="60" decoding="async" fetchpriority="high">
                     </picture>
                 </a>
                 <ul class="nav-links" id="nav-links" aria-label="Main site navigation">
@@ -156,13 +156,15 @@
                     <h1 id="hero-heading">Transforming Healthcare Delivery Across Africa</h1>
                     <p>AI-powered solutions that streamline administration, optimize procurement, and enhance patient care for healthcare providers</p>
                     <div class="hero-btns">
-                        <a href="#solutions" class="btn">Explore Solutions</a>
-                        <a href="#beta" class="btn btn-secondary">Join Beta Program</a>
+                            <a href="#solutions" class="btn cta-btn" aria-label="Explore Healthcare Solutions">Explore Solutions</a>
+                            <a href="#beta" class="btn btn-secondary cta-btn" aria-label="Join Beta Program">Join Our Beta Program</a>
+                            <a href="#appointment" class="btn cta-btn" aria-label="Book an Appointment">Book an Appointment</a>
                     </div>
                 </div>
             </div>
-            <a href="#solutions" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
+            <a href="#solutions" class="scroll-down" aria-label="Scroll to Solutions">
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                <span class="sr-only">Scroll to Solutions</span>
             </a>
         </section>
 
@@ -304,6 +306,7 @@
                         <p>Our team will contact you to discuss your specific needs and how SelNexa can transform your healthcare delivery.</p>
                     </div>
                     <div class="beta-form">
+                        <p class="beta-privacy">We take data privacy seriously. By applying you agree to our <a href="/privacy.html">Privacy Policy</a>.</p>
                         <form id="betaForm" action="https://formsubmit.co/keithtafangombe@gmail.com" method="POST" data-ajax="true" aria-labelledby="beta-form-heading">
                             <h3 id="beta-form-heading" class="sr-only">Beta Program Application Form</h3>
                             <!-- FormSubmit hidden controls -->
@@ -384,6 +387,45 @@
                         <p>We develop solutions specifically designed for the African healthcare context, considering infrastructure limitations, diverse patient populations, and unique administrative challenges.</p>
                         
                         <div class="stats-grid">
+
+        <!-- Appointment Booking Section -->
+        <section class="section" id="appointment">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Book an Appointment</h2>
+                    <p>Schedule your visit with ease. Our team is ready to assist you.</p>
+                </div>
+                <form id="appointmentForm" class="appointment-form" aria-label="Book an Appointment" action="https://formsubmit.co/keithtafangombe@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="SelNexa Appointment Request">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://www.selnexahealth.com/?appointment=success">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" autocomplete="bday" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason" name="reason" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="cta-btn" id="appointmentSubmit">Book Appointment</button>
+                    </div>
+                    <div id="appointmentMessage" role="status" aria-live="polite"></div>
+                </form>
+            </div>
+        </section>
                             <div class="stat">
                                 <span class="stat-number" data-count="12">0</span>
                                 <div class="stat-label">Healthcare Partners</div>
@@ -557,7 +599,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#beta">Beta Program</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">
@@ -572,9 +614,6 @@
                         <a href="#" title="Twitter" aria-label="Follow SelNexa Health on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
                         <a href="#" title="LinkedIn" aria-label="Connect with SelNexa Health on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a>
                         <a href="#" title="Instagram" aria-label="Follow SelNexa Health on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                            <span class="sr-only">Instagram</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -591,6 +630,100 @@
     <!-- Main JavaScript -->
     <script src="/js/selnexa-main.js"></script>
     <script src="/js/home.js"></script>
+    <script>
+    (function(){
+        const form = document.getElementById('appointmentForm');
+        if (!form) return;
+        const submitBtn = document.getElementById('appointmentSubmit');
+        const msgEl = document.getElementById('appointmentMessage');
+
+        form.addEventListener('submit', async function(e){
+            e.preventDefault();
+            msgEl.textContent = '';
+            const formData = new FormData(form);
+
+            // Basic client-side validation
+            const name = formData.get('name')?.toString().trim();
+            const email = formData.get('email')?.toString().trim();
+            if (!name || !email) {
+                msgEl.className = 'error-message';
+                msgEl.textContent = 'Please provide your name and email.';
+                return;
+            }
+
+            // Disable while sending
+            submitBtn.disabled = true;
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const resp = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (resp.ok) {
+                    msgEl.className = 'success-message';
+                    msgEl.textContent = 'Thanks — your appointment request was sent. We will contact you shortly.';
+                    form.reset();
+                } else {
+                    const text = await resp.text();
+                    msgEl.className = 'error-message';
+                    msgEl.textContent = 'There was an error submitting the form. Please try again or email info@selnexahealth.com.';
+                    console.warn('Appointment submit error', resp.status, text);
+                }
+            } catch (err) {
+                msgEl.className = 'error-message';
+                msgEl.textContent = 'Network error. Please check your connection and try again.';
+                console.error(err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+    })();
+    // Mobile menu toggle and testimonial keyboard support
+    (function(){
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', function(){
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', String(!expanded));
+                navLinks.classList.toggle('open');
+                navLinks.setAttribute('aria-hidden', String(expanded));
+            });
+        }
+
+        // Testimonial keyboard navigation (left/right arrows)
+        const navButtons = document.querySelectorAll('.testimonial-nav button');
+        const panels = document.querySelectorAll('.testimonial-slide');
+        if (navButtons.length && panels.length) {
+            navButtons.forEach((btn, idx) => {
+                btn.addEventListener('click', () => setActive(idx));
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') { e.preventDefault(); setActive((idx+1)%navButtons.length); navButtons[(idx+1)%navButtons.length].focus(); }
+                    if (e.key === 'ArrowLeft') { e.preventDefault(); setActive((idx-1+navButtons.length)%navButtons.length); navButtons[(idx-1+navButtons.length)%navButtons.length].focus(); }
+                });
+            });
+            function setActive(i){
+                navButtons.forEach((b,j)=>{
+                    b.classList.toggle('active', j===i);
+                    b.setAttribute('aria-selected', String(j===i));
+                });
+                panels.forEach((p,j)=>{
+                    p.classList.toggle('active', j===i);
+                    p.hidden = j!==i;
+                });
+            }
+            // initialize
+            setActive(0);
+        }
+    })();
+    </script>
                 <!-- LocalBusiness structured data (MedicalBusiness) for improved local SEO -->
                 <script type="application/ld+json">
                 {
