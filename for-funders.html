@@ -5,40 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Funders & Partners – SelNexa Health</title>
   <meta name="description" content="Information for global health funders and partners: data management, open-access policy, impact reports, and compliance at SelNexa Health.">
-  <!-- Google Fonts (match main site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Main site stylesheet + page overrides (relative paths for local testing) -->
-  <link rel="stylesheet" href="styles/selnexa-main.css">
-  <link rel="stylesheet" href="css/main.css">
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="/styles/selnexa-main.css">
 </head>
 <body>
-  <header id="header">
-    <div class="container">
-      <nav class="navbar">
-        <a href="/" class="logo" aria-label="SelNexa Health home">
-          <picture class="site-logo">
-            <!-- Fallback order: jpeg (if available) -> svg -->
-            <source srcset="styles/scripts/assets/selnexa-logo.jpg" type="image/jpeg">
-            <img src="styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health wordmark and logo mark with company name SelNexa Health; site identity used in header and footer; tone professional and trustworthy" class="logo-img" width="220" height="60" decoding="async">
-          </picture>
-        </a>
-        <ul class="nav-links" id="nav-links" aria-label="Main site navigation">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/features.html">Features</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/resources/guides.html">Guides</a></li>
-          <li><a href="/for-funders.html" class="active">For Funders & Partners</a></li>
-          <li><a href="/index.html#contact">Contact</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-          <i class="fas fa-bars" aria-hidden="true"></i>
-          <span class="sr-only">Menu</span>
-        </button>
-      </nav>
-    </div>
-  </header>
+  <div data-include="header"></div>
   <main id="main-content" role="main">
   <section class="fade-in funders-top funders-hero">
       <div class="container">
@@ -64,6 +40,40 @@
           <strong>Result:</strong> <span class="funders-card-result">30% improvement in diagnostic turnaround time, 20% increase in patient follow-up rates</span>, as measured by national health KPIs.</p>
         </div>
 
+        <h2>Our Partners</h2>
+        <div class="partners-grid card">
+          <div class="partner-logo"><img src="/styles/scripts/assets/partner-1.png" alt="Partner 1 logo" loading="lazy"></div>
+          <div class="partner-logo"><img src="/styles/scripts/assets/partner-2.png" alt="Partner 2 logo" loading="lazy"></div>
+          <div class="partner-logo"><img src="/styles/scripts/assets/partner-3.png" alt="Partner 3 logo" loading="lazy"></div>
+          <div class="partner-logo"><img src="/styles/scripts/assets/partner-4.png" alt="Partner 4 logo" loading="lazy"></div>
+        </div>
+
+        <h2>Impact Reports & Downloads</h2>
+        <div class="card">
+          <p>Download our latest impact and evaluation reports for funders and partners:</p>
+          <ul class="report-list">
+            <li><a href="/resources/selnexa-impact-2025.pdf" target="_blank" rel="noopener">SelNexa Impact Report 2025 (PDF)</a></li>
+            <li><a href="/resources/data-management-policy.pdf" target="_blank" rel="noopener">Data Management & Sharing Policy</a></li>
+            <li><a href="/resources/star-case-study.pdf" target="_blank" rel="noopener">STAR Case Study — Zimbabwe (Full PDF)</a></li>
+          </ul>
+        </div>
+
+        <h2>Frequently Asked Questions (Funders)</h2>
+        <div class="card faq-list">
+          <details>
+            <summary>How do you handle patient consent and data privacy?</summary>
+            <p>We follow internationally recognised consent frameworks and ensure data is anonymized for secondary analysis. Our systems support consent capture and revocation workflows.</p>
+          </details>
+          <details>
+            <summary>Can the platform integrate with national EMRs?</summary>
+            <p>Yes. SelNexa supports HL7/FHIR integration patterns and can connect via secure APIs to national EHR systems and health information exchanges.</p>
+          </details>
+          <details>
+            <summary>What are the typical KPIs you report to funders?</summary>
+            <p>We report patient outcomes, diagnostic turnaround, appointment adherence, system uptime, and equity indicators disaggregated by geography and demographics.</p>
+          </details>
+        </div>
+
         <h2>Contact & Engagement</h2>
         <form class="card funders-form" method="post" action="mailto:keithtafangombe@gmail.com">
           <label for="name">Name:</label>
@@ -83,6 +93,13 @@
       </div>
     </section>
   </main>
-  <script src="js/home.js"></script>
+  <script src="/js/selnexa-main.js" defer></script>
+  <script src="/js/home.js" defer></script>
+  <script src="/js/selnexa-main.js" defer></script>
+  <script src="/js/home.js" defer></script>
+  <script src="/js/include-loader.js" defer></script>
+
+  <div data-include="footer"></div>
+  <button id="backToTop" aria-label="Back to top" class="back-to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i><span class="sr-only">Back to top</span></button>
 </body>
 </html>
