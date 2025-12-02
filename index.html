@@ -114,6 +114,19 @@
     <!-- Main Styles -->
     <link rel="stylesheet" href="/styles/selnexa-main.css">
     <script src="/js/clear-sw.js" defer></script>
+        <!-- Remove visible "index.html" from the URL when possible (safe, no reload) -->
+        <script>
+        (function(){
+            try {
+                var p = window.location.pathname || '';
+                if (/index\.html$/.test(p)) {
+                    var newPath = p.replace(/index\.html$/, '') || '/';
+                    var newUrl = newPath + window.location.search + window.location.hash;
+                    history.replaceState(null, '', newUrl);
+                }
+            } catch (e) { /* ignore in old browsers */ }
+        })();
+        </script>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
