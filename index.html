@@ -113,7 +113,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Main Styles -->
     <link rel="stylesheet" href="/styles/selnexa-main.css">
-    <script src="/js/clear-sw.js" defer></script>
+        <script src="/js/clear-sw.js" defer></script>
+        <script src="/js/ai-config.js" defer></script>
         <!-- Remove visible "index.html" from the URL when possible (safe, no reload) -->
         <script>
         (function(){
@@ -595,80 +596,147 @@
             </div>
         </section>
 
-        <!-- Featured Services -->
-        <section class="featured-services">
+        <!-- Services — refreshed to match site theme -->
+        <section class="section services" id="services">
             <div class="container">
-                <h2>Our Services</h2>
-                <div class="service">
-                    <h3>Telemedicine</h3>
-                    <p>Access healthcare from the comfort of your home.</p>
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>Integrated healthcare tools designed for African health systems — secure, scalable, and provider-first.</p>
                 </div>
-                <div class="service">
-                    <h3>Health Tracking</h3>
-                    <p>Monitor your health with our advanced tools.</p>
+
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-phone-medical" aria-hidden="true"></i></div>
+                        <h3>Telemedicine</h3>
+                        <p>Secure low-bandwidth video consultations with integrated patient records and appointment workflows.</p>
+                        <p class="service-cta"><a href="/telemedicine.html" class="btn btn-outline">Learn more</a></p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-notes-medical" aria-hidden="true"></i></div>
+                        <h3>Clinical Records</h3>
+                        <p>Electronic health records built for data integrity and easy interoperability across facilities.</p>
+                        <p class="service-cta"><a href="#about" class="btn btn-outline">See features</a></p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-shipping-fast" aria-hidden="true"></i></div>
+                        <h3>Procurement & Inventory</h3>
+                        <p>AI-assisted stock forecasting and procurement workflows to reduce stockouts and waste.</p>
+                        <p class="service-cta"><a href="#solutions" class="btn btn-outline">Explore</a></p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <h3>Analytics & Reporting</h3>
+                        <p>Actionable dashboards and reporting to drive better decisions and measure impact.</p>
+                        <p class="service-cta"><a href="#" class="btn btn-outline">View examples</a></p>
+                    </article>
                 </div>
-                <div class="service">
-                    <h3>Consultation</h3>
-                    <p>Get expert advice from our healthcare professionals.</p>
+            </div>
+        </section>
+
+        <!-- Testimonials (compact) -->
+        <section class="section testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Healthcare Partners Say</h2>
+                    <p>Real feedback from clinics and hospitals using SelNexa.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <figure class="testimonial">
+                        <blockquote>"SelNexa's administrative module reduced our paperwork by 70% and eliminated scheduling errors."</blockquote>
+                        <figcaption>— Dr. Farisai Mawere, Bulawayo General Hospital</figcaption>
+                    </figure>
+                    <figure class="testimonial">
+                        <blockquote>"Procurement optimization saved our hospital thousands monthly and removed stockouts."</blockquote>
+                        <figcaption>— James Mbeki, Hospital Administrator</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials">
+        <!-- Latest News (grid with excerpts) -->
+        <section class="section news" id="news">
             <div class="container">
-                <h2>What Our Clients Say</h2>
-                <blockquote>
-                    <p>"SelNexa Health has transformed my healthcare experience!" - Jane Doe</p>
-                </blockquote>
+                <div class="section-title">
+                    <h2>Latest News</h2>
+                    <p>Updates, product notes, and events from SelNexa.</p>
+                </div>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <h3><a href="/blog/ai-healthcare-africa.html">AI in African Healthcare: progress and lessons</a></h3>
+                        <p class="excerpt">Highlights from our pilots showing faster diagnostics and streamlined appointments in rural settings.</p>
+                    </article>
+                    <article class="news-card">
+                        <h3><a href="/blog/selnexa-telemedicine-zimbabwe.html">Telemedicine pilots in Zimbabwe</a></h3>
+                        <p class="excerpt">How low-bandwidth video plus EHR integration brought specialist care closer to patients.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <!-- Latest News -->
-        <section class="latest-news">
+        <!-- Primary CTA (beta) -->
+        <section class="section cta" id="cta-beta">
             <div class="container">
-                <h2>Latest News</h2>
-                <ul>
-                    <li><a href="#">New features launched in our telemedicine platform!</a></li>
-                    <li><a href="#">Join our upcoming webinar on health tracking.</a></li>
-                </ul>
+                <div class="cta-inner">
+                    <h2>Join our closed beta</h2>
+                    <p>Get early access, dedicated support, and preferential pricing for founding partners.</p>
+                    <a href="#beta" class="btn btn-primary">Apply for Beta Access</a>
+                </div>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="call-to-action">
+        <!-- FAQs (accordion) -->
+        <section class="section faqs" id="faqs">
             <div class="container">
-                <h2>Join Us Today!</h2>
-                <p>Sign up for our newsletter to stay updated.</p>
-                <a href="#" class="btn">Subscribe</a>
+                <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+                <div class="faq-list">
+                    <details>
+                        <summary>How does SelNexa protect patient data?</summary>
+                        <p>We use end-to-end encryption in transit, strict access controls, and follow regional data-protection best practices.</p>
+                    </details>
+                    <details>
+                        <summary>Can SelNexa integrate with existing EHRs?</summary>
+                        <p>Yes — our platform supports common interoperability standards and custom integrations for legacy systems.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
-        <!-- FAQs -->
-        <section class="faqs">
+        <!-- Contact (expanded) -->
+        <section class="section contact" id="contact-info">
             <div class="container">
-                <h2>Frequently Asked Questions</h2>
-                <details>
-                    <summary>What services do you offer?</summary>
-                    <p>We offer telemedicine, health tracking, and consultations.</p>
-                </details>
+                <div class="section-title"><h2>Contact Us</h2><p>We're happy to help — reach our team by phone, email, or the portal.</p></div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <h4>Office</h4>
+                        <p>2157 Clifton Close, New Marlborough, Harare, Zimbabwe</p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+263777726065">+263 777 726 065</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@selnexahealth.com">info@selnexahealth.com</a></p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Information -->
-        <section class="contact-info">
+        <!-- Social (Follow Us) -->
+        <section class="section social" id="follow-us">
             <div class="container">
-                <h2>Contact Us</h2>
-                <p>Email: info@selnexahealth.com</p>
-            </div>
-        </section>
-
-        <!-- Social Media Links -->
-        <section class="social-media">
-            <div class="container">
-                <h2>Follow Us</h2>
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
+                <div class="section-title"><h2>Follow Us</h2><p>News, updates and community highlights.</p></div>
+                <div class="social-links">
+                    <a href="#" class="social-btn" aria-label="SelNexa on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn</a>
+                    <a href="#" class="social-btn" aria-label="SelNexa on Twitter"><i class="fab fa-x-twitter" aria-hidden="true"></i> X</a>
+                    <a href="#" class="social-btn" aria-label="SelNexa on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook</a>
+                </div>
             </div>
         </section>
     </main>
