@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | SelNexa Health – Common Questions About Our AI Platform</title>
+    <meta name="description" content="Frequently asked questions about SelNexa Health. Learn about security, compliance, integration, pricing, and technical support.">
+    <meta name="keywords" content="FAQ, support, HIPAA, security, compliance, integration, telemedicine, healthcare AI">
+    <meta property="og:title" content="FAQ | SelNexa Health">
+    <meta property="og:description" content="Got questions about SelNexa Health? Find answers about security, compliance, integration, and support.">
+    <meta property="og:url" content="https://www.selnexahealth.com/faq.html">
+    <link rel="canonical" href="https://www.selnexahealth.com/faq.html">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/home.css">
+    <style>
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-item summary {
+            padding: 1.5rem;
+            background: #f5f5f5;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .faq-item summary:hover {
+            background: #eaeaea;
+        }
+        .faq-item[open] summary {
+            background: #003d82;
+            color: #fff;
+        }
+        .faq-item details[open] .faq-item summary::after {
+            transform: rotate(180deg);
+        }
+        .faq-item summary::after {
+            content: "▼";
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+        .faq-content {
+            padding: 1.5rem;
+            background: #fafafa;
+            border-top: 1px solid #e0e0e0;
+        }
+        .faq-content p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+        .faq-category {
+            margin-top: 2rem;
+        }
+        .faq-category h3 {
+            color: #003d82;
+            border-bottom: 2px solid #003d82;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" width="120" height="60">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/solutions/">Solutions</a></li>
+                    <li><a href="/for-funders.html">For Funders</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Have questions about SelNexa Health? We've got answers.</p>
+            </div>
+        </section>
+
+        <!-- FAQs -->
+        <section class="section">
+            <div class="container">
+                <!-- General Questions -->
+                <div class="faq-category">
+                    <h3>General Questions</h3>
+
+                    <details class="faq-item">
+                        <summary>What is SelNexa Health?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health is an AI-powered platform designed to transform healthcare delivery in resource-constrained settings. We offer integrated solutions across administration, procurement, clinical records, analytics, and telemedicine—helping healthcare facilities improve patient outcomes, reduce costs, and eliminate errors.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Who is SelNexa Health for?</summary>
+                        <div class="faq-content">
+                            <p>Our platform is built for healthcare facilities of all sizes—from small clinics to hospital networks. We're especially focused on serving healthcare systems in Africa and other developing markets where access to reliable infrastructure and advanced healthcare technology is critical.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>How long has SelNexa Health been operating?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health is currently in beta, working with pilot facilities across multiple countries to refine our platform based on real-world healthcare workflows and needs. We're actively recruiting healthcare partners for our beta program.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Is SelNexa Health open source?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health is proprietary software designed to meet the stringent requirements of healthcare delivery. However, we are committed to transparency and compliance. We partner with open-source health IT standards (HL7, FHIR) to ensure interoperability.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Security & Compliance -->
+                <div class="faq-category">
+                    <h3>Security & Compliance</h3>
+
+                    <details class="faq-item">
+                        <summary>Is SelNexa Health HIPAA compliant?</summary>
+                        <div class="faq-content">
+                            <p>Yes. SelNexa Health is designed to meet HIPAA requirements for healthcare data protection in US facilities. For international deployments, we comply with equivalent regulations (GDPR in EU, POPIA in South Africa, etc.). All patient data is encrypted at rest and in transit using military-grade encryption.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>How is patient data encrypted?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health uses AES-256 encryption for data at rest and TLS 1.3 for data in transit. Patient records are additionally secured by blockchain technology, creating an immutable audit trail. Only authorized users with explicit patient consent can access records.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What happens if there's a data breach?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health maintains comprehensive incident response protocols and cyber insurance. In the event of any security incident, we notify affected users immediately, conduct a full audit, and provide support as required by law. Our blockchain audit logs ensure we can always account for who accessed what data and when.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can patients control who accesses their data?</summary>
+                        <div class="faq-content">
+                            <p>Absolutely. SelNexa Health gives patients granular control over their records. They can grant or revoke access to specific providers, departments, or facilities in real time. Every access is logged and patients can review their audit trail at any time.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Technical Questions -->
+                <div class="faq-category">
+                    <h3>Technical & Integration</h3>
+
+                    <details class="faq-item">
+                        <summary>Will SelNexa Health work with our existing EHR system?</summary>
+                        <div class="faq-content">
+                            <p>Yes. SelNexa Health is built on HL7/FHIR standards for healthcare data interchange. We can integrate with most modern EHR systems (Epic, Cerner, OpenMRS, Bahmni, etc.). Our team will work with your IT department to ensure smooth integration with minimal disruption.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What internet speed do I need?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health is optimized for low-bandwidth environments. Core features work on 1 Mbps connections. Video telemedicine requires 2.5 Mbps upstream and downstream. We also offer offline-first modes so providers can work without connectivity and sync data when back online.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can we deploy SelNexa Health on-premise?</summary>
+                        <div class="faq-content">
+                            <p>Yes. SelNexa Health offers both cloud and on-premise deployment options. On-premise deployments are ideal for facilities with strict data residency requirements or limited internet connectivity. Our team manages setup and ongoing maintenance.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What devices does SelNexa Health support?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health is mobile-first and works on Android phones, iPhones, tablets, and computers. Our web app works in any modern browser. We support older devices and lower-bandwidth connections to ensure access across diverse healthcare settings.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Implementation & Support -->
+                <div class="faq-category">
+                    <h3>Implementation & Support</h3>
+
+                    <details class="faq-item">
+                        <summary>How long does implementation take?</summary>
+                        <div class="faq-content">
+                            <p>Implementation typically takes 6-12 weeks depending on facility size, existing systems, and integration complexity. This includes data migration, staff training, testing, and go-live support. We work closely with your team to minimize disruption to operations.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What training does my team get?</summary>
+                        <div class="faq-content">
+                            <p>We provide comprehensive training: documentation, video tutorials, in-person workshops for key staff, and ongoing support. Every facility gets a dedicated success manager who can answer questions and optimize workflows for your specific use case.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What support is available after launch?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health provides 24/7 technical support via email, chat, and phone. Our support team has deep healthcare domain knowledge and can help troubleshoot issues, answer questions, and suggest improvements based on your usage patterns.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Do you offer customization for our facility's workflows?</summary>
+                        <div class="faq-content">
+                            <p>Yes. While SelNexa Health provides a core platform with best-practice workflows, we can customize features to match your facility's specific processes. Custom development is available for larger deployments or unique use cases.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Pricing & Licensing -->
+                <div class="faq-category">
+                    <h3>Pricing & Licensing</h3>
+
+                    <details class="faq-item">
+                        <summary>What is the pricing model?</summary>
+                        <div class="faq-content">
+                            <p>SelNexa Health offers flexible licensing models: per-user monthly subscriptions, facility-wide subscriptions, or outcome-based pricing (pay based on cost savings achieved). We also offer special pricing for academic institutions, NGOs, and government facilities. Contact our sales team for a custom quote.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Is there a free trial or pilot program?</summary>
+                        <div class="faq-content">
+                            <p>Yes! We have an active beta program for qualified healthcare facilities. Pilot deployments typically run for 3-6 months at reduced or no cost. We're looking for healthcare partners who want to help shape the future of healthcare technology in emerging markets.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>What's included in the subscription?</summary>
+                        <div class="faq-content">
+                            <p>All SelNexa Health subscriptions include: platform access, data storage, software updates, security patches, user support, and basic training. Premium tiers add advanced analytics, custom integrations, and dedicated account management.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can we start small and scale up later?</summary>
+                        <div class="faq-content">
+                            <p>Absolutely. Many facilities start with one module (e.g., telemedicine) and add more (administration, procurement, analytics) over time. Our pricing scales with your usage, so you only pay for what you use.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Results & Outcomes -->
+                <div class="faq-category">
+                    <h3>Results & Outcomes</h3>
+
+                    <details class="faq-item">
+                        <summary>What kind of ROI can we expect?</summary>
+                        <div class="faq-content">
+                            <p>Our clients typically see measurable returns within 3-6 months. Average outcomes: 40% cost reduction (especially in procurement), 50% reduction in administrative time, 70% fewer medical errors, 25% improvement in patient satisfaction. Long-term benefits compound as your team optimizes workflows.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>How do you measure success?</summary>
+                        <div class="faq-content">
+                            <p>We track key metrics: cost savings (procurement, operational), error reduction, patient outcomes (readmission rates, satisfaction), operational efficiency (wait times, throughput), and staff satisfaction. These are reviewed quarterly with your leadership team.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can we see customer case studies?</summary>
+                        <div class="faq-content">
+                            <p>Yes. We have published case studies from hospitals in Zimbabwe, South Africa, Kenya, and other countries showing measurable outcomes. Visit our <a href="/blog.html">blog</a> or <a href="/solutions/">solutions pages</a> for real-world examples, or <a href="/contact.html">contact us</a> for detailed case studies.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- Still Have Questions? -->
+                <div class="faq-category">
+                    <div style="background: #f0f8ff; padding: 2rem; border-radius: 8px; text-align: center;">
+                        <h3 style="margin-top: 0; color: #003d82;">Didn't Find Your Answer?</h3>
+                        <p>Our team is here to help. Reach out with your questions.</p>
+                        <a href="/contact.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SelNexa Health. <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></p>
+        </div>
+    </footer>
+
+    <script src="/js/home.js" defer></script>
+</body>
+</html>

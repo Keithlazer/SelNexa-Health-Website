@@ -1,0 +1,118 @@
+/* ===== BROWSER CACHING HEADERS ===== */
+/* Configure in .htaccess or server config */
+/*
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|woff|woff2|ttf|eot|svg)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>
+
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+<FilesMatch "\.(html)$">
+    Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+*/
+
+/* ===== IMAGE OPTIMIZATION ===== */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lazy loading support */
+img[loading="lazy"] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== FONT LOADING ===== */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Inter'), url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
+
+/* ===== CRITICAL CSS ===== */
+/* Hero section styles for above-the-fold rendering */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #003d82 0%, #0056b3 100%);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== LAZY LOADING FOR SCRIPTS ===== */
+script[defer] {
+    /* Scripts loaded after page render */
+}
+
+/* ===== PRELOAD & PREFETCH ===== */
+/*
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+*/
+
+/* ===== MEDIA QUERY OPTIMIZATION ===== */
+/* Load non-critical CSS on demand */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* ===== SERVICE WORKER & OFFLINE SUPPORT ===== */
+body.offline-mode {
+    opacity: 0.8;
+}
+
+body.offline-mode::after {
+    content: 'You are offline. Some features may be limited.';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #f39c12;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* ===== WEB VITALS OPTIMIZATION ===== */
+/* Largest Contentful Paint (LCP) */
+.lcp-element {
+    contain: layout style paint;
+}
+
+/* Cumulative Layout Shift (CLS) */
+.hero, .section, .card {
+    contain: layout;
+}
+
+/* First Input Delay (FID) */
+button, a, input {
+    will-change: transform;
+}

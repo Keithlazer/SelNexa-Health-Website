@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Providers | SelNexa Health – Find Our Doctors & Specialists</title>
+    <meta name="description" content="Meet SelNexa Health's network of healthcare providers. Book consultations with experienced doctors, specialists, and telemedicine providers.">
+    <meta name="keywords" content="doctors, healthcare providers, specialists, consultations, telemedicine, medical professionals">
+    <meta property="og:title" content="Healthcare Providers | SelNexa Health">
+    <meta property="og:description" content="Connect with experienced healthcare providers through SelNexa Health's telemedicine network.">
+    <meta property="og:url" content="https://www.selnexahealth.com/doctors.html">
+    <link rel="canonical" href="https://www.selnexahealth.com/doctors.html">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/home.css">
+    <style>
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .provider-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .provider-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        .provider-photo {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #003d82 0%, #0056b3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+        .provider-content {
+            padding: 1.5rem;
+        }
+        .provider-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #003d82;
+            margin: 0;
+        }
+        .provider-specialty {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0.5rem 0;
+        }
+        .provider-location {
+            font-size: 0.85rem;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .provider-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+            margin: 1rem 0;
+        }
+        .provider-credentials {
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 0.75rem;
+            margin-top: 1rem;
+        }
+        .provider-credentials strong {
+            color: #003d82;
+        }
+        .provider-availability {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #27ae60;
+            margin: 1rem 0;
+            font-weight: 600;
+        }
+        .provider-availability i {
+            color: #27ae60;
+        }
+        .provider-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        .provider-actions button,
+        .provider-actions a {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .btn-consult {
+            background: #003d82;
+            color: white;
+        }
+        .btn-consult:hover {
+            background: #002a5a;
+        }
+        .btn-profile {
+            background: #f0f0f0;
+            color: #003d82;
+            border: 1px solid #e0e0e0;
+        }
+        .btn-profile:hover {
+            background: #e8e8e8;
+        }
+        .provider-filter {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        .filter-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .filter-group label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" width="120" height="60">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="/solutions/">Solutions</a></li>
+                    <li><a href="/for-funders.html">For Funders</a></li>
+                    <li><a href="/blog.html">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <h1>Healthcare Providers</h1>
+                <p>Connect with experienced doctors, specialists, and nurses. Book in-person consultations or secure video consultations anytime, anywhere.</p>
+            </div>
+        </section>
+
+        <!-- Filter -->
+        <section class="section">
+            <div class="container">
+                <div class="provider-filter">
+                    <div class="filter-group">
+                        <div>
+                            <label for="specialty">Specialty</label>
+                            <select id="specialty">
+                                <option value="">All Specialties</option>
+                                <option value="general">General Practice</option>
+                                <option value="pediatrics">Pediatrics</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="psychiatry">Psychiatry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="location">Location</label>
+                            <select id="location">
+                                <option value="">All Locations</option>
+                                <option value="harare">Harare, Zimbabwe</option>
+                                <option value="bulawayo">Bulawayo, Zimbabwe</option>
+                                <option value="lusaka">Lusaka, Zambia</option>
+                                <option value="telemedicine">Telemedicine (Online)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="availability">Availability</label>
+                            <select id="availability">
+                                <option value="">Any Time</option>
+                                <option value="today">Available Today</option>
+                                <option value="this-week">This Week</option>
+                                <option value="online">Online Consultations</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Providers -->
+        <section class="section">
+            <div class="container">
+                <div class="provider-grid">
+                    <!-- Provider 1 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. Amara Okonkwo</h3>
+                            <p class="provider-specialty">General Practice & Family Medicine</p>
+                            <p class="provider-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lagos, Nigeria
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Available Today
+                            </p>
+                            <p class="provider-bio">Dr. Okonkwo is a family medicine physician with 12 years of experience. She specializes in preventive care and chronic disease management.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of Lagos | <strong>Certified:</strong> West African College of Physicians
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider 2 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. Sipho Mthembu</h3>
+                            <p class="provider-specialty">Emergency Medicine & Trauma</p>
+                            <p class="provider-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Johannesburg, South Africa
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Available This Week
+                            </p>
+                            <p class="provider-bio">Dr. Mthembu leads the Emergency Department at a major teaching hospital. He has expertise in acute trauma and critical care stabilization.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of the Witwatersrand | <strong>Certified:</strong> South African Emergency Medicine Board
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider 3 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. Nomsa Dlamini</h3>
+                            <p class="provider-specialty">Pediatrics & Child Health</p>
+                            <p class="provider-location">
+                                <i class="fas fa-video"></i>
+                                Telemedicine (Online)
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Online Consultations
+                            </p>
+                            <p class="provider-bio">Dr. Dlamini specializes in pediatric care and child development. She provides remote consultations globally and focuses on underserved communities.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of Cape Town | <strong>Specialist:</strong> Pediatric Medicine
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider 4 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. James Mbeki</h3>
+                            <p class="provider-specialty">Cardiology & Internal Medicine</p>
+                            <p class="provider-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Harare, Zimbabwe
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Available Today
+                            </p>
+                            <p class="provider-bio">Dr. Mbeki is a cardiologist with 15+ years of experience. He specializes in hypertension management and acute cardiac care.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of Zimbabwe | <strong>Fellow:</strong> African College of Cardiology
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider 5 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. Prosper Mwale</h3>
+                            <p class="provider-specialty">Orthopedic Surgery</p>
+                            <p class="provider-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Lusaka, Zambia
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Available This Week
+                            </p>
+                            <p class="provider-bio">Dr. Mwale is an orthopedic surgeon specializing in joint replacement, sports medicine, and trauma orthopedics.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of Zambia | <strong>Fellowship:</strong> British Orthopedic Association
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider 6 -->
+                    <div class="provider-card">
+                        <div class="provider-photo">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="provider-content">
+                            <h3 class="provider-name">Dr. Jennifer Mukai</h3>
+                            <p class="provider-specialty">Mental Health & Psychiatry</p>
+                            <p class="provider-location">
+                                <i class="fas fa-video"></i>
+                                Telemedicine (Online)
+                            </p>
+                            <p class="provider-availability">
+                                <i class="fas fa-check-circle"></i>
+                                Online Consultations
+                            </p>
+                            <p class="provider-bio">Dr. Mukai is a psychiatrist with experience in community mental health, trauma therapy, and crisis intervention.</p>
+                            <p class="provider-credentials">
+                                <strong>MD:</strong> University of Nairobi | <strong>Specialist:</strong> Psychiatry & Mental Health
+                            </p>
+                            <div class="provider-actions">
+                                <a href="/#beta" class="btn-consult">Book Consultation</a>
+                                <a href="#" class="btn-profile">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Box -->
+        <section class="section">
+            <div class="container" style="background: #f0f8ff; padding: 2rem; border-radius: 8px; border-left: 4px solid #003d82;">
+                <h3 style="color: #003d82; margin-top: 0;">How Consultations Work</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h4 style="color: #003d82;"><i class="fas fa-search" style="margin-right: 0.5rem;"></i>Find & Book</h4>
+                        <p>Browse our provider directory, check availability, and book a consultation at your preferred time.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #003d82;"><i class="fas fa-video" style="margin-right: 0.5rem;"></i>In-Person or Virtual</h4>
+                        <p>Choose in-person appointments at partnered clinics or secure video consultations from home.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #003d82;"><i class="fas fa-lock" style="margin-right: 0.5rem;"></i>Secure & Private</h4>
+                        <p>All consultations are HIPAA-compliant, encrypted, and your medical records are kept private and secure.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #003d82;"><i class="fas fa-prescription-bottle" style="margin-right: 0.5rem;"></i>Prescriptions</h4>
+                        <p>Receive digital prescriptions that you can fill at local pharmacies or through our pharmacy partners.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta">
+            <div class="container">
+                <h2>Connect with a Healthcare Provider Today</h2>
+                <p>Get expert medical advice when you need it, where you are.</p>
+                <div class="cta-buttons">
+                    <a href="/#beta" class="btn btn-primary">Book a Consultation</a>
+                    <a href="/solutions/telemedicine.html" class="btn btn-outline">Learn About Telemedicine</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SelNexa Health. <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></p>
+        </div>
+    </footer>
+
+    <script src="/js/home.js" defer></script>
+</body>
+</html>
