@@ -224,6 +224,9 @@ a:hover {
     color: var(--color-neutral-white);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-md);
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .nav-link.cta-nav:hover {
@@ -531,6 +534,11 @@ section {
 .problem-icon {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
+    color: var(--color-primary-teal);
+}
+
+.problem-icon i {
+    display: inline-block;
 }
 
 .problem-card h3 {
@@ -625,6 +633,11 @@ section {
 
 .feature-icon {
     font-size: 3rem;
+    color: var(--color-primary-teal);
+}
+
+.feature-icon i {
+    display: inline-block;
 }
 
 /* ============================================
@@ -656,6 +669,11 @@ section {
 .step-icon {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
+    color: var(--color-primary-teal);
+}
+
+.step-icon i {
+    display: inline-block;
 }
 
 .timeline-step h3 {
@@ -703,6 +721,11 @@ section {
 .feature-content h3 {
     color: var(--color-primary-dark);
     margin-bottom: var(--spacing-md);
+}
+
+.feature-content h3 i {
+    margin-right: var(--spacing-sm);
+    color: var(--color-primary-teal);
 }
 
 .feature-content p {
@@ -828,6 +851,14 @@ section {
 
 .rating {
     font-size: 1.25rem;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.rating i {
+    display: inline-block;
 }
 
 /* ============================================
@@ -859,7 +890,6 @@ section {
     text-align: center;
     transition: all var(--transition-base);
 }
-}
 
 .africa-card:hover {
     background: rgba(255, 255, 255, 0.15);
@@ -869,6 +899,11 @@ section {
 .africa-icon {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
+    color: var(--color-neutral-white);
+}
+
+.africa-icon i {
+    display: inline-block;
 }
 
 .africa-card h3 {
@@ -913,6 +948,11 @@ section {
 .tech-icon {
     font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
+    color: var(--color-primary-teal);
+}
+
+.tech-icon i {
+    display: inline-block;
 }
 
 .tech-card h3 {
@@ -1050,11 +1090,30 @@ section {
 .social-links {
     display: flex;
     gap: var(--spacing-lg);
+    align-items: center;
 }
 
 .social-links a {
     color: var(--color-accent-electric);
-    font-size: var(--fs-small);
+    font-size: 1.25rem;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(144, 224, 239, 0.1);
+}
+
+.social-links a:hover {
+    color: var(--color-neutral-white);
+    background: var(--color-primary-teal);
+    transform: translateY(-2px);
+}
+
+.social-links a i {
+    display: inline-block;
 }
 
 /* ============================================
@@ -1298,10 +1357,27 @@ section {
         box-shadow: var(--shadow-lg);
         padding: var(--spacing-lg);
         gap: var(--spacing-md);
+        align-items: stretch;
     }
     
     .nav-menu.active {
         left: 0;
+    }
+    
+    .nav-menu .nav-item {
+        width: 100%;
+    }
+    
+    .nav-menu .nav-link {
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: var(--spacing-sm);
+    }
+    
+    .nav-menu .nav-link.cta-nav {
+        width: 100%;
+        margin: var(--spacing-sm) 0;
     }
     
     .dropdown-menu {
