@@ -1,105 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Funders & Partners – SelNexa Health</title>
-  <meta name="description" content="Information for global health funders and partners: data management, open-access policy, impact reports, and compliance at SelNexa Health.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Main Styles -->
-  <link rel="stylesheet" href="/styles/selnexa-main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | SelNexa Health - Healthcare Innovation Insights</title>
+    <meta name="description" content="Read the latest insights on AI-powered healthcare, African healthcare challenges, and digital transformation.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
-  <div data-include="header"></div>
-  <main id="main-content" role="main">
-  <section class="fade-in funders-top funders-hero">
-      <div class="container">
-        <div class="section-title">
-          <h1 class="funders-title">For Funders & Partners</h1>
-          <p class="funders-intro">SelNexa Health is committed to global best practices in research, data management, and open-access publication. We welcome collaboration with international funders, research institutions, and national health systems.</p>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/founders.html" class="nav-link">Founders</a></li>
+                <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link cta-nav">Contact</a></li>
+            </ul>
         </div>
-
-        <ul class="funders-list">
-          <li><strong>Open-Access Publication:</strong> All project results are published in open-access journals and publicly disclosed.</li>
-          <li><strong>Data Management & Sharing:</strong> Our policies align with WHO and global funder standards. Data is securely managed, shared ethically, and available for secondary analysis.</li>
-          <li><strong>Impact Reporting:</strong> Key performance indicators (KPIs) are tracked and reported quarterly, including patient outcomes, system efficiency, and equity of access.</li>
-          <li><strong>Compliance:</strong> Our platform is HIPAA-compliant, SSL-certified, and meets WCAG 2.1 AA accessibility standards.</li>
-          <li><strong>Partnership Model:</strong> We co-design research and implementation with local stakeholders, embedding projects within national health infrastructure.</li>
-        </ul>
-
-        <h2>Recent Impact</h2>
-        <div class="card">
-          <h3 class="funders-card-title">STAR Case Study: Rural Clinics in Zimbabwe</h3>
-          <p class="funders-card-desc"><strong>Situation:</strong> Rural clinics in Zimbabwe faced fragmented patient records and limited diagnostic access.<br>
-          <strong>Task:</strong> Integrate a digital health platform to improve data access and care coordination.<br>
-          <strong>Action:</strong> Co-designed and deployed SelNexa Health’s platform with local clinicians, embedding robust monitoring and evaluation.<br>
-          <strong>Result:</strong> <span class="funders-card-result">30% improvement in diagnostic turnaround time, 20% increase in patient follow-up rates</span>, as measured by national health KPIs.</p>
+        <div class="navbar-progress"></div>
+    </nav>
+    
+    <main id="main-content">
+        <section class="hero" id="blog-hero">
+            <div class="hero-background">
+                <div class="mesh-gradient"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">SelNexa Health Blog</h1>
+                <p class="hero-subtitle">Insights on AI, healthcare innovation, and African digital transformation</p>
+            </div>
+        </section>
+        
+        <section class="blog-section">
+            <div class="container">
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-header">
+                            <span class="blog-category"><i class="fas fa-tag"></i> AI & Healthcare</span>
+                            <h3><a href="#">The Future of AI in African Healthcare</a></h3>
+                        </div>
+                        <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing patient care and diagnostics across Africa.</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> December 4, 2024</span>
+                            <span><i class="fas fa-user"></i> SelNexa Team</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-header">
+                            <span class="blog-category"><i class="fas fa-tag"></i> Healthcare Tech</span>
+                            <h3><a href="#">Blockchain Security in Patient Data Management</a></h3>
+                        </div>
+                        <p class="blog-excerpt">Understanding how blockchain technology ensures patient privacy and data integrity.</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> December 1, 2024</span>
+                            <span><i class="fas fa-user"></i> SelNexa Team</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-header">
+                            <span class="blog-category"><i class="fas fa-tag"></i> Case Study</span>
+                            <h3><a href="#">Reducing Wait Times: A Hospital Success Story</a></h3>
+                        </div>
+                        <p class="blog-excerpt">How one African hospital reduced patient wait times by 47% using SelNexa solutions.</p>
+                        <div class="blog-meta">
+                            <span><i class="fas fa-calendar"></i> November 28, 2024</span>
+                            <span><i class="fas fa-user"></i> SelNexa Team</span>
+                        </div>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo">
+                    </div>
+                    <p>Transforming African healthcare with AI and blockchain technology.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/founders.html">Founders</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#security">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SelNexa Health. All rights reserved.</p>
+            </div>
         </div>
-
-        <h2>Our Partners</h2>
-        <div class="partners-grid card">
-          <div class="partner-logo"><img src="/styles/scripts/assets/partner-1.png" alt="Partner 1 logo" loading="lazy"></div>
-          <div class="partner-logo"><img src="/styles/scripts/assets/partner-2.png" alt="Partner 2 logo" loading="lazy"></div>
-          <div class="partner-logo"><img src="/styles/scripts/assets/partner-3.png" alt="Partner 3 logo" loading="lazy"></div>
-          <div class="partner-logo"><img src="/styles/scripts/assets/partner-4.png" alt="Partner 4 logo" loading="lazy"></div>
-        </div>
-
-        <h2>Impact Reports & Downloads</h2>
-        <div class="card">
-          <p>Download our latest impact and evaluation reports for funders and partners:</p>
-          <ul class="report-list">
-            <li><a href="/resources/selnexa-impact-2025.pdf" target="_blank" rel="noopener">SelNexa Impact Report 2025 (PDF)</a></li>
-            <li><a href="/resources/data-management-policy.pdf" target="_blank" rel="noopener">Data Management & Sharing Policy</a></li>
-            <li><a href="/resources/star-case-study.pdf" target="_blank" rel="noopener">STAR Case Study — Zimbabwe (Full PDF)</a></li>
-          </ul>
-        </div>
-
-        <h2>Frequently Asked Questions (Funders)</h2>
-        <div class="card faq-list">
-          <details>
-            <summary>How do you handle patient consent and data privacy?</summary>
-            <p>We follow internationally recognised consent frameworks and ensure data is anonymized for secondary analysis. Our systems support consent capture and revocation workflows.</p>
-          </details>
-          <details>
-            <summary>Can the platform integrate with national EMRs?</summary>
-            <p>Yes. SelNexa supports HL7/FHIR integration patterns and can connect via secure APIs to national EHR systems and health information exchanges.</p>
-          </details>
-          <details>
-            <summary>What are the typical KPIs you report to funders?</summary>
-            <p>We report patient outcomes, diagnostic turnaround, appointment adherence, system uptime, and equity indicators disaggregated by geography and demographics.</p>
-          </details>
-        </div>
-
-        <h2>Contact & Engagement</h2>
-        <form class="card funders-form" method="post" action="mailto:keithtafangombe@gmail.com">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-          <label for="organization">Organization:</label>
-          <input type="text" id="organization" name="organization" required>
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-          <button type="submit" class="btn">Submit Inquiry</button>
-        </form>
-
-        <div class="mt-8 text-xs text-gray-400 text-center">
-          <span class="funders-footer">SSL certificate and data protection badges displayed. See <a href="/privacy.html" class="underline">Privacy Policy</a> and <a href="/terms.html" class="underline">Terms of Use</a>.</span>
-        </div>
-      </div>
-    </section>
-  </main>
-  <script src="/js/selnexa-main.js" defer></script>
-  <script src="/js/home.js" defer></script>
-  <script src="/js/selnexa-main.js" defer></script>
-  <script src="/js/home.js" defer></script>
-  <script src="/js/include-loader.js" defer></script>
-
-  <div data-include="footer"></div>
-  <button id="backToTop" aria-label="Back to top" class="back-to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i><span class="sr-only">Back to top</span></button>
+    </footer>
+    
+    <script src="/js/main.js"></script>
 </body>
 </html>
