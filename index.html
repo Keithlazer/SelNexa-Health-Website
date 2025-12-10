@@ -159,26 +159,57 @@
             
             <div class="hero-visual">
                 <div class="hero-illustration">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Animated medical network illustration -->
-                        <circle cx="200" cy="200" r="150" fill="none" stroke="#00B4D8" stroke-width="2" opacity="0.3"/>
-                        <circle cx="200" cy="200" r="100" fill="none" stroke="#90E0EF" stroke-width="2" opacity="0.5"/>
-                        <circle cx="200" cy="200" r="50" fill="none" stroke="#0A2463" stroke-width="2"/>
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Futuristic health-tech orb">
+                        <defs>
+                            <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00B4D8"/>
+                                <stop offset="50%" stop-color="#4FD1C5"/>
+                                <stop offset="100%" stop-color="#6C63FF"/>
+                            </linearGradient>
+                            <radialGradient id="highlight" cx="35%" cy="30%" r="60%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+                                <stop offset="40%" stop-color="rgba(255,255,255,0.35)"/>
+                                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+                            </radialGradient>
+                            <radialGradient id="shadow" cx="50%" cy="70%" r="60%">
+                                <stop offset="0%" stop-color="rgba(0,0,0,0.18)"/>
+                                <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+                            </radialGradient>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M20 0 H0 V20" fill="none" stroke="rgba(10,36,99,0.05)" stroke-width="1"/>
+                            </pattern>
+                        </defs>
                         
-                        <!-- Center node -->
-                        <circle cx="200" cy="200" r="8" fill="#FF6B6B"/>
+                        <!-- Background grid -->
+                        <rect width="400" height="400" fill="url(#grid)"/>
                         
-                        <!-- Outer nodes -->
-                        <circle cx="200" cy="80" r="6" fill="#00B4D8"/>
-                        <circle cx="320" cy="200" r="6" fill="#00B4D8"/>
-                        <circle cx="200" cy="320" r="6" fill="#00B4D8"/>
-                        <circle cx="80" cy="200" r="6" fill="#00B4D8"/>
+                        <!-- Drop shadow -->
+                        <ellipse cx="200" cy="260" rx="110" ry="30" fill="url(#shadow)" />
                         
-                        <!-- Connecting lines -->
-                        <line x1="200" y1="200" x2="200" y2="80" stroke="#90E0EF" stroke-width="1" opacity="0.6"/>
-                        <line x1="200" y1="200" x2="320" y2="200" stroke="#90E0EF" stroke-width="1" opacity="0.6"/>
-                        <line x1="200" y1="200" x2="200" y2="320" stroke="#90E0EF" stroke-width="1" opacity="0.6"/>
-                        <line x1="200" y1="200" x2="80" y2="200" stroke="#90E0EF" stroke-width="1" opacity="0.6"/>
+                        <!-- Orb -->
+                        <circle cx="200" cy="200" r="120" fill="url(#orbGradient)"/>
+                        <circle cx="200" cy="200" r="110" fill="url(#highlight)"/>
+                        
+                        <!-- Connectivity lines -->
+                        <g stroke="rgba(255,255,255,0.55)" stroke-width="1.5" opacity="0.9">
+                            <path d="M120 180 C170 130, 230 130, 280 180"/>
+                            <path d="M120 220 C170 270, 230 270, 280 220"/>
+                            <path d="M150 150 C200 110, 250 150, 220 200"/>
+                            <path d="M150 250 C200 290, 250 250, 220 200"/>
+                            <path d="M140 200 H260"/>
+                        </g>
+                        
+                        <!-- Nodes -->
+                        <g fill="#FFFFFF" stroke="#6C63FF" stroke-width="1">
+                            <circle cx="120" cy="180" r="6"/>
+                            <circle cx="280" cy="180" r="6"/>
+                            <circle cx="120" cy="220" r="6"/>
+                            <circle cx="280" cy="220" r="6"/>
+                            <circle cx="200" cy="140" r="7"/>
+                            <circle cx="200" cy="260" r="7"/>
+                            <circle cx="170" cy="200" r="5"/>
+                            <circle cx="230" cy="200" r="5"/>
+                        </g>
                     </svg>
                 </div>
             </div>
