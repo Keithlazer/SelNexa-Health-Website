@@ -163,53 +163,79 @@
                         <defs>
                             <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#00B4D8"/>
-                                <stop offset="50%" stop-color="#4FD1C5"/>
+                                <stop offset="55%" stop-color="#4FD1C5"/>
                                 <stop offset="100%" stop-color="#6C63FF"/>
                             </linearGradient>
-                            <radialGradient id="highlight" cx="35%" cy="30%" r="60%">
-                                <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-                                <stop offset="40%" stop-color="rgba(255,255,255,0.35)"/>
+                            <radialGradient id="orbHighlight" cx="35%" cy="30%" r="55%">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+                                <stop offset="35%" stop-color="rgba(255,255,255,0.35)"/>
                                 <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
                             </radialGradient>
-                            <radialGradient id="shadow" cx="50%" cy="70%" r="60%">
+                            <radialGradient id="orbGlow" cx="50%" cy="50%" r="70%">
+                                <stop offset="0%" stop-color="rgba(79,209,197,0.35)"/>
+                                <stop offset="100%" stop-color="rgba(108,99,255,0)"/>
+                            </radialGradient>
+                            <radialGradient id="shadow" cx="50%" cy="75%" r="60%">
                                 <stop offset="0%" stop-color="rgba(0,0,0,0.18)"/>
                                 <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
                             </radialGradient>
-                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                                <path d="M20 0 H0 V20" fill="none" stroke="rgba(10,36,99,0.05)" stroke-width="1"/>
+                            <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse">
+                                <path d="M22 0 H0 V22" fill="none" stroke="rgba(10,36,99,0.04)" stroke-width="1"/>
                             </pattern>
+                            <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="rgba(0,180,216,0.0)"/>
+                                <stop offset="50%" stop-color="rgba(111,207,255,0.5)"/>
+                                <stop offset="100%" stop-color="rgba(108,99,255,0.0)"/>
+                            </linearGradient>
+                            <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="6" />
+                            </filter>
                         </defs>
                         
-                        <!-- Background grid -->
+                        <!-- Background -->
+                        <rect width="400" height="400" fill="#fff"/>
                         <rect width="400" height="400" fill="url(#grid)"/>
                         
-                        <!-- Drop shadow -->
-                        <ellipse cx="200" cy="260" rx="110" ry="30" fill="url(#shadow)" />
+                        <!-- Soft shadow -->
+                        <ellipse cx="200" cy="265" rx="115" ry="32" fill="url(#shadow)" filter="url(#softBlur)"/>
                         
-                        <!-- Orb -->
-                        <circle cx="200" cy="200" r="120" fill="url(#orbGradient)"/>
-                        <circle cx="200" cy="200" r="110" fill="url(#highlight)"/>
+                        <!-- Halo glow -->
+                        <circle cx="200" cy="200" r="135" fill="url(#orbGlow)" filter="url(#softBlur)"/>
                         
-                        <!-- Connectivity lines -->
-                        <g stroke="rgba(255,255,255,0.55)" stroke-width="1.5" opacity="0.9">
-                            <path d="M120 180 C170 130, 230 130, 280 180"/>
-                            <path d="M120 220 C170 270, 230 270, 280 220"/>
-                            <path d="M150 150 C200 110, 250 150, 220 200"/>
-                            <path d="M150 250 C200 290, 250 250, 220 200"/>
-                            <path d="M140 200 H260"/>
+                        <!-- Orb body -->
+                        <circle cx="200" cy="200" r="125" fill="url(#orbGradient)"/>
+                        <circle cx="200" cy="200" r="115" fill="url(#orbHighlight)"/>
+                        
+                        <!-- Outer glossy ring -->
+                        <circle cx="200" cy="200" r="145" fill="none" stroke="url(#ringGradient)" stroke-width="5" opacity="0.8"/>
+                        
+                        <!-- Connectivity mesh -->
+                        <g stroke="rgba(255,255,255,0.65)" stroke-width="1.5" opacity="0.95">
+                            <path d="M125 180 C175 130, 225 130, 275 180"/>
+                            <path d="M125 220 C175 270, 225 270, 275 220"/>
+                            <path d="M150 155 C205 115, 245 150, 225 200"/>
+                            <path d="M150 245 C205 285, 245 250, 225 200"/>
+                            <path d="M145 200 H255"/>
+                            <path d="M170 175 L230 225"/>
+                            <path d="M170 225 L230 175"/>
                         </g>
                         
                         <!-- Nodes -->
-                        <g fill="#FFFFFF" stroke="#6C63FF" stroke-width="1">
-                            <circle cx="120" cy="180" r="6"/>
-                            <circle cx="280" cy="180" r="6"/>
-                            <circle cx="120" cy="220" r="6"/>
-                            <circle cx="280" cy="220" r="6"/>
+                        <g fill="#FFFFFF" stroke="#6C63FF" stroke-width="1.5">
+                            <circle cx="125" cy="180" r="6"/>
+                            <circle cx="275" cy="180" r="6"/>
+                            <circle cx="125" cy="220" r="6"/>
+                            <circle cx="275" cy="220" r="6"/>
                             <circle cx="200" cy="140" r="7"/>
                             <circle cx="200" cy="260" r="7"/>
-                            <circle cx="170" cy="200" r="5"/>
-                            <circle cx="230" cy="200" r="5"/>
+                            <circle cx="170" cy="200" r="5.5"/>
+                            <circle cx="230" cy="200" r="5.5"/>
+                            <circle cx="200" cy="200" r="6.5" fill="#FFFFFF" stroke="#00B4D8" stroke-width="2"/>
                         </g>
+                        
+                        <!-- Specular sweep -->
+                        <path d="M120 160 Q200 120 280 160" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+                        <path d="M140 240 Q200 280 260 240" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
                     </svg>
                 </div>
             </div>
