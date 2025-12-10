@@ -1,525 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointments | SelNexa Health – Schedule Your Healthcare Visit</title>
-    <meta name="description" content="Book appointments easily with SelNexa Health. Schedule in-person visits, telemedicine consultations, or diagnostic services online.">
-    <meta name="keywords" content="appointment booking, schedule consultation, telemedicine, healthcare appointments, patient portal">
-    <meta property="og:title" content="Book Appointments | SelNexa Health">
-    <meta property="og:description" content="Schedule healthcare appointments online. Choose your provider, time, and consultation type.">
-    <meta property="og:url" content="https://www.selnexahealth.com/appointments.html">
-    <link rel="canonical" href="https://www.selnexahealth.com/appointments.html">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/home.css">
-    <style>
-        .booking-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .booking-step {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .booking-step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .step-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .step-number {
-            background: #003d82;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        .step-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #003d82;
-            margin: 0;
-        }
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        .appointment-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .appointment-type {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        .appointment-type:hover {
-            border-color: #003d82;
-            background: #f0f8ff;
-        }
-        .appointment-type input[type="radio"] {
-            display: none;
-        }
-        .appointment-type input[type="radio"]:checked + .appointment-type-label {
-            color: #003d82;
-            font-weight: 700;
-        }
-        .appointment-type-label {
-            display: block;
-            font-weight: 600;
-            color: #333;
-        }
-        .appointment-type-desc {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 0.5rem;
-        }
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-        .time-slot {
-            padding: 0.75rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .time-slot:hover {
-            border-color: #003d82;
-            background: #f0f8ff;
-        }
-        .time-slot.available {
-            background: #f5f5f5;
-        }
-        .time-slot.available:hover {
-            background: #e8f4ff;
-        }
-        .time-slot.unavailable {
-            background: #f0f0f0;
-            color: #999;
-            cursor: not-allowed;
-        }
-        .booking-summary {
-            background: #f0f8ff;
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-top: 2rem;
-            border-left: 4px solid #003d82;
-        }
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-        }
-        .summary-label {
-            font-weight: 600;
-            color: #333;
-        }
-        .summary-value {
-            color: #003d82;
-        }
-        .booking-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        .booking-actions button {
-            flex: 1;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-submit {
-            background: #003d82;
-            color: white;
-        }
-        .btn-submit:hover {
-            background: #002a5a;
-        }
-        .btn-cancel {
-            background: #f0f0f0;
-            color: #333;
-            border: 1px solid #e0e0e0;
-        }
-        .btn-cancel:hover {
-            background: #e8e8e8;
-        }
-        .appointment-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .info-card {
-            background: #fff;
-            padding: 1.5rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .info-card h3 {
-            color: #003d82;
-            margin-top: 0;
-        }
-        .info-card ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-        .info-card li {
-            margin-bottom: 0.5rem;
-        }
-    </style>
+    <title>Book Appointment | SelNexa Health</title>
+    <meta name="description" content="Schedule a demo or appointment with SelNexa Health. Get personalized consultation for your healthcare facility.">
+    <link rel="canonical" href="https://www.selnexahealth.com/appointments">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo">
-                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" width="120" height="60">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
                 </a>
-                <ul class="nav-links">
-                    <li><a href="/solutions/">Solutions</a></li>
-                    <li><a href="/for-funders.html">For Funders</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Solutions <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column"><h3>AI Diagnostics</h3><p>Powered by machine learning for accurate, rapid diagnosis</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Electronic Health Records</h3><p>Blockchain-secured patient data with complete privacy</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Queue Management</h3><p>Smart scheduling reducing wait times by 47%</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Analytics Dashboard</h3><p>Real-time insights for better decision making</p><a href="/" class="learn-more">Learn More →</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/blog.html" class="dropdown-item">Blog</a>
+                        <a href="/" class="dropdown-item">Case Studies</a>
+                        <a href="/" class="dropdown-item">Documentation</a>
+                        <a href="/" class="dropdown-item">Webinars</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-    </header>
-
+        <div class="navbar-progress"></div>
+    </nav>
+    
     <main id="main-content">
-        <!-- Hero -->
-        <section class="hero">
-            <div class="container">
-                <h1>Book Your Appointment</h1>
-                <p>Schedule an in-person visit, telemedicine consultation, or diagnostic service. Fast, easy, and secure.</p>
+        <section class="hero" id="hero">
+            <div class="hero-background"><div class="mesh-gradient"></div></div>
+            <div class="hero-content">
+                <div class="hero-overline">SCHEDULE YOUR DEMO</div>
+                <h1 class="hero-title">Book Your Personalized Demo</h1>
+                <p class="hero-subtitle">See how SelNexa Health can transform your healthcare facility. Our team will walk you through all features and answer your questions.</p>
             </div>
         </section>
-
-        <!-- Appointment Info -->
-        <section class="section">
+        
+        <section class="appointment-section">
             <div class="container">
-                <div class="appointment-info">
-                    <div class="info-card">
-                        <h3><i class="fas fa-check-circle" style="margin-right: 0.5rem; color: #27ae60;"></i>Easy Scheduling</h3>
-                        <p>Choose your provider, appointment type, date, and time in just a few clicks. Instant confirmation.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3><i class="fas fa-shield-alt" style="margin-right: 0.5rem; color: #27ae60;"></i>Secure & Private</h3>
-                        <p>Your health information is encrypted and HIPAA-compliant. Only your healthcare providers can see your details.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3><i class="fas fa-bell" style="margin-right: 0.5rem; color: #27ae60;"></i>Smart Reminders</h3>
-                        <p>Get SMS and email reminders so you never miss an appointment. Cancel or reschedule anytime.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Booking Form -->
-        <section class="section">
-            <div class="container">
-                <div class="booking-container">
-                    <form id="appointmentForm">
-                        <!-- Step 1: Appointment Type -->
-                        <div class="booking-step">
-                            <div class="step-header">
-                                <div class="step-number">1</div>
-                                <h3 class="step-title">Select Appointment Type</h3>
-                            </div>
-                            <div class="appointment-types">
-                                <label class="appointment-type">
-                                    <input type="radio" name="appointmentType" value="telemedicine" checked>
-                                    <span class="appointment-type-label">Video Consultation</span>
-                                    <span class="appointment-type-desc">Talk to a doctor via secure video</span>
-                                </label>
-                                <label class="appointment-type">
-                                    <input type="radio" name="appointmentType" value="in-person">
-                                    <span class="appointment-type-label">In-Person Visit</span>
-                                    <span class="appointment-type-desc">Visit a clinic or hospital</span>
-                                </label>
-                                <label class="appointment-type">
-                                    <input type="radio" name="appointmentType" value="diagnostic">
-                                    <span class="appointment-type-label">Diagnostic Test</span>
-                                    <span class="appointment-type-desc">Lab work, imaging, etc.</span>
-                                </label>
-                            </div>
+                <div class="section-header"><h2>Demo Booking Form</h2><p>Fill out the form below and we'll confirm your appointment within 24 hours</p></div>
+                <div class="appointment-container">
+                    <form class="appointment-form">
+                        <div class="form-group">
+                            <label for="fname">Full Name *</label>
+                            <input type="text" id="fname" name="name" required>
                         </div>
-
-                        <!-- Step 2: Provider & Specialty -->
-                        <div class="booking-step">
-                            <div class="step-header">
-                                <div class="step-number">2</div>
-                                <h3 class="step-title">Choose Provider or Specialty</h3>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="specialty">Specialty</label>
-                                    <select id="specialty" name="specialty" required>
-                                        <option value="">-- Select Specialty --</option>
-                                        <option value="general">General Practice</option>
-                                        <option value="pediatrics">Pediatrics</option>
-                                        <option value="cardiology">Cardiology</option>
-                                        <option value="orthopedics">Orthopedics</option>
-                                        <option value="psychiatry">Psychiatry</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="provider">Preferred Provider (Optional)</label>
-                                    <select id="provider" name="provider">
-                                        <option value="">-- Any Available Provider --</option>
-                                        <option value="dr-amara">Dr. Amara Okonkwo</option>
-                                        <option value="dr-sipho">Dr. Sipho Mthembu</option>
-                                        <option value="dr-nomsa">Dr. Nomsa Dlamini</option>
-                                        <option value="dr-james">Dr. James Mbeki</option>
-                                    </select>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="femail">Email Address *</label>
+                            <input type="email" id="femail" name="email" required>
                         </div>
-
-                        <!-- Step 3: Date & Time -->
-                        <div class="booking-step">
-                            <div class="step-header">
-                                <div class="step-number">3</div>
-                                <h3 class="step-title">Select Date & Time</h3>
-                            </div>
-                            <div class="form-group">
-                                <label for="date">Preferred Date</label>
-                                <input type="date" id="date" name="date" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Available Time Slots</label>
-                                <div class="time-slots">
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="09:00" required>
-                                        09:00 AM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="09:30">
-                                        09:30 AM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="10:00">
-                                        10:00 AM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="10:30">
-                                        10:30 AM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="14:00">
-                                        02:00 PM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="14:30">
-                                        02:30 PM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="15:00">
-                                        03:00 PM
-                                    </label>
-                                    <label class="time-slot available">
-                                        <input type="radio" name="time" value="15:30">
-                                        03:30 PM
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="fphone">Phone Number *</label>
+                            <input type="tel" id="fphone" name="phone" required>
                         </div>
-
-                        <!-- Step 4: Your Information -->
-                        <div class="booking-step">
-                            <div class="step-header">
-                                <div class="step-number">4</div>
-                                <h3 class="step-title">Your Information</h3>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="reason">Reason for Visit</label>
-                                <textarea id="reason" name="reason" placeholder="Describe your symptoms or reason for visiting..." required></textarea>
-                            </div>
+                        <div class="form-group">
+                            <label for="ffacility">Facility Name *</label>
+                            <input type="text" id="ffacility" name="facility_name" required>
                         </div>
-
-                        <!-- Appointment Summary -->
-                        <div class="booking-summary">
-                            <h4 style="margin-top: 0; color: #003d82;">Appointment Summary</h4>
-                            <div class="summary-row">
-                                <span class="summary-label">Type:</span>
-                                <span class="summary-value" id="summaryType">Video Consultation</span>
-                            </div>
-                            <div class="summary-row">
-                                <span class="summary-label">Date & Time:</span>
-                                <span class="summary-value" id="summaryDateTime">Not selected</span>
-                            </div>
-                            <div class="summary-row">
-                                <span class="summary-label">Duration:</span>
-                                <span class="summary-value">30 minutes</span>
-                            </div>
-                            <div class="summary-row">
-                                <span class="summary-label">Cost:</span>
-                                <span class="summary-value">$25 USD</span>
-                            </div>
+                        <div class="form-group">
+                            <label for="ftype">Facility Type *</label>
+                            <select id="ftype" name="facility_type" required>
+                                <option value="">Select...</option>
+                                <option value="hospital">Hospital</option>
+                                <option value="clinic">Clinic</option>
+                                <option value="health-center">Health Center</option>
+                                <option value="diagnostic-center">Diagnostic Center</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
-
-                        <!-- Booking Actions -->
-                        <div class="booking-actions">
-                            <button type="submit" class="btn-submit">
-                                <i class="fas fa-check" style="margin-right: 0.5rem;"></i>
-                                Confirm Appointment
-                            </button>
+                        <div class="form-group">
+                            <label for="fcountry">Country *</label>
+                            <select id="fcountry" name="country" required>
+                                <option value="">Select...</option>
+                                <option value="ZW">Zimbabwe</option>
+                                <option value="NG">Nigeria</option>
+                                <option value="KE">Kenya</option>
+                                <option value="ZA">South Africa</option>
+                                <option value="UG">Uganda</option>
+                                <option value="TZ">Tanzania</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
-
-                        <!-- Terms -->
-                        <div style="margin-top: 1.5rem; font-size: 0.85rem; color: #666;">
-                            <p>By booking this appointment, you agree to our <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a>. You will receive a confirmation email with joining details.</p>
+                        <div class="form-group">
+                            <label for="finterest">Primary Interest *</label>
+                            <select id="finterest" name="interest" required>
+                                <option value="">Select...</option>
+                                <option value="diagnostics">AI Diagnostics</option>
+                                <option value="queue">Queue Management</option>
+                                <option value="ehr">Blockchain EHR</option>
+                                <option value="analytics">Analytics Dashboard</option>
+                                <option value="all">All Features</option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label for="fmessage">Additional Information</label>
+                            <textarea id="fmessage" name="message" rows="4"></textarea>
+                        </div>
+                        <label class="checkbox">
+                            <input type="checkbox" name="privacy" required>
+                            I agree to the privacy policy
+                        </label>
+                        <button type="submit" class="btn btn-primary">Book Appointment →</button>
                     </form>
                 </div>
             </div>
         </section>
-
-        <!-- FAQ for Appointments -->
-        <section class="section">
+        
+        <section class="problems-section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Appointment FAQs</h2>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div>
-                        <h4 style="color: #003d82;">What if I need to cancel?</h4>
-                        <p>You can cancel or reschedule appointments up to 24 hours before. After that, a cancellation fee may apply. Contact support for special cases.</p>
+                <div class="section-header"><h2>What to Expect</h2></div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">📋</div>
+                        <h3>Initial Consultation</h3>
+                        <p>Understand your facility's needs and challenges</p>
                     </div>
-                    <div>
-                        <h4 style="color: #003d82;">How do video consultations work?</h4>
-                        <p>You'll receive a secure video link via email. Join from your phone, tablet, or computer. Make sure you have a camera and microphone.</p>
+                    <div class="problem-card">
+                        <div class="problem-icon">🎯</div>
+                        <h3>Live Demo</h3>
+                        <p>See SelNexa in action with real-world scenarios</p>
                     </div>
-                    <div>
-                        <h4 style="color: #003d82;">Is my information secure?</h4>
-                        <p>Yes. All appointments and health data are encrypted and HIPAA-compliant. Only authorized healthcare providers can access your information.</p>
+                    <div class="problem-card">
+                        <div class="problem-icon">❓</div>
+                        <h3>Q&A Session</h3>
+                        <p>Ask questions and get expert answers</p>
                     </div>
-                    <div>
-                        <h4 style="color: #003d82;">Can I bring someone with me?</h4>
-                        <p>Yes. For in-person appointments, you can bring a family member. For telemedicine, you can ask a caregiver to join the video call.</p>
+                    <div class="problem-card">
+                        <div class="problem-icon">💼</div>
+                        <h3>Pricing Discussion</h3>
+                        <p>Explore flexible pricing options for your facility</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📅</div>
+                        <h3>Next Steps</h3>
+                        <p>Plan implementation timeline and training</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">🎁</div>
+                        <h3>Free Trial</h3>
+                        <p>30-day free trial with no credit card required</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- CTA -->
-        <section class="section cta">
+        
+        <section class="cta-section" id="cta">
+            <div class="cta-background"><div class="cta-gradient"></div></div>
             <div class="container">
-                <h2>Ready to Schedule?</h2>
-                <p>Book your appointment above or contact us if you have questions.</p>
-                <a href="/contact.html" class="btn btn-outline">Contact Support</a>
+                <div class="cta-content">
+                    <h2>Transform Your Healthcare Facility Today</h2>
+                    <p>Join 100+ facilities already using SelNexa Health</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="window.location.href='/contact.html'">Contact Support</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='/'">Back to Home</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
+    
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 SelNexa Health. <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></p>
+            <div class="footer-grid">
+                <div class="footer-column"><div class="footer-logo"><img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo"></div><p>Transforming African healthcare with AI and blockchain technology.</p></div>
+                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/">AI Diagnostics</a></li><li><a href="/">EHR System</a></li><li><a href="/">Queue Management</a></li><li><a href="/">Analytics</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About Us</a></li><li><a href="/">Careers</a></li><li><a href="/">Press</a></li><li><a href="/">Partners</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/">Case Studies</a></li><li><a href="/">Documentation</a></li><li><a href="/">API</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="/">Help Center</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/">Training</a></li><li><a href="/">System Status</a></li></ul></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/">Privacy Policy</a></li><li><a href="/">Terms of Service</a></li><li><a href="/">Security</a></li><li><a href="/">Compliance</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <div class="social-links"><a href="#linkedin" aria-label="LinkedIn">LinkedIn</a><a href="#twitter" aria-label="Twitter">Twitter</a><a href="#youtube" aria-label="YouTube">YouTube</a></div>
+            </div>
         </div>
     </footer>
-
-    <script src="/js/home.js" defer></script>
-    <script>
-        // Simple form handling
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for booking! Your appointment request has been submitted. You will receive a confirmation email shortly.');
-            this.reset();
-        });
-        
-        // Update summary as form changes
-        document.querySelectorAll('input[name="appointmentType"]').forEach(input => {
-            input.addEventListener('change', function() {
-                document.getElementById('summaryType').textContent = 
-                    this.value === 'telemedicine' ? 'Video Consultation' :
-                    this.value === 'in-person' ? 'In-Person Visit' : 'Diagnostic Test';
-            });
-        });
-        
-        document.getElementById('date').addEventListener('change', function() {
-            document.getElementById('summaryDateTime').textContent = this.value + ' (Time to be confirmed)';
-        });
-    </script>
+    
+    <script src="/js/main.js"></script>
 </body>
 </html>

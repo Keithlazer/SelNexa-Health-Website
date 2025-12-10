@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About SelNexa Health | Our Mission & Vision</title>
-    <meta name="description" content="Learn about SelNexa Health's mission to transform African healthcare with AI and blockchain technology.">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>About SelNexa Health | AI Healthcare Solutions for Africa</title>
+    <meta name="description" content="Learn about SelNexa Health's mission to transform African healthcare with AI and blockchain technology. Meet our team and discover our impact.">
+    <meta name="language" content="en">
+    <meta name="author" content="SelNexa Health">
+    <link rel="canonical" href="https://www.selnexahealth.com/about">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/styles/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -21,78 +27,208 @@
                     <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
                 </a>
             </div>
+            
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            
             <ul class="nav-menu">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Solutions <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column">
+                                <h3>AI Diagnostics</h3>
+                                <p>Powered by machine learning for accurate, rapid diagnosis</p>
+                                <a href="/" class="learn-more">Learn More →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Electronic Health Records</h3>
+                                <p>Blockchain-secured patient data with complete privacy</p>
+                                <a href="/" class="learn-more">Learn More →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Queue Management</h3>
+                                <p>Smart scheduling reducing wait times by 47%</p>
+                                <a href="/" class="learn-more">Learn More →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Analytics Dashboard</h3>
+                                <p>Real-time insights for better decision making</p>
+                                <a href="/" class="learn-more">Learn More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/founders.html" class="nav-link">Founders</a></li>
-                <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link cta-nav">Contact</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/blog.html" class="dropdown-item">Blog</a>
+                        <a href="/" class="dropdown-item">Case Studies</a>
+                        <a href="/" class="dropdown-item">Documentation</a>
+                        <a href="/" class="dropdown-item">Webinars</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
         <div class="navbar-progress"></div>
     </nav>
     
     <main id="main-content">
-        <section class="hero" id="about-hero">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
             <div class="hero-background">
                 <div class="mesh-gradient"></div>
             </div>
+            
             <div class="hero-content">
-                <h1 class="hero-title">About SelNexa Health</h1>
-                <p class="hero-subtitle">Transforming African healthcare through innovative AI and blockchain solutions</p>
+                <div class="hero-overline">ABOUT SELNEXAHEALTH</div>
+                <h1 class="hero-title">Transforming African Healthcare Through Innovation</h1>
+                <p class="hero-subtitle">
+                    Founded with a mission to solve critical healthcare challenges across Africa, SelNexa Health combines cutting-edge AI and blockchain technology with deep understanding of African healthcare infrastructure.
+                </p>
+                
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">
+                        Schedule a Demo
+                    </button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">
+                        Get in Touch
+                    </button>
+                </div>
             </div>
         </section>
         
-        <section class="about-section">
+        <!-- Mission & Vision -->
+        <section class="mission-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Our Mission</h2>
+                    <h2>Our Mission & Vision</h2>
                 </div>
-                <p>SelNexa Health is dedicated to revolutionizing healthcare delivery across Africa by leveraging cutting-edge artificial intelligence and blockchain technology. We believe that every patient, regardless of location or economic status, deserves access to world-class healthcare services.</p>
+                
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>To empower African healthcare facilities with intelligent, affordable technology that improves patient outcomes, reduces operational costs, and enables better clinical decision-making.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">🌍</div>
+                        <h3>Our Vision</h3>
+                        <p>A future where every healthcare facility in Africa has access to world-class diagnostic and management tools, regardless of location or resources.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">💡</div>
+                        <h3>Our Values</h3>
+                        <p>Innovation, accessibility, integrity, and impact. We believe technology should serve humanity, especially those who need it most.</p>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <section class="about-section" style="background: var(--color-neutral-gray);">
+        <!-- Team Section -->
+        <section class="team-section" id="team">
             <div class="container">
                 <div class="section-header">
-                    <h2>Our Vision</h2>
+                    <h2>Our Leadership Team</h2>
+                    <p>Experienced healthcare and technology leaders dedicated to transforming African healthcare</p>
                 </div>
-                <p>To create a connected, intelligent healthcare ecosystem across Africa that reduces wait times, improves patient outcomes, and empowers healthcare providers with data-driven insights.</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image">👨‍💼</div>
+                        <h3>Dr. Kwame Mensah</h3>
+                        <p class="team-role">Chief Executive Officer</p>
+                        <p class="team-bio">Healthcare entrepreneur with 15+ years in African healthcare innovation and digital health solutions.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">👩‍💼</div>
+                        <h3>Dr. Amara Okonkwo</h3>
+                        <p class="team-role">Chief Medical Officer</p>
+                        <p class="team-bio">Physician and health systems expert with experience across 8 African countries and 50+ healthcare facilities.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">👨‍💻</div>
+                        <h3>James Mwangi</h3>
+                        <p class="team-role">Chief Technology Officer</p>
+                        <p class="team-bio">AI and blockchain specialist with expertise in healthcare systems and African infrastructure challenges.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-image">👩‍💻</div>
+                        <h3>Dr. Zainab Hassan</h3>
+                        <p class="team-role">Head of Product</p>
+                        <p class="team-bio">Product strategist focused on designing healthcare solutions that work in resource-constrained environments.</p>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <section class="about-section">
+        <!-- Impact Stats -->
+        <section class="impact-section" id="impact">
             <div class="container">
                 <div class="section-header">
-                    <h2>Our Values</h2>
+                    <h2>Our Impact So Far</h2>
+                    <p>Real results from our commitment to African healthcare</p>
                 </div>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <h3><i class="fas fa-heart"></i> Compassion</h3>
-                        <p>We put patients and healthcare providers at the center of everything we do.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Healthcare Facilities</div>
+                        <p>Across 12 African countries</p>
                     </div>
-                    <div class="value-card">
-                        <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
-                        <p>We continuously push boundaries to deliver cutting-edge solutions.</p>
+                    <div class="stat-card">
+                        <div class="stat-value">500K+</div>
+                        <div class="stat-label">Patients Served</div>
+                        <p>Through our partner facilities</p>
                     </div>
-                    <div class="value-card">
-                        <h3><i class="fas fa-shield-alt"></i> Trust</h3>
-                        <p>We maintain the highest standards of security and data privacy.</p>
+                    <div class="stat-card">
+                        <div class="stat-value">47%</div>
+                        <div class="stat-label">Average Wait Time Reduction</div>
+                        <p>Improving patient experience</p>
                     </div>
-                    <div class="value-card">
-                        <h3><i class="fas fa-globe"></i> Impact</h3>
-                        <p>We measure success by the positive change we create in African healthcare.</p>
+                    <div class="stat-card">
+                        <div class="stat-value">62%</div>
+                        <div class="stat-label">Cost Savings</div>
+                        <p>In administrative overhead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="cta-background">
+                <div class="cta-gradient"></div>
+            </div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Join Us in Transforming African Healthcare</h2>
+                    <p>Be part of a movement to revolutionize healthcare delivery across the continent</p>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">
+                            Schedule a Demo
+                        </button>
+                        <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">
+                            Contact Sales
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
     
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -102,29 +238,132 @@
                     </div>
                     <p>Transforming African healthcare with AI and blockchain technology.</p>
                 </div>
+                
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="/">AI Diagnostics</a></li>
+                        <li><a href="/">EHR System</a></li>
+                        <li><a href="/">Queue Management</a></li>
+                        <li><a href="/">Analytics</a></li>
+                    </ul>
+                </div>
+                
                 <div class="footer-column">
                     <h4>Company</h4>
                     <ul>
                         <li><a href="/about.html">About Us</a></li>
-                        <li><a href="/founders.html">Founders</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/">Careers</a></li>
+                        <li><a href="/">Press</a></li>
+                        <li><a href="/">Partners</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/">Case Studies</a></li>
+                        <li><a href="/">Documentation</a></li>
+                        <li><a href="/">API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/">Help Center</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/">Training</a></li>
+                        <li><a href="/">System Status</a></li>
+                    </ul>
+                </div>
+                
                 <div class="footer-column">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#privacy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                        <li><a href="#security">Security</a></li>
+                        <li><a href="/">Privacy Policy</a></li>
+                        <li><a href="/">Terms of Service</a></li>
+                        <li><a href="/">Security</a></li>
+                        <li><a href="/">Compliance</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2024 SelNexa Health. All rights reserved.</p>
+                <p>&copy; 2024 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <div class="social-links">
+                    <a href="#linkedin" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#twitter" aria-label="Twitter">Twitter</a>
+                    <a href="#youtube" aria-label="YouTube">YouTube</a>
+                </div>
             </div>
         </div>
     </footer>
+    
+    <!-- Modals -->
+    <dialog id="demo-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button>
+            <h2>Schedule Your Demo</h2>
+            <form class="demo-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="facility">Facility Type *</label>
+                    <select id="facility" name="facility" required>
+                        <option value="">Select...</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="clinic">Clinic</option>
+                        <option value="health-center">Health Center</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select...</option>
+                        <option value="ZW">Zimbabwe</option>
+                        <option value="NG">Nigeria</option>
+                        <option value="KE">Kenya</option>
+                        <option value="ZA">South Africa</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Schedule Demo →</button>
+            </form>
+        </div>
+    </dialog>
+    
+    <dialog id="contact-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('contact-modal').close()">&times;</button>
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Full Name *</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email Address *</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message →</button>
+            </form>
+        </div>
+    </dialog>
     
     <script src="/js/main.js"></script>
 </body>

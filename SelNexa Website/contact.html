@@ -1,66 +1,175 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact – SelNexa Health</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/main.css">
-  <script defer src="scripts/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | SelNexa Health</title>
+    <meta name="description" content="Get in touch with SelNexa Health. Contact our team for demos, inquiries, and support.">
+    <link rel="canonical" href="https://www.selnexahealth.com/contact">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
-  <!-- Shared Header -->
-  <header>
-    <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="SelNexa Health Logo">
-      <span class="visually-hidden">Home</span>
-    </a>
-    <nav>
-      <a href="index.html#features">Features</a>
-      <a href="features.html">Solutions</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Solutions <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column"><h3>AI Diagnostics</h3><p>Powered by machine learning for accurate, rapid diagnosis</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Electronic Health Records</h3><p>Blockchain-secured patient data with complete privacy</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Queue Management</h3><p>Smart scheduling reducing wait times by 47%</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Analytics Dashboard</h3><p>Real-time insights for better decision making</p><a href="/" class="learn-more">Learn More →</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/blog.html" class="dropdown-item">Blog</a>
+                        <a href="/" class="dropdown-item">Case Studies</a>
+                        <a href="/" class="dropdown-item">Documentation</a>
+                        <a href="/" class="dropdown-item">Webinars</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-progress"></div>
     </nav>
-  </header>
-
-  <main>
-    <!-- Contact Section -->
-    <section class="fade-in pt-lg contact-section">
-      <h1>Contact SelNexa</h1>
-      <p>We'd love to hear from you. Whether you have questions about our solutions, want to partner, or just say hello — reach out below.</p>
-      <form class="contact-form">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
-
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
-    </section>
-  </main>
-
-  <!-- Shared Footer -->
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <h4>SelNexa Health</h4>
-        <p>&copy; 2025 SelNexa Health. All rights reserved.</p>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:hello@selnexa.com">hello@selnexa.com</a></p>
-        <p>Phone: +263 123 456</p>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <a href="#" title="Facebook" aria-label="Follow SelNexa Health on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
-        <a href="#" title="Twitter" aria-label="Follow SelNexa Health on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
-        <a href="#" title="LinkedIn" aria-label="Connect with SelNexa Health on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a>
-      </div>
-    </div>
-  </footer>
+    
+    <main id="main-content">
+        <section class="hero" id="hero">
+            <div class="hero-background"><div class="mesh-gradient"></div></div>
+            <div class="hero-content">
+                <div class="hero-overline">GET IN TOUCH</div>
+                <h1 class="hero-title">Contact Our Team</h1>
+                <p class="hero-subtitle">Have questions? Our team is ready to help. Reach out for demos, inquiries, or support.</p>
+            </div>
+        </section>
+        
+        <section class="appointment-section">
+            <div class="container">
+                <div class="section-header"><h2>Send us a Message</h2><p>We'll get back to you within 24 hours</p></div>
+                <div class="appointment-container">
+                    <form class="appointment-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="facility">Facility Type *</label>
+                            <select id="facility" name="facility" required>
+                                <option value="">Select...</option>
+                                <option value="hospital">Hospital</option>
+                                <option value="clinic">Clinic</option>
+                                <option value="health-center">Health Center</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <label class="checkbox">
+                            <input type="checkbox" name="privacy" required>
+                            I agree to the privacy policy
+                        </label>
+                        <button type="submit" class="btn btn-primary">Send Message →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <section class="problems-section">
+            <div class="container">
+                <div class="section-header"><h2>Other Ways to Reach Us</h2></div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>info@selnexahealth.com</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📞</div>
+                        <h3>Phone</h3>
+                        <p>+263 (0) 242 700 500</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📍</div>
+                        <h3>Address</h3>
+                        <p>Harare, Zimbabwe</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section" id="cta">
+            <div class="cta-background"><div class="cta-gradient"></div></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready for a Demo?</h2>
+                    <p>Schedule a personalized demo to see SelNexa in action</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Schedule Demo</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='/'">Back to Home</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column"><div class="footer-logo"><img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo"></div><p>Transforming African healthcare with AI and blockchain technology.</p></div>
+                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/">AI Diagnostics</a></li><li><a href="/">EHR System</a></li><li><a href="/">Queue Management</a></li><li><a href="/">Analytics</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About Us</a></li><li><a href="/">Careers</a></li><li><a href="/">Press</a></li><li><a href="/">Partners</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/">Case Studies</a></li><li><a href="/">Documentation</a></li><li><a href="/">API</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="/">Help Center</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/">Training</a></li><li><a href="/">System Status</a></li></ul></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/">Privacy Policy</a></li><li><a href="/">Terms of Service</a></li><li><a href="/">Security</a></li><li><a href="/">Compliance</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <div class="social-links"><a href="#linkedin" aria-label="LinkedIn">LinkedIn</a><a href="#twitter" aria-label="Twitter">Twitter</a><a href="#youtube" aria-label="YouTube">YouTube</a></div>
+            </div>
+        </div>
+    </footer>
+    
+    <dialog id="demo-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button><h2>Schedule Your Demo</h2><form class="demo-form"><div class="form-group"><label for="demo-name">Full Name *</label><input type="text" id="demo-name" name="name" required></div><div class="form-group"><label for="demo-email">Email Address *</label><input type="email" id="demo-email" name="email" required></div><div class="form-group"><label for="demo-phone">Phone Number</label><input type="tel" id="demo-phone" name="phone"></div><div class="form-group"><label for="demo-facility">Facility Type *</label><select id="demo-facility" name="facility" required><option value="">Select...</option><option value="hospital">Hospital</option><option value="clinic">Clinic</option><option value="health-center">Health Center</option></select></div><div class="form-group"><label for="demo-country">Country *</label><select id="demo-country" name="country" required><option value="">Select...</option><option value="ZW">Zimbabwe</option><option value="NG">Nigeria</option><option value="KE">Kenya</option><option value="ZA">South Africa</option></select></div><button type="submit" class="btn btn-primary">Schedule Demo →</button></form></div></dialog>
+    
+    <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1,240 +1,174 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benefits | SelNexa Health – Why Healthcare Teams Choose Our AI</title>
-    <meta name="description" content="Discover the transformative benefits of SelNexa Health AI: 40% cost reduction, 70% fewer errors, improved patient outcomes, and staff focused on care.">
-    <meta name="keywords" content="healthcare benefits, cost reduction, error elimination, patient outcomes, healthcare transformation">
-    <meta property="og:title" content="Benefits | SelNexa Health">
-    <meta property="og:description" content="SelNexa Health delivers measurable results: cost savings, error reduction, better outcomes, and empowered staff.">
-    <meta property="og:url" content="https://www.selnexahealth.com/benefits.html">
-    <link rel="canonical" href="https://www.selnexahealth.com/benefits.html">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/home.css">
+    <title>Benefits | SelNexa Health</title>
+    <meta name="description" content="Discover the benefits of SelNexa Health: reduced wait times, cost savings, improved patient outcomes, and more.">
+    <link rel="canonical" href="https://www.selnexahealth.com/benefits">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo">
-                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" width="120" height="60">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
                 </a>
-                <ul class="nav-links">
-                    <li><a href="/solutions/">Solutions</a></li>
-                    <li><a href="/for-funders.html">For Funders</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Solutions <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column"><h3>AI Diagnostics</h3><p>Powered by machine learning for accurate, rapid diagnosis</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Electronic Health Records</h3><p>Blockchain-secured patient data with complete privacy</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Queue Management</h3><p>Smart scheduling reducing wait times by 47%</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Analytics Dashboard</h3><p>Real-time insights for better decision making</p><a href="/" class="learn-more">Learn More →</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/blog.html" class="dropdown-item">Blog</a>
+                        <a href="/" class="dropdown-item">Case Studies</a>
+                        <a href="/" class="dropdown-item">Documentation</a>
+                        <a href="/" class="dropdown-item">Webinars</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-    </header>
-
+        <div class="navbar-progress"></div>
+    </nav>
+    
     <main id="main-content">
-        <!-- Hero -->
-        <section class="hero">
-            <div class="container">
-                <h1>SelNexa Health Benefits</h1>
-                <p>Transform your healthcare delivery with AI-powered solutions that reduce costs, eliminate errors, and empower your team.</p>
-            </div>
-        </section>
-
-        <!-- Financial Impact -->
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Financial Impact</h2>
-                    <p>Quantified cost savings across procurement, operations, and staffing.</p>
-                </div>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-metric">40%</div>
-                        <h3>Cost Reduction</h3>
-                        <p>Eliminate waste in procurement, reduce operational overhead, and optimize resource allocation across your facility.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-metric">$15K+</div>
-                        <h3>Monthly Savings</h3>
-                        <p>Average procurement savings per facility. Easily scales with multi-hospital networks.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-metric">50%</div>
-                        <h3>Faster ROI</h3>
-                        <p>See measurable financial returns within 3-6 months of deployment.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-metric">8%</div>
-                        <h3>LOS Reduction</h3>
-                        <p>Shorter hospital stays through better resource planning and care coordination.</p>
-                    </div>
+        <section class="hero" id="hero">
+            <div class="hero-background"><div class="mesh-gradient"></div></div>
+            <div class="hero-content">
+                <div class="hero-overline">KEY BENEFITS</div>
+                <h1 class="hero-title">Transform Your Healthcare Operations</h1>
+                <p class="hero-subtitle">Proven benefits across 100+ healthcare facilities in Africa. Reduce costs, improve patient outcomes, and streamline operations with SelNexa Health.</p>
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Schedule a Demo</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">Learn More</button>
                 </div>
             </div>
         </section>
-
-        <!-- Clinical Excellence -->
-        <section class="section benefits-section">
+        
+        <section class="problems-section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Clinical Excellence</h2>
-                    <p>Better patient outcomes through data-driven care delivery.</p>
-                </div>
-                <div class="benefits-list">
-                    <div class="benefit">
-                        <i class="fas fa-ban" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>70% Fewer Medical Errors</h4>
-                            <p>AI double-checks diagnoses, medication orders, and clinical workflows. Catches mistakes before they reach patients.</p>
-                        </div>
+                <div class="section-header"><h2>Measurable Benefits</h2><p>Real results from healthcare facilities using SelNexa</p></div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">⏱️</div>
+                        <h3>47% Faster Care</h3>
+                        <p>Reduce patient wait times from hours to minutes with intelligent queue management and predictive scheduling.</p>
                     </div>
-                    <div class="benefit">
-                        <i class="fas fa-heartbeat" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Improved Patient Outcomes</h4>
-                            <p>Predictive interventions reduce readmissions, prevent complications, and accelerate recovery times.</p>
-                        </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">💰</div>
+                        <h3>62% Cost Reduction</h3>
+                        <p>Eliminate administrative overhead and optimize resource allocation with AI-powered insights.</p>
                     </div>
-                    <div class="benefit">
-                        <i class="fas fa-shield" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>HIPAA & Compliance Built-In</h4>
-                            <p>Blockchain-secured records and automated auditing ensure 100% regulatory compliance with zero additional overhead.</p>
-                        </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📈</div>
+                        <h3>Better Outcomes</h3>
+                        <p>Improve patient outcomes with AI-powered diagnostics and data-driven clinical decisions.</p>
                     </div>
-                    <div class="benefit">
-                        <i class="fas fa-share-nodes" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Zero Interoperability Silos</h4>
-                            <p>Unified data access across all your departments and partner facilities. No more fragmented care.</p>
-                        </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">🔒</div>
+                        <h3>Enhanced Security</h3>
+                        <p>Blockchain-secured patient data ensures privacy, compliance, and complete data integrity.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📊</div>
+                        <h3>Real-Time Analytics</h3>
+                        <p>Make informed decisions with comprehensive dashboards and actionable insights.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">🌐</div>
+                        <h3>Offline Capability</h3>
+                        <p>Works seamlessly without internet connection, perfect for resource-limited settings.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Operational Efficiency -->
-        <section class="section">
+        
+        <section class="impact-section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Operational Efficiency</h2>
-                    <p>Streamline workflows and free your team to focus on what matters: patient care.</p>
-                </div>
-                <div class="efficiency-cards">
-                    <article class="efficiency-item">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                        <h3>50% Faster Processes</h3>
-                        <p>Automated workflows cut administrative time in half. Check-in from 5 mins to 1 min. Procurement from 3 days to 1.5 days.</p>
-                    </article>
-                    <article class="efficiency-item">
-                        <i class="fas fa-users" aria-hidden="true"></i>
-                        <h3>Staff Refocused on Care</h3>
-                        <p>Eliminate tedious data entry and scheduling. Your team spends more time with patients, less time in systems.</p>
-                    </article>
-                    <article class="efficiency-item">
-                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                        <h3>Real-Time Visibility</h3>
-                        <p>Dashboards show what's happening now. Managers make decisions based on live data, not yesterday's reports.</p>
-                    </article>
-                    <article class="efficiency-item">
-                        <i class="fas fa-cogs" aria-hidden="true"></i>
-                        <h3>Seamless Integration</h3>
-                        <p>SelNexa works with your existing EHR, scheduling, and billing systems. No rip-and-replace required.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Patient Experience -->
-        <section class="section benefits-section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Enhanced Patient Experience</h2>
-                    <p>Patients feel the difference: faster care, better coordination, and transparency.</p>
-                </div>
-                <div class="benefits-list">
-                    <div class="benefit">
-                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Self-Service Portals</h4>
-                            <p>Patients book appointments, access records, and message providers 24/7 through intuitive mobile apps.</p>
-                        </div>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-video" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Telemedicine at Scale</h4>
-                            <p>Secure video consultations expand care access to rural and underserved communities.</p>
-                        </div>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-user-check" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Personalized Care Plans</h4>
-                            <p>AI tailors treatment recommendations based on individual patient data, genetics, and preferences.</p>
-                        </div>
-                    </div>
-                    <div class="benefit">
-                        <i class="fas fa-lock" aria-hidden="true"></i>
-                        <div class="benefit-content">
-                            <h4>Data Privacy & Control</h4>
-                            <p>Patients grant/revoke access to their records in real time with full transparency.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- By the Numbers -->
-        <section class="section stats-section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Proven Results Across Networks</h2>
-                </div>
+                <div class="section-header"><h2>By The Numbers</h2></div>
                 <div class="stats-grid">
-                    <div class="stat">
-                        <div class="stat-number">2,500+</div>
-                        <p>Healthcare professionals using SelNexa</p>
+                    <div class="stat-card">
+                        <div class="stat-value">100+</div>
+                        <div class="stat-label">Healthcare Facilities</div>
+                        <p>Across 12 African countries</p>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">$4.2M</div>
-                        <p>Total cost savings for our clients</p>
+                    <div class="stat-card">
+                        <div class="stat-value">500K+</div>
+                        <div class="stat-label">Patients Served</div>
+                        <p>Through our partner facilities</p>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">98%</div>
-                        <p>Client satisfaction rating</p>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">12</div>
-                        <p>Countries with active SelNexa facilities</p>
+                    <div class="stat-card">
+                        <div class="stat-value">99.2%</div>
+                        <div class="stat-label">Diagnostic Accuracy</div>
+                        <p>AI-powered clinical support</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- CTA -->
-        <section class="section cta">
+        
+        <section class="cta-section" id="cta">
+            <div class="cta-background"><div class="cta-gradient"></div></div>
             <div class="container">
-                <h2>Ready to Transform Your Healthcare Delivery?</h2>
-                <p>See how SelNexa can deliver these benefits for your facility.</p>
-                <div class="cta-buttons">
-                    <a href="/#beta" class="btn btn-primary">Join Beta</a>
-                    <a href="/contact.html" class="btn btn-outline">Request Demo</a>
+                <div class="cta-content">
+                    <h2>Experience These Benefits Today</h2>
+                    <p>Join 100+ facilities transforming healthcare across Africa</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Schedule Demo</button>
+                        <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">Contact Sales</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
-
+    
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 SelNexa Health. <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></p>
+            <div class="footer-grid">
+                <div class="footer-column"><div class="footer-logo"><img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo"></div><p>Transforming African healthcare with AI and blockchain technology.</p></div>
+                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/">AI Diagnostics</a></li><li><a href="/">EHR System</a></li><li><a href="/">Queue Management</a></li><li><a href="/">Analytics</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About Us</a></li><li><a href="/">Careers</a></li><li><a href="/">Press</a></li><li><a href="/">Partners</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/">Case Studies</a></li><li><a href="/">Documentation</a></li><li><a href="/">API</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="/">Help Center</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/">Training</a></li><li><a href="/">System Status</a></li></ul></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/">Privacy Policy</a></li><li><a href="/">Terms of Service</a></li><li><a href="/">Security</a></li><li><a href="/">Compliance</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <div class="social-links"><a href="#linkedin" aria-label="LinkedIn">LinkedIn</a><a href="#twitter" aria-label="Twitter">Twitter</a><a href="#youtube" aria-label="YouTube">YouTube</a></div>
+            </div>
         </div>
     </footer>
-
-    <script src="/js/home.js" defer></script>
+    
+    <dialog id="demo-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button><h2>Schedule Your Demo</h2><form class="demo-form"><div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" required></div><div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone"></div><div class="form-group"><label for="facility">Facility Type *</label><select id="facility" name="facility" required><option value="">Select...</option><option value="hospital">Hospital</option><option value="clinic">Clinic</option><option value="health-center">Health Center</option></select></div><div class="form-group"><label for="country">Country *</label><select id="country" name="country" required><option value="">Select...</option><option value="ZW">Zimbabwe</option><option value="NG">Nigeria</option><option value="KE">Kenya</option><option value="ZA">South Africa</option></select></div><button type="submit" class="btn btn-primary">Schedule Demo →</button></form></div></dialog>
+    
+    <dialog id="contact-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('contact-modal').close()">&times;</button><h2>Contact Us</h2><form class="contact-form"><div class="form-group"><label for="contact-name">Full Name *</label><input type="text" id="contact-name" name="name" required></div><div class="form-group"><label for="contact-email">Email Address *</label><input type="email" id="contact-email" name="email" required></div><div class="form-group"><label for="contact-message">Message *</label><textarea id="contact-message" name="message" rows="5" required></textarea></div><button type="submit" class="btn btn-primary">Send Message →</button></form></div></dialog>
+    
+    <script src="/js/main.js"></script>
 </body>
 </html>

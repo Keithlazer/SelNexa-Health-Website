@@ -1,19 +1,150 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found – SelNexa Health</title>
-  <link rel="stylesheet" href="/styles/home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | SelNexa Health</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Return to SelNexa Health homepage.">
+    <link rel="canonical" href="https://www.selnexahealth.com/404">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
-  <main class="section text-center">
-    <div class="container">
-      <h1>404 – Page Not Found</h1>
-      <p>Sorry, we couldn't find that page.</p>
-      <a class="btn" href="/">Go Home</a>
-    </div>
-  </main>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Solutions <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column"><h3>AI Diagnostics</h3><p>Powered by machine learning for accurate, rapid diagnosis</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Electronic Health Records</h3><p>Blockchain-secured patient data with complete privacy</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Queue Management</h3><p>Smart scheduling reducing wait times by 47%</p><a href="/" class="learn-more">Learn More →</a></div>
+                            <div class="mega-menu-column"><h3>Analytics Dashboard</h3><p>Real-time insights for better decision making</p><a href="/" class="learn-more">Learn More →</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                        Resources <span class="arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="/blog.html" class="dropdown-item">Blog</a>
+                        <a href="/" class="dropdown-item">Case Studies</a>
+                        <a href="/" class="dropdown-item">Documentation</a>
+                        <a href="/" class="dropdown-item">Webinars</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="navbar-progress"></div>
+    </nav>
+    
+    <main id="main-content">
+        <section class="error-section">
+            <div class="error-content">
+                <div class="error-code">404</div>
+                <h1 class="error-title">Page Not Found</h1>
+                <p class="error-message">
+                    The page you're looking for doesn't exist or has been moved. Don't worry, we're here to help you find what you need.
+                </p>
+                <div class="error-buttons">
+                    <button class="btn btn-primary" onclick="window.location.href='/'">Back to Home</button>
+                    <button class="btn btn-secondary" onclick="window.location.href='/contact.html'">Contact Support</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="problems-section">
+            <div class="container">
+                <div class="section-header"><h2>Explore SelNexa</h2><p>Check out these popular pages</p></div>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">🏠</div>
+                        <h3>Home</h3>
+                        <p><a href="/" class="btn-link">Visit Homepage →</a></p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">ℹ️</div>
+                        <h3>About Us</h3>
+                        <p><a href="/about.html" class="btn-link">Learn Our Story →</a></p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">✨</div>
+                        <h3>Features</h3>
+                        <p><a href="/features.html" class="btn-link">Explore Features →</a></p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📚</div>
+                        <h3>Blog</h3>
+                        <p><a href="/blog.html" class="btn-link">Read Articles →</a></p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">❓</div>
+                        <h3>FAQ</h3>
+                        <p><a href="/faq.html" class="btn-link">View FAQs →</a></p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">📞</div>
+                        <h3>Contact</h3>
+                        <p><a href="/contact.html" class="btn-link">Get in Touch →</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta-section" id="cta">
+            <div class="cta-background"><div class="cta-gradient"></div></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Need Help?</h2>
+                    <p>Our support team is ready to assist you</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Schedule Demo</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='/contact.html'">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column"><div class="footer-logo"><img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo"></div><p>Transforming African healthcare with AI and blockchain technology.</p></div>
+                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/">AI Diagnostics</a></li><li><a href="/">EHR System</a></li><li><a href="/">Queue Management</a></li><li><a href="/">Analytics</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About Us</a></li><li><a href="/">Careers</a></li><li><a href="/">Press</a></li><li><a href="/">Partners</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/">Case Studies</a></li><li><a href="/">Documentation</a></li><li><a href="/">API</a></li></ul></div>
+                <div class="footer-column"><h4>Support</h4><ul><li><a href="/">Help Center</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/">Training</a></li><li><a href="/">System Status</a></li></ul></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/">Privacy Policy</a></li><li><a href="/">Terms of Service</a></li><li><a href="/">Security</a></li><li><a href="/">Compliance</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <div class="social-links"><a href="#linkedin" aria-label="LinkedIn">LinkedIn</a><a href="#twitter" aria-label="Twitter">Twitter</a><a href="#youtube" aria-label="YouTube">YouTube</a></div>
+            </div>
+        </div>
+    </footer>
+    
+    <dialog id="demo-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button><h2>Schedule Your Demo</h2><form class="demo-form"><div class="form-group"><label for="demo-name">Full Name *</label><input type="text" id="demo-name" name="name" required></div><div class="form-group"><label for="demo-email">Email Address *</label><input type="email" id="demo-email" name="email" required></div><div class="form-group"><label for="demo-phone">Phone Number</label><input type="tel" id="demo-phone" name="phone"></div><div class="form-group"><label for="demo-facility">Facility Type *</label><select id="demo-facility" name="facility" required><option value="">Select...</option><option value="hospital">Hospital</option><option value="clinic">Clinic</option><option value="health-center">Health Center</option></select></div><div class="form-group"><label for="demo-country">Country *</label><select id="demo-country" name="country" required><option value="">Select...</option><option value="ZW">Zimbabwe</option><option value="NG">Nigeria</option><option value="KE">Kenya</option><option value="ZA">South Africa</option></select></div><button type="submit" class="btn btn-primary">Schedule Demo →</button></form></div></dialog>
+    
+    <script src="/js/main.js"></script>
 </body>
 </html>
-
