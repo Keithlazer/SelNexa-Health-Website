@@ -569,7 +569,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-lg);
-    grid-auto-rows: 250px;
+    grid-auto-rows: auto; /* flexible row heights to avoid clipping */
 }
 
 .bento-item {
