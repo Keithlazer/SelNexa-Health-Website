@@ -264,6 +264,132 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');
   }
+
+  // Email sending function using FormSubmit.co API
+  const sendFormToEmail = async (form) => {
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/keithtafangombe@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      return { success: response.ok, data: result };
+    } catch (error) {
+      console.error('Form submission error:', error);
+      return { success: false, error: error.message };
+    }
+  };
+
+  // Handle demo form submission
+  const demoForm = document.querySelector('.demo-form');
+  if (demoForm) {
+    demoForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      
+      // Remove any existing messages
+      const existingMessage = this.querySelector('.form-message');
+      if (existingMessage) existingMessage.remove();
+      
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      // Send form data via AJAX
+      const result = await sendFormToEmail(this);
+      
+      // Show result message
+      const message = document.createElement('div');
+      message.className = 'form-message';
+      message.style.cssText = 'padding: 15px; margin-top: 15px; border-radius: 5px;';
+      
+      if (result.success) {
+        message.style.background = '#10b981';
+        message.style.color = 'white';
+        message.textContent = 'Thank you! Your demo request has been sent successfully. We\'ll contact you soon.';
+        this.reset();
+        
+        // Close modal after success
+        const modal = this.closest('dialog');
+        if (modal) {
+          setTimeout(() => {
+            modal.close();
+          }, 2000);
+        }
+      } else {
+        message.style.background = '#ef4444';
+        message.style.color = 'white';
+        message.textContent = 'Sorry, there was an error sending your request. Please try again or contact us directly.';
+      }
+      
+      this.appendChild(message);
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+      
+      // Remove message after 5 seconds
+      setTimeout(() => {
+        message.remove();
+      }, 5000);
+    });
+  }
+
+  // Handle contact form submissions (both modal and page forms)
+  const contactForms = document.querySelectorAll('.contact-form');
+  contactForms.forEach(form => {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      
+      // Remove any existing messages
+      const existingMessage = this.querySelector('.form-message');
+      if (existingMessage) existingMessage.remove();
+      
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      // Send form data via AJAX
+      const result = await sendFormToEmail(this);
+      
+      // Show result message
+      const message = document.createElement('div');
+      message.className = 'form-message';
+      message.style.cssText = 'padding: 15px; margin-top: 15px; border-radius: 5px;';
+      
+      if (result.success) {
+        message.style.background = '#10b981';
+        message.style.color = 'white';
+        message.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+        this.reset();
+        
+        // Close modal if this is a modal form
+        const modal = this.closest('dialog');
+        if (modal) {
+          setTimeout(() => {
+            modal.close();
+          }, 2000);
+        }
+      } else {
+        message.style.background = '#ef4444';
+        message.style.color = 'white';
+        message.textContent = 'Sorry, there was an error sending your message. Please try again or contact us directly.';
+      }
+      
+      this.appendChild(message);
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+      
+      // Remove message after 5 seconds
+      setTimeout(() => {
+        message.remove();
+      }, 5000);
+    });
+  });
 });
 
 // Back to Top Button

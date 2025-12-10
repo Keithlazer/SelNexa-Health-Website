@@ -587,7 +587,10 @@
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button>
             <h2>Schedule Your Demo</h2>
-            <form class="demo-form">
+            <form class="demo-form" id="demo-form">
+                <input type="hidden" name="_subject" value="New Demo Request - SelNexa Health">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -646,7 +649,10 @@
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('contact-modal').close()">&times;</button>
             <h2>Contact Sales</h2>
-            <form class="contact-form">
+            <form class="contact-form" id="contact-modal-form">
+                <input type="hidden" name="_subject" value="New Contact Form Submission - SelNexa Health">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 <div class="form-group">
                     <label for="contact-name">Full Name *</label>
                     <input type="text" id="contact-name" name="name" required>

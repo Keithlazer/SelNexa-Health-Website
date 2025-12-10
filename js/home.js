@@ -342,10 +342,78 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  const contactForm = document.querySelector('.contact-form form');
-  if (contactForm) {
-    ensureHoneypot(contactForm);
-    contactForm.addEventListener('submit', async function(e) {
+  // Email sending function using FormSubmit.co API
+  const sendFormToEmail = async (form) => {
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/keithtafangombe@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      return { success: response.ok, data: result };
+    } catch (error) {
+      console.error('Form submission error:', error);
+      return { success: false, error: error.message };
+    }
+  };
+
+  // Handle contact forms with AJAX submission
+  const contactForms = document.querySelectorAll('.contact-form');
+  contactForms.forEach(form => {
+    // Skip if already handled by main.js (forms with IDs)
+    if (form.id) return;
+    
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      
+      // Remove any existing messages
+      const existingMessage = this.querySelector('.form-message');
+      if (existingMessage) existingMessage.remove();
+      
+      // Show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+      
+      // Send form data via AJAX
+      const result = await sendFormToEmail(this);
+      
+      // Show result message
+      const message = document.createElement('div');
+      message.className = 'form-message';
+      message.style.cssText = 'padding: 15px; margin-top: 15px; border-radius: 5px;';
+      
+      if (result.success) {
+        message.style.background = '#10b981';
+        message.style.color = 'white';
+        message.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+        this.reset();
+      } else {
+        message.style.background = '#ef4444';
+        message.style.color = 'white';
+        message.textContent = 'Sorry, there was an error sending your message. Please try again or contact us directly.';
+      }
+      
+      this.appendChild(message);
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
+      
+      // Remove message after 5 seconds
+      setTimeout(() => {
+        message.remove();
+      }, 5000);
+    });
+  });
+
+  // Legacy handler for forms without FormSubmit (keep for backward compatibility)
+  const contactFormLegacy = document.querySelector('.contact-form:not([action*="formsubmit.co"])');
+  if (contactFormLegacy) {
+    ensureHoneypot(contactFormLegacy);
+    contactFormLegacy.addEventListener('submit', async function(e) {
       e.preventDefault();
       const name = this.querySelector('#contact-name')?.value?.trim() || this.querySelector('#name')?.value?.trim();
       const email = this.querySelector('#contact-email')?.value?.trim() || this.querySelector('#email')?.value?.trim();
