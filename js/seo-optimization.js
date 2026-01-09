@@ -189,9 +189,9 @@
     // Add security badges (informational)
     function addSecurityBadges() {
         const badges = `
-            <div class="security-badges" style="margin: 1rem 0; font-size: 0.875rem; color: #666;">
-                <span style="display: inline-block; margin-right: 1rem;">🔒 HIPAA-Compliant</span>
-                <span style="display: inline-block; margin-right: 1rem;">🔐 SSL/TLS Encrypted</span>
+                <div class="security-badges" style="margin: 1rem 0; font-size: 0.875rem; color: #666;">
+                <span style="display: inline-block; margin-right: 1rem;"><i class="fas fa-lock" aria-hidden="true"></i> HIPAA-Compliant</span>
+                <span style="display: inline-block; margin-right: 1rem;"><i class="fas fa-shield-alt" aria-hidden="true"></i> SSL/TLS Encrypted</span>
                 <span style="display: inline-block;">✓ Data Protected</span>
             </div>
         `;

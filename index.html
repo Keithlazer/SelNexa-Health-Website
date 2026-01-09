@@ -50,81 +50,41 @@
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
-            <div class="navbar-brand">
-                <a href="/" aria-label="SelNexa Health Home">
-                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
-                </a>
-            </div>
-            
-            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <ul class="nav-menu">
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                        Solutions <span class="arrow">▾</span>
-                    </button>
-                    <div class="dropdown-menu mega-menu">
-                        <div class="mega-menu-grid">
-                            <div class="mega-menu-column">
-                                <h3>AI Administration</h3>
-                                <p>Automate scheduling, claims, and reporting to protect clinician time.</p>
-                                <a href="#solutions" class="learn-more">Learn More →</a>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h3>Electronic Health Records</h3>
-                                <p>Offline-first, interoperable EHR that reconciles patient identities across sites.</p>
-                                <a href="#solutions" class="learn-more">Learn More →</a>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h3>Predictive Procurement</h3>
-                                <p>Forecast demand using local disease trends to prevent stock-outs and waste.</p>
-                                <a href="#solutions" class="learn-more">Learn More →</a>
-                            </div>
-                            <div class="mega-menu-column">
-                                <h3>Command-Center Analytics</h3>
-                                <p>Real-time alerts on utilization, revenue leakage, and supply risk.</p>
-                                <a href="#solutions" class="learn-more">Learn More →</a>
-                            </div>
+            <!-- Footer (professional unified) -->
+            <footer class="site-footer">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div>
+                            <h2>SelNexa Health</h2>
+                            <p>Transforming African healthcare through offline-first digital infrastructure.</p>
+                        </div>
+                        <div>
+                            <h4>Solutions</h4>
+                            <ul>
+                                <li><a href="/">Electronic Health Records</a></li>
+                                <li><a href="/">Inventory AI</a></li>
+                                <li><a href="/">Clinic Analytics</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Contact</h4>
+                            <ul>
+                                <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
+                                <li>Harare, Zimbabwe</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Legal</h4>
+                            <ul>
+                                <li><a href="/privacy.html">Privacy Policy</a></li>
+                                <li><a href="/terms.html">Terms</a></li>
+                                <li><a href="#" id="security-link">Security & Compliance</a></li>
+                            </ul>
+                            <p style="font-size:0.85rem;color:#94a3b8;margin-top:0.75rem">© 2025 SelNexa Health. All rights reserved.</p>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/founders.html" class="nav-link">Founders</a></li>
-                <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                        Resources <span class="arrow">▾</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="/blog.html" class="dropdown-item">Blog</a>
-                        <a href="#case-studies" class="dropdown-item">Case Studies</a>
-                        <a href="#documentation" class="dropdown-item">Documentation</a>
-                        <a href="#webinars" class="dropdown-item">Webinars</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="#cta" class="nav-link cta-nav">Book Demo</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-                
-            </ul>
-        </div>
-        <div class="navbar-progress"></div>
-    </nav>
-    
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="hero-background">
-                <div class="mesh-gradient"></div>
-                <canvas id="particle-canvas"></canvas>
-            </div>
-            
-            <div class="hero-content">
-                <div class="hero-overline">THE INTEGRATED INTELLIGENCE LAYER FOR AFRICAN HEALTHCARE</div>
+                </div>
+            </footer>
                 <h1 class="hero-title">Recover the $4.5B Lost to Healthcare Fragmentation Across Africa.</h1>
                 <p class="hero-subtitle">
                     African healthcare systems lose USD 4.5 billion annually to administrative entropy, supply volatility, and fragmented patient records. SelNexa Health is the operational backbone orchestrating hospital administration, predictive procurement, and interoperable electronic health records—engineered for offline-first resilience and designed to operate reliably across constrained infrastructure where connectivity and power are unpredictable.
@@ -153,6 +113,16 @@
                         <span class="stat-label">Downtime During Outages</span>
                     </div>
                 </div>
+                
+                <!-- Pilot Efficiency Report (Phase 1 insertion) -->
+                <div class="pilot-report" id="pilot-report">
+                    <h2 class="pilot-title">Pilot Efficiency Report — Hardened Validation</h2>
+                    <p class="pilot-summary">Achieved 100% data retention during internet outages across four pilot facilities; realized a 47% reduction in patient wait times and a 62% reduction in administrative processing costs in operational workflows—measured across a 90‑day hardened validation in infrastructure‑hostile conditions.</p>
+                    <p class="pilot-why"><strong>Why Offline‑First:</strong> SelNexa’s offline‑first design ensures clinical operations continue uninterrupted when connectivity or power fail. Patient records and critical workflows sync reliably when networks return, so care teams never lose access to the information they need—prioritizing reliability and uptime over fleeting feature claims.</p>
+                </div>
+
+                <!-- ROI Calculator Widget -->
+                <div id="roi-calculator-widget" aria-live="polite"></div>
             </div>
             
         </section>
@@ -516,10 +486,12 @@
                             <div class="roi">
                                 <strong>90-Day ROI (Hardened Validation):</strong>
                                 <ul>
-                                    <li>🛡️ <strong>Zero platform downtime</strong> despite 8+ power outages and connectivity losses</li>
-                                    <li>🎯 <strong>22% reduction in medication waste</strong> (expiry & overstocking combined)</li>
-                                    <li>📦 <strong>Zero stock-outs</strong> of critical antimalarials, antibiotics, antiretrovirals</li>
-                                    <li>👨‍⚕️ <strong>47% reduction in patient wait times</strong></li>\n                                </ul>\n                                <p><em>This pilot proves SelNexa operates where competitors fail—the ultimate defensibility proof.</em></p>
+                                    <li><i class="fas fa-shield-alt" aria-hidden="true"></i> <strong>Zero platform downtime</strong> despite 8+ power outages and connectivity losses</li>
+                                    <li><i class="fas fa-bullseye" aria-hidden="true"></i> <strong>22% reduction in medication waste</strong> (expiry & overstocking combined)</li>
+                                    <li><i class="fas fa-box-open" aria-hidden="true"></i> <strong>Zero stock-outs</strong> of critical antimalarials, antibiotics, antiretrovirals</li>
+                                    <li><i class="fas fa-user-md" aria-hidden="true"></i> <strong>47% reduction in patient wait times</strong></li>
+                                </ul>
+                                <p><em>This pilot proves SelNexa operates where competitors fail—the ultimate defensibility proof.</em></p>
                             </div>
                         </div>
                     </div>
@@ -539,9 +511,9 @@
                             <div class="roi">
                                 <strong>120-Day ROI:</strong>
                                 <ul>
-                                    <li>⏱️ <strong>47% reduction in patient wait times</strong> (from 3.2 hrs to 1.7 hrs average)</li>
-                                    <li>👨‍⚕️ <strong>18 clinician hours/week recovered</strong> back to direct patient care</li>
-                                    <li>💵 <strong>15% improvement in billing accuracy</strong> and faster revenue realization</li>
+                                    <li><i class="fas fa-clock" aria-hidden="true"></i> <strong>47% reduction in patient wait times</strong> (from 3.2 hrs to 1.7 hrs average)</li>
+                                    <li><i class="fas fa-user-md" aria-hidden="true"></i> <strong>18 clinician hours/week recovered</strong> back to direct patient care</li>
+                                    <li><i class="fas fa-money-bill-wave" aria-hidden="true"></i> <strong>15% improvement in billing accuracy</strong> and faster revenue realization</li>
                                 </ul>
                             </div>
                         </div>
@@ -562,9 +534,9 @@
                             <div class="roi">
                                 <strong>6-Month ROI:</strong>
                                 <ul>
-                                    <li>📋 <strong>80% of encounters now supported by EHR</strong> (vs. 15% baseline)</li>
-                                    <li>🔗 <strong>Zero care disruption</strong> due to connectivity loss—offline-first architecture worked as designed</li>
-                                    <li>✅ <strong>Patient safety improved:</strong> Longitudinal histories enable safer prescribing and fewer duplicate tests</li>
+                                    <li><i class="fas fa-clipboard-list" aria-hidden="true"></i> <strong>80% of encounters now supported by EHR</strong> (vs. 15% baseline)</li>
+                                    <li><i class="fas fa-link" aria-hidden="true"></i> <strong>Zero care disruption</strong> due to connectivity loss—offline-first architecture worked as designed</li>
+                                    <li><i class="fas fa-check-circle" aria-hidden="true"></i> <strong>Patient safety improved:</strong> Longitudinal histories enable safer prescribing and fewer duplicate tests</li>
                                 </ul>
                             </div>
                         </div>
@@ -688,6 +660,27 @@
             </div>
         </div>
     </footer>
+    
+        <!-- Security Modal -->
+        <dialog id="security-modal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="document.getElementById('security-modal').close()">&times;</button>
+                <h3>Security & Data Protection</h3>
+                <p>All patient data is encrypted locally using AES-256 before syncing. We minimize exposure by encrypting data at rest on-device and during transit. SelNexa complies with [Insert Relevant Local Act] and international GDPR standards; we enforce role‑based access controls, audit logging, and periodic third‑party security assessments.</p>
+            </div>
+        </dialog>
+
+        <script src="/js/roi-calculator.js"></script>
+        <script>
+            // Hook security links to modal
+            document.addEventListener('DOMContentLoaded', function() {
+                var link = document.getElementById('security-link');
+                var linkAbout = document.getElementById('security-link-about');
+                var dialog = document.getElementById('security-modal');
+                if (link) link.addEventListener('click', function(e){ e.preventDefault(); dialog.showModal(); });
+                if (linkAbout) linkAbout.addEventListener('click', function(e){ e.preventDefault(); dialog.showModal(); });
+            });
+        </script>
     
     <!-- Modals -->
     <dialog id="demo-modal" class="modal">
