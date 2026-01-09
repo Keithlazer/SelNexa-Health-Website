@@ -1,0 +1,582 @@
+/* ============================================
+   GRID & TYPOGRAPHY SYSTEM - COMPREHENSIVE REDESIGN
+   Implements 12-column grid, typographic hierarchy, spacing scale, and responsive design
+   ============================================ */
+
+/* ============================================
+   SPACING SCALE (8px base unit)
+   ============================================ */
+:root {
+    --spacing-base-8: 0.5rem;     /* 8px */
+    --spacing-base-16: 1rem;      /* 16px */
+    --spacing-base-24: 1.5rem;    /* 24px */
+    --spacing-base-32: 2rem;      /* 32px */
+    --spacing-base-40: 2.5rem;    /* 40px */
+    --spacing-base-48: 3rem;      /* 48px */
+    --spacing-base-64: 4rem;      /* 64px */
+    --spacing-base-80: 5rem;      /* 80px */
+    --spacing-base-96: 6rem;      /* 96px */
+    --spacing-base-120: 7.5rem;   /* 120px */
+    
+    /* Section spacing */
+    --section-spacing-vertical: 5rem;    /* 80px between major sections */
+    --section-spacing-horizontal: 2rem;  /* 32px internal padding */
+    
+    /* Grid configuration */
+    --grid-columns: 12;
+    --grid-gap: 1.5rem;  /* 24px gap between columns */
+    --container-max: 1440px;
+    --container-padding: 2rem; /* 32px on sides */
+}
+
+/* ============================================
+   TYPOGRAPHIC SCALE - REFINED HIERARCHY
+   ============================================ */
+
+/* H1 - Main Headlines */
+h1 {
+    font-size: var(--fs-h1);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base-24);
+}
+
+/* H2 - Section Titles */
+h2 {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base-32);
+}
+
+/* H3 - Subsection Titles / Card Headings */
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base-16);
+}
+
+/* H4 - Component Labels */
+h4 {
+    font-size: var(--fs-h4);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base-12);
+}
+
+/* Body Text - Improved readability */
+p, li, label {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+    color: var(--color-neutral-charcoal);
+}
+
+/* Paragraph spacing */
+p + p {
+    margin-top: var(--spacing-base-16);
+}
+
+/* Small text */
+small, .small {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+}
+
+/* ============================================
+   12-COLUMN GRID SYSTEM
+   ============================================ */
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--grid-gap);
+}
+
+/* Grid column utilities */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ============================================
+   SECTION LAYOUTS - CONSISTENT ALIGNMENT
+   ============================================ */
+
+section {
+    padding: var(--section-spacing-vertical) var(--section-spacing-horizontal);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-base-80);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header h2 {
+    margin-bottom: var(--spacing-base-24);
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: var(--color-neutral-charcoal);
+    line-height: 1.7;
+}
+
+/* ============================================
+   CARD COMPONENTS - CONSISTENCY
+   ============================================ */
+
+.card {
+    background: var(--color-neutral-white);
+    border: 1px solid #E8E8E8;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-base-32);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+/* Problem/feature card */
+.problem-card, .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-base-16);
+}
+
+.problem-card h3, .feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   BUTTON & CTA STYLING - ENHANCED PROMINENCE
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-base-8);
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    min-height: 48px; /* Accessible touch target */
+}
+
+.btn-primary {
+    background: var(--color-primary-teal);
+    color: var(--color-primary-dark);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+}
+
+.btn-primary:hover {
+    background: #00A8C8;
+    box-shadow: 0 6px 20px rgba(0, 180, 216, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary-dark);
+}
+
+.btn-secondary:hover {
+    background: var(--color-neutral-gray);
+    border-color: var(--color-primary-dark);
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--color-primary-teal);
+    font-weight: 600;
+    padding: 0;
+}
+
+.btn-text:hover {
+    color: #00A8C8;
+}
+
+/* ============================================
+   HERO SECTION - IMPROVED HIERARCHY
+   ============================================ */
+
+.hero {
+    position: relative;
+    padding: var(--spacing-base-120) var(--section-spacing-horizontal) var(--spacing-base-80);
+    background: linear-gradient(135deg, rgba(10, 36, 99, 0.02) 0%, rgba(0, 180, 216, 0.03) 100%);
+    overflow: hidden;
+}
+
+.hero-overline {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary-teal);
+    margin-bottom: var(--spacing-base-16);
+    display: block;
+}
+
+.hero-title {
+    margin-bottom: var(--spacing-base-32);
+    max-width: 900px;
+    line-height: 1.15;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-neutral-charcoal);
+    max-width: 700px;
+    margin-bottom: var(--spacing-base-40);
+}
+
+.hero-cta-group {
+    display: flex;
+    gap: var(--spacing-base-16);
+    margin-bottom: var(--spacing-base-80);
+    flex-wrap: wrap;
+}
+
+.trust-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-base-32);
+    padding-top: var(--spacing-base-40);
+    border-top: 2px solid rgba(0, 180, 216, 0.2);
+}
+
+.trust-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary-teal);
+    line-height: 1;
+    margin-bottom: var(--spacing-base-8);
+}
+
+.stat-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-neutral-charcoal);
+    line-height: 1.4;
+}
+
+/* ============================================
+   ROI CALCULATOR - PROMINENT DESIGN
+   ============================================ */
+
+.roi-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FB 100%);
+    border: 2px solid var(--color-primary-teal);
+    padding: var(--spacing-base-40);
+    border-radius: var(--radius-lg);
+    max-width: 520px;
+    margin: var(--spacing-base-80) auto;
+    box-shadow: 0 8px 32px rgba(0, 180, 216, 0.15);
+}
+
+.roi-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base-24);
+}
+
+.roi-row {
+    margin-bottom: var(--spacing-base-24);
+}
+
+.roi-row label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-neutral-charcoal);
+    margin-bottom: var(--spacing-base-8);
+}
+
+.roi-row input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #E0E0E0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.roi-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary-teal);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 180, 216, 0.4);
+}
+
+.roi-row input[type="number"] {
+    width: 100%;
+    padding: var(--spacing-base-12) var(--spacing-base-16);
+    border: 1px solid #D8D8D8;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+}
+
+.roi-results {
+    background: rgba(0, 180, 216, 0.08);
+    padding: var(--spacing-base-32);
+    border-radius: var(--radius-md);
+    text-align: center;
+    border-left: 4px solid var(--color-primary-teal);
+}
+
+.roi-amount {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-primary-teal);
+    margin: var(--spacing-base-12) 0;
+}
+
+.roi-hours {
+    font-size: 1rem;
+    color: var(--color-neutral-charcoal);
+    font-weight: 500;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - BREAKPOINTS
+   ============================================ */
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+    :root {
+        --section-spacing-vertical: 3rem;    /* 48px */
+        --container-padding: 1.5rem;        /* 24px */
+        --grid-gap: 1rem;                   /* 16px */
+    }
+    
+    h1 { margin-bottom: var(--spacing-base-16); }
+    h2 { margin-bottom: var(--spacing-base-24); }
+    
+    .hero {
+        padding: var(--spacing-base-64) var(--section-spacing-horizontal) var(--spacing-base-48);
+    }
+    
+    .hero-cta-group {
+        flex-direction: column;
+    }
+    
+    .trust-bar {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--spacing-base-24);
+    }
+    
+    .grid {
+        gap: var(--grid-gap);
+    }
+    
+    .col-6 { grid-column: span 12; }
+    
+    .roi-card {
+        padding: var(--spacing-base-32);
+        margin: var(--spacing-base-48) auto;
+    }
+    
+    .card {
+        padding: var(--spacing-base-24);
+    }
+}
+
+/* Mobile: 375px - 599px */
+@media (max-width: 599px) {
+    :root {
+        --section-spacing-vertical: 2rem;   /* 32px */
+        --container-padding: 1rem;          /* 16px */
+        --grid-gap: 0.75rem;                /* 12px */
+    }
+    
+    section {
+        padding: var(--section-spacing-vertical) var(--section-spacing-horizontal);
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-base-16);
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-base-16);
+    }
+    
+    h3 {
+        font-size: 1.125rem;
+    }
+    
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .hero {
+        padding: var(--spacing-base-48) var(--section-spacing-horizontal) var(--spacing-base-32);
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-base-24);
+    }
+    
+    .hero-cta-group {
+        flex-direction: column;
+        gap: var(--spacing-base-12);
+        margin-bottom: var(--spacing-base-40);
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        min-height: 44px;
+    }
+    
+    .trust-bar {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-base-16);
+        padding-top: var(--spacing-base-24);
+        border-top: 1px solid rgba(0, 180, 216, 0.2);
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-base-40);
+    }
+    
+    .roi-card {
+        padding: var(--spacing-base-24);
+        margin: var(--spacing-base-40) auto;
+        border-radius: var(--radius-md);
+    }
+    
+    .roi-title {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-base-16);
+    }
+    
+    .roi-row {
+        margin-bottom: var(--spacing-base-16);
+    }
+    
+    .card {
+        padding: var(--spacing-base-16);
+    }
+    
+    .problem-card h3,
+    .feature-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .col-3, .col-4, .col-6 {
+        grid-column: span 12;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY - TEXT CONTRAST & FOCUS
+   ============================================ */
+
+/* Ensure minimum 4.5:1 contrast ratio */
+.btn, a, button {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.btn:focus-visible, a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--color-primary-teal);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mt-16 { margin-top: var(--spacing-base-16); }
+.mb-16 { margin-bottom: var(--spacing-base-16); }
+.mt-24 { margin-top: var(--spacing-base-24); }
+.mb-24 { margin-bottom: var(--spacing-base-24); }
+.mt-32 { margin-top: var(--spacing-base-32); }
+.mb-32 { margin-bottom: var(--spacing-base-32); }
+
+.mt-40 { margin-top: var(--spacing-base-40); }
+.mb-40 { margin-bottom: var(--spacing-base-40); }
+.mt-48 { margin-top: var(--spacing-base-48); }
+.mb-48 { margin-bottom: var(--spacing-base-48); }
+.mt-64 { margin-top: var(--spacing-base-64); }
+.mb-64 { margin-bottom: var(--spacing-base-64); }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.gap-16 { gap: var(--spacing-base-16); }
+.gap-24 { gap: var(--spacing-base-24); }
+
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* Print styles */
+@media print {
+    section { page-break-inside: avoid; }
+    .btn { display: none; }
+}

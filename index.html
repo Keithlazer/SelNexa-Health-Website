@@ -38,6 +38,8 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="/styles/main.css">
+    <!-- Grid & Typography System -->
+    <link rel="stylesheet" href="/styles/grid-typography-system.css">
     
     <!-- GSAP for animations (from memory) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -131,22 +133,22 @@
                     <p>Healthcare fragmentation drains clinician time, depletes budgets, and limits patient outcomes—especially where infrastructure is constrained and capital is scarce.</p>
                 </div>
                 
-                <div class="problems-grid">
-                    <div class="problem-card">
+                <div class="problems-grid grid">
+                    <div class="problem-card col-4">
                         <div class="problem-stat">40-60%</div>
                         <div class="problem-icon"><i class="fas fa-exclamation-circle"></i></div>
                         <h3>Administrative burden consuming clinician time</h3>
                         <p>Manual scheduling, billing, and reporting pull healthcare workers from patients. In African facilities with severe staffing constraints, this directly reduces clinical capacity and fuels burnout.</p>
                         <span class="stat-source">WHO estimates, 2023</span>
                     </div>
-                    <div class="problem-card">
+                    <div class="problem-card col-4">
                         <div class="problem-stat">22-35%</div>
                         <div class="problem-icon"><i class="fas fa-warning"></i></div>
                         <h3>Medicine wastage from inventory mismanagement</h3>
                         <p>Without demand forecasting, hospitals simultaneously face stock-outs of critical medicines while overstock expires on shelves. Each year, this bleeds precious healthcare budgets.</p>
                         <span class="stat-source">World Bank analysis, African health systems</span>
                     </div>
-                    <div class="problem-card">
+                    <div class="problem-card col-4">
                         <div class="problem-stat">50-70%</div>
                         <div class="problem-icon"><i class="fas fa-lock"></i></div>
                         <h3>Fragmented patient records and data silos</h3>
@@ -155,7 +157,7 @@
                     </div>
                 </div>
                 
-                <div class="solutions-intro">
+                <div class="solutions-intro text-center mt-64 mb-32">
                     <h3>The Path Forward: The Integrated Intelligence Layer →</h3>
                     <p>SelNexa orchestrates hospital administration, supply chain predictability, and interoperable health records—engineered to operate reliably across low-bandwidth and offline environments. This recovers clinician time, stabilizes supply chains, and enables data-driven care decisions.</p>
                 </div>
