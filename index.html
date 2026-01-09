@@ -50,41 +50,38 @@
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
-            <!-- Footer (professional unified) -->
-            <footer class="site-footer">
-                <div class="container">
-                    <div class="footer-grid">
-                        <div>
-                            <h2>SelNexa Health</h2>
-                            <p>Transforming African healthcare through offline-first digital infrastructure.</p>
-                        </div>
-                        <div>
-                            <h4>Solutions</h4>
-                            <ul>
-                                <li><a href="/">Electronic Health Records</a></li>
-                                <li><a href="/">Inventory AI</a></li>
-                                <li><a href="/">Clinic Analytics</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Contact</h4>
-                            <ul>
-                                <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
-                                <li>Harare, Zimbabwe</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Legal</h4>
-                            <ul>
-                                <li><a href="/privacy.html">Privacy Policy</a></li>
-                                <li><a href="/terms.html">Terms</a></li>
-                                <li><a href="#" id="security-link">Security & Compliance</a></li>
-                            </ul>
-                            <p style="font-size:0.85rem;color:#94a3b8;margin-top:0.75rem">© 2025 SelNexa Health. All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Solutions <span class="arrow">▾</span></button>
+                </li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/founders.html" class="nav-link">Founders</a></li>
+                <li class="nav-item"><a href="/resources/guides.html" class="nav-link">Resources</a></li>
+                <li class="nav-item"><a href="/for-investors.html" class="nav-link">For Investors</a></li>
+                <li class="nav-item"><a href="#cta" class="nav-link cta-nav">Book Demo</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero" id="hero">
+            <div class="hero-background">
+                <div class="mesh-gradient"></div>
+                <canvas id="particle-canvas"></canvas>
+            </div>
+            <div class="hero-content">
+                <div class="hero-overline">THE INTEGRATED INTELLIGENCE LAYER FOR AFRICAN HEALTHCARE</div>
                 <h1 class="hero-title">Recover the $4.5B Lost to Healthcare Fragmentation Across Africa.</h1>
                 <p class="hero-subtitle">
                     African healthcare systems lose USD 4.5 billion annually to administrative entropy, supply volatility, and fragmented patient records. SelNexa Health is the operational backbone orchestrating hospital administration, predictive procurement, and interoperable electronic health records—engineered for offline-first resilience and designed to operate reliably across constrained infrastructure where connectivity and power are unpredictable.
@@ -124,7 +121,6 @@
                 <!-- ROI Calculator Widget -->
                 <div id="roi-calculator-widget" aria-live="polite"></div>
             </div>
-            
         </section>
         
         <!-- The Crisis of Efficiency Section -->
@@ -588,77 +584,40 @@
         </section>
     </main>
     
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo">
-                    </div>
-                    <p>The Integrated Intelligence Layer for sustainable African healthcare—orchestrating hospital administration, supply chain predictability, and interoperable electronic health records engineered for offline-first resilience.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Solutions</h4>
-                    <ul>
-                        <li><a href="#solutions">AI Diagnostics</a></li>
-                        <li><a href="#solutions">EHR System</a></li>
-                        <li><a href="#solutions">Queue Management</a></li>
-                        <li><a href="#solutions">Analytics</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="/about.html">About Us</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="/founders.html">Founders</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/blog.html">Blog</a></li>
-                        <li><a href="/testimonials.html">Testimonials</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                        <li><a href="/features.html">Features</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                        <li><a href="/appointments.html">Appointments</a></li>
-                        <li><a href="/portal.html">Portal</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/terms.html">Terms of Service</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/about.html">About</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 SelNexa Health. Transforming African Healthcare with AI.</p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/company/selnexahealth" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/selnexahealth" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.youtube.com/@selnexahealth" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
+    <!-- Footer (professional unified) -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h2>SelNexa Health</h2>
+            <p>Transforming African healthcare through offline-first digital infrastructure.</p>
+          </div>
+          <div>
+            <h4>Solutions</h4>
+            <ul>
+              <li><a href="/">Electronic Health Records</a></li>
+              <li><a href="/">Inventory AI</a></li>
+              <li><a href="/">Clinic Analytics</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
+              <li>Harare, Zimbabwe</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms</a></li>
+              <li><a href="#" id="security-link">Security & Compliance</a></li>
+            </ul>
+            <p style="font-size:0.85rem;color:#94a3b8;margin-top:0.75rem">© 2025 SelNexa Health. All rights reserved.</p>
+          </div>
         </div>
+      </div>
     </footer>
     
         <!-- Security Modal -->
