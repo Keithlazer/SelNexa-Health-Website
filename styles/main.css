@@ -1703,3 +1703,72 @@ section {
 .read-more:hover i {
     transform: translateX(4px);
 }
+
+/* ============================================
+   TEAM SECTION STYLING
+   ============================================ */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+}
+
+.team-card {
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    background: var(--color-neutral-gray);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all var(--transition-base);
+    text-align: center;
+}
+
+.team-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+}
+
+.team-card.placeholder {
+    opacity: 0.7;
+    background: linear-gradient(135deg, var(--color-neutral-gray) 0%, rgba(0, 180, 216, 0.05) 100%);
+    border: 2px dashed rgba(0, 180, 216, 0.3);
+}
+
+.team-image {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.team-card h3 {
+    font-size: var(--fs-h3);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-role {
+    font-weight: 600;
+    color: var(--color-primary-teal);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.team-bio {
+    color: var(--color-neutral-charcoal);
+    line-height: 1.6;
+    font-size: var(--fs-body);
+    margin-bottom: var(--spacing-md);
+}
+
+.team-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 180, 216, 0.1);
+    color: var(--color-primary-teal);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    margin-top: var(--spacing-md);
+}
