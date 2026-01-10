@@ -471,17 +471,30 @@ section {
 }
 
 .card {
-    background: var(--color-neutral-white);
-    border: 1px solid #E8E8E8;
-    border-radius: var(--radius-md);
+    background: var(--color-glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 16px;
     padding: var(--spacing-base-32);
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transform: translateZ(0);
+    will-change: transform, box-shadow, backdrop-filter;
+    contain: layout style paint;
 }
 
 .card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transform: translateY(-8px) scale(1.02) translateZ(0);
+    border-color: rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    animation: glass-glow 0.3s ease-out forwards;
 }
 
 /* Problem/feature card */

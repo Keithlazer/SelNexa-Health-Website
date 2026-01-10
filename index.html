@@ -77,7 +77,7 @@
     </nav>
 
     <main id="main-content">
-        <section class="hero" id="hero">
+        <section class="hero gradient-hero" id="hero">
             <div class="hero-background">
                 <div class="mesh-gradient"></div>
                 <canvas id="particle-canvas"></canvas>
@@ -126,7 +126,7 @@
         </section>
         
         <!-- The Crisis of Efficiency Section -->
-        <section class="problems-section" id="problems">
+        <section class="problems-section animate-on-scroll" id="problems">
             <div class="container">
                 <div class="section-header">
                     <h2>The Crisis of Operational Entropy in African Healthcare</h2>
@@ -165,7 +165,7 @@
         </section>
         
         <!-- The Integrated Intelligence Layer - Systemic Capabilities -->
-        <section class="solutions-section" id="solutions">
+        <section class="solutions-section animate-on-scroll" id="solutions">
             <div class="container">
                 <div class="section-header">
                     <h2>The Integrated Intelligence Layer: Systemic Capabilities for African Healthcare</h2>
@@ -274,7 +274,7 @@
         </section>
         
         <!-- Features Deep Dive -->
-        <section class="features-section" id="features">
+        <section class="features-section animate-on-scroll" id="features">
             <div class="container">
                 <div class="section-header">
                     <h2>Powerful features, purpose-built for African healthcare</h2>
@@ -653,16 +653,16 @@
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name" class="form-label">Full Name *</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
                 </div>
                 <div class="form-group">
                     <label for="facility">Facility Type *</label>
@@ -685,7 +685,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
+                    <textarea id="message" name="message" rows="4" class="form-input form-textarea"></textarea>
                 </div>
                 <label class="checkbox">
                     <input type="checkbox" name="privacy" required>
@@ -715,16 +715,16 @@
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 <div class="form-group">
-                    <label for="contact-name">Full Name *</label>
-                    <input type="text" id="contact-name" name="name" required>
+                    <label for="contact-name" class="form-label">Full Name *</label>
+                    <input type="text" id="contact-name" name="name" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label for="contact-email">Email Address *</label>
-                    <input type="email" id="contact-email" name="email" required>
+                    <label for="contact-email" class="form-label">Email Address *</label>
+                    <input type="email" id="contact-email" name="email" class="form-input" required>
                 </div>
                 <div class="form-group">
-                    <label for="contact-message">Message *</label>
-                    <textarea id="contact-message" name="message" rows="4" required></textarea>
+                    <label for="contact-message" class="form-label">Message *</label>
+                    <textarea id="contact-message" name="message" rows="4" class="form-input form-textarea" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Send Message →</button>
             </form>
@@ -759,6 +759,28 @@
     </script>
     
     <!-- Main JavaScript -->
+    <script>
+        // Modern scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animate-on-scroll elements
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
     <script src="/js/main.js"></script>
 </body>
 </html>
