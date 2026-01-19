@@ -1,45 +1,119 @@
-# Copilot Instructions for keithlazer.github.io
+# Copilot Instructions for SelNexa Health Website
 
 ## Project Overview
-This repository powers the Selnexa Health website, combining static HTML pages, custom CSS/JS, and a React-based SPA in `src/`. The site includes healthcare content, calculators, and a telemedicine portal.
+SelNexa Health combines a **hybrid architecture** serving a healthcare platform: static HTML pages handle marketing/content, while a **React SPA** (`src/`) powers interactive features (patient portals, dashboards, telemedicine). This enables SEO-friendly static content alongside modern, feature-rich applications.
 
-## Architecture & Key Directories
-- **Root HTML files**: Main site pages (`index.html`, `about.html`, etc.) are static and reference assets in `/css`, `/js`, and `/resources`.
-- **`src/`**: Contains a React app (SPA) for advanced features (patient portal, dashboard, etc.). Entry: `src/main.jsx`. Components are organized by domain (e.g., `auth/`, `layout/`, `pages/`).
-- **`js/`**: Standalone scripts for legacy/static pages (e.g., `chatbot.js`, `calculators.js`).
-- **`css/`**: Custom styles for static pages. React SPA uses `src/index.css` and `styles/main.css`.
-- **`SelNexa Website/`**: Archive of older site version; do not update unless migrating content.
-- **`styles/scripts/assets/`**: Logo and image assets. See asset README for optimization commands.
+## Architecture Essentials
 
-## Developer Workflows
-- **Build React SPA**: Use Vite (`vite.config.js`).
-  - Install deps: `npm install`
-  - Dev server: `npm run dev`
-  - Build: `npm run build`
-- **Static site**: No build step; edit HTML/CSS/JS directly.
-- **Asset generation**: Use ImageMagick locally (see `styles/scripts/assets/README.md`) or the `generate-assets` GitHub Action.
+### Dual-Stack Design
+- **Static Layer** (root HTML files): Marketing, blogs, resources—no build required; edit directly
+- **React SPA** (`src/main.jsx` → `src/App.jsx`): Telemedicine, appointments, patient portals, analytics—Vite bundled
+- **Legacy JS** (`js/*.js`): Chatbot, calculators for static pages; keep isolated from React logic
+- **Styling**: Tailwind CSS for SPA (`tailwind.config.js`), custom CSS (`css/*.css`) for static pages
 
-## Conventions & Patterns
-- **React SPA**: Use functional components, hooks, and `store/` for state management (Pinia-like pattern).
-- **Routing**: SPA routes in `src/pages/`, static pages use direct HTML links.
-- **Styling**: Tailwind (`tailwind.config.js`) for SPA, custom CSS for static pages.
-- **Legacy JS**: Avoid mixing React and legacy JS; keep logic separate.
-- **Assets**: Reference images from `styles/scripts/assets/` for new content.
+### Key Directories
+- `src/pages/`: Dashboard, Appointments, PatientPortal, Telemedicine, Analytics, Settings, Login
+- `src/components/`: Layout (Header, Footer), Auth (ProtectedRoute), common (NotificationSystem), DashboardMockups
+- `src/store/`: State management (authStore, appointmentStore) using Zustand + persist middleware
+- `solutions/`, `blog/`, `resources/`: Static content directories
 
-## Integration Points
-- **Service Worker**: `sw.js` for offline support.
-- **Manifest**: `manifest.json` for PWA features.
-- **Sitemap/robots**: SEO files in root.
+## Critical Workflows
 
-## Examples
-- To add a new React page: create in `src/pages/`, add route in `src/App.jsx`.
-- To update a static page: edit the corresponding HTML in root.
-- To optimize a logo: follow commands in `styles/scripts/assets/README.md`.
+### React SPA Development
+```bash
+npm install          # First-time setup
+npm run dev         # Vite dev server (port 3000)
+npm run build       # Produces dist/ for deployment
+```
 
-## Additional Notes
-- Do not edit files in `SelNexa Website/` unless migrating legacy content.
-- Keep SPA and static site logic separate.
-- Reference assets and styles from their respective folders for consistency.
+**Build System**: Vite (`vite.config.js`):
+- React Fast Refresh enabled
+- Port: 3000 (localhost)
+- Build output: `dist/`
+- Source maps: enabled for debugging
+
+### Authentication & State
+- **authStore** (`src/store/authStore.js`): Zustand + persist middleware → persists `isAuthenticated`, `user`, `token` to localStorage
+- **ProtectedRoute** (`src/components/auth/ProtectedRoute.jsx`): Redirects unauthenticated users to `/login`
+- **Login flow**: Email/password → simulated API `/api/auth/login` → stores auth state → navigates to `/dashboard`
+
+### Routing Pattern
+```jsx
+// src/App.jsx establishes all routes
+<Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+// Each page lives in src/pages/PageName.jsx
+```
+
+## Design & Styling Conventions
+
+### Tailwind Color System (`tailwind.config.js`)
+- **Primary Red** (medical/healthcare): `primary-600` (#dc2626)
+- **Secondary Teal** (innovation): `secondary-600` (#238a7a)
+- **Accent Orange**: `accent-500` (#f77f00)
+- Custom animations: `fade-in`, `slide-up`, `pulse-slow`
+
+### Component Patterns
+- **Functional Components + Hooks** only (no class components)
+- **Motion Animations**: Framer Motion (`motion.div`) for page transitions and micro-interactions
+- **Icon Library**: Lucide React (`lucide-react`) for consistent iconography
+- **State Management**:
+  - Local state: `useState()` for UI toggles (tabs, modals)
+  - Global state: Zustand stores for auth, appointments
+  - Server queries: React Query configured in `src/main.jsx`
+
+### Example Component Structure
+```jsx
+// src/pages/PatientPortal.jsx
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Calendar, FileText } from 'lucide-react'
+// Sidebar nav + tab-based content render pattern
+const [activeTab, setActiveTab] = useState('overview')
+const tabs = [{ id: 'overview', label: 'Overview', icon: Activity }, ...]
+```
+
+## Page-Specific Behaviors
+
+| Page | Auth Required | Key Features |
+|------|---------------|--------------|
+| **Dashboard** | ✓ | Stats grid, notifications (Activity, Alert, CheckCircle), search/filter |
+| **Appointments** | ✓ | React Calendar widget, list/calendar view toggle, date filtering |
+| **Telemedicine** | ✓ | Video call UI (start/end), session history table, call status state |
+| **PatientPortal** | ✓ | Multi-tab interface (records, medications, appointments), medical history |
+| **Analytics** | ✓ | Recharts (LineChart, BarChart, PieChart), time range picker (30d, 90d, etc.) |
+| **Settings** | ✓ | Profile, notifications, security, appearance tabs with form controls |
+| **Home** | ✗ | Static hero, stats section, features, no auth required |
+| **Login** | ✗ | Form validation, error/success messages, redirect to `/dashboard` on success |
+
+## Embed System (Static Site Integration)
+
+The SPA can be embedded into static pages via `embed.tsx`:
+```html
+<div class="selnexa-dashboard-embed" data-type="patient"></div>
+<script src="dist/embed.js"></script>
+```
+Supported types: `patient`, `provider`, `admin` (mapped in `COMPONENT_MAP`)
+
+## Critical Integration Points
+- **Service Worker** (`sw.js`): Offline support; cache strategies for static assets
+- **Manifest** (`manifest.json`): PWA metadata (name, icons, theme color)
+- **SEO Files**: `sitemap.xml`, `robots.txt` in root; structured data in static HTML
+- **Performance**: Core Web Vitals optimized—lazy loading, optimized animations, no render-blocking assets
+
+## Don't Mix: Separation of Concerns
+- ❌ Don't import legacy JS (`js/chatbot.js`) into React components
+- ❌ Don't directly modify DOM in React (use state/refs)
+- ❌ Don't add new Tailwind classes without checking `tailwind.config.js` color system
+- ✓ Do create new pages in `src/pages/`, register in `src/App.jsx`
+- ✓ Do add global state to `src/store/` using Zustand pattern (import { create } from 'zustand')
+- ✓ Do style with Tailwind utility classes (avoid inline CSS)
+
+## Common Patterns
+- **Tab Navigation**: `activeTab` state + `renderTabContent()` switch; see Settings, PatientPortal
+- **Search/Filter**: Local `useState()` for query string; filter arrays inline
+- **Notifications**: NotificationSystem component globally integrated; toast-style UI
+- **Loading States**: `loading` boolean in store; show spinner or skeleton during fetch
+- **Animations**: Framer Motion `motion.div` with `initial`, `animate`, `transition` props for entrance effects
 
 ---
-_If any section is unclear or missing, please provide feedback for further refinement._
+**Last Updated**: January 2026 | **Architecture**: Vite React SPA + Static HTML hybrid
