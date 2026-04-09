@@ -40,20 +40,14 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                        Resources <span class="arrow">▾</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="/blog.html" class="dropdown-item">Blog</a>
-                        <a href="/" class="dropdown-item">Case Studies</a>
-                        <a href="/" class="dropdown-item">Documentation</a>
-                        <a href="/" class="dropdown-item">Webinars</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link cta-nav">Book Demo</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="/case-studies.html" class="nav-link" data-i18n="nav.caseStudies">Case Studies</a></li>
+                <li class="nav-item"><a href="/telemedicine.html" class="nav-link" data-i18n="nav.telemedicine">Telemedicine</a></li>
+                <li class="nav-item"><a href="/pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                <li class="nav-item"><a href="/investors.html" class="nav-link" data-i18n="nav.investors">Investors</a></li>
+                <li class="nav-item"><a href="/resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
+                <li class="nav-item"><a href="/careers.html" class="nav-link" data-i18n="nav.careers">Careers</a></li>
+                <li class="nav-item"><a href="/security-and-compliance.html" class="nav-link" data-i18n="nav.security">Security & Compliance</a></li>
+                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav" data-i18n="nav.bookDemo">Book Demo</a></li>
             </ul>
         </div>
         <div class="navbar-progress"></div>
@@ -63,17 +57,19 @@
         <section class="hero" id="hero">
             <div class="hero-background"><div class="mesh-gradient"></div></div>
             <div class="hero-content">
-                <div class="hero-overline">SCHEDULE YOUR DEMO</div>
-                <h1 class="hero-title">Book Your Personalized Demo</h1>
-                <p class="hero-subtitle">See how SelNexa Health can transform your healthcare facility. Our team will walk you through all features and answer your questions.</p>
+                <div class="hero-overline">UNIFIED SCHEDULING</div>
+                <h1 class="hero-title">Book Demos and Telemedicine Appointments in One Flow</h1>
+                <p class="hero-subtitle">Use one secure form to request product demos, telemedicine sessions, and implementation planning calls. Calendar sync and confirmation workflows are integration-ready.</p>
             </div>
         </section>
         
         <section class="appointment-section">
             <div class="container">
-                <div class="section-header"><h2>Demo Booking Form</h2><p>Fill out the form below and we'll confirm your appointment within 24 hours</p></div>
+                <div class="section-header"><h2>Unified Booking Form</h2><p>Fill out the form below and we will confirm clinician/demo availability within 24 hours.</p></div>
                 <div class="appointment-container">
-                    <form class="appointment-form">
+                    <form class="appointment-form" id="appointmentForm" data-ajax="true" action="">
+                        <input type="hidden" name="calendar_provider" value="calendly-placeholder">
+                        <input type="hidden" name="g-recaptcha-response" value="pending-client-token">
                         <div class="form-group">
                             <label for="fname">Full Name *</label>
                             <input type="text" id="fname" name="name" required>
@@ -85,6 +81,21 @@
                         <div class="form-group">
                             <label for="fphone">Phone Number *</label>
                             <input type="tel" id="fphone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fbooking">Booking Type *</label>
+                            <select id="fbooking" name="booking_type" required>
+                                <option value="demo">Platform Demo</option>
+                                <option value="telemedicine">Telemedicine Appointment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fmode">Consultation Mode *</label>
+                            <select id="fmode" name="consultation_mode" required>
+                                <option value="video">Secure Video</option>
+                                <option value="phone">Phone Backup</option>
+                                <option value="onsite">Onsite Follow-up</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="ffacility">Facility Name *</label>
@@ -129,11 +140,24 @@
                             <label for="fmessage">Additional Information</label>
                             <textarea id="fmessage" name="message" rows="4"></textarea>
                         </div>
+                        <div class="form-group">
+                            <label for="favailability">Preferred Time Window *</label>
+                            <select id="favailability" name="availability" required>
+                                <option value="morning">Morning (08:00-12:00)</option>
+                                <option value="afternoon">Afternoon (12:00-16:00)</option>
+                                <option value="evening">Evening (16:00-20:00)</option>
+                            </select>
+                        </div>
                         <label class="checkbox">
                             <input type="checkbox" name="privacy" required>
                             I agree to the privacy policy
                         </label>
-                        <button type="submit" class="btn btn-primary">Book Appointment →</button>
+                        <label class="checkbox">
+                            <input type="checkbox" name="hipaa_consent" required>
+                            I consent to secure processing of health-related scheduling details.
+                        </label>
+                        <p class="form-note">Protected by reCAPTCHA and queued for secure calendar synchronization.</p>
+                        <button type="submit" class="btn btn-primary">Request Booking Confirmation →</button>
                     </form>
                 </div>
             </div>
@@ -184,8 +208,8 @@
                     <h2>Transform Your Healthcare Facility Today</h2>
                     <p>Join 100+ facilities already using SelNexa Health</p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="window.location.href='/contact.html'">Contact Support</button>
-                        <button class="btn btn-secondary" onclick="window.location.href='/'">Back to Home</button>
+                        <button class="btn btn-primary" onclick="window.location.href='/telemedicine.html'">Apply for telemedicine beta →</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='/pricing.html'">Compare plans before booking →</button>
                     </div>
                 </div>
             </div>
@@ -196,14 +220,13 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column"><div class="footer-logo"><img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo"></div><p>Transforming African healthcare with AI and blockchain technology.</p></div>
-                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/">AI Diagnostics</a></li><li><a href="/">EHR System</a></li><li><a href="/">Queue Management</a></li><li><a href="/">Analytics</a></li></ul></div>
-                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About Us</a></li><li><a href="/">Careers</a></li><li><a href="/">Press</a></li><li><a href="/">Partners</a></li></ul></div>
-                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/blog.html">Blog</a></li><li><a href="/">Case Studies</a></li><li><a href="/">Documentation</a></li><li><a href="/">API</a></li></ul></div>
-                <div class="footer-column"><h4>Support</h4><ul><li><a href="/">Help Center</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/">Training</a></li><li><a href="/">System Status</a></li></ul></div>
-                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/">Privacy Policy</a></li><li><a href="/">Terms of Service</a></li><li><a href="/">Security</a></li><li><a href="/">Compliance</a></li></ul></div>
+                <div class="footer-column"><h4>Solutions</h4><ul><li><a href="/solutions/administration.html">AI Administration</a></li><li><a href="/solutions/procurement.html">Predictive Procurement</a></li><li><a href="/solutions/records.html">Blockchain EHR</a></li><li><a href="/solutions/analytics.html">Analytics</a></li></ul></div>
+                <div class="footer-column"><h4>Company</h4><ul><li><a href="/investors.html">Investors</a></li><li><a href="/careers.html">Careers</a></li><li><a href="/case-studies.html">Case Studies</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+                <div class="footer-column"><h4>Resources</h4><ul><li><a href="/resources.html">Resources Hub</a></li><li><a href="/resources/whitepapers.html">Whitepapers</a></li><li><a href="/resources/webinars.html">Webinars</a></li><li><a href="/resources.html#api-documentation">FHIR API Docs</a></li></ul></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Service</a></li><li><a href="/security-and-compliance.html">Security & Compliance</a></li></ul><div class="trust-badges"><span>SSL</span><span>HIPAA</span><span>GDPR</span><span>WCAG</span></div></div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 SelNexa Health. Transforming African Healthcare with AI.</p>
+                <p>&copy; 2026 SelNexa Health. Transforming African Healthcare with AI.</p>
                 <div class="social-links"><a href="#linkedin" aria-label="LinkedIn">LinkedIn</a><a href="#twitter" aria-label="Twitter">Twitter</a><a href="#youtube" aria-label="YouTube">YouTube</a></div>
             </div>
         </div>

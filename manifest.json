@@ -16,7 +16,9 @@
     { "src": "/styles/scripts/assets/selnexa-logo.avif?v=8", "sizes": "512x512", "type": "image/avif", "purpose": "any" }
     ],
     "shortcuts": [
-        { "name": "Book Appointment", "short_name": "Book", "url": "/index.html#appointment" },
-        { "name": "Contact Us", "short_name": "Contact", "url": "/index.html#contact" }
+        { "name": "Book Appointment", "short_name": "Book", "url": "/appointments.html" },
+        { "name": "Case Studies", "short_name": "Cases", "url": "/case-studies.html" },
+        { "name": "Telemedicine", "short_name": "Telemed", "url": "/telemedicine.html" },
+        { "name": "Contact Us", "short_name": "Contact", "url": "/contact.html" }
     ]
 }

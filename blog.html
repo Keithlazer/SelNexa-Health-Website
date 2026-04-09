@@ -72,67 +72,103 @@
         <section class="blog-section">
             <div class="container">
                 <div class="section-header"><h2>Latest Articles</h2></div>
+                <div class="page-card blog-filter-card">
+                    <h3>Filter Articles</h3>
+                    <div class="page-grid">
+                        <div>
+                            <label for="blog-topic-filter">Topic</label>
+                            <select id="blog-topic-filter">
+                                <option value="all">All topics</option>
+                                <option value="ai">AI</option>
+                                <option value="security">Security & EHR</option>
+                                <option value="operations">Operations</option>
+                                <option value="telemedicine">Telemedicine</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="blog-date-filter">Date</label>
+                            <select id="blog-date-filter">
+                                <option value="all">All dates</option>
+                                <option value="2024-12">December 2024</option>
+                                <option value="2024-11">November 2024</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="blog-language-filter">Language</label>
+                            <select id="blog-language-filter">
+                                <option value="all">All languages</option>
+                                <option value="en">English</option>
+                                <option value="sn">Shona</option>
+                                <option value="nd">Ndebele</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <div class="blog-grid">
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="ai" data-date="2024-12" data-language="en">
                         <div class="blog-image">🤖</div>
                         <div class="blog-content">
                             <div class="blog-date">December 10, 2024</div>
                             <h3>AI Diagnostics: The Future of African Healthcare</h3>
-                            <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing diagnostic accuracy and speed in resource-limited healthcare settings across Africa.</p>
+                            <p class="blog-excerpt">Explore how artificial intelligence is revolutionizing diagnostic accuracy and speed in resource-limited healthcare settings across Africa, and how this links to measurable case-study outcomes.</p>
                             <p class="blog-meta">5 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/ai-healthcare-africa.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="security" data-date="2024-12" data-language="en">
                         <div class="blog-image">⛓️</div>
                         <div class="blog-content">
                             <div class="blog-date">December 5, 2024</div>
                             <h3>Blockchain Security in Healthcare Records</h3>
-                            <p class="blog-excerpt">Learn how blockchain technology ensures patient data privacy, integrity, and patient control over medical information.</p>
+                            <p class="blog-excerpt">Learn how blockchain technology ensures patient data privacy, integrity, and patient control over medical information with interoperability-ready governance.</p>
                             <p class="blog-meta">7 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/future-healthcare-systems.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="operations" data-date="2024-11" data-language="en">
                         <div class="blog-image"><i class="fas fa-clock" aria-hidden="true"></i></div>
                         <div class="blog-content">
                             <div class="blog-date">November 28, 2024</div>
                             <h3>Reducing Wait Times with Smart Scheduling</h3>
-                            <p class="blog-excerpt">Discover how predictive algorithms and intelligent queue management reduce patient wait times by up to 47%.</p>
+                            <p class="blog-excerpt">Discover how predictive algorithms and intelligent queue management reduce patient wait times by up to 47%, with implementation guidance for clinics and hospitals.</p>
                             <p class="blog-meta">6 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/why-ai-diagnostics-matter.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="operations" data-date="2024-11" data-language="en">
                         <div class="blog-image"><i class="fas fa-chart-pie" aria-hidden="true"></i></div>
                         <div class="blog-content">
                             <div class="blog-date">November 20, 2024</div>
                             <h3>Data-Driven Healthcare Decisions</h3>
                             <p class="blog-excerpt">How real-time analytics dashboards empower healthcare facilities to make better clinical and operational decisions.</p>
                             <p class="blog-meta">5 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/future-healthcare-systems.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="telemedicine" data-date="2024-11" data-language="en">
                         <div class="blog-image"><i class="fas fa-globe-africa" aria-hidden="true"></i></div>
                         <div class="blog-content">
                             <div class="blog-date">November 15, 2024</div>
                             <h3>Building Healthcare for Africa's Unique Challenges</h3>
                             <p class="blog-excerpt">Why technology designed specifically for African healthcare infrastructure delivers better results than one-size-fits-all solutions.</p>
                             <p class="blog-meta">8 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/selnexa-telemedicine-zimbabwe.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
-                    <div class="blog-card">
+                    <div class="blog-card" data-topic="telemedicine" data-date="2024-11" data-language="en">
                         <div class="blog-image"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
                         <div class="blog-content">
                             <div class="blog-date">November 10, 2024</div>
                             <h3>Case Study: Transforming a Rural Clinic</h3>
                             <p class="blog-excerpt">See how a rural healthcare facility in Zimbabwe reduced wait times and improved patient outcomes with SelNexa Health.</p>
                             <p class="blog-meta">6 min read</p>
-                            <a href="#" class="btn-link">Read More →</a>
+                            <a href="/blog/telemedicine-zimbabwe.html" class="btn-link">Read More →</a>
                         </div>
                     </div>
+                </div>
+                <div class="page-card blog-cms-note">
+                    <h3>CMS Migration Ready</h3>
+                    <p>Blog cards currently render static fallback content and support migration to a headless CMS feed by setting <strong>window.SELNEXA_BLOG_FEED_URL</strong>.</p>
                 </div>
             </div>
         </section>
@@ -144,8 +180,8 @@
                     <h2>Ready to Transform Your Facility?</h2>
                     <p>Schedule a demo and see how SelNexa can revolutionize your healthcare operations</p>
                     <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Schedule Demo</button>
-                        <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">Contact Us</button>
+                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">Reduce wait times by 47% →</button>
+                        <a class="btn btn-secondary" href="/case-studies.html">See how we saved $180k annually →</a>
                     </div>
                 </div>
             </div>
@@ -172,7 +208,37 @@
     <dialog id="demo-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button><h2>Schedule Your Demo</h2><form class="demo-form"><div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" required></div><div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" required></div><div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone"></div><div class="form-group"><label for="facility">Facility Type *</label><select id="facility" name="facility" required><option value="">Select...</option><option value="hospital">Hospital</option><option value="clinic">Clinic</option><option value="health-center">Health Center</option></select></div><div class="form-group"><label for="country">Country *</label><select id="country" name="country" required><option value="">Select...</option><option value="ZW">Zimbabwe</option><option value="NG">Nigeria</option><option value="KE">Kenya</option><option value="ZA">South Africa</option></select></div><button type="submit" class="btn btn-primary">Schedule Demo →</button></form></div></dialog>
     
     <dialog id="contact-modal" class="modal"><div class="modal-content"><button class="modal-close" onclick="document.getElementById('contact-modal').close()">&times;</button><h2>Contact Us</h2><form class="contact-form"><div class="form-group"><label for="contact-name">Full Name *</label><input type="text" id="contact-name" name="name" required></div><div class="form-group"><label for="contact-email">Email Address *</label><input type="email" id="contact-email" name="email" required></div><div class="form-group"><label for="contact-message">Message *</label><textarea id="contact-message" name="message" rows="5" required></textarea></div><button type="submit" class="btn btn-primary">Send Message →</button></form></div></dialog>
-    
+        <script>
+            (function () {
+                var topicFilter = document.getElementById("blog-topic-filter");
+                var dateFilter = document.getElementById("blog-date-filter");
+                var languageFilter = document.getElementById("blog-language-filter");
+                var cards = Array.prototype.slice.call(document.querySelectorAll(".blog-card"));
+
+                function applyFilters() {
+                    var topic = topicFilter.value;
+                    var date = dateFilter.value;
+                    var language = languageFilter.value;
+
+                    cards.forEach(function (card) {
+                        var topicMatch = topic === "all" || card.getAttribute("data-topic") === topic;
+                        var dateMatch = date === "all" || card.getAttribute("data-date") === date;
+                        var languageMatch = language === "all" || card.getAttribute("data-language") === language;
+                        card.style.display = topicMatch && dateMatch && languageMatch ? "block" : "none";
+                    });
+                }
+
+                topicFilter.addEventListener("change", applyFilters);
+                dateFilter.addEventListener("change", applyFilters);
+                languageFilter.addEventListener("change", applyFilters);
+
+                if (window.SELNEXA_BLOG_FEED_URL) {
+                    fetch(window.SELNEXA_BLOG_FEED_URL).catch(function () {
+                        // Keep static fallback cards if the feed is unavailable.
+                    });
+                }
+            })();
+        </script>
     <script src="/js/main.js"></script>
 </body>
 </html>

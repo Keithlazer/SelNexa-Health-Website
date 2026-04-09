@@ -1,37 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telemedicine – SelNexa Health</title>
-  <link rel="stylesheet" href="styles/home.css">
-  <link rel="stylesheet" href="styles/grid-typography-system.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine built for Africa | SelNexa Health</title>
+    <meta name="description" content="Low-bandwidth telemedicine with secure video, AI triage, and integrated patient records for African healthcare networks.">
+    <link rel="canonical" href="https://www.selnexahealth.com/telemedicine.html">
+    <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/telemedicine.html">
+    <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/telemedicine.html?lang=sn">
+    <link rel="alternate" hreflang="nd" href="https://www.selnexahealth.com/telemedicine.html?lang=nd">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-health-logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/grid-typography-system.css">
 </head>
 <body>
-  <header id="header"><div class="container"><nav class="navbar"><a href="/" class="logo"><picture><source srcset="styles/scripts/assets/selnexa-logo.avif" type="image/avif"><source srcset="styles/scripts/assets/selnexa-logo.webp" type="image/webp"><img src="styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async"></picture></a><ul class="nav-links" id="primary-nav"><li><a href="/#home">Home</a></li><li><a href="/#features">Features</a></li><li><a href="/#appointment">Appointments</a></li><li><a href="/#contact">Contact</a></li></ul><button class="mobile-menu-btn" aria-controls="primary-nav" aria-expanded="false" aria-label="Menu"><i class="fas fa-bars" aria-hidden="true"></i></button></nav></div></header>
-  <main class="section"><div class="container">
-    <div class="section-title"><h2>Telemedicine</h2><p>Connect securely with your provider.</p></div>
-    <div class="tracker-container">
-      <p>Use the button below to join your telemedicine session. Your provider will supply a meeting link/code.</p>
-      <a id="joinTelemedicine" class="btn" href="#" target="_blank" rel="noopener">Join Session</a>
-  <p class="muted">By joining, you consent to our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms</a>.</p>
-    </div>
-  </div></main>
-  <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-logo"><picture><source srcset="styles/scripts/assets/selnexa-logo.avif" type="image/avif"><source srcset="styles/scripts/assets/selnexa-logo.webp" type="image/webp"><img src="styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async"></picture></div><div class="footer-social"><a href="#" title="Facebook" aria-label="Follow SelNexa Health on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i><span class="sr-only">Facebook</span></a><a href="#" title="Twitter" aria-label="Follow SelNexa Health on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a><a href="#" title="LinkedIn" aria-label="Connect with SelNexa Health on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a><a href="#" title="Instagram" aria-label="Follow SelNexa Health on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a></div></div><div class="footer-bottom"><p>&copy; 2025 SelNexa Health. All rights reserved.</p><p><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p></div></div></footer>
-  <script>
-    // Configure a provider room URL globally if available
-    // window.SELNEXA_TELEMED_URL = 'https://meet.provider.com/room/abc';
-    const btn = document.getElementById('joinTelemedicine');
-    btn.addEventListener('click', (e) => {
-      if (!window.SELNEXA_TELEMED_URL) {
-        e.preventDefault();
-        alert('Your session link is not set yet. Please contact support.');
-      } else {
-        btn.href = window.SELNEXA_TELEMED_URL;
-      }
-    });
-  </script>
-  <script defer src="js/home.js"></script>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <a href="/" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo" class="logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="primary-nav">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav.solutions">Solutions <span class="arrow">▾</span></button>
+                    <div class="dropdown-menu mega-menu">
+                        <div class="mega-menu-grid">
+                            <div class="mega-menu-column">
+                                <h3>AI-Powered Administration</h3>
+                                <p>40% faster check-in and 70% fewer manual errors across pilot facilities.</p>
+                                <a href="/solutions/administration.html" class="dropdown-item">Reduce wait times by 47% →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Predictive Procurement</h3>
+                                <p>AI forecasting that eliminated critical stockouts and reduced waste by 35%.</p>
+                                <a href="/solutions/procurement.html" class="dropdown-item">See how we saved $180k annually →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Blockchain-Secured Records</h3>
+                                <p>Cross-facility access with 100% HIPAA compliance and tamper-proof audit trails.</p>
+                                <a href="/solutions/records.html" class="dropdown-item">Cut duplicate tests by 60% →</a>
+                            </div>
+                            <div class="mega-menu-column">
+                                <h3>Analytics + Telemedicine</h3>
+                                <p>Readmission insights and low-bandwidth virtual care in one connected platform.</p>
+                                <a href="/telemedicine.html" class="dropdown-item">Expand specialist access by 300% →</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/case-studies.html" class="nav-link" data-i18n="nav.caseStudies">Case Studies</a></li>
+                <li class="nav-item"><a href="/telemedicine.html" class="nav-link" data-i18n="nav.telemedicine">Telemedicine</a></li>
+                <li class="nav-item"><a href="/pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                <li class="nav-item"><a href="/investors.html" class="nav-link" data-i18n="nav.investors">Investors</a></li>
+                <li class="nav-item"><a href="/resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
+                <li class="nav-item"><a href="/careers.html" class="nav-link" data-i18n="nav.careers">Careers</a></li>
+                <li class="nav-item"><a href="/security-and-compliance.html" class="nav-link" data-i18n="nav.security">Security & Compliance</a></li>
+                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav" data-i18n="nav.bookDemo">Book Demo</a></li>
+            </ul>
+        </div>
+        <div class="navbar-progress"></div>
+    </nav>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <p class="page-overline">CONNECTED CARE DELIVERY</p>
+                <h1 class="page-title">Telemedicine built for Africa</h1>
+                <p class="page-subtitle">"SelNexa’s telemedicine platform enables secure video consultations even on low‑bandwidth connections, integrates patient records and uses AI triage to prioritise care. In our Zimbabwe pilot, telemedicine reduced travel time by 85 %, saved $50–100 per consultation, increased specialist access by 300 % and improved treatment adherence by 40 %."</p>
+                <div class="cta-buttons">
+                    <a href="/appointments.html?type=telemedicine" class="btn btn-primary">Apply for Beta Access</a>
+                    <a href="/case-studies.html" class="btn btn-secondary">Review Pilot Outcomes</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="secure-video">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-video" aria-hidden="true"></i> Secure Video Consultations</h2>
+                    <p>Consultations remain stable even on constrained 2G/3G links through adaptive bitrate fallback and session recovery. Every session uses end-to-end encryption and role-based controls to protect patient privacy.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="scheduling-reminders">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-calendar-check" aria-hidden="true"></i> Appointment Scheduling & Reminders</h2>
+                    <p>Calendar-linked booking synchronises with clinician availability and sends automated SMS or email reminders to reduce no-shows. Demo and telemedicine requests are unified in one scheduling flow.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="ehr-integration">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-file-medical" aria-hidden="true"></i> Patient Portal & EHR Integration</h2>
+                    <p>Providers and patients access records in real time with consent-aware access controls. Encounter notes, vitals, and prescriptions synchronise back to SelNexa records for continuity of care.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="ai-triage">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-brain" aria-hidden="true"></i> AI-Assisted Triage</h2>
+                    <p>Machine learning classifies symptom urgency and routes high-risk patients to immediate follow-up. Clinicians receive priority queues so urgent cases are seen sooner.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="remote-monitoring">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-heart-pulse" aria-hidden="true"></i> Remote Monitoring & Chronic Care</h2>
+                    <p>Long-term care pathways support hypertension, diabetes, and maternal health cohorts with reminders, check-ins, and outcomes tracking. Offline support allows data capture during connectivity gaps.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="offline-multilingual-support">
+            <div class="container">
+                <article class="page-card">
+                    <h2><i class="fas fa-language" aria-hidden="true"></i> Offline & Multilingual Support</h2>
+                    <p>Interfaces are optimised for multilingual teams and can operate offline-first in low-connectivity environments. Translation support includes English, Shona, and Ndebele with progressive rollout for more languages.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="cta-section" id="cta">
+            <div class="cta-background"><div class="cta-gradient"></div></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Bring specialist access closer to every patient.</h2>
+                    <p>Apply for pilot access and deploy secure low-bandwidth telemedicine in weeks.</p>
+                    <div class="cta-buttons">
+                        <a href="/appointments.html?type=telemedicine" class="btn btn-primary">Apply for Beta Access</a>
+                        <a href="/pricing.html" class="btn btn-secondary">See Telemedicine Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h2>SelNexa Health</h2>
+            <p>Integrated intelligence for African healthcare: AI operations, predictive procurement, secure records, analytics, and telemedicine.</p>
+          </div>
+          <div class="footer-column">
+            <h4>Solutions</h4>
+            <ul>
+              <li><a href="/solutions/administration.html">AI Administration</a></li>
+              <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
+              <li><a href="/solutions/records.html">Blockchain EHR</a></li>
+              <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
+            </ul>
+          </div>
+          <div class="footer-column footer-route-map">
+            <h4 data-i18n="footer.quickLinks">Quick Links</h4>
+            <ul>
+              <li><a href="/case-studies.html" data-i18n="nav.caseStudies">Case Studies</a></li>
+              <li><a href="/telemedicine.html" data-i18n="nav.telemedicine">Telemedicine</a></li>
+              <li><a href="/pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+              <li><a href="/investors.html" data-i18n="nav.investors">Investors</a></li>
+              <li><a href="/resources.html" data-i18n="nav.resources">Resources</a></li>
+              <li><a href="/careers.html" data-i18n="nav.careers">Careers</a></li>
+              <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
+            </ul>
+            <div class="trust-badges" aria-label="Compliance badges">
+              <span>SSL</span>
+              <span>HIPAA</span>
+              <span>GDPR</span>
+              <span>WCAG 2.1 AA</span>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms</a></li>
+              <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
+              <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Harare, Zimbabwe</p>
+          <p><a href="/appointments.html?type=telemedicine">Apply for Beta</a> | <a href="/case-studies.html">Pilot Results</a> | <a href="/resources.html#api-documentation">FHIR API Docs</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>
-
