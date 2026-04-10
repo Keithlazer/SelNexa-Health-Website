@@ -24,7 +24,7 @@ This is a complete modern redesign of the SelNexa Health website, transforming i
 ├── js/
 │   └── main.js               # Interactive features and animations
 ├── styles/scripts/assets/
-│   └── selnexa-health-logo.png  # Logo (50px desktop, 40px tablet, 35px mobile)
+│   └── selnexa-logo.svg      # Canonical logo asset
 └── README.md                 # This file
 ```
 
@@ -84,7 +84,7 @@ This is a complete modern redesign of the SelNexa Health website, transforming i
 ### Installation
 
 1. Clone or download the repository
-2. Ensure the logo file is placed at `/styles/scripts/assets/selnexa-health-logo.png`
+2. Ensure the logo file is placed at `/styles/scripts/assets/selnexa-logo.svg`
 3. Open `index.html` in your browser
 4. All dependencies are loaded via CDN (no build process required)
 
@@ -358,7 +358,7 @@ The site automatically tracks:
 
 ### Common Tasks
 
-**Change logo**: Replace file at `/styles/scripts/assets/selnexa-health-logo.png`
+**Change logo**: Replace file at `/styles/scripts/assets/selnexa-logo.svg`
 
 **Update contact email**: Modify form submission endpoint in `main.js`
 

@@ -21,7 +21,7 @@ git clone https://github.com/Keithlazer/keithlazer.github.io.git
 cd keithlazer.github.io
 
 # Ensure logo is in place
-# Copy selnexa-health-logo.png to /styles/scripts/assets/
+# Copy selnexa-logo.svg to /styles/scripts/assets/
 ```
 
 ### Step 2: Verify File Structure
@@ -33,7 +33,7 @@ project-root/
 │   ├── main.css
 │   └── scripts/
 │       └── assets/
-│           └── selnexa-health-logo.png
+│           └── selnexa-logo.svg
 ├── js/
 │   └── main.js
 ├── README.md
@@ -70,7 +70,7 @@ Push to GitHub and enable GitHub Pages in repository settings.
 **Important Elements:**
 ```html
 <!-- Logo reference -->
-<img src="/styles/scripts/assets/selnexa-health-logo.png" alt="SelNexa Health Logo">
+<img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health Logo">
 
 <!-- Particle canvas for hero -->
 <canvas id="particle-canvas"></canvas>
@@ -148,7 +148,7 @@ Push to GitHub and enable GitHub Pages in repository settings.
 
 ### 2. Update Logo
 
-**File**: `/styles/scripts/assets/selnexa-health-logo.png`
+**File**: `/styles/scripts/assets/selnexa-logo.svg`
 
 1. Replace the logo file (keep same filename)
 2. Ensure logo is at least 200x200px
@@ -406,7 +406,7 @@ if (localStorage.getItem('darkMode') === 'true') {
 ### Issue: Logo not showing
 
 **Solution**:
-1. Check file exists at `/styles/scripts/assets/selnexa-health-logo.png`
+1. Check file exists at `/styles/scripts/assets/selnexa-logo.svg`
 2. Verify file permissions (readable)
 3. Check browser console for 404 errors
 4. Try absolute URL instead of relative

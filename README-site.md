@@ -16,39 +16,15 @@ What I changed (summary)
 
 Logo assets
 
--- `styles/scripts/assets/selnexa-logo.webp` (preferred raster)
--- `styles/scripts/assets/selnexa-logo-full.png` (fallback raster)
-- `styles/scripts/assets/SelNexa Health Logo Full.jpg` (raster fallback)
+- `styles/scripts/assets/selnexa-logo.svg` (canonical production logo)
 
-Image optimization (generate AVIF/WebP + 2x raster)
+Image optimization
 
-To avoid spaces in filenames and simplify URLs, rename the source file locally first (PowerShell):
+No raster generation is required for the current site logo because it is SVG-based.
 
-Rename-Item "styles/scripts/assets/SelNexa Health Logo Full.jpg" "styles/scripts/assets/selnexa-logo-full.jpg"
+If you need raster derivatives for external channels, export from `styles/scripts/assets/selnexa-logo.svg`.
 
-Then run these commands from the repo root to generate optimized variants from the renamed source.
-
-# Create WebP (1x and 2x)
-magick "styles/scripts/assets/selnexa-logo-full.jpg" -resize 180 "styles/scripts/assets/selnexa-logo.webp"
-magick "styles/scripts/assets/selnexa-logo-full.jpg" -resize 360 "styles/scripts/assets/selnexa-logo@2x.webp"
-
-# Create AVIF (1x and 2x)
-magick "styles/scripts/assets/selnexa-logo-full.jpg" -resize 180 "styles/scripts/assets/selnexa-logo.avif"
-magick "styles/scripts/assets/selnexa-logo-full.jpg" -resize 360 "styles/scripts/assets/selnexa-logo@2x.avif"
-
-# Optional optimized JPEG fallback
-magick "styles/scripts/assets/selnexa-logo-full.jpg" -resize 180 -quality 85 "styles/scripts/assets/selnexa-logo.jpg"
-
-Notes:
-
-- Adjust `-resize` values to suit the header pixel density on your design.
-- If your ImageMagick has direct AVIF support you can use `magick`; otherwise install `avifenc` from libavif and use it to encode AVIF.
-- After generating these files, verify they appear in `styles/scripts/assets/` and reload the site.
-
-If you'd like me to generate and commit the AVIF/WebP/@2x files for you
- (I can add the binary images to the repo), reply with "Yes — generate and commit".
- I can create them here and update the `<picture>` srcsets. If you prefer to run
- the conversions locally, use the commands above.
+If you'd like me to generate and commit raster exports for specific channels, say which formats and target sizes you want.
 
 Tool availability note:
 - This environment may not have ImageMagick/libavif/ffmpeg installed by default.
