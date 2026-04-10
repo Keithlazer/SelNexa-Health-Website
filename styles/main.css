@@ -175,7 +175,7 @@ a:hover {
 }
 
 .navbar-container {
-    max-width: 1200px;
+    max-width: 1360px;
     margin: 0 auto;
     padding: var(--spacing-md) var(--spacing-lg);
     display: flex;
@@ -196,23 +196,25 @@ a:hover {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: var(--spacing-lg);
+    gap: clamp(0.5rem, 1vw, 1.2rem);
     align-items: center;
 }
 
 .nav-item {
     position: relative;
+    flex-shrink: 0;
 }
 
 .nav-link {
     background: none;
     border: none;
-    font-size: var(--fs-body);
+    font-size: clamp(0.88rem, 0.8vw, 1rem);
     color: var(--color-neutral-charcoal);
     cursor: pointer;
     padding: var(--spacing-xs) var(--spacing-sm);
     transition: color var(--transition-base);
     font-family: var(--font-primary);
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -571,6 +573,10 @@ section {
 .solutions-intro p {
     margin: 0;
     font-size: var(--fs-body);
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 68ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Bento Grid */
@@ -1074,6 +1080,17 @@ section {
     font-size: var(--fs-body);
 }
 
+.footer-column h2 {
+    color: var(--color-neutral-white);
+    margin-bottom: var(--spacing-md);
+    font-size: clamp(1.4rem, 1.8vw, 2rem);
+}
+
+.footer-column p {
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 34ch;
+}
+
 .footer-column ul {
     list-style: none;
 }
@@ -1277,6 +1294,79 @@ section {
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
+
+@media (min-width: 1280px) and (max-width: 1440px) {
+    .navbar-container {
+        max-width: 1320px;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .navbar-brand img {
+        height: 46px;
+    }
+
+    .nav-menu {
+        gap: clamp(0.35rem, 0.55vw, 0.75rem);
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+    }
+
+    .nav-link.cta-nav {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .footer .container {
+        max-width: 1320px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(280px, 1.2fr) repeat(3, minmax(180px, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    .footer-column:first-child p {
+        max-width: 32ch;
+    }
+
+    .footer-bottom {
+        gap: var(--spacing-md);
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1360px;
+    }
+
+    .navbar-container {
+        max-width: 1520px;
+        padding-left: var(--spacing-xl);
+        padding-right: var(--spacing-xl);
+    }
+
+    .nav-menu {
+        gap: clamp(0.75rem, 0.8vw, 1.35rem);
+    }
+
+    .footer .container {
+        max-width: 1520px;
+    }
+
+    .footer-grid {
+        grid-template-columns: minmax(320px, 1.45fr) repeat(3, minmax(190px, 1fr));
+        gap: var(--spacing-xl);
+    }
+
+    .footer-column:first-child p {
+        max-width: 36ch;
+    }
+}
 
 /* Tablet (768px - 1023px) */
 @media (max-width: 1023px) {
@@ -1501,6 +1591,8 @@ section {
     .modal {
         width: 95%;
     }
+}
+
     /* ============================================
    NEW PAGES STYLING
    ============================================ */
@@ -2296,5 +2388,4 @@ html[data-theme="dark"] .cta-gradient {
         left: 0.6rem;
         width: auto;
     }
-}
 }

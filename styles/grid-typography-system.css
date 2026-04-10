@@ -8,7 +8,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    contain: layout style paint; /* Performance optimization */
 }
 
 /* ============================================
@@ -112,7 +111,7 @@ p, li, label {
     font-size: var(--fs-body);
     line-height: 1.7;
     letter-spacing: 0.3px;
-    color: var(--color-neutral-charcoal);
+    color: inherit;
 }
 
 /* Paragraph spacing */
