@@ -23,7 +23,7 @@ const CORE_ASSETS = [
   "/js/site-core.js",
   "/js/i18n.js",
   "/manifest.json",
-  "/styles/scripts/assets/selnexa-health-logo.png"
+  "/styles/scripts/assets/selnexa-logo.svg"
 ];
 
 self.addEventListener("install", (event) => {

@@ -8,12 +8,7 @@
     "background_color": "#ffffff",
     "theme_color": "#e63946",
     "icons": [
-    { "src": "/styles/scripts/assets/selnexa-logo-full.png?v=8", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "/styles/scripts/assets/selnexa-logo-full.png?v=8", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/styles/scripts/assets/selnexa-logo.webp?v=8", "sizes": "192x192", "type": "image/webp", "purpose": "any" },
-    { "src": "/styles/scripts/assets/selnexa-logo.avif?v=8", "sizes": "192x192", "type": "image/avif", "purpose": "any" },
-    { "src": "/styles/scripts/assets/selnexa-logo.webp?v=8", "sizes": "512x512", "type": "image/webp", "purpose": "any" },
-    { "src": "/styles/scripts/assets/selnexa-logo.avif?v=8", "sizes": "512x512", "type": "image/avif", "purpose": "any" }
+        { "src": "/styles/scripts/assets/selnexa-logo.svg?v=9", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
     ],
     "shortcuts": [
         { "name": "Book Appointment", "short_name": "Book", "url": "/appointments.html" },
