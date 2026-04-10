@@ -796,6 +796,14 @@ section {
     background: var(--color-neutral-white);
 }
 
+.impact-section .section-header h2 {
+    color: #0b255f;
+}
+
+.impact-section .section-header p {
+    color: #3b4f6d;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1974,6 +1982,14 @@ html[data-theme="dark"] .cta-gradient {
     background: linear-gradient(135deg, #0f1e33, #1c3f60);
 }
 
+html[data-theme="dark"] .impact-section .section-header h2 {
+    color: #0b255f;
+}
+
+html[data-theme="dark"] .impact-section .section-header p {
+    color: #3b4f6d;
+}
+
 .theme-toggle-btn,
 .voice-search-btn,
 .language-selector {
@@ -2123,6 +2139,7 @@ html[data-theme="dark"] .cta-gradient {
     border-collapse: collapse;
     min-width: 760px;
     background: #ffffff;
+    color: #162a46;
     border-radius: var(--radius-md);
     overflow: hidden;
 }
@@ -2133,6 +2150,21 @@ html[data-theme="dark"] .cta-gradient {
     padding: 0.85rem;
     text-align: left;
     vertical-align: top;
+}
+
+.plan-table td {
+    background: #ffffff;
+    color: #162a46;
+}
+
+.plan-table td strong {
+    color: #0a2463;
+}
+
+html[data-theme="dark"] .plan-table,
+html[data-theme="dark"] .plan-table td,
+html[data-theme="dark"] .plan-table td strong {
+    color: #162a46;
 }
 
 .plan-table th {
