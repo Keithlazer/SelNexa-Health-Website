@@ -11,6 +11,7 @@
     (document.head || document.documentElement).appendChild(script);
   }
 
+  appendScript("/js/form-endpoints.js", "selnexa-form-endpoints-script");
   appendScript("/js/i18n.js", "selnexa-i18n-script");
   appendScript("/js/site-core.js", "selnexa-site-core-script");
 })();

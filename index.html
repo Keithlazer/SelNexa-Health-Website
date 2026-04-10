@@ -603,7 +603,7 @@
     <dialog id="demo-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button>
-            <h2>Schedule Your Demo</h2>
+            <h2>Request Demo or Join Wishlist</h2>
             <form class="demo-form" id="demo-form">
                 <input type="hidden" name="_subject" value="New Demo Request - SelNexa Health">
                 <input type="hidden" name="_captcha" value="false">
@@ -644,10 +644,14 @@
                     <textarea id="message" name="message" rows="4" class="form-input form-textarea"></textarea>
                 </div>
                 <label class="checkbox">
+                    <input type="checkbox" name="join_wishlist" value="yes">
+                    Join the early-access wishlist for priority demo slots and launch updates.
+                </label>
+                <label class="checkbox">
                     <input type="checkbox" name="privacy" required>
                     I agree to the privacy policy
                 </label>
-                <button type="submit" class="btn btn-primary">Schedule Demo →</button>
+                <button type="submit" class="btn btn-primary">Join Wishlist / Request Demo →</button>
             </form>
         </div>
     </dialog>

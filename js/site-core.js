@@ -494,12 +494,23 @@
     });
   }
 
+  function isBookingForm(form) {
+    return !!(
+      form && (
+        form.classList.contains("appointment-form") ||
+        form.classList.contains("demo-form") ||
+        form.id === "appointmentForm" ||
+        form.id === "demo-form"
+      )
+    );
+  }
+
   function ensureSchedulingFields(form) {
     if (!form || form.querySelector("[name='booking_type']")) {
       return;
     }
 
-    if (!form.classList.contains("appointment-form") && !form.classList.contains("demo-form") && form.id !== "appointmentForm") {
+    if (!isBookingForm(form)) {
       return;
     }
 
@@ -526,6 +537,71 @@
       recaptchaInput.name = "g-recaptcha-response";
       recaptchaInput.value = "pending-client-token";
       form.appendChild(recaptchaInput);
+    }
+  }
+
+  function ensureWishlistField(form) {
+    if (!isBookingForm(form) || form.querySelector("input[name='join_wishlist']")) {
+      return;
+    }
+
+    var wishlistOptIn = document.createElement("label");
+    wishlistOptIn.className = "checkbox";
+    wishlistOptIn.innerHTML = [
+      '<input type="checkbox" name="join_wishlist" value="yes">',
+      "Join the early-access wishlist for priority demo slots and launch updates."
+    ].join("");
+
+    var privacyCheckbox = form.querySelector("input[name='privacy']");
+    var privacyLabel = privacyCheckbox ? privacyCheckbox.closest("label") : null;
+    var submitButton = form.querySelector("button[type='submit']");
+
+    if (privacyLabel && privacyLabel.parentElement === form) {
+      form.insertBefore(wishlistOptIn, privacyLabel);
+      return;
+    }
+
+    if (submitButton && submitButton.parentElement === form) {
+      form.insertBefore(wishlistOptIn, submitButton);
+      return;
+    }
+
+    form.appendChild(wishlistOptIn);
+  }
+
+  function ensureWishlistFirstCopy(form) {
+    if (!isBookingForm(form)) {
+      return;
+    }
+
+    var submitButton = form.querySelector("button[type='submit']");
+    var bookingTypeSelect = form.querySelector("select[name='booking_type']");
+
+    function updateButtonCopy() {
+      if (!submitButton) {
+        return;
+      }
+
+      if (bookingTypeSelect && bookingTypeSelect.value === "telemedicine") {
+        submitButton.textContent = "Request Telemedicine / Join Wishlist →";
+        return;
+      }
+
+      submitButton.textContent = "Join Wishlist / Request Demo →";
+    }
+
+    updateButtonCopy();
+
+    if (bookingTypeSelect) {
+      bookingTypeSelect.addEventListener("change", updateButtonCopy);
+    }
+
+    var demoDialog = form.closest("dialog#demo-modal");
+    if (demoDialog) {
+      var heading = demoDialog.querySelector("h2");
+      if (heading) {
+        heading.textContent = "Request Demo or Join Wishlist";
+      }
     }
   }
 
@@ -603,6 +679,8 @@
       }
 
       ensureSchedulingFields(form);
+      ensureWishlistField(form);
+      ensureWishlistFirstCopy(form);
       form.setAttribute("data-selnexa-form-bound", "true");
 
       form.addEventListener("submit", function (event) {
@@ -620,20 +698,40 @@
           payload[key] = value;
         });
 
-        var endpoint = form.getAttribute("action") || window.SELNEXA_SCHEDULING_ENDPOINT || "";
+        var isBooking = isBookingForm(form);
+        var wishlistValue = (payload.join_wishlist || "").toString().toLowerCase();
+        var isWishlist = wishlistValue === "yes" || wishlistValue === "on" || wishlistValue === "true";
         var isTelemedicine = payload.booking_type === "telemedicine";
+
+        if (isWishlist) {
+          payload.booking_type = "wishlist";
+        }
+
+        if (isBooking) {
+          payload.form_context = "book_demo";
+          payload.source_path = window.location.pathname;
+        }
+
+        var schedulingEndpoint = window.SELNEXA_SCHEDULING_ENDPOINT || "";
+        var wishlistEndpoint = window.SELNEXA_WISHLIST_ENDPOINT || "";
+        var endpoint = form.getAttribute("action") || (isWishlist ? (wishlistEndpoint || schedulingEndpoint) : schedulingEndpoint);
 
         analytics.track("form_submit", {
           form: form.id || form.className,
-          booking_type: payload.booking_type || "unspecified"
+          booking_type: payload.booking_type || "unspecified",
+          join_wishlist: isWishlist ? "yes" : "no"
         });
 
         if (!endpoint) {
           showFormNotice(
             form,
-            isTelemedicine
+            isWishlist
+              ? "Wishlist request captured. We will notify you when priority demo slots open."
+              : isTelemedicine
               ? "Telemedicine request saved. Our team will confirm details and clinician availability shortly."
-              : "Demo request saved. We will send a confirmation email shortly.",
+              : isBooking
+              ? "Booking request captured. Check your email for confirmation and wishlist updates."
+              : "Message saved. We will follow up shortly.",
             "success"
           );
           form.reset();
@@ -655,11 +753,29 @@
           if (!response.ok) {
             throw new Error("Non-OK response");
           }
-          showFormNotice(form, "Submission received. Check your email for confirmation.", "success");
+          showFormNotice(
+            form,
+            isWishlist
+              ? "You are on the wishlist. We will email you when early-access demo slots are available."
+              : isTelemedicine
+              ? "Telemedicine request received. Check your email for confirmation."
+              : isBooking
+              ? "Booking request received. Check your email for confirmation."
+              : "Submission received. Check your email for confirmation.",
+            "success"
+          );
           form.reset();
         }).catch(function () {
           queueFormSubmission({ endpoint: endpoint, payload: payload });
-          showFormNotice(form, "Submission queued due to network issue. We will retry shortly.", "warning");
+          showFormNotice(
+            form,
+            isWishlist
+              ? "Wishlist request queued due to network issue. We will retry shortly."
+              : isBooking
+              ? "Booking request queued due to network issue. We will retry shortly."
+              : "Submission queued due to network issue. We will retry shortly.",
+            "warning"
+          );
           form.reset();
         });
       });
