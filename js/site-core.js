@@ -372,8 +372,8 @@
     nav.innerHTML = [
       '<a href="/" aria-label="Home"><i class="fas fa-house" aria-hidden="true"></i><span data-i18n="nav.home">Home</span></a>',
       '<a href="/solutions/index.html" aria-label="Solutions"><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="nav.solutions">Solutions</span></a>',
-      '<a href="/telemedicine.html" aria-label="Telemedicine"><i class="fas fa-video" aria-hidden="true"></i><span data-i18n="nav.telemedicine">Telemedicine</span></a>',
-      '<a href="/case-studies.html" aria-label="Case studies"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.caseStudies">Case Studies</span></a>',
+      '<a href="/telemedicine.html" aria-label="Telemedicine"><i class="fas fa-video" aria-hidden="true"></i><span data-i18n="nav.telemedShort">Telemed</span></a>',
+      '<a href="/case-studies.html" aria-label="Case studies"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Cases</span></a>',
       '<a href="/resources.html" aria-label="More"><i class="fas fa-ellipsis" aria-hidden="true"></i><span data-i18n="nav.more">More</span></a>'
     ].join("");
 
