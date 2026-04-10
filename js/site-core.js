@@ -65,6 +65,16 @@
     return li;
   }
 
+  function getNavigationControlHost() {
+    return (
+      document.querySelector(".navbar-container") ||
+      document.querySelector("header .navbar") ||
+      document.querySelector(".navbar") ||
+      document.querySelector("header .container") ||
+      document.querySelector(".navbar .container")
+    );
+  }
+
   function enhanceNavigationMenus() {
     var menus = document.querySelectorAll(".nav-menu, .nav-links");
     if (!menus.length) {
@@ -105,26 +115,76 @@
   }
 
   function setupPrimaryMenuToggle() {
-    var button = document.querySelector(".hamburger") || document.querySelector(".mobile-menu-btn");
     var menu = document.querySelector(".nav-menu") || document.querySelector(".nav-links");
-    if (!button || !menu) {
+    if (!menu) {
       return;
     }
 
+    var button = document.querySelector(".hamburger") || document.querySelector(".mobile-menu-btn");
+    if (!button) {
+      var navHost = menu.closest(".navbar") || menu.closest("nav") || menu.parentElement;
+      if (!navHost) {
+        return;
+      }
+
+      button = document.createElement("button");
+      button.type = "button";
+      button.className = "mobile-menu-btn";
+      button.setAttribute("aria-label", "Toggle navigation menu");
+      button.setAttribute("data-generated-toggle", "true");
+      button.innerHTML = '<span aria-hidden="true">&#9776;</span>';
+      navHost.appendChild(button);
+    }
+
+    var setMenuOpenState = function (shouldOpen) {
+      var isMobileViewport = window.matchMedia && window.matchMedia("(max-width: 1023px)").matches;
+      menu.classList.toggle("active", shouldOpen);
+      button.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+      menu.setAttribute("aria-hidden", !isMobileViewport || shouldOpen ? "false" : "true");
+
+      if (button.getAttribute("data-generated-toggle") === "true") {
+        button.innerHTML = shouldOpen
+          ? '<span aria-hidden="true">&times;</span>'
+          : '<span aria-hidden="true">&#9776;</span>';
+      }
+
+      if (isMobileViewport) {
+        document.body.classList.toggle("mobile-menu-open", shouldOpen);
+      } else {
+        document.body.classList.remove("mobile-menu-open");
+      }
+    };
+
+    if (!button.hasAttribute("aria-expanded")) {
+      button.setAttribute("aria-expanded", "false");
+    }
+    if (!menu.hasAttribute("aria-hidden")) {
+      menu.setAttribute("aria-hidden", "true");
+    }
+    setMenuOpenState(false);
+
     button.addEventListener("click", function () {
       var expanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", expanded ? "false" : "true");
-      menu.classList.toggle("active");
-      menu.setAttribute("aria-hidden", expanded ? "true" : "false");
+      setMenuOpenState(!expanded);
     });
 
     document.addEventListener("keydown", function (event) {
       if (event.key !== "Escape") {
         return;
       }
-      menu.classList.remove("active");
-      button.setAttribute("aria-expanded", "false");
-      menu.setAttribute("aria-hidden", "true");
+      setMenuOpenState(false);
+    });
+
+    menu.querySelectorAll("a[href]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenuOpenState(false);
+      });
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 1023) {
+        setMenuOpenState(false);
+      }
     });
 
     var dropdownToggles = document.querySelectorAll(".dropdown-toggle");
@@ -173,7 +233,7 @@
   }
 
   function setupThemeToggle() {
-    var container = document.querySelector(".navbar-container") || document.querySelector("header .container") || document.querySelector(".navbar .container");
+    var container = getNavigationControlHost();
     if (container && !container.querySelector("[data-theme-toggle]")) {
       var button = document.createElement("button");
       button.type = "button";
@@ -244,7 +304,7 @@
   }
 
   function setupLanguageSelector() {
-    var container = document.querySelector(".navbar-container") || document.querySelector("header .container") || document.querySelector(".navbar .container");
+    var container = getNavigationControlHost();
     if (!container || container.querySelector("#language-selector")) {
       var currentLang = localStorage.getItem(LANG_KEY) || "en";
       translatePage(currentLang);
@@ -326,7 +386,7 @@
   }
 
   function setupVoiceSearch() {
-    var container = document.querySelector(".navbar-container") || document.querySelector("header .container") || document.querySelector(".navbar .container");
+    var container = getNavigationControlHost();
     if (!container || container.querySelector(".voice-search-btn")) {
       return;
     }
@@ -376,6 +436,21 @@
       '<a href="/case-studies.html" aria-label="Case studies"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Cases</span></a>',
       '<a href="/resources.html" aria-label="More"><i class="fas fa-ellipsis" aria-hidden="true"></i><span data-i18n="nav.more">More</span></a>'
     ].join("");
+
+    var currentPath = normalizePath(window.location.pathname);
+    nav.querySelectorAll("a[href]").forEach(function (link) {
+      var targetPath = normalizePath(link.getAttribute("href") || "");
+      var isResourcesBucket = targetPath === "/resources.html" && (
+        currentPath.indexOf("/resources") === 0 ||
+        currentPath.indexOf("/blog") === 0
+      );
+      var isActive = currentPath === targetPath || isResourcesBucket;
+
+      if (isActive) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+      }
+    });
 
     document.body.appendChild(nav);
   }
