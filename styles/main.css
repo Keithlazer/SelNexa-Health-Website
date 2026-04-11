@@ -2591,10 +2591,10 @@ html[data-theme="dark"] .plan-table td strong {
         display: block;
         line-height: 1.08;
         font-size: 0.66rem;
-        max-width: 6.6ch;
+        max-width: none;
         text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
+        white-space: nowrap;
+        overflow-wrap: normal;
     }
 
     .bottom-mobile-nav i {
