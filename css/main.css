@@ -460,12 +460,17 @@ body {
         flex-wrap: nowrap;
     }
 
+    .navbar .container {
+        padding-left: max(var(--spacing-sm), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-sm), env(safe-area-inset-right));
+    }
+
     .logo {
         margin-right: auto;
     }
 
     .logo img {
-        height: 44px;
+        height: 38px;
         margin: 6px 0;
     }
 
@@ -488,6 +493,9 @@ body {
 
     .mobile-menu-btn {
         display: inline-flex;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
 
     .nav-links {
@@ -535,6 +543,34 @@ body {
 
     body.mobile-menu-open {
         overflow: hidden;
+    }
+}
+
+@media (max-width: 430px) {
+    .navbar {
+        gap: 0.32rem;
+    }
+
+    .logo img {
+        height: 34px;
+    }
+
+    .theme-toggle-btn,
+    .voice-search-btn,
+    .mobile-menu-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .voice-search-btn {
+        display: none;
+    }
+
+    .language-selector {
+        min-width: 72px;
+        max-width: 86px;
+        font-size: 0.71rem;
+        padding: 0.25rem 0.3rem;
     }
 }
 

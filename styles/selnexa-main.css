@@ -1196,6 +1196,11 @@ header.scrolled {
         margin-right: auto;
     }
 
+    .logo img {
+        height: 40px;
+        width: auto;
+    }
+
     .theme-toggle-btn,
     .voice-search-btn {
         width: 36px;
@@ -1211,6 +1216,17 @@ header.scrolled {
         margin-left: 0;
         font-size: 0.76rem;
         padding: 0.3rem 0.42rem;
+    }
+
+    .mobile-menu-btn {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(29, 53, 87, 0.2);
+        border-radius: 999px;
+        font-size: 1rem;
     }
 }
 
@@ -1298,6 +1314,39 @@ header.scrolled {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+}
+
+@media (max-width: 430px) {
+    header .container {
+        padding-left: max(0.7rem, env(safe-area-inset-left));
+        padding-right: max(0.7rem, env(safe-area-inset-right));
+    }
+
+    .navbar {
+        gap: 0.3rem;
+    }
+
+    .logo img {
+        height: 34px;
+    }
+
+    .theme-toggle-btn,
+    .mobile-menu-btn,
+    .voice-search-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .voice-search-btn {
+        display: none;
+    }
+
+    .language-selector {
+        min-width: 72px;
+        max-width: 86px;
+        font-size: 0.71rem;
+        padding: 0.25rem 0.3rem;
     }
 }
 

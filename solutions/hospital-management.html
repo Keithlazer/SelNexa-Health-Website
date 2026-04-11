@@ -5,247 +5,261 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Management System | SelNexa Health</title>
     <meta name="description" content="Comprehensive hospital management system for improved operational efficiency and patient care coordination.">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/solutions.css">
-    <link rel="stylesheet" href="../styles/grid-typography-system.css">
+    <link rel="apple-touch-icon" href="/styles/scripts/assets/selnexa-logo.svg">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/css/solutions.css">
+    <link rel="stylesheet" href="/styles/grid-typography-system.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <header>
-        <nav class="navbar container">
-            <div class="logo">
-                <a href="../">
-                    <img src="../styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health Logo">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <a href="/" class="logo" aria-label="SelNexa Health home">
+                    <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo" width="120" height="60" decoding="async">
                 </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="../#solutions">Solutions</a></li>
-                <li><a href="../case-studies.html">Case Studies</a></li>
-                <li><a href="../#resources">Resources</a></li>
-                <li><a href="../#blog">Blog</a></li>
-                <li><a href="../#partners">Partners</a></li>
-                <li><a href="../#about">About</a></li>
-                <li><a href="../#contact" class="btn">Contact Us</a></li>
-            </ul>
-        </nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/case-studies.html">Case Studies</a></li>
+                    <li><a href="/telemedicine.html">Telemedicine</a></li>
+                    <li><a href="/pricing.html">Pricing</a></li>
+                    <li><a href="/investors.html">Investors</a></li>
+                    <li><a href="/resources.html">Resources</a></li>
+                    <li><a href="/careers.html">Careers</a></li>
+                    <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <section class="solution-hero">
-        <div class="container">
-            <h1>Hospital Management System</h1>
-            <p>Streamline operations, manage resources, and improve patient care coordination</p>
-            <div class="hero-buttons">
-                <a href="#demo" class="btn">Request Demo</a>
-                <a href="#features" class="btn btn-outline">Explore Features</a>
+    <main id="main-content">
+        <section class="hero solution-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Hospital Management System</h1>
+                    <p>Streamline operations, manage resources, and improve patient care coordination.</p>
+                </div>
+                <div class="hero-btns">
+                    <a href="#demo" class="btn">Request Demo</a>
+                    <a href="#features" class="btn btn-outline">Explore Features</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="overview">
-        <div class="container">
-            <div class="section-title">
-                <h2>System Overview</h2>
-                <p>A comprehensive solution designed to transform hospital operations</p>
-            </div>
-            <div class="overview-grid">
-                <div class="overview-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Operational Efficiency</h3>
-                    <p>Reduce administrative overhead and streamline workflows</p>
+        <section class="section" id="overview">
+            <div class="container">
+                <div class="section-title">
+                    <h2>System Overview</h2>
+                    <p>A comprehensive solution designed to transform hospital operations.</p>
                 </div>
-                <div class="overview-card">
-                    <i class="fas fa-user-md"></i>
-                    <h3>Patient Care</h3>
-                    <p>Enhance patient experience and care coordination</p>
-                </div>
-                <div class="overview-card">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Resource Management</h3>
-                    <p>Optimize staff scheduling and resource allocation</p>
-                </div>
-                <div class="overview-card">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>Analytics</h3>
-                    <p>Data-driven insights for better decision making</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Key Features</h2>
-                <p>Comprehensive tools for modern hospital management</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Patient Management</h3>
-                    <ul>
-                        <li>Electronic Health Records (EHR)</li>
-                        <li>Appointment Scheduling</li>
-                        <li>Patient Registration</li>
-                        <li>Medical History Tracking</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3>Staff Management</h3>
-                    <ul>
-                        <li>Staff Scheduling</li>
-                        <li>Performance Tracking</li>
-                        <li>Training Management</li>
-                        <li>Resource Allocation</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3>Inventory Control</h3>
-                    <ul>
-                        <li>Medical Supplies Tracking</li>
-                        <li>Equipment Management</li>
-                        <li>Automated Reordering</li>
-                        <li>Inventory Analytics</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <h3>Financial Management</h3>
-                    <ul>
-                        <li>Billing & Invoicing</li>
-                        <li>Insurance Processing</li>
-                        <li>Financial Reporting</li>
-                        <li>Cost Analysis</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="benefits">
-        <div class="container">
-            <div class="section-title">
-                <h2>Benefits</h2>
-                <p>Transform your hospital operations with our solution</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-number">40%</div>
-                    <h3>Improved Efficiency</h3>
-                    <p>Reduce administrative tasks and streamline workflows</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">30%</div>
-                    <h3>Cost Reduction</h3>
-                    <p>Optimize resource allocation and reduce operational costs</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">50%</div>
-                    <h3>Better Patient Care</h3>
-                    <p>Enhance patient experience and care coordination</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-number">45%</div>
-                    <h3>Resource Optimization</h3>
-                    <p>Improve staff and equipment utilization</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="case-study">
-        <div class="container">
-            <div class="section-title">
-                <h2>Success Story</h2>
-                <p>See how we helped transform hospital operations</p>
-            </div>
-            <div class="case-study-content">
-                <div class="case-study-text">
-                    <h3>Regional Hospital Network</h3>
-                    <p>Implementation of our Hospital Management System across 5 hospitals resulted in:</p>
-                    <ul class="case-study-metrics">
-                        <li><strong>40%</strong> Improved Efficiency</li>
-                        <li><strong>30%</strong> Cost Reduction</li>
-                        <li><strong>50%</strong> Better Patient Care</li>
-                        <li><strong>45%</strong> Resource Optimization</li>
-                    </ul>
-                    <a href="../case-studies/regional-hospital.html" class="btn">Read Full Case Study</a>
-                </div>
-                <div class="case-study-image">
-                    <img src="../styles/scripts/assets/hospital-case-study.jpg" alt="Hospital Case Study">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="demo">
-        <div class="container">
-            <div class="section-title">
-                <h2>Request a Demo</h2>
-                <p>See our Hospital Management System in action</p>
-            </div>
-            <div class="demo-content">
-                <form class="demo-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        <h3>Operational Efficiency</h3>
+                        <p>Reduce administrative overhead and streamline workflows.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="organization">Hospital/Organization</label>
-                        <input type="text" id="organization" required>
+                    <div class="overview-card">
+                        <i class="fas fa-user-md" aria-hidden="true"></i>
+                        <h3>Patient Care</h3>
+                        <p>Enhance patient experience and care coordination.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                    <div class="overview-card">
+                        <i class="fas fa-cogs" aria-hidden="true"></i>
+                        <h3>Resource Management</h3>
+                        <p>Optimize staff scheduling and resource allocation.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Additional Information</label>
-                        <textarea id="message" rows="5"></textarea>
+                    <div class="overview-card">
+                        <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                        <h3>Analytics</h3>
+                        <p>Data-driven insights for better decision making.</p>
                     </div>
-                    <button type="submit" class="btn">Request Demo</button>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Key Features</h2>
+                    <p>Comprehensive tools for modern hospital management.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Patient Management</h3>
+                        <ul>
+                            <li>Electronic Health Records (EHR)</li>
+                            <li>Appointment Scheduling</li>
+                            <li>Patient Registration</li>
+                            <li>Medical History Tracking</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Staff Management</h3>
+                        <ul>
+                            <li>Staff Scheduling</li>
+                            <li>Performance Tracking</li>
+                            <li>Training Management</li>
+                            <li>Resource Allocation</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Inventory Control</h3>
+                        <ul>
+                            <li>Medical Supplies Tracking</li>
+                            <li>Equipment Management</li>
+                            <li>Automated Reordering</li>
+                            <li>Inventory Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Financial Management</h3>
+                        <ul>
+                            <li>Billing & Invoicing</li>
+                            <li>Insurance Processing</li>
+                            <li>Financial Reporting</li>
+                            <li>Cost Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="benefits">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Benefits</h2>
+                    <p>Transform your hospital operations with our solution.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-number">40%</div>
+                        <h3>Improved Efficiency</h3>
+                        <p>Reduce administrative tasks and streamline workflows.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">30%</div>
+                        <h3>Cost Reduction</h3>
+                        <p>Optimize resource allocation and reduce operational costs.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">50%</div>
+                        <h3>Better Patient Care</h3>
+                        <p>Enhance patient experience and care coordination.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-number">45%</div>
+                        <h3>Resource Optimization</h3>
+                        <p>Improve staff and equipment utilization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="case-study">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Success Story</h2>
+                    <p>See how we helped transform hospital operations.</p>
+                </div>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <h3>Regional Hospital Network</h3>
+                        <p>Implementation of our Hospital Management System across five hospitals resulted in:</p>
+                        <ul class="case-study-metrics">
+                            <li><strong>40%</strong> Improved Efficiency</li>
+                            <li><strong>30%</strong> Cost Reduction</li>
+                            <li><strong>50%</strong> Better Patient Care</li>
+                            <li><strong>45%</strong> Resource Optimization</li>
+                        </ul>
+                        <a href="/case-studies.html" class="btn">Read Full Case Study</a>
+                    </div>
+                    <div class="case-study-image">
+                        <img src="/styles/scripts/assets/hospital-case-study.jpg" alt="Hospital case study">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section integration">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Easy Integration</h2>
+                </div>
+                <p>Deploy standalone or integrate with your current EHR, scheduling, and finance systems using API connectors and guided migration support.</p>
+            </div>
+        </section>
+
+        <section class="section" id="demo">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Request a Demo</h2>
+                    <p>See our Hospital Management System in action.</p>
+                </div>
+                <div class="demo-content">
+                    <form class="demo-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Hospital/Organization</label>
+                            <input type="text" id="organization" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Request Demo</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta">
+            <div class="container">
+                <h2>Ready to Modernize Hospital Operations?</h2>
+                <p>Get a guided implementation plan and rollout timeline tailored to your facility.</p>
+                <div class="cta-buttons">
+                    <a href="/pricing.html" class="btn btn-primary">See pricing options</a>
+                    <a href="/appointments.html" class="btn btn-outline">Schedule a demo</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="../styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health Logo">
+                <div class="footer-about">
+                    <p>&copy; 2026 SelNexa Health. All rights reserved.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h4>Solutions</h4>
-                        <ul>
-                            <li><a href="hospital-management.html">Hospital Management</a></li>
-                            <li><a href="healthcare-analytics.html">Healthcare Analytics</a></li>
-                            <li><a href="patient-management.html">Patient Management</a></li>
-                            <li><a href="government-solutions.html">Government Solutions</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="../resources/whitepapers.html">Whitepapers</a></li>
-                            <li><a href="../resources/webinars.html">Webinars</a></li>
-                            <li><a href="../resources/guides.html">Guides</a></li>
-                            <li><a href="../blog/">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Company</h4>
-                        <ul>
-                            <li><a href="../about.html">About Us</a></li>
-                            <li><a href="../case-studies/">Case Studies</a></li>
-                            <li><a href="../partners.html">Partners</a></li>
-                            <li><a href="../contact.html">Contact</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-legal">
+                    <ul>
+                        <li><a href="/case-studies.html">Case Studies</a></li>
+                        <li><a href="/pricing.html">Pricing</a></li>
+                        <li><a href="/careers.html">Careers</a></li>
+                        <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
+                        <li><a href="/privacy.html">Privacy</a></li>
+                        <li><a href="/terms.html">Terms</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 SelNexa Health. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script src="/js/home.js" defer></script>
 </body>
 </html> 
