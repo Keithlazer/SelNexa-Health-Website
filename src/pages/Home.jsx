@@ -17,22 +17,22 @@ const Home = () => {
     {
       icon: Brain,
       title: 'AI-Powered Diagnostics',
-      description: 'Clinical decision support that helps teams spot patterns faster and reduce time to treatment.'
+      description: 'Reduce diagnostic delay. AI analysis surfaces patterns that help clinicians move faster and more confidently.'
     },
     {
       icon: Shield,
       title: 'Secure Health Records',
-      description: 'Privacy-first record handling designed to keep sensitive patient information protected.'
+      description: 'Keep patient data organized and auditable. One source of truth so nothing gets lost.'
     },
     {
       icon: Heart,
       title: 'Remote Patient Monitoring',
-      description: 'Track patient status between visits and surface actionable alerts before issues escalate.'
+      description: 'Catch issues early. Real-time alerts mean fewer emergency visits and better patient outcomes.'
     },
     {
       icon: Smartphone,
       title: 'Telemedicine Platform',
-      description: 'Mobile-friendly virtual care that works across modern clinics and distributed teams.'
+      description: 'Meet patients where they are. Video consultations and follow-ups without the friction of scheduling overhead.'
     }
   ]
 
@@ -64,18 +64,18 @@ const Home = () => {
   const outcomes = [
     {
       icon: Calendar,
-      title: 'Faster patient flow',
-      description: 'Reduce bottlenecks from intake through follow-up with simpler workflows.'
+      title: 'See 20% more patients',
+      description: 'Eliminate scheduling friction and double-booking. Appointment workflow handles edge cases so staff do less manual work.'
     },
     {
       icon: Shield,
-      title: 'Safer record handling',
-      description: 'Keep patient information organized, controlled, and easier to retrieve.'
+      title: 'Keep records audit-ready',
+      description: 'Automatic timestamps and access logs so compliance is built in. No scrambling when donors or regulators ask questions.'
     },
     {
       icon: Heart,
-      title: 'Better continuity of care',
-      description: 'Support follow-up and monitoring so patients are not left behind.'
+      title: 'Don\'t lose patients to follow-up',
+      description: 'Automated reminders and telemedicine make it easy for patients to stay engaged. Better outcomes, fewer readmissions.'
     }
   ]
 
@@ -102,7 +102,7 @@ const Home = () => {
                 transition={{ duration: 0.8 }}
                 className="mt-6 text-4xl md:text-6xl font-bold leading-tight"
               >
-                Smarter care operations for teams serving Africa
+                Reduce friction. Keep patients moving.
               </motion.h1>
 
               <motion.p
@@ -111,8 +111,8 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.15 }}
                 className="mt-6 text-lg md:text-xl max-w-2xl text-gray-100"
               >
-                SelNexa helps clinics, providers, and health systems coordinate records,
-                appointments, telemedicine, and reporting in one place.
+                SelNexa brings records, appointments, telemedicine, and follow-up into one workflow.
+                African health teams use it to see more patients, serve them faster, and catch issues before they escalate.
               </motion.p>
 
               <motion.div
@@ -125,7 +125,7 @@ const Home = () => {
                   href="/contact.html"
                   className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white text-red-600 font-semibold hover:bg-gray-100 transition-colors"
                 >
-                  Book a demo
+                  Schedule a demo
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
                 <a
@@ -230,10 +230,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why teams choose SelNexa
+              Real benefits for African health teams
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The platform is focused on the operational details that improve care delivery and make the product easier to adopt.
+              Built specifically for how African clinics operate. Works on low bandwidth. Scales from a single clinic to a network.
             </p>
           </div>
 
@@ -299,24 +299,24 @@ const Home = () => {
       <section className="py-20 gradient-bg text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to improve your healthcare workflow?
+            Start serving more patients tomorrow.
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            See how SelNexa can help your team reduce friction, improve visibility, and serve patients more consistently.
+            See what better scheduling, cleaner records, and telemedicine can do for your team. Demo takes 15 minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact.html"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
-              Book a demo
+              Schedule a demo
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href="/features.html"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition-colors"
             >
-              View the product
+              See the features
             </a>
           </div>
         </div>

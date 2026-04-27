@@ -24,7 +24,7 @@ const Footer = () => {
               href="/contact.html"
               className="inline-flex items-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
             >
-              Book a demo
+              Schedule a demo
             </a>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
