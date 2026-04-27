@@ -21,12 +21,19 @@ const Header = () => {
   const navigate = useNavigate()
   const { isAuthenticated, user, logout } = useAuthStore()
 
-  const navigation = [
-    { name: 'Home', href: '/', icon: null },
-    { name: 'Dashboard', href: '/dashboard', icon: Activity, auth: true },
-    { name: 'Appointments', href: '/appointments', icon: Calendar, auth: true },
-    { name: 'Telemedicine', href: '/telemedicine', icon: Users, auth: true },
-    { name: 'Portal', href: '/portal', icon: User, auth: true },
+  const publicNavigation = [
+    { name: 'Home', href: '/', internal: true },
+    { name: 'Features', href: '/features.html', internal: false },
+    { name: 'Solutions', href: '/solutions/', internal: false },
+    { name: 'Resources', href: '/resources.html', internal: false },
+    { name: 'Contact', href: '/contact.html', internal: false },
+  ]
+
+  const appNavigation = [
+    { name: 'Dashboard', href: '/dashboard', icon: Activity },
+    { name: 'Appointments', href: '/appointments', icon: Calendar },
+    { name: 'Telemedicine', href: '/telemedicine', icon: Users },
+    { name: 'Portal', href: '/portal', icon: User },
   ]
 
   const handleLogout = () => {
@@ -34,6 +41,8 @@ const Header = () => {
     navigate('/')
     setIsProfileOpen(false)
   }
+
+  const isActive = (href) => location.pathname === href || (href !== '/' && location.pathname.startsWith(href))
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
@@ -48,24 +57,43 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => {
-              if (item.auth && !isAuthenticated) return null
-              
-              const isActive = location.pathname === item.href
+          <nav className="hidden md:flex items-center space-x-2">
+            {publicNavigation.map((item) => {
+              const active = item.internal && isActive(item.href)
+              const className = `px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                active
+                  ? 'text-red-600 bg-red-50'
+                  : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
+              }`
+
+              return item.internal ? (
+                <Link key={item.name} to={item.href} className={className}>
+                  {item.name}
+                </Link>
+              ) : (
+                <a key={item.name} href={item.href} className={className}>
+                  {item.name}
+                </a>
+              )
+            })}
+
+            {isAuthenticated && <span className="mx-2 h-6 w-px bg-gray-200" />}
+
+            {isAuthenticated && appNavigation.map((item) => {
+              const active = isActive(item.href)
               const Icon = item.icon
-              
+
               return (
                 <Link
                   key={item.name}
                   to={item.href}
                   className={`flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    isActive
+                    active
                       ? 'text-red-600 bg-red-50'
                       : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
                   }`}
                 >
-                  {Icon && <Icon className="w-4 h-4" />}
+                  <Icon className="w-4 h-4" />
                   <span>{item.name}</span>
                 </Link>
               )
@@ -124,12 +152,20 @@ const Header = () => {
                 </div>
               </>
             ) : (
-              <Link
-                to="/login"
-                className="btn btn-primary"
-              >
-                Sign In
-              </Link>
+              <>
+                <a
+                  href="/contact.html"
+                  className="hidden sm:inline-flex items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
+                >
+                  Book a demo
+                </a>
+                <Link
+                  to="/login"
+                  className="btn btn-primary"
+                >
+                  Sign In
+                </Link>
+              </>
             )}
 
             {/* Mobile menu button */}
@@ -151,28 +187,66 @@ const Header = () => {
             className="md:hidden border-t border-gray-200 py-4"
           >
             <nav className="flex flex-col space-y-2">
-              {navigation.map((item) => {
-                if (item.auth && !isAuthenticated) return null
-                
-                const isActive = location.pathname === item.href
-                const Icon = item.icon
-                
-                return (
+              <p className="px-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                Explore
+              </p>
+              {publicNavigation.map((item) => {
+                const active = item.internal && isActive(item.href)
+                const className = `flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  active
+                    ? 'text-red-600 bg-red-50'
+                    : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
+                }`
+
+                return item.internal ? (
                   <Link
                     key={item.name}
                     to={item.href}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'text-red-600 bg-red-50'
-                        : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
-                    }`}
+                    className={className}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {Icon && <Icon className="w-4 h-4" />}
                     <span>{item.name}</span>
                   </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={className}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <span>{item.name}</span>
+                  </a>
                 )
               })}
+
+              {isAuthenticated && (
+                <>
+                  <div className="pt-2" />
+                  <p className="px-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
+                    Platform
+                  </p>
+                  {appNavigation.map((item) => {
+                    const active = isActive(item.href)
+                    const Icon = item.icon
+
+                    return (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          active
+                            ? 'text-red-600 bg-red-50'
+                            : 'text-gray-700 hover:text-red-600 hover:bg-gray-50'
+                        }`}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span>{item.name}</span>
+                      </Link>
+                    )
+                  })}
+                </>
+              )}
             </nav>
           </motion.div>
         )}

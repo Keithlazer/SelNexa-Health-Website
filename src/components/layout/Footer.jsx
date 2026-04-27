@@ -20,6 +20,12 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               Transforming healthcare delivery across Africa through innovative technology solutions.
             </p>
+            <a
+              href="/contact.html"
+              className="inline-flex items-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700"
+            >
+              Book a demo
+            </a>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook className="w-5 h-5" />
@@ -41,24 +47,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/dashboard" className="text-gray-400 hover:text-white transition-colors">
-                  Dashboard
+                <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link to="/appointments" className="text-gray-400 hover:text-white transition-colors">
-                  Appointments
-                </Link>
+                <a href="/features.html" className="text-gray-400 hover:text-white transition-colors">
+                  Features
+                </a>
               </li>
               <li>
-                <Link to="/telemedicine" className="text-gray-400 hover:text-white transition-colors">
-                  Telemedicine
-                </Link>
+                <a href="/resources.html" className="text-gray-400 hover:text-white transition-colors">
+                  Resources
+                </a>
               </li>
               <li>
-                <Link to="/portal" className="text-gray-400 hover:text-white transition-colors">
-                  Patient Portal
-                </Link>
+                <a href="/contact.html" className="text-gray-400 hover:text-white transition-colors">
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
@@ -68,9 +74,9 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li className="text-gray-400">AI Diagnostics</li>
-              <li className="text-gray-400">Health Records</li>
+              <li className="text-gray-400">Workflow Automation</li>
+              <li className="text-gray-400">Secure Records</li>
               <li className="text-gray-400">Remote Monitoring</li>
-              <li className="text-gray-400">Analytics</li>
             </ul>
           </div>
 
@@ -86,13 +92,18 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-400 text-sm">+263 777 726 065</span>
+                <a href="tel:+263777726065" className="text-gray-400 text-sm hover:text-white transition-colors">
+                  +263 777 726 065
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-400 text-sm">
+                <a
+                  href="mailto:keithtafangombe@selnexahealth.com"
+                  className="text-gray-400 text-sm hover:text-white transition-colors"
+                >
                   keithtafangombe@selnexahealth.com
-                </span>
+                </a>
               </div>
             </div>
           </div>
@@ -103,12 +114,12 @@ const Footer = () => {
             © {currentYear} SelNexa Health. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <a href="/privacy.html" className="text-gray-400 hover:text-white text-sm transition-colors">
               Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
+            </a>
+            <a href="/terms.html" className="text-gray-400 hover:text-white text-sm transition-colors">
               Terms of Service
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -6,12 +6,10 @@ import {
   Shield, 
   Brain, 
   Heart, 
-  Users, 
-  Calendar,
-  Activity,
   Smartphone,
   Globe,
-  Award
+  Activity,
+  Calendar
 } from 'lucide-react'
 
 const Home = () => {
@@ -19,22 +17,22 @@ const Home = () => {
     {
       icon: Brain,
       title: 'AI-Powered Diagnostics',
-      description: 'Advanced machine learning algorithms assist healthcare providers in making accurate diagnoses faster.'
+      description: 'Clinical decision support that helps teams spot patterns faster and reduce time to treatment.'
     },
     {
       icon: Shield,
       title: 'Secure Health Records',
-      description: 'Blockchain technology ensures your medical data remains private, secure, and accessible when needed.'
+      description: 'Privacy-first record handling designed to keep sensitive patient information protected.'
     },
     {
       icon: Heart,
       title: 'Remote Patient Monitoring',
-      description: 'Real-time health monitoring and alerts help prevent emergencies and improve patient outcomes.'
+      description: 'Track patient status between visits and surface actionable alerts before issues escalate.'
     },
     {
       icon: Smartphone,
       title: 'Telemedicine Platform',
-      description: 'Connect with healthcare professionals from anywhere through our secure video consultation platform.'
+      description: 'Mobile-friendly virtual care that works across modern clinics and distributed teams.'
     }
   ]
 
@@ -45,52 +43,161 @@ const Home = () => {
     { number: '99.9%', label: 'Uptime Reliability' }
   ]
 
+  const trustPoints = [
+    {
+      icon: Globe,
+      title: 'Low-bandwidth ready',
+      description: 'Built to stay usable on slower connections and mobile devices.'
+    },
+    {
+      icon: Shield,
+      title: 'Secure by design',
+      description: 'Clear workflows for keeping clinical data protected and auditable.'
+    },
+    {
+      icon: Activity,
+      title: 'Built for care teams',
+      description: 'Tools that reduce manual work and keep teams moving.'
+    }
+  ]
+
+  const outcomes = [
+    {
+      icon: Calendar,
+      title: 'Faster patient flow',
+      description: 'Reduce bottlenecks from intake through follow-up with simpler workflows.'
+    },
+    {
+      icon: Shield,
+      title: 'Safer record handling',
+      description: 'Keep patient information organized, controlled, and easier to retrieve.'
+    },
+    {
+      icon: Heart,
+      title: 'Better continuity of care',
+      description: 'Support follow-up and monitoring so patients are not left behind.'
+    }
+  ]
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden gradient-bg text-white py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold mb-6"
-            >
-              Transforming Healthcare,{' '}
-              <span className="text-yellow-400">Empowering Lives</span>
-            </motion.h1>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100"
-            >
-              Advanced healthcare technology platform designed to improve accessibility, 
-              affordability, and efficiency across Africa through AI and blockchain innovation.
-            </motion.p>
-            
+      <section className="relative overflow-hidden gradient-bg text-white">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium tracking-wide text-white/90"
+              >
+                Healthcare operations for modern clinics
+              </motion.p>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mt-6 text-4xl md:text-6xl font-bold leading-tight"
+              >
+                Smarter care operations for teams serving Africa
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="mt-6 text-lg md:text-xl max-w-2xl text-gray-100"
+              >
+                SelNexa helps clinics, providers, and health systems coordinate records,
+                appointments, telemedicine, and reporting in one place.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mt-8 flex flex-col sm:flex-row gap-4"
+              >
+                <a
+                  href="/contact.html"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-white text-red-600 font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  Book a demo
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+                <a
+                  href="/features.html"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-white text-white font-semibold hover:bg-white hover:text-red-600 transition-colors"
+                >
+                  Explore features
+                </a>
+              </motion.div>
+
+              <p className="mt-4 text-sm text-gray-200">
+                Already using the platform?{' '}
+                <Link to="/login" className="font-semibold text-white underline underline-offset-4">
+                  Sign in
+                </Link>
+              </p>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {trustPoints.map((point, index) => {
+                  const Icon = point.icon
+                  return (
+                    <motion.div
+                      key={point.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-sm"
+                    >
+                      <Icon className="h-5 w-5 text-yellow-300" />
+                      <h2 className="mt-3 text-sm font-semibold">{point.title}</h2>
+                      <p className="mt-2 text-sm text-gray-200">{point.description}</p>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
             >
-              <Link
-                to="/dashboard"
-                className="inline-flex items-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                Get Started
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link
-                to="/appointments"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition-colors"
-              >
-                Book Appointment
-              </Link>
+              <div className="rounded-[2rem] border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-md">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.2em] text-white/70">Operations overview</p>
+                    <h2 className="mt-2 text-2xl font-semibold">Ready for real-world care</h2>
+                  </div>
+                  <span className="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-semibold text-emerald-200">
+                    Live
+                  </span>
+                </div>
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {stats.slice(0, 2).map((stat) => (
+                    <div key={stat.label} className="rounded-2xl bg-white/10 p-4">
+                      <div className="text-3xl font-bold text-white">{stat.number}</div>
+                      <div className="mt-1 text-sm text-gray-200">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 rounded-2xl bg-white/10 p-4">
+                  <h3 className="text-sm font-semibold text-white">Designed for African healthcare teams</h3>
+                  <ul className="mt-3 space-y-2 text-sm text-gray-200">
+                    <li>• Works well on mobile and lower-bandwidth networks</li>
+                    <li>• Keeps appointments, records, and follow-up in one workflow</li>
+                    <li>• Helps teams move faster without losing visibility</li>
+                  </ul>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -118,16 +225,50 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Outcomes Section */}
       <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Why teams choose SelNexa
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The platform is focused on the operational details that improve care delivery and make the product easier to adopt.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {outcomes.map((outcome, index) => {
+              const Icon = outcome.icon
+              return (
+                <motion.div
+                  key={outcome.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="card hover:shadow-lg transition-shadow"
+                >
+                  <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-5">
+                    <Icon className="w-7 h-7 text-red-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">{outcome.title}</h3>
+                  <p className="text-gray-600">{outcome.description}</p>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Innovative Healthcare Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive platform combines cutting-edge technology with 
-              healthcare expertise to deliver exceptional patient care.
+              A focused set of tools that help providers manage care without adding complexity.
             </p>
           </div>
 
@@ -158,19 +299,26 @@ const Home = () => {
       <section className="py-20 gradient-bg text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Transform Your Healthcare Experience?
+            Ready to improve your healthcare workflow?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-100">
-            Join thousands of healthcare providers and patients who trust SelNexa 
-            for their healthcare technology needs.
+            See how SelNexa can help your team reduce friction, improve visibility, and serve patients more consistently.
           </p>
-          <Link
-            to="/login"
-            className="inline-flex items-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Get Started Today
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact.html"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              Book a demo
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+            <a
+              href="/features.html"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-red-600 transition-colors"
+            >
+              View the product
+            </a>
+          </div>
         </div>
       </section>
     </div>
