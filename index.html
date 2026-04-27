@@ -58,11 +58,15 @@
     </div>
     
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" data-nav-layout="marketing" data-enable-theme-toggle="false" data-enable-voice-search="false" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
             <div class="navbar-brand">
-                <a href="/" aria-label="SelNexa Health Home">
-                    <img src="/styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health Logo" class="logo">
+                <a href="/" class="brand-lockup" aria-label="SelNexa Health Home">
+                    <img src="/styles/scripts/assets/selnexa-logo.svg" alt="" class="logo">
+                    <span class="brand-wordmark">
+                        <span class="brand-name">SelNexa Health</span>
+                        <span class="brand-tag">Offline-first care operations</span>
+                    </span>
                 </a>
             </div>
             <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -99,14 +103,12 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="/case-studies.html" class="nav-link" data-i18n="nav.caseStudies">Case Studies</a></li>
-                <li class="nav-item"><a href="/telemedicine.html" class="nav-link" data-i18n="nav.telemedicine">Telemedicine</a></li>
                 <li class="nav-item"><a href="/pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
                 <li class="nav-item"><a href="/investors.html" class="nav-link" data-i18n="nav.investors">Investors</a></li>
                 <li class="nav-item"><a href="/resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
-                <li class="nav-item"><a href="/careers.html" class="nav-link" data-i18n="nav.careers">Careers</a></li>
-                <li class="nav-item"><a href="/security-and-compliance.html" class="nav-link" data-i18n="nav.security">Security & Compliance</a></li>
                 <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav" data-i18n="nav.bookDemo">Book Demo</a></li>
             </ul>
+            <div class="navbar-utilities" role="group" aria-label="Language selector"></div>
         </div>
         <div class="navbar-progress"></div>
     </nav>
@@ -116,24 +118,26 @@
             <div class="hero-background">
                 <div class="mesh-gradient"></div>
             </div>
-            <div class="hero-content">
-                <p class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Pilot Active · Zimbabwe 2025</p>
-                <h1 class="hero-title">Healthcare that works even when the internet doesn't.</h1>
-                <p class="hero-subtitle">AI-powered ERP built for Africa's infrastructure realities — offline-first, FHIR-ready, and live in Zimbabwe.</p>
-                <div class="hero-cta-group">
-                    <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
+            <div class="hero-shell">
+                <div class="hero-content">
+                    <p class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Pilot Active · Zimbabwe 2025</p>
+                    <h1 class="hero-title">Healthcare that works even when the internet doesn't.</h1>
+                    <p class="hero-subtitle">AI-powered ERP built for Africa's infrastructure realities — offline-first, FHIR-ready, and live in Zimbabwe.</p>
+                    <div class="hero-cta-group">
+                        <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
+                    </div>
+                    <button class="hero-secondary-link" type="button" onclick="document.getElementById('video-modal').showModal()">See how it works →</button>
                 </div>
-                <button class="hero-secondary-link" type="button" onclick="document.getElementById('video-modal').showModal()">See how it works →</button>
-            </div>
-            <div class="hero-visual">
-                <img src="/styles/scripts/assets/admin-dashboard-screenshot.png" alt="SelNexa dashboard overview" class="hero-dashboard-shot">
-                <div class="hero-floating-stat">
-                    <strong>95%</strong>
-                    <span>offline continuity target</span>
-                </div>
-                <div class="hero-floating-stat hero-floating-stat-alt">
-                    <strong>4 countries</strong>
-                    <span>pilot footprint</span>
+                <div class="hero-visual">
+                    <img src="/styles/scripts/assets/admin-dashboard-screenshot.png" alt="SelNexa dashboard overview" class="hero-dashboard-shot">
+                    <div class="hero-floating-stat">
+                        <strong>95%</strong>
+                        <span>offline continuity target</span>
+                    </div>
+                    <div class="hero-floating-stat hero-floating-stat-alt">
+                        <strong>4 countries</strong>
+                        <span>pilot footprint</span>
+                    </div>
                 </div>
             </div>
         </section>

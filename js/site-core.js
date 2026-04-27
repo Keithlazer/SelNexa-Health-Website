@@ -65,8 +65,30 @@
     return li;
   }
 
+  function getPrimaryNavbar() {
+    return (
+      document.querySelector(".navbar") ||
+      document.querySelector('nav[role="navigation"]') ||
+      document.querySelector("nav")
+    );
+  }
+
+  function navFeatureEnabled(attributeName) {
+    var nav = getPrimaryNavbar();
+    if (!nav) {
+      return true;
+    }
+    return nav.getAttribute(attributeName) !== "false";
+  }
+
+  function isMarketingNavigation(menu) {
+    var nav = menu ? menu.closest(".navbar") : getPrimaryNavbar();
+    return !!(nav && nav.getAttribute("data-nav-layout") === "marketing");
+  }
+
   function getNavigationControlHost() {
     return (
+      document.querySelector(".navbar-utilities") ||
       document.querySelector(".navbar-container") ||
       document.querySelector("header .navbar") ||
       document.querySelector(".navbar") ||
@@ -81,7 +103,7 @@
       return;
     }
 
-    var requiredLinks = [
+    var standardLinks = [
       { href: "/case-studies.html", label: "Case Studies", key: "nav.caseStudies" },
       { href: "/telemedicine.html", label: "Telemedicine", key: "nav.telemedicine" },
       { href: "/pricing.html", label: "Pricing", key: "nav.pricing" },
@@ -91,10 +113,37 @@
       { href: "/security-and-compliance.html", label: "Security & Compliance", key: "nav.security" }
     ];
 
+    var marketingLinks = [
+      { href: "/case-studies.html", label: "Case Studies", key: "nav.caseStudies" },
+      { href: "/pricing.html", label: "Pricing", key: "nav.pricing" },
+      { href: "/investors.html", label: "Investors", key: "nav.investors" },
+      { href: "/resources.html", label: "Resources", key: "nav.resources" }
+    ];
+
+    var marketingHiddenLinks = [
+      "/telemedicine.html",
+      "/careers.html",
+      "/security-and-compliance.html"
+    ];
+
     menus.forEach(function (menu) {
       if (menu.getAttribute("data-selnexa-nav-updated") === "true") {
         return;
       }
+
+      if (isMarketingNavigation(menu)) {
+        menu.querySelectorAll("a[href]").forEach(function (link) {
+          var isPrimaryNavLink = link.classList.contains("nav-link") && !link.closest(".dropdown-menu");
+          if (isPrimaryNavLink && marketingHiddenLinks.indexOf(normalizePath(link.getAttribute("href") || "")) >= 0) {
+            var navItem = link.closest("li");
+            if (navItem) {
+              navItem.remove();
+            }
+          }
+        });
+      }
+
+      var requiredLinks = isMarketingNavigation(menu) ? marketingLinks : standardLinks;
 
       requiredLinks.forEach(function (item) {
         if (!hasHrefInMenu(menu, item.href)) {
@@ -233,6 +282,10 @@
   }
 
   function setupThemeToggle() {
+    if (!navFeatureEnabled("data-enable-theme-toggle")) {
+      return;
+    }
+
     var container = getNavigationControlHost();
     if (container && !container.querySelector("[data-theme-toggle]")) {
       var button = document.createElement("button");
@@ -386,6 +439,10 @@
   }
 
   function setupVoiceSearch() {
+    if (!navFeatureEnabled("data-enable-voice-search")) {
+      return;
+    }
+
     var container = getNavigationControlHost();
     if (!container || container.querySelector(".voice-search-btn")) {
       return;
