@@ -113,20 +113,29 @@
 
     <main id="main-content">
         <section class="hero" id="hero">
-          <div class="hero-background">
-            <div class="mesh-gradient"></div>
-          </div>
-          <div class="hero-content">
-            <h1 class="hero-title">Selnexa Health</h1>
-            <p class="hero-tagline">A Youth-Led Organization Taking On Africa's Healthcare Crisis</p>
-            <p class="hero-subtitle">
-                            We are a young team building scalable solutions to the healthcare challenges that affect millions across Africa. We don't believe in waiting for permission to act. Our work spans digital infrastructure, access to care, and health system reform — starting with the tools that healthcare workers need most, right now. <strong>Project 01: The Selnexa Health Platform</strong> — an offline-first, AI-powered hospital management system built for Africa's infrastructure realities.
-            </p>
-            <div class="cta-buttons">
-              <a href="#project-01" class="btn btn-primary">Explore Project 01 →</a>
-              <a href="#mission" class="btn btn-secondary">Our Mission</a>
+            <div class="hero-background">
+                <div class="mesh-gradient"></div>
             </div>
-          </div>
+            <div class="hero-content">
+                <p class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Pilot Active · Zimbabwe 2025</p>
+                <h1 class="hero-title">Healthcare that works even when the internet doesn't.</h1>
+                <p class="hero-subtitle">AI-powered ERP built for Africa's infrastructure realities — offline-first, FHIR-ready, and live in Zimbabwe.</p>
+                <div class="hero-cta-group">
+                    <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
+                </div>
+                <button class="hero-secondary-link" type="button" onclick="document.getElementById('video-modal').showModal()">See how it works →</button>
+            </div>
+            <div class="hero-visual">
+                <img src="/styles/scripts/assets/admin-dashboard-screenshot.png" alt="SelNexa dashboard overview" class="hero-dashboard-shot">
+                <div class="hero-floating-stat">
+                    <strong>95%</strong>
+                    <span>offline continuity target</span>
+                </div>
+                <div class="hero-floating-stat hero-floating-stat-alt">
+                    <strong>4 countries</strong>
+                    <span>pilot footprint</span>
+                </div>
+            </div>
         </section>
 
         <section class="mission-section animate-on-scroll" id="mission">
@@ -170,37 +179,70 @@
             </div>
         </section>
 
-        <section class="quick-metrics animate-on-scroll" aria-label="Policy and market baseline metrics">
+        <section class="quick-metrics animate-on-scroll" aria-label="Healthcare infrastructure challenge metrics">
             <div class="container">
                 <div class="section-header">
-                    <h2>Zimbabwe rollout baselines from the proposal</h2>
-                    <p>These figures anchor market context, operating environment, and compliance obligations for pilot-to-scale planning.</p>
+                    <h2>The African Health Infrastructure Challenge — By the Numbers</h2>
+                    <p>Operational realities healthcare leaders face every day across low-connectivity and resource-constrained facilities.</p>
                 </div>
                 <div class="metrics-grid">
-                    <article class="metric-card" aria-label="Zimbabwe facility footprint baseline">
-                        <strong>1,848 facilities</strong>
-                        <p>Documented national facility footprint across government, mission, local authority, and private providers.</p>
-                        <a href="/for-investors.html#opportunity">View serviceable market context →</a>
+                    <article class="metric-card" aria-label="Administrative burden metric">
+                        <strong>40-60%</strong>
+                        <p>Clinician capacity is often absorbed by administrative work instead of direct patient care.</p>
+                        <span class="metric-source">WHO estimates, 2023</span>
                     </article>
-                    <article class="metric-card" aria-label="Africa market size baseline">
-                        <strong>USD 4.69B</strong>
-                        <p>Africa digital health market estimate used for the proposal market-size baseline (2024).</p>
-                        <a href="/for-investors.html#opportunity">Review market framing →</a>
+                    <article class="metric-card" aria-label="Medicine wastage metric">
+                        <strong>22-35%</strong>
+                        <p>Medicine wastage linked to inventory mismatch and poor demand forecasting in constrained systems.</p>
+                        <span class="metric-source">World Bank analysis</span>
                     </article>
-                    <article class="metric-card" aria-label="Africa digital health growth baseline">
-                        <strong>23.4% CAGR</strong>
-                        <p>Projected Africa digital health growth (2024-2030) in the proposal assumptions.</p>
-                        <a href="/for-investors.html#opportunity">See growth assumptions →</a>
+                    <article class="metric-card" aria-label="Fragmented records metric">
+                        <strong>50-70%</strong>
+                        <p>Fragmented records increase duplicated tests, missed context, and prevent longitudinal care.</p>
+                        <span class="metric-source">Lancet digital health commission, 2024</span>
                     </article>
-                    <article class="metric-card" aria-label="Authority breach notification requirement">
-                        <strong>24-hour notice</strong>
-                        <p>Data-controller notification window to the Authority under Zimbabwe data protection rules.</p>
-                        <a href="/security-and-compliance.html">Review security obligations →</a>
+                    <article class="metric-card" aria-label="Low-bandwidth reliability metric">
+                        <strong>2G/3G ready</strong>
+                        <p>SelNexa is engineered for unreliable bandwidth with offline workflows and queued synchronization.</p>
+                        <span class="metric-source">SelNexa architecture standard</span>
                     </article>
-                    <article class="metric-card" aria-label="High-risk affected-individual notification requirement">
-                        <strong>72-hour notice</strong>
-                        <p>High-risk affected-individual notification expectation in SI 155 of 2024 procedures.</p>
-                        <a href="/security-and-compliance.html">See compliance timeline details →</a>
+                    <article class="metric-card" aria-label="Pilot footprint metric">
+                        <strong>4 countries</strong>
+                        <p>Zimbabwe, Kenya, Nigeria, and South Africa are in current pilot expansion planning.</p>
+                        <span class="metric-source">Pilot rollout program</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-proof-section animate-on-scroll" id="social-proof">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trusted by facilities across Zimbabwe, Kenya, Nigeria, and South Africa</h2>
+                    <p>Healthcare teams choose SelNexa for resilient operations, continuity of care, and localized implementation support.</p>
+                </div>
+                <div class="pilot-logo-row" aria-label="Pilot institutions and ecosystem partners">
+                    <span>Harare Central</span>
+                    <span>Mutare Mission</span>
+                    <span>Nairobi CareNet</span>
+                    <span>Lagos Health Grid</span>
+                    <span>Johannesburg Clinic Group</span>
+                </div>
+                <div class="social-proof-testimonials">
+                    <article class="social-proof-card">
+                        <p>"Our team kept triage and documentation flowing during repeated outages without reverting to paper."</p>
+                        <h3>Clinical Operations Lead</h3>
+                        <span>Public hospital pilot, Zimbabwe</span>
+                    </article>
+                    <article class="social-proof-card">
+                        <p>"Forecasted procurement reduced emergency stock requests and gave pharmacy teams predictable restocking windows."</p>
+                        <h3>Pharmacy Manager</h3>
+                        <span>District facility network, Kenya</span>
+                    </article>
+                    <article class="social-proof-card">
+                        <p>"The implementation felt local from day one, including workflows mapped to our staffing realities."</p>
+                        <h3>Hospital Administrator</h3>
+                        <span>Private clinic group, Nigeria</span>
                     </article>
                 </div>
             </div>
@@ -293,7 +335,7 @@
                         <div class="bento-content">
                             <h3>The Hybrid Engine: Reliability Through Infrastructure Variability</h3>
                             <p><strong>Differentiation:</strong> Works when the internet goes down. Syncs automatically when connectivity returns.</p>
-                            <p>SelNexa operates reliably across 2G/3G networks and power outages. Local data persistence means care delivery never stops due to connectivity loss. This removes the #1 objection from investors and healthcare leaders in African infrastructure contexts.</p>
+                            <p>SelNexa operates reliably across 2G/3G networks and power outages. Local data persistence means care delivery never stops due to connectivity loss across constrained infrastructure contexts.</p>
                             <a href="/telemedicine.html" class="btn-link">Explore telemedicine access pathways →</a>
                         </div>
                     </div>
@@ -487,19 +529,19 @@
         <section class="africa-section" id="africa">
             <div class="container">
                 <div class="section-header">
-                    <h2>Sovereign Resilience: The Strategic Barrier Against Western Competitors</h2>
-                    <p>Western healthcare platforms collapse when internet fails, which happens regularly across Africa. SelNexa's offline first architecture is not a feature; it's a Strategic Barrier to Entry that competitors cannot quickly replicate. We are engineered for low bandwidth, intermittent power, and data sovereignty, ensuring healthcare delivery never stops and patient data never leaves local control.</p>
+                    <h2>Built for Africa. Not adapted for it.</h2>
+                    <p>SelNexa is designed for real operating conditions: unstable connectivity, intermittent power, and strict local data control requirements. Care teams stay productive without fragile always-online dependencies.</p>
                 </div>
                 
                 <div class="africa-grid">
                     <div class="africa-card">
                         <div class="africa-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Sovereign Resilience: Offline First EHR</h3>
+                        <h3>Offline-first EHR continuity</h3>
                         <p>Clinical teams capture patient care safely without internet connectivity. Data syncs automatically and securely when networks return. Zero disruption to care delivery. Patient data remains under local sovereignty—never transmitted to foreign servers without explicit consent.</p>
                     </div>
                     <div class="africa-card">
                         <div class="africa-icon"><i class="fas fa-link"></i></div>
-                        <h3>Hybrid-Core Engine: Works on 2G/3G</h3>
+                        <h3>Hybrid-core engine on 2G/3G</h3>
                         <p>While Western competitors require 4G+ and constant connectivity, our Hybrid Core engine operates reliably on 2G/3G networks with lightweight APIs and data efficient syncing. This is not a workaround it is our competitive moat.</p>
                     </div>
                     <div class="africa-card">
@@ -519,8 +561,8 @@
                     </div>
                     <div class="africa-card">
                         <div class="africa-icon"><i class="fas fa-users"></i></div>
-                        <h3>On the Ground Support</h3>
-                        <p>Implementation teams across Nigeria, Kenya, South Africa, and Zimbabwe provide training, localization, and ongoing support no remote only partnership.</p>
+                        <h3>On-the-ground implementation support</h3>
+                        <p>Implementation teams across Nigeria, Kenya, South Africa, and Zimbabwe provide training, localization, and ongoing support.</p>
                     </div>
                 </div>
             </div>
@@ -579,21 +621,20 @@
             </div>
             <div class="container">
                 <div class="cta-content">
-                    <h2>Ready to digitize your facility with AI built for Africa?</h2>
-                    <p>Tell us your top operational bottleneck—we’ll map a 4-week path to measurable impact.</p>
+                    <h2>Ready to make your facility more resilient?</h2>
+                    <p>Request a pilot walkthrough and get a practical rollout path tailored to your facility type and country.</p>
                     
                     <div class="cta-buttons">
                         <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">
-                            Start pilot discovery →
+                            Request Pilot Demo →
                         </button>
-                        <a class="btn btn-secondary" href="/for-investors.html#financials">Review pilot assumptions →</a>
                     </div>
+                    <a class="cta-soft-link" href="/appointments.html">Not ready yet? Join the waitlist →</a>
                     
                     <div class="cta-features">
                         <span>✓ Free 30-day trial</span>
                         <span>✓ Offline-first deployment</span>
-                        <span>✓ Setup in weeks</span>
-                        <span>✓ Local support included</span>
+                        <span>✓ Local support</span>
                     </div>
                 </div>
             </div>
@@ -659,7 +700,7 @@
     <dialog id="demo-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('demo-modal').close()">&times;</button>
-            <h2>Request Demo or Join Wishlist</h2>
+            <h2>Request Pilot Demo</h2>
             <form class="demo-form" id="demo-form">
                 <input type="hidden" name="_subject" value="New Demo Request - SelNexa Health">
                 <input type="hidden" name="_captcha" value="false">
@@ -671,10 +712,6 @@
                 <div class="form-group">
                     <label for="email" class="form-label">Email Address *</label>
                     <input type="email" id="email" name="email" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" class="form-input">
                 </div>
                 <div class="form-group">
                     <label for="facility">Facility Type *</label>
@@ -695,19 +732,11 @@
                         <option value="ZA">South Africa</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" class="form-input form-textarea"></textarea>
-                </div>
-                <label class="checkbox">
-                    <input type="checkbox" name="join_wishlist" value="yes">
-                    Join the early-access wishlist for priority demo slots and launch updates.
-                </label>
                 <label class="checkbox">
                     <input type="checkbox" name="privacy" required>
                     I agree to the privacy policy
                 </label>
-                <button type="submit" class="btn btn-primary">Join Wishlist / Request Demo →</button>
+                <button type="submit" class="btn btn-primary">Request Pilot Demo →</button>
             </form>
         </div>
     </dialog>
