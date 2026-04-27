@@ -52,6 +52,10 @@
 <body>
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="top-identity-banner" role="note" aria-label="Organization identity banner">
+        <p>A youth-led organization building solutions to Africa's healthcare challenges — one project at a time.</p>
+    </div>
     
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -113,18 +117,57 @@
             <div class="mesh-gradient"></div>
           </div>
           <div class="hero-content">
-            <div class="hero-overline" data-i18n="hero.overline">INTEGRATED INTELLIGENCE</div>
-            <h1 class="hero-title" data-i18n="hero.title">Integrated Intelligence for African Healthcare</h1>
+            <h1 class="hero-title">Selnexa Health</h1>
+            <p class="hero-tagline">A Youth-Led Organization Taking On Africa's Healthcare Crisis</p>
             <p class="hero-subtitle">
-                            <strong>Pilot-running, offline-first health coordination platform designed for low-connectivity environments.</strong>
-                            SelNexa Health combines <strong>AI-powered administration</strong>, <strong>predictive procurement</strong>, <strong>secure interoperable records</strong>, and <strong>real-time analytics</strong> into one operational layer built for infrastructure-variable settings. Current rollout is positioned as pilot-grade and complements existing national systems such as DHIS2, ePMS, and Impilo.
+                            We are a young team building scalable solutions to the healthcare challenges that affect millions across Africa. We don't believe in waiting for permission to act. Our work spans digital infrastructure, access to care, and health system reform — starting with the tools that healthcare workers need most, right now. <strong>Project 01: The Selnexa Health Platform</strong> — an offline-first, AI-powered hospital management system built for Africa's infrastructure realities.
             </p>
             <div class="cta-buttons">
-              <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
-              <a href="/case-studies.html" class="btn btn-secondary">See Case Studies</a>
-              <button class="btn btn-outline" onclick="document.getElementById('demo-modal').showModal()">Schedule Demo</button>
+              <a href="#project-01" class="btn btn-primary">Explore Project 01 →</a>
+              <a href="#mission" class="btn btn-secondary">Our Mission</a>
             </div>
           </div>
+        </section>
+
+        <section class="mission-section animate-on-scroll" id="mission">
+            <div class="container">
+                <div class="mission-intro">
+                    <div class="mission-copy">
+                        <h2>We are not just building software. We are building a generation of African health innovators.</h2>
+                    </div>
+                    <div class="mission-paragraph">
+                        <p>Selnexa Health was founded by young Africans who grew up watching healthcare systems fail the people around them — through understaffing, medicine shortages, and disconnected records. We started this organization to change that, project by project. Our first is the Selnexa Health Platform. It won't be our last.</p>
+                    </div>
+                </div>
+
+                <div class="mission-pillars">
+                    <article class="pillar-card">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-fire"></i></div>
+                        <h3>Youth-Led</h3>
+                        <p>Founded and run by young Africans committed to systemic change</p>
+                    </article>
+                    <article class="pillar-card">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-bullseye"></i></div>
+                        <h3>Mission-First</h3>
+                        <p>Every project we build targets a measurable gap in African healthcare</p>
+                    </article>
+                    <article class="pillar-card">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-earth-africa"></i></div>
+                        <h3>Built for Africa</h3>
+                        <p>Designed from the ground up for African infrastructure, not adapted from elsewhere</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-label-section" id="project-01">
+            <div class="container">
+                <div class="project-label">
+                    <span class="project-label-mark">— Project 01: The Selnexa Health Platform —</span>
+                    <p>An integrated intelligence layer for African hospitals and clinics. Pilot-running. Offline-first. Built for where it matters most.</p>
+                    <button class="btn btn-secondary project-demo-btn" onclick="document.getElementById('video-modal').showModal()">Watch Patient Demo →</button>
+                </div>
+            </div>
         </section>
 
         <section class="quick-metrics animate-on-scroll" aria-label="Policy and market baseline metrics">
@@ -516,7 +559,20 @@
             </div>
         </section>
         
-        <!-- CTA Section -->
+        <!-- What's Next -->
+        <section class="next-projects-section animate-on-scroll" id="whats-next">
+            <div class="container">
+                <div class="next-projects-card">
+                    <p class="next-projects-label">What's Next</p>
+                    <h2>Project 02 and beyond — coming.</h2>
+                    <p>The Selnexa Health Platform is the first step. We are actively scoping our next initiatives across community health access, maternal care, and health data advocacy across Sub-Saharan Africa. If you share our mission, we want to hear from you.</p>
+                    <div class="cta-buttons">
+                        <a class="btn btn-primary" href="/careers.html">Join the Movement →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="cta-section" id="cta">
             <div class="cta-background">
                 <div class="cta-gradient"></div>
@@ -659,9 +715,12 @@
     <dialog id="video-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('video-modal').close()">&times;</button>
-            <h2>Product Demo Video</h2>
+            <h2>Patient Demo Video</h2>
             <div class="video-container">
-                <iframe width="100%" height="400" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="SelNexa platform demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video controls playsinline preload="metadata" aria-label="SelNexa Health patient demo video">
+                    <source src="/SelNexa%20Website/styles/scripts/assets/Selnexa%20Patient%20Demo%20Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </dialog>
