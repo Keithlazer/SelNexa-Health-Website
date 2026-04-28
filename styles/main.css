@@ -2209,7 +2209,9 @@ section {
     }
 
     .hero-shell {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: var(--spacing-lg);
         min-height: 0;
@@ -2272,23 +2274,11 @@ section {
     }
 
     .hero-visual {
-        width: 100%;
-        justify-content: center;
-        overflow: hidden;
-        margin-top: var(--spacing-md);
-        padding-block: 0;
+        display: none;
     }
 
     .hero-floating-stat {
         display: none;
-    }
-
-    .hero-floating-stat-alt {
-        display: none;
-    }
-
-    .hero-dashboard-shot {
-        width: min(300px, 86vw);
     }
 
     .metrics-grid {

@@ -862,7 +862,7 @@ section {
     }
     
     .hero {
-        padding: var(--spacing-base-40) var(--section-spacing-horizontal) var(--spacing-base-32);
+        padding: var(--spacing-base-40) var(--section-spacing-horizontal) var(--spacing-base-24);
     }
     
     .hero-subtitle {
@@ -876,6 +876,10 @@ section {
         flex-direction: column;
         gap: var(--spacing-base-12);
         margin-bottom: var(--spacing-base-32);
+    }
+
+    .hero-visual {
+        display: none;
     }
     
     .btn {
