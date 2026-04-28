@@ -879,7 +879,22 @@ section {
     }
 
     .hero-visual {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: var(--spacing-base-16);
+        overflow: hidden;
+    }
+
+    .hero-floating-stat,
+    .hero-floating-stat-alt {
         display: none;
+    }
+
+    .hero-dashboard-shot {
+        width: min(320px, 82vw);
+        max-width: 100%;
     }
     
     .btn {
