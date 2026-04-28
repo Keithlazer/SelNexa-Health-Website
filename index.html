@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Google Fonts - Inter and Space Grotesk -->
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Main Stylesheet -->
@@ -195,34 +195,24 @@
         <section class="quick-metrics" aria-label="Healthcare infrastructure challenge metrics">
             <div class="container">
                 <div class="section-header">
-                    <h2>The African Health Infrastructure Challenge — By the Numbers</h2>
-                    <p>Operational realities healthcare leaders face every day across low-connectivity and resource-constrained facilities.</p>
+                    <h2>Proof points buyers can feel</h2>
+                    <p>Three signals that matter in a pilot: continuity, traction, and team fit.</p>
                 </div>
                 <div class="metrics-grid">
-                    <article class="metric-card" aria-label="Administrative burden metric">
-                        <strong>40-60%</strong>
-                        <p>Clinician capacity is often absorbed by administrative work instead of direct patient care.</p>
-                        <span class="metric-source">WHO estimates, 2023</span>
-                    </article>
-                    <article class="metric-card" aria-label="Medicine wastage metric">
-                        <strong>22-35%</strong>
-                        <p>Medicine wastage linked to inventory mismatch and poor demand forecasting in constrained systems.</p>
-                        <span class="metric-source">World Bank analysis</span>
-                    </article>
-                    <article class="metric-card" aria-label="Fragmented records metric">
-                        <strong>50-70%</strong>
-                        <p>Fragmented records increase duplicated tests, missed context, and prevent longitudinal care.</p>
-                        <span class="metric-source">Lancet digital health commission, 2024</span>
-                    </article>
-                    <article class="metric-card" aria-label="Low-bandwidth reliability metric">
-                        <strong>2G/3G ready</strong>
-                        <p>SelNexa is engineered for unreliable bandwidth with offline workflows and queued synchronization.</p>
-                        <span class="metric-source">SelNexa architecture standard</span>
+                    <article class="metric-card" aria-label="Offline continuity metric">
+                        <strong>95%</strong>
+                        <p>Offline continuity target for queued actions replayed after reconnect.</p>
+                        <span class="metric-source">Resilience signal</span>
                     </article>
                     <article class="metric-card" aria-label="Pilot footprint metric">
                         <strong>4 countries</strong>
-                        <p>Zimbabwe, Kenya, Nigeria, and South Africa are in current pilot expansion planning.</p>
-                        <span class="metric-source">Pilot rollout program</span>
+                        <p>Zimbabwe, Kenya, Nigeria, and South Africa are in active rollout planning.</p>
+                        <span class="metric-source">Traction signal</span>
+                    </article>
+                    <article class="metric-card" aria-label="Team age metric">
+                        <strong>&lt; 30</strong>
+                        <p>Youth-led and close to the work it is trying to fix.</p>
+                        <span class="metric-source">Mission signal</span>
                     </article>
                 </div>
             </div>
@@ -428,25 +418,37 @@
                         <a href="/solutions/administration.html" class="btn-link">Review administrative efficiency targets →</a>
                     </div>
                     <div class="feature-visual">
-                        <img
-                            src="/styles/scripts/assets/admin-dashboard-screenshot.png"
-                            alt="SelNexa Super Admin dashboard interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <div class="device-frame">
+                            <div class="device-chrome" aria-hidden="true">
+                                <div class="device-dots"><span></span><span></span><span></span></div>
+                                <div class="device-url">app.selnexahealth.com / admin</div>
+                            </div>
+                            <img
+                                src="/styles/scripts/assets/admin-dashboard-screenshot.png"
+                                alt="SelNexa Super Admin dashboard interface"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
                     </div>
                 </div>
                 
                 <div class="feature-block alternating reverse">
                     <div class="feature-visual">
-                        <img
-                            src="/styles/scripts/assets/queue-management-interface.png"
-                            alt="SelNexa queue and records management interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <div class="device-frame">
+                            <div class="device-chrome" aria-hidden="true">
+                                <div class="device-dots"><span></span><span></span><span></span></div>
+                                <div class="device-url">app.selnexahealth.com / queue</div>
+                            </div>
+                            <img
+                                src="/styles/scripts/assets/queue-management-interface.png"
+                                alt="SelNexa queue and records management interface"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
                     </div>
                     <div class="feature-content">
                         <h3><i class="fas fa-tasks"></i> Predict demand, prevent stock-outs</h3>
@@ -472,13 +474,19 @@
                         <a href="/solutions/records.html" class="btn-link">Review records continuity targets →</a>
                     </div>
                     <div class="feature-visual">
-                        <img
-                            src="/styles/scripts/assets/ehr-system-screenshot.png"
-                            alt="SelNexa EHR system patient chart view"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <div class="device-frame">
+                            <div class="device-chrome" aria-hidden="true">
+                                <div class="device-dots"><span></span><span></span><span></span></div>
+                                <div class="device-url">app.selnexahealth.com / records</div>
+                            </div>
+                            <img
+                                src="/styles/scripts/assets/ehr-system-screenshot.png"
+                                alt="SelNexa EHR system patient chart view"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </div>
                     </div>
                 </div>
             </div>
@@ -495,23 +503,21 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-value">95%</div>
-                        <div class="stat-label">Offline continuity success</div>
+                        <div class="stat-label">Offline continuity</div>
                         <p>Target share of queued actions replayed after reconnect.</p>
+                        <span class="metric-source">Resilience signal</span>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">99%</div>
-                        <div class="stat-label">Service uptime</div>
-                        <p>Pilot target for edge deployments in constrained environments.</p>
+                        <div class="stat-value">4 countries</div>
+                        <div class="stat-label">Pilot footprint</div>
+                        <p>Zimbabwe, Kenya, Nigeria, and South Africa are in active rollout planning.</p>
+                        <span class="metric-source">Traction signal</span>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">20%</div>
-                        <div class="stat-label">Median key-task time reduction</div>
-                        <p>Target improvement versus baseline time-motion measurements.</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">90%</div>
-                        <div class="stat-label">Minimum dataset completion</div>
-                        <p>Target completeness for required encounter documentation fields.</p>
+                        <div class="stat-value">&lt; 30</div>
+                        <div class="stat-label">Average team age</div>
+                        <p>Youth-led and close to the work it is trying to fix.</p>
+                        <span class="metric-source">Mission signal</span>
                     </div>
                 </div>
                 
@@ -660,7 +666,7 @@
         <div class="footer-grid">
                     <div class="footer-column">
             <h2>SelNexa Health</h2>
-                        <p>Integrated intelligence for African healthcare: AI operations, predictive procurement, secure records, analytics, and telemedicine.</p>
+                        <p>We believe Africa's healthcare crisis is solvable. We're building the tools to prove it — one project at a time.</p>
           </div>
                     <div class="footer-column">
             <h4>Solutions</h4>

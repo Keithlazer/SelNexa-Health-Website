@@ -252,7 +252,8 @@
 
   function setupProgressBar() {
     var progress = document.querySelector(".navbar-progress");
-    if (!progress) {
+    var navbar = getPrimaryNavbar();
+    if (!progress && !navbar) {
       return;
     }
 
@@ -260,10 +261,15 @@
       var scrollTop = window.scrollY || document.documentElement.scrollTop;
       var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progress.style.width = Math.min(100, Math.max(0, percent)) + "%";
+      if (progress) {
+        progress.style.width = Math.min(100, Math.max(0, percent)) + "%";
+      }
+      if (navbar) {
+        navbar.classList.toggle("scrolled", scrollTop > 80);
+      }
     };
 
-    window.addEventListener("scroll", updateProgress);
+    window.addEventListener("scroll", updateProgress, { passive: true });
     updateProgress();
   }
 
