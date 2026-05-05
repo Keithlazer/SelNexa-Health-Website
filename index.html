@@ -210,6 +210,15 @@
         .quick-metrics .metric-card { background: #fff; border-top: 3px solid var(--color-amber); border-radius: 14px; padding: 1rem; }
         .quick-metrics .metric-card strong { font-size: clamp(34px, 5vw, 56px); line-height: 1; color: #111; font-weight: 900; display: block; }
         .card-accented { border-top: 3px solid var(--color-amber); }
+        .mission-pillars .pillar-card h3 {
+            font-size: clamp(1.9rem, 5.2vw, 2.4rem) !important;
+            line-height: 1.08 !important;
+            text-wrap: balance;
+        }
+        .mission-pillars .pillar-body {
+            font-size: clamp(1rem, 2.6vw, 1.16rem) !important;
+            line-height: 1.55 !important;
+        }
         .social-proof-section { background: #0A1414; color: #fff; }
         .social-proof-section .section-header h2, .social-proof-section .section-header p { color: #fff; }
         .pilot-logo-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
@@ -289,6 +298,34 @@
         .faq-grid details { border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 0.75rem 0.9rem; background: #fff; }
         .faq-grid summary { cursor: pointer; font-weight: 600; }
         .faq-grid p { margin-top: 0.5rem; }
+        .africa-section {
+            background: var(--surface-base) !important;
+        }
+        .africa-section .section-header h2 {
+            color: #111827;
+        }
+        .africa-section .section-header p {
+            color: #374151;
+        }
+        .africa-grid .africa-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(0, 0, 0, 0.08) !important;
+            border-top: 3px solid var(--color-amber) !important;
+            color: #111827 !important;
+        }
+        .africa-grid .africa-card h3 {
+            color: #0d2f6f !important;
+            font-size: clamp(1.35rem, 4.1vw, 1.95rem) !important;
+            line-height: 1.2 !important;
+            text-wrap: balance;
+        }
+        .africa-grid .africa-card p {
+            color: #334155 !important;
+        }
+        .africa-grid .africa-icon {
+            color: var(--color-amber) !important;
+            background: rgba(232, 160, 32, 0.12) !important;
+        }
         :focus-visible {
             outline: 3px solid rgba(232,160,32,0.7);
             outline-offset: 2px;
@@ -419,7 +456,7 @@
                             </div>
                             <div class="mega-menu-column">
                                 <h3>Project 02 — Scoping</h3>
-                                <p>Community Health Worker platform for structured field coordination.</p>
+                                <p>ContraWise — an AI-powered reproductive health platform with personalized recommendations, anonymous peer support, verified clinic access, and SMS/WhatsApp + offline continuity.</p>
                                 <a href="/contact.html" class="dropdown-item">Follow Progress →</a>
                             </div>
                             <div class="mega-menu-column">
@@ -1015,8 +1052,10 @@
                 <div class="future-grid">
                     <article class="future-card" data-project="02">
                         <p class="status-pill"><span class="status-dot status-scoping"></span>Scoping · 2025–2026</p>
-                        <h3>Community Health Worker Coordination Platform</h3>
-                        <p>Empowering CHWs with structured visit logs, offline-first data collection, and referral pathways to formal facilities.</p>
+                        <h3>ContraWise</h3>
+                        <p>An AI-powered mobile platform helping women make informed, stigma-free contraceptive decisions with personalized recommendations, anonymous peer community, and verified nearby clinic booking.</p>
+                        <p>Guided profiling aligns method recommendations to health needs and future fertility plans, with SMS, WhatsApp, and offline access to ensure no woman is left behind.</p>
+                        <p>ContraWise is a movement toward equitable, dignified reproductive healthcare for every African woman.</p>
                         <a href="/contact.html">Join the Interest List →</a>
                     </article>
                     <article class="future-card" data-project="03">
@@ -1161,7 +1200,7 @@
                         <h4>Projects</h4>
                         <ul>
                             <li><a href="/solutions/index.html">Project 01 — Selnexa Health Platform (Active)</a></li>
-                            <li><a href="/contact.html">Project 02 — CHW Platform (Scoping)</a></li>
+                            <li><a href="/contact.html">Project 02 — ContraWise (Scoping)</a></li>
                             <li><a href="/contact.html">Project 03 — Maternal Health (Research)</a></li>
                             <li><a href="/contact.html">Propose a Project →</a></li>
                         </ul>
