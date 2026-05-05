@@ -286,6 +286,28 @@
             pointer-events: none;
         }
         .future-card:hover { transform: translateY(-4px); border-color: rgba(232,160,32,0.5); }
+        .future-card-logo {
+            display: block;
+            width: min(72%, 210px);
+            max-width: 210px;
+            height: auto;
+            margin: 0.2rem 0 0.85rem;
+            filter: drop-shadow(0 10px 16px rgba(255, 74, 139, 0.15));
+        }
+        .future-card-contrawise {
+            background: linear-gradient(160deg, #2a1730 0%, #3b1844 48%, #241732 100%);
+            border-color: rgba(255, 106, 167, 0.45);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+        }
+        .future-card-contrawise:hover {
+            border-color: rgba(255, 106, 167, 0.75);
+        }
+        .future-card-contrawise .status-pill {
+            color: #ffd3ea;
+        }
+        .future-card-contrawise .status-dot {
+            background: #ff4a8b;
+        }
         .status-pill { display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.65rem; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; }
         .status-scoping { background: #E8A020; }
@@ -1070,8 +1092,9 @@
                     <p>Project 01 is our starting point — not our ceiling. We are actively researching and scoping the next initiatives in the Selnexa Health portfolio.</p>
                 </div>
                 <div class="future-grid">
-                    <article class="future-card" data-project="02">
+                    <article class="future-card future-card-contrawise" data-project="02">
                         <p class="status-pill"><span class="status-dot status-scoping"></span>Scoping · 2025–2026</p>
+                        <img src="/SelNexa%20Website/styles/scripts/assets/ContraWise.svg" alt="ContraWise logo" class="future-card-logo" loading="lazy" decoding="async">
                         <h3>ContraWise</h3>
                         <p>An AI-powered mobile platform helping women make informed, stigma-free contraceptive decisions with personalized recommendations, anonymous peer community, and verified nearby clinic booking.</p>
                         <p>Guided profiling aligns method recommendations to health needs and future fertility plans, with SMS, WhatsApp, and offline access to ensure no woman is left behind.</p>
