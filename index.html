@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SelNexa Health | Healthcare ERP Africa | Enterprise Hospital Management System</title>
-    <meta name="description" content="SelNexa Health is the Integrated Intelligence Layer for sustainable African healthcare orchestrating hospital administration, supply chain predictability, and interoperable electronic health records across Nigeria, Kenya, South Africa, and the continent. Purpose built for low bandwidth infrastructure and offline first resilience.">
+    <title>Selnexa Health | A Youth-Led Healthcare Organization | Africa</title>
+    <meta name="description" content="Selnexa Health is a youth-led organization building scalable solutions to Africa's healthcare challenges. Project 01 is an offline-first AI-powered hospital management platform piloting in Zimbabwe.">
     <meta name="language" content="en">
     <meta name="author" content="SelNexa Health">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://www.selnexahealth.com/">
     <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/">
+    <link rel="alternate" hreflang="fr" href="https://www.selnexahealth.com/?lang=fr">
     <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/?lang=sn">
     <link rel="alternate" hreflang="nd" href="https://www.selnexahealth.com/?lang=nd">
     <link rel="alternate" hreflang="x-default" href="https://www.selnexahealth.com/">
-    <link rel="icon" href="/dist/assets/selnexa-logo-b2ed1751.svg" type="image/svg+xml">
+    <link rel="icon" href="/styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml">
     
     <!-- Open Graph & Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SelNexa Health">
-    <meta property="og:title" content="SelNexa Health | Healthcare ERP & Hospital Management System for Africa">
-    <meta property="og:description" content="The Integrated Intelligence Layer for African healthcare. Offline first hospital management system with AI administration, predictive procurement, and interoperable EHR. Designed for low bandwidth infrastructure across Nigeria, Kenya, South Africa, and beyond.">
-    <meta property="og:image" content="/styles/scripts/assets/selnexa-logo.svg">
+    <meta property="og:title" content="Selnexa Health — A Youth-Led Organization Taking On Africa's Healthcare Crisis">
+    <meta property="og:description" content="Building scalable solutions to Africa's healthcare challenges. Project 01: offline-first AI-powered hospital management platform. Pilot active in Zimbabwe.">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
     <meta property="og:url" content="https://www.selnexahealth.com/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SelNexa Health | Healthcare ERP & Hospital Management System for Africa">
-    <meta name="twitter:description" content="The Integrated Intelligence Layer for African healthcare. Offline first hospital management system with AI administration, predictive procurement, and interoperable EHR.">
-    <meta name="twitter:image" content="/styles/scripts/assets/selnexa-logo.svg">
+    <meta name="twitter:title" content="Selnexa Health — Youth-Led Healthcare Organization">
+    <meta name="twitter:description" content="Project 01: an offline-first AI-powered hospital management platform built for Africa's infrastructure realities.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
     
     <!-- Geo Tags -->
     <meta name="geo.region" content="ZW">
@@ -37,7 +38,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Google Fonts - Inter and Space Grotesk -->
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;0,900;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Main Stylesheet -->
@@ -49,17 +50,289 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="/dist/assets/index-e83419b2.css">
+    <style>
+        :root {
+            --color-teal-deep: #004C4C;
+            --color-amber: #E8A020;
+            --surface-base: #F9F5EE;
+            --surface-dark: #0A1414;
+            --surface-dark-mid: #0D2B1E;
+            --text-inverse-muted: rgba(255, 255, 255, 0.76);
+        }
+        body { font-family: 'Montserrat', sans-serif; background: var(--surface-base); }
+        h1, h2, h3 { letter-spacing: -0.03em; }
+        .top-banner {
+            min-height: 44px;
+            background: var(--surface-dark-mid);
+            color: rgba(255, 255, 255, 0.78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.45rem 1rem;
+            position: relative;
+            z-index: 120;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+        .top-banner-inner { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; justify-content: center; text-align: center; }
+        .pulse-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #22C55E; display: inline-block;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); } 50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } }
+        .top-banner a { color: #fff; text-decoration: none; font-weight: 600; }
+        .navbar { position: sticky; top: 0; z-index: 110; background: transparent; transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease; }
+        .navbar.scrolled {
+            background: rgba(10, 20, 20, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+        .nav-link::after { background: var(--color-amber) !important; }
+        .cta-nav {
+            background: var(--color-amber) !important; color: #fff !important; border-radius: 10px;
+            padding: 0.6rem 0.95rem !important; font-weight: 600;
+        }
+        .hero {
+            background: radial-gradient(120% 120% at 80% 0%, rgba(0, 122, 122, 0.2), transparent 55%), var(--surface-dark);
+            color: #fff;
+            min-height: 84vh;
+        }
+        .hero-shell { gap: 2.5rem; }
+        .hero-eyebrow {
+            color: var(--color-amber); font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+            text-transform: uppercase; margin-bottom: 0.75rem;
+        }
+        .hero-title {
+            font-size: clamp(36px, 5.5vw, 68px);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.05rem;
+            color: #fff;
+        }
+        .hero-title .amber { color: var(--color-amber); }
+        .hero-subtitle { font-weight: 300; font-size: 17px; line-height: 1.65; color: var(--text-inverse-muted); max-width: 64ch; }
+        .hero-project-card {
+            margin: 1.35rem 0 1.2rem;
+            border-left: 3px solid var(--color-amber);
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        .hero-project-card .label { color: var(--color-amber); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; }
+        .hero-project-card h3 { color: #fff; font-size: 18px; margin: 0.35rem 0; }
+        .hero-project-card p { color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0 0 0.55rem; }
+        .hero-project-card a { color: #fff; font-weight: 600; }
+        .hero-cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+        .btn-ghost {
+            min-height: 52px; border: 1px solid rgba(255,255,255,0.45); background: transparent; color: #fff;
+            border-radius: 10px; padding: 0.8rem 1.1rem; font-weight: 600;
+        }
+        .hero-primary-cta { min-height: 52px; border-radius: 10px !important; background: var(--color-amber) !important; }
+        .hero-primary-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(232, 160, 32, 0.35); }
+        .device-frame {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+            background: #0e1111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .device-chrome {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.07);
+        }
+        .traffic-lights { display: flex; gap: 0.3rem; }
+        .traffic-lights span { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: rgba(255,255,255,0.45); }
+        .traffic-lights span:nth-child(1) { background: #ef4444; }
+        .traffic-lights span:nth-child(2) { background: #f59e0b; }
+        .traffic-lights span:nth-child(3) { background: #10b981; }
+        .address-bar { color: rgba(255,255,255,0.72); font-size: 12px; }
+        .hero-dashboard-shot { width: 100%; display: block; }
+        .hero-floating-stat {
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            color: #fff;
+        }
+        .hero-floating-stat strong { color: #fff; }
+        .metric-ring {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 0.9rem;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+        .metric-ring svg { position: absolute; inset: 0; }
+        .ring-label { position: relative; z-index: 1; font-weight: 800; font-size: 1.15rem; color: #fff; }
+        .impact-section .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .impact-section .stat-card { background: #102020; color: #fff; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 1.35rem; }
+        .impact-section .stat-label { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
+        .impact-section .stat-card p { color: rgba(255, 255, 255, 0.68); }
+        .cta-section { background: #004C4C; }
+        .cta-split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+        .cta-audience-card {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
+            text-align: left; padding: 1rem;
+        }
+        .cta-audience-card h3 { color: #fff; margin-bottom: 0.45rem; font-size: 1.05rem; }
+        .cta-audience-card p { color: rgba(255,255,255,0.76); margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .cta-audience-card a { color: #fff; font-weight: 600; }
+        .footer .newsletter-row { margin-top: 1rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
+        .footer .newsletter-row input {
+            flex: 1; min-width: 180px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.06); color: #fff; padding: 0.65rem 0.9rem;
+        }
+        .footer .newsletter-row button { border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; padding: 0.65rem 0.9rem; font-weight: 600; }
+        .trust-badges span { display: inline-flex; align-items: center; gap: 0.35rem; }
+        .project-label-section {
+            position: relative;
+            border-left: 3px solid var(--color-amber);
+            margin-left: 1rem;
+            padding-left: 1.25rem;
+            background: #fff;
+        }
+        .project-label-section::before {
+            content: "01";
+            position: absolute;
+            right: 1rem;
+            top: 10px;
+            font-size: 320px;
+            line-height: 1;
+            font-weight: 900;
+            opacity: 0.03;
+            color: #111;
+            pointer-events: none;
+        }
+        .project-label .label { color: var(--color-amber); font-size: 11px; letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; }
+        .quick-metrics .metrics-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .quick-metrics .metric-card { background: #fff; border-top: 3px solid var(--color-amber); border-radius: 14px; padding: 1rem; }
+        .quick-metrics .metric-card strong { font-size: clamp(34px, 5vw, 56px); line-height: 1; color: #111; font-weight: 900; display: block; }
+        .card-accented { border-top: 3px solid var(--color-amber); }
+        .social-proof-section { background: #0A1414; color: #fff; }
+        .social-proof-section .section-header h2, .social-proof-section .section-header p { color: #fff; }
+        .pilot-logo-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+        .pilot-logo-row span {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            padding: 0.65rem;
+            text-align: center;
+            color: rgba(255,255,255,0.72);
+            filter: grayscale(1);
+            transition: filter 0.2s ease, color 0.2s ease;
+        }
+        .pilot-logo-row span:hover { filter: grayscale(0); color: #fff; }
+        .social-proof-testimonials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .social-proof-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+        }
+        .recognition-row { margin-top: 1rem; display: flex; gap: 0.7rem; flex-wrap: wrap; }
+        .recognition-row span { border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 0.35rem 0.7rem; }
+        .integration-ticker { background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.08); padding: 1rem; margin: 1rem 0 0; }
+        .integration-logos { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 0.65rem; }
+        .integration-logos span { border: 1px solid rgba(0,0,0,0.08); border-radius: 999px; padding: 0.28rem 0.6rem; font-weight: 600; font-size: 0.8rem; }
+        .case-study-teaser { margin-top: 1rem; background: #fff; border-radius: 14px; border: 1px solid rgba(0,0,0,0.08); padding: 1rem; }
+        .future-projects {
+            background: #0A1414;
+            color: #fff;
+        }
+        .future-projects .section-header h2,
+        .future-projects .section-header p { color: #fff; }
+        .future-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .future-card {
+            background: #0D1F1A;
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 16px;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .future-card::after {
+            content: attr(data-project);
+            position: absolute;
+            right: 0.5rem;
+            bottom: -0.2rem;
+            font-size: 96px;
+            line-height: 1;
+            font-weight: 900;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        .future-card:hover { transform: translateY(-4px); border-color: rgba(232,160,32,0.5); }
+        .status-pill { display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.65rem; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .status-scoping { background: #E8A020; }
+        .status-research { background: #38bdf8; }
+        .status-concept { background: #9ca3af; }
+        .future-proposal { margin-top: 1rem; border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 1rem; }
+        .team-section { background: #F9F5EE; }
+        .team-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1rem; align-items: center; }
+        .team-art {
+            min-height: 220px;
+            border-radius: 16px;
+            background: radial-gradient(circle at 20% 30%, rgba(232,160,32,0.18), transparent 45%), radial-gradient(circle at 80% 60%, rgba(0,76,76,0.25), transparent 45%), #ffffff;
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+        .team-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.7rem; }
+        .team-stats article { background: #fff; border-radius: 12px; padding: 0.75rem; border: 1px solid rgba(0,0,0,0.06); text-align: center; }
+        .team-stats strong { font-size: 1.6rem; line-height: 1; display: block; margin-bottom: 0.25rem; }
+        .team-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.8rem; }
+        .faq-section { background: #fff; }
+        .faq-grid { display: grid; gap: 0.65rem; }
+        .faq-grid details { border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; padding: 0.75rem 0.9rem; background: #fff; }
+        .faq-grid summary { cursor: pointer; font-weight: 600; }
+        .faq-grid p { margin-top: 0.5rem; }
+        :focus-visible {
+            outline: 3px solid rgba(232,160,32,0.7);
+            outline-offset: 2px;
+        }
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        @media (max-width: 1023px) {
+            .cta-split, .impact-section .stats-grid, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats { grid-template-columns: 1fr; }
+            .hero-shell { grid-template-columns: 1fr; }
+            .pilot-logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .team-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .top-banner { min-height: 52px; }
+            .hero-cta-group { flex-direction: column; align-items: stretch; }
+            .hero-cta-group .btn, .hero-cta-group .btn-ghost { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <section class="top-banner reveal">
+        <div class="top-banner-inner">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>A youth-led organization building solutions to Africa's healthcare challenges — one project at a time.</span>
+            <a href="#mission">Our Mission ↓</a>
+        </div>
+    </section>
 
     <!-- Navigation -->
     <nav class="navbar" data-nav-layout="marketing" data-enable-theme-toggle="false" data-enable-voice-search="false" role="navigation" aria-label="Main navigation">
         <div class="navbar-container">
             <div class="navbar-brand">
                 <a href="/" class="brand-lockup" aria-label="SelNexa Health Home">
-                    <img src="/dist/assets/selnexa-logo-b2ed1751.svg" alt="" class="logo">
+                    <img src="/styles/scripts/assets/selnexa-logo.svg" alt="" class="logo">
                     <span class="brand-wordmark">
                         <span class="brand-name">SelNexa Health</span>
                         <span class="brand-tag">Offline-first care operations</span>
@@ -73,37 +346,45 @@
             </button>
             <ul class="nav-menu" id="primary-nav">
                 <li class="nav-item dropdown">
-                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-i18n="nav.solutions">Solutions <span class="arrow">▾</span></button>
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Projects <span class="arrow">▾</span></button>
                     <div class="dropdown-menu mega-menu">
                         <div class="mega-menu-grid">
                             <div class="mega-menu-column">
-                                <h3>AI-Powered Administration</h3>
-                                <p>Pilot objective: faster check-in flow and fewer manual coordination errors for frontline teams.</p>
-                                <a href="/solutions/administration.html" class="dropdown-item">Explore administration workflow outcomes →</a>
+                                <h3>Project 01 — Active</h3>
+                                <p>The Selnexa Health Platform for offline-first hospital operations.</p>
+                                <a href="/solutions/index.html" class="dropdown-item">Solutions · Case Studies · Pricing · Security</a>
                             </div>
                             <div class="mega-menu-column">
-                                <h3>Predictive Procurement</h3>
-                                <p>Pilot objective: reduce stockouts and medicine waste through demand forecasting and visibility.</p>
-                                <a href="/solutions/procurement.html" class="dropdown-item">Explore procurement continuity outcomes →</a>
+                                <h3>Project 02 — Scoping</h3>
+                                <p>Community Health Worker platform for structured field coordination.</p>
+                                <a href="/contact.html" class="dropdown-item">Follow Progress →</a>
                             </div>
                             <div class="mega-menu-column">
-                                <h3>Blockchain-Secured Records</h3>
-                                <p>Cross-facility continuity with consent-aware access controls and tamper-evident audit trails.</p>
-                                <a href="/solutions/records.html" class="dropdown-item">Review records continuity targets →</a>
+                                <h3>Project 03 — Research</h3>
+                                <p>Maternal health initiative focused on referral and readiness pathways.</p>
+                                <a href="/contact.html" class="dropdown-item">Follow Progress →</a>
                             </div>
                             <div class="mega-menu-column">
-                                <h3>Analytics + Telemedicine</h3>
-                                <p>Readmission insights and low-bandwidth virtual care in one connected platform.</p>
-                                <a href="/telemedicine.html" class="dropdown-item">Explore telemedicine access pathways →</a>
+                                <h3>Explore Portfolio</h3>
+                                <p>Project roadmap, priorities, and implementation partners.</p>
+                                <a href="/case-studies.html" class="dropdown-item">See All Projects →</a>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="nav-item"><a href="/case-studies.html" class="nav-link" data-i18n="nav.caseStudies">Case Studies</a></li>
-                <li class="nav-item"><a href="/pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
-                <li class="nav-item"><a href="/investors.html" class="nav-link" data-i18n="nav.investors">Investors</a></li>
-                <li class="nav-item"><a href="/resources.html" class="nav-link" data-i18n="nav.resources">Resources</a></li>
-                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav" data-i18n="nav.bookDemo">Book Demo</a></li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">About <span class="arrow">▾</span></button>
+                    <div class="dropdown-menu">
+                        <a href="#mission" class="dropdown-item">Our Mission</a>
+                        <a href="/about.html" class="dropdown-item">Team</a>
+                        <a href="/careers.html" class="dropdown-item">Careers</a>
+                        <a href="/contact.html" class="dropdown-item">Contact</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="/investors.html" class="nav-link">Investors</a></li>
+                <li class="nav-item"><a href="/resources.html" class="nav-link">Resources</a></li>
+                <li class="nav-item"><a href="/careers.html" class="nav-link">Careers</a></li>
+                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav">Book Demo</a></li>
             </ul>
             <div class="navbar-utilities" role="group" aria-label="Language selector"></div>
         </div>
@@ -116,122 +397,136 @@
                 <div class="mesh-gradient"></div>
             </div>
             <div class="hero-shell">
-                <div class="hero-content">
-                    <p class="hero-badge"><span class="badge-dot" aria-hidden="true"></span>Pilot Active · Zimbabwe 2025</p>
-                    <h1 class="hero-title">Healthcare that works even when the internet doesn't.</h1>
-                    <p class="hero-subtitle">AI-powered ERP built for Africa's infrastructure realities — offline-first, FHIR-ready, and live in Zimbabwe.</p>
-                    <div class="hero-cta-group">
-                        <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
+                <div class="hero-content reveal">
+                    <p class="hero-eyebrow">SELNEXA HEALTH</p>
+                    <h1 class="hero-title">
+                        <span class="line-1">A Youth-Led Organization</span><br>
+                        <span class="line-2">Taking On Africa's</span><br>
+                        <span class="line-3 amber">Healthcare Crisis.</span>
+                    </h1>
+                    <p class="hero-subtitle">We are a young team building scalable solutions to the healthcare challenges that affect hundreds of millions across Africa. We don't believe in waiting for permission to act — we believe in building.</p>
+                    <div class="hero-project-card">
+                        <p class="label">PROJECT 01 — CURRENTLY ACTIVE</p>
+                        <h3>The Selnexa Health Platform</h3>
+                        <p>An offline-first, AI-powered hospital management system built for Africa's infrastructure realities. Pilot-running in Zimbabwe.</p>
+                        <a href="/solutions/index.html">Explore Project 01 →</a>
                     </div>
-                    <button class="hero-secondary-link" type="button" onclick="document.getElementById('video-modal').showModal()">See how it works →</button>
+                    <div class="hero-cta-group hero-ctas">
+                        <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
+                        <a class="btn-ghost" href="#mission">Our Mission &amp; Roadmap</a>
+                    </div>
                 </div>
-                <div class="hero-visual">
-                    <img src="/dist/assets/dashboard-hero-31c92ac5.svg" alt="SelNexa dashboard overview" class="hero-dashboard-shot">
-                    <div class="hero-floating-stat">
+                <div class="hero-visual reveal hero-mockup">
+                    <div class="device-frame screenshot-wrapper">
+                        <div class="device-chrome">
+                            <div class="traffic-lights"><span></span><span></span><span></span></div>
+                            <div class="address-bar">app.selnexahealth.com</div>
+                        </div>
+                        <picture>
+                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.avif" type="image/avif">
+                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.webp" type="image/webp">
+                            <img src="/styles/scripts/assets/admin-dashboard-screenshot.png" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
+                        </picture>
+                    </div>
+                    <div class="hero-floating-stat stat-card-1">
                         <strong>95%</strong>
                         <span>offline continuity target</span>
                     </div>
-                    <div class="hero-floating-stat hero-floating-stat-alt">
+                    <div class="hero-floating-stat hero-floating-stat-alt stat-card-2">
                         <strong>4 countries</strong>
                         <span>pilot footprint</span>
+                    </div>
+                    <div class="hero-floating-stat stat-card-3">
+                        <strong>Project 01</strong>
+                        <span>Est. 2024 · Active</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mission-section" id="mission">
+        <section class="mission-section reveal" id="mission">
             <div class="container">
+                <div class="section-header">
+                    <p class="label">OUR MISSION</p>
+                    <h2>Why We Exist</h2>
+                </div>
                 <div class="mission-intro">
-                    <div class="mission-copy">
-                        <h2>We are not just building software. We are building a generation of African health innovators.</h2>
-                    </div>
                     <div class="mission-paragraph">
-                        <p>SelNexa Health was founded by young Africans who grew up watching healthcare systems fail the people around them - through understaffing, medicine shortages, and disconnected records. We started this organization to change that, project by project. Our first is the SelNexa Health Platform. It will not be our last. <span class="mission-paragraph-close">We are not a charity waiting for grants. We are a team that builds, ships, and measures - because Africa's healthcare crisis does not pause for perfect conditions.</span></p>
+                        <p>Africa carries 25% of the world's disease burden but has access to only 3% of the world's healthcare workers and 1% of global health expenditure. The gap between the care people need and the care they can access is not a knowledge problem — it is an infrastructure, access, and systems problem.</p>
+                        <p>We are a young team that refuses to inherit that gap without fighting it. Selnexa Health exists to build, fund, and deploy practical healthcare solutions — starting in Zimbabwe and scaling across the continent.</p>
+                        <p>We are not a charity. We are not waiting for aid. We build sustainable systems that generate impact and revenue simultaneously — because we believe the two are not in conflict.</p>
                     </div>
                 </div>
-
-                <div class="mission-pillars">
-                    <article class="pillar-card" data-watermark="28">
-                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-fire"></i></div>
-                        <h3>Youth-Led</h3>
-                        <p class="pillar-body">Our founding team averages under 28 years old. 100% African. Zero outside executives.</p>
-                        <p class="pillar-proof">Founded in Harare | 2024</p>
+                <div class="mission-pillars reveal stagger-children">
+                    <article class="pillar-card card-accented">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+                        <h3>Urgency Over Perfection</h3>
+                        <p class="pillar-body">Healthcare crises do not pause for perfect products. We ship, learn, and improve in the field — not in the boardroom.</p>
+                        <p class="pillar-proof">Founded in Harare · Avg team age &lt; 28 · 100% African-led</p>
                     </article>
-                    <article class="pillar-card" data-watermark="Public">
-                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-bullseye"></i></div>
-                        <h3>Mission-First</h3>
-                        <p class="pillar-body">We publish our pilot targets publicly and commission independent evaluations. If we miss, you'll know.</p>
-                        <p class="pillar-proof">Pilot targets published before rollout</p>
-                    </article>
-                    <article class="pillar-card" data-watermark="2G">
+                    <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-earth-africa"></i></div>
-                        <h3>Built for Africa</h3>
+                        <h3>African-First Thinking</h3>
                         <p class="pillar-body">Offline-first architecture. Runs on 2G. Tested in Zimbabwe's lowest-connectivity clinics. Not a port from Silicon Valley.</p>
-                        <p class="pillar-proof">Offline-first stack | Zimbabwe pilot sites</p>
+                        <p class="pillar-proof">Offline-first · 2G-capable · Live in Zimbabwe</p>
                     </article>
-                    <article class="pillar-card" data-watermark="Open">
-                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-eye"></i></div>
-                        <h3>Radically Transparent</h3>
-                        <p class="pillar-body">Our M&amp;E targets are public. Our pilot data is independently verified. We do not hide behind proprietary impact metrics.</p>
+                    <article class="pillar-card card-accented">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-unlock"></i></div>
+                        <h3>Radical Transparency</h3>
+                        <p class="pillar-body">Our pilot targets are public. Our failures are documented. Independent evaluations are part of how we build trust.</p>
+                        <p class="pillar-proof">Targets published publicly · Independent baseline/midline/endline</p>
+                    </article>
+                    <article class="pillar-card card-accented">
+                        <div class="pillar-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
+                        <h3>Complementary, Not Competitive</h3>
+                        <p class="pillar-body">We build alongside DHIS2, ePMS, and Impilo — not against them. Integration is our default, not an afterthought.</p>
                         <p class="pillar-proof">Full pilot reports published at completion</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="project-label-section" id="project-01">
+        <section class="project-label-section reveal" id="project-01">
             <div class="container">
                 <div class="project-label">
-                    <span class="project-label-mark">— Project 01: The Selnexa Health Platform —</span>
-                    <p>An integrated intelligence layer for African hospitals and clinics. Pilot-running. Offline-first. Built for where it matters most.</p>
-                    <button class="btn btn-secondary project-demo-btn" onclick="document.getElementById('video-modal').showModal()">Watch Patient Demo →</button>
+                    <p class="label">CURRENTLY ACTIVE · PILOT PHASE</p>
+                    <h2>Project 01 — The Selnexa Health Platform</h2>
+                    <p>Our first initiative is the one already in your hands — a full-stack hospital management system built for the environments that most ERP platforms ignore. Project 01 is the foundation on which everything else at Selnexa Health is built.</p>
+                    <button class="btn btn-secondary project-demo-btn" onclick="document.getElementById('video-modal').showModal()">Explore Project 01 →</button>
                 </div>
             </div>
         </section>
 
-        <section class="quick-metrics" aria-label="Healthcare infrastructure challenge metrics">
+        <section class="quick-metrics reveal" aria-label="Core organizational metrics">
             <div class="container">
                 <div class="section-header">
-                    <h2>The African Health Infrastructure Challenge — By the Numbers</h2>
-                    <p>Operational realities healthcare leaders face every day across low-connectivity and resource-constrained facilities.</p>
+                    <h2>Focused Metrics</h2>
+                    <p>We keep the homepage focused on operational and team signals.</p>
                 </div>
                 <div class="metrics-grid">
-                    <article class="metric-card" aria-label="Administrative burden metric">
-                        <strong>40-60%</strong>
-                        <p>Clinician capacity is often absorbed by administrative work instead of direct patient care.</p>
-                        <span class="metric-source">WHO estimates, 2023</span>
+                    <article class="metric-card" aria-label="Offline continuity target">
+                        <strong>95%</strong>
+                        <p>Offline continuity target</p>
                     </article>
-                    <article class="metric-card" aria-label="Medicine wastage metric">
-                        <strong>22-35%</strong>
-                        <p>Medicine wastage linked to inventory mismatch and poor demand forecasting in constrained systems.</p>
-                        <span class="metric-source">World Bank analysis</span>
+                    <article class="metric-card" aria-label="Pilot footprint">
+                        <strong>4</strong>
+                        <p>Pilot footprint countries</p>
                     </article>
-                    <article class="metric-card" aria-label="Fragmented records metric">
-                        <strong>50-70%</strong>
-                        <p>Fragmented records increase duplicated tests, missed context, and prevent longitudinal care.</p>
-                        <span class="metric-source">Lancet digital health commission, 2024</span>
-                    </article>
-                    <article class="metric-card" aria-label="Low-bandwidth reliability metric">
-                        <strong>2G/3G ready</strong>
-                        <p>SelNexa is engineered for unreliable bandwidth with offline workflows and queued synchronization.</p>
-                        <span class="metric-source">SelNexa architecture standard</span>
-                    </article>
-                    <article class="metric-card" aria-label="Pilot footprint metric">
-                        <strong>4 countries</strong>
-                        <p>Zimbabwe, Kenya, Nigeria, and South Africa are in current pilot expansion planning.</p>
-                        <span class="metric-source">Pilot rollout program</span>
+                    <article class="metric-card" aria-label="Average team age">
+                        <strong>&lt; 30</strong>
+                        <p>Average team age</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="social-proof-section" id="social-proof">
+        <section class="social-proof-section reveal" id="social-proof">
             <div class="container">
                 <div class="section-header">
-                    <h2>Trusted by facilities across Zimbabwe, Kenya, Nigeria, and South Africa</h2>
-                    <p>Healthcare teams choose SelNexa for resilient operations, continuity of care, and localized implementation support.</p>
+                    <h2>Trusted by facilities in Zimbabwe, Kenya, Nigeria &amp; South Africa</h2>
+                    <p>Operational resilience, localized implementation, and measurable continuity outcomes.</p>
                 </div>
-                <div class="pilot-logo-row" aria-label="Pilot institutions and ecosystem partners">
+                <div class="pilot-logo-row" aria-label="Partner and facility logos">
                     <span>Harare Central</span>
                     <span>Mutare Mission</span>
                     <span>Nairobi CareNet</span>
@@ -242,28 +537,51 @@
                     <article class="social-proof-card">
                         <p>"Our team kept triage and documentation flowing during repeated outages without reverting to paper."</p>
                         <h3>Clinical Operations Lead</h3>
-                        <span>Public hospital pilot, Zimbabwe</span>
+                        <span>Public hospital pilot, Zimbabwe 🇿🇼</span>
                     </article>
                     <article class="social-proof-card">
                         <p>"Forecasted procurement reduced emergency stock requests and gave pharmacy teams predictable restocking windows."</p>
                         <h3>Pharmacy Manager</h3>
-                        <span>District facility network, Kenya</span>
+                        <span>District facility network, Kenya 🇰🇪</span>
                     </article>
                     <article class="social-proof-card">
                         <p>"The implementation felt local from day one, including workflows mapped to our staffing realities."</p>
                         <h3>Hospital Administrator</h3>
-                        <span>Private clinic group, Nigeria</span>
+                        <span>Private clinic group, Nigeria 🇳🇬</span>
                     </article>
                 </div>
+                <div class="recognition-row" aria-label="Recognition and backing">
+                    <span>As featured in regional digital health roundtables</span>
+                    <span>Backed by implementation partners</span>
+                    <span>Pilot evaluation framework in place</span>
+                </div>
             </div>
+        </section>
+
+        <section class="container reveal">
+            <div class="integration-ticker">
+                <strong>Works alongside your existing systems</strong>
+                <div class="integration-logos">
+                    <span>DHIS2</span>
+                    <span>ePMS</span>
+                    <span>Impilo</span>
+                    <span>FHIR</span>
+                    <span>HL7</span>
+                </div>
+            </div>
+            <article class="case-study-teaser" aria-label="Pilot case study teaser">
+                <h3>Pilot Snapshot</h3>
+                <p>In one Zimbabwe pilot facility, outage continuity workflows replaced repeated paper fallback and reduced emergency stock requests after introducing forecast-guided procurement reviews.</p>
+                <a href="/case-studies.html">Read pilot case study highlights →</a>
+            </article>
         </section>
         
         <!-- The Crisis of Efficiency Section -->
         <section class="problems-section" id="problems">
             <div class="container">
                 <div class="section-header">
-                    <h2>The Crisis of Operational Entropy in African Healthcare</h2>
-                    <p>Healthcare fragmentation drains clinician time, depletes budgets, and limits patient outcomes—especially where infrastructure is constrained and capital is scarce.</p>
+                    <h2>The Problem We're Solving</h2>
+                    <p>Healthcare fragmentation drains clinician time, depletes budgets, and limits outcomes. The issue is not talent — it is systems that break under infrastructure realities.</p>
                 </div>
                 
                 <div class="problems-grid grid">
@@ -425,25 +743,33 @@
                         <a href="/solutions/administration.html" class="btn-link">Review administrative efficiency targets →</a>
                     </div>
                     <div class="feature-visual">
-                        <img
-                            src="/dist/assets/admin-dashboard-screenshot-337f7f2f.png"
-                            alt="SelNexa Super Admin dashboard interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <picture>
+                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.avif" type="image/avif">
+                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.webp" type="image/webp">
+                            <img
+                                src="/styles/scripts/assets/admin-dashboard-screenshot.png"
+                                alt="SelNexa Super Admin dashboard interface"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                     </div>
                 </div>
                 
                 <div class="feature-block alternating reverse">
                     <div class="feature-visual">
-                        <img
-                            src="/dist/assets/queue-management-interface-530de241.png"
-                            alt="SelNexa queue and records management interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <picture>
+                            <source srcset="/styles/scripts/assets/queue-management-interface.avif" type="image/avif">
+                            <source srcset="/styles/scripts/assets/queue-management-interface.webp" type="image/webp">
+                            <img
+                                src="/styles/scripts/assets/queue-management-interface.png"
+                                alt="SelNexa queue and records management interface"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                     </div>
                     <div class="feature-content">
                         <h3><i class="fas fa-tasks"></i> Predict demand, prevent stock-outs</h3>
@@ -469,46 +795,63 @@
                         <a href="/solutions/records.html" class="btn-link">Review records continuity targets →</a>
                     </div>
                     <div class="feature-visual">
-                        <img
-                            src="/dist/assets/ehr-system-screenshot-49d8daa7.png"
-                            alt="SelNexa EHR system patient chart view"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <picture>
+                            <source srcset="/styles/scripts/assets/ehr-system-screenshot.avif" type="image/avif">
+                            <source srcset="/styles/scripts/assets/ehr-system-screenshot.webp" type="image/webp">
+                            <img
+                                src="/styles/scripts/assets/ehr-system-screenshot.png"
+                                alt="SelNexa EHR system patient chart view"
+                                class="feature-screenshot"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </picture>
                     </div>
                 </div>
             </div>
         </section>
         
         <!-- Impact & Statistics -->
-        <section class="impact-section" id="impact">
+        <section class="impact-section reveal" id="impact">
             <div class="container">
                 <div class="section-header">
-                    <h2>Pilot-year monitoring targets</h2>
-                    <p>These are proposal-stage M&amp;E targets to be validated through baseline, midline, and endline evaluation.</p>
+                    <h2>Pilot Metrics Dashboard</h2>
+                    <p>Focused operating metrics that reflect who we are and where we are building.</p>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">95%</div>
-                        <div class="stat-label">Offline continuity success</div>
-                        <p>Target share of queued actions replayed after reconnect.</p>
+                        <div class="metric-ring">
+                            <svg viewBox="0 0 120 120" width="120" height="120">
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="95"></circle>
+                            </svg>
+                            <span class="ring-label count-up" data-target="95" data-suffix="%">95%</span>
+                        </div>
+                        <div class="stat-label">Offline continuity target</div>
+                        <p>Actions replayed successfully after reconnect in constrained environments.</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">99%</div>
-                        <div class="stat-label">Service uptime</div>
-                        <p>Pilot target for edge deployments in constrained environments.</p>
+                        <div class="metric-ring">
+                            <svg viewBox="0 0 120 120" width="120" height="120">
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="40"></circle>
+                            </svg>
+                            <span class="ring-label count-up" data-target="4" data-suffix="">4</span>
+                        </div>
+                        <div class="stat-label">Pilot footprint</div>
+                        <p>Countries with active implementation design and field rollout planning.</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">20%</div>
-                        <div class="stat-label">Median key-task time reduction</div>
-                        <p>Target improvement versus baseline time-motion measurements.</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value">90%</div>
-                        <div class="stat-label">Minimum dataset completion</div>
-                        <p>Target completeness for required encounter documentation fields.</p>
+                        <div class="metric-ring">
+                            <svg viewBox="0 0 120 120" width="120" height="120">
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
+                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="30"></circle>
+                            </svg>
+                            <span class="ring-label count-up" data-target="30" data-suffix="">30</span>
+                        </div>
+                        <div class="stat-label">Average team age</div>
+                        <p>Youth-led execution with on-the-ground implementation focus.</p>
                     </div>
                 </div>
                 
@@ -611,40 +954,130 @@
             </div>
         </section>
         
-        <!-- What's Next -->
-        <section class="next-projects-section" id="whats-next">
+        <section class="future-projects reveal" id="whats-next">
             <div class="container">
-                <div class="next-projects-card">
-                    <p class="next-projects-label">What's Next</p>
-                    <h2>Project 02 and beyond — coming.</h2>
-                    <p>The Selnexa Health Platform is the first step. We are actively scoping our next initiatives across community health access, maternal care, and health data advocacy across Sub-Saharan Africa. If you share our mission, we want to hear from you.</p>
-                    <div class="cta-buttons">
-                        <a class="btn btn-primary" href="/careers.html">Join the Movement →</a>
-                    </div>
+                <div class="section-header">
+                    <p class="label">FUTURE INITIATIVES · RESEARCH PHASE</p>
+                    <h2>What Comes Next</h2>
+                    <p>Project 01 is our starting point — not our ceiling. We are actively researching and scoping the next initiatives in the Selnexa Health portfolio.</p>
+                </div>
+                <div class="future-grid">
+                    <article class="future-card" data-project="02">
+                        <p class="status-pill"><span class="status-dot status-scoping"></span>Scoping · 2025–2026</p>
+                        <h3>Community Health Worker Coordination Platform</h3>
+                        <p>Empowering CHWs with structured visit logs, offline-first data collection, and referral pathways to formal facilities.</p>
+                        <a href="/contact.html">Join the Interest List →</a>
+                    </article>
+                    <article class="future-card" data-project="03">
+                        <p class="status-pill"><span class="status-dot status-research"></span>Research · 2026</p>
+                        <h3>Maternal &amp; Neonatal Health Access Initiative</h3>
+                        <p>Reducing preventable maternal deaths through early-warning protocols, transport coordination, and facility readiness monitoring.</p>
+                        <a href="/contact.html">Join the Interest List →</a>
+                    </article>
+                    <article class="future-card" data-project="04">
+                        <p class="status-pill"><span class="status-dot status-concept"></span>Concept · TBD</p>
+                        <h3>Mental Health Infrastructure for African Contexts</h3>
+                        <p>Addressing the near-total absence of scalable, culturally adapted mental health services through primary-care integration.</p>
+                        <a href="/contact.html">Join the Interest List →</a>
+                    </article>
+                </div>
+                <div class="future-proposal">
+                    <h3>Have a healthcare problem we should tackle?</h3>
+                    <p>We are actively looking for implementation partners, co-founders for future projects, and organizations with field access across Africa.</p>
+                    <a href="/contact.html">Submit a Project Proposal →</a>
                 </div>
             </div>
         </section>
 
-        <section class="cta-section" id="cta">
+        <section class="team-section reveal" id="team">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Built by Young Africans, for African Healthcare.</h2>
+                    <p>The Selnexa Health team is made up of young technologists, healthcare researchers, and system designers working across the region.</p>
+                </div>
+                <div class="team-grid">
+                    <div>
+                        <p>Most of us are from Zimbabwe. We have no legacy baggage, no outdated assumptions, and no patience for solutions designed elsewhere and exported here.</p>
+                        <p>We've seen the healthcare system fail people we know. That's not an abstraction for us. It's the reason we wake up and build.</p>
+                        <div class="team-stats">
+                            <article><strong>&lt; 30</strong><span>Average team age</span></article>
+                            <article><strong>4</strong><span>Countries represented</span></article>
+                            <article><strong>100%</strong><span>African-led founding team</span></article>
+                        </div>
+                        <p><em>Founded in Harare, Zimbabwe — building for the continent.</em></p>
+                        <div class="team-cta">
+                            <a class="btn btn-primary" href="/careers.html">Join Our Team →</a>
+                            <a class="btn btn-outline" href="/contact.html">Partner With Us →</a>
+                        </div>
+                    </div>
+                    <div class="team-art" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section reveal" id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-grid">
+                    <details>
+                        <summary>Does it work without internet?</summary>
+                        <p>Yes. Core workflows run offline-first and synchronize when connectivity returns.</p>
+                    </details>
+                    <details>
+                        <summary>Which countries are currently supported?</summary>
+                        <p>Current pilot focus includes Zimbabwe, Kenya, Nigeria, and South Africa.</p>
+                    </details>
+                    <details>
+                        <summary>How long does setup take?</summary>
+                        <p>Deployment is phased by facility context, with pilot onboarding typically starting in weeks, not quarters.</p>
+                    </details>
+                    <details>
+                        <summary>Is data stored locally?</summary>
+                        <p>Yes. The platform supports local persistence and controlled synchronization aligned with local governance requirements.</p>
+                    </details>
+                    <details>
+                        <summary>What is the pricing model?</summary>
+                        <p>Pricing is implementation-based and depends on facility type, modules, and deployment scope.</p>
+                    </details>
+                    <details>
+                        <summary>Do you integrate with existing systems?</summary>
+                        <p>Yes. We are integration-first and support standards including FHIR and HL7 with practical interoperability pathways.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section reveal" id="cta">
             <div class="cta-background">
                 <div class="cta-gradient"></div>
             </div>
             <div class="container">
                 <div class="cta-content">
-                    <h2>Ready to make your facility more resilient?</h2>
-                    <p>Request a pilot walkthrough and get a practical rollout path tailored to your facility type and country.</p>
-                    
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="document.getElementById('demo-modal').showModal()">
-                            Request Pilot Demo →
-                        </button>
+                    <h2>Work With Us</h2>
+                    <p>Choose your path to collaborate with Selnexa Health.</p>
+                    <div class="cta-split">
+                        <article class="cta-audience-card">
+                            <h3>For Healthcare Facilities</h3>
+                            <p>Pilot Project 01 in your facility with a free 30-day trial, local support, and offline-first deployment.</p>
+                            <a href="/appointments.html">Request a Pilot Demo →</a>
+                        </article>
+                        <article class="cta-audience-card">
+                            <h3>For Partners &amp; NGOs</h3>
+                            <p>Co-design future projects with us through field partnerships, implementation support, and community access.</p>
+                            <a href="/contact.html">Explore Partnership →</a>
+                        </article>
+                        <article class="cta-audience-card">
+                            <h3>For Investors</h3>
+                            <p>We are building a portfolio of African healthcare solutions backed by measurable pilot outcomes.</p>
+                            <a href="/investors.html">View Investor Deck →</a>
+                        </article>
                     </div>
-                    <a class="cta-soft-link" href="/appointments.html">Not ready yet? Join the waitlist →</a>
-                    
                     <div class="cta-features">
                         <span>✓ Free 30-day trial</span>
                         <span>✓ Offline-first deployment</span>
-                        <span>✓ Local support</span>
+                        <span>✓ Local support included</span>
                     </div>
                 </div>
             </div>
@@ -656,8 +1089,13 @@
       <div class="container">
         <div class="footer-grid">
                     <div class="footer-column">
-            <h2>SelNexa Health</h2>
-                        <p>Integrated intelligence for African healthcare: AI operations, predictive procurement, secure records, analytics, and telemedicine.</p>
+            <h2>SELNEXA HEALTH</h2>
+                        <p>We believe Africa's healthcare crisis is solvable. We're building the tools to prove it — one project at a time.</p>
+                        <p>Founded in Harare, Zimbabwe</p>
+                        <div class="newsletter-row" aria-label="Newsletter signup">
+                            <input type="email" placeholder="your@email.com" aria-label="Email address">
+                            <button type="button">Follow Our Work →</button>
+                        </div>
           </div>
                     <div class="footer-column">
             <h4>Solutions</h4>
@@ -668,6 +1106,15 @@
                             <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
             </ul>
           </div>
+                    <div class="footer-column">
+                        <h4>Projects</h4>
+                        <ul>
+                            <li><a href="/solutions/index.html">Project 01 — Selnexa Health Platform (Active)</a></li>
+                            <li><a href="/contact.html">Project 02 — CHW Platform (Scoping)</a></li>
+                            <li><a href="/contact.html">Project 03 — Maternal Health (Research)</a></li>
+                            <li><a href="/contact.html">Propose a Project →</a></li>
+                        </ul>
+                    </div>
                     <div class="footer-column footer-route-map">
                         <h4 data-i18n="footer.quickLinks">Quick Links</h4>
             <ul>
@@ -680,10 +1127,9 @@
                             <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
             </ul>
                         <div class="trust-badges" aria-label="Compliance badges">
-                            <span>SSL</span>
-                            <span>HIPAA</span>
-                            <span>GDPR</span>
-                            <span>WCAG 2.1 AA</span>
+                            <span><i class="fas fa-shield-heart" aria-hidden="true"></i> HIPAA</span>
+                            <span><i class="fas fa-lock" aria-hidden="true"></i> GDPR</span>
+                            <span><i class="fas fa-universal-access" aria-hidden="true"></i> WCAG 2.1 AA</span>
                         </div>
           </div>
                     <div class="footer-column">
@@ -694,7 +1140,7 @@
                             <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
                             <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
             </ul>
-            <p class="footer-legal-note">© 2025 SelNexa Health. All rights reserved.</p>
+            <p class="footer-legal-note">© 2025 Selnexa Health · Made in Zimbabwe</p>
           </div>
         </div>
                 <div class="footer-bottom">
@@ -757,7 +1203,7 @@
             <h2>Patient Demo Video</h2>
             <div class="video-container">
                 <video controls playsinline preload="metadata" aria-label="SelNexa Health patient demo video">
-                    <source src="/dist/assets/Selnexa Patient Demo Video-bb8b000e.mp4" type="video/mp4">
+                    <source src="/SelNexa%20Website/styles/scripts/assets/Selnexa%20Patient%20Demo%20Video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -793,11 +1239,13 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "MedicalOrganization",
+        "@type": "Organization",
         "name": "SelNexa Health",
-        "description": "AI-built healthcare management software for African healthcare providers, with administration automation, predictive procurement, and offline-first electronic health records.",
+        "description": "A youth-led organization building scalable solutions to Africa's healthcare challenges, starting with an offline-first hospital management platform.",
         "url": "https://www.selnexahealth.com",
         "logo": "https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo.svg",
+        "foundingLocation": "Harare, Zimbabwe",
+        "areaServed": "Africa",
         "sameAs": [
             "https://www.linkedin.com/company/selnexahealth",
             "https://twitter.com/selnexahealth",
@@ -818,25 +1266,92 @@
     
     <!-- Main JavaScript -->
     <script>
-        // Modern scroll animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        document.addEventListener('DOMContentLoaded', function () {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealNodes = document.querySelectorAll('.reveal');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
+            if (!prefersReduced && revealNodes.length) {
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        entry.target.classList.add('revealed');
+                        obs.unobserve(entry.target);
+                    });
+                }, { threshold: 0.15 });
+                revealNodes.forEach((el) => observer.observe(el));
+            } else {
+                revealNodes.forEach((el) => el.classList.add('revealed'));
+            }
+
+            if (!prefersReduced) {
+                const loadSequence = [
+                    { selector: '.top-banner', delay: 0 },
+                    { selector: '.navbar', delay: 100 },
+                    { selector: '.hero-eyebrow', delay: 300 },
+                    { selector: '.hero-title .line-1', delay: 450 },
+                    { selector: '.hero-title .line-2', delay: 580 },
+                    { selector: '.hero-title .line-3', delay: 710 },
+                    { selector: '.hero-subtitle', delay: 850 },
+                    { selector: '.hero-project-card', delay: 1000 },
+                    { selector: '.hero-ctas', delay: 1150 },
+                    { selector: '.hero-mockup', delay: 400 },
+                    { selector: '.stat-card-1', delay: 700 },
+                    { selector: '.stat-card-2', delay: 850 },
+                    { selector: '.stat-card-3', delay: 1000 }
+                ];
+
+                loadSequence.forEach(({ selector, delay }) => {
+                    const el = document.querySelector(selector);
+                    if (!el) return;
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, delay);
                 });
-            }, observerOptions);
+            }
 
-            // Observe all animate-on-scroll elements
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
+            const counters = document.querySelectorAll('.count-up');
+            if (counters.length && !prefersReduced) {
+                const counterObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        const el = entry.target;
+                        const target = parseFloat(el.dataset.target || '0');
+                        const suffix = el.dataset.suffix || '';
+                        const start = performance.now();
+                        const duration = 1400;
+                        const update = (now) => {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(eased * target) + suffix;
+                            if (progress < 1) requestAnimationFrame(update);
+                        };
+                        requestAnimationFrame(update);
+                        obs.unobserve(el);
+                    });
+                }, { threshold: 0.45 });
+                counters.forEach((el) => counterObserver.observe(el));
+            }
+
+            const metricCards = document.querySelectorAll('.impact-section .stat-card');
+            if (metricCards.length && !prefersReduced) {
+                const ringObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        const ring = entry.target.querySelector('.ring-progress');
+                        if (!ring) return;
+                        const percent = parseFloat(ring.dataset.percent || '0');
+                        const circumference = 326.7;
+                        ring.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0, 0.55, 0.45, 1)';
+                        ring.style.strokeDashoffset = circumference - (percent / 100) * circumference;
+                        obs.unobserve(entry.target);
+                    });
+                }, { threshold: 0.35 });
+                metricCards.forEach((card) => ringObserver.observe(card));
+            }
         });
     </script>
     <script src="/js/main.js"></script>

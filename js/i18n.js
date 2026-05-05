@@ -26,6 +26,32 @@
       "form.requestQuote": "Request custom quote",
       "search.placeholder": "Search pages"
     },
+    fr: {
+      "nav.home": "Accueil",
+      "nav.solutions": "Solutions",
+      "nav.caseStudies": "Études de cas",
+      "nav.telemedicine": "Télémédecine",
+      "nav.telemedShort": "Téléméd",
+      "nav.casesShort": "Cas",
+      "nav.pricing": "Tarifs",
+      "nav.investors": "Investisseurs",
+      "nav.resources": "Ressources",
+      "nav.careers": "Carrières",
+      "nav.security": "Sécurité & conformité",
+      "nav.contact": "Contact",
+      "nav.bookDemo": "Réserver une démo",
+      "nav.more": "Plus",
+      "footer.quickLinks": "Liens rapides",
+      "hero.title": "Une intelligence intégrée pour la santé en Afrique",
+      "hero.overline": "INTELLIGENCE INTÉGRÉE",
+      "metrics.wait": "47% de réduction du temps d'attente",
+      "metrics.cost": "62% de réduction des coûts",
+      "metrics.paperwork": "70% de réduction des tâches papier",
+      "metrics.duplicate": "60% de tests en double en moins",
+      "metrics.satisfaction": "94% de satisfaction des patients",
+      "form.requestQuote": "Demander un devis personnalisé",
+      "search.placeholder": "Rechercher des pages"
+    },
     sn: {
       "nav.home": "Kumba",
       "nav.solutions": "Mhinduro",
@@ -91,7 +117,7 @@
   }
 
   function translatePage(lang) {
-    var targetLang = ["en", "sn", "nd"].indexOf(lang) >= 0 ? lang : "en";
+    var targetLang = ["en", "fr", "sn", "nd"].indexOf(lang) >= 0 ? lang : "en";
 
     document.documentElement.setAttribute("lang", targetLang);
     localStorage.setItem("selnexa-language", targetLang);
@@ -115,7 +141,7 @@
 
   window.SelNexaI18n = {
     defaultLanguage: "en",
-    supportedLanguages: ["en", "sn", "nd"],
+    supportedLanguages: ["en", "fr", "sn", "nd"],
     translations: translations,
     translatePage: translatePage,
     get: resolveTranslation

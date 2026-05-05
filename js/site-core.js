@@ -114,15 +114,15 @@
     ];
 
     var marketingLinks = [
-      { href: "/case-studies.html", label: "Case Studies", key: "nav.caseStudies" },
-      { href: "/pricing.html", label: "Pricing", key: "nav.pricing" },
       { href: "/investors.html", label: "Investors", key: "nav.investors" },
-      { href: "/resources.html", label: "Resources", key: "nav.resources" }
+      { href: "/resources.html", label: "Resources", key: "nav.resources" },
+      { href: "/careers.html", label: "Careers", key: "nav.careers" }
     ];
 
     var marketingHiddenLinks = [
+      "/case-studies.html",
+      "/pricing.html",
       "/telemedicine.html",
-      "/careers.html",
       "/security-and-compliance.html"
     ];
 
@@ -326,6 +326,7 @@
     return {
       translations: {
         en: {},
+        fr: {},
         sn: {},
         nd: {}
       }
@@ -339,7 +340,7 @@
   }
 
   function translatePage(lang) {
-    var normalized = ["en", "sn", "nd"].indexOf(lang) >= 0 ? lang : "en";
+      var normalized = ["en", "fr", "sn", "nd"].indexOf(lang) >= 0 ? lang : "en";
     document.documentElement.setAttribute("lang", normalized);
     localStorage.setItem(LANG_KEY, normalized);
 
@@ -377,6 +378,7 @@
 
     [
       { value: "en", label: "English" },
+      { value: "fr", label: "French" },
       { value: "sn", label: "Shona" },
       { value: "nd", label: "Ndebele" }
     ].forEach(function (optionData) {
