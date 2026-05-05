@@ -286,27 +286,77 @@
             pointer-events: none;
         }
         .future-card:hover { transform: translateY(-4px); border-color: rgba(232,160,32,0.5); }
-        .future-card-logo {
-            display: block;
-            width: min(72%, 210px);
-            max-width: 210px;
-            height: auto;
-            margin: 0.2rem 0 0.85rem;
-            filter: drop-shadow(0 10px 16px rgba(255, 74, 139, 0.15));
-        }
         .future-card-contrawise {
-            background: linear-gradient(160deg, #2a1730 0%, #3b1844 48%, #241732 100%);
-            border-color: rgba(255, 106, 167, 0.45);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+            background: linear-gradient(180deg, #2D1B4E 0%, #24123f 100%);
+            border-color: rgba(233, 30, 140, 0.55);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+            color: #E8E0F0;
+            padding-bottom: 3.35rem;
         }
         .future-card-contrawise:hover {
-            border-color: rgba(255, 106, 167, 0.75);
+            border-color: rgba(233, 30, 140, 0.78);
         }
         .future-card-contrawise .status-pill {
-            color: #ffd3ea;
+            color: #ffc1e2;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 11px;
         }
         .future-card-contrawise .status-dot {
-            background: #ff4a8b;
+            background: #E91E8C;
+            box-shadow: 0 0 0 4px rgba(233, 30, 140, 0.17);
+        }
+        .future-card-contrawise h3 {
+            color: #E91E8C;
+            font-size: clamp(1.85rem, 4.8vw, 2.3rem);
+            margin-bottom: 0.2rem;
+        }
+        .future-card-contrawise h3::after {
+            content: "";
+            display: block;
+            width: 68px;
+            height: 3px;
+            border-radius: 999px;
+            margin-top: 0.45rem;
+            background: #E91E8C;
+        }
+        .future-card-contrawise p {
+            color: #E8E0F0;
+            line-height: 1.78;
+        }
+        .contrawise-ai-badge {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(233, 30, 140, 0.2);
+            color: #ffc3e3;
+            font-size: 1.1rem;
+            box-shadow: 0 0 0 10px rgba(233, 30, 140, 0.1);
+            margin: 0.4rem 0 0.85rem;
+        }
+        .future-card-contrawise .contrawise-fab {
+            position: absolute;
+            right: 0.95rem;
+            bottom: 0.9rem;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 0;
+            background: #E91E8C;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 18px rgba(233, 30, 140, 0.35);
+        }
+        .future-card-contrawise .contrawise-fab:hover {
+            transform: translateY(-2px);
+        }
+        .future-card-contrawise a {
+            color: #fff;
         }
         .status-pill { display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0.65rem; font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; }
@@ -1093,13 +1143,14 @@
                 </div>
                 <div class="future-grid">
                     <article class="future-card future-card-contrawise" data-project="02">
-                        <p class="status-pill"><span class="status-dot status-scoping"></span>Scoping · 2025–2026</p>
-                        <img src="/SelNexa%20Website/styles/scripts/assets/ContraWise.svg" alt="ContraWise logo" class="future-card-logo" loading="lazy" decoding="async">
+                        <p class="status-pill"><span class="status-dot status-scoping"></span>SCOPING · 2025–2026</p>
+                        <div class="contrawise-ai-badge" aria-hidden="true"><i class="fas fa-snowflake"></i></div>
                         <h3>ContraWise</h3>
                         <p>An AI-powered mobile platform helping women make informed, stigma-free contraceptive decisions with personalized recommendations, anonymous peer community, and verified nearby clinic booking.</p>
                         <p>Guided profiling aligns method recommendations to health needs and future fertility plans, with SMS, WhatsApp, and offline access to ensure no woman is left behind.</p>
                         <p>ContraWise is a movement toward equitable, dignified reproductive healthcare for every African woman.</p>
                         <a href="/contact.html">Join the Interest List →</a>
+                        <button class="contrawise-fab" type="button" aria-label="Open ContraWise chat"><i class="fas fa-comment-dots" aria-hidden="true"></i></button>
                     </article>
                     <article class="future-card" data-project="03">
                         <p class="status-pill"><span class="status-dot status-research"></span>Research · 2026</p>
