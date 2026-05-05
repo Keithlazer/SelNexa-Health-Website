@@ -148,7 +148,7 @@
         .traffic-lights span:nth-child(2) { background: #f59e0b; }
         .traffic-lights span:nth-child(3) { background: #10b981; }
         .address-bar { color: rgba(255,255,255,0.72); font-size: 12px; }
-        .hero-dashboard-shot { width: 100%; display: block; }
+        .hero-dashboard-shot { width: 100%; height: auto; object-fit: contain; display: block; }
         .hero-floating-stat {
             background: rgba(255, 255, 255, 0.09);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -305,6 +305,61 @@
             .top-banner { min-height: 52px; }
             .hero-cta-group { flex-direction: column; align-items: stretch; }
             .hero-cta-group .btn, .hero-cta-group .btn-ghost { width: 100%; }
+            html, body { overflow-x: hidden; }
+            .project-label-section { margin-left: 0; padding-left: 0.75rem; }
+            .project-label-section::before { right: -14px; font-size: 210px; }
+            .navbar[data-nav-layout="marketing"] .navbar-container {
+                display: grid !important;
+                grid-template-columns: auto 1fr auto auto !important;
+                align-items: center !important;
+                column-gap: 0.5rem !important;
+                row-gap: 0 !important;
+            }
+            .navbar[data-nav-layout="marketing"] .navbar-brand { grid-column: 1 !important; min-width: 0; }
+            .navbar[data-nav-layout="marketing"] .brand-lockup { min-width: 0; gap: 0.55rem; }
+            .navbar[data-nav-layout="marketing"] .brand-name { white-space: nowrap; font-size: 0.95rem !important; }
+            .navbar[data-nav-layout="marketing"] .navbar-utilities {
+                grid-column: 3 !important;
+                justify-self: end !important;
+                align-self: center !important;
+                margin: 0 !important;
+            }
+            .navbar[data-nav-layout="marketing"] .language-selector {
+                margin: 0 !important;
+                min-width: 76px !important;
+                max-width: 86px !important;
+            }
+            .navbar[data-nav-layout="marketing"] .hamburger { grid-column: 4 !important; justify-self: end !important; }
+            .hero-shell {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0;
+            }
+            .hero-content,
+            .hero-visual,
+            .hero-project-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0;
+            }
+            .hero-content { margin: 0 auto !important; padding-inline: 0 !important; }
+            .hero-visual { margin-top: 0.75rem !important; overflow: hidden; }
+            .hero-visual .device-frame {
+                width: min(380px, 92vw);
+                margin-inline: auto;
+            }
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 2.75rem) !important;
+                max-width: 13ch !important;
+                margin-inline: auto !important;
+                overflow-wrap: anywhere;
+            }
+            .hero-subtitle { max-width: 100% !important; }
+            .hero-project-card { margin-inline: 0 !important; }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -422,11 +477,7 @@
                             <div class="traffic-lights"><span></span><span></span><span></span></div>
                             <div class="address-bar">app.selnexahealth.com</div>
                         </div>
-                        <picture>
-                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.avif" type="image/avif">
-                            <source srcset="/styles/scripts/assets/admin-dashboard-screenshot.webp" type="image/webp">
-                            <img src="/styles/scripts/assets/admin-dashboard-screenshot.png" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
-                        </picture>
+                        <img src="/SelNexa%20Website/styles/scripts/assets/Dashboard%20svg.svg" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
                     </div>
                     <div class="hero-floating-stat stat-card-1">
                         <strong>95%</strong>
