@@ -352,6 +352,14 @@
                 width: min(380px, 92vw);
                 margin-inline: auto;
             }
+            .hero-visual .device-frame,
+            .hero-dashboard-shot {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            .hero-floating-stat { display: none !important; }
             .hero-title {
                 font-size: clamp(2rem, 10vw, 2.75rem) !important;
                 max-width: 13ch !important;
@@ -479,14 +487,6 @@
                             <div class="address-bar">app.selnexahealth.com</div>
                         </div>
                         <img src="/dist/assets/Dashboard svg-31c92ac5.svg" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
-                    </div>
-                    <div class="hero-floating-stat stat-card-1">
-                        <strong>95%</strong>
-                        <span>offline continuity target</span>
-                    </div>
-                    <div class="hero-floating-stat hero-floating-stat-alt stat-card-2">
-                        <strong>4 countries</strong>
-                        <span>pilot footprint</span>
                     </div>
                     <div class="hero-floating-stat stat-card-3">
                         <strong>Project 01</strong>
@@ -1347,8 +1347,6 @@
                     { selector: '.hero-project-card', delay: 1000 },
                     { selector: '.hero-ctas', delay: 1150 },
                     { selector: '.hero-mockup', delay: 400 },
-                    { selector: '.stat-card-1', delay: 700 },
-                    { selector: '.stat-card-2', delay: 850 },
                     { selector: '.stat-card-3', delay: 1000 }
                 ];
 
