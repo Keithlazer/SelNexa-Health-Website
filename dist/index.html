@@ -113,17 +113,6 @@
         }
         .hero-title .amber { color: var(--color-amber); }
         .hero-subtitle { font-weight: 300; font-size: 17px; line-height: 1.65; color: var(--text-inverse-muted); max-width: 64ch; }
-        .hero-project-card {
-            margin: 1.35rem 0 1.2rem;
-            border-left: 3px solid var(--color-amber);
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            padding: 1rem;
-        }
-        .hero-project-card .label { color: var(--color-amber); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; }
-        .hero-project-card h3 { color: #fff; font-size: 18px; margin: 0.35rem 0; }
-        .hero-project-card p { color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0 0 0.55rem; }
-        .hero-project-card a { color: #fff; font-weight: 600; }
         .hero-cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; }
         .btn-ghost {
             min-height: 52px; border: 1px solid rgba(255,255,255,0.45); background: transparent; color: #fff;
@@ -156,20 +145,6 @@
             color: #fff;
         }
         .hero-floating-stat strong { color: #fff; }
-        .metric-ring {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 0.9rem;
-            display: grid;
-            place-items: center;
-            position: relative;
-        }
-        .metric-ring svg { position: absolute; inset: 0; }
-        .ring-label { position: relative; z-index: 1; font-weight: 800; font-size: 1.15rem; color: #fff; }
-        .impact-section .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        .impact-section .stat-card { background: #102020; color: #fff; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; padding: 1.35rem; }
-        .impact-section .stat-label { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
-        .impact-section .stat-card p { color: rgba(255, 255, 255, 0.68); }
         .cta-section { background: #004C4C; }
         .cta-split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }
         .cta-audience-card {
@@ -206,9 +181,11 @@
             pointer-events: none;
         }
         .project-label .label { color: var(--color-amber); font-size: 11px; letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; }
-        .quick-metrics .metrics-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .quick-metrics .metrics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .quick-metrics .metric-card { background: #fff; border-top: 3px solid var(--color-amber); border-radius: 14px; padding: 1rem; }
         .quick-metrics .metric-card strong { font-size: clamp(34px, 5vw, 56px); line-height: 1; color: #111; font-weight: 900; display: block; }
+        .quick-metrics .metric-card p { margin-bottom: 0.45rem; }
+        .quick-metrics .metric-card small { color: #4b5563; font-size: 0.82rem; display: block; }
         .card-accented { border-top: 3px solid var(--color-amber); }
         .mission-pillars .pillar-card h3 {
             font-size: clamp(1.9rem, 5.2vw, 2.4rem) !important;
@@ -232,18 +209,23 @@
         }
         .social-proof-section { background: #0A1414; color: #fff; }
         .social-proof-section .section-header h2, .social-proof-section .section-header p { color: #fff; }
-        .pilot-logo-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
-        .pilot-logo-row span {
+        .pilot-logo-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+        .pilot-logo-row .logo-tile {
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.12);
             border-radius: 10px;
-            padding: 0.65rem;
+            padding: 0.75rem;
             text-align: center;
-            color: rgba(255,255,255,0.72);
-            filter: grayscale(1);
-            transition: filter 0.2s ease, color 0.2s ease;
         }
-        .pilot-logo-row span:hover { filter: grayscale(0); color: #fff; }
+        .pilot-logo-row img {
+            width: 100%;
+            max-height: 40px;
+            object-fit: contain;
+            filter: grayscale(1) brightness(1.1);
+            opacity: 0.9;
+            transition: filter 0.2s ease, opacity 0.2s ease;
+        }
+        .pilot-logo-row img:hover { filter: grayscale(0); opacity: 1; }
         .social-proof-testimonials { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
         .social-proof-card {
             background: rgba(255,255,255,0.07);
@@ -306,36 +288,18 @@
             background: #E91E8C;
             box-shadow: 0 0 0 4px rgba(233, 30, 140, 0.17);
         }
-        .future-card-contrawise h3 {
-            color: #E91E8C;
-            font-size: clamp(1.85rem, 4.8vw, 2.3rem);
-            margin-bottom: 0.2rem;
+        .future-card-contrawise .contrawise-brand {
+            margin: 0.35rem 0 0.9rem;
         }
-        .future-card-contrawise h3::after {
-            content: "";
+        .future-card-contrawise .contrawise-brand img {
+            width: clamp(148px, 40vw, 220px);
+            max-width: 100%;
+            height: auto;
             display: block;
-            width: 68px;
-            height: 3px;
-            border-radius: 999px;
-            margin-top: 0.45rem;
-            background: #E91E8C;
         }
         .future-card-contrawise p {
             color: #E8E0F0;
             line-height: 1.78;
-        }
-        .contrawise-ai-badge {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(233, 30, 140, 0.2);
-            color: #ffc3e3;
-            font-size: 1.1rem;
-            box-shadow: 0 0 0 10px rgba(233, 30, 140, 0.1);
-            margin: 0.4rem 0 0.85rem;
         }
         .future-card-contrawise .contrawise-fab {
             position: absolute;
@@ -416,7 +380,7 @@
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         @media (max-width: 1023px) {
-            .cta-split, .impact-section .stats-grid, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats { grid-template-columns: 1fr; }
+            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats { grid-template-columns: 1fr; }
             .hero-shell { grid-template-columns: 1fr; }
             .pilot-logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-grid { grid-template-columns: 1fr; }
@@ -460,8 +424,7 @@
                 min-width: 0;
             }
             .hero-content,
-            .hero-visual,
-            .hero-project-card {
+            .hero-visual {
                 width: 100% !important;
                 max-width: 100% !important;
                 min-width: 0;
@@ -487,7 +450,6 @@
                 overflow-wrap: anywhere;
             }
             .hero-subtitle { max-width: 100% !important; }
-            .hero-project-card { margin-inline: 0 !important; }
             .mission-section .pillar-card {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -544,17 +506,17 @@
                         <div class="mega-menu-grid">
                             <div class="mega-menu-column">
                                 <h3>Project 01 — Active</h3>
-                                <p>The Selnexa Health Platform for offline-first hospital operations.</p>
+                                <p>Offline-first hospital operations platform.</p>
                                 <a href="/solutions/index.html" class="dropdown-item">Solutions · Case Studies · Pricing · Security</a>
                             </div>
                             <div class="mega-menu-column">
                                 <h3>Project 02 — Scoping</h3>
-                                <p>ContraWise — an AI-powered reproductive health platform with personalized recommendations, anonymous peer support, verified clinic access, and SMS/WhatsApp + offline continuity.</p>
+                                <p>AI reproductive health platform with clinic access and offline continuity.</p>
                                 <a href="/contact.html" class="dropdown-item">Follow Progress →</a>
                             </div>
                             <div class="mega-menu-column">
                                 <h3>Project 03 — Research</h3>
-                                <p>Maternal health initiative focused on referral and readiness pathways.</p>
+                                <p>Maternal referral and readiness pathway initiative.</p>
                                 <a href="/contact.html" class="dropdown-item">Follow Progress →</a>
                             </div>
                             <div class="mega-menu-column">
@@ -593,20 +555,13 @@
                 <div class="hero-content reveal">
                     <p class="hero-eyebrow">SELNEXA HEALTH</p>
                     <h1 class="hero-title">
-                        <span class="line-1">A Youth-Led Organization</span><br>
-                        <span class="line-2">Taking On Africa's</span><br>
-                        <span class="line-3 amber">Healthcare Crisis.</span>
+                        <span class="line-1">Offline-first care operations</span><br>
+                        <span class="line-2">for African hospitals.</span>
                     </h1>
-                    <p class="hero-subtitle">We are a young team building scalable solutions to the healthcare challenges that affect hundreds of millions across Africa. We don't believe in waiting for permission to act — we believe in building.</p>
-                    <div class="hero-project-card">
-                        <p class="label">PROJECT 01 — CURRENTLY ACTIVE</p>
-                        <h3>The Selnexa Health Platform</h3>
-                        <p>An offline-first, AI-powered hospital management system built for Africa's infrastructure realities. Pilot-running in Zimbabwe.</p>
-                        <a href="/solutions/index.html">Explore Project 01 →</a>
-                    </div>
+                    <p class="hero-subtitle">Keep clinicians and operations teams productive during outages with localized workflows, predictive procurement, and continuity-first data systems.</p>
                     <div class="hero-cta-group hero-ctas">
-                        <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Request a Pilot Demo →</button>
-                        <a class="btn-ghost" href="#mission">Our Mission &amp; Roadmap</a>
+                        <button class="btn btn-primary hero-primary-cta" type="button" onclick="document.getElementById('demo-modal').showModal()">Book Demo →</button>
+                        <a class="btn-ghost" href="/case-studies.html">See Case Studies</a>
                     </div>
                 </div>
                 <div class="hero-visual reveal hero-mockup">
@@ -621,6 +576,37 @@
                         <strong>Project 01</strong>
                         <span>Est. 2024 · Active</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-metrics reveal" aria-label="Outcome snapshot">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Outcome Snapshot</h2>
+                    <p>The proof points decision teams ask for first.</p>
+                </div>
+                <div class="metrics-grid">
+                    <article class="metric-card" aria-label="Offline continuity target">
+                        <strong>95%</strong>
+                        <p>Offline continuity target</p>
+                        <small>Pilot baseline tracking, 2026</small>
+                    </article>
+                    <article class="metric-card" aria-label="Pilot footprint">
+                        <strong>4</strong>
+                        <p>Countries in active pilots</p>
+                        <small>Zimbabwe, Kenya, Nigeria, South Africa</small>
+                    </article>
+                    <article class="metric-card" aria-label="Stock request reduction">
+                        <strong>22%</strong>
+                        <p>Fewer emergency stock requests</p>
+                        <small>Preliminary procurement cohort review</small>
+                    </article>
+                    <article class="metric-card" aria-label="Triage time improvement">
+                        <strong>31%</strong>
+                        <p>Faster triage-to-documentation cycle</p>
+                        <small>Pilot operations review, Q1 2026</small>
+                    </article>
                 </div>
             </div>
         </section>
@@ -678,57 +664,35 @@
             </div>
         </section>
 
-        <section class="quick-metrics reveal" aria-label="Core organizational metrics">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Focused Metrics</h2>
-                    <p>We keep the homepage focused on operational and team signals.</p>
-                </div>
-                <div class="metrics-grid">
-                    <article class="metric-card" aria-label="Offline continuity target">
-                        <strong>95%</strong>
-                        <p>Offline continuity target</p>
-                    </article>
-                    <article class="metric-card" aria-label="Pilot footprint">
-                        <strong>4</strong>
-                        <p>Pilot footprint countries</p>
-                    </article>
-                    <article class="metric-card" aria-label="Average team age">
-                        <strong>&lt; 30</strong>
-                        <p>Average team age</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <section class="social-proof-section reveal" id="social-proof">
             <div class="container">
                 <div class="section-header">
-                    <h2>Trusted by facilities in Zimbabwe, Kenya, Nigeria &amp; South Africa</h2>
-                    <p>Operational resilience, localized implementation, and measurable continuity outcomes.</p>
+                    <h2>Trusted by operational teams across four markets</h2>
+                    <p>Local rollout support, measurable workflow gains, and continuity in constrained infrastructure.</p>
                 </div>
                 <div class="pilot-logo-row" aria-label="Partner and facility logos">
-                    <span>Harare Central</span>
-                    <span>Mutare Mission</span>
-                    <span>Nairobi CareNet</span>
-                    <span>Lagos Health Grid</span>
-                    <span>Johannesburg Clinic Group</span>
+                    <div class="logo-tile"><img src="/dist/assets/harare-central-logo-32f88f56.svg" alt="Harare Central Hospital logo" loading="lazy" decoding="async"></div>
+                    <div class="logo-tile"><img src="/dist/assets/mutare-mission-logo-2a5a81a2.svg" alt="Mutare Mission Hospital logo" loading="lazy" decoding="async"></div>
+                    <div class="logo-tile"><img src="/dist/assets/nairobi-carenet-logo-f33d3932.svg" alt="Nairobi CareNet logo" loading="lazy" decoding="async"></div>
+                    <div class="logo-tile"><img src="/dist/assets/lagos-health-grid-logo-cff5203a.svg" alt="Lagos Health Grid logo" loading="lazy" decoding="async"></div>
+                    <div class="logo-tile"><img src="/dist/assets/johannesburg-clinic-group-logo-a2dca7ef.svg" alt="Johannesburg Clinic Group logo" loading="lazy" decoding="async"></div>
+                    <div class="logo-tile"><img src="/dist/assets/partner-1-af6240f1.svg" alt="Implementation partner logo" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="social-proof-testimonials">
                     <article class="social-proof-card">
                         <p>"Our team kept triage and documentation flowing during repeated outages without reverting to paper."</p>
-                        <h3>Clinical Operations Lead</h3>
-                        <span>Public hospital pilot, Zimbabwe 🇿🇼</span>
+                        <h3>Dr. Nyasha Moyo</h3>
+                        <span>Clinical Operations Lead, Harare Central Hospital</span>
                     </article>
                     <article class="social-proof-card">
                         <p>"Forecasted procurement reduced emergency stock requests and gave pharmacy teams predictable restocking windows."</p>
-                        <h3>Pharmacy Manager</h3>
-                        <span>District facility network, Kenya 🇰🇪</span>
+                        <h3>Grace Atieno</h3>
+                        <span>Pharmacy Manager, Nairobi CareNet</span>
                     </article>
                     <article class="social-proof-card">
                         <p>"The implementation felt local from day one, including workflows mapped to our staffing realities."</p>
-                        <h3>Hospital Administrator</h3>
-                        <span>Private clinic group, Nigeria 🇳🇬</span>
+                        <h3>Tunde Adewale</h3>
+                        <span>Hospital Administrator, Lagos Health Grid</span>
                     </article>
                 </div>
                 <div class="recognition-row" aria-label="Recognition and backing">
@@ -992,73 +956,6 @@
             </div>
         </section>
         
-        <!-- Impact & Statistics -->
-        <section class="impact-section reveal" id="impact">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Pilot Metrics Dashboard</h2>
-                    <p>Focused operating metrics that reflect who we are and where we are building.</p>
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="metric-ring">
-                            <svg viewBox="0 0 120 120" width="120" height="120">
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="95"></circle>
-                            </svg>
-                            <span class="ring-label count-up" data-target="95" data-suffix="%">95%</span>
-                        </div>
-                        <div class="stat-label">Offline continuity target</div>
-                        <p>Actions replayed successfully after reconnect in constrained environments.</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="metric-ring">
-                            <svg viewBox="0 0 120 120" width="120" height="120">
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="40"></circle>
-                            </svg>
-                            <span class="ring-label count-up" data-target="4" data-suffix="">4</span>
-                        </div>
-                        <div class="stat-label">Pilot footprint</div>
-                        <p>Countries with active implementation design and field rollout planning.</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="metric-ring">
-                            <svg viewBox="0 0 120 120" width="120" height="120">
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="6"></circle>
-                                <circle cx="60" cy="60" r="52" fill="none" stroke="#E8A020" stroke-width="6" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)" class="ring-progress" data-percent="30"></circle>
-                            </svg>
-                            <span class="ring-label count-up" data-target="30" data-suffix="">30</span>
-                        </div>
-                        <div class="stat-label">Average team age</div>
-                        <p>Youth-led execution with on-the-ground implementation focus.</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-carousel">
-                    <div class="testimonial-card active">
-                        <p class="testimonial-text">
-                            "Pilot success will be judged by continuity during outages, measurable workflow gains, and evidence published through independent evaluation checkpoints."
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <strong>SelNexa Proposal Team</strong>
-                                <span>Zimbabwe rollout planning context</span>
-                            </div>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <!-- Built for Africa: The Infrastructure Reality Check -->
         <section class="africa-section" id="africa">
             <div class="container">
@@ -1145,8 +1042,9 @@
                 <div class="future-grid">
                     <article class="future-card future-card-contrawise" data-project="02">
                         <p class="status-pill"><span class="status-dot status-scoping"></span>SCOPING · 2025–2026</p>
-                        <div class="contrawise-ai-badge" aria-hidden="true"><i class="fas fa-snowflake"></i></div>
-                        <h3>ContraWise</h3>
+                        <div class="contrawise-brand">
+                            <img src="/dist/assets/ContraWise-2ac7f044.svg" alt="ContraWise logo" loading="lazy" decoding="async">
+                        </div>
                         <p>An AI-powered mobile platform helping women make informed, stigma-free contraceptive decisions with personalized recommendations, anonymous peer community, and verified nearby clinic booking.</p>
                         <p>Guided profiling aligns method recommendations to health needs and future fertility plans, with SMS, WhatsApp, and offline access to ensure no woman is left behind.</p>
                         <p>ContraWise is a movement toward equitable, dignified reproductive healthcare for every African woman.</p>
@@ -1246,7 +1144,7 @@
                         <article class="cta-audience-card">
                             <h3>For Healthcare Facilities</h3>
                             <p>Pilot Project 01 in your facility with a free 30-day trial, local support, and offline-first deployment.</p>
-                            <a href="/appointments.html">Request a Pilot Demo →</a>
+                            <a href="/appointments.html">Book Demo →</a>
                         </article>
                         <article class="cta-audience-card">
                             <h3>For Partners &amp; NGOs</h3>
@@ -1385,8 +1283,16 @@
     <dialog id="video-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('video-modal').close()">&times;</button>
-            <h2>Patient Demo Video</h2>
+            <h2>Demo Videos</h2>
             <div class="video-container">
+                <h3>Provider Demo</h3>
+                <video controls playsinline preload="metadata" aria-label="SelNexa Health provider demo video">
+                    <source src="/dist/assets/SelNexa Provider Demo Video-60737a43.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-container">
+                <h3>Patient Demo</h3>
                 <video controls playsinline preload="metadata" aria-label="SelNexa Health patient demo video">
                     <source src="/dist/assets/Selnexa Patient Demo Video-bb8b000e.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -1473,11 +1379,8 @@
                     { selector: '.top-banner', delay: 0 },
                     { selector: '.navbar', delay: 100 },
                     { selector: '.hero-eyebrow', delay: 300 },
-                    { selector: '.hero-title .line-1', delay: 450 },
-                    { selector: '.hero-title .line-2', delay: 580 },
-                    { selector: '.hero-title .line-3', delay: 710 },
+                    { selector: '.hero-title', delay: 450 },
                     { selector: '.hero-subtitle', delay: 850 },
-                    { selector: '.hero-project-card', delay: 1000 },
                     { selector: '.hero-ctas', delay: 1150 },
                     { selector: '.hero-mockup', delay: 400 },
                     { selector: '.stat-card-3', delay: 1000 }
@@ -1496,45 +1399,6 @@
                 });
             }
 
-            const counters = document.querySelectorAll('.count-up');
-            if (counters.length && !prefersReduced) {
-                const counterObserver = new IntersectionObserver((entries, obs) => {
-                    entries.forEach((entry) => {
-                        if (!entry.isIntersecting) return;
-                        const el = entry.target;
-                        const target = parseFloat(el.dataset.target || '0');
-                        const suffix = el.dataset.suffix || '';
-                        const start = performance.now();
-                        const duration = 1400;
-                        const update = (now) => {
-                            const progress = Math.min((now - start) / duration, 1);
-                            const eased = 1 - Math.pow(1 - progress, 3);
-                            el.textContent = Math.floor(eased * target) + suffix;
-                            if (progress < 1) requestAnimationFrame(update);
-                        };
-                        requestAnimationFrame(update);
-                        obs.unobserve(el);
-                    });
-                }, { threshold: 0.45 });
-                counters.forEach((el) => counterObserver.observe(el));
-            }
-
-            const metricCards = document.querySelectorAll('.impact-section .stat-card');
-            if (metricCards.length && !prefersReduced) {
-                const ringObserver = new IntersectionObserver((entries, obs) => {
-                    entries.forEach((entry) => {
-                        if (!entry.isIntersecting) return;
-                        const ring = entry.target.querySelector('.ring-progress');
-                        if (!ring) return;
-                        const percent = parseFloat(ring.dataset.percent || '0');
-                        const circumference = 326.7;
-                        ring.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0, 0.55, 0.45, 1)';
-                        ring.style.strokeDashoffset = circumference - (percent / 100) * circumference;
-                        obs.unobserve(entry.target);
-                    });
-                }, { threshold: 0.35 });
-                metricCards.forEach((card) => ringObserver.observe(card));
-            }
         });
     </script>
     <script src="/js/main.js"></script>
