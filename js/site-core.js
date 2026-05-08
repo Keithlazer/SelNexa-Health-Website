@@ -496,7 +496,7 @@
     nav.setAttribute("aria-label", "Mobile quick navigation");
     nav.innerHTML = [
       '<a href="/" aria-label="Home"><i class="fas fa-house" aria-hidden="true"></i><span data-i18n="nav.home">Home</span></a>',
-      '<a href="/solutions/index.html" aria-label="Solutions"><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="nav.solutions">Solutions</span></a>',
+      '<a href="/features.html" aria-label="Platform"><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="nav.solutions">Platform</span></a>',
       '<a href="/telemedicine.html" aria-label="Telemedicine"><i class="fas fa-video" aria-hidden="true"></i><span data-i18n="nav.telemedShort">Telemed</span></a>',
       '<a href="/case-studies.html" aria-label="Case studies"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Cases</span></a>',
       '<a href="/resources.html" aria-label="More"><i class="fas fa-ellipsis" aria-hidden="true"></i><span data-i18n="nav.more">More</span></a>'
@@ -545,7 +545,7 @@
       '<option value="network">Network / Government</option>',
       '</select>',
       '<button type="button" class="chatbot-recommend">Recommend Modules</button>',
-      '<a href="/appointments.html" class="chatbot-demo-link">Schedule Demo</a>',
+      '<a href="/appointments.html" class="chatbot-demo-link">Book Platform Demo</a>',
       '</div>'
     ].join("");
 
@@ -566,7 +566,7 @@
       if (value === "clinic") {
         message = "Recommended: AI Admin + Predictive Procurement for faster queue flow and cost control.";
       } else if (value === "hospital") {
-        message = "Recommended: AI Admin + Procurement + Blockchain EHR + Analytics for full hospital workflows.";
+        message = "Recommended: AI Admin + Procurement + Health Records + Analytics for full hospital workflows.";
       } else {
         message = "Recommended: Network License with all modules plus Telemedicine and unified analytics.";
       }

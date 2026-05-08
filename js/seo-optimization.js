@@ -9,13 +9,13 @@
     // SEO Configuration for each page
     const seoConfig = {
         '/': {
-            title: 'SelNexa Health | AI-Powered Healthcare Solutions for Africa',
-            description: 'Revolutionizing African healthcare with AI-driven administration, procurement, and patient care solutions. Join our beta program today.',
+            title: 'SelNexa Health | Youth-Led Healthcare Innovation In Africa',
+            description: 'SelNexa Health builds sustainable healthcare systems for Africa. Our first initiative is the offline-first SelNexa Health Platform.',
             keywords: 'healthcare, AI, Africa, telemedicine, healthcare technology',
         },
         '/solutions/': {
-            title: 'Solutions | SelNexa Health – Healthcare Technology Platform',
-            description: 'Comprehensive healthcare solutions: Administration, Procurement, Clinical Records, Analytics, and Telemedicine powered by AI.',
+            title: 'Platform Modules | SelNexa Health Platform',
+            description: 'Modules inside the SelNexa Health Platform: administration, procurement, clinical records, analytics, and telemedicine.',
             keywords: 'healthcare solutions, procurement, clinical records, analytics, telemedicine',
         },
         '/solutions/administration.html': {
@@ -29,9 +29,9 @@
             keywords: 'healthcare procurement, inventory management, supply chain, cost reduction',
         },
         '/solutions/records.html': {
-            title: 'Clinical Records | SelNexa Health – Blockchain EHR',
-            description: 'Secure, HIPAA-compliant electronic health records with blockchain technology and universal interoperability.',
-            keywords: 'electronic health records, EHR, blockchain, HIPAA compliance, patient data security',
+            title: 'Health Records Module | SelNexa Health Platform',
+            description: 'Secure, interoperable electronic health records with offline access, consent controls, and tamper-evident audit trails.',
+            keywords: 'electronic health records, EHR, HIPAA compliance, patient data security, offline health records',
         },
         '/solutions/analytics.html': {
             title: 'Analytics & Insights | SelNexa Health',
@@ -39,7 +39,7 @@
             keywords: 'healthcare analytics, business intelligence, dashboards, KPI tracking, patient outcomes',
         },
         '/benefits.html': {
-            title: 'Benefits | SelNexa Health – Why Choose Our AI Platform',
+            title: 'Benefits | SelNexa Health Platform',
             description: '40% cost reduction, 70% fewer errors, improved patient outcomes, and staff focused on care.',
             keywords: 'healthcare benefits, cost reduction, error elimination, patient outcomes',
         },
@@ -59,8 +59,8 @@
             keywords: 'doctors, healthcare providers, specialists, consultations, telemedicine',
         },
         '/appointments.html': {
-            title: 'Book Appointments | SelNexa Health',
-            description: 'Schedule healthcare appointments easily. Choose your provider, appointment type, date, and time online.',
+            title: 'Book Platform Demo | SelNexa Health Platform',
+            description: 'Schedule a SelNexa Health Platform demo or implementation planning call.',
             keywords: 'appointment booking, schedule consultation, healthcare appointments, telemedicine',
         },
     };
