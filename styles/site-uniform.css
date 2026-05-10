@@ -92,6 +92,25 @@ footer,
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Accessible "skip to content" link: visually hidden until keyboard focus */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 9999;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 footer p,
 footer li,
 footer a,

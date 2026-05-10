@@ -15,14 +15,16 @@
 /* ===== ACCESSIBILITY ===== */
 .skip-link {
     position: absolute;
-    top: -40px;
+    top: -100%;
     left: 0;
-    background: var(--primary-color);
-    color: white;
-    padding: 8px;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
     text-decoration: none;
-    z-index: 100;
+    z-index: 9999;
+    font-size: 14px;
     border-radius: 0 0 4px 0;
+    transition: top 0.2s;
 }
 
 .skip-link:focus {
