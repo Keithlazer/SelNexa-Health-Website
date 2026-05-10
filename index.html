@@ -1383,17 +1383,34 @@
                         }catch(e){}
                     });
                 });
-                document.documentElement.classList.remove('is-loading','loading');
-                try{ document.body.style.overflow = ''; }catch(e){}
+
+                // remove any fixed/absolute overlays with high z-index
+                document.querySelectorAll('body *').forEach(el=>{
+                    try{
+                        const st = getComputedStyle(el);
+                        const pos = st.position;
+                        const z = parseInt(st.zIndex,10);
+                        if ((pos === 'fixed' || pos === 'absolute') && !isNaN(z) && z >= 900) {
+                            el.style.transition = 'opacity 0.2s ease';
+                            el.style.opacity = '0';
+                            setTimeout(()=>{ if(el.parentNode) el.parentNode.removeChild(el); },250);
+                        }
+                    }catch(e){}
+                });
+
+                try{ document.documentElement.classList.remove('is-loading','loading'); }catch(e){}
+                try{ document.documentElement.style.overflow = ''; document.body.style.overflow = ''; }catch(e){}
             };
 
-            const fallbackTimer = setTimeout(hidePreloader, 4000);
+            // run immediately and keep trying for the next 4s
+            hidePreloader();
+            const interval = setInterval(hidePreloader, 300);
+            const stop = setTimeout(()=>{ clearInterval(interval); hidePreloader(); }, 4000);
 
-            if (document.readyState === 'complete') { hidePreloader(); clearTimeout(fallbackTimer); }
+            if (document.readyState === 'complete') { hidePreloader(); clearInterval(interval); clearTimeout(stop); }
 
-            window.addEventListener('load', () => { hidePreloader(); clearTimeout(fallbackTimer); });
-            // Additional safety: if a script dispatches a custom event 'preloader:hide', respect it
-            document.addEventListener('preloader:hide', () => { hidePreloader(); clearTimeout(fallbackTimer); });
+            window.addEventListener('load', () => { hidePreloader(); clearInterval(interval); clearTimeout(stop); });
+            document.addEventListener('preloader:hide', () => { hidePreloader(); clearInterval(interval); clearTimeout(stop); });
         })();
     </script>
     <script src="/js/main.js"></script>
