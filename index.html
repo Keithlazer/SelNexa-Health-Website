@@ -1370,6 +1370,32 @@
 
         });
     </script>
+    <script>
+        (function(){
+            const hidePreloader = () => {
+                const selectors = ['#preloader','.preloader','#splash','.splash','#loader','.loader','.site-splash','.site-preloader'];
+                selectors.forEach(sel=>{
+                    document.querySelectorAll(sel).forEach(el=>{
+                        try{
+                            el.style.transition = 'opacity 0.3s ease';
+                            el.style.opacity = '0';
+                            setTimeout(()=>{ if(el.parentNode) el.parentNode.removeChild(el); },350);
+                        }catch(e){}
+                    });
+                });
+                document.documentElement.classList.remove('is-loading','loading');
+                try{ document.body.style.overflow = ''; }catch(e){}
+            };
+
+            const fallbackTimer = setTimeout(hidePreloader, 4000);
+
+            if (document.readyState === 'complete') { hidePreloader(); clearTimeout(fallbackTimer); }
+
+            window.addEventListener('load', () => { hidePreloader(); clearTimeout(fallbackTimer); });
+            // Additional safety: if a script dispatches a custom event 'preloader:hide', respect it
+            document.addEventListener('preloader:hide', () => { hidePreloader(); clearTimeout(fallbackTimer); });
+        })();
+    </script>
     <script src="/js/main.js"></script>
 </body>
 </html>
