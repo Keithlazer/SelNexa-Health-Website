@@ -34,6 +34,27 @@
     callback();
   }
 
+  function dismissSplash() {
+    var splash =
+      document.getElementById("splash") ||
+      document.getElementById("preloader") ||
+      document.querySelector(".site-splash") ||
+      document.querySelector(".site-preloader");
+    if (splash) {
+      splash.style.display = "none";
+    }
+    try {
+      document.documentElement.classList.remove("is-loading", "loading");
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    } catch (err) {
+      // noop
+    }
+  }
+
+  window.addEventListener("load", dismissSplash);
+  setTimeout(dismissSplash, 4000);
+
   function normalizePath(href) {
     try {
       var url = new URL(href, window.location.origin);
@@ -107,14 +128,14 @@
       { href: "/case-studies.html", label: "Case Studies", key: "nav.caseStudies" },
       { href: "/telemedicine.html", label: "Telemedicine", key: "nav.telemedicine" },
       { href: "/pricing.html", label: "Pricing", key: "nav.pricing" },
-      { href: "/investors.html", label: "Investors", key: "nav.investors" },
+      { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
       { href: "/resources.html", label: "Resources", key: "nav.resources" },
       { href: "/careers.html", label: "Careers", key: "nav.careers" },
       { href: "/security-and-compliance.html", label: "Security & Compliance", key: "nav.security" }
     ];
 
     var marketingLinks = [
-      { href: "/investors.html", label: "Investors", key: "nav.investors" },
+      { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
       { href: "/resources.html", label: "Resources", key: "nav.resources" },
       { href: "/careers.html", label: "Careers", key: "nav.careers" }
     ];
