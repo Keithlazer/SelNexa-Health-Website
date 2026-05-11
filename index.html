@@ -42,14 +42,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Main Stylesheet -->
-    
-    <!-- Grid & Typography System -->
-    
-    
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/grid-typography-system.css">
     <!-- GSAP for animations (from memory) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="/dist/assets/index-172324ae.css">
     <link rel="stylesheet" href="/styles/site-uniform.css">
     <style>
         :root {
@@ -62,6 +59,18 @@
         }
         body { font-family: 'Montserrat', sans-serif; background: var(--surface-base); }
         h1, h2, h3 { letter-spacing: -0.03em; }
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 9999;
+            text-decoration: none;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus { top: 0; }
         .top-banner {
             min-height: 44px;
             background: var(--surface-dark-mid);
@@ -98,7 +107,22 @@
             background: radial-gradient(120% 120% at 80% 0%, rgba(0, 122, 122, 0.2), transparent 55%), var(--surface-dark);
             color: #fff;
             min-height: 84vh;
+            position: relative;
+            overflow: hidden;
         }
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .hero-background::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(10, 20, 20, 0.75), rgba(10, 20, 20, 0.55)), url('/assets/queue-management-interface.webp') center center / cover no-repeat;
+            opacity: 0.24;
+        }
+        .hero-shell { position: relative; z-index: 1; }
         .hero-shell { gap: 2.5rem; }
         .hero-eyebrow {
             color: var(--color-amber); font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
@@ -121,6 +145,75 @@
         }
         .hero-primary-cta { min-height: 52px; border-radius: 10px !important; background: var(--color-amber) !important; }
         .hero-primary-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(232, 160, 32, 0.35); }
+        .hero-proof-row {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+        .hero-proof-row span {
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 999px;
+            padding: 0.35rem 0.68rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.92);
+            background: rgba(255,255,255,0.06);
+        }
+        .home-pathways {
+            background: #fff;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .home-pathways .section-header {
+            margin-bottom: 1rem;
+        }
+        .pathway-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .pathway-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        .pathway-link:hover {
+            border-color: rgba(232, 160, 32, 0.8);
+            color: #111;
+        }
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+        .pathway-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-top: 3px solid var(--color-amber);
+            border-radius: 14px;
+            padding: 1rem;
+        }
+        .pathway-card h3 {
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+        .pathway-card p {
+            color: #475569;
+            margin-bottom: 0.65rem;
+        }
+        .pathway-card a {
+            font-weight: 700;
+            color: #0f172a;
+            text-decoration: none;
+        }
         .device-frame {
             border-radius: 12px;
             overflow: hidden;
@@ -381,7 +474,7 @@
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         @media (max-width: 1023px) {
-            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats { grid-template-columns: 1fr; }
+            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats, .pathway-grid { grid-template-columns: 1fr; }
             .hero-shell { grid-template-columns: 1fr; }
             .pilot-logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-grid { grid-template-columns: 1fr; }
@@ -451,6 +544,9 @@
                 overflow-wrap: anywhere;
             }
             .hero-subtitle { max-width: 100% !important; }
+            .hero-proof-row { justify-content: center; }
+            .pathway-links { flex-direction: column; align-items: stretch; }
+            .pathway-link { justify-content: center; }
             .mission-section .pillar-card {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -529,10 +625,15 @@
                         <span class="line-1">Youth-led health systems</span><br>
                         <span class="line-2">innovation for Africa.</span>
                     </h1>
-                    <p class="hero-subtitle">SelNexa Health builds practical healthcare infrastructure for African clinics and hospitals. Our first initiative, the SelNexa Health Platform, keeps care operations running through power and connectivity failures.</p>
+                    <p class="hero-subtitle">We help clinics keep care moving when systems fail. The SelNexa Health Platform is offline-first, local-context, and built for real operating conditions across Africa.</p>
                     <div class="hero-cta-group hero-ctas">
                         <a class="btn btn-primary hero-primary-cta" href="/features.html">See The Platform →</a>
-                        <a class="btn-ghost" href="/projects.html">Explore Projects</a>
+                        <a class="btn-ghost" href="/appointments.html">Book A Demo</a>
+                    </div>
+                    <div class="hero-proof-row" aria-label="Key trust and product signals">
+                        <span>Offline-first continuity</span>
+                        <span>FHIR-ready integrations</span>
+                        <span>Local rollout support</span>
                     </div>
                 </div>
                 <div class="hero-visual reveal hero-mockup">
@@ -551,7 +652,39 @@
             </div>
         </section>
 
-        <section class="quick-metrics reveal" aria-label="Outcome snapshot">
+        <section class="home-pathways reveal" aria-label="Quick pathways">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Start where you need to</h2>
+                    <p>Navigate the essentials without wading through every section.</p>
+                </div>
+                <div class="pathway-links" aria-label="Jump links">
+                    <a class="pathway-link" href="#how-it-works">How It Works</a>
+                    <a class="pathway-link" href="#outcomes">Outcome Metrics</a>
+                    <a class="pathway-link" href="#social-proof">Partners &amp; Testimonials</a>
+                    <a class="pathway-link" href="#cta">Book a Demo</a>
+                </div>
+                <div class="pathway-grid">
+                    <article class="pathway-card">
+                        <h3>For healthcare teams</h3>
+                        <p>See offline-first workflows, deployment speed, and pilot outcomes.</p>
+                        <a href="/features.html">Explore the platform →</a>
+                    </article>
+                    <article class="pathway-card">
+                        <h3>For partners and NGOs</h3>
+                        <p>Review collaboration models and implementation pathways.</p>
+                        <a href="/projects.html">View active projects →</a>
+                    </article>
+                    <article class="pathway-card">
+                        <h3>For funders and investors</h3>
+                        <p>Check market traction, pilot proof points, and growth plans.</p>
+                        <a href="/for-investors.html">Open investor materials →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-metrics reveal" id="outcomes" aria-label="Outcome snapshot">
             <div class="container">
                 <div class="section-header">
                     <h2>Platform Outcome Snapshot</h2>
@@ -667,9 +800,9 @@
                     </article>
                 </div>
                 <div class="recognition-row" aria-label="Recognition and backing">
-                    <span>As featured in regional digital health roundtables</span>
-                    <span>Backed by implementation partners</span>
-                    <span>Pilot evaluation framework in place</span>
+                    <span>As featured in regional digital health roundtables.</span>
+                    <span>Backed by implementation partners.</span>
+                    <span>Pilot evaluation framework in place.</span>
                 </div>
             </div>
         </section>
@@ -1145,7 +1278,8 @@
       <div class="container">
         <div class="footer-grid">
                     <div class="footer-column">
-            <h2>SELNEXA HEALTH</h2>
+                        <div class="footer-logo"><img src="/assets/selnexa-logo.svg" alt="SelNexa Health Logo"></div>
+            <h2>SelNexa Health</h2>
                         <p>We believe Africa's healthcare crisis is solvable. We're building the tools to prove it — one project at a time.</p>
                         <p>Founded in Harare, Zimbabwe</p>
                         <div class="newsletter-row" aria-label="Newsletter signup">
