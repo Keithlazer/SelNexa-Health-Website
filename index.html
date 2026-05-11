@@ -139,6 +139,13 @@
         .hero-title .amber { color: var(--color-amber); }
         .hero-subtitle { font-weight: 300; font-size: 17px; line-height: 1.65; color: var(--text-inverse-muted); max-width: 64ch; }
         .hero-cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+        .hero-storyline {
+            margin-top: 1rem;
+            max-width: 58ch;
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.97rem;
+            line-height: 1.6;
+        }
         .btn-ghost {
             min-height: 52px; border: 1px solid rgba(255,255,255,0.45); background: transparent; color: #fff;
             border-radius: 10px; padding: 0.8rem 1.1rem; font-weight: 600;
@@ -214,6 +221,59 @@
             color: #0f172a;
             text-decoration: none;
         }
+        .trust-snapshot {
+            background: #f7faf9;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .trust-snapshot-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 0.9rem;
+            align-items: stretch;
+        }
+        .trust-snapshot-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 14px;
+            padding: 1rem;
+        }
+        .trust-snapshot-card h3 {
+            margin-bottom: 0.55rem;
+            color: #111827;
+            font-size: 1.04rem;
+        }
+        .trust-snapshot-card p {
+            color: #475569;
+            margin-bottom: 0.65rem;
+        }
+        .trust-logos-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+        .trust-logos-inline img {
+            width: 130px;
+            max-width: 100%;
+            height: 32px;
+            object-fit: contain;
+            padding: 0.2rem 0.45rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px;
+            background: #fff;
+        }
+        .trust-snapshot-quote blockquote {
+            margin: 0;
+            color: #111827;
+            line-height: 1.65;
+            font-weight: 500;
+        }
+        .trust-snapshot-quote cite {
+            display: block;
+            margin-top: 0.55rem;
+            font-style: normal;
+            color: #475569;
+            font-size: 0.9rem;
+        }
         .device-frame {
             border-radius: 12px;
             overflow: hidden;
@@ -277,6 +337,18 @@
         .project-label .label { color: var(--color-amber); font-size: 11px; letter-spacing: 0.16em; font-weight: 600; text-transform: uppercase; }
         .quick-metrics .metrics-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
         .quick-metrics .metric-card { background: #fff; border-top: 3px solid var(--color-amber); border-radius: 14px; padding: 1rem; }
+        .quick-metrics .metric-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a4f00;
+            background: rgba(232,160,32,0.18);
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
         .quick-metrics .metric-card strong { font-size: clamp(34px, 5vw, 56px); line-height: 1; color: #111; font-weight: 900; display: block; }
         .quick-metrics .metric-card p { margin-bottom: 0.45rem; }
         .quick-metrics .metric-card small { color: #4b5563; font-size: 0.82rem; display: block; }
@@ -301,6 +373,13 @@
             white-space: normal !important;
             overflow-wrap: anywhere !important;
         }
+        .mission-keypoints {
+            margin: 0.9rem 0 0;
+            padding-left: 1.1rem;
+            color: #374151;
+            line-height: 1.65;
+        }
+        .mission-keypoints li + li { margin-top: 0.45rem; }
         .social-proof-section { background: #0A1414; color: #fff; }
         .social-proof-section .section-header h2, .social-proof-section .section-header p { color: #fff; }
         .pilot-logo-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
@@ -474,7 +553,7 @@
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         @media (max-width: 1023px) {
-            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats, .pathway-grid { grid-template-columns: 1fr; }
+            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats, .pathway-grid, .trust-snapshot-grid { grid-template-columns: 1fr; }
             .hero-shell { grid-template-columns: 1fr; }
             .pilot-logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-grid { grid-template-columns: 1fr; }
@@ -545,6 +624,7 @@
             }
             .hero-subtitle { max-width: 100% !important; }
             .hero-proof-row { justify-content: center; }
+            .hero-storyline { max-width: 100%; text-align: left; }
             .pathway-links { flex-direction: column; align-items: stretch; }
             .pathway-link { justify-content: center; }
             .mission-section .pillar-card {
@@ -599,9 +679,9 @@
                 <ul class="nav-menu" id="primary-nav">
                     <li class="nav-item"><a href="/" class="nav-link active">Home</a></li>
                     <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="/features.html" class="nav-link">Platform</a></li>
+                    <li class="nav-item"><a href="/features.html" class="nav-link">The SelNexa Platform</a></li>
                     <li class="nav-item"><a href="/projects.html" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="/case-studies.html" class="nav-link">Impact</a></li>
+                    <li class="nav-item"><a href="/case-studies.html" class="nav-link">Impact Stories</a></li>
                     <li class="nav-item"><a href="/for-investors.html" class="nav-link">Investors</a></li>
                     <li class="nav-item"><a href="/resources.html" class="nav-link">Resources</a></li>
                     <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
@@ -635,6 +715,7 @@
                         <span>FHIR-ready integrations</span>
                         <span>Local rollout support</span>
                     </div>
+                    <p class="hero-storyline">From intake and triage to records and procurement, SelNexa connects daily hospital workflows into one resilient system that still works during outages.</p>
                 </div>
                 <div class="hero-visual reveal hero-mockup">
                     <div class="device-frame screenshot-wrapper">
@@ -642,7 +723,11 @@
                             <div class="traffic-lights"><span></span><span></span><span></span></div>
                             <div class="address-bar">Demo available on request</div>
                         </div>
-                        <img src="/assets/dashboard-hero.svg" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
+                        <picture>
+                            <source srcset="/assets/admin-dashboard-screenshot.avif" type="image/avif">
+                            <source srcset="/assets/admin-dashboard-screenshot.webp" type="image/webp">
+                            <img src="/assets/admin-dashboard-screenshot.png" alt="SelNexa Health Platform dashboard showing operations metrics and workflow monitoring" class="hero-dashboard-shot" loading="eager" fetchpriority="high" decoding="async">
+                        </picture>
                     </div>
                     <div class="hero-floating-stat stat-card-3">
                         <strong>Project 01</strong>
@@ -684,6 +769,30 @@
             </div>
         </section>
 
+        <section class="trust-snapshot reveal" aria-label="Trust snapshot">
+            <div class="container">
+                <div class="trust-snapshot-grid">
+                    <article class="trust-snapshot-card">
+                        <h3>Pilots running with regional facility teams</h3>
+                        <p>Trusted by implementation and hospital operations teams that need continuity under difficult infrastructure conditions.</p>
+                        <div class="trust-logos-inline" aria-label="Pilot partner logos">
+                            <img src="/assets/harare-central-logo.svg" alt="Harare Central Hospital logo" loading="lazy" decoding="async">
+                            <img src="/assets/nairobi-carenet-logo.svg" alt="Nairobi CareNet logo" loading="lazy" decoding="async">
+                            <img src="/assets/lagos-health-grid-logo.svg" alt="Lagos Health Grid logo" loading="lazy" decoding="async">
+                        </div>
+                    </article>
+                    <article class="trust-snapshot-card trust-snapshot-quote">
+                        <h3>Operational feedback</h3>
+                        <blockquote>
+                            "Our team kept triage and documentation flowing during repeated outages without reverting to paper."
+                        </blockquote>
+                        <cite>Dr. Nyasha Moyo · Clinical Operations Lead, Harare Central Hospital</cite>
+                        <a href="#social-proof">Read more implementation testimonials →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section class="quick-metrics reveal" id="outcomes" aria-label="Outcome snapshot">
             <div class="container">
                 <div class="section-header">
@@ -692,21 +801,25 @@
                 </div>
                 <div class="metrics-grid">
                     <article class="metric-card" aria-label="Offline continuity target">
+                        <div class="metric-icon" aria-hidden="true"><i class="fas fa-wifi"></i></div>
                         <strong>95%</strong>
                         <p>Offline continuity target</p>
                         <small>Pilot baseline tracking, 2026</small>
                     </article>
                     <article class="metric-card" aria-label="Pilot footprint">
+                        <div class="metric-icon" aria-hidden="true"><i class="fas fa-globe-africa"></i></div>
                         <strong>4</strong>
                         <p>Countries in active pilots</p>
                         <small>Zimbabwe, Kenya, Nigeria, South Africa</small>
                     </article>
                     <article class="metric-card" aria-label="Stock request reduction">
+                        <div class="metric-icon" aria-hidden="true"><i class="fas fa-pills"></i></div>
                         <strong>22%</strong>
                         <p>Fewer emergency stock requests</p>
                         <small>Preliminary procurement cohort review</small>
                     </article>
                     <article class="metric-card" aria-label="Triage time improvement">
+                        <div class="metric-icon" aria-hidden="true"><i class="fas fa-stopwatch"></i></div>
                         <strong>31%</strong>
                         <p>Faster triage-to-documentation cycle</p>
                         <small>Pilot operations review, Q1 2026</small>
@@ -723,9 +836,13 @@
                 </div>
                 <div class="mission-intro">
                     <div class="mission-paragraph">
-                        <p>Africa carries 25% of the world's disease burden but has access to only 3% of the world's healthcare workers and 1% of global health expenditure. The gap between the care people need and the care they can access is not a knowledge problem — it is an infrastructure, access, and systems problem.</p>
-                        <p>We are a young team that refuses to inherit that gap without fighting it. SelNexa Health exists to build, fund, and deploy practical healthcare solutions — starting in Zimbabwe and scaling across the continent.</p>
-                        <p>We are not a charity. We are not waiting for aid. We build sustainable systems that generate impact and revenue simultaneously — because we believe the two are not in conflict.</p>
+                        <p>Africa carries a high disease burden while many facilities still run with fragile infrastructure. The challenge is not clinical intent — it is systems reliability, access, and coordination.</p>
+                        <p>SelNexa exists to design practical healthcare systems that can run under real constraints, starting in Zimbabwe and scaling with local partners across the continent.</p>
+                        <ul class="mission-keypoints">
+                            <li>Build tools that work offline and sync safely when connectivity returns.</li>
+                            <li>Support implementation teams on the ground, not just software delivery.</li>
+                            <li>Measure outcomes openly so impact and business sustainability stay aligned.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="mission-pillars reveal stagger-children">
@@ -762,7 +879,7 @@
                 <div class="project-label">
                     <p class="label">CURRENTLY ACTIVE · PILOT PHASE</p>
                     <h2>Project 01 — The SelNexa Health Platform</h2>
-                    <p>The SelNexa Health Platform is our flagship product: a full-stack hospital management system built for the environments that most ERP platforms ignore. It is the first initiative in the broader SelNexa Health portfolio, not the full extent of the organization.</p>
+                    <p>Project 01 is our flagship: a hospital operations platform built for low-connectivity and power-variable environments. It is one initiative in a larger SelNexa portfolio.</p>
                     <a class="btn btn-secondary project-demo-btn" href="/features.html">Explore The Platform →</a>
                 </div>
             </div>
@@ -830,7 +947,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>The Problem We're Solving</h2>
-                    <p>Healthcare fragmentation drains clinician time, depletes budgets, and limits outcomes. The issue is not talent — it is systems that break under infrastructure realities.</p>
+                    <p>Healthcare fragmentation drains clinician time and budgets. The issue is not talent — it is systems that break under real infrastructure realities.</p>
                 </div>
                 
                 <div class="problems-grid grid">
@@ -838,28 +955,28 @@
                         <div class="problem-stat">40-60%</div>
                         <div class="problem-icon"><i class="fas fa-exclamation-circle"></i></div>
                         <h3>Administrative burden consuming clinician time</h3>
-                        <p>Manual scheduling, billing, and reporting pull healthcare workers from patients. In African facilities with severe staffing constraints, this directly reduces clinical capacity and fuels burnout.</p>
+                        <p>Manual scheduling, billing, and reporting pull clinicians away from patient care and increase burnout risk.</p>
                         <span class="stat-source">WHO estimates, 2023</span>
                     </div>
                     <div class="problem-card col-4">
                         <div class="problem-stat">22-35%</div>
                         <div class="problem-icon"><i class="fas fa-warning"></i></div>
                         <h3>Medicine wastage from inventory mismanagement</h3>
-                        <p>Without demand forecasting, hospitals simultaneously face stock-outs of critical medicines while overstock expires on shelves. Each year, this bleeds precious healthcare budgets.</p>
+                        <p>Without demand forecasting, facilities face stock-outs of essentials while other supplies expire on shelves.</p>
                         <span class="stat-source">World Bank analysis, African health systems</span>
                     </div>
                     <div class="problem-card col-4">
                         <div class="problem-stat">50-70%</div>
                         <div class="problem-icon"><i class="fas fa-lock"></i></div>
                         <h3>Fragmented patient records and data silos</h3>
-                        <p>Records split across paper and disconnected systems force repeat tests, increase medication errors, and prevent longitudinal care—wasting resources and jeopardizing patient safety.</p>
+                        <p>Records split across paper and disconnected systems trigger repeat tests, medication risk, and fragmented continuity of care.</p>
                         <span class="stat-source">Lancet Commission on Digital Health, 2024</span>
                     </div>
                 </div>
                 
                 <div class="solutions-intro text-center mt-64 mb-32">
                     <h3>The Path Forward: The SelNexa Health Platform →</h3>
-                    <p>The Platform orchestrates hospital administration, supply chain predictability, and interoperable health records engineered to operate reliably across low bandwidth and offline environments. This recovers clinician time, stabilizes supply chains, and enables data driven care decisions.</p>
+                    <p>The Platform unifies administration, supply predictability, and interoperable records in one offline-first workflow layer. The result is more clinician time, steadier inventory, and faster decision-making.</p>
                 </div>
             </div>
         </section>
