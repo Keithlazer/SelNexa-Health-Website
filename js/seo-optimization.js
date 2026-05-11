@@ -110,13 +110,13 @@
         setMetaTag('og:type', 'website', true);
         setMetaTag('og:url', window.location.href, true);
         setMetaTag('og:site_name', 'SelNexa Health', true);
-        setMetaTag('og:image', '/styles/scripts/assets/selnexa-logo.svg?v=1', true);
+        setMetaTag('og:image', '/assets/selnexa-logo.svg?v=1', true);
         
         // Twitter Card tags
         setMetaTag('twitter:card', 'summary_large_image');
         setMetaTag('twitter:title', config.title);
         setMetaTag('twitter:description', config.description);
-        setMetaTag('twitter:image', '/styles/scripts/assets/selnexa-logo.svg?v=1');
+        setMetaTag('twitter:image', '/assets/selnexa-logo.svg?v=1');
         
         // Additional SEO
         setMetaTag('robots', 'index, follow, max-snippet:-1, max-image-preview:large');
@@ -135,7 +135,7 @@
             '@type': 'Organization',
             'name': 'SelNexa Health',
             'url': 'https://www.selnexahealth.com/',
-            'logo': 'https://www.selnexahealth.com/styles/scripts/assets/selnexa-logo.svg',
+            'logo': 'https://www.selnexahealth.com/assets/selnexa-logo.svg',
             'contactPoint': {
                 '@type': 'ContactPoint',
                 'telephone': '+263777726065',

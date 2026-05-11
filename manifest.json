@@ -8,7 +8,7 @@
     "background_color": "#ffffff",
     "theme_color": "#e63946",
     "icons": [
-        { "src": "/styles/scripts/assets/selnexa-logo.svg?v=9", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+        { "src": "/assets/selnexa-logo.svg?v=9", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
     ],
     "shortcuts": [
         { "name": "Book Appointment", "short_name": "Book", "url": "/appointments.html" },
