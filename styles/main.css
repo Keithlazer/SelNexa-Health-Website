@@ -3103,6 +3103,16 @@ html[data-theme="dark"] .metric-card p {
     margin-bottom: var(--spacing-sm);
 }
 
+.job-card h3 {
+    font-size: clamp(1.35rem, 2.1vw, 1.8rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: auto;
+}
+
 .section-spacer {
     padding: var(--spacing-2xl) var(--spacing-lg);
 }
