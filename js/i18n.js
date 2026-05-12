@@ -8,7 +8,7 @@
       "nav.telemedShort": "Telemed",
       "nav.casesShort": "Cases",
       "nav.pricing": "Pricing",
-      "nav.investors": "Funders",
+      "nav.investors": "Investors",
       "nav.resources": "Resources",
       "nav.careers": "Careers",
       "nav.security": "Security & Compliance",

@@ -621,13 +621,13 @@
         '<li><a href="/case-studies.html" data-i18n="nav.caseStudies">Case Studies</a></li>',
         '<li><a href="/telemedicine.html" data-i18n="nav.telemedicine">Telemedicine</a></li>',
         '<li><a href="/pricing.html" data-i18n="nav.pricing">Pricing</a></li>',
-        '<li><a href="/investors.html" data-i18n="nav.investors">Investors</a></li>',
+        '<li><a href="/for-investors.html" data-i18n="nav.investors">Investors</a></li>',
         '<li><a href="/resources.html" data-i18n="nav.resources">Resources</a></li>',
         '<li><a href="/careers.html" data-i18n="nav.careers">Careers</a></li>',
         '<li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>',
         '</ul>',
         '<div class="trust-badges" aria-label="Compliance badges">',
-        '<span>SSL</span><span>HIPAA</span><span>GDPR</span><span>WCAG 2.1 AA</span>',
+        '<span>HIPAA</span><span>GDPR</span>',
         '</div>'
       ].join("");
       target.appendChild(block);
@@ -1023,8 +1023,6 @@
 
     setupBottomNav();
     setupChatbot();
-    addFooterRouteMap();
-
     setupAnimations();
     setupForms();
     setupPersonalizedTelemedicineDashboard();
