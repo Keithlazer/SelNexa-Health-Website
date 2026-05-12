@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SelNexa Health | Youth-Led Healthcare Innovation In Africa</title>
-    <meta name="description" content="SelNexa Health is a youth-led organization building sustainable healthcare systems for Africa. Our flagship initiative, the SelNexa Health Platform, is an offline-first hospital management product piloting in Zimbabwe.">
+    <meta name="description" content="SelNexa Health is a youth-led organization building sustainable healthcare systems for Africa. Our flagship initiative, the SelNexa Health Platform, is an offline-first hospital management product built for African hospitals and clinics, now accepting pilot deployment applications.">
     <meta name="language" content="en">
     <meta name="author" content="SelNexa Health">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -49,7 +49,8 @@
     <!-- GSAP for animations (from memory) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <link rel="stylesheet" href="/dist/assets/index-172324ae.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/grid-typography-system.css">
     <link rel="stylesheet" href="/styles/site-uniform.css">
     <style>
         :root {
@@ -147,6 +148,44 @@
         }
         .hero-floating-stat strong { color: #fff; }
         .cta-section { background: #004C4C; }
+        .video-section {
+            background: #f9f5ee;
+            padding: 72px 0 40px;
+        }
+        .video-player-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            margin: 24px auto 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+            background: #0a0f1e;
+        }
+        .platform-video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+        }
+        .pipeline-section {
+            padding: 36px 0 28px;
+        }
+        .module-overview {
+            background: #fff;
+            padding: 68px 0;
+        }
+        .module-overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .module-overview .module-card {
+            background: #fff;
+            border-radius: 14px;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 1rem;
+        }
         .cta-split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }
         .cta-audience-card {
             background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px;
@@ -379,9 +418,9 @@
             outline-offset: 2px;
         }
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal.visible, .reveal.revealed { opacity: 1; transform: translateY(0); }
         @media (max-width: 1023px) {
-            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats { grid-template-columns: 1fr; }
+            .cta-split, .quick-metrics .metrics-grid, .social-proof-testimonials, .future-grid, .team-stats, .module-overview-grid { grid-template-columns: 1fr; }
             .hero-shell { grid-template-columns: 1fr; }
             .pilot-logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .team-grid { grid-template-columns: 1fr; }
@@ -469,10 +508,6 @@
             }
         }
     </style>
-    <style>
-        /* Temporarily disable large brand/logo image that blocks page rendering */
-        img.logo { display: none !important; max-width: none !important; }
-    </style>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -535,8 +570,8 @@
                     </h1>
                     <p class="hero-subtitle">SelNexa Health builds practical healthcare infrastructure for African clinics and hospitals. Our first initiative, the SelNexa Health Platform, keeps care operations running through power and connectivity failures.</p>
                     <div class="hero-cta-group hero-ctas">
-                        <a class="btn btn-primary hero-primary-cta" href="/features.html">See The Platform →</a>
-                        <a class="btn-ghost" href="/projects.html">Explore Projects</a>
+                        <a class="btn btn-primary hero-primary-cta" href="/features.html">See The Platform <span class="arrow">→</span></a>
+                        <a class="btn-ghost" href="#platform-demo">Watch Demo ↓</a>
                     </div>
                 </div>
                 <div class="hero-visual reveal hero-mockup">
@@ -555,32 +590,48 @@
             </div>
         </section>
 
+        <section class="video-section reveal" id="platform-demo" aria-label="Platform demo video">
+            <div class="container">
+                <p class="section-label">PLATFORM DEMO</p>
+                <h2>See the Platform in action</h2>
+                <p>Watch how care teams run administration, procurement, and records workflows in low-connectivity conditions.</p>
+                <div class="video-player-wrapper">
+                    <video
+                        class="platform-video"
+                        controls
+                        preload="none"
+                        poster="/assets/admin-dashboard-screenshot.png"
+                        aria-label="SelNexa Health Platform provider walkthrough demo">
+                        <source src="/SelNexa%20Website/styles/scripts/assets/SelNexa%20Provider%20Demo%20Video.mp4" type="video/mp4">
+                        <p>Your browser does not support video playback. <a href="/SelNexa%20Website/styles/scripts/assets/SelNexa%20Provider%20Demo%20Video.mp4" download>Download the demo video</a>.</p>
+                    </video>
+                </div>
+                <p><a href="/resources.html#platform-demo-transcript">Read demo transcript summary</a></p>
+            </div>
+        </section>
+
         <section class="quick-metrics reveal" aria-label="Outcome snapshot">
             <div class="container">
                 <div class="section-header">
-                    <h2>Platform Outcome Snapshot</h2>
-                    <p>Early proof points from Project 01: the SelNexa Health Platform.</p>
+                    <p class="section-label">DEPLOYMENT PIPELINE</p>
+                    <h2>Current deployment readiness targets</h2>
+                    <p>Pre-deployment targets for initial launches across Zimbabwe, Kenya, Nigeria, and South Africa.</p>
                 </div>
                 <div class="metrics-grid">
-                    <article class="metric-card" aria-label="Offline continuity target">
-                        <strong>95%</strong>
-                        <p>Offline continuity target</p>
-                        <small>Pilot baseline tracking, 2026</small>
+                    <article class="metric-card stat-card reveal" aria-label="Countries targeted for initial deployment">
+                        <strong class="stat-card__number" data-counter data-target="4">4</strong>
+                        <p class="stat-card__label">Countries targeted for initial deployment</p>
+                        <small class="stat-card__citation">Zimbabwe, Kenya, Nigeria, South Africa</small>
                     </article>
-                    <article class="metric-card" aria-label="Pilot footprint">
-                        <strong>4</strong>
-                        <p>Countries in active pilots</p>
-                        <small>Zimbabwe, Kenya, Nigeria, South Africa</small>
+                    <article class="metric-card stat-card reveal" aria-label="Offline continuity design target">
+                        <strong class="stat-card__number" data-counter data-target="95" data-suffix="%">95%</strong>
+                        <p class="stat-card__label">Offline continuity design target</p>
+                        <small class="stat-card__citation">Resilience KPI for constrained infrastructure</small>
                     </article>
-                    <article class="metric-card" aria-label="Stock request reduction">
-                        <strong>22%</strong>
-                        <p>Fewer emergency stock requests</p>
-                        <small>Preliminary procurement cohort review</small>
-                    </article>
-                    <article class="metric-card" aria-label="Triage time improvement">
-                        <strong>31%</strong>
-                        <p>Faster triage-to-documentation cycle</p>
-                        <small>Pilot operations review, Q1 2026</small>
+                    <article class="metric-card stat-card reveal" aria-label="2G sync target">
+                        <strong class="stat-card__number" data-counter data-target="4" data-prefix="< ">4</strong>
+                        <p class="stat-card__label">Sync latency target on 2G conditions (seconds)</p>
+                        <small class="stat-card__citation">Latency objective in controlled test environments</small>
                     </article>
                 </div>
             </div>
@@ -589,7 +640,7 @@
         <section class="mission-section reveal" id="mission">
             <div class="container">
                 <div class="section-header">
-                    <p class="label">OUR MISSION</p>
+                    <p class="section-label">OUR MISSION</p>
                     <h2>Why We Exist</h2>
                 </div>
                 <div class="mission-intro">
@@ -609,20 +660,20 @@
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-earth-africa"></i></div>
                         <h3>African-First Thinking</h3>
-                        <p class="pillar-body">Offline-first architecture. Runs on 2G. Tested in Zimbabwe's lowest-connectivity clinics. Not a port from Silicon Valley.</p>
-                        <p class="pillar-proof">Offline-first · 2G-capable · Live in Zimbabwe</p>
+                        <p class="pillar-body">Offline-first architecture. Runs on 2G. Designed for Zimbabwe's lowest-connectivity clinic conditions. Not a port from Silicon Valley.</p>
+                        <p class="pillar-proof">Offline-first · 2G-capable · Built for Zimbabwe's constraints</p>
                     </article>
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-unlock"></i></div>
                         <h3>Radical Transparency</h3>
-                        <p class="pillar-body">Our pilot targets are public. Our failures are documented. Independent evaluations are part of how we build trust.</p>
+                        <p class="pillar-body">Our deployment targets are public. Our failures are documented. Independent evaluations are part of how we build trust.</p>
                         <p class="pillar-proof">Targets published publicly · Independent baseline/midline/endline</p>
                     </article>
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
                         <h3>Complementary, Not Competitive</h3>
                         <p class="pillar-body">We build alongside DHIS2, ePMS, and Impilo — not against them. Integration is our default, not an afterthought.</p>
-                        <p class="pillar-proof">Full pilot reports published at completion</p>
+                        <p class="pillar-proof">Deployment evaluations published at completion</p>
                     </article>
                 </div>
             </div>
@@ -631,7 +682,7 @@
         <section class="project-label-section reveal" id="project-01">
             <div class="container">
                 <div class="project-label">
-                    <p class="label">CURRENTLY ACTIVE · PILOT PHASE</p>
+                    <p class="section-label">CURRENTLY ACTIVE · PRE-DEPLOYMENT STAGE</p>
                     <h2>Project 01 — The SelNexa Health Platform</h2>
                     <p>The SelNexa Health Platform is our flagship product: a full-stack hospital management system built for the environments that most ERP platforms ignore. It is the first initiative in the broader SelNexa Health portfolio, not the full extent of the organization.</p>
                     <a class="btn btn-secondary project-demo-btn" href="/features.html">Explore The Platform →</a>
@@ -639,473 +690,52 @@
             </div>
         </section>
 
-        <section class="social-proof-section reveal" id="social-proof">
+        <section class="pipeline-section reveal" id="deployment-pipeline">
+            <div class="container">
+                <p class="section-label">DEPLOYMENT PIPELINE</p>
+                <h2>In active talks with facilities across four markets</h2>
+                <p>We are in structured conversations with hospital networks in Zimbabwe, Kenya, Nigeria, and South Africa. If your facility wants to be among the first deployment partners, apply for pilot access.</p>
+                <a href="/appointments.html" class="btn btn-primary">Apply for Pilot Access <span class="arrow">→</span></a>
+            </div>
+        </section>
+        
+        <section class="module-overview reveal" id="solutions">
             <div class="container">
                 <div class="section-header">
-                    <h2>Trusted by operational teams across four markets</h2>
-                    <p>Local rollout support, measurable workflow gains, and continuity in constrained infrastructure.</p>
+                    <p class="section-label">PLATFORM OVERVIEW</p>
+                    <h2>Three modules, one resilient operating layer</h2>
+                    <p>The SelNexa Health Platform unifies admin workflows, procurement continuity, and clinical records in one offline-first system.</p>
                 </div>
-                <div class="pilot-logo-row" aria-label="Partner and facility logos">
-                    <div class="logo-tile"><img src="/assets/harare-central-logo.svg" alt="Harare Central Hospital logo" loading="lazy" decoding="async"></div>
-                    <div class="logo-tile"><img src="/assets/mutare-mission-logo.svg" alt="Mutare Mission Hospital logo" loading="lazy" decoding="async"></div>
-                    <div class="logo-tile"><img src="/assets/nairobi-carenet-logo.svg" alt="Nairobi CareNet logo" loading="lazy" decoding="async"></div>
-                    <div class="logo-tile"><img src="/assets/lagos-health-grid-logo.svg" alt="Lagos Health Grid logo" loading="lazy" decoding="async"></div>
-                    <div class="logo-tile"><img src="/assets/johannesburg-clinic-group-logo.svg" alt="Johannesburg Clinic Group logo" loading="lazy" decoding="async"></div>
-                    <div class="logo-tile"><img src="/assets/partner-1.svg" alt="Implementation partner logo" loading="lazy" decoding="async"></div>
-                </div>
-                <div class="social-proof-testimonials">
-                    <article class="social-proof-card">
-                        <p>"Our team kept triage and documentation flowing during repeated outages without reverting to paper."</p>
-                        <h3>Dr. Nyasha Moyo</h3>
-                        <span>Clinical Operations Lead, Harare Central Hospital</span>
+                <div class="module-overview-grid reveal-group">
+                    <article class="module-card reveal">
+                        <div class="module-card__body">
+                            <h3>AI Administration</h3>
+                            <p>Digitize intake, scheduling, and billing workflows to reduce frontline admin load.</p>
+                        </div>
+                        <div class="module-card__cta">
+                            <a href="/solutions/administration.html" class="btn-link">Explore administration →</a>
+                        </div>
                     </article>
-                    <article class="social-proof-card">
-                        <p>"Forecasted procurement reduced emergency stock requests and gave pharmacy teams predictable restocking windows."</p>
-                        <h3>Grace Atieno</h3>
-                        <span>Pharmacy Manager, Nairobi CareNet</span>
+                    <article class="module-card reveal">
+                        <div class="module-card__body">
+                            <h3>Predictive Procurement</h3>
+                            <p>Use demand forecasting and stock alerts to protect medicine availability under constrained conditions.</p>
+                        </div>
+                        <div class="module-card__cta">
+                            <a href="/solutions/procurement.html" class="btn-link">Explore procurement →</a>
+                        </div>
                     </article>
-                    <article class="social-proof-card">
-                        <p>"The implementation felt local from day one, including workflows mapped to our staffing realities."</p>
-                        <h3>Tunde Adewale</h3>
-                        <span>Hospital Administrator, Lagos Health Grid</span>
-                    </article>
-                </div>
-                <div class="recognition-row" aria-label="Recognition and backing">
-                    <span>As featured in regional digital health roundtables</span>
-                    <span>Backed by implementation partners</span>
-                    <span>Pilot evaluation framework in place</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="container reveal">
-            <div class="integration-ticker">
-                <strong>Works alongside your existing systems</strong>
-                <div class="integration-logos">
-                    <span>DHIS2</span>
-                    <span>ePMS</span>
-                    <span>Impilo</span>
-                    <span>FHIR</span>
-                    <span>HL7</span>
-                </div>
-            </div>
-            <article class="case-study-teaser" aria-label="Pilot case study teaser">
-                <h3>Pilot Snapshot</h3>
-                <p>In one Zimbabwe pilot facility, outage continuity workflows replaced repeated paper fallback and reduced emergency stock requests after introducing forecast-guided procurement reviews.</p>
-                <a href="/case-studies.html">Read pilot case study highlights →</a>
-            </article>
-        </section>
-        
-        <!-- The Crisis of Efficiency Section -->
-        <section class="problems-section" id="problems">
-            <div class="container">
-                <div class="section-header">
-                    <h2>The Problem We're Solving</h2>
-                    <p>Healthcare fragmentation drains clinician time, depletes budgets, and limits outcomes. The issue is not talent — it is systems that break under infrastructure realities.</p>
-                </div>
-                
-                <div class="problems-grid grid">
-                    <div class="problem-card col-4">
-                        <div class="problem-stat">40-60%</div>
-                        <div class="problem-icon"><i class="fas fa-exclamation-circle"></i></div>
-                        <h3>Administrative burden consuming clinician time</h3>
-                        <p>Manual scheduling, billing, and reporting pull healthcare workers from patients. In African facilities with severe staffing constraints, this directly reduces clinical capacity and fuels burnout.</p>
-                        <span class="stat-source">WHO estimates, 2023</span>
-                    </div>
-                    <div class="problem-card col-4">
-                        <div class="problem-stat">22-35%</div>
-                        <div class="problem-icon"><i class="fas fa-warning"></i></div>
-                        <h3>Medicine wastage from inventory mismanagement</h3>
-                        <p>Without demand forecasting, hospitals simultaneously face stock-outs of critical medicines while overstock expires on shelves. Each year, this bleeds precious healthcare budgets.</p>
-                        <span class="stat-source">World Bank analysis, African health systems</span>
-                    </div>
-                    <div class="problem-card col-4">
-                        <div class="problem-stat">50-70%</div>
-                        <div class="problem-icon"><i class="fas fa-lock"></i></div>
-                        <h3>Fragmented patient records and data silos</h3>
-                        <p>Records split across paper and disconnected systems force repeat tests, increase medication errors, and prevent longitudinal care—wasting resources and jeopardizing patient safety.</p>
-                        <span class="stat-source">Lancet Commission on Digital Health, 2024</span>
-                    </div>
-                </div>
-                
-                <div class="solutions-intro text-center mt-64 mb-32">
-                    <h3>The Path Forward: The SelNexa Health Platform →</h3>
-                    <p>The Platform orchestrates hospital administration, supply chain predictability, and interoperable health records engineered to operate reliably across low bandwidth and offline environments. This recovers clinician time, stabilizes supply chains, and enables data driven care decisions.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SelNexa Health Platform - Systemic Capabilities -->
-        <section class="solutions-section" id="solutions">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Inside The SelNexa Health Platform</h2>
-                    <p>Project 01 integrates administration, supply chain predictability, and interoperable patient records, all engineered for offline-first operation and low bandwidth resilience.</p>
-                </div>
-                
-                <div class="bento-grid">
-                    <div class="bento-item large">
-                        <div class="bento-content">
-                            <h3>Module 1: AI Administration Orchestration</h3>
-                            <p><strong>Capability:</strong> Intelligent resource allocation predicting patient flow, staffing requirements, and billing cycles.</p>
-                            <p>Hospital administrators use real-time demand signals to optimize clinician scheduling and protect clinical capacity from administrative overhead. Billing flows align to local payer rules, improving cash velocity without increasing overhead.</p>
-                            <ul class="benefits">
-                                <li>Clinician time recovered to patient care</li>
-                                <li>Shorter patient wait times and higher throughput</li>
-                                <li>Billing accuracy and faster revenue realization</li>
-                            </ul>
-                            <a href="/solutions/administration.html" class="btn-link">Review administration pilot objectives →</a>
+                    <article class="module-card reveal">
+                        <div class="module-card__body">
+                            <h3>Unified Health Records</h3>
+                            <p>Keep records available offline with secure sync, auditability, and FHIR-ready interoperability.</p>
                         </div>
-                        <div class="bento-visual">
-                            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="module-card__cta">
+                            <a href="/solutions/records.html" class="btn-link">Explore records →</a>
                         </div>
-                    </div>
-                    
-                    <div class="bento-item">
-                        <div class="bento-content">
-                            <h3>Module 2: Predictive Procurement Engine</h3>
-                            <p><strong>Capability:</strong> Just-in-time demand intelligence preventing stockouts and expiry simultaneously.</p>
-                            <p>Forecasting blends local disease burden, seasonality, and historical utilization to keep essentials on shelf without overstock waste. Every dollar saved on medication expiry goes directly to patient care.</p>
-                            <a href="/solutions/procurement.html" class="btn-link">Review procurement pilot objectives →</a>
-                        </div>
-                    </div>
-                    
-                    <div class="bento-item">
-                        <div class="bento-content">
-                            <h3>Module 3: Unified Health Records (Interoperability & Sovereignty)</h3>
-                            <p><strong>Capability:</strong> FHIR-ready, portable, secure patient records that work offline and sync across sites.</p>
-                            <p>Offline-first architecture enables clinicians to capture care safely without connectivity; data syncs automatically when networks return. Patient sovereignty is preserved—records remain portable and auditable.</p>
-                            <a href="/solutions/records.html" class="btn-link">Review records continuity targets →</a>
-                        </div>
-                    </div>
-                    
-                    <div class="bento-item">
-                        <div class="bento-content">
-                            <h3>The Hybrid Engine: Reliability Through Infrastructure Variability</h3>
-                            <p><strong>Differentiation:</strong> Works when the internet goes down. Syncs automatically when connectivity returns.</p>
-                            <p>The Platform operates reliably across 2G/3G networks and power outages. Local data persistence means care delivery never stops due to connectivity loss across constrained infrastructure contexts.</p>
-                            <p class="stat-source">Telemedicine module is currently in beta (pilot tracking, Q1 2026).</p>
-                            <a href="/telemedicine.html" class="btn-link">Apply for telemedicine beta access →</a>
-                        </div>
-                    </div>
-                    
-                    <div class="bento-item">
-                        <div class="bento-content">
-                            <h3>Command-Center Analytics & Real-time Alerts</h3>
-                            <p>Dashboards surface utilization rates, revenue leakage, and supply risk—enabling hospital leaders to make data-driven decisions in real time.</p>
-                            <a href="/solutions/analytics.html" class="btn-link">Review admin efficiency outcomes from our pilot cohort →</a>
-                        </div>
-                    </div>
-                    
-                    <div class="bento-item">
-                        <div class="bento-content">
-                            <h3>Enterprise Integration & Localization</h3>
-                            <p>Lightweight APIs for interoperability; configurable for English, French, Swahili, Portuguese, and Arabic. Adapts to local payer rules and regulatory contexts.</p>
-                            <a href="/resources.html#api-documentation" class="btn-link">Integrate with FHIR APIs faster →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- How It Works -->
-        <section class="how-it-works" id="how-it-works">
-            <div class="container">
-                <div class="section-header">
-                    <h2>How it works</h2>
-                    <p>Deploy fast, learn your workflows, and deliver measurable impact within weeks.</p>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-step" data-step="1">
-                        <div class="step-number">①</div>
-                        <div class="step-icon"><i class="fas fa-link"></i></div>
-                        <h3>Connect</h3>
-                        <p>Lightweight integration with existing hospital systems; offline-first setup ready in weeks, not months.</p>
-                    </div>
-                    
-                    <div class="timeline-connector"></div>
-                    
-                    <div class="timeline-step" data-step="2">
-                        <div class="step-number">②</div>
-                        <div class="step-icon"><i class="fas fa-brain"></i></div>
-                        <h3>Learn</h3>
-                        <p>AI tunes to your demand patterns, payer rules, and staffing realities across Nigeria, Kenya, South Africa, and more.</p>
-                    </div>
-                    
-                    <div class="timeline-connector"></div>
-                    
-                    <div class="timeline-step" data-step="3">
-                        <div class="step-number">③</div>
-                        <div class="step-icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Optimize</h3>
-                        <p>Automated admin, stabilized supply chains, and unified patient data improve throughput and outcomes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Features Deep Dive -->
-        <section class="features-section" id="features">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Powerful features, purpose-built for African healthcare</h2>
-                </div>
-                
-                <div class="feature-block alternating">
-                    <div class="feature-content">
-                        <h3><i class="fas fa-microscope"></i> Automate admin, protect clinician time</h3>
-                        <p>Smart workflows handle scheduling, claims, and reporting so clinicians focus on patients, not paperwork.</p>
-                        <ul class="feature-benefits">
-                            <li>Reduce admin hours per clinician</li>
-                            <li>Shorter patient wait times</li>
-                            <li>Higher billing accuracy</li>
-                        </ul>
-                        <a href="/solutions/administration.html" class="btn-link">Review administrative efficiency targets →</a>
-                    </div>
-                    <div class="feature-visual">
-                        <picture>
-                            <source srcset="/assets/admin-dashboard-screenshot.avif" type="image/avif">
-                            <source srcset="/assets/admin-dashboard-screenshot.webp" type="image/webp">
-                            <img
-                                src="/assets/admin-dashboard-screenshot.png"
-                                alt="SelNexa Super Admin dashboard interface"
-                                class="feature-screenshot"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </picture>
-                    </div>
-                </div>
-                
-                <div class="feature-block alternating reverse">
-                    <div class="feature-visual">
-                        <picture>
-                            <source srcset="/assets/queue-management-interface.avif" type="image/avif">
-                            <source srcset="/assets/queue-management-interface.webp" type="image/webp">
-                            <img
-                                src="/assets/queue-management-interface.png"
-                                alt="SelNexa queue and records management interface"
-                                class="feature-screenshot"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </picture>
-                    </div>
-                    <div class="feature-content">
-                        <h3><i class="fas fa-tasks"></i> Predict demand, prevent stock-outs</h3>
-                        <p>Procurement forecasting blends local disease trends, seasonality, and usage so essentials are always on shelf.</p>
-                        <ul class="feature-benefits">
-                            <li>Lower expiry-related waste</li>
-                            <li>Stabilize critical inventories</li>
-                            <li>Free budget for frontline care</li>
-                        </ul>
-                        <a href="/solutions/procurement.html" class="btn-link">See how procurement forecasting reduced emergency stock requests →</a>
-                        <span class="stat-source">Pilot tracking, Q1 2026</span>
-                    </div>
-                </div>
-                
-                <div class="feature-block alternating">
-                    <div class="feature-content">
-                        <h3><i class="fas fa-shield-alt"></i> Unify patient data across facilities</h3>
-                        <p>Offline first electronic health records reconcile identities, protect privacy, and sync across sites even with unstable connectivity.</p>
-                        <ul class="feature-benefits">
-                            <li>Longitudinal patient histories</li>
-                            <li>Safer prescribing and fewer duplicate tests</li>
-                            <li>Interoperable via FHIR and lightweight APIs</li>
-                        </ul>
-                        <a href="/solutions/records.html" class="btn-link">Review records continuity targets →</a>
-                    </div>
-                    <div class="feature-visual">
-                        <picture>
-                            <source srcset="/assets/ehr-system-screenshot.avif" type="image/avif">
-                            <source srcset="/assets/ehr-system-screenshot.webp" type="image/webp">
-                            <img
-                                src="/assets/ehr-system-screenshot.png"
-                                alt="SelNexa EHR system patient chart view"
-                                class="feature-screenshot"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </picture>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Built for Africa: The Infrastructure Reality Check -->
-        <section class="africa-section" id="africa">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Built for Africa. Not adapted for it.</h2>
-                    <p>The SelNexa Health Platform is designed for real operating conditions: unstable connectivity, intermittent power, and strict local data control requirements. Care teams stay productive without fragile always-online dependencies.</p>
-                </div>
-                
-                <div class="africa-grid">
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Offline-first EHR continuity</h3>
-                        <p>Clinical teams capture patient care safely without internet connectivity. Data syncs automatically and securely when networks return. Zero disruption to care delivery. Patient data remains under local sovereignty—never transmitted to foreign servers without explicit consent.</p>
-                    </div>
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-link"></i></div>
-                        <h3>Hybrid-core engine on 2G/3G</h3>
-                        <p>While Western competitors require 4G+ and constant connectivity, our Hybrid Core engine operates reliably on 2G/3G networks with lightweight APIs and data efficient syncing. This is not a workaround it is our competitive moat.</p>
-                    </div>
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-battery-half"></i></div>
-                        <h3>Power-Aware Operations</h3>
-                        <p>Designed for facilities with unpredictable power. Data persists locally; systems prioritize battery efficiency and graceful degradation.</p>
-                    </div>
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-language"></i></div>
-                        <h3>Localized for African Healthcare Contexts</h3>
-                        <p>Configurable for English, French, Swahili, Portuguese, Arabic. Adapts to local payer rules, regulatory frameworks, and clinical protocols.</p>
-                    </div>
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>Mobile First for Distributed Care</h3>
-                        <p>Optimized for low cost smartphones and tablets. Works seamlessly across community health workers, clinics, and hospital networks.</p>
-                    </div>
-                    <div class="africa-card">
-                        <div class="africa-icon"><i class="fas fa-users"></i></div>
-                        <h3>On-the-ground implementation support</h3>
-                        <p>Implementation teams across Nigeria, Kenya, South Africa, and Zimbabwe provide training, localization, and ongoing support.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Technology Stack -->
-        <section class="tech-section" id="tech">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Technology designed for reliability in African healthcare</h2>
-                    <p>Enterprise-grade, interoperable, and resilient across variable infrastructure.</p>
-                </div>
-                
-                <div class="tech-grid">
-                    <div class="tech-card">
-                        <div class="tech-icon"><i class="fas fa-brain"></i></div>
-                        <h3>Artificial Intelligence</h3>
-                        <p>Forecast demand, automate workflows, and surface real-time alerts for administrators.</p>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon"><i class="fas fa-link"></i></div>
-                        <h3>Secure health records</h3>
-                        <p>Integrity-first data architecture with patient privacy controls and auditability.</p>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon"><i class="fas fa-cloud"></i></div>
-                        <h3>Cloud & edge</h3>
-                        <p>Hybrid deployment to keep facilities running through outages and low bandwidth.</p>
-                    </div>
-                    <div class="tech-card">
-                        <div class="tech-icon"><i class="fas fa-file-medical"></i></div>
-                        <h3>FHIR-first interoperability</h3>
-                        <p>Standards-based exchange for labs, imaging, and partner hospital systems.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="future-projects reveal" id="whats-next">
-            <div class="container">
-                <div class="section-header">
-                    <p class="label">FUTURE INITIATIVES · RESEARCH PHASE</p>
-                    <h2>What Comes Next</h2>
-                    <p>Project 01 is our starting point — not our ceiling. We are actively researching and scoping the next initiatives in the SelNexa Health portfolio.</p>
-                </div>
-                <div class="future-grid">
-                    <article class="future-card future-card-contrawise" data-project="02">
-                        <p class="status-pill"><span class="status-dot status-scoping"></span>SCOPING · 2025–2026</p>
-                        <div class="contrawise-brand">
-                            <img src="/assets/ContraWise.svg" alt="ContraWise logo" loading="lazy" decoding="async">
-                        </div>
-                        <p>An AI-powered mobile platform helping women make informed, stigma-free contraceptive decisions with personalized recommendations, anonymous peer community, and verified nearby clinic booking.</p>
-                        <p>Guided profiling aligns method recommendations to health needs and future fertility plans, with SMS, WhatsApp, and offline access to ensure no woman is left behind.</p>
-                        <p>ContraWise is a movement toward equitable, dignified reproductive healthcare for every African woman.</p>
-                        <a href="/contact.html">Join the Interest List →</a>
-                        <button class="contrawise-fab" type="button" aria-label="Open ContraWise chat"><i class="fas fa-comment-dots" aria-hidden="true"></i></button>
-                    </article>
-                    <article class="future-card" data-project="03">
-                        <p class="status-pill"><span class="status-dot status-research"></span>Research · 2026</p>
-                        <h3>Maternal &amp; Neonatal Health Access Initiative</h3>
-                        <p>Reducing preventable maternal deaths through early-warning protocols, transport coordination, and facility readiness monitoring.</p>
-                        <a href="/contact.html">Join the Interest List →</a>
-                    </article>
-                    <article class="future-card" data-project="04">
-                        <p class="status-pill"><span class="status-dot status-concept"></span>Concept · TBD</p>
-                        <h3>Mental Health Infrastructure for African Contexts</h3>
-                        <p>Addressing the near-total absence of scalable, culturally adapted mental health services through primary-care integration.</p>
-                        <a href="/contact.html">Join the Interest List →</a>
                     </article>
                 </div>
-                <div class="future-proposal">
-                    <h3>Have a healthcare problem we should tackle?</h3>
-                    <p>We are actively looking for implementation partners, co-founders for future projects, and organizations with field access across Africa.</p>
-                    <a href="/contact.html">Submit a Project Proposal →</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="team-section reveal" id="team">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Built by Young Africans, for African Healthcare.</h2>
-                    <p>The SelNexa Health team is made up of young technologists, healthcare researchers, and system designers working across the region.</p>
-                </div>
-                <div class="team-grid">
-                    <div>
-                        <p>Most of us are from Zimbabwe. We have no legacy baggage, no outdated assumptions, and no patience for solutions designed elsewhere and exported here.</p>
-                        <p>We've seen the healthcare system fail people we know. That's not an abstraction for us. It's the reason we wake up and build.</p>
-                        <div class="team-stats">
-                            <article><strong>&lt; 28</strong><span>Average team age</span></article>
-                            <article><strong>4</strong><span>Countries represented</span></article>
-                            <article><strong>100%</strong><span>African-led founding team</span></article>
-                        </div>
-                        <p><em>Founded in Harare, Zimbabwe — building for the continent.</em></p>
-                        <div class="team-cta">
-                            <a class="btn btn-primary" href="/careers.html">Join Our Team →</a>
-                            <a class="btn btn-outline" href="/contact.html">Partner With Us →</a>
-                        </div>
-                    </div>
-                    <div class="team-art" aria-hidden="true"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="faq-section reveal" id="faq">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Frequently Asked Questions</h2>
-                </div>
-                <div class="faq-grid">
-                    <details>
-                        <summary>Does it work without internet?</summary>
-                        <p>Yes. Core workflows run offline-first and synchronize when connectivity returns.</p>
-                    </details>
-                    <details>
-                        <summary>Which countries are currently supported?</summary>
-                        <p>Current pilot focus includes Zimbabwe, Kenya, Nigeria, and South Africa.</p>
-                    </details>
-                    <details>
-                        <summary>How long does setup take?</summary>
-                        <p>Deployment is phased by facility context, with pilot onboarding typically starting in weeks, not quarters.</p>
-                    </details>
-                    <details>
-                        <summary>Is data stored locally?</summary>
-                        <p>Yes. The platform supports local persistence and controlled synchronization aligned with local governance requirements.</p>
-                    </details>
-                    <details>
-                        <summary>What is the pricing model?</summary>
-                        <p>Pricing is implementation-based and depends on facility type, modules, and deployment scope.</p>
-                    </details>
-                    <details>
-                        <summary>Do you integrate with existing systems?</summary>
-                        <p>Yes. We are integration-first and support standards including FHIR and HL7 with practical interoperability pathways.</p>
-                    </details>
-                </div>
+                <p><a href="/features.html" class="btn btn-secondary">View full platform capabilities</a></p>
             </div>
         </section>
 
@@ -1120,7 +750,7 @@
                     <div class="cta-split">
                         <article class="cta-audience-card">
                             <h3>For Healthcare Facilities</h3>
-                            <p>Pilot Project 01 in your facility with a free 30-day trial, local support, and offline-first deployment.</p>
+                            <p>Evaluate Project 01 in your facility with pilot onboarding support and offline-first deployment planning.</p>
                             <a href="/appointments.html">Book Platform Demo →</a>
                         </article>
                         <article class="cta-audience-card">
@@ -1130,14 +760,14 @@
                         </article>
                         <article class="cta-audience-card">
                             <h3>For Investors</h3>
-                            <p>We are building a portfolio of African healthcare solutions backed by measurable pilot outcomes.</p>
+                            <p>We are building a portfolio of African healthcare solutions and seeking first deployment partners.</p>
                             <a href="/for-investors.html">View Investor Deck →</a>
                         </article>
                     </div>
-                    <div class="cta-features">
-                        <span>✓ Free 30-day trial</span>
-                        <span>✓ Offline-first deployment</span>
-                        <span>✓ Local support included</span>
+                    <div class="trust-chips">
+                        <span class="trust-chip">✓ Free 30-day trial</span>
+                        <span class="trust-chip">✓ Offline-first deployment</span>
+                        <span class="trust-chip">✓ Local support included</span>
                     </div>
                 </div>
             </div>
@@ -1154,7 +784,7 @@
                         <p>Founded in Harare, Zimbabwe</p>
                         <div class="newsletter-row" aria-label="Newsletter signup">
                             <input type="email" placeholder="your@email.com" aria-label="Email address">
-                            <button type="button">Follow Our Work →</button>
+                            <a href="https://www.linkedin.com/company/selnexahealth" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow Our Work →</a>
                         </div>
           </div>
                     <div class="footer-column">
@@ -1189,7 +819,6 @@
                         <div class="trust-badges" aria-label="Compliance badges">
                             <span><i class="fas fa-shield-heart" aria-hidden="true"></i> HIPAA</span>
                             <span><i class="fas fa-lock" aria-hidden="true"></i> GDPR</span>
-                            <span><i class="fas fa-universal-access" aria-hidden="true"></i> WCAG 2.1 AA</span>
                         </div>
           </div>
                     <div class="footer-column">
@@ -1257,27 +886,6 @@
         </div>
     </dialog>
     
-    <dialog id="video-modal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="document.getElementById('video-modal').close()">&times;</button>
-            <h2>Demo Videos</h2>
-            <div class="video-container">
-                <h3>Provider Demo</h3>
-                <video controls playsinline preload="none" poster="/assets/admin-dashboard-screenshot.png" aria-label="SelNexa Health provider demo video">
-                    <source src="/dist/assets/SelNexa%20Provider%20Demo%20Video-60737a43.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="video-container">
-                <h3>Patient Demo</h3>
-                <video controls playsinline preload="none" poster="/assets/queue-management-interface.png" aria-label="SelNexa Health patient demo video">
-                    <source src="/dist/assets/Selnexa%20Patient%20Demo%20Video-bb8b000e.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </dialog>
-    
     <dialog id="contact-modal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="document.getElementById('contact-modal').close()">&times;</button>
@@ -1342,13 +950,48 @@
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach((entry) => {
                         if (!entry.isIntersecting) return;
+                        entry.target.classList.add('visible');
                         entry.target.classList.add('revealed');
                         obs.unobserve(entry.target);
                     });
                 }, { threshold: 0.15 });
                 revealNodes.forEach((el) => observer.observe(el));
             } else {
-                revealNodes.forEach((el) => el.classList.add('revealed'));
+                revealNodes.forEach((el) => {
+                    el.classList.add('visible');
+                    el.classList.add('revealed');
+                });
+            }
+
+            const animateCounter = (el) => {
+                const target = parseFloat(el.dataset.target || '0');
+                const suffix = el.dataset.suffix || '';
+                const prefix = el.dataset.prefix || '';
+                const duration = 1800;
+                const start = performance.now();
+
+                const update = (currentTime) => {
+                    const elapsed = currentTime - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(eased * target);
+                    el.textContent = `${prefix}${current}${suffix}`;
+                    if (progress < 1) requestAnimationFrame(update);
+                };
+
+                requestAnimationFrame(update);
+            };
+
+            if (!prefersReduced) {
+                const counterObserver = new IntersectionObserver((entries, obs) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) return;
+                        animateCounter(entry.target);
+                        obs.unobserve(entry.target);
+                    });
+                }, { threshold: 0.5 });
+
+                document.querySelectorAll('[data-counter]').forEach((el) => counterObserver.observe(el));
             }
 
             if (!prefersReduced) {
