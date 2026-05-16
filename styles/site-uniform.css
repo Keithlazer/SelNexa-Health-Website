@@ -1236,6 +1236,18 @@ html[data-theme="dark"] .comparison-table td {
   background: #ffffff !important;
 }
 
+/* Extra strong overrides for specific elements that were still inheriting light colors */
+html[data-theme="dark"] .founding-story h2,
+html[data-theme="dark"] .founding-story .story-copy p,
+html[data-theme="dark"] .founding-story .story-eyebrow,
+html[data-theme="dark"] .timeline-section h3,
+html[data-theme="dark"] .timeline-section p,
+html[data-theme="dark"] .timeline-item,
+html[data-theme="dark"] .comparison-table th,
+html[data-theme="dark"] .comparison-table td {
+  color: #111827 !important; /* dark text for readability */
+}
+
 @media (max-width: 900px) {
   .deployment-map,
   .module-content.active,
