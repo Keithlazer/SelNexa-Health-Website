@@ -28,6 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
+    <div id="reading-progress" aria-hidden="true"></div>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- Navigation -->
@@ -68,15 +69,15 @@
             </div>
             
             <div class="hero-content">
-                <div class="hero-overline">INVESTMENT OPPORTUNITY</div>
-                <h1 class="hero-title">Funding SelNexa Health's African healthcare infrastructure portfolio</h1>
-                <p class="hero-subtitle">
-                    SelNexa Health is a Zimbabwe-based health systems innovation organization. Our first product, the SelNexa Health Platform, is an offline-first hospital management system proving the foundation for a broader portfolio across facility operations, reproductive health, maternal care, and community health infrastructure.
+                <div class="hero-overline hero-animate">INVESTMENT OPPORTUNITY · USD 150K SEED ASK</div>
+                <h1 class="hero-title hero-animate">Pilot-stage entry into African healthcare infrastructure</h1>
+                <p class="hero-subtitle hero-animate">
+                    SelNexa Health is raising USD 150K to harden and deploy its offline-first hospital management system, then scale across a broader portfolio of facility operations, reproductive health, maternal care, and community health infrastructure.
                 </p>
                 
                 <div class="hero-cta-group">
-                    <a href="/assets/selnexa-health-pitch-deck.pdf" class="btn btn-primary" target="_blank" rel="noopener">View Pitch Deck</a>
-                    <button class="btn btn-secondary" onclick="document.getElementById('contact-modal').showModal()">
+                    <a href="/assets/selnexa-health-pitch-deck.pdf" class="btn btn-primary hero-animate" target="_blank" rel="noopener">View Pitch Deck</a>
+                    <button class="btn btn-secondary hero-animate" onclick="document.getElementById('contact-modal').showModal()">
                         Schedule Investor Call →
                     </button>
                 </div>
@@ -92,23 +93,23 @@
                 </div>
                 
                 <div class="opportunity-grid">
-                    <div class="opportunity-card">
-                        <div class="opportunity-stat">$4.5B</div>
+                    <div class="opportunity-card animate-on-scroll">
+                        <div class="opportunity-stat" data-counter data-target="4.5" data-prefix="$" data-suffix="B">$0B</div>
                         <h3>Annual operational waste</h3>
                         <p>Lost to administrative entropy, supply volatility, and fragmented data in African healthcare systems alone (WHO / World Bank 2023).</p>
                     </div>
-                    <div class="opportunity-card">
-                        <div class="opportunity-stat">1.2B+</div>
+                    <div class="opportunity-card animate-on-scroll">
+                        <div class="opportunity-stat" data-counter data-target="1.2" data-suffix="B+">0B+</div>
                         <h3>Underserved patients</h3>
                         <p>Across Sub-Saharan Africa dependent on healthcare facilities with chronic operational inefficiency and limited digital infrastructure.</p>
                     </div>
-                    <div class="opportunity-card">
-                        <div class="opportunity-stat">2x</div>
+                    <div class="opportunity-card animate-on-scroll">
+                        <div class="opportunity-stat" data-counter data-target="2" data-suffix="x">0x</div>
                         <h3>Growth trajectory</h3>
                         <p>Healthcare software spending in Africa projected to grow 2–3x by 2028 as governments and private providers digitize (Gartner, 2024).</p>
                     </div>
-                    <div class="opportunity-card">
-                        <div class="opportunity-stat">70%+</div>
+                    <div class="opportunity-card animate-on-scroll">
+                        <div class="opportunity-stat" data-counter data-target="70" data-suffix="%+">0%+</div>
                         <h3>Market gap</h3>
                         <p>Existing healthcare IT solutions designed for stable infrastructure fail to operate in low-bandwidth, offline-first environments where most African care happens.</p>
                     </div>
@@ -296,6 +297,29 @@
                         <p><em>Pathway to Series B and continental scale</em></p>
                     </div>
                 </div>
+                <div class="projection-chart animate-on-scroll" aria-label="Projected ARR chart">
+                    <h3>Projected ARR pathway</h3>
+                    <p><strong>Projections, not guarantees.</strong> These figures depend on pilot validation, procurement cycles, and country-specific sales execution.</p>
+                    <div class="projection-bars">
+                        <div class="projection-bar-row"><span>Year 0 · Pilot</span><div class="projection-bar-track"><div class="projection-bar" style="--pct:2%"></div></div><strong>$0</strong></div>
+                        <div class="projection-bar-row"><span>Year 1 · 10+ sites</span><div class="projection-bar-track"><div class="projection-bar" style="--pct:20%"></div></div><strong>$500K ARR</strong></div>
+                        <div class="projection-bar-row"><span>Year 2/3 · 100+ sites</span><div class="projection-bar-track"><div class="projection-bar" style="--pct:100%"></div></div><strong>$5M ARR</strong></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="use-of-funds">
+            <div class="container">
+                <div class="funds-allocation">
+                    <h3>Use of the $150K investment</h3>
+                    <div class="allocation-bars">
+                        <div class="alloc-item"><div class="alloc-track"><div class="alloc-bar" style="--pct:40%; --color:#22c55e"></div></div><span>Pilot hardening &amp; deployment (40%)</span></div>
+                        <div class="alloc-item"><div class="alloc-track"><div class="alloc-bar" style="--pct:25%; --color:#3b82f6"></div></div><span>Team &amp; operations (25%)</span></div>
+                        <div class="alloc-item"><div class="alloc-track"><div class="alloc-bar" style="--pct:20%; --color:#f59e0b"></div></div><span>Compliance &amp; security (20%)</span></div>
+                        <div class="alloc-item"><div class="alloc-track"><div class="alloc-bar" style="--pct:15%; --color:#8b5cf6"></div></div><span>M&amp;E &amp; evaluation (15%)</span></div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -311,13 +335,13 @@
                     </div>
                     <div class="video-tab-content" id="tab-provider" role="tabpanel">
                         <video controls preload="none" poster="/assets/admin-dashboard-screenshot.png" aria-label="Provider platform walkthrough">
-                            <source src="/SelNexa%20Website/styles/scripts/assets/SelNexa%20Provider%20Demo%20Video.mp4" type="video/mp4">
+                            <source src="https://cdn.selnexahealth.com/assets/demo-video.mp4" type="video/mp4">
                         </video>
                         <p><a href="/resources.html#provider-demo-transcript">Read provider demo transcript summary</a></p>
                     </div>
                     <div class="video-tab-content hidden" id="tab-patient" role="tabpanel">
                         <video controls preload="none" poster="/assets/queue-management-interface.png" aria-label="Patient experience walkthrough">
-                            <source src="/SelNexa%20Website/styles/scripts/assets/Selnexa%20Patient%20Demo%20Video.mp4" type="video/mp4">
+                            <source src="https://cdn.selnexahealth.com/assets/patient-demo-video.mp4" type="video/mp4">
                         </video>
                         <p><a href="/resources.html#patient-demo-transcript">Read patient demo transcript summary</a></p>
                     </div>
@@ -331,7 +355,29 @@
                     <p class="section-label">FREQUENTLY ASKED QUESTIONS</p>
                     <h2>Investor and deployment FAQs</h2>
                 </div>
-                <div class="faq-grid">
+                <div class="faq-list">
+                    <details>
+                        <summary>What is the regulatory environment in your target markets?</summary>
+                        <p>Deployments are structured around in-country data residency, facility governance, and local health-sector requirements. Zimbabwe deployments are planned against the Data Protection Act and health-facility governance requirements; Kenya, Nigeria, and South Africa require market-specific legal review before production rollout.</p>
+                    </details>
+                    <details>
+                        <summary>What are the currency and repatriation risks?</summary>
+                        <p>Pricing is designed to support local currency billing where appropriate, while investor reporting is maintained in USD. The model assumes country-specific treasury planning, conservative payment terms, and staged exposure rather than single-market dependency.</p>
+                    </details>
+                    <details>
+                        <summary>What are the exit pathways for investors?</summary>
+                        <p>Potential pathways include strategic acquisition by healthcare IT vendors, regional health infrastructure platforms, telecom/cloud health units, or later-stage growth investors after repeatable deployment economics are proven.</p>
+                    </details>
+                    <details>
+                        <summary>How does pricing work and what is the revenue model?</summary>
+                        <p>SelNexa prices by facility size and deployment scope rather than per-seat licenses. Revenue is expected from implementation, recurring platform fees, support, and network-level analytics modules.</p>
+                    </details>
+                    <details>
+                        <summary>What happens if a ministry requires platform changes?</summary>
+                        <p>The platform is modular and localization-aware. Country-specific workflows, reporting fields, data-residency rules, and integration requirements are scoped as deployment configuration or funded implementation work.</p>
+                    </details>
+                </div>
+                <div class="faq-grid" hidden>
                     <details>
                         <summary>Which countries are currently supported?</summary>
                         <p>We are targeting Zimbabwe, Kenya, Nigeria, and South Africa for initial deployment. Facility applications are open now.</p>
@@ -400,7 +446,6 @@
                         <li><a href="/about.html">About SelNexa Health</a></li>
                         <li><a href="/projects.html">Projects</a></li>
                         <li><a href="/for-investors.html">For Investors</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
                         <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -408,8 +453,7 @@
                 <div class="footer-column">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="/case-studies.html">Case Studies</a></li>
-                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="/case-studies.html">Impact</a></li>
                         <li><a href="/resources.html#api-documentation">Technical Docs</a></li>
                         <li><a href="/faq.html">FAQ</a></li>
                     </ul>

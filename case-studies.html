@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Platform Design Scenarios | SelNexa Health</title>
-    <meta name="description" content="Design scenarios showing how the SelNexa Health Platform can improve administration, procurement, records, and analytics in constrained healthcare environments.">
+    <title>Impact Evidence | SelNexa Health</title>
+    <meta name="description" content="Early field observations and monitoring framework for the SelNexa Health Platform pilot at Manicaland District Hospital in Zimbabwe.">
     <link rel="canonical" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/case-studies.html?lang=sn">
@@ -51,64 +51,70 @@
     <main id="main-content">
         <section class="page-hero">
             <div class="container">
-                <p class="page-overline section-label">PLATFORM DESIGN SCENARIOS</p>
-                <h1 class="page-title">How the platform works in practice</h1>
-                <p class="page-subtitle">These scenarios reflect design objectives and workflow modeling for early deployment planning.</p>
-                <nav class="tab-links" aria-label="Case study navigation">
-                    <a href="#bulawayo">High-Outpatient Urban Hospital</a>
-                    <a href="#procurement-sa">Multi-Facility Procurement Scenario</a>
-                    <a href="#ehr-project">Interoperable Clinical Records Scenario</a>
-                    <a href="#analytics-pilot">Operations Analytics Scenario</a>
+                <p class="page-overline section-label hero-animate">IMPACT EVIDENCE</p>
+                <h1 class="page-title hero-animate">Impact evidence from the field</h1>
+                <p class="page-subtitle hero-animate">Our pilot is actively running. These are early observations, not verified outcomes. Independent M&amp;E evaluation is underway.</p>
+                <nav class="tab-links" aria-label="Impact page navigation">
+                    <a href="#manicaland">Manicaland pilot observation</a>
+                    <a href="#measurement">What we are measuring</a>
+                    <a href="#updates">Follow impact updates</a>
                 </nav>
-                <p><strong>Evidence note:</strong> All outcomes below are design targets and projections based on workflow analysis, not reported deployment results.</p>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll" id="bulawayo">
+        <section class="section-spacer animate-on-scroll" id="manicaland">
             <div class="container">
                 <article class="page-card">
-                    <h2><i class="fas fa-hospital" aria-hidden="true"></i> Scenario: High-Outpatient Urban Hospital</h2>
-                    <p><strong>Context:</strong> High patient volume and unstable connectivity create delays between triage, documentation, and follow-up workflows.</p>
-                    <p><strong>Platform design response:</strong> Offline-first intake, queue orchestration, and synchronized longitudinal records for priority service lines.</p>
-                    <p><strong>Target outcome:</strong> Reduced triage-to-documentation time and fewer paper fallback events during outages.</p>
-                    <p><strong>Projection basis:</strong> Workflow mapping from intake, nurse station, and clinician handoff processes.</p>
+                    <p class="section-label">PILOT OBSERVATION CARD</p>
+                    <h2>Manicaland District Hospital, Zimbabwe</h2>
+                    <p><strong>Context:</strong> District hospital environment serving high-volume patient flows in a region where facilities can face power instability, low-bandwidth connectivity, and manual fallback processes.</p>
+                    <p><strong>What was deployed:</strong> Administration workflows, queue visibility, offline-first records continuity, and procurement monitoring modules from the SelNexa Health Platform.</p>
+                    <p><strong>What was observed:</strong> Facility staff highlighted the value of keeping intake and record workflows available during outages, reducing the need to restart work when connectivity returns, and making medicine visibility easier to discuss across teams.</p>
+                    <p><strong>Evidence status:</strong> These are qualitative pilot observations. They are not yet verified outcomes and should not be used as final impact claims.</p>
                 </article>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll" id="procurement-sa">
+        <section class="section-spacer animate-on-scroll" id="measurement">
             <div class="container">
-                <article class="page-card">
-                    <h2><i class="fas fa-boxes-stacked" aria-hidden="true"></i> Scenario: Multi-Facility Procurement Coordination</h2>
-                    <p><strong>Context:</strong> Distributed pharmacy teams manage variable demand and frequent urgent reorder cycles.</p>
-                    <p><strong>Platform design response:</strong> Forecast-guided reorder thresholds, expiry alerts, and standardized replenishment cadence.</p>
-                    <p><strong>Target outcome:</strong> Fewer emergency stock requests and improved predictability for essential medicine restocking.</p>
-                    <p><strong>Projection basis:</strong> Supply-chain workflow analysis across ordering, inventory, and facility transfer processes.</p>
+                <div class="section-header">
+                    <p class="section-label">M&amp;E FRAMEWORK</p>
+                    <h2>What is being measured</h2>
+                </div>
+                <div class="page-grid">
+                    <article class="page-card">
+                        <h3>Operational continuity</h3>
+                        <p>Offline workflow availability, sync replay success, outage recovery time, and paper fallback frequency.</p>
+                    </article>
+                    <article class="page-card">
+                        <h3>Administrative efficiency</h3>
+                        <p>Registration time, queue handoff speed, documentation completeness, and staff time spent on duplicated work.</p>
+                    </article>
+                    <article class="page-card">
+                        <h3>Procurement visibility</h3>
+                        <p>Stock-out alerts, expiry risk, emergency reorder frequency, and facility-level medicine visibility.</p>
+                    </article>
+                    <article class="page-card">
+                        <h3>Patient safety and governance</h3>
+                        <p>Audit trail completeness, access-control events, consent handling, and incident reporting readiness.</p>
+                    </article>
+                </div>
+                <article class="page-card" style="margin-top:1rem">
+                    <h3>Evaluation timeline</h3>
+                    <p>Baseline and pilot monitoring are underway. First independent M&amp;E results are expected in Q3 2026, subject to facility approval and data quality review.</p>
                 </article>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll" id="ehr-project">
-            <div class="container">
-                <article class="page-card">
-                    <h2><i class="fas fa-shield-halved" aria-hidden="true"></i> Scenario: Interoperable Clinical Records</h2>
-                    <p><strong>Context:</strong> Fragmented systems create duplicate diagnostics and inconsistent history visibility between teams.</p>
-                    <p><strong>Platform design response:</strong> Unified consent-aware records model with auditability and standards-first interoperability pathways.</p>
-                    <p><strong>Target outcome:</strong> Improved record completeness at handoff and reduced duplicate diagnostics during care transitions.</p>
-                    <p><strong>Projection basis:</strong> Clinical handoff and records integrity workflow analysis.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-spacer animate-on-scroll" id="analytics-pilot">
-            <div class="container">
-                <article class="page-card">
-                    <h2><i class="fas fa-chart-line" aria-hidden="true"></i> Scenario: Command-Center Analytics</h2>
-                    <p><strong>Context:</strong> Operations teams need near real-time visibility into throughput bottlenecks and risk indicators.</p>
-                    <p><strong>Platform design response:</strong> Operational dashboards and alerting for queue pressure, supply risk, and escalation thresholds.</p>
-                    <p><strong>Target outcome:</strong> Faster operational decision cycles and earlier risk detection across core workflows.</p>
-                    <p><strong>Projection basis:</strong> Ops and reporting workflow analysis for daily command-center decisions.</p>
-                </article>
+        <section class="email-capture animate-on-scroll" id="updates">
+            <div class="capture-inner">
+                <h3>Follow our impact updates</h3>
+                <p>Quarterly notes on pilot milestones, evaluation progress, and field lessons.</p>
+                <form class="capture-form" onsubmit="handleSubscribe(event)">
+                    <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+                    <button type="submit">Follow impact updates →</button>
+                </form>
+                <p class="capture-note">No spam. Unsubscribe anytime.</p>
             </div>
         </section>
 
@@ -184,13 +190,12 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": "SelNexa Platform Design Scenarios",
+      "@type": "Report",
+      "name": "SelNexa Health Impact Evidence",
+      "description": "Early pilot observations and monitoring framework for the SelNexa Health Platform at Manicaland District Hospital.",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "High-Outpatient Urban Hospital Scenario", "url": "https://www.selnexahealth.com/case-studies.html#bulawayo"},
-        {"@type": "ListItem", "position": 2, "name": "Multi-Facility Procurement Scenario", "url": "https://www.selnexahealth.com/case-studies.html#procurement-sa"},
-        {"@type": "ListItem", "position": 3, "name": "Interoperable Clinical Records Scenario", "url": "https://www.selnexahealth.com/case-studies.html#ehr-project"},
-        {"@type": "ListItem", "position": 4, "name": "Operations Analytics Scenario", "url": "https://www.selnexahealth.com/case-studies.html#analytics-pilot"}
+        {"@type": "ListItem", "position": 1, "name": "Manicaland pilot observation", "url": "https://www.selnexahealth.com/case-studies.html#manicaland"},
+        {"@type": "ListItem", "position": 2, "name": "Monitoring and evaluation framework", "url": "https://www.selnexahealth.com/case-studies.html#measurement"}
       ]
     }
     </script>

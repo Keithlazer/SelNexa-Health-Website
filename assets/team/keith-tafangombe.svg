@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Keith Tafangombe profile portrait placeholder</title>
+  <desc id="desc">Stylized SelNexa Health team portrait for Keith Tafangombe.</desc>
+  <rect width="240" height="240" rx="120" fill="#004c4c"/>
+  <circle cx="120" cy="92" r="44" fill="#d9f3ee"/>
+  <path d="M48 214c12-50 42-78 72-78s60 28 72 78" fill="#e8a020"/>
+  <text x="120" y="222" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="34" font-weight="800" fill="#fff">KT</text>
+</svg>

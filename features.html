@@ -46,12 +46,12 @@
         <section class="hero" id="hero">
             <div class="hero-background"><div class="mesh-gradient"></div></div>
             <div class="hero-content">
-                <div class="hero-overline">PROJECT 01 · SELNEXA HEALTH PLATFORM</div>
-                <h1 class="hero-title">Offline-first hospital management for African care teams</h1>
-                <p class="hero-subtitle">The SelNexa Health Platform is the flagship product from SelNexa Health. It keeps registration, records, procurement, billing, and reporting available when power or connectivity fails.</p>
+                <div class="hero-overline hero-animate">PROJECT 01 · SELNEXA HEALTH PLATFORM</div>
+                <h1 class="hero-title hero-animate">Offline-first hospital management for African care teams</h1>
+                <p class="hero-subtitle hero-animate">The SelNexa Health Platform is the flagship product from SelNexa Health. It keeps registration, records, procurement, billing, and reporting available when power or connectivity fails.</p>
                 <div class="hero-cta-group">
-                    <a class="btn btn-primary" href="/appointments.html">Book Platform Demo</a>
-                    <a class="btn btn-secondary" href="/projects.html">Explore All Projects</a>
+                    <a class="btn btn-primary hero-animate" href="/appointments.html">Book Platform Demo</a>
+                    <a class="btn btn-secondary hero-animate" href="/projects.html">Explore All Projects</a>
                 </div>
             </div>
         </section>
@@ -62,69 +62,128 @@
                     <h2>Platform Modules</h2>
                     <p>These are capabilities of the SelNexa Health Platform, not separate company identities.</p>
                 </div>
-                <div class="feature-block alternating">
-                    <div class="feature-content">
+                <div class="module-tabs" role="tablist" aria-label="SelNexa platform modules">
+                    <button class="module-tab active" data-module="admin" role="tab" aria-selected="true">AI Administration</button>
+                    <button class="module-tab" data-module="procurement" role="tab" aria-selected="false">Predictive Procurement</button>
+                    <button class="module-tab" data-module="records" role="tab" aria-selected="false">Health Records</button>
+                </div>
+
+                <div class="module-content active animate-on-scroll" data-module-panel="admin" id="module-admin">
+                    <div class="module-screenshot">
+                        <img src="/assets/admin-dashboard-screenshot.png" alt="SelNexa Super Admin dashboard interface" loading="lazy" decoding="async">
+                    </div>
+                    <div class="module-details">
                         <h3>AI-driven administration</h3>
                         <p>The Platform automates registration, scheduling, claims, and reporting so clinical teams spend less time on coordination work and more time with patients.</p>
-                        <ul class="feature-benefits">
+                        <ul class="module-bullets">
                             <li>Offline-capable patient intake and queue flow</li>
                             <li>Scheduling and billing workflows tuned to local rules</li>
                             <li>Operational dashboards for administrators</li>
                         </ul>
-                        <a href="/solutions/administration.html" class="btn-link">Explore administration workflows →</a>
-                    </div>
-                    <div class="feature-visual">
-                        <img
-                            src="/assets/admin-dashboard-screenshot.png"
-                            alt="SelNexa Super Admin dashboard interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <div class="module-metric">Estimated 40+ admin minutes saved per patient registration</div>
+                        <a href="/solutions/administration.html" class="btn-link">Explore administration →</a>
                     </div>
                 </div>
-                <div class="feature-block alternating reverse">
-                    <div class="feature-visual">
-                        <img
-                            src="/assets/queue-management-interface.png"
-                            alt="SelNexa queue and records management interface"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+
+                <div class="module-content animate-on-scroll" data-module-panel="procurement" id="module-procurement">
+                    <div class="module-screenshot">
+                        <img src="/assets/queue-management-interface.png" alt="SelNexa queue and procurement management interface" loading="lazy" decoding="async">
                     </div>
-                    <div class="feature-content">
+                    <div class="module-details">
                         <h3>Predictive procurement</h3>
                         <p>The Platform uses demand signals, seasonality, and facility history to help pharmacy teams prevent stock-outs without over-ordering medicines that may expire.</p>
-                        <ul class="feature-benefits">
+                        <ul class="module-bullets">
                             <li>Forecast-guided reorder thresholds</li>
                             <li>Expiry and urgent-stock risk alerts</li>
                             <li>Procurement reviews designed for constrained budgets</li>
                         </ul>
-                        <a href="/solutions/procurement.html" class="btn-link">Explore procurement workflows →</a>
+                        <div class="module-metric">Designed to reduce emergency reorder cycles and expiry exposure</div>
+                        <a href="/solutions/procurement.html" class="btn-link">Explore procurement →</a>
                     </div>
                 </div>
-                <div class="feature-block alternating">
-                    <div class="feature-content">
+
+                <div class="module-content animate-on-scroll" data-module-panel="records" id="module-records">
+                    <div class="module-screenshot">
+                        <img src="/assets/ehr-system-screenshot.png" alt="SelNexa EHR system patient chart view" loading="lazy" decoding="async">
+                    </div>
+                    <div class="module-details">
                         <h3>Offline-capable electronic health records</h3>
                         <p>The Platform keeps patient histories accessible at the point of care, records actions with tamper-evident audit trails, and syncs securely when networks return.</p>
-                        <ul class="feature-benefits">
+                        <ul class="module-bullets">
                             <li>Local data persistence during outages</li>
                             <li>Consent-aware access controls and auditability</li>
                             <li>FHIR-ready interoperability pathways</li>
                         </ul>
-                        <a href="/solutions/records.html" class="btn-link">Explore records continuity →</a>
-                    </div>
-                    <div class="feature-visual">
-                        <img
-                            src="/assets/ehr-system-screenshot.png"
-                            alt="SelNexa EHR system patient chart view"
-                            class="feature-screenshot"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <div class="module-metric">FHIR-ready records continuity for low-bandwidth facilities</div>
+                        <a href="/solutions/records.html" class="btn-link">Explore records →</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="roi">
+            <div class="container">
+                <div class="roi-calculator">
+                    <h3>Estimate your operational impact</h3>
+                    <div class="roi-inputs">
+                        <label>Daily patient volume
+                            <input type="range" id="patients" min="20" max="500" value="100" step="10">
+                            <span id="patients-val">100 patients/day</span>
+                        </label>
+                        <label>Current admin time per patient (minutes)
+                            <input type="range" id="admin-time" min="5" max="60" value="25" step="5">
+                            <span id="admin-val">25 min</span>
+                        </label>
+                    </div>
+                    <div class="roi-outputs">
+                        <div class="roi-metric">
+                            <span class="roi-number" id="hours-saved">0</span>
+                            <span class="roi-label">Staff hours saved / month</span>
+                        </div>
+                        <div class="roi-metric">
+                            <span class="roi-number" id="cost-saved">$0</span>
+                            <span class="roi-label">Estimated monthly value (@ $5/hr)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="comparison">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">HOW WE COMPARE</p>
+                    <h2>Built for infrastructure reality from day one</h2>
+                </div>
+                <table class="comparison-table" aria-label="SelNexa compared with cloud-first EMR solutions">
+                    <thead>
+                        <tr><th>Feature</th><th>SelNexa Health Platform</th><th>Cloud-first EMR</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Works without internet</td><td>✓ Core design</td><td>✗ System fails</td></tr>
+                        <tr><td>Works on 2G</td><td>✓ Optimized</td><td>✗ Unusable</td></tr>
+                        <tr><td>Local data residency</td><td>✓ Default</td><td>Varies</td></tr>
+                        <tr><td>FHIR interoperability</td><td>✓ Built-in</td><td>Varies</td></tr>
+                        <tr><td>African market support</td><td>✓ On-ground teams</td><td>✗ Remote only</td></tr>
+                        <tr><td>Offline sync queue</td><td>✓ Native</td><td>✗ Requires connectivity</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="technical-specifications">
+            <div class="container">
+                <details class="tech-spec" open>
+                    <summary>Technical specifications</summary>
+                    <div class="spec-grid">
+                        <div class="spec-item"><span>Minimum device</span><span>Android 8.0+ / Modern browser (Chrome 90+)</span></div>
+                        <div class="spec-item"><span>Network requirement</span><span>2G capable (50kbps minimum for sync)</span></div>
+                        <div class="spec-item"><span>Offline storage</span><span>SQLite / IndexedDB (device-local)</span></div>
+                        <div class="spec-item"><span>Interoperability</span><span>FHIR R4 compliant</span></div>
+                        <div class="spec-item"><span>Data residency</span><span>Configurable: in-country or regional</span></div>
+                        <div class="spec-item"><span>Breach notification</span><span>&lt; 24h readiness window</span></div>
+                    </div>
+                </details>
             </div>
         </section>
         
@@ -159,6 +218,20 @@
         </div>
     </footer>
     
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SelNexa Health Platform",
+      "applicationCategory": "HealthcareApplication",
+      "operatingSystem": "Web, Android",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/PreOrder",
+        "description": "Pilot deployment pricing: contact for details"
+      }
+    }
+    </script>
     <script src="/js/main.js"></script>
 </body>
 </html>

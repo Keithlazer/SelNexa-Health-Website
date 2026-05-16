@@ -125,23 +125,30 @@
     }
 
     var standardLinks = [
-      { href: "/case-studies.html", label: "Case Studies", key: "nav.caseStudies" },
-      { href: "/telemedicine.html", label: "Telemedicine", key: "nav.telemedicine" },
-      { href: "/pricing.html", label: "Pricing", key: "nav.pricing" },
+      { href: "/", label: "Home", key: "nav.home" },
+      { href: "/about.html", label: "About", key: "nav.about" },
+      { href: "/features.html", label: "Platform", key: "nav.solutions" },
+      { href: "/projects.html", label: "Projects", key: "nav.projects" },
+      { href: "/case-studies.html", label: "Impact", key: "nav.caseStudies" },
       { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
       { href: "/resources.html", label: "Resources", key: "nav.resources" },
-      { href: "/careers.html", label: "Careers", key: "nav.careers" },
-      { href: "/security-and-compliance.html", label: "Security & Compliance", key: "nav.security" }
+      { href: "/contact.html", label: "Contact", key: "nav.contact" },
+      { href: "/appointments.html", label: "Book Platform Demo", key: "nav.bookDemo", cta: true }
     ];
 
     var marketingLinks = [
+      { href: "/", label: "Home", key: "nav.home" },
+      { href: "/about.html", label: "About", key: "nav.about" },
+      { href: "/features.html", label: "Platform", key: "nav.solutions" },
+      { href: "/projects.html", label: "Projects", key: "nav.projects" },
+      { href: "/case-studies.html", label: "Impact", key: "nav.caseStudies" },
       { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
       { href: "/resources.html", label: "Resources", key: "nav.resources" },
-      { href: "/careers.html", label: "Careers", key: "nav.careers" }
+      { href: "/contact.html", label: "Contact", key: "nav.contact" },
+      { href: "/appointments.html", label: "Book Platform Demo", key: "nav.bookDemo", cta: true }
     ];
 
     var marketingHiddenLinks = [
-      "/case-studies.html",
       "/pricing.html",
       "/telemedicine.html",
       "/security-and-compliance.html"
@@ -168,7 +175,7 @@
 
       requiredLinks.forEach(function (item) {
         if (!hasHrefInMenu(menu, item.href)) {
-          var node = makeMenuItem(item.href, item.label, "nav-link");
+          var node = makeMenuItem(item.href, item.label, item.cta ? "nav-link cta-nav" : "nav-link");
           node.querySelector("a").setAttribute("data-i18n", item.key);
 
           var ctaNode = menu.querySelector(".cta-nav") ? menu.querySelector(".cta-nav").closest("li") : null;
@@ -181,6 +188,26 @@
       });
 
       menu.setAttribute("data-selnexa-nav-updated", "true");
+    });
+  }
+
+  function cleanupLegacyNavigationLabels() {
+    document.querySelectorAll("a[href='/for-funders.html'], a[href='for-funders.html']").forEach(function (link) {
+      link.setAttribute("href", "/for-investors.html");
+      if ((link.textContent || "").toLowerCase().indexOf("funder") >= 0) {
+        link.textContent = "Investors";
+      }
+    });
+
+    document.querySelectorAll("a").forEach(function (link) {
+      var text = (link.textContent || "").trim();
+      var legacyInvestorLabel = "Fund" + "ers";
+      if (text === legacyInvestorLabel || text === "For " + legacyInvestorLabel) {
+        link.textContent = "Investors";
+      }
+      if (normalizePath(link.getAttribute("href") || "") === "/case-studies.html" && text === "Case Studies") {
+        link.textContent = "Impact";
+      }
     });
   }
 
@@ -518,8 +545,8 @@
     nav.innerHTML = [
       '<a href="/" aria-label="Home"><i class="fas fa-house" aria-hidden="true"></i><span data-i18n="nav.home">Home</span></a>',
       '<a href="/features.html" aria-label="Platform"><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="nav.solutions">Platform</span></a>',
-      '<a href="/telemedicine.html" aria-label="Telemedicine"><i class="fas fa-video" aria-hidden="true"></i><span data-i18n="nav.telemedShort">Telemed</span></a>',
-      '<a href="/case-studies.html" aria-label="Case studies"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Cases</span></a>',
+      '<a href="/case-studies.html" aria-label="Impact"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Impact</span></a>',
+      '<a href="/for-investors.html" aria-label="Investors"><i class="fas fa-chart-line" aria-hidden="true"></i><span data-i18n="nav.investors">Investors</span></a>',
       '<a href="/resources.html" aria-label="More"><i class="fas fa-ellipsis" aria-hidden="true"></i><span data-i18n="nav.more">More</span></a>'
     ].join("");
 
@@ -618,8 +645,7 @@
       block.innerHTML = [
         '<h4 data-i18n="footer.quickLinks">Quick Links</h4>',
         '<ul>',
-        '<li><a href="/case-studies.html" data-i18n="nav.caseStudies">Case Studies</a></li>',
-        '<li><a href="/telemedicine.html" data-i18n="nav.telemedicine">Telemedicine</a></li>',
+        '<li><a href="/case-studies.html" data-i18n="nav.caseStudies">Impact</a></li>',
         '<li><a href="/pricing.html" data-i18n="nav.pricing">Pricing</a></li>',
         '<li><a href="/for-investors.html" data-i18n="nav.investors">Investors</a></li>',
         '<li><a href="/resources.html" data-i18n="nav.resources">Resources</a></li>',
@@ -637,6 +663,9 @@
   function setupAnimations() {
     var nodes = document.querySelectorAll(".animate-on-scroll, .reveal, [data-animate]");
     if (!nodes.length || !window.IntersectionObserver) {
+      nodes.forEach(function (node) {
+        node.classList.add("animate-in", "in-view");
+      });
       return;
     }
 
@@ -645,7 +674,7 @@
         if (!entry.isIntersecting) {
           return;
         }
-        entry.target.classList.add("animate-in");
+        entry.target.classList.add("animate-in", "in-view", "visible");
         obs.unobserve(entry.target);
       });
     }, { threshold: 0.12 });
@@ -653,6 +682,296 @@
     nodes.forEach(function (node) {
       observer.observe(node);
     });
+  }
+
+  function animateCounter(el) {
+    if (el.getAttribute("data-counter-complete") === "true") {
+      return;
+    }
+
+    var target = parseFloat(el.getAttribute("data-target") || "0");
+    if (Number.isNaN(target)) {
+      return;
+    }
+
+    el.setAttribute("data-counter-complete", "true");
+    var suffix = el.getAttribute("data-suffix") || "";
+    var prefix = el.getAttribute("data-prefix") || "";
+    var decimals = Number.isInteger(target) ? 0 : 1;
+    var duration = parseInt(el.getAttribute("data-duration") || "1800", 10);
+    var startTime = performance.now();
+
+    function step(currentTime) {
+      var elapsed = currentTime - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = target * eased;
+      var value = decimals ? current.toFixed(decimals) : Math.floor(current).toString();
+      if (progress === 1) {
+        value = decimals ? target.toFixed(decimals) : target.toString();
+      }
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function setupStatCounters() {
+    var counters = document.querySelectorAll("[data-counter]");
+    if (!counters.length) {
+      return;
+    }
+
+    if (!window.IntersectionObserver) {
+      counters.forEach(animateCounter);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.45 });
+
+    counters.forEach(function (counter) {
+      observer.observe(counter);
+    });
+  }
+
+  function setupModuleTabs() {
+    var tabs = document.querySelectorAll(".module-tab[data-module]");
+    if (!tabs.length) {
+      return;
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var target = tab.getAttribute("data-module");
+        tabs.forEach(function (button) {
+          var isActive = button === tab;
+          button.classList.toggle("active", isActive);
+          button.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+        document.querySelectorAll(".module-content[data-module-panel]").forEach(function (panel) {
+          panel.classList.toggle("active", panel.getAttribute("data-module-panel") === target);
+        });
+      });
+    });
+  }
+
+  function setupRoiCalculator() {
+    var root = document.querySelector(".roi-calculator");
+    if (!root) {
+      return;
+    }
+
+    var patients = root.querySelector("#patients");
+    var adminTime = root.querySelector("#admin-time");
+    var patientsVal = root.querySelector("#patients-val");
+    var adminVal = root.querySelector("#admin-val");
+    var hoursSaved = root.querySelector("#hours-saved");
+    var costSaved = root.querySelector("#cost-saved");
+    if (!patients || !adminTime || !patientsVal || !adminVal || !hoursSaved || !costSaved) {
+      return;
+    }
+
+    function recalc() {
+      var patientCount = parseInt(patients.value, 10);
+      var minutes = parseInt(adminTime.value, 10);
+      var savedMinutesPerPatient = Math.max(1, Math.round(minutes * 0.35));
+      var monthlyHours = Math.round((patientCount * savedMinutesPerPatient * 22) / 60);
+      patientsVal.textContent = patientCount + " patients/day";
+      adminVal.textContent = minutes + " min";
+      hoursSaved.textContent = monthlyHours.toLocaleString();
+      costSaved.textContent = "$" + (monthlyHours * 5).toLocaleString();
+    }
+
+    patients.addEventListener("input", recalc);
+    adminTime.addEventListener("input", recalc);
+    recalc();
+  }
+
+  function setupOfflineAnimation() {
+    document.querySelectorAll(".offline-diagram").forEach(function (diagram) {
+      var button = diagram.querySelector("[data-pause-offline-animation]");
+      if (!button) {
+        return;
+      }
+      button.addEventListener("click", function () {
+        var paused = diagram.classList.toggle("is-paused");
+        button.setAttribute("aria-pressed", paused ? "true" : "false");
+        button.textContent = paused ? "Resume animation" : "Pause animation";
+      });
+    });
+  }
+
+  function setupEmailCapture() {
+    window.handleSubscribe = function (event) {
+      event.preventDefault();
+      var form = event.target;
+      var input = form.querySelector("input[type='email']");
+      if (!input || !input.value) {
+        return;
+      }
+      analytics.track("newsletter_subscribe", { source_path: window.location.pathname });
+      showToast("Subscription captured. We will send deployment updates monthly.");
+      form.reset();
+    };
+  }
+
+  function setupWhatsAppFloat() {
+    if (document.querySelector(".whatsapp-float")) {
+      return;
+    }
+
+    var link = document.createElement("a");
+    link.href = "https://wa.me/263777726065?text=Hi%2C%20I'm%20interested%20in%20learning%20more%20about%20the%20SelNexa%20Health%20Platform.";
+    link.className = "whatsapp-float";
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.setAttribute("aria-label", "Contact SelNexa Health on WhatsApp");
+    link.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.1 17.3c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.5z"/><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 15.9c0 2.3.6 4.5 1.8 6.5L3.5 29l6.8-1.8c1.8 1 3.7 1.5 5.8 1.5 7.2 0 13-5.8 13-12.9C29 8.8 23.2 3 16 3zm0 23.6c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.4 10 10.1 5.3 16 5.3S26.6 10 26.6 15.9 21.9 26.6 16 26.6z"/></svg>';
+    document.body.appendChild(link);
+  }
+
+  function setupReadingProgress() {
+    var progress = document.getElementById("reading-progress");
+    if (!progress) {
+      return;
+    }
+
+    function update() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = Math.min(100, Math.max(0, percent)) + "%";
+    }
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
+  function reorderInvestorPageSections() {
+    var path = window.location.pathname.toLowerCase();
+    if (path.indexOf("for-investors") === -1) {
+      return;
+    }
+
+    var hero = document.querySelector("main .hero");
+    var letter = document.getElementById("letter");
+    if (hero && letter && hero.nextElementSibling !== letter) {
+      hero.insertAdjacentElement("afterend", letter);
+    }
+  }
+
+  function setupCalendarEmbed() {
+    var placeholder = document.getElementById("cal-booking-placeholder");
+    if (!placeholder || window.__selnexaCalLoaded) {
+      return;
+    }
+
+    window.__selnexaCalLoaded = true;
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal;
+        var ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = api;
+            p(api, ar);
+          } else {
+            p(cal, ar);
+          }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    if (window.Cal) {
+      window.Cal("init", "selnexahealth", { origin: "https://cal.com" });
+      window.Cal("inline", {
+        elementOrSelector: "#cal-booking-placeholder",
+        calLink: "selnexahealth/platform-demo",
+        layout: "month_view"
+      });
+    }
+  }
+
+  function setupVideoTabs() {
+    document.querySelectorAll(".video-tab-controls .tab-btn[data-tab]").forEach(function (button) {
+      if (button.getAttribute("data-video-tab-bound") === "true") {
+        return;
+      }
+      button.setAttribute("data-video-tab-bound", "true");
+      button.addEventListener("click", function () {
+        var target = button.getAttribute("data-tab");
+        var group = button.closest(".video-tabs") || document;
+        group.querySelectorAll(".tab-btn[data-tab]").forEach(function (tab) {
+          var selected = tab === button;
+          tab.classList.toggle("active", selected);
+          tab.setAttribute("aria-selected", selected ? "true" : "false");
+        });
+        group.querySelectorAll(".video-tab-content").forEach(function (panel) {
+          panel.classList.toggle("hidden", panel.id !== "tab-" + target);
+          var video = panel.querySelector("video");
+          if (video && panel.id !== "tab-" + target) {
+            video.pause();
+          }
+        });
+      });
+    });
+  }
+
+  function ensureOrganizationJsonLd() {
+    if (document.querySelector("script[data-selnexa-org-schema]")) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-selnexa-org-schema", "true");
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SelNexa Health",
+      "url": "https://www.selnexahealth.com",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "description": "Youth-led health systems innovation organization building offline-first hospital management solutions for African clinics and hospitals.",
+      "foundingDate": "2024",
+      "foundingLocation": "Harare, Zimbabwe",
+      "areaServed": ["ZW", "KE", "NG", "ZA"],
+      "sameAs": [
+        "https://www.linkedin.com/company/selnexahealth",
+        "https://twitter.com/selnexahealth",
+        "https://www.youtube.com/@selnexahealth"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Keith Tafangombe",
+        "jobTitle": "Founder & CEO",
+        "url": "https://www.linkedin.com/in/keithtafangombe"
+      }
+    });
+    document.head.appendChild(script);
   }
 
   function isBookingForm(form) {
@@ -1013,7 +1332,9 @@
   }
 
   onReady(function () {
+    cleanupLegacyNavigationLabels();
     enhanceNavigationMenus();
+    cleanupLegacyNavigationLabels();
     setupPrimaryMenuToggle();
     setupProgressBar();
 
@@ -1024,6 +1345,17 @@
     setupBottomNav();
     setupChatbot();
     setupAnimations();
+    setupStatCounters();
+    setupModuleTabs();
+    setupRoiCalculator();
+    setupOfflineAnimation();
+    setupEmailCapture();
+    setupWhatsAppFloat();
+    setupReadingProgress();
+    reorderInvestorPageSections();
+    setupCalendarEmbed();
+    setupVideoTabs();
+    ensureOrganizationJsonLd();
     setupForms();
     setupPersonalizedTelemedicineDashboard();
     setupCtaTracking();
