@@ -1214,6 +1214,22 @@ html[data-theme="dark"] .tech-spec {
   border-color: rgba(255,255,255,0.12);
 }
 
+/* Ensure white-surface sections keep dark text when dark theme is active */
+html[data-theme="dark"] .founding-story,
+html[data-theme="dark"] .founding-story h1,
+html[data-theme="dark"] .founding-story h2,
+html[data-theme="dark"] .founding-story h3,
+html[data-theme="dark"] .founding-story p,
+html[data-theme="dark"] .founding-story li,
+html[data-theme="dark"] .timeline-section,
+html[data-theme="dark"] .advisors,
+html[data-theme="dark"] .comparison-table,
+html[data-theme="dark"] .comparison-table th,
+html[data-theme="dark"] .comparison-table td {
+  color: var(--uniform-text) !important;
+  background: #ffffff !important;
+}
+
 @media (max-width: 900px) {
   .deployment-map,
   .module-content.active,
