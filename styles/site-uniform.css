@@ -483,62 +483,75 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .integration-strip {
   border-top: 0.5px solid var(--color-border);
   border-bottom: 0.5px solid var(--color-border);
-  padding: 1rem 0;
+  padding: 1rem 0 1.2rem;
   overflow: hidden;
   background: #ffffff;
 }
 
 .integration-strip .container {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  display: grid;
+  gap: 0.7rem;
 }
 
 .strip-label {
-  flex: 0 0 auto;
   margin: 0;
   color: var(--color-text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
+}
+
+.strip-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.strip-marquee:hover .strip-logos {
+  animation-play-state: paused;
 }
 
 .strip-logos {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-width: max-content;
-  animation: marquee 22s linear infinite;
+  gap: 0.9rem;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 26s linear infinite;
 }
 
 .logo-pill {
   background: var(--color-bg-secondary);
   border: 0.5px solid var(--color-border);
   border-radius: 100px;
-  padding: 6px 14px;
+  padding: 10px 20px;
   font-size: 12px;
   font-weight: 600;
   color: var(--color-text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
-  min-height: 36px;
+  min-width: 108px;
+  min-height: 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.logo-pill img {
+.logo-pill img,
+.logo-pill__image {
   display: block;
-  height: 18px;
+  height: 26px;
   width: auto;
-  max-width: 96px;
+  max-width: 140px;
   object-fit: contain;
+  transform: scale(1.42);
+  transform-origin: center center;
 }
 
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-45%); }
+  to { transform: translateX(-50%); }
 }
 
 .deployment-map {
@@ -807,34 +820,63 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-size: 0.82rem;
 }
 
+.team-section .team-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.8rem);
+}
+
+.team-section .team-card {
+  text-align: left;
+  padding: clamp(1.1rem, 2.5vw, 1.8rem);
+}
+
+@media (max-width: 1100px) {
+  .team-section .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-section .team-card {
+    text-align: center;
+  }
+}
+
 .team-photo-wrap {
-  width: 104px;
-  height: 104px;
-  margin: 0 auto 1rem;
+  width: clamp(156px, 17vw, 210px);
+  height: clamp(156px, 17vw, 210px);
+  margin: 0 auto 1.1rem;
   position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(232,160,32,0.35);
+  background: linear-gradient(140deg, rgba(0,76,76,0.2), rgba(14,116,144,0.08));
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .team-photo,
 .team-avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
   object-fit: cover;
-  border: 2px solid var(--color-border);
-  display: grid;
-  place-items: center;
-  margin: 4px;
-  background: linear-gradient(135deg, rgba(0,76,76,0.92), rgba(14,116,144,0.92));
+  border: 0;
+  display: block;
+  margin: 0;
+  background: transparent;
   color: #ffffff;
   font-weight: 800;
   font-size: 1.35rem;
 }
 
+.team-photo {
+  transform: scale(1.55);
+  transform-origin: center 28%;
+}
+
 .team-photo-ring {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  border: 1px solid rgba(232,160,32,0.55);
+  border-radius: 18px;
+  border: 1px solid rgba(232,160,32,0.6);
   pointer-events: none;
 }
 
@@ -1304,8 +1346,28 @@ html[data-theme="dark"] .comparison-table td {
   }
 
   .integration-strip .container {
-    flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.7rem;
+  }
+
+  .logo-pill {
+    min-width: 94px;
+    min-height: 50px;
+    padding: 8px 14px;
+  }
+
+  .logo-pill img,
+  .logo-pill__image {
+    height: 22px;
+    max-width: 118px;
+    transform: scale(1.28);
+  }
+
+  .team-section .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-section .team-card {
+    text-align: center;
   }
 
   .offline-step-labels,
