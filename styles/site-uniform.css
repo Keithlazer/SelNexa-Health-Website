@@ -90,7 +90,7 @@ header .navbar.scrolled {
 .nav-links a,
 .nav-menu .nav-link,
 .nav-menu > .nav-item > a {
-  color: #0f172a !important;
+  color: #07d0c3 !important;
   font-weight: 600;
 }
 
@@ -833,7 +833,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .story-eyebrow {
-  color: rgba(0,76,76,0.7);
+  color: rgba(2, 29, 29, 0.7);
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -1212,6 +1212,40 @@ html[data-theme="dark"] .tech-spec {
   background: #13233a;
   color: #e8f1ff;
   border-color: rgba(255,255,255,0.12);
+}
+
+/* Ensure white-surface sections keep dark text when dark theme is active */
+html[data-theme="dark"] .founding-story,
+html[data-theme="dark"] .founding-story h1,
+html[data-theme="dark"] .founding-story h2,
+html[data-theme="dark"] .founding-story h3,
+html[data-theme="dark"] .founding-story p,
+html[data-theme="dark"] .founding-story li,
+html[data-theme="dark"] .founding-story .story-eyebrow,
+html[data-theme="dark"] .timeline-section,
+html[data-theme="dark"] .timeline-section .section-header h2,
+html[data-theme="dark"] .timeline-section .section-header p,
+html[data-theme="dark"] .timeline-section h3,
+html[data-theme="dark"] .timeline-section p,
+html[data-theme="dark"] .timeline-item,
+html[data-theme="dark"] .advisors,
+html[data-theme="dark"] .comparison-table,
+html[data-theme="dark"] .comparison-table th,
+html[data-theme="dark"] .comparison-table td {
+  color: var(--uniform-text) !important;
+  background: #ffffff !important;
+}
+
+/* Extra strong overrides for specific elements that were still inheriting light colors */
+html[data-theme="dark"] .founding-story h2,
+html[data-theme="dark"] .founding-story .story-copy p,
+html[data-theme="dark"] .founding-story .story-eyebrow,
+html[data-theme="dark"] .timeline-section h3,
+html[data-theme="dark"] .timeline-section p,
+html[data-theme="dark"] .timeline-item,
+html[data-theme="dark"] .comparison-table th,
+html[data-theme="dark"] .comparison-table td {
+  color: #111827 !important; /* dark text for readability */
 }
 
 @media (max-width: 900px) {
