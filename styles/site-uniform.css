@@ -516,12 +516,24 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   background: var(--color-bg-secondary);
   border: 0.5px solid var(--color-border);
   border-radius: 100px;
-  padding: 5px 14px;
+  padding: 6px 14px;
   font-size: 12px;
   font-weight: 600;
   color: var(--color-text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-pill img {
+  display: block;
+  height: 18px;
+  width: auto;
+  max-width: 96px;
+  object-fit: contain;
 }
 
 @keyframes marquee {
