@@ -489,7 +489,9 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .integration-strip .container {
-  display: grid;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
   gap: 0.7rem;
 }
 
@@ -500,9 +502,13 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  line-height: 1.2;
+  width: 100%;
+  white-space: normal;
 }
 
 .strip-marquee {
+  display: block;
   width: 100%;
   overflow: hidden;
 }
