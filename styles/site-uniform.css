@@ -570,10 +570,10 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .africa-map-card {
   background: #ffffff;
-  border: 1px solid var(--uniform-border);
-  border-radius: var(--radius-lg);
-  padding: clamp(1rem, 3vw, 2rem);
-  box-shadow: var(--uniform-shadow);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: clamp(2rem, 5vw, 4rem);
+  box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.08);
 }
 
 .africa-map-svg {
@@ -583,43 +583,72 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .map-land {
-  fill: #d9e2df;
-  stroke: #ffffff;
+  fill: #f1f5f9;
+  stroke: #cbd5e1;
   stroke-width: 2;
 }
 
+.map-location {
+  cursor: pointer;
+}
+
 .map-country-target {
-  fill: rgba(0, 76, 76, 0.24);
+  fill: rgba(13, 148, 136, 0.06);
+  transition: fill 0.3s ease;
+}
+
+.map-location:hover .map-country-target {
+  fill: rgba(13, 148, 136, 0.12);
+}
+
+.map-label {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  fill: #1e293b;
+  letter-spacing: 0.03em;
 }
 
 @keyframes mapPulse {
-  0% { r: 6; opacity: 0.9; }
-  70% { r: 14; opacity: 0; }
-  100% { r: 6; opacity: 0; }
+  0% { r: 6px; opacity: 0.8; }
+  70% { r: 24px; opacity: 0; }
+  100% { r: 6px; opacity: 0; }
 }
 
 .map-pulse {
-  animation: mapPulse 2.2s ease-out infinite;
+  animation: mapPulse 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
 
-.map-dot-active { fill: #22c55e; }
-.map-dot-talks { fill: #3b82f6; }
+.map-dot-active {
+  fill: #0d9488;
+}
+
+.map-dot-talks {
+  fill: #1e3a8a;
+}
 
 .map-legend {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--uniform-muted);
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  font-family: inherit;
+  font-size: 15px;
+  color: #475569;
+  font-weight: 500;
 }
 
 .legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
-  border-radius: 999px;
-  margin-right: 0.4rem;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
 }
 
 .offline-diagram {

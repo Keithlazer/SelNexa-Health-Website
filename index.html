@@ -816,26 +816,38 @@
                     <div class="africa-map-card">
                         <svg class="africa-map-svg" viewBox="0 0 640 720" role="img" aria-label="Africa deployment map highlighting Zimbabwe, Kenya, Nigeria, and South Africa">
                             <path class="map-land" d="M310 55 427 92l72 86-28 90 63 94-31 103-84 43-24 134-92 39-78-41-11-89-84-55 33-84-49-70 36-100 65-43 15-86z"/>
-                            <circle class="map-country-target" cx="270" cy="390" r="28"></circle>
-                            <circle class="map-country-target" cx="430" cy="420" r="24"></circle>
-                            <circle class="map-country-target" cx="395" cy="530" r="25"></circle>
-                            <circle class="map-country-target" cx="375" cy="590" r="30"></circle>
-                            <circle class="map-pulse map-dot-talks" cx="270" cy="390" r="6"></circle>
-                            <circle class="map-dot-talks" cx="270" cy="390" r="6"></circle>
-                            <text x="236" y="374">Nigeria</text>
-                            <circle class="map-pulse map-dot-talks" cx="430" cy="420" r="6"></circle>
-                            <circle class="map-dot-talks" cx="430" cy="420" r="6"></circle>
-                            <text x="444" y="424">Kenya</text>
-                            <circle class="map-pulse map-dot-active" cx="395" cy="530" r="6"></circle>
-                            <circle class="map-dot-active" cx="395" cy="530" r="6"></circle>
-                            <text x="409" y="534">Zimbabwe</text>
-                            <circle class="map-pulse map-dot-talks" cx="375" cy="590" r="6"></circle>
-                            <circle class="map-dot-talks" cx="375" cy="590" r="6"></circle>
-                            <text x="388" y="612">South Africa</text>
+
+                            <g class="map-location">
+                                <circle class="map-country-target" cx="230" cy="340" r="40"></circle>
+                                <circle class="map-pulse map-dot-talks" cx="230" cy="340" r="6"></circle>
+                                <circle class="map-dot-talks" cx="230" cy="340" r="6"></circle>
+                                <text class="map-label" x="230" y="315" text-anchor="middle">Nigeria</text>
+                            </g>
+
+                            <g class="map-location">
+                                <circle class="map-country-target" cx="460" cy="390" r="40"></circle>
+                                <circle class="map-pulse map-dot-talks" cx="460" cy="390" r="6"></circle>
+                                <circle class="map-dot-talks" cx="460" cy="390" r="6"></circle>
+                                <text class="map-label" x="460" y="365" text-anchor="middle">Kenya</text>
+                            </g>
+
+                            <g class="map-location">
+                                <circle class="map-country-target" cx="400" cy="540" r="40"></circle>
+                                <circle class="map-pulse map-dot-active" cx="400" cy="540" r="6"></circle>
+                                <circle class="map-dot-active" cx="400" cy="540" r="6"></circle>
+                                <text class="map-label" x="400" y="515" text-anchor="middle">Zimbabwe</text>
+                            </g>
+
+                            <g class="map-location">
+                                <circle class="map-country-target" cx="370" cy="630" r="40"></circle>
+                                <circle class="map-pulse map-dot-talks" cx="370" cy="630" r="6"></circle>
+                                <circle class="map-dot-talks" cx="370" cy="630" r="6"></circle>
+                                <text class="map-label" x="370" y="675" text-anchor="middle">South Africa</text>
+                            </g>
                         </svg>
                         <div class="map-legend">
-                            <span><span class="legend-dot map-dot-active"></span>Pilot active</span>
-                            <span><span class="legend-dot map-dot-talks"></span>In active talks</span>
+                            <span class="legend-item"><span class="legend-dot map-dot-active"></span>Pilot active</span>
+                            <span class="legend-item"><span class="legend-dot map-dot-talks"></span>In active talks</span>
                         </div>
                     </div>
                     <div>
