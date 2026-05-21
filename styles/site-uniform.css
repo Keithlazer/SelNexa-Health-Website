@@ -45,7 +45,6 @@
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.04);
   --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -72,6 +71,7 @@ header .navbar {
   position: sticky;
   top: 0;
   z-index: 100;
+
   background: rgba(249, 245, 238, 0.72);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
@@ -698,24 +698,42 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   font-family: inherit;
-  font-size: 15px;
-  color: #475569;
+  font-size: 14px;
+  color: #64748b;
   font-weight: 500;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
 }
 
 .legend-dot {
-  width: 12px;
-  height: 12px;
   display: inline-block;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .africa-map-card,
+  .map-location {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .map-pulse,
+  .active-pulse {
+    animation: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* Accessibility */
