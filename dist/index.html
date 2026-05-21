@@ -605,7 +605,7 @@
             }
         }
     </style>
-  <link rel="stylesheet" href="/dist/assets/index-9436f9f2.css">
+  <link rel="stylesheet" href="/dist/assets/index-25fb3180.css">
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -816,37 +816,8 @@
 
                 <div class="deployment-map animate-on-scroll">
                     <div class="africa-map-card">
-                        <svg class="africa-map-svg" viewBox="0 0 640 720" role="img" aria-label="Geographically accurate Africa deployment map highlighting Zimbabwe, Kenya, Nigeria, and South Africa">
-                            <path class="map-land" d="M245,110 L265,102 L285,106 L310,115 L325,110 L345,115 L370,125 L395,120 L410,123 L425,145 L435,160 L445,185 L475,200 L495,210 L512,225 L505,245 L485,255 L470,265 L465,285 L475,305 L490,320 L515,335 L530,350 L518,370 L488,388 L472,412 L455,440 L440,470 L425,500 L412,530 L398,565 L388,600 L378,630 L368,658 L355,672 L342,676 L332,668 L328,648 L324,618 L324,588 L318,558 L308,528 L292,498 L272,472 L252,452 L238,432 L222,408 L208,382 L182,368 L158,352 L142,338 L132,312 L128,288 L132,262 L142,242 L162,228 L188,222 L212,218 L228,202 L232,182 L228,162 L222,142 L228,128 Z"/>
 
-                            <g class="map-location" style="--stagger: 2;">
-                                <circle class="map-country-target" cx="260" cy="380" r="40"></circle>
-                                <circle class="map-pulse map-dot-talks" cx="260" cy="380" r="6"></circle>
-                                <circle class="map-dot-talks" cx="260" cy="380" r="6"></circle>
-                                <text class="map-label" x="260" y="355" text-anchor="middle">Nigeria</text>
-                            </g>
-
-                            <g class="map-location" style="--stagger: 3;">
-                                <circle class="map-country-target" cx="465" cy="400" r="40"></circle>
-                                <circle class="map-pulse map-dot-talks" cx="465" cy="400" r="6"></circle>
-                                <circle class="map-dot-talks" cx="465" cy="400" r="6"></circle>
-                                <text class="map-label" x="465" y="375" text-anchor="middle">Kenya</text>
-                            </g>
-
-                            <g class="map-location pilot-active" style="--stagger: 1;">
-                                <circle class="map-country-target" cx="395" cy="560" r="48"></circle>
-                                <circle class="map-pulse active-pulse map-dot-active" cx="395" cy="560" r="8"></circle>
-                                <circle class="map-dot-active" cx="395" cy="560" r="8"></circle>
-                                <text class="map-label" x="395" y="525" text-anchor="middle">Zimbabwe</text>
-                            </g>
-
-                            <g class="map-location" style="--stagger: 4;">
-                                <circle class="map-country-target" cx="365" cy="640" r="40"></circle>
-                                <circle class="map-pulse map-dot-talks" cx="365" cy="640" r="6"></circle>
-                                <circle class="map-dot-talks" cx="365" cy="640" r="6"></circle>
-                                <text class="map-label" x="365" y="685" text-anchor="middle">South Africa</text>
-                            </g>
-                        </svg>
+                        <div id="chartdiv" style="width: 100%; height: 600px; display: block;"></div>
 
                         <div class="map-legend">
                             <span class="legend-item"><span class="legend-dot map-dot-active"></span>Pilot active</span>
@@ -1243,6 +1214,115 @@
             window.addEventListener('load', () => { hidePreloader(); clearInterval(interval); clearTimeout(stop); });
             document.addEventListener('preloader:hide', () => { hidePreloader(); clearInterval(interval); clearTimeout(stop); });
         })();
+    </script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/region/africa/africaLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script>
+        am5.ready(function() {
+            var root = am5.Root.new("chartdiv");
+            root.setThemes([am5themes_Animated.new(root)]);
+
+            var chart = root.container.children.push(am5map.MapChart.new(root, {
+                panX: "none",
+                panY: "none",
+                wheelY: "none",
+                projection: am5map.geoMercator()
+            }));
+
+            var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                geoJSON: am5geodata_region_africa_africaLow
+            }));
+
+            polygonSeries.mapPolygons.template.setAll({
+                tooltipText: "{name}",
+                fill: am5.color(0xf8fafc),
+                stroke: am5.color(0xcbd5e1),
+                strokeWidth: 1.5,
+                interactive: true
+            });
+
+            polygonSeries.mapPolygons.template.states.create("hover", {
+                fill: am5.color(0xe2e8f0)
+            });
+
+            var activeCountries = {
+                "ZW": { color: 0x0d9488 },
+                "NG": { color: 0x1e3a8a },
+                "KE": { color: 0x1e3a8a },
+                "ZA": { color: 0x1e3a8a }
+            };
+
+            polygonSeries.mapPolygons.template.adapters.add("fill", function(fill, target) {
+                if (target.dataItem) {
+                    var id = target.dataItem.dataContext.id;
+                    if (activeCountries[id]) {
+                        return am5.color(activeCountries[id].color).lighten(0.8);
+                    }
+                }
+                return fill;
+            });
+
+            var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+
+            pointSeries.bullets.push(function(root, series, dataItem) {
+                var container = am5.Container.new(root, {
+                    centerX: am5.p50,
+                    centerY: am5.p50
+                });
+                var data = dataItem.dataContext;
+                var color = am5.color(data.state === "pilot" ? 0x0d9488 : 0x1e3a8a);
+
+                var pulse = container.children.push(am5.Circle.new(root, {
+                    radius: 6,
+                    fill: color,
+                    fillOpacity: 0.5
+                }));
+
+                pulse.animate({
+                    key: "radius",
+                    to: data.state === "pilot" ? 30 : 18,
+                    duration: 2500,
+                    easing: am5.ease.out(am5.ease.cubic),
+                    loops: Infinity
+                });
+
+                pulse.animate({
+                    key: "opacity",
+                    to: 0,
+                    duration: 2500,
+                    easing: am5.ease.out(am5.ease.cubic),
+                    loops: Infinity
+                });
+
+                container.children.push(am5.Circle.new(root, {
+                    radius: data.state === "pilot" ? 8 : 5,
+                    fill: color
+                }));
+
+                container.children.push(am5.Label.new(root, {
+                    text: data.title,
+                    fill: am5.color(0x334155),
+                    fontWeight: data.state === "pilot" ? "700" : "600",
+                    fontSize: data.state === "pilot" ? 15 : 13,
+                    centerY: am5.p50,
+                    centerX: am5.p50,
+                    dy: -20
+                }));
+
+                return am5.Bullet.new(root, { sprite: container });
+            });
+
+            pointSeries.data.setAll([
+                { geometry: { type: "Point", coordinates: [29.154857, -19.015438] }, title: "Zimbabwe", state: "pilot" },
+                { geometry: { type: "Point", coordinates: [8.675277, 9.081999] }, title: "Nigeria", state: "talks" },
+                { geometry: { type: "Point", coordinates: [37.906193, -0.023559] }, title: "Kenya", state: "talks" },
+                { geometry: { type: "Point", coordinates: [22.937506, -30.559482] }, title: "South Africa", state: "talks" }
+            ]);
+
+            chart.appear(1000, 100);
+        });
     </script>
     <script src="/js/main.js"></script>
 </body>
