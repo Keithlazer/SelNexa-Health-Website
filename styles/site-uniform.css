@@ -627,7 +627,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .map-land {
   fill: #f8fafc;
   stroke: #e2e8f0;
-  stroke-width: 1.5;
+  stroke-width: 2;
   stroke-linejoin: round;
 }
 
