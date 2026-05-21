@@ -574,6 +574,15 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border-radius: 16px;
   padding: clamp(2rem, 5vw, 4rem);
   box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible .africa-map-card,
+.animate-on-scroll.in-view .africa-map-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .africa-map-svg {
@@ -590,15 +599,30 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .map-location {
   cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.animate-on-scroll.visible .map-location,
+.animate-on-scroll.in-view .map-location {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(0.3s + (var(--stagger) * 0.15s));
 }
 
 .map-country-target {
   fill: rgba(13, 148, 136, 0.06);
-  transition: fill 0.3s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .map-location:hover .map-country-target {
   fill: rgba(13, 148, 136, 0.12);
+  transform: scale(1.1);
 }
 
 .map-label {
@@ -607,16 +631,59 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-weight: 600;
   fill: #1e293b;
   letter-spacing: 0.03em;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.3s ease, fill 0.3s ease;
 }
 
-@keyframes mapPulse {
-  0% { r: 6px; opacity: 0.8; }
-  70% { r: 24px; opacity: 0; }
-  100% { r: 6px; opacity: 0; }
+.map-location:hover .map-label {
+  transform: translateY(-4px);
+  fill: #0d9488;
+}
+
+/* Prominent Pilot Styling */
+.pilot-active .map-country-target {
+  fill: rgba(13, 148, 136, 0.12);
+}
+
+.pilot-active:hover .map-country-target {
+  fill: rgba(13, 148, 136, 0.18);
+  transform: scale(1.125);
+}
+
+.pilot-active .map-label {
+  font-size: 16px;
+  font-weight: 700;
+  fill: #0f766e;
+}
+
+.pilot-active:hover .map-label {
+  transform: translateY(-6px);
+}
+
+/* CSS Transform Pulse Animations */
+@keyframes mapPulseScale {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(4); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes activePilotPulseScale {
+  0% { transform: scale(1); opacity: 0.9; }
+  70% { transform: scale(4.25); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
 }
 
 .map-pulse {
-  animation: mapPulse 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mapPulseScale 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+
+.active-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: activePilotPulseScale 2.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
 
 .map-dot-active {
@@ -649,6 +716,22 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .legend-item {
   display: flex;
   align-items: center;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .africa-map-card,
+  .map-location {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .map-pulse,
+  .active-pulse {
+    animation: none !important;
+    opacity: 0 !important;
+  }
 }
 
 .offline-diagram {
