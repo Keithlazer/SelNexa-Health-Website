@@ -812,17 +812,43 @@
                 <p class="section-label">DEPLOYMENT PIPELINE</p>
                 <h2>In active talks with facilities across four markets</h2>
                 <p class="pipeline-description">We are in structured conversations with hospital networks in Zimbabwe, Kenya, Nigeria, and South Africa. If your facility wants to be among the first deployment partners, apply for pilot access.</p>
-                
+
                 <div class="deployment-map animate-on-scroll">
                     <div class="africa-map-card">
-                        <div id="map"></div>
-                        
+                        <div class="map-overlay-container">
+                            <img src="/assets/africa-deployment-map.png" alt="Africa Deployment Map" class="base-africa-img" />
+
+                            <div class="marker-group talks-marker" style="top: 38%; left: 32%;">
+                                <div class="pulse-ring"></div>
+                                <div class="dot"></div>
+                                <span class="marker-label">Nigeria</span>
+                            </div>
+
+                            <div class="marker-group talks-marker" style="top: 48%; left: 72%;">
+                                <div class="pulse-ring"></div>
+                                <div class="dot"></div>
+                                <span class="marker-label">Kenya</span>
+                            </div>
+
+                            <div class="marker-group active-marker" style="top: 72%; left: 62%;">
+                                <div class="pulse-ring pilot-pulse"></div>
+                                <div class="dot pilot-dot"></div>
+                                <span class="marker-label">Zimbabwe</span>
+                            </div>
+
+                            <div class="marker-group talks-marker" style="top: 88%; left: 52%;">
+                                <div class="pulse-ring"></div>
+                                <div class="dot"></div>
+                                <span class="marker-label">South Africa</span>
+                            </div>
+                        </div>
+
                         <div class="map-legend">
                             <span class="legend-item"><span class="legend-dot map-dot-active"></span>Pilot active</span>
                             <span class="legend-item"><span class="legend-dot map-dot-talks"></span>In active talks</span>
                         </div>
                     </div>
-                    
+
                     <div class="pipeline-details">
                         <h3>Deployment pipeline by market</h3>
                         <div class="market-entry">
@@ -1214,8 +1240,6 @@
             document.addEventListener('preloader:hide', () => { hidePreloader(); clearInterval(interval); clearTimeout(stop); });
         })();
     </script>
-    <script src="js/mapdata.js"></script>
-    <script src="js/worldmap.js"></script>
     <script src="/js/main.js"></script>
 </body>
 </html>
