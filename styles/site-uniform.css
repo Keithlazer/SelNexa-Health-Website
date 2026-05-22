@@ -619,163 +619,126 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .map-overlay-container {
-  position: relative;
+    position: relative;
     width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .base-africa-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.85;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.04));
 }
 
 .marker-group {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     cursor: pointer;
-  z-index: 10;
+    z-index: 10;
 }
 
 .dot {
-  border-radius: 50%;
-  position: relative;
-  z-index: 2;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
 }
 
 .pulse-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 1;
 }
 
 .marker-label {
-  margin-top: 6px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: transform 0.3s ease, color 0.3s ease;
+    margin-top: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2px 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .marker-group:hover .marker-label {
-  transform: translateY(-3px);
+    transform: translateY(-3px);
 }
 
 /* =========================================
    Active Talks Styling (Nigeria, Kenya, SA)
    SelNexa Navy: #1e3a8a
    ========================================= */
-.talks-marker .dot {
-  width: 12px;
-  height: 12px;
-  background-color: #1e3a8a;
+.talks-marker .dot { 
+    width: 12px; 
+    height: 12px; 
+    background-color: #1e3a8a; 
 }
-
 .talks-marker .pulse-ring {
-  width: 12px;
-  height: 12px;
-  background-color: #1e3a8a;
-  animation: smoothPulseNavy 2.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    width: 12px;
+    height: 12px;
+    background-color: #1e3a8a;
+    animation: smoothPulseNavy 2.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
-
-.talks-marker .marker-label {
-  color: #1e3a8a;
-}
-
-.talks-marker:hover .marker-label {
-  color: #152960;
-}
+.talks-marker .marker-label { color: #1e3a8a; }
 
 /* =========================================
    Pilot Active Styling (Zimbabwe HQ)
    SelNexa Teal: #0d9488
    ========================================= */
 .active-marker {
-  z-index: 20;
+    z-index: 20;
 }
-
-.active-marker .pilot-dot {
-  width: 16px;
-  height: 16px;
-  background-color: #0d9488;
-  box-shadow: 0 0 10px rgba(13, 148, 136, 0.4);
+.active-marker .pilot-dot { 
+    width: 16px; 
+    height: 16px; 
+    background-color: #0d9488; 
+    box-shadow: 0 0 12px rgba(13, 148, 136, 0.5);
 }
-
 .active-marker .pilot-pulse {
-  width: 16px;
-  height: 16px;
-  background-color: #0d9488;
-  animation: activePulseTeal 2.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    width: 16px;
+    height: 16px;
+    background-color: #0d9488;
+    animation: activePulseTeal 2.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+}
+.active-marker .marker-label { 
+    color: #0f766e; 
+    font-size: 14px; 
+    font-weight: 700; 
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(13, 148, 136, 0.2);
 }
 
-.active-marker .marker-label {
-  color: #0f766e;
-  font-size: 15px;
-  font-weight: 700;
-}
-
+/* Animations */
 @keyframes smoothPulseNavy {
-  0% { width: 12px; height: 12px; opacity: 0.7; }
-  70% { width: 40px; height: 40px; opacity: 0; }
-  100% { width: 12px; height: 12px; opacity: 0; }
+    0% { width: 12px; height: 12px; opacity: 0.7; }
+    70% { width: 40px; height: 40px; opacity: 0; }
+    100% { width: 12px; height: 12px; opacity: 0; }
 }
 
 @keyframes activePulseTeal {
-  0% { width: 16px; height: 16px; opacity: 0.8; }
-  70% { width: 55px; height: 55px; opacity: 0; }
-  100% { width: 16px; height: 16px; opacity: 0; }
+    0% { width: 16px; height: 16px; opacity: 0.8; }
+    70% { width: 55px; height: 55px; opacity: 0; }
+    100% { width: 16px; height: 16px; opacity: 0; }
 }
 
-.map-dot-active {
-  background-color: #0d9488 !important;
-}
+/* Legend Styling Updates */
+.map-dot-active { background-color: #0d9488 !important; }
+.map-dot-talks { background-color: #1e3a8a !important; }
 
-.map-dot-talks {
-  background-color: #1e3a8a !important;
-}
-
-.map-legend {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    font-family: inherit;
-    font-size: 14px;
-    color: #64748b;
-    font-weight: 500;
-    border-top: 1px solid #f1f5f9;
-    padding-top: 1.5rem;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-}
-
-.legend-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 8px;
-}
-
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .pulse-ring {
-    animation: none !important;
-    display: none;
-    }
+    .pulse-ring { animation: none !important; display: none; }
 }
 
 .offline-diagram {
