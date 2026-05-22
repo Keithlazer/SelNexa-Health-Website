@@ -658,23 +658,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
     z-index: 1;
 }
 
-.marker-label {
-    margin-top: 6px;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    background: rgba(255, 255, 255, 0.85);
-    padding: 2px 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.05);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.marker-group:hover .marker-label {
-    transform: translateY(-3px);
-}
-
 /* =========================================
    Active Talks Styling (Nigeria, Kenya, SA)
    SelNexa Navy: #1e3a8a
@@ -690,7 +673,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
     background-color: #1e3a8a;
     animation: smoothPulseNavy 2.5s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
-.talks-marker .marker-label { color: #1e3a8a; }
 
 /* =========================================
    Pilot Active Styling (Zimbabwe HQ)
@@ -711,20 +693,8 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
     background-color: #0d9488;
     animation: activePulseTeal 2.2s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
 }
-.active-marker .marker-label { 
-    color: #0f766e; 
-    font-size: 14px; 
-    font-weight: 700; 
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(13, 148, 136, 0.2);
-}
 
 @media (max-width: 768px) {
-  .marker-label {
-    font-size: 12px;
-    padding: 2px 6px;
-  }
-
   .talks-marker .dot {
     width: 10px;
     height: 10px;
@@ -743,10 +713,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   .active-marker .pilot-pulse {
     width: 14px;
     height: 14px;
-  }
-
-  .active-marker .marker-label {
-    font-size: 13px;
   }
 }
 
