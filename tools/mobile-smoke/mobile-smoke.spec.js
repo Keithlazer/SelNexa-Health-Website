@@ -111,6 +111,7 @@ test('mobile smoke matrix', async ({ browser }) => {
             viewportWidth: window.innerWidth,
             overflowPx: Math.max(de.scrollWidth, body ? body.scrollWidth : 0) - window.innerWidth,
             rects: {
+              whatsappFloat: getRect('.whatsapp-float'),
               bottomNav: getRect('.bottom-mobile-nav'),
               chatbotToggle: getRect('.chatbot-toggle'),
               mobileToggle: getRect('.mobile-menu-btn') || getRect('.hamburger'),
@@ -128,6 +129,14 @@ test('mobile smoke matrix', async ({ browser }) => {
         const rects = state.rects;
         if (rects.bottomNav && rects.chatbotToggle && intersects(rects.bottomNav, rects.chatbotToggle)) {
           issues.push('chatbot-overlaps-bottom-nav');
+        }
+
+        if (rects.bottomNav && rects.whatsappFloat && intersects(rects.bottomNav, rects.whatsappFloat)) {
+          issues.push('whatsapp-overlaps-bottom-nav');
+        }
+
+        if (rects.chatbotToggle && rects.whatsappFloat && intersects(rects.chatbotToggle, rects.whatsappFloat)) {
+          issues.push('whatsapp-overlaps-chatbot');
         }
 
         const topControls = [rects.mobileToggle, rects.themeToggle, rects.languageSelector, rects.voiceSearch].filter(Boolean);

@@ -1316,30 +1316,51 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .whatsapp-float {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 1rem;
+  left: 1rem;
+  right: auto;
   width: 52px;
   height: 52px;
   background: #25d366;
   color: #ffffff;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-  z-index: 999;
+  z-index: 2102;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
+.whatsapp-float img,
 .whatsapp-float svg {
   width: 31px;
   height: 31px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .whatsapp-float:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
   color: #ffffff !important;
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.35);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .whatsapp-float {
+    left: 0.75rem;
+    bottom: calc(6rem + env(safe-area-inset-bottom));
+    width: 50px;
+    height: 50px;
+  }
 }
 
 #cal-booking-placeholder {
@@ -1375,7 +1396,6 @@ html[data-theme="dark"] header .navbar.scrolled {
 html[data-theme="dark"] .integration-strip,
 html[data-theme="dark"] .africa-map-card,
 html[data-theme="dark"] .offline-diagram,
-html[data-theme="dark"] .advisor-card,
 html[data-theme="dark"] .module-tab,
 html[data-theme="dark"] .projection-chart,
 html[data-theme="dark"] .funds-allocation,
@@ -1422,26 +1442,9 @@ html[data-theme="dark"] .founding-story .story-eyebrow,
 html[data-theme="dark"] .timeline-section h3,
 html[data-theme="dark"] .timeline-section p,
 html[data-theme="dark"] .timeline-item,
-html[data-theme="dark"] .advisor-name,
-html[data-theme="dark"] .advisor-role,
 html[data-theme="dark"] .comparison-table th,
 html[data-theme="dark"] .comparison-table td {
   color: #111827 !important; /* dark text for readability */
-}
-
-html[data-theme="dark"] .advisor-card {
-  background: linear-gradient(180deg, #13233a 0%, #1b2f4a 100%);
-  border-color: rgba(255,255,255,0.12);
-  border-top-color: rgba(232, 160, 32, 0.8);
-  box-shadow: 0 14px 30px -22px rgba(0, 0, 0, 0.45);
-}
-
-html[data-theme="dark"] .advisor-name {
-  color: #f8fafc !important;
-}
-
-html[data-theme="dark"] .advisor-role {
-  color: rgba(232, 241, 255, 0.76) !important;
 }
 
 html[data-theme="dark"] .timeline-item {

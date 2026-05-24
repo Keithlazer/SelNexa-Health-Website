@@ -835,9 +835,18 @@
     link.href = "https://wa.me/263777726065?text=Hi%2C%20I'm%20interested%20in%20learning%20more%20about%20the%20SelNexa%20Health%20Platform.";
     link.className = "whatsapp-float";
     link.target = "_blank";
-    link.rel = "noopener";
+    link.rel = "noopener noreferrer";
     link.setAttribute("aria-label", "Contact SelNexa Health on WhatsApp");
-    link.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.1 17.3c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1c-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.6.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.2 1.1-1.2 2.8 1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.5z"/><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 15.9c0 2.3.6 4.5 1.8 6.5L3.5 29l6.8-1.8c1.8 1 3.7 1.5 5.8 1.5 7.2 0 13-5.8 13-12.9C29 8.8 23.2 3 16 3zm0 23.6c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 1.1 1.1-3.9-.3-.4c-1.1-1.7-1.7-3.7-1.7-5.8C5.4 10 10.1 5.3 16 5.3S26.6 10 26.6 15.9 21.9 26.6 16 26.6z"/></svg>';
+    link.title = "Contact SelNexa Health on WhatsApp";
+
+    var icon = document.createElement("img");
+    icon.src = "/assets/WhatsApp%20svg.svg";
+    icon.alt = "";
+    icon.setAttribute("aria-hidden", "true");
+    icon.decoding = "async";
+    icon.loading = "eager";
+
+    link.appendChild(icon);
     document.body.appendChild(link);
   }
 
