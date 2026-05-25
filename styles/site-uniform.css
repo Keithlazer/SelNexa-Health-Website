@@ -214,6 +214,7 @@ footer a:hover,
 .sdg-footer-strip {
   background: #ffffff;
   border-block: 1px solid var(--uniform-border);
+  color: #1f2937;
 }
 
 .sdg-trust-strip {
@@ -235,7 +236,7 @@ footer a:hover,
 .sdg-footer-strip h2,
 .sdg-footer-strip h3 {
   margin-bottom: 0.7rem;
-  color: var(--color-brand-primary);
+  color: var(--color-brand-primary) !important;
 }
 
 .sdg-trust-copy p,
@@ -243,6 +244,7 @@ footer a:hover,
 .sdg-footer-strip p {
   max-width: 64ch;
   margin-bottom: 0;
+  color: #4b5563 !important;
 }
 
 .hero-sdg-line {
@@ -260,20 +262,20 @@ footer a:hover,
 
 .sdg-marker-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.9rem;
 }
 
 .sdg-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.7rem;
-  min-height: 208px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 126px;
   padding: 0.8rem;
   border: 1px solid rgba(15, 23, 42, 0.1);
   border-radius: 10px;
-  background: rgba(249, 245, 238, 0.72);
+  background: #ffffff;
   overflow: visible;
 }
 
@@ -299,7 +301,7 @@ footer a:hover,
 .sdg-marker > span:not(.sdg-art) strong,
 .sdg-chip > span:not(.sdg-art) strong {
   display: block;
-  color: #0f172a;
+  color: #0f172a !important;
   font-size: 0.88rem;
   line-height: 1.2;
 }
@@ -309,14 +311,15 @@ footer a:hover,
 .sdg-marker > span:not(.sdg-art) > span,
 .sdg-chip > span:not(.sdg-art) > span {
   display: block;
-  color: var(--uniform-muted);
+  color: #4b5563 !important;
   font-size: 0.78rem;
   line-height: 1.35;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .sdg-marker--compact {
-  min-height: 172px;
+  min-height: 112px;
 }
 
 .sdg-marker--compact .sdg-art {
@@ -373,7 +376,7 @@ footer a:hover,
 
 .development-alignment-list strong {
   display: block;
-  color: var(--color-brand-primary);
+  color: var(--color-brand-primary) !important;
   margin-bottom: 0.15rem;
 }
 
