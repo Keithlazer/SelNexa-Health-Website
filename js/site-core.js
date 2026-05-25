@@ -798,20 +798,6 @@
     recalc();
   }
 
-  function setupOfflineAnimation() {
-    document.querySelectorAll(".offline-diagram").forEach(function (diagram) {
-      var button = diagram.querySelector("[data-pause-offline-animation]");
-      if (!button) {
-        return;
-      }
-      button.addEventListener("click", function () {
-        var paused = diagram.classList.toggle("is-paused");
-        button.setAttribute("aria-pressed", paused ? "true" : "false");
-        button.textContent = paused ? "Resume animation" : "Pause animation";
-      });
-    });
-  }
-
   function setupEmailCapture() {
     window.handleSubscribe = function (event) {
       event.preventDefault();
@@ -1357,7 +1343,6 @@
     setupStatCounters();
     setupModuleTabs();
     setupRoiCalculator();
-    setupOfflineAnimation();
     setupEmailCapture();
     setupWhatsAppFloat();
     setupReadingProgress();
