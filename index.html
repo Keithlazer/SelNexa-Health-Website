@@ -720,7 +720,7 @@
             <div class="container">
                 <p class="strip-label">The SelNexa Health Platform is built to integrate with</p>
                 <div class="strip-marquee">
-                    <div class="swiper-container integration-swiper" aria-label="Integration standards and ecosystem partners">
+                    <div class="swiper integration-swiper" aria-label="Integration standards and ecosystem partners">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide"><img class="logo-slide__image" src="/assets/dhis%202.svg" alt="DHIS2" loading="lazy" decoding="async"></div>
                             <div class="swiper-slide"><img class="logo-slide__image" src="/assets/ePMS.svg" alt="ePMS" loading="lazy" decoding="async"></div>
@@ -1233,9 +1233,10 @@
                 spaceBetween: 14,
                 loop: true,
                 loopAdditionalSlides: 6,
-                speed: prefersReduced ? 600 : 6500,
+                speed: prefersReduced ? 600 : 8000,
                 grabCursor: true,
-                watchOverflow: true,
+                freeMode: !prefersReduced,
+                freeModeMomentum: false,
                 autoplay: prefersReduced ? false : {
                     delay: 0,
                     disableOnInteraction: false,
