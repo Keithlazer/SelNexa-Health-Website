@@ -733,18 +733,32 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   animation: marquee 26s linear infinite;
 }
 
+.integration-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.integration-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.integration-swiper .swiper-slide {
+  flex-shrink: 0;
+  width: auto;
+}
+
 .logo-pill {
   background: var(--color-bg-secondary);
   border: 0.5px solid var(--color-border);
   border-radius: 100px;
-  padding: 10px 20px;
+  padding: clamp(8px, 1.4vw, 12px) clamp(14px, 2vw, 22px);
   font-size: 12px;
   font-weight: 600;
   color: var(--color-text-secondary);
   white-space: nowrap;
   flex-shrink: 0;
   min-width: 108px;
-  min-height: 56px;
+  min-height: clamp(48px, 6vw, 64px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -754,12 +768,10 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .logo-pill img,
 .logo-pill__image {
   display: block;
-  height: 26px;
+  height: clamp(28px, 3.2vw, 40px);
   width: auto;
-  max-width: 140px;
+  max-width: clamp(120px, 18vw, 190px);
   object-fit: contain;
-  transform: scale(1.42);
-  transform-origin: center center;
 }
 
 @keyframes marquee {
