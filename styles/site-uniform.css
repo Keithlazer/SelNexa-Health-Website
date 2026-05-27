@@ -765,6 +765,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   display: flex;
   align-items: center;
   transition-timing-function: linear;
+  will-change: transform;
 }
 
 .integration-swiper .swiper-slide {
