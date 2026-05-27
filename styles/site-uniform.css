@@ -557,6 +557,19 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-size: var(--text-hero);
 }
 
+.hero-content,
+.hero-overline,
+.hero-title {
+  max-width: 100%;
+}
+
+.hero-overline,
+.hero-title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
 .btn,
 .btn-primary,
 .btn-secondary,
@@ -1669,6 +1682,11 @@ html[data-theme="dark"] .timeline-item {
   .spec-item,
   .projection-bar-row {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
   }
 }
 
