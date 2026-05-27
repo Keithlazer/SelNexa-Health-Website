@@ -753,6 +753,13 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   padding: clamp(6px, 1vw, 10px) clamp(8px, 1.6vw, 14px);
 }
 
+.logo-slide__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .logo-slide__image {
   display: block;
   height: clamp(34px, 4.4vw, 52px);
