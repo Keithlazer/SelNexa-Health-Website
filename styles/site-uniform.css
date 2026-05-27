@@ -55,6 +55,16 @@ body {
   color: var(--uniform-text);
 }
 
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
 p,
 li {
   color: var(--uniform-muted);
@@ -1219,6 +1229,9 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .module-screenshot img,
 .feature-screenshot {
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: var(--radius-md);
   border: 1px solid var(--uniform-border);
   box-shadow: var(--uniform-shadow);
@@ -1240,11 +1253,17 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-weight: 700;
 }
 
+.comparison-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
   border-radius: var(--radius-md);
+  min-width: 640px;
   overflow: hidden;
   box-shadow: var(--uniform-shadow);
 }
@@ -1756,6 +1775,12 @@ html[data-theme="dark"] .timeline-item {
     flex-basis: 42px;
     width: 42px;
     height: 42px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem;
+    font-size: 0.92rem;
   }
 }
 
