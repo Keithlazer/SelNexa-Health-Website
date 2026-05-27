@@ -1222,38 +1222,46 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            const integrationSwiperEl = document.querySelector('.integration-swiper');
+        (function () {
+            const initIntegrationSwiper = () => {
+                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const integrationSwiperEl = document.querySelector('.integration-swiper');
 
-            if (!integrationSwiperEl || !window.Swiper) return;
+                if (!integrationSwiperEl || !window.Swiper) return;
 
-            const swiper = new Swiper(integrationSwiperEl, {
-                slidesPerView: 'auto',
-                spaceBetween: 14,
-                loop: true,
-                loopAdditionalSlides: 6,
-                speed: prefersReduced ? 600 : 8000,
-                grabCursor: true,
-                freeMode: !prefersReduced,
-                freeModeMomentum: false,
-                autoplay: prefersReduced ? false : {
-                    delay: 0,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                },
-                breakpoints: {
-                    640: { spaceBetween: 16 },
-                    900: { spaceBetween: 18 },
-                    1200: { spaceBetween: 22 }
+                const swiper = new Swiper(integrationSwiperEl, {
+                    slidesPerView: 'auto',
+                    spaceBetween: 14,
+                    loop: true,
+                    loopAdditionalSlides: 6,
+                    speed: prefersReduced ? 600 : 8000,
+                    grabCursor: true,
+                    freeMode: !prefersReduced,
+                    freeModeMomentum: false,
+                    autoplay: prefersReduced ? false : {
+                        delay: 0,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true
+                    },
+                    breakpoints: {
+                        640: { spaceBetween: 16 },
+                        900: { spaceBetween: 18 },
+                        1200: { spaceBetween: 22 }
+                    }
+                });
+
+                if (!prefersReduced) {
+                    integrationSwiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
+                    integrationSwiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
                 }
-            });
+            };
 
-            if (!prefersReduced) {
-                integrationSwiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
-                integrationSwiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initIntegrationSwiper);
+            } else {
+                initIntegrationSwiper();
             }
-        });
+        })();
     </script>
     <script src="/js/main.js"></script>
 </body>
