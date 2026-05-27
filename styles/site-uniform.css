@@ -745,32 +745,17 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .integration-swiper .swiper-slide {
   flex-shrink: 0;
   width: auto;
-}
-
-.logo-pill {
-  background: var(--color-bg-secondary);
-  border: 0.5px solid var(--color-border);
-  border-radius: 100px;
-  padding: clamp(8px, 1.4vw, 12px) clamp(14px, 2vw, 22px);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 108px;
-  min-height: clamp(48px, 6vw, 64px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  padding: clamp(6px, 1vw, 10px) clamp(8px, 1.6vw, 14px);
 }
 
-.logo-pill img,
-.logo-pill__image {
+.logo-slide__image {
   display: block;
-  height: clamp(28px, 3.2vw, 40px);
+  height: clamp(34px, 4.4vw, 52px);
   width: auto;
-  max-width: clamp(120px, 18vw, 190px);
+  max-width: clamp(150px, 22vw, 240px);
   object-fit: contain;
 }
 

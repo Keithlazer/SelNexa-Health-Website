@@ -722,12 +722,12 @@
                 <div class="strip-marquee">
                     <div class="swiper-container integration-swiper" aria-label="Integration standards and ecosystem partners">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/dhis%202.svg" alt="DHIS2" loading="lazy" decoding="async"></div></div>
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/ePMS.svg" alt="ePMS" loading="lazy" decoding="async"></div></div>
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/Impilo.svg" alt="Impilo" loading="lazy" decoding="async"></div></div>
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/FHIR.svg" alt="FHIR R4" loading="lazy" decoding="async"></div></div>
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/HL7.svg" alt="HL7" loading="lazy" decoding="async"></div></div>
-                            <div class="swiper-slide"><div class="logo-pill"><img class="logo-pill__image" src="/assets/OpenMRS.svg" alt="OpenMRS" loading="lazy" decoding="async"></div></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/dhis%202.svg" alt="DHIS2" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/ePMS.svg" alt="ePMS" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/Impilo.svg" alt="Impilo" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/FHIR.svg" alt="FHIR R4" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/HL7.svg" alt="HL7" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="logo-slide__image" src="/assets/OpenMRS.svg" alt="OpenMRS" loading="lazy" decoding="async"></div>
                         </div>
                     </div>
                 </div>
@@ -1175,34 +1175,6 @@
                 });
             }
 
-            const integrationSwiperEl = document.querySelector('.integration-swiper');
-            if (integrationSwiperEl && window.Swiper) {
-                const swiper = new Swiper(integrationSwiperEl, {
-                    slidesPerView: 'auto',
-                    spaceBetween: 14,
-                    loop: true,
-                    loopAdditionalSlides: 6,
-                    speed: prefersReduced ? 600 : 6500,
-                    grabCursor: true,
-                    watchOverflow: true,
-                    autoplay: prefersReduced ? false : {
-                        delay: 0,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true
-                    },
-                    breakpoints: {
-                        640: { spaceBetween: 16 },
-                        900: { spaceBetween: 18 },
-                        1200: { spaceBetween: 22 }
-                    }
-                });
-
-                if (!prefersReduced) {
-                    integrationSwiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
-                    integrationSwiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
-                }
-            }
-
         });
     </script>
     <script>
@@ -1249,6 +1221,39 @@
         })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const integrationSwiperEl = document.querySelector('.integration-swiper');
+
+            if (!integrationSwiperEl || !window.Swiper) return;
+
+            const swiper = new Swiper(integrationSwiperEl, {
+                slidesPerView: 'auto',
+                spaceBetween: 14,
+                loop: true,
+                loopAdditionalSlides: 6,
+                speed: prefersReduced ? 600 : 6500,
+                grabCursor: true,
+                watchOverflow: true,
+                autoplay: prefersReduced ? false : {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                },
+                breakpoints: {
+                    640: { spaceBetween: 16 },
+                    900: { spaceBetween: 18 },
+                    1200: { spaceBetween: 22 }
+                }
+            });
+
+            if (!prefersReduced) {
+                integrationSwiperEl.addEventListener('mouseenter', () => swiper.autoplay.stop());
+                integrationSwiperEl.addEventListener('mouseleave', () => swiper.autoplay.start());
+            }
+        });
+    </script>
     <script src="/js/main.js"></script>
 </body>
 </html>
