@@ -606,7 +606,7 @@
             }
         }
     </style>
-  <link rel="stylesheet" href="/dist/assets/index-998750ca.css">
+  <link rel="stylesheet" href="/dist/assets/index-5160bc04.css">
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -1229,60 +1229,36 @@
 
                 if (!integrationSwiperEl || !window.Swiper) return;
 
-                const wrapper = integrationSwiperEl.querySelector('.swiper-wrapper');
-                if (wrapper && wrapper.children.length && !wrapper.dataset.cloned) {
-                    const slides = Array.from(wrapper.children);
-                    slides.forEach((slide) => {
-                        const clone = slide.cloneNode(true);
-                        clone.setAttribute('data-slide-clone', 'true');
-                        wrapper.appendChild(clone);
-                    });
-                    wrapper.dataset.cloned = 'true';
-                }
+                const slideCount = integrationSwiperEl.querySelectorAll('.swiper-slide').length;
+                const loopedSlides = Math.max(slideCount, 6);
 
                 const swiper = new Swiper(integrationSwiperEl, {
                     slidesPerView: 'auto',
-                    spaceBetween: 14,
+                    spaceBetween: 20,
                     loop: true,
-                    loopAdditionalSlides: wrapper ? wrapper.children.length : 6,
-                    speed: 8000,
-                    grabCursor: true,
+                    loopedSlides,
+                    loopAdditionalSlides: loopedSlides,
+                    speed: 4500,
+                    grabCursor: false,
                     freeMode: true,
                     freeModeMomentum: false,
+                    allowTouchMove: false,
+                    watchSlidesProgress: true,
                     autoplay: {
-                        delay: 0,
+                        delay: 1,
                         disableOnInteraction: false,
-                        pauseOnMouseEnter: true
+                        pauseOnMouseEnter: false
                     },
                     breakpoints: {
-                        640: { spaceBetween: 16 },
-                        900: { spaceBetween: 18 },
-                        1200: { spaceBetween: 22 }
+                        640: { spaceBetween: 22 },
+                        900: { spaceBetween: 26 },
+                        1200: { spaceBetween: 30 }
                     }
                 });
 
-                const ensureAutoplay = () => {
-                    if (swiper.autoplay && swiper.autoplay.start) {
-                        swiper.autoplay.start();
-                    }
-                };
-
-                ensureAutoplay();
-                requestAnimationFrame(() => {
-                    swiper.update();
-                    ensureAutoplay();
-                });
-                window.addEventListener('load', () => {
-                    swiper.update();
-                    ensureAutoplay();
-                });
-
-                integrationSwiperEl.addEventListener('mouseenter', () => {
-                    if (swiper.autoplay && swiper.autoplay.stop) {
-                        swiper.autoplay.stop();
-                    }
-                });
-                integrationSwiperEl.addEventListener('mouseleave', () => ensureAutoplay());
+                if (swiper.autoplay && swiper.autoplay.start) {
+                    swiper.autoplay.start();
+                }
             };
 
             if (document.readyState === 'loading') {
