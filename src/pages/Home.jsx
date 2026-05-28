@@ -99,7 +99,7 @@ const Sparkline = ({ points }) => {
 const personaProfiles = {
   clinic: {
     key: 'clinic',
-    label: 'For clinics',
+    label: 'For health institutions',
     audience: 'clinic teams',
     eyebrow: 'Clinic operations lens',
     headline: 'Keep intake, queues, and follow-up moving.',

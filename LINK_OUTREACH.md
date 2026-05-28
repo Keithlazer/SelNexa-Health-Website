@@ -4,7 +4,7 @@ Targets (suggested)
 - Local healthcare directories and associations in Zimbabwe
 - African health-tech blogs and news sites
 - Universities and medical schools with health informatics programs
-- Partner hospitals and clinics
+- Partner hospitals and health institutions
 - NGOs working in telemedicine and rural health
 
 Email template (short):

@@ -185,7 +185,7 @@ Shift = Feature → Moat narrative
 | **Tech Moat** | "Works offline" | Sovereign Resilience (Strategic Barrier) | Defensibility proof |
 | **Proof Point** | Clinic test | Hardened proof-of-concept | De-risked deployment |
 | **Leadership** | Solo founder | Founder + 2 planned hires | Scale-ready structure |
-| **Market Positioning** | Tool for clinics | Operating system for healthcare | Enterprise TAM |
+| **Market Positioning** | Tool for health institutions | Operating system for healthcare | Enterprise TAM |
 
 ---
 

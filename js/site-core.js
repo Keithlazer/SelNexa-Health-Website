@@ -950,7 +950,7 @@
       "name": "SelNexa Health",
       "url": "https://www.selnexahealth.com",
       "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
-      "description": "Youth-led health systems innovation organization building offline-first hospital management solutions for African clinics and hospitals.",
+      "description": "Youth-led health systems innovation organization building offline-first hospital management solutions for African health institutions and hospitals.",
       "foundingDate": "2024",
       "foundingLocation": "Harare, Zimbabwe",
       "areaServed": ["ZW", "KE", "NG", "ZA"],

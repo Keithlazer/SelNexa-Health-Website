@@ -6,7 +6,7 @@
 
 ## Executive Overview
 
-SelNexa Health has been transformed from a "helpful app for clinics" into **The Integrated Intelligence Layer for Sustainable African Healthcare**—an enterprise-grade platform narrative tailored for venture capital, hospital administrators, and health ministries.
+SelNexa Health has been transformed from a "helpful app for health institutions" into **The Integrated Intelligence Layer for Sustainable African Healthcare**—an enterprise-grade platform narrative tailored for venture capital, hospital administrators, and health ministries.
 
 This rebrand applies the **Optimized Master Prompt** framework across the website, emphasizing:
 - **Offline-first architecture** as a competitive moat
@@ -315,7 +315,7 @@ This rebrand applies the **Optimized Master Prompt** framework across the websit
 ## STRATEGIC IMPACT
 
 ### Before (Product-Market Fit Narrative)
-- "App for clinics"
+- "App for health institutions"
 - Feature-focused
 - Cloud-dependent
 - Positioning: Tech tool for healthcare

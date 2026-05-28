@@ -50,7 +50,7 @@
         },
         '/testimonials.html': {
             title: 'Testimonials | SelNexa Health – Healthcare Success Stories',
-            description: 'Read success stories from hospitals and clinics using SelNexa Health. See real-world ROI and patient impact.',
+            description: 'Read success stories from hospitals and health institutions using SelNexa Health. See real-world ROI and patient impact.',
             keywords: 'testimonials, case studies, healthcare success stories, patient outcomes',
         },
         '/doctors.html': {
