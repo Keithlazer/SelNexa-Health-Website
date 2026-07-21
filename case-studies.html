@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact Evidence | SelNexa Health</title>
-    <meta name="description" content="Pre-deployment validation notes for the SelNexa Health Platform proof of concept completed at Manicaland District Hospital in Zimbabwe.">
+    <meta name="description" content="Validation notes for the SelNexa Health Platform: what has been built and tested so far, the Manicaland proof of concept, and the next pilot at Victoria Chitepo Hospital.">
     <link rel="canonical" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/case-studies.html?lang=sn">
@@ -52,108 +52,100 @@
         <section class="page-hero">
             <div class="container">
                 <p class="page-overline section-label hero-animate">IMPACT EVIDENCE</p>
-                <h1 class="page-title hero-animate">Impact evidence from the field</h1>
-                <p class="page-subtitle hero-animate">SelNexa Health is still pre-deployment. The proof of concept was completed at Manicaland District Hospital in Q3 2024, Victoria Chitepo Hospital is the confirmed next pilot site pending government approval, and Kenya, Nigeria, and South Africa remain early-conversation markets only.</p>
+                <h1 class="page-title hero-animate">Where The Platform Stands Today</h1>
+                <p class="page-subtitle hero-animate">Real case studies take real pilots. Here's what's actually been built, tested, and proven, and exactly what happens next.</p>
                 <nav class="tab-links" aria-label="Impact page navigation">
-                    <a href="#validated">What we've validated so far</a>
-                    <a href="#measurement">What we are measuring</a>
-                    <a href="#updates">Follow impact updates</a>
+                    <a href="#validated">What's Validated</a>
+                    <a href="#manicaland">Manicaland Proof of Concept</a>
+                    <a href="#next-pilot">Next: Victoria Chitepo Hospital</a>
+                    <a href="#comparison">How We Compare</a>
                 </nav>
+                <p class="hero-animate">A note on this page: everything below reflects work that has actually happened. No pilot results appear here until a pilot has run and been independently reviewed.</p>
             </div>
         </section>
 
-        <section class="sdg-trust-strip animate-on-scroll" aria-label="Impact evidence SDG alignment">
-            <div class="container">
-                <div class="sdg-trust-copy">
-                    <p class="section-label">EVIDENCE ALIGNMENT</p>
-                    <h2>Measuring the system, not just the software</h2>
-                    <p>Our impact work connects SDG-aligned goals to practical indicators: service continuity, procurement visibility, data governance, and partnership readiness for scale.</p>
-                </div>
-                <div class="sdg-marker-grid">
-                    <article class="sdg-marker sdg-marker--compact">
-                        <span class="sdg-art"><img src="/assets/SDG%203.svg" alt="SDG 3: Good Health and Well-being" loading="lazy" decoding="async"></span>
-                        <span><strong>SDG 3</strong><span>Care continuity and patient safety indicators.</span></span>
-                    </article>
-                    <article class="sdg-marker sdg-marker--compact">
-                        <span class="sdg-art"><img src="/assets/SDG%209.svg" alt="SDG 9: Industry, Innovation and Infrastructure" loading="lazy" decoding="async"></span>
-                        <span><strong>SDG 9</strong><span>Infrastructure resilience and interoperability.</span></span>
-                    </article>
-                    <article class="sdg-marker sdg-marker--compact">
-                        <span class="sdg-art"><img src="/assets/SDG%2017.svg" alt="SDG 17: Partnerships for the Goals" loading="lazy" decoding="async"></span>
-                        <span><strong>SDG 17</strong><span>Evaluation partners and institutional learning.</span></span>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-spacer animate-on-scroll" id="validated">
-            <div class="container">
-                <article class="page-card">
-                    <p class="section-label">PRE-DEPLOYMENT VALIDATION</p>
-                    <h2>What we've validated so far</h2>
-                    <p><strong>Proof of concept:</strong> Completed at Manicaland District Hospital in Q3 2024.</p>
-                    <p><strong>Technical architecture:</strong> The platform has been built and tested for offline-first administration, queue visibility, record continuity, procurement monitoring, and sync recovery under constrained connectivity.</p>
-                    <p><strong>Confirmed next pilot:</strong> Victoria Chitepo Hospital is the next pilot site, pending government approval and not yet live.</p>
-                    <p><strong>Market status:</strong> Kenya, Nigeria, and South Africa are in early conversations only, with no active deployments in any of them.</p>
-                    <p><strong>Evidence status:</strong> These are validation notes and deployment targets, not reported outcomes or live deployment results.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-spacer animate-on-scroll" id="measurement">
+        <section class="quick-metrics reveal" id="validated" aria-label="Outcome snapshot">
             <div class="container">
                 <div class="section-header">
-                    <p class="section-label">M&amp;E FRAMEWORK</p>
-                    <h2>What is being measured</h2>
+                    <h2>What's Validated</h2>
+                    <p>Offline-first architecture, built and working. The Platform runs as a progressive web app with a local write queue. Care teams can register patients, update records, and manage procurement during an outage, with automatic sync once connectivity returns. Both a secure hosted deployment and a fully offline LAN deployment mode are built and functioning.</p>
+                    <p>Security and audit baseline in place. Role-based access control and full audit logging are implemented and documented, ahead of formal penetration testing.</p>
+                    <p>Engineering targets for first deployment:</p>
                 </div>
-                <div class="page-grid">
-                    <article class="page-card">
-                        <h3>Operational continuity</h3>
-                        <p>Offline workflow availability, sync replay success, outage recovery time, and paper fallback frequency as evidence of resilient service delivery.</p>
+                <div class="metrics-grid">
+                    <article class="metric-card stat-card reveal">
+                        <strong class="stat-card__number">95%+</strong>
+                        <p class="stat-card__label">Offline continuity replay success target</p>
                     </article>
-                    <article class="page-card">
-                        <h3>Administrative efficiency</h3>
-                        <p>Registration time, queue handoff speed, documentation completeness, and staff time spent on duplicated work.</p>
+                    <article class="metric-card stat-card reveal">
+                        <strong class="stat-card__number">&lt;24h</strong>
+                        <p class="stat-card__label">Breach notification readiness window</p>
                     </article>
-                    <article class="page-card">
-                        <h3>Procurement visibility</h3>
-                        <p>Stock-out alerts, expiry risk, emergency reorder frequency, and facility-level medicine visibility.</p>
+                    <article class="metric-card stat-card reveal">
+                        <strong class="stat-card__number">FHIR</strong>
+                        <p class="stat-card__label">Interoperability compliance target</p>
                     </article>
-                    <article class="page-card">
-                        <h3>Patient safety and governance</h3>
-                        <p>Audit trail completeness, access-control events, consent handling, and incident reporting readiness under responsible health technology standards.</p>
+                    <article class="metric-card stat-card reveal">
+                        <strong class="stat-card__number">2G</strong>
+                        <p class="stat-card__label">Minimum supported network condition</p>
                     </article>
                 </div>
-                <article class="page-card" style="margin-top:1rem">
-                    <h3>Evaluation timeline</h3>
-                    <p>Baseline and pilot monitoring will continue through the next approved deployment. First independent M&amp;E results are expected after that pilot, subject to facility approval and data quality review.</p>
+                <p>These are the targets the Platform is engineered to hit at Victoria Chitepo Hospital. They are not reported field outcomes.</p>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="manicaland">
+            <div class="container">
+                <article class="page-card">
+                    <h2>Our Proof of Concept: Manicaland District Hospital</h2>
+                    <p>Timeframe: Q3 2024</p>
+                    <p>What we tested: core Platform workflows inside a live hospital, confirming the offline-first design holds up under real facility conditions, not just in development.</p>
+                    <p>Status: Complete. This directly shaped the hardening work now underway ahead of our next pilot.</p>
+                    <p>We're not attaching a performance number to this phase. It was a proof of concept, not a measured pilot, and we'd rather leave it unquantified than publish a figure we can't stand behind.</p>
                 </article>
             </div>
         </section>
 
-        <section class="email-capture animate-on-scroll" id="updates">
+        <section class="section-spacer animate-on-scroll" id="next-pilot">
+            <div class="container">
+                <article class="page-card">
+                    <h2>Next: Victoria Chitepo Hospital</h2>
+                    <p>Status: Confirmed as our next pilot site, pending government approval.</p>
+                    <p>This is where our first independently measured results will come from. Before it starts, this funding round is completing the groundwork: a formal DPIA, Data Protection Officer appointment, DHIS2 and FHIR interoperability mapping with the Ministry of Health, and independent security testing.</p>
+                    <p>We're also in early conversations with facilities in Kenya, Nigeria, and South Africa. None of these are active deployments yet.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="comparison">
+            <div class="container">
+                <article class="page-card">
+                    <h2>How We Compare</h2>
+                    <p>An independent feasibility assessment measured the Platform against Zimbabwe's national systems and global open-source alternatives: DHIS2, ePMS, Impilo, OpenMRS, and Bahmni. The conclusion: the Platform is built to feed data into these systems as a facility-level continuity layer, not duplicate or compete with them.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-spacer animate-on-scroll" id="updates">
+            <div class="container">
+                <article class="page-card">
+                    <h2>What We'll Measure, and Who Verifies It</h2>
+                    <p>When Victoria Chitepo Hospital goes live, we'll track the same indicators as our engineering targets above: offline continuity, sync reliability, and reporting timeliness, against a baseline set before deployment. Results get published here once they clear independent review. That applies whether they're good news or not.</p>
+                    <p><a href="/appointments.html" class="btn btn-primary">See the Platform in action →</a></p>
+                    <p><a href="#updates-signup" class="btn btn-secondary">Get notified when pilot results publish →</a></p>
+                </article>
+            </div>
+        </section>
+
+        <section class="email-capture animate-on-scroll" id="updates-signup">
             <div class="capture-inner">
-                <h3>Follow our impact updates</h3>
+                <h3>Follow pilot results</h3>
                 <p>Quarterly notes on pilot milestones, evaluation progress, and field lessons.</p>
                 <form class="capture-form" onsubmit="handleSubscribe(event)">
                     <input type="email" placeholder="your@email.com" aria-label="Email address" required>
-                    <button type="submit">Follow impact updates →</button>
+                    <button type="submit">Get notified when pilot results publish →</button>
                 </form>
                 <p class="capture-note">No spam. Unsubscribe anytime.</p>
-            </div>
-        </section>
-
-        <section class="cta-section" id="cta">
-            <div class="cta-background"><div class="cta-gradient"></div></div>
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Want to evaluate your own facility scenario?</h2>
-                    <p>Book a platform walkthrough and we will map deployment options to your current workflow constraints.</p>
-                    <div class="cta-buttons">
-                        <a href="/appointments.html" class="btn btn-primary">Book Platform Demo</a>
-                        <a href="/contact.html" class="btn btn-secondary">Contact Partnerships</a>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -217,10 +209,12 @@
       "@context": "https://schema.org",
       "@type": "Report",
       "name": "SelNexa Health Impact Evidence",
-    "description": "Pre-deployment validation notes and monitoring framework for the SelNexa Health Platform proof of concept completed at Manicaland District Hospital.",
+        "description": "Validation notes for the SelNexa Health Platform: what has been built and tested so far, the Manicaland proof of concept, and the next pilot at Victoria Chitepo Hospital.",
       "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Validation snapshot", "url": "https://www.selnexahealth.com/case-studies.html#validated"},
-        {"@type": "ListItem", "position": 2, "name": "Monitoring and evaluation framework", "url": "https://www.selnexahealth.com/case-studies.html#measurement"}
+                {"@type": "ListItem", "position": 1, "name": "What's Validated", "url": "https://www.selnexahealth.com/case-studies.html#validated"},
+                {"@type": "ListItem", "position": 2, "name": "Manicaland Proof of Concept", "url": "https://www.selnexahealth.com/case-studies.html#manicaland"},
+                {"@type": "ListItem", "position": 3, "name": "Next: Victoria Chitepo Hospital", "url": "https://www.selnexahealth.com/case-studies.html#next-pilot"},
+                {"@type": "ListItem", "position": 4, "name": "How We Compare", "url": "https://www.selnexahealth.com/case-studies.html#comparison"}
       ]
     }
     </script>
