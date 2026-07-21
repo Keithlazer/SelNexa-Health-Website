@@ -100,14 +100,14 @@ header .navbar.scrolled {
 .nav-links a,
 .nav-menu .nav-link,
 .nav-menu > .nav-item > a {
-  color: #07d0c3 !important;
+  color: var(--uniform-primary);
   font-weight: 600;
 }
 
 .nav-links a:hover,
 .nav-menu .nav-link:hover,
 .nav-menu > .nav-item > a:hover {
-  color: var(--uniform-primary) !important;
+  color: var(--color-brand-secondary);
 }
 
 .nav-links a.btn,
@@ -565,9 +565,9 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .hero-overline,
 .hero-title {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  hyphens: auto;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .btn,
@@ -1688,6 +1688,61 @@ html[data-theme="dark"] .timeline-item {
   .hero {
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  .hero,
+  .page-hero,
+  .webinars-hero,
+  .resources-hero,
+  .blog-hero {
+    overflow: hidden;
+  }
+
+  .container,
+  .hero-shell,
+  .hero-content,
+  .hero-visual,
+  .page-header,
+  .section-header {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero-title,
+  .page-title,
+  .hero h1,
+  main h1 {
+    max-width: 100% !important;
+    font-size: clamp(2rem, 8.6vw, 2.55rem) !important;
+    line-height: 1.05;
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .hero-title span {
+    display: inline;
+  }
+
+  .hero-subtitle,
+  .page-subtitle,
+  .hero-content p,
+  main :where(.section-header p, article p, .story-copy p, .letter-content p) {
+    max-width: 100% !important;
+    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+    line-height: 1.55;
+    overflow-wrap: break-word;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-ghost,
+  .cta-nav {
+    max-width: 100%;
+    white-space: normal;
   }
 }
 

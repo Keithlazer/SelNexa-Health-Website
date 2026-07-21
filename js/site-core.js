@@ -807,8 +807,29 @@
         return;
       }
       analytics.track("newsletter_subscribe", { source_path: window.location.pathname });
-      showToast("Subscription captured. We will send deployment updates monthly.");
-      form.reset();
+      var endpoint = window.SELNEXA_WISHLIST_ENDPOINT || "";
+      if (!endpoint) {
+        showToast("Updates signup is not connected yet. Please email contact@selnexahealth.com.");
+        return;
+      }
+
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: input.value,
+          form_context: "newsletter",
+          source_path: window.location.pathname
+        })
+      }).then(function (response) {
+        if (!response.ok) {
+          throw new Error("Non-OK response");
+        }
+        showToast("Subscription received. We will send deployment updates monthly.");
+        form.reset();
+      }).catch(function () {
+        showToast("Signup could not be sent. Please email contact@selnexahealth.com.");
+      });
     };
   }
 
@@ -1200,16 +1221,9 @@
         if (!endpoint) {
           showFormNotice(
             form,
-            isWishlist
-              ? "Wishlist request captured. We will notify you when priority demo slots open."
-              : isTelemedicine
-              ? "Telemedicine request saved. Our team will confirm details and clinician availability shortly."
-              : isBooking
-              ? "Booking request captured. Check your email for confirmation and wishlist updates."
-              : "Message saved. We will follow up shortly.",
-            "success"
+            "This form is not connected yet. Please email contact@selnexahealth.com or use the WhatsApp button for a direct response.",
+            "warning"
           );
-          form.reset();
           return;
         }
 
