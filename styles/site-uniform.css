@@ -1411,6 +1411,34 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border-radius: 999px;
 }
 
+.projection-bar--8 {
+  --pct: 8%;
+}
+
+.projection-bar--100 {
+  --pct: 100%;
+}
+
+.alloc-bar--pilot {
+  --pct: 40%;
+  --color: #22c55e;
+}
+
+.alloc-bar--team {
+  --pct: 25%;
+  --color: #3b82f6;
+}
+
+.alloc-bar--compliance {
+  --pct: 20%;
+  --color: #f59e0b;
+}
+
+.alloc-bar--evaluation {
+  --pct: 15%;
+  --color: #8b5cf6;
+}
+
 .investor-faq details,
 .faq-list details,
 .faq-grid details {

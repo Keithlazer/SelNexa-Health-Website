@@ -1,5 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const root = path.resolve(__dirname, '..');
 const report = [];
@@ -9,7 +13,8 @@ function walk(dir) {
   for (const e of entries) {
     const full = path.join(dir, e.name);
     if (e.isDirectory()) {
-      if (e.name === 'node_modules' || e.name === '.git') continue;
+      if (['node_modules', '.git', 'dist', 'test-results'].includes(e.name)) continue;
+      if (e.name === 'SelNexa Website') continue;
       walk(full);
     } else if (/\.html?$/.test(e.name)) {
       scanFile(full);
@@ -34,7 +39,7 @@ function scanFile(filePath) {
 
   // 2) icon-only anchors or buttons without aria-label or sr-only
   // find anchors with <i class="..."> inside and ensure aria-label or contains sr-only span
-  const anchorIconRegex = /<a[^>]*>(?:\s*)<i[^>]*>.*?<\/i>(?:[\s\S]*?)<\/a>/gi;
+  const anchorIconRegex = /<a\b[^>]*>(?:\s*)<i[^>]*>.*?<\/i>(?:[\s\S]*?)<\/a>/gi;
   while ((m = anchorIconRegex.exec(text))) {
     const tag = m[0];
     const hasAria = /aria-label=/.test(tag);

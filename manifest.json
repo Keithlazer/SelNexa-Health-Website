@@ -1,12 +1,12 @@
 {
     "name": "SelNexa Health",
     "short_name": "SelNexa",
-    "description": "Transforming Healthcare in Africa",
+    "description": "Offline-first healthcare infrastructure for African health systems",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#e63946",
+    "theme_color": "#004c4c",
     "icons": [
         { "src": "/assets/selnexa-logo.svg?v=9", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
     ],

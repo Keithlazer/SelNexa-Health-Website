@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SelNexa Health - Modern Design Demo</title>
+    <meta name="description" content="Internal SelNexa Health design system demonstration page.">
+    <meta name="robots" content="noindex,nofollow">
     <link rel="stylesheet" href="styles/grid-typography-system.css">
     <style>
         body {
@@ -31,15 +33,66 @@
             max-width: 500px;
             margin: 2rem auto;
         }
+
+        .demo-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .demo-hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .demo-hero-copy {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .demo-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .demo-heading-lg {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-heading {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .demo-button-offset {
+            margin-top: 1rem;
+        }
+
+        .demo-full-width {
+            width: 100%;
+        }
+
+        .skeleton-text--short {
+            width: 70%;
+        }
+
+        .skeleton-text--medium {
+            width: 80%;
+        }
     </style>
 </head>
 <body>
     <!-- Hero Section with Gradient -->
     <section class="gradient-hero demo-section">
-        <div style="position: relative; z-index: 2; text-align: center; color: white;">
-            <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem;">Modern Healthcare Solutions</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">Experience the future of healthcare with our cutting-edge platform</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <div class="demo-hero-content">
+            <h1 class="demo-hero-title">Modern Healthcare Solutions</h1>
+            <p class="demo-hero-copy">Experience the future of healthcare with our cutting-edge platform</p>
+            <div class="demo-actions">
                 <button class="btn btn-primary">Get Started</button>
                 <button class="btn btn-secondary">Learn More</button>
             </div>
@@ -48,29 +101,29 @@
 
     <!-- Glassmorphism Cards Demo -->
     <section class="demo-section gradient-subtle">
-        <h2 style="text-align: center; margin-bottom: 3rem;">Glassmorphism Components</h2>
+        <h2 class="demo-heading-lg">Glassmorphism Components</h2>
         <div class="demo-grid">
             <div class="glass-card animate-on-scroll">
                 <h3>Advanced AI Diagnostics</h3>
                 <p>Our AI-powered diagnostic tools provide accurate results with unprecedented speed and reliability.</p>
-                <button class="btn btn-primary" style="margin-top: 1rem;">Explore Features</button>
+                <button class="btn btn-primary demo-button-offset">Explore Features</button>
             </div>
             <div class="glass-card animate-on-scroll">
                 <h3>Telemedicine Platform</h3>
                 <p>Connect with healthcare professionals from anywhere with our secure telemedicine solution.</p>
-                <button class="btn btn-primary" style="margin-top: 1rem;">Start Consultation</button>
+                <button class="btn btn-primary demo-button-offset">Start Consultation</button>
             </div>
             <div class="glass-card animate-on-scroll">
                 <h3>Data Analytics</h3>
                 <p>Gain insights from comprehensive health data analytics to improve patient outcomes.</p>
-                <button class="btn btn-primary" style="margin-top: 1rem;">View Dashboard</button>
+                <button class="btn btn-primary demo-button-offset">View Dashboard</button>
             </div>
         </div>
     </section>
 
     <!-- Modern Form Demo -->
     <section class="demo-section">
-        <h2 style="text-align: center; margin-bottom: 2rem;">Enhanced Form Experience</h2>
+        <h2 class="demo-heading">Enhanced Form Experience</h2>
         <form class="demo-form">
             <div class="form-group">
                 <label class="form-label" for="name">Full Name</label>
@@ -84,25 +137,25 @@
                 <label class="form-label" for="message">Message</label>
                 <textarea id="message" class="form-input form-textarea" placeholder="Tell us how we can help..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            <button type="submit" class="btn btn-primary demo-full-width">Send Message</button>
         </form>
     </section>
 
     <!-- Loading States Demo -->
     <section class="demo-section gradient-subtle">
-        <h2 style="text-align: center; margin-bottom: 2rem;">Loading States</h2>
+        <h2 class="demo-heading">Loading States</h2>
         <div class="demo-grid">
             <div class="skeleton skeleton-card">
                 <div class="skeleton skeleton-text"></div>
                 <div class="skeleton skeleton-text"></div>
-                <div class="skeleton skeleton-text" style="width: 70%;"></div>
-                <div class="skeleton skeleton-button" style="margin-top: 1rem;"></div>
+                <div class="skeleton skeleton-text skeleton-text--short"></div>
+                <div class="skeleton skeleton-button demo-button-offset"></div>
             </div>
             <div class="skeleton skeleton-card">
                 <div class="skeleton skeleton-text"></div>
                 <div class="skeleton skeleton-text"></div>
-                <div class="skeleton skeleton-text" style="width: 80%;"></div>
-                <div class="skeleton skeleton-button" style="margin-top: 1rem;"></div>
+                <div class="skeleton skeleton-text skeleton-text--medium"></div>
+                <div class="skeleton skeleton-button demo-button-offset"></div>
             </div>
         </div>
     </section>
@@ -128,5 +181,4 @@
         });
     </script>
 </body>
-</html></content>
-<parameter name="filePath">modern-design-demo.html
+</html>

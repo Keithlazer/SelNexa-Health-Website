@@ -1,4 +1,4 @@
-const CACHE_VERSION = "2026-04-09-v1";
+const CACHE_VERSION = "2026-08-09-v1";
 const STATIC_CACHE = `selnexa-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `selnexa-dynamic-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";
@@ -18,6 +18,7 @@ const CORE_ASSETS = [
   "/styles/main.css",
   "/styles/home.css",
   "/styles/grid-typography-system.css",
+  "/styles/site-uniform.css",
   "/js/main.js",
   "/js/home.js",
   "/js/site-core.js",

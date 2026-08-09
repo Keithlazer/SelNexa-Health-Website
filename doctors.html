@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare Providers | SelNexa Health – Find Our Doctors & Specialists</title>
-    <meta name="description" content="Meet SelNexa Health's network of healthcare providers. Book consultations with experienced doctors, specialists, and telemedicine providers.">
+    <title>Provider Directory Prototype | SelNexa Health</title>
+    <meta name="description" content="Archived SelNexa Health provider directory prototype. Active provider booking is not publicly available from this page.">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="keywords" content="doctors, healthcare providers, specialists, consultations, telemedicine, medical professionals">
     <meta property="og:title" content="Healthcare Providers | SelNexa Health">
     <meta property="og:description" content="Connect with experienced healthcare providers through SelNexa Health's telemedicine network.">
@@ -151,6 +152,43 @@
             border-radius: 4px;
             font-size: 0.9rem;
         }
+        .provider-filter,
+        .provider-grid {
+            display: none;
+        }
+        .prototype-notice {
+            background: #f7fbfb;
+            border: 1px solid #d7e6e6;
+            border-left: 4px solid #004c4c;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .prototype-notice h2 {
+            color: #004c4c;
+            margin-top: 0;
+        }
+        .provider-info-box {
+            background: #f0f8ff;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #003d82;
+        }
+        .provider-info-box h3,
+        .provider-info-box h4 {
+            color: #003d82;
+        }
+        .provider-info-box h3 {
+            margin-top: 0;
+        }
+        .provider-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .provider-info-grid i {
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -166,7 +204,7 @@
                     <li><a href="/solutions/">Solutions</a></li>
                     <li><a href="/for-investors.html">Investors</a></li>
                     <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
@@ -179,8 +217,18 @@
         <!-- Hero -->
         <section class="hero">
             <div class="container">
-                <h1>Healthcare Providers</h1>
-                <p>Connect with experienced doctors, specialists, and nurses. Book in-person consultations or secure video consultations anytime, anywhere.</p>
+                <h1>Provider Directory Prototype</h1>
+                <p>This archived directory is not an active booking surface. Contact SelNexa Health for pilot access, clinical partnership discussions, or platform onboarding.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="prototype-notice">
+                    <h2>Public provider booking is not live</h2>
+                    <p>Provider profiles, availability, prescriptions, and direct consultation booking are being held back until facility approvals and clinical onboarding are complete.</p>
+                    <p><a href="/contact.html" class="btn btn-primary">Contact SelNexa Health</a></p>
+                </div>
             </div>
         </section>
 
@@ -249,8 +297,8 @@
                                 <strong>MD:</strong> University of Lagos | <strong>Certified:</strong> West African College of Physicians
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -276,8 +324,8 @@
                                 <strong>MD:</strong> University of the Witwatersrand | <strong>Certified:</strong> South African Emergency Medicine Board
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -303,8 +351,8 @@
                                 <strong>MD:</strong> University of Cape Town | <strong>Specialist:</strong> Pediatric Medicine
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -330,8 +378,8 @@
                                 <strong>MD:</strong> University of Zimbabwe | <strong>Fellow:</strong> African College of Cardiology
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -357,8 +405,8 @@
                                 <strong>MD:</strong> University of Zambia | <strong>Fellowship:</strong> British Orthopedic Association
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -384,8 +432,8 @@
                                 <strong>MD:</strong> University of Nairobi | <strong>Specialist:</strong> Psychiatry & Mental Health
                             </p>
                             <div class="provider-actions">
-                                <a href="/#beta" class="btn-consult">Book Consultation</a>
-                                <a href="#" class="btn-profile">View Profile</a>
+                                <a href="/contact.html" class="btn-consult">Request Access</a>
+                                <a href="/contact.html" class="btn-profile">Contact Team</a>
                             </div>
                         </div>
                     </div>
@@ -395,23 +443,23 @@
 
         <!-- Info Box -->
         <section class="section">
-            <div class="container" style="background: #f0f8ff; padding: 2rem; border-radius: 8px; border-left: 4px solid #003d82;">
-                <h3 style="color: #003d82; margin-top: 0;">How Consultations Work</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div class="container provider-info-box">
+                <h3>How Consultations Work</h3>
+                <div class="provider-info-grid">
                     <div>
-                        <h4 style="color: #003d82;"><i class="fas fa-search" style="margin-right: 0.5rem;"></i>Find & Book</h4>
+                        <h4><i class="fas fa-search"></i>Find & Book</h4>
                         <p>Browse our provider directory, check availability, and book a consultation at your preferred time.</p>
                     </div>
                     <div>
-                        <h4 style="color: #003d82;"><i class="fas fa-video" style="margin-right: 0.5rem;"></i>In-Person or Virtual</h4>
+                        <h4><i class="fas fa-video"></i>In-Person or Virtual</h4>
                         <p>Choose in-person appointments at partnered health institutions or secure video consultations from home.</p>
                     </div>
                     <div>
-                        <h4 style="color: #003d82;"><i class="fas fa-lock" style="margin-right: 0.5rem;"></i>Secure & Private</h4>
+                        <h4><i class="fas fa-lock"></i>Secure & Private</h4>
                         <p>All consultations are HIPAA-compliant, encrypted, and your medical records are kept private and secure.</p>
                     </div>
                     <div>
-                        <h4 style="color: #003d82;"><i class="fas fa-prescription-bottle" style="margin-right: 0.5rem;"></i>Prescriptions</h4>
+                        <h4><i class="fas fa-prescription-bottle"></i>Prescriptions</h4>
                         <p>Receive digital prescriptions that you can fill at local pharmacies or through our pharmacy partners.</p>
                     </div>
                 </div>
@@ -421,11 +469,11 @@
         <!-- CTA -->
         <section class="section cta">
             <div class="container">
-                <h2>Connect with a Healthcare Provider Today</h2>
-                <p>Get expert medical advice when you need it, where you are.</p>
+                <h2>Contact SelNexa Health for clinical onboarding</h2>
+                <p>We are not offering public consultation booking from this page.</p>
                 <div class="cta-buttons">
-                    <a href="/#beta" class="btn btn-primary">Book a Consultation</a>
-                    <a href="/solutions/telemedicine.html" class="btn btn-outline">Learn About Telemedicine</a>
+                    <a href="/contact.html" class="btn btn-primary">Contact Us</a>
+                    <a href="/telemedicine.html" class="btn btn-outline">Learn About Telemedicine</a>
                 </div>
             </div>
         </section>
