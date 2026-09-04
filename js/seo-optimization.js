@@ -110,13 +110,13 @@
         setMetaTag('og:type', 'website', true);
         setMetaTag('og:url', window.location.href, true);
         setMetaTag('og:site_name', 'SelNexa Health', true);
-        setMetaTag('og:image', '/assets/selnexa-logo.svg?v=1', true);
+        setMetaTag('og:image', 'https://www.selnexahealth.com/og-image.png', true);
         
         // Twitter Card tags
         setMetaTag('twitter:card', 'summary_large_image');
         setMetaTag('twitter:title', config.title);
         setMetaTag('twitter:description', config.description);
-        setMetaTag('twitter:image', '/assets/selnexa-logo.svg?v=1');
+        setMetaTag('twitter:image', 'https://www.selnexahealth.com/og-image.png');
         
         // Additional SEO
         setMetaTag('robots', 'index, follow, max-snippet:-1, max-image-preview:large');

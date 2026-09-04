@@ -1439,6 +1439,15 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   --color: #8b5cf6;
 }
 
+.selnexa-honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .investor-faq details,
 .faq-list details,
 .faq-grid details {

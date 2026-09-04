@@ -1065,6 +1065,21 @@
     form.appendChild(wishlistOptIn);
   }
 
+  function ensureHoneypotField(form) {
+    if (!form || form.querySelector("input[name='website']")) {
+      return;
+    }
+
+    var wrapper = document.createElement("div");
+    wrapper.className = "selnexa-honeypot";
+    wrapper.setAttribute("aria-hidden", "true");
+    wrapper.innerHTML = [
+      '<label for="website-' + Math.random().toString(36).slice(2) + '">Website</label>',
+      '<input type="text" name="website" tabindex="-1" autocomplete="off">'
+    ].join("");
+    form.appendChild(wrapper);
+  }
+
   function ensureWishlistFirstCopy(form) {
     if (!isBookingForm(form)) {
       return;
@@ -1177,6 +1192,7 @@
       ensureSchedulingFields(form);
       ensureWishlistField(form);
       ensureWishlistFirstCopy(form);
+      ensureHoneypotField(form);
       form.setAttribute("data-selnexa-form-bound", "true");
 
       form.addEventListener("submit", function (event) {
@@ -1194,6 +1210,11 @@
           payload[key] = value;
         });
 
+        if (payload.website) {
+          showFormNotice(form, "Submission could not be accepted. Please contact contact@selnexahealth.com directly.", "error");
+          return;
+        }
+
         var isBooking = isBookingForm(form);
         var wishlistValue = (payload.join_wishlist || "").toString().toLowerCase();
         var isWishlist = wishlistValue === "yes" || wishlistValue === "on" || wishlistValue === "true";
@@ -1207,6 +1228,11 @@
           payload.form_context = "book_demo";
           payload.source_path = window.location.pathname;
         }
+
+        payload.schema_version = "2026-09-04";
+        payload.submitted_at = new Date().toISOString();
+        payload.page_title = document.title || "";
+        payload.form_id = form.id || form.className || "selnexa-form";
 
         var schedulingEndpoint = window.SELNEXA_SCHEDULING_ENDPOINT || "";
         var wishlistEndpoint = window.SELNEXA_WISHLIST_ENDPOINT || "";
@@ -1236,6 +1262,8 @@
 
         fetch(endpoint, {
           method: "POST",
+          mode: "cors",
+          credentials: "omit",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
         }).then(function (response) {
