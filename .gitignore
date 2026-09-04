@@ -1,2 +1,6 @@
 node_modules/
 .env
+static-server.log
+static-server.err.log
+vite-dev.log
+vite-dev.err.log
