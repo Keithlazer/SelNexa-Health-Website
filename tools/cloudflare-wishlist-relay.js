@@ -1,3 +1,34 @@
+// Cloudflare Worker that receives the website's form submissions (JSON POST from js/site-core.js)
+// and emails them through Resend. Deploy it, then put its URL in js/form-endpoints.js.
+//
+// Secrets and settings (Cloudflare dashboard or `wrangler secret put`):
+//   RESEND_API_KEY      required
+//   FORM_TO_EMAIL       required: where submissions go (SCHEDULING_TO_EMAIL / WISHLIST_TO_EMAIL still work)
+//   FORM_FROM_EMAIL     optional sender, on a domain verified in Resend
+//   ALLOWED_ORIGINS     optional, comma-separated (default https://www.selnexahealth.com)
+//   SUBMISSION_RATE_LIMIT_KV  optional KV namespace for a 5-per-minute limit per IP
+//
+// Forms send: form ("demo", "contact" or "updates"), page, submitted_at, plus the fields below.
+
+const FIELDS = [
+  ["form", "Form"],
+  ["name", "Name"],
+  ["email", "Email"],
+  ["phone", "Phone"],
+  ["organisation", "Organisation"],
+  ["role", "Role"],
+  ["institution_type", "Institution type"],
+  ["country", "Country"],
+  ["interest", "Request"],
+  ["topic", "Topic"],
+  ["message", "Message"],
+  ["consent", "Consent to reply"],
+  ["page", "Sent from page"],
+  ["submitted_at", "Submitted at"]
+];
+
+const MAX_BYTES = 32768;
+
 export default {
   async fetch(request, env) {
     const allowedOrigins = (env.ALLOWED_ORIGINS || env.ALLOWED_ORIGIN || "https://www.selnexahealth.com")
@@ -9,138 +40,81 @@ export default {
     const corsHeaders = {
       "Access-Control-Allow-Origin": allowedOrigin,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, X-Requested-With",
+      "Access-Control-Allow-Headers": "Content-Type, Accept",
       "Cache-Control": "no-store",
       "Vary": "Origin"
     };
+    const reply = (status, body) =>
+      new Response(JSON.stringify(body), {
+        status,
+        headers: { "Content-Type": "application/json", ...corsHeaders }
+      });
 
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders });
     }
-
     if (request.method !== "POST") {
-      return new Response(JSON.stringify({ error: "Method not allowed" }), {
-        status: 405,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(405, { error: "Method not allowed" });
     }
-
     if (origin && !allowedOrigins.includes(origin)) {
-      return new Response(JSON.stringify({ error: "Origin not allowed" }), {
-        status: 403,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(403, { error: "Origin not allowed" });
     }
 
-    var contentLength = Number(request.headers.get("Content-Length") || "0");
-    if (contentLength > 32768) {
-      return new Response(JSON.stringify({ error: "Payload too large" }), {
-        status: 413,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+    // Read the body with a size cap (Content-Length can be missing).
+    const raw = await request.text();
+    if (raw.length > MAX_BYTES) {
+      return reply(413, { error: "Payload too large" });
     }
-
-    var payload;
+    let payload;
     try {
-      payload = await request.json();
+      payload = JSON.parse(raw);
     } catch (err) {
-      return new Response(JSON.stringify({ error: "Invalid JSON payload" }), {
-        status: 400,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(400, { error: "Invalid JSON payload" });
+    }
+    if (!payload || typeof payload !== "object") {
+      return reply(400, { error: "Invalid JSON payload" });
     }
 
-    if (!payload || !payload.name || !payload.email) {
-      return new Response(JSON.stringify({ error: "Missing required fields" }), {
-        status: 400,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
-    }
-
+    // Honeypot: pretend success so bots don't retry.
     if (payload.website || payload._gotcha || payload.company_url || payload.fax) {
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(200, { ok: true });
     }
 
-    var email = String(payload.email || "").trim();
+    const kind = ["demo", "contact", "updates"].includes(payload.form) ? payload.form : "contact";
+    const email = String(payload.email || "").trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
-      return new Response(JSON.stringify({ error: "Invalid email address" }), {
-        status: 400,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(400, { error: "Invalid email address" });
+    }
+    if (kind !== "updates" && !String(payload.name || "").trim()) {
+      return reply(400, { error: "Missing required fields" });
     }
 
-    var ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
     if (env.SUBMISSION_RATE_LIMIT_KV && ip !== "unknown") {
-      var now = Date.now();
-      var windowKey = "form:" + ip + ":" + Math.floor(now / 60000);
-      var count = Number(await env.SUBMISSION_RATE_LIMIT_KV.get(windowKey) || "0") + 1;
+      const windowKey = "form:" + ip + ":" + Math.floor(Date.now() / 60000);
+      const count = Number((await env.SUBMISSION_RATE_LIMIT_KV.get(windowKey)) || "0") + 1;
       if (count > 5) {
-        return new Response(JSON.stringify({ error: "Too many submissions" }), {
-          status: 429,
-          headers: {
-            "Content-Type": "application/json",
-            ...corsHeaders
-          }
-        });
+        return reply(429, { error: "Too many submissions" });
       }
       await env.SUBMISSION_RATE_LIMIT_KV.put(windowKey, String(count), { expirationTtl: 120 });
     }
 
-    var resendApiKey = env.RESEND_API_KEY;
-    var recipientEmail = payload.booking_type === "wishlist"
-      ? env.WISHLIST_TO_EMAIL
-      : (env.SCHEDULING_TO_EMAIL || env.WISHLIST_TO_EMAIL);
-    var fromEmail = env.WISHLIST_FROM_EMAIL || "SelNexa Wishlist <noreply@selnexahealth.com>";
-
+    const resendApiKey = env.RESEND_API_KEY;
+    const recipientEmail = env.FORM_TO_EMAIL || env.SCHEDULING_TO_EMAIL || env.WISHLIST_TO_EMAIL;
+    const fromEmail = env.FORM_FROM_EMAIL || env.WISHLIST_FROM_EMAIL || "SelNexa Health website <noreply@selnexahealth.com>";
     if (!resendApiKey || !recipientEmail) {
-      return new Response(JSON.stringify({ error: "Worker secrets not configured" }), {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      return reply(500, { error: "Relay is not configured" });
     }
 
-    var lines = [
-      "New SelNexa wishlist submission",
-      "",
-      "Name: " + (payload.name || ""),
-      "Email: " + email,
-      "Phone: " + (payload.phone || ""),
-      "Facility: " + (payload.facility_name || payload.facility || payload.facility_type || ""),
-      "Country: " + (payload.country || ""),
-      "Interest: " + (payload.interest || ""),
-      "Booking Type: " + (payload.booking_type || "wishlist"),
-      "Source Page: " + (payload.source_path || ""),
-      "Message: " + (payload.message || "")
-    ];
+    const clean = (value) => String(value == null ? "" : value).slice(0, 4000);
+    const lines = FIELDS.filter(([key]) => payload[key]).map(([key, label]) => label + ": " + clean(payload[key]));
+    const subject = kind === "demo"
+      ? "Demo request" + (payload.organisation ? ": " + clean(payload.organisation).slice(0, 120) : "")
+      : kind === "updates"
+      ? "Updates sign-up: " + email
+      : "Website message" + (payload.topic ? ": " + clean(payload.topic).slice(0, 120) : "");
 
-    var resendResponse = await fetch("https://api.resend.com/emails", {
+    const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + resendApiKey,
@@ -150,28 +124,16 @@ export default {
         from: fromEmail,
         to: [recipientEmail],
         reply_to: email,
-        subject: "SelNexa Wishlist Signup: " + (payload.name || "New Contact"),
+        subject,
         text: lines.join("\n")
       })
     });
 
     if (!resendResponse.ok) {
-      var resendError = await resendResponse.text();
-      return new Response(JSON.stringify({ error: "Failed to send email", details: resendError }), {
-        status: 502,
-        headers: {
-          "Content-Type": "application/json",
-          ...corsHeaders
-        }
-      });
+      // Keep the provider's error in the Worker logs, not in the visitor's browser.
+      console.log("Resend error", resendResponse.status, await resendResponse.text());
+      return reply(502, { error: "Failed to send email" });
     }
-
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
-        ...corsHeaders
-      }
-    });
+    return reply(200, { ok: true });
   }
 };

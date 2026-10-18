@@ -25,14 +25,14 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 - [ ] Savings calculator: removed from the Platform page. Confirm it stays removed, or supply measured admin-time figures to rebuild it with every input editable.
 - [ ] Homepage pilot terms: confirm "30-day guided pilot", "no upfront commitment" and "local implementation support".
-- [ ] Telemedicine: confirm a telemedicine beta exists and which of its listed features are built (low-bandwidth video, AI-assisted triage, remote monitoring for chronic conditions, Shona and Ndebele interfaces). If not, remove `telemedicine.html`, its pricing mention and `blog/selnexa-telemedicine-zimbabwe.html`.
+- [ ] Telemedicine: confirm a telemedicine beta exists and which of its listed features are built (low-bandwidth video, AI-assisted triage, remote monitoring for chronic conditions, Shona and Ndebele interfaces). If not, remove `telemedicine.html`, its pricing mention, `blog/selnexa-telemedicine-zimbabwe.html`, the footer link and the "Access to the telemedicine beta" option in `includes/demo-form.html`.
 - [ ] Mental Health Detection project on the Projects page: confirm it is a real research project (the brief lists only the Platform, ContraWise and maternal health).
 - [ ] "Independent feasibility assessment" on the Impact page ("How We Compare"): who carried it out, and can it be named?
 - [ ] Security and Compliance page: confirm the status shown for each row, especially cross-border transfer checks (shown as in progress) and data residency (shown as built).
 - [ ] Module features beyond the platform description: analytics (readmission risk, disease progression, mortality and infection tracking, Tableau and Power BI export), procurement (automatic purchase orders, supplier portals), administration (AI time-slot suggestions, automatic record filing). Confirm each is built, or remove it.
 - [ ] Investor page: confirm "AI procurement engine tuned to African disease burden and seasonality".
 - [ ] Platform page: the "Africa CDC 5Cs" section lists four Cs. Confirm the framework's name and the fifth.
-- [ ] Pricing page: confirm "request a quote within 48 hours", "outcome-linked discounts for public-sector facilities", "local currency billing in Kenya (KES)" and "we price on outcomes".
+- [ ] Pricing page: confirm "outcome-linked discounts for public-sector facilities", "local currency billing in Kenya (KES)" and "we price on outcomes". The "quote within 48 hours" promise was dropped when the quote links moved to the demo form; add a response time back only if you can keep it.
 - [ ] Use of funds: the investor page says 40/25/20/15; the pitch deck says USD 80K / 45K / 25K (53/30/17). Which is current?
 - [ ] Pricing model: the deck mentions tiered plans "based on user limits"; the site says no seat licenses. Reconcile.
 - [ ] Financial model: the 2026 projection (3 live facilities, USD 52.3K) can no longer happen. Supply an updated model.
@@ -42,12 +42,20 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 ## Contact and operations
 
-- [ ] Forms: no form on the site sends anywhere (the endpoints are empty). Supply a form endpoint (the Cloudflare relay in `tools/` or a FormSubmit address) so demo requests and messages reach you.
-- [ ] Public email: the site and deck use seven addresses (contact@, info@, sales@, support@ and keithtafangombe@selnexahealth.com, keithtafangombe@gmail.com, support@selnexa.health). Choose the public one and confirm it receives mail.
+- [ ] Before this branch goes live, confirm contact@selnexahealth.com receives mail. Every form on the site falls back to opening an email to that address, and the footer, contact page and structured data all show it. (The site and deck used seven addresses before; only the privacy policy still gives a different one, keithtafangombe@selnexahealth.com.)
+- [ ] Forms: to receive submissions without relying on the visitor's email app, deploy `tools/cloudflare-wishlist-relay.js` as a Cloudflare Worker (it needs a Resend API key and a FORM_TO_EMAIL address), then put its URL in `js/form-endpoints.js`. Instructions are at the top of the relay file.
+- [ ] Contact page street address: confirm it should be public.
+- [ ] About page: LinkedIn blocks automated link checks, so open the four team members' LinkedIn links by hand.
 - [ ] Demo booking calendar: `cal.com/selnexahealth` does not exist. Set one up if you want a calendar on the booking page; the form works without it.
 - [ ] Demo videos: the patient demo shows "Harare Central Hospital" and the provider demo "Mpilo Central Hospital" as demo facilities. Rename the demo facilities in the Platform's seed data before recording again.
 - [ ] Privacy policy: have it reviewed against the Cyber and Data Protection Act, and name the form processor once forms are connected.
 - [ ] Terms of service: add governing law and have them reviewed.
+
+## Site structure
+
+- [ ] Two pairs of pages overlap: `impact.html` ("Results Matrix") with `case-studies.html` (the Impact page in the menu), and `solutions/index.html` ("All modules") with `features.html` (Platform). Both pairs are linked from the footer for now. Merge them or keep both?
+- [ ] The language selector (French, Shona, Ndebele) was removed because it translated only menu labels. Translated pages would need full translations.
+- [ ] The phone-only bottom bar (Home, Platform, Impact, Contact, Demo) was removed because it duplicated the header menu. Say if you want it back.
 
 ## Repository
 

@@ -204,3 +204,86 @@ Every indexable page has a new title (60 characters or fewer) and meta descripti
 - `about.html:125`: "Silicon Valley 'ports'" (apparently a typo) rewritten.
 
 **Flagged, not changed (Phase 2):** headline choice; the "Health Centre" plan name.
+
+## Phase 3. Navigation, conversion and shared page parts
+
+### 3.1 Navigation
+
+| Location | Finding | Action |
+|---|---|---|
+| Header of every page, in five variants: `index.html:616-660`; `about.html:26-55` and the other pages on `main.css`; `solutions/records.html:22-48` and the other pages on `home.css`; `resources/guides.html:16-30` and the other resources pages; `blog/ai-healthcare-africa.html:30-52` | Eight or nine top-level items (Home, About, Platform, Projects, Impact, Investors, Resources, Contact, "Book Platform Demo") in different orders; one blog template had Home, Solutions, About, Blog, Investors, Contact instead. `js/site-core.js` then added a dark-mode toggle, a language selector and a voice-search button. On the `home.css` pages "Book Platform Demo" wrapped onto three lines at 1366px. The resources pages and `blog/future-healthcare-systems.html` showed the logo at full size, filling the first screen. At 768px the menu and the added buttons pushed five pages 166 to 371px wider than the screen. | One header for every page (`includes/site-header.html`): Platform, Projects, Impact, About, Contact, and a "Book a demo" button. The current section is marked with `aria-current="page"`. Investors, Resources, Blog, FAQ, Careers and Press moved to the footer. No page now scrolls sideways at 1366, 768 or 390px. |
+| Mobile menu | Built differently in each template. | A `<button>` with `aria-expanded` and `aria-controls`, closed with Escape (focus returns to the button), 48px link rows. Without JavaScript the links show as a wrapped row instead of a menu that cannot open. |
+| Mobile bottom bar (`js/site-core.js`, `setupBottomNav`) | A second navigation on phones (Home, Platform, Impact, Contact, Demo) with a different set of items from the header. | Removed. Every destination is in the header menu. |
+| Language selector (`js/i18n.js`) | Offered French, Shona and Ndebele but translated only about twenty menu and button labels per language; page text stayed in English. | Removed with `js/i18n.js`. The `hreflang` alternates in page heads are handled in Phase 4. |
+
+### 3.2 One action, one modal, forms that reach someone
+
+**Labels.** "Book Platform Demo" (every header and most footers), "Request Pilot Demo" (`index.html:1037`, `:1073`), "Request Demo or Join Wishlist" and "Join Wishlist / Request Demo" (`about.html:409`, `:442` and the same modal on other pages), "Join Wishlist / Request Booking" (`appointments.html:155`), "Request Demo" (`solutions/hospital-management.html:52`, `:224`) and "See the Platform in action" (`case-studies.html`) are now "Book a demo" everywhere. Every one of these links points to `/appointments.html` and carries `data-demo-trigger`: with JavaScript it opens the modal, without it (or with a modifier-click) it opens the booking page.
+
+**Modal.** Each page carried its own copies of up to two dialogs, `#demo-modal` and `#contact-modal` (for example `index.html:1034-1100`, `about.html:406-470`, `for-investors.html:517-552`), with different titles, fields and buttons, opened by inline `onclick` handlers. There is now one dialog (`includes/demo-modal.html`) holding the same form as `/appointments.html`. Opening it moves focus to the first field; Tab stays inside it; Escape, the close button or a click on the backdrop close it; focus returns to the button that opened it. Buttons can preselect the request: "Request a quote" on the pricing page selects "A quote for our institution", "Apply for Beta Access" on the telemedicine page selects the telemedicine beta.
+
+**Forms before this phase:**
+
+| Form | Where submissions went | What the visitor saw | Required fields, privacy, countries |
+|---|---|---|---|
+| Booking form, `appointments.html:61-156` | Nowhere. `action=""` and `SELNEXA_SCHEDULING_ENDPOINT` was empty. | After filling in up to 13 fields: "This form is not connected yet. Please email contact@selnexahealth.com". What they typed was not kept. | Asterisks in label text, explained nowhere. Phone, "consultation mode" and "preferred time window" were required. Privacy checkbox with no link to the policy. Six named countries plus "Other". |
+| Demo modal on most pages | Nowhere, same handler | Same notice | Privacy checkbox with no link. Four countries: Zimbabwe, Nigeria, Kenya, South Africa. |
+| Contact modal ("Contact Sales") and the investor version | Nowhere | Same notice | No privacy consent. |
+| `contact.html:59-76` | Nowhere | Same notice | Privacy checkbox with no link. |
+| Quote form, `pricing.html:147-165` | Nowhere | Same notice | Privacy checkbox with no link. |
+| `solutions/hospital-management.html:207-225` | Nowhere. The inputs had no `name` attributes, so a connected endpoint would have received an empty submission. | Nothing | No consent. |
+| Updates sign-up, `index.html:958`, `case-studies.html:148` | Nowhere (`handleSubscribe` with an empty endpoint) | A toast: "Updates signup is not connected yet" | No visible label, no privacy link. Promised "~1 email per month" and "quarterly notes". |
+| `portal.html:17-29` | A patient-portal sign-in for a portal that does not exist. Both buttons only showed "Portal access is not enabled". No page linked to it. | | |
+
+**Forms now.** Three forms share one handler in `js/site-core.js`:
+
+- Demo request (`includes/demo-form.html`), on `appointments.html` and in the modal everywhere else. Required: name, email, institution, institution type, country, what they want, consent. Optional: phone or WhatsApp, role, message. Country list: Zimbabwe, then every other African country, then "Outside Africa". Institution types use "health institution" terms (public hospital, mission or private hospital, health centre, network, ministry, NGO or funder, other).
+- Contact (`includes/contact-form.html`), on `contact.html`. Required: name, email, topic, message, consent. The topic is preselected from the link, so "Schedule an investor call" on the investor page opens the form with "Investment" chosen.
+- Updates sign-up, on the homepage and the Impact page: one email field with a visible label, a privacy link and no promise about frequency.
+- Every form marks required fields with an asterisk, explains it at the top (the asterisk is hidden from screen readers; the inputs carry `required`), and links the consent box to the privacy policy.
+- On submit, each problem field gets a message tied to it with `aria-describedby` and `aria-invalid`, focus moves to the first one, and a status line is announced.
+- Delivery: if `window.SELNEXA_FORM_ENDPOINT` in `js/form-endpoints.js` is set, the form posts JSON there and shows a success or error message; offline submissions are kept on the device and sent when the connection returns. The endpoint is empty today, so the form opens the visitor's email app with a pre-filled message to contact@selnexahealth.com, and the page shows the address and the WhatsApp number in case nothing opens. Without JavaScript the same forms submit through `mailto:`.
+- `tools/cloudflare-wishlist-relay.js`, the Cloudflare Worker meant to receive these submissions, required a `name` field the sign-up form doesn't have, read old field names, and passed the email provider's error text back to the browser. It now accepts the new payload, caps the body size even when no length header is sent, and keeps provider errors in the Worker log. Tested with simulated requests; not deployed.
+
+**Other conversion fixes:**
+
+| File:line | Finding | Action |
+|---|---|---|
+| `pricing.html:81`, `:91`, `:101` | "Request a quote within 48 hours" linked to the on-page form. | "Request a quote" opens the demo form with the quote request selected. The 48-hour promise was not kept (it was flagged as unconfirmed in Phase 1; see `CONTENT-TODO.md`). |
+| `pricing.html:145` | "Talk to sales". There is no sales team. | "Contact us". |
+| `for-investors.html:58`, `:80-81`, `:445-446` | "Schedule Investor Call" in the page's own nav and two buttons, all opening the contact modal. | Links to the contact form with "Investment" selected. |
+| `contact.html:109` | Listed a personal Gmail address. | contact@selnexahealth.com, and the phone number became a tappable link. |
+| `appointments.html:206-207`, `contact.html:132-133`, `404.html:54-55`, `:105-106`, `faq.html:128-129`, `blog.html:166` | Buttons that navigated with `onclick="window.location.href=..."` or opened a modal with inline script. | Ordinary links. |
+| `appointments.html:31` | "Use this secure form..." under the heading "UNIFIED SCHEDULING". | Plain description of what happens after sending; overline "BOOK A DEMO". |
+| `for-investors.html:31` and the founders' letter | A reading-progress bar, and the letter moved above the market section by script after load. | Bar removed (the header has its own progress line). The letter now sits after the hero in the HTML, so the order no longer depends on JavaScript. |
+| `manifest.json` | Shortcuts "Book Appointment", "Case Studies", "Telemedicine", "Contact Us"; description "healthcare infrastructure for African health systems". | Shortcuts "Book a demo", "Platform", "Impact", "Contact"; description matches the category phrase. |
+| `portal.html` | Fake sign-in form (see above). | Redirect stub to the contact page, like the other retired pages. |
+
+### 3.3 One header and one footer on every page
+
+- **Build step.** `tools/build-site.mjs` copies the shared parts in `includes/` (head tags, skip link, header, footer, demo modal and form, contact form, scripts) into every page between marker comments such as `<!-- sx:footer -->`. The pages stay complete static HTML, so nothing depends on JavaScript and GitHub Pages needs no build. `npm run build:site` updates the pages; `npm run check:site` fails if any page is out of date. `includes/README.md` explains how to edit them.
+- **Footers.** Each template had its own footer with its own links. Nineteen pages, `includes/footer.html` and `js/site-core.js` linked to X and YouTube profiles or a LinkedIn company URL (`/company/selnexahealth`), all of which return 404. The new footer carries the company line, Harare, contact@selnexahealth.com, the LinkedIn page that exists (`/company/selnexa-health`), Platform, Projects, Company and Data protection columns, the three compliance lines from Phase 1 and the legal name.
+- **Organization structured data.** Two static blocks (`index.html:1103-1131`, `for-investors.html:554-570`) listed the dead profiles and a `sales@` address, and `js/site-core.js` injected a third version at runtime. One block now ships in the head of every page, with the legal name, founder, Harare address, contact email and the working LinkedIn page.
+- **Skip link and main landmark.** Every page now starts with the same skip link and has `<main id="main-content">`. The id was added on `privacy.html`, `terms.html` and the three resources pages; the article on `blog/future-healthcare-systems.html` is now wrapped in `<main>`.
+- **Script that deleted page elements.** `index.html:1184-1225` ran for four seconds after load and removed any fixed or absolutely positioned element with a z-index of 900 or more. That would have deleted the skip link and the floating buttons. Removed.
+- **Floating widgets.** The module finder and WhatsApp button looked different on each template (teal on some, red to navy on others). On `blog/ai-healthcare-africa.html` they had no styles at all: the finder's text and the mobile bottom bar printed below the footer, and the finder's heading was pinned over the site header by a `header { position: fixed }` rule meant for the old header. Their Font Awesome icons were blank on pages that don't load Font Awesome, and the WhatsApp icon file had the logo in a small part of a wide canvas, so it rendered tiny. Both widgets are now styled once in `styles/site-chrome.css` with inline SVG icons, grouped in a labelled `aside`; the finder opens and closes with `aria-expanded`, Escape and focus return. The WhatsApp button uses a cropped copy of the icon (`assets/whatsapp-icon.svg`) on a darker green so the white icon passes 3:1.
+- **Old rules that fought the new header.** Removed `header { position: fixed }` from `styles/home.css` and `styles/selnexa-main.css` (it also pinned article headers), each template's widget rules, and 85px of bottom padding on phones that only existed for the bottom bar.
+- **Deleted.** `js/main.js`, `js/home.js`, `js/i18n.js`, `js/selnexa-main.js`, `js/ai-config.js`, `js/include-loader.js` (no page used it), `js/performance-tracking.js` and `js/service-worker.js` (a second service worker that nothing registered), `includes/header.html`, `includes/footer.html`. `js/site-core.js` was rewritten around the new header, modal and forms, without the theme toggle, voice search, translation, toast notices and runtime footer and menu rewriting.
+- **Service worker.** `sw.js` precached `/js/main.js`, `/js/home.js` and `/js/i18n.js`; with those files gone, one missing file would have made every install fail. The list now names only files that exist, the cache version is bumped, and the shared CSS and JS URLs carry a content hash so a returning visitor's service worker cannot pair new pages with an old cached script.
+- **Home-screen icon.** Three pages pointed `apple-touch-icon` at the SVG logo, which iOS ignores. Every page now links a 180px PNG (`assets/apple-touch-icon.png`).
+
+### 3.4 Links
+
+- **Project links.** The footer's ContraWise and Maternal Health links go to `/projects.html#contrawise` and `#maternal-health`. The project cards now carry those ids, plus `#platform` and `#mental-health`.
+- **Internal link check.** All 41 HTML files: every `href`, `src`, `srcset`, `poster`, Open Graph image, meta refresh and JSON-LD URL resolved the way GitHub Pages resolves them, and every `#anchor` checked against the ids on the target page, including `#platform-demo-transcript`, `#updates-signup` and `#validation-2024`. No broken links or anchors. Every sitemap entry exists and none is a redirect stub.
+- **External link check.** 26 URLs. All respond except four LinkedIn personal profiles on the About page (LinkedIn answers automated requests with status 999, so they need checking by hand) and the Facebook share link on one blog post (rejects scripts, works in a browser).
+- **Pages left without links.** With the old navigation gone, `solutions/index.html` (5 inbound links on `main`) and `resources/whitepapers.html` (6) had none, and the telemedicine page had two. The footer now links "All modules" and "Telemedicine (beta)", and the Whitepapers section of `resources.html` links the library. Two pages had no inbound links on `main` either: `solutions/hospital-management.html` (now "For hospitals" in the footer) and `impact.html` (now "Results Matrix").
+
+### Verification (Phase 3)
+
+- `node tools/build-site.mjs --check`: every page current.
+- All 33 pages at 1366, 768 and 390px in headless Chrome: no script errors, no failed requests, no horizontal scrolling, one `h1` per page.
+- Interaction checks: the modal opens from the keyboard without leaving the page, focus moves in, stays in and comes back, Escape closes it; an empty submit marks seven fields and announces the problem; the pricing button preselects the quote request; a valid submit shows the email fallback with the right subject and body; the sign-up form validates and falls back the same way; the phone menu opens and closes with 48px rows; the module finder opens, takes focus and closes with Escape; with JavaScript off, all six header links show, the footer is present and the forms submit by email.
+- axe-core on nine pages covering all five templates, plus the open modal: no violations in the header, footer, modal, forms or floating widgets. The page-content issues it found are fixed in Phase 4.
+
+**Flagged, not changed (Phase 3):** contact@selnexahealth.com must receive mail, since every form falls back to it; the street address on the contact page; the privacy policy's contact address; overlap between `impact.html` and `case-studies.html`, and between `solutions/index.html` and `features.html`. All in `CONTENT-TODO.md`.

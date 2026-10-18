@@ -955,14 +955,53 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border: 0;
   border-radius: 999px;
   padding: 0.85rem 1.15rem;
+  min-height: 44px;
   background: var(--uniform-accent);
-  color: #ffffff;
+  color: #0a1414;
   font-weight: 700;
   cursor: pointer;
 }
 
 .capture-note {
   font-size: 0.82rem;
+}
+
+/* Sign-up forms use the shared form handler (data-sx-form="updates"); text stays light on the dark band. */
+.email-capture h2 {
+  color: #ffffff;
+}
+
+.capture-form {
+  align-items: flex-end;
+}
+
+.capture-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.capture-field label {
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.capture-form .sx-form__status {
+  flex-basis: 100%;
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+}
+
+.email-capture .sx-error,
+.email-capture .sx-form__status.is-error {
+  color: #fecdca;
+}
+
+.capture-note a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .team-section .team-grid {
@@ -1569,66 +1608,6 @@ html[data-theme="dark"] .spec-tag--projection {
   cursor: pointer;
   font-weight: 800;
   color: var(--uniform-primary);
-}
-
-#reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--uniform-accent);
-  width: 0%;
-  z-index: 9999;
-  transition: width 0.1s linear;
-}
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: auto;
-  width: 52px;
-  height: 52px;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-  z-index: 2102;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.whatsapp-float img,
-.whatsapp-float svg {
-  width: 31px;
-  height: 31px;
-  display: block;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-  color: #ffffff !important;
-}
-
-.whatsapp-float:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.35);
-  outline-offset: 4px;
-}
-
-@media (max-width: 767px) {
-  .whatsapp-float {
-    left: 0.75rem;
-    bottom: calc(6rem + env(safe-area-inset-bottom));
-    width: 50px;
-    height: 50px;
-  }
 }
 
 #cal-booking-placeholder {

@@ -6,40 +6,69 @@
     <title>Projects: SelNexa Health Platform, ContraWise and More</title>
     <meta name="description" content="SelNexa Health's projects: the offline-first SelNexa Health Platform for health institutions, ContraWise at the scoping stage, and maternal health research.">
     <link rel="canonical" href="https://www.selnexahealth.com/projects.html">
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/grid-typography-system.css">
     <link rel="stylesheet" href="/styles/site-uniform.css">
+    <!-- sx:head -->
+    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#004c4c">
+    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.selnexahealth.com/#organization",
+      "name": "SelNexa Health",
+      "legalName": "SelNexa Health (Private) Limited",
+      "url": "https://www.selnexahealth.com/",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
+      "foundingDate": "2024",
+      "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Harare", "addressCountry": "ZW" },
+      "email": "contact@selnexahealth.com",
+      "sameAs": ["https://www.linkedin.com/company/selnexa-health"]
+    }
+    </script>
+    <!-- /sx:head -->
 </head>
 <body>
+    <!-- sx:skip-link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <a href="/" aria-label="SelNexa Health Home">
-                    <img src="/assets/selnexa-logo.svg" alt="SelNexa Health Logo" class="logo">
-                </a>
-            </div>
-            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/features.html" class="nav-link">Platform</a></li>
-                <li class="nav-item"><a href="/projects.html" class="nav-link active">Projects</a></li>
-                <li class="nav-item"><a href="/case-studies.html" class="nav-link">Impact</a></li>
-                <li class="nav-item"><a href="/for-investors.html" class="nav-link">Investors</a></li>
-                <li class="nav-item"><a href="/resources.html" class="nav-link">Resources</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav">Book Platform Demo</a></li>
-            </ul>
-        </div>
-        <div class="navbar-progress"></div>
-    </nav>
+    <!-- /sx:skip-link -->
+    <!-- sx:header -->
+    <header class="sx-header" data-sx-header>
+      <div class="sx-header__inner">
+        <a href="/" class="sx-brand">
+          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <span class="sx-brand__text">
+            <span class="sx-brand__name">SelNexa Health</span>
+            <span class="sx-brand__tag">Offline-first health software</span>
+          </span>
+        </a>
+        <button type="button" class="sx-nav-toggle" aria-expanded="false" aria-controls="sx-menu">
+          <span class="sx-nav-toggle__bars" aria-hidden="true"></span>
+          <span class="sx-nav-toggle__label">Menu</span>
+        </button>
+        <nav class="sx-nav" aria-label="Main">
+          <ul class="sx-menu" id="sx-menu">
+            <li><a href="/features.html" data-nav="platform">Platform</a></li>
+            <li><a href="/projects.html" data-nav="projects" aria-current="page">Projects</a></li>
+            <li><a href="/case-studies.html" data-nav="impact">Impact</a></li>
+            <li><a href="/about.html" data-nav="about">About</a></li>
+            <li><a href="/contact.html" data-nav="contact">Contact</a></li>
+            <li class="sx-menu__cta"><a href="/appointments.html" class="sx-cta" data-nav="demo" data-demo-trigger>Book a demo</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sx-progress" aria-hidden="true"></div>
+    </header>
+    <!-- /sx:header -->
 
     <main id="main-content">
         <section class="page-hero">
@@ -61,7 +90,7 @@
                     <p>Each project is part of SelNexa Health's broader work to strengthen African healthcare infrastructure.</p>
                 </div>
                 <div class="page-grid projects-grid">
-                    <article class="page-card">
+                    <article class="page-card" id="platform">
                         <p class="page-overline">FLAGSHIP PLATFORM · PRE-DEPLOYMENT</p>
                         <h3>SelNexa Health Platform</h3>
                         <p>An offline-first health service management platform for registration, records, procurement, billing, analytics and reporting in low-connectivity health institutions.</p>
@@ -72,7 +101,7 @@
                         <p><strong>Role in the portfolio:</strong> The flagship platform proving SelNexa Health's infrastructure-aware design approach.</p>
                         <a href="/features.html" class="btn-link">Explore the Platform →</a>
                     </article>
-                    <article class="page-card">
+                    <article class="page-card" id="contrawise">
                         <p class="page-overline">REPRODUCTIVE HEALTH ACCESS · SCOPING</p>
                         <h3>ContraWise</h3>
                         <p>A reproductive health access initiative focused on private, stigma-free guidance, help finding nearby services, and continuity for women navigating contraception decisions.</p>
@@ -82,7 +111,7 @@
                         <p><strong>Role in the portfolio:</strong> Extends SelNexa Health's mission from facility operations into patient-centered access.</p>
                         <a href="/contact.html" class="btn-link">Join the interest list →</a>
                     </article>
-                    <article class="page-card">
+                    <article class="page-card" id="maternal-health">
                         <p class="page-overline">MATERNAL &amp; NEONATAL ACCESS · RESEARCH</p>
                         <h3>Maternal And Neonatal Health Access</h3>
                         <p>A pathway initiative for early-warning workflows, referral coordination, facility readiness, and safer maternal handoffs across constrained systems.</p>
@@ -93,7 +122,7 @@
                         <p><strong>Role in the portfolio:</strong> Targets preventable maternal and neonatal risk through systems coordination.</p>
                         <a href="/contact.html" class="btn-link">Discuss implementation →</a>
                     </article>
-                    <article class="page-card">
+                    <article class="page-card" id="mental-health">
                         <p class="page-overline">MENTAL HEALTH DETECTION · RESEARCH</p>
                         <h3>Mental Health Detection</h3>
                         <p>A youth-centered early detection and referral initiative designed to surface mental health risk earlier in care pathways. WHO estimates that half of all mental health conditions start by age 14, and that most go undetected and untreated.</p>
@@ -145,22 +174,162 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column"><h2>SelNexa Health</h2><p>SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.</p></div>
-                <div class="footer-column"><h4>Platform</h4><ul><li><a href="/features.html">Platform Overview</a></li><li><a href="/solutions/administration.html">Administration</a></li><li><a href="/solutions/procurement.html">Predictive Procurement</a></li><li><a href="/solutions/records.html">Health Records</a></li></ul></div>
-                <div class="footer-column"><h4>Projects</h4><ul><li><a href="/features.html">SelNexa Health Platform</a></li><li><a href="/projects.html">Project Portfolio</a></li><li><a href="/case-studies.html">Impact Evidence</a></li><li><a href="/contact.html">Propose a Project</a></li></ul></div>
-                <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About SelNexa Health</a></li><li><a href="/for-investors.html">Investors</a></li><li><a href="/resources.html">Resources</a></li><li><a href="/careers.html">Talent Development Hub</a></li></ul></div>
-                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/security-and-compliance.html">Security & Compliance</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
+    <!-- sx:footer -->
+    <footer class="sx-footer">
+      <div class="sx-footer__inner">
+        <div class="sx-footer__grid">
+          <div class="sx-footer__brand">
+            <p class="sx-footer__name">SelNexa Health</p>
+            <p>SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.</p>
+            <p>Harare, Zimbabwe<br><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></p>
+            <p><a href="https://www.linkedin.com/company/selnexa-health" target="_blank" rel="noopener noreferrer">SelNexa Health on LinkedIn</a></p>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Platform</h2>
+            <ul>
+              <li><a href="/features.html">Platform overview</a></li>
+              <li><a href="/solutions/hospital-management.html">For hospitals</a></li>
+              <li><a href="/solutions/">All modules</a></li>
+              <li><a href="/solutions/administration.html">Administration</a></li>
+              <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
+              <li><a href="/solutions/records.html">Health Records</a></li>
+              <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
+              <li><a href="/telemedicine.html">Telemedicine (beta)</a></li>
+              <li><a href="/pricing.html">Pricing</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Projects</h2>
+            <ul>
+              <li><a href="/projects.html#platform">SelNexa Health Platform</a></li>
+              <li><a href="/projects.html#contrawise">ContraWise</a></li>
+              <li><a href="/projects.html#maternal-health">Maternal Health</a></li>
+              <li><a href="/case-studies.html">Impact evidence</a></li>
+              <li><a href="/impact.html">Results Matrix</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Company</h2>
+            <ul>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/for-investors.html">Investors</a></li>
+              <li><a href="/resources.html">Resources</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/faq.html">FAQ</a></li>
+              <li><a href="/careers.html">Careers</a></li>
+              <li><a href="/press.html">Press</a></li>
+              <li><a href="/contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Data protection</h2>
+            <ul>
+              <li><a href="/security-and-compliance.html">Security and compliance</a></li>
+              <li><a href="/privacy.html">Privacy policy</a></li>
+              <li><a href="/terms.html">Terms of service</a></li>
+            </ul>
+            <div class="footer-compliance">
+              <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+              <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+              <p>Data residency configurable: in-country or regional</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SelNexa Health. Building resilient healthcare systems for Africa.</p>
-                <p><a href="/appointments.html">Book Platform Demo</a> | <a href="/features.html">Platform</a> | <a href="/contact.html">Contact</a></p>
-            </div>
+          </div>
         </div>
+        <div class="sx-footer__bottom">
+          <p>&copy; 2026 SelNexa Health (Private) Limited, Harare, Zimbabwe</p>
+          <p><a href="/appointments.html" data-demo-trigger>Book a demo</a></p>
+        </div>
+      </div>
     </footer>
+    <!-- /sx:footer -->
 
-    <script src="/js/main.js"></script>
+    <!-- sx:demo-modal -->
+    <dialog class="sx-modal" id="demo-modal" aria-labelledby="demo-modal-title">
+      <div class="sx-modal__panel">
+        <button type="button" class="sx-modal__close" data-modal-close aria-label="Close">&times;</button>
+        <h2 id="demo-modal-title">Book a demo</h2>
+        <p class="sx-modal__intro">Tell us about your institution and we'll get back to you to arrange a time.</p>
+        <form class="sx-form" id="demo-form" data-sx-form="demo" action="mailto:contact@selnexahealth.com?subject=Demo%20request" method="post" enctype="text/plain">
+      <p class="sx-form__note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+      <div class="sx-form__grid">
+        <div class="sx-field">
+          <label for="df-name">Full name <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-email">Email address <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-phone">Phone or WhatsApp</label>
+          <input id="df-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="sx-field">
+          <label for="df-org">Institution or organisation <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-org" name="organisation" type="text" autocomplete="organization" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-role">Your role</label>
+          <input id="df-role" name="role" type="text" autocomplete="organization-title">
+        </div>
+        <div class="sx-field">
+          <label for="df-type">Type of institution <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-type" name="institution_type" required>
+            <option value="">Select one</option>
+            <option>Public hospital (district, provincial or central)</option>
+            <option>Mission or private hospital</option>
+            <option>Health centre</option>
+            <option>Network or group of health institutions</option>
+            <option>Ministry or government agency</option>
+            <option>NGO, funder or implementing partner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-country">Country <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-country" name="country" required>
+            <option value="">Select one</option>
+            <option>Zimbabwe</option>
+            <optgroup label="Other African countries">
+              <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>C&ocirc;te d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option>
+            </optgroup>
+            <option>Outside Africa</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-interest">What would you like? <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-interest" name="interest" required>
+            <option value="">Select one</option>
+            <option value="demo">A demo of the Platform</option>
+            <option value="pilot">To discuss a pilot at our institution</option>
+            <option value="quote">A quote for our institution</option>
+            <option value="telemedicine">Access to the telemedicine beta</option>
+            <option value="partnership">A partnership or research conversation</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="sx-field sx-field--wide">
+          <label for="df-message">Anything we should know?</label>
+          <textarea id="df-message" name="message" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="sx-field sx-field--check">
+        <input id="df-consent" name="consent" type="checkbox" value="yes" required>
+        <label for="df-consent">I agree to SelNexa Health using these details to reply to me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="sx-req" aria-hidden="true">*</span></label>
+      </div>
+      <div class="sx-hp" aria-hidden="true">
+        <label for="df-website">Leave this field empty</label>
+        <input id="df-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary sx-form__submit">Send demo request</button>
+      <p class="sx-form__status" role="status" aria-live="polite"></p>
+    </form>
+      </div>
+    </dialog>
+    <!-- /sx:demo-modal -->
+    <!-- sx:scripts -->
+    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
+    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <!-- /sx:scripts -->
 </body>
 </html>

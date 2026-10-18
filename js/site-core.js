@@ -1,913 +1,233 @@
+/*
+ * Shared behaviour for every page: header and mobile menu, demo modal, forms, small widgets.
+ * Loaded with "defer" from the scripts partial (includes/scripts.html).
+ */
 (function () {
+  "use strict";
+
   if (window.__selnexaCoreLoaded) {
     return;
   }
   window.__selnexaCoreLoaded = true;
 
-  var THEME_KEY = "selnexa-theme";
-  var LANG_KEY = "selnexa-language";
+  var CONTACT_EMAIL = "contact@selnexahealth.com";
+  var WHATSAPP_DISPLAY = "+263 77 772 6065";
   var QUEUE_KEY = "selnexa-offline-form-queue";
-
-  var analytics = window.selnexaAnalytics || {
-    track: function (eventName, payload) {
-      try {
-        if (typeof window.plausible === "function") {
-          window.plausible(eventName, { props: payload || {} });
-        }
-      } catch (err) {
-        // noop
-      }
-      try {
-        console.log("SelNexa analytics", eventName, payload || {});
-      } catch (err) {
-        // noop
-      }
-    }
-  };
-  window.selnexaAnalytics = analytics;
+  var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
   function onReady(callback) {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", callback);
+    } else {
+      callback();
+    }
+  }
+
+  // Reports events only if a privacy-friendly analytics script (such as Plausible) is added to the site later.
+  function track(eventName, props) {
+    try {
+      if (typeof window.plausible === "function") {
+        window.plausible(eventName, { props: props || {} });
+      }
+    } catch (err) {
+      // ignore
+    }
+  }
+
+  function storage() {
+    try {
+      return window.localStorage;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  /* ---------- Header: mobile menu, scrolled state, scroll progress ---------- */
+
+  function setupHeader() {
+    var header = document.querySelector("[data-sx-header]");
+    if (!header) {
       return;
     }
-    callback();
-  }
+    var toggle = header.querySelector(".sx-nav-toggle");
+    var menu = header.querySelector("#sx-menu");
+    var progress = header.querySelector(".sx-progress");
+    header.setAttribute("data-menu-ready", "");
 
-  function dismissSplash() {
-    var splash =
-      document.getElementById("splash") ||
-      document.getElementById("preloader") ||
-      document.querySelector(".site-splash") ||
-      document.querySelector(".site-preloader");
-    if (splash) {
-      splash.style.display = "none";
-    }
-    try {
-      document.documentElement.classList.remove("is-loading", "loading");
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-    } catch (err) {
-      // noop
-    }
-  }
-
-  window.addEventListener("load", dismissSplash);
-  setTimeout(dismissSplash, 4000);
-
-  function normalizePath(href) {
-    try {
-      var url = new URL(href, window.location.origin);
-      return url.pathname.replace(/\/$/, "") || "/";
-    } catch (err) {
-      return href;
-    }
-  }
-
-  function hasHrefInMenu(menu, href) {
-    var target = normalizePath(href);
-    var links = menu.querySelectorAll("a[href]");
-    for (var i = 0; i < links.length; i += 1) {
-      if (normalizePath(links[i].getAttribute("href")) === target) {
-        return true;
+    function setOpen(open) {
+      header.classList.toggle("is-open", open);
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
       }
     }
-    return false;
-  }
 
-  function makeMenuItem(href, label, className) {
-    var li = document.createElement("li");
-    li.className = "nav-item";
-    var link = document.createElement("a");
-    link.href = href;
-    link.className = className || "nav-link";
-    link.textContent = label;
-    li.appendChild(link);
-    return li;
-  }
-
-  function getPrimaryNavbar() {
-    return (
-      document.querySelector(".navbar") ||
-      document.querySelector('nav[role="navigation"]') ||
-      document.querySelector("nav")
-    );
-  }
-
-  function navFeatureEnabled(attributeName) {
-    var nav = getPrimaryNavbar();
-    if (!nav) {
-      return true;
-    }
-    return nav.getAttribute(attributeName) !== "false";
-  }
-
-  function isMarketingNavigation(menu) {
-    var nav = menu ? menu.closest(".navbar") : getPrimaryNavbar();
-    return !!(nav && nav.getAttribute("data-nav-layout") === "marketing");
-  }
-
-  function getNavigationControlHost() {
-    return (
-      document.querySelector(".navbar-utilities") ||
-      document.querySelector(".navbar-container") ||
-      document.querySelector("header .navbar") ||
-      document.querySelector(".navbar") ||
-      document.querySelector("header .container") ||
-      document.querySelector(".navbar .container")
-    );
-  }
-
-  function enhanceNavigationMenus() {
-    var menus = document.querySelectorAll(".nav-menu, .nav-links");
-    if (!menus.length) {
-      return;
-    }
-
-    var standardLinks = [
-      { href: "/", label: "Home", key: "nav.home" },
-      { href: "/about.html", label: "About", key: "nav.about" },
-      { href: "/features.html", label: "Platform", key: "nav.solutions" },
-      { href: "/projects.html", label: "Projects", key: "nav.projects" },
-      { href: "/case-studies.html", label: "Impact", key: "nav.caseStudies" },
-      { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
-      { href: "/resources.html", label: "Resources", key: "nav.resources" },
-      { href: "/contact.html", label: "Contact", key: "nav.contact" },
-      { href: "/appointments.html", label: "Book Platform Demo", key: "nav.bookDemo", cta: true }
-    ];
-
-    var marketingLinks = [
-      { href: "/", label: "Home", key: "nav.home" },
-      { href: "/about.html", label: "About", key: "nav.about" },
-      { href: "/features.html", label: "Platform", key: "nav.solutions" },
-      { href: "/projects.html", label: "Projects", key: "nav.projects" },
-      { href: "/case-studies.html", label: "Impact", key: "nav.caseStudies" },
-      { href: "/for-investors.html", label: "Investors", key: "nav.investors" },
-      { href: "/resources.html", label: "Resources", key: "nav.resources" },
-      { href: "/contact.html", label: "Contact", key: "nav.contact" },
-      { href: "/appointments.html", label: "Book Platform Demo", key: "nav.bookDemo", cta: true }
-    ];
-
-    var marketingHiddenLinks = [
-      "/pricing.html",
-      "/telemedicine.html",
-      "/security-and-compliance.html"
-    ];
-
-    menus.forEach(function (menu) {
-      if (menu.getAttribute("data-selnexa-nav-updated") === "true") {
-        return;
-      }
-
-      if (isMarketingNavigation(menu)) {
-        menu.querySelectorAll("a[href]").forEach(function (link) {
-          var isPrimaryNavLink = link.classList.contains("nav-link") && !link.closest(".dropdown-menu");
-          if (isPrimaryNavLink && marketingHiddenLinks.indexOf(normalizePath(link.getAttribute("href") || "")) >= 0) {
-            var navItem = link.closest("li");
-            if (navItem) {
-              navItem.remove();
-            }
-          }
-        });
-      }
-
-      var requiredLinks = isMarketingNavigation(menu) ? marketingLinks : standardLinks;
-
-      requiredLinks.forEach(function (item) {
-        if (!hasHrefInMenu(menu, item.href)) {
-          var node = makeMenuItem(item.href, item.label, item.cta ? "nav-link cta-nav" : "nav-link");
-          node.querySelector("a").setAttribute("data-i18n", item.key);
-
-          var ctaNode = menu.querySelector(".cta-nav") ? menu.querySelector(".cta-nav").closest("li") : null;
-          if (ctaNode && ctaNode.parentElement === menu) {
-            menu.insertBefore(node, ctaNode);
-          } else {
-            menu.appendChild(node);
-          }
-        }
+    if (toggle) {
+      toggle.addEventListener("click", function () {
+        setOpen(toggle.getAttribute("aria-expanded") !== "true");
       });
-
-      menu.setAttribute("data-selnexa-nav-updated", "true");
-    });
-  }
-
-  function cleanupLegacyNavigationLabels() {
-    document.querySelectorAll("a[href='/for-funders.html'], a[href='for-funders.html']").forEach(function (link) {
-      link.setAttribute("href", "/for-investors.html");
-      if ((link.textContent || "").toLowerCase().indexOf("funder") >= 0) {
-        link.textContent = "Investors";
-      }
-    });
-
-    document.querySelectorAll("a").forEach(function (link) {
-      var text = (link.textContent || "").trim();
-      var legacyInvestorLabel = "Fund" + "ers";
-      if (text === legacyInvestorLabel || text === "For " + legacyInvestorLabel) {
-        link.textContent = "Investors";
-      }
-      if (normalizePath(link.getAttribute("href") || "") === "/case-studies.html" && text === "Case Studies") {
-        link.textContent = "Impact";
-      }
-    });
-  }
-
-  function setupPrimaryMenuToggle() {
-    var menu = document.querySelector(".nav-menu") || document.querySelector(".nav-links");
-    if (!menu) {
-      return;
     }
-
-    var button = document.querySelector(".hamburger") || document.querySelector(".mobile-menu-btn");
-    if (!button) {
-      var navHost = menu.closest(".navbar") || menu.closest("nav") || menu.parentElement;
-      if (!navHost) {
-        return;
-      }
-
-      button = document.createElement("button");
-      button.type = "button";
-      button.className = "mobile-menu-btn";
-      button.setAttribute("aria-label", "Toggle navigation menu");
-      button.setAttribute("data-generated-toggle", "true");
-      button.innerHTML = '<span aria-hidden="true">&#9776;</span>';
-      navHost.appendChild(button);
-    }
-
-    var setMenuOpenState = function (shouldOpen) {
-      var isMobileViewport = window.matchMedia && window.matchMedia("(max-width: 1023px)").matches;
-      menu.classList.toggle("active", shouldOpen);
-      button.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
-      menu.setAttribute("aria-hidden", !isMobileViewport || shouldOpen ? "false" : "true");
-
-      if (button.getAttribute("data-generated-toggle") === "true") {
-        button.innerHTML = shouldOpen
-          ? '<span aria-hidden="true">&times;</span>'
-          : '<span aria-hidden="true">&#9776;</span>';
-      }
-
-      if (isMobileViewport) {
-        document.body.classList.toggle("mobile-menu-open", shouldOpen);
-      } else {
-        document.body.classList.remove("mobile-menu-open");
-      }
-    };
-
-    if (!button.hasAttribute("aria-expanded")) {
-      button.setAttribute("aria-expanded", "false");
-    }
-    if (!menu.hasAttribute("aria-hidden")) {
-      menu.setAttribute("aria-hidden", "true");
-    }
-    setMenuOpenState(false);
-
-    button.addEventListener("click", function () {
-      var expanded = button.getAttribute("aria-expanded") === "true";
-      setMenuOpenState(!expanded);
-    });
 
     document.addEventListener("keydown", function (event) {
-      if (event.key !== "Escape") {
-        return;
+      if (event.key === "Escape" && header.classList.contains("is-open")) {
+        setOpen(false);
+        if (toggle) {
+          toggle.focus();
+        }
       }
-      setMenuOpenState(false);
     });
 
-    menu.querySelectorAll("a[href]").forEach(function (link) {
-      link.addEventListener("click", function () {
-        setMenuOpenState(false);
+    if (menu) {
+      menu.addEventListener("click", function (event) {
+        if (event.target.closest("a")) {
+          setOpen(false);
+        }
       });
-    });
+    }
 
     window.addEventListener("resize", function () {
       if (window.innerWidth > 1023) {
-        setMenuOpenState(false);
+        setOpen(false);
       }
     });
 
-    var dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-    dropdownToggles.forEach(function (toggle) {
-      toggle.addEventListener("click", function () {
-        var parent = toggle.closest(".dropdown");
-        if (!parent) {
-          return;
-        }
-        var isOpen = parent.classList.contains("active");
-        parent.classList.toggle("active", !isOpen);
-        toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
-      });
-    });
-  }
-
-  function setupProgressBar() {
-    var progress = document.querySelector(".navbar-progress");
-    var navbar = getPrimaryNavbar();
-    if (!progress && !navbar) {
-      return;
-    }
-
-    var updateProgress = function () {
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var y = window.scrollY || document.documentElement.scrollTop;
+      header.classList.toggle("is-scrolled", y > 40);
       if (progress) {
-        progress.style.width = Math.min(100, Math.max(0, percent)) + "%";
-      }
-      if (navbar) {
-        navbar.classList.toggle("scrolled", scrollTop > 80);
-      }
-    };
-
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    updateProgress();
-  }
-
-  function applyTheme(themeValue) {
-    var theme = themeValue === "dark" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-
-    var toggle = document.querySelector("[data-theme-toggle]");
-    if (toggle) {
-      toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-      toggle.innerHTML = theme === "dark"
-        ? '<i class="fas fa-sun" aria-hidden="true"></i><span class="sr-only">Switch to light mode</span>'
-        : '<i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Switch to dark mode</span>';
-    }
-  }
-
-  function setupThemeToggle() {
-    if (!navFeatureEnabled("data-enable-theme-toggle")) {
-      return;
-    }
-
-    var container = getNavigationControlHost();
-    if (container && !container.querySelector("[data-theme-toggle]")) {
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "theme-toggle-btn";
-      button.setAttribute("data-theme-toggle", "true");
-      button.setAttribute("aria-label", "Toggle dark mode");
-      button.setAttribute("aria-pressed", "false");
-      container.appendChild(button);
-
-      button.addEventListener("click", function () {
-        var current = document.documentElement.getAttribute("data-theme") || "light";
-        applyTheme(current === "dark" ? "light" : "dark");
-      });
-    }
-
-    var storedTheme = localStorage.getItem(THEME_KEY);
-    if (storedTheme) {
-      applyTheme(storedTheme);
-      return;
-    }
-
-    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    applyTheme(prefersDark ? "dark" : "light");
-  }
-
-  function getTranslationBundle() {
-    if (window.SelNexaI18n && window.SelNexaI18n.translations) {
-      return window.SelNexaI18n;
-    }
-
-    return {
-      translations: {
-        en: {},
-        fr: {},
-        sn: {},
-        nd: {}
-      }
-    };
-  }
-
-  function resolveTranslation(lang, key) {
-    var bundle = getTranslationBundle();
-    var fallback = (bundle.translations.en && bundle.translations.en[key]) || null;
-    return (bundle.translations[lang] && bundle.translations[lang][key]) || fallback;
-  }
-
-  function translatePage(lang) {
-      var normalized = ["en", "fr", "sn", "nd"].indexOf(lang) >= 0 ? lang : "en";
-    document.documentElement.setAttribute("lang", normalized);
-    localStorage.setItem(LANG_KEY, normalized);
-
-    var nodes = document.querySelectorAll("[data-i18n]");
-    nodes.forEach(function (node) {
-      var key = node.getAttribute("data-i18n");
-      var translated = resolveTranslation(normalized, key);
-      if (translated) {
-        node.textContent = translated;
-      }
-    });
-
-    var placeholderNodes = document.querySelectorAll("[data-i18n-placeholder]");
-    placeholderNodes.forEach(function (node) {
-      var placeholderKey = node.getAttribute("data-i18n-placeholder");
-      var translatedPlaceholder = resolveTranslation(normalized, placeholderKey);
-      if (translatedPlaceholder) {
-        node.setAttribute("placeholder", translatedPlaceholder);
-      }
-    });
-  }
-
-  function setupLanguageSelector() {
-    var container = getNavigationControlHost();
-    if (!container || container.querySelector("#language-selector")) {
-      var currentLang = localStorage.getItem(LANG_KEY) || "en";
-      translatePage(currentLang);
-      return;
-    }
-
-    var selector = document.createElement("select");
-    selector.id = "language-selector";
-    selector.className = "language-selector";
-    selector.setAttribute("aria-label", "Select language");
-
-    [
-      { value: "en", label: "English" },
-      { value: "fr", label: "French" },
-      { value: "sn", label: "Shona" },
-      { value: "nd", label: "Ndebele" }
-    ].forEach(function (optionData) {
-      var option = document.createElement("option");
-      option.value = optionData.value;
-      option.textContent = optionData.label;
-      selector.appendChild(option);
-    });
-
-    selector.addEventListener("change", function () {
-      translatePage(selector.value);
-    });
-
-    container.appendChild(selector);
-
-    var saved = localStorage.getItem(LANG_KEY) || "en";
-    selector.value = saved;
-    translatePage(saved);
-  }
-
-  function showToast(message) {
-    var toast = document.createElement("div");
-    toast.className = "selnexa-toast";
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    window.setTimeout(function () {
-      toast.classList.add("visible");
-    }, 20);
-    window.setTimeout(function () {
-      toast.classList.remove("visible");
-      window.setTimeout(function () {
-        toast.remove();
-      }, 300);
-    }, 2600);
-  }
-
-  function clearSearchHighlights() {
-    document.querySelectorAll(".search-hit").forEach(function (node) {
-      node.classList.remove("search-hit");
-    });
-  }
-
-  function runPageSearch(query) {
-    var cleaned = (query || "").trim().toLowerCase();
-    if (!cleaned) {
-      return;
-    }
-
-    clearSearchHighlights();
-
-    var candidates = document.querySelectorAll("main h1, main h2, main h3, main p, main li, main a");
-    for (var i = 0; i < candidates.length; i += 1) {
-      var text = (candidates[i].textContent || "").toLowerCase();
-      if (text.indexOf(cleaned) >= 0) {
-        candidates[i].classList.add("search-hit");
-        candidates[i].scrollIntoView({ behavior: "smooth", block: "center" });
-        showToast("Found result for: " + query);
-        analytics.track("voice_or_text_search", { query: query, matched: "true" });
-        return;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        progress.style.width = (height > 0 ? Math.min(100, (y / height) * 100) : 0) + "%";
       }
     }
-
-    analytics.track("voice_or_text_search", { query: query, matched: "false" });
-    showToast("No direct page match. Opening resources search.");
-    window.location.href = "/resources.html?q=" + encodeURIComponent(query);
-  }
-
-  function setupVoiceSearch() {
-    if (!navFeatureEnabled("data-enable-voice-search")) {
-      return;
-    }
-
-    var container = getNavigationControlHost();
-    if (!container || container.querySelector(".voice-search-btn")) {
-      return;
-    }
-
-    var button = document.createElement("button");
-    button.type = "button";
-    button.className = "voice-search-btn";
-    button.setAttribute("aria-label", "Search with voice");
-    button.innerHTML = '<i class="fas fa-microphone" aria-hidden="true"></i><span class="sr-only">Voice search</span>';
-    container.appendChild(button);
-
-    button.addEventListener("click", function () {
-      var Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!Recognition) {
-        var textQuery = window.prompt("Search SelNexa pages:");
-        runPageSearch(textQuery || "");
-        return;
+    window.addEventListener("scroll", function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
       }
-
-      var recognition = new Recognition();
-      recognition.lang = document.documentElement.getAttribute("lang") || "en-US";
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 1;
-      recognition.onresult = function (event) {
-        var transcript = event.results[0][0].transcript;
-        runPageSearch(transcript);
-      };
-      recognition.onerror = function () {
-        showToast("Voice search unavailable. Please type your query.");
-      };
-      recognition.start();
-    });
+    }, { passive: true });
+    update();
   }
 
-  function setupBottomNav() {
-    if (document.querySelector(".bottom-mobile-nav")) {
-      return;
-    }
+  /* ---------- Scroll reveal (skipped when the visitor prefers reduced motion) ---------- */
 
-    var nav = document.createElement("nav");
-    nav.className = "bottom-mobile-nav";
-    nav.setAttribute("aria-label", "Mobile quick navigation");
-    nav.innerHTML = [
-      '<a href="/" aria-label="Home"><i class="fas fa-house" aria-hidden="true"></i><span data-i18n="nav.home">Home</span></a>',
-      '<a href="/features.html" aria-label="Platform"><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="nav.solutions">Platform</span></a>',
-      '<a href="/case-studies.html" aria-label="Impact"><i class="fas fa-chart-column" aria-hidden="true"></i><span data-i18n="nav.casesShort">Impact</span></a>',
-      '<a href="/for-investors.html" aria-label="Investors"><i class="fas fa-chart-line" aria-hidden="true"></i><span data-i18n="nav.investors">Investors</span></a>',
-      '<a href="/resources.html" aria-label="More"><i class="fas fa-ellipsis" aria-hidden="true"></i><span data-i18n="nav.more">More</span></a>'
-    ].join("");
-
-    var currentPath = normalizePath(window.location.pathname);
-    nav.querySelectorAll("a[href]").forEach(function (link) {
-      var targetPath = normalizePath(link.getAttribute("href") || "");
-      var isResourcesBucket = targetPath === "/resources.html" && (
-        currentPath.indexOf("/resources") === 0 ||
-        currentPath.indexOf("/blog") === 0
-      );
-      var isActive = currentPath === targetPath || isResourcesBucket;
-
-      if (isActive) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
-      }
-    });
-
-    document.body.appendChild(nav);
-  }
-
-  function setupChatbot() {
-    if (document.querySelector(".chatbot-toggle")) {
-      return;
-    }
-
-    var toggle = document.createElement("button");
-    toggle.type = "button";
-    toggle.className = "chatbot-toggle";
-    toggle.setAttribute("aria-label", "Open module finder");
-    toggle.innerHTML = '<i class="fas fa-comments" aria-hidden="true"></i>';
-
-    var panel = document.createElement("section");
-    panel.className = "chatbot-panel";
-    panel.setAttribute("aria-label", "Module finder");
-    panel.innerHTML = [
-      '<header><h2>Module finder</h2><button type="button" class="chatbot-close" aria-label="Close module finder">&times;</button></header>',
-      '<div class="chatbot-messages"><p>Tell us what kind of institution you run and we will suggest where to start.</p></div>',
-      '<div class="chatbot-controls">',
-      '<label for="facility-recommendation">Institution type</label>',
-      '<select id="facility-recommendation">',
-      '<option value="centre">Health centre</option>',
-      '<option value="hospital">Hospital</option>',
-      '<option value="network">Network or government</option>',
-      '</select>',
-      '<button type="button" class="chatbot-recommend">Suggest modules</button>',
-      '<a href="/appointments.html" class="chatbot-demo-link">Book a demo</a>',
-      '</div>'
-    ].join("");
-
-    document.body.appendChild(toggle);
-    document.body.appendChild(panel);
-
-    toggle.addEventListener("click", function () {
-      panel.classList.toggle("open");
-    });
-
-    panel.querySelector(".chatbot-close").addEventListener("click", function () {
-      panel.classList.remove("open");
-    });
-
-    panel.querySelector(".chatbot-recommend").addEventListener("click", function () {
-      var value = panel.querySelector("#facility-recommendation").value;
-      var message = "";
-      if (value === "centre") {
-        message = "Suggested start: Administration and Predictive Procurement.";
-      } else if (value === "hospital") {
-        message = "Suggested start: all four modules (Administration, Predictive Procurement, Health Records and Real-Time Analytics).";
-      } else {
-        message = "Suggested start: a network licence covering every module, with analytics across sites.";
-      }
-
-      var messages = panel.querySelector(".chatbot-messages");
-      var item = document.createElement("p");
-      item.textContent = message;
-      messages.appendChild(item);
-      messages.scrollTop = messages.scrollHeight;
-      analytics.track("chatbot_recommendation", { facility_type: value });
-    });
-  }
-
-  function addFooterRouteMap() {
-    var footers = document.querySelectorAll("footer");
-    if (!footers.length) {
-      return;
-    }
-
-    footers.forEach(function (footer) {
-      if (footer.querySelector(".footer-route-map")) {
-        return;
-      }
-
-      var target = footer.querySelector(".footer-grid") || footer.querySelector(".footer-content") || footer.querySelector(".container") || footer;
-      var block = document.createElement("section");
-      block.className = "footer-route-map";
-      block.innerHTML = [
-        '<h4 data-i18n="footer.quickLinks">Quick Links</h4>',
-        '<ul>',
-        '<li><a href="/case-studies.html" data-i18n="nav.caseStudies">Impact</a></li>',
-        '<li><a href="/pricing.html" data-i18n="nav.pricing">Pricing</a></li>',
-        '<li><a href="/for-investors.html" data-i18n="nav.investors">Investors</a></li>',
-        '<li><a href="/resources.html" data-i18n="nav.resources">Resources</a></li>',
-        '<li><a href="/careers.html" data-i18n="nav.careers">Careers</a></li>',
-        '<li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>',
-        '</ul>',
-        '<div class="footer-compliance" aria-label="Data protection">',
-        "<p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>",
-        '<p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>',
-        '<p>Data residency configurable: in-country or regional</p>',
-        '</div>'
-      ].join("");
-      target.appendChild(block);
-    });
-  }
-
-  function setupAnimations() {
+  function setupReveal() {
     var nodes = document.querySelectorAll(".animate-on-scroll, .reveal, [data-animate]");
-    if (!nodes.length || !window.IntersectionObserver) {
-      nodes.forEach(function (node) {
-        node.classList.add("animate-in", "in-view");
-      });
+    if (!nodes.length) {
       return;
     }
-
-    var observer = new IntersectionObserver(function (entries, obs) {
+    function show(node) {
+      node.classList.add("animate-in", "in-view", "visible", "revealed");
+    }
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      nodes.forEach(show);
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) {
-          return;
+        if (entry.isIntersecting) {
+          show(entry.target);
+          observer.unobserve(entry.target);
         }
-        entry.target.classList.add("animate-in", "in-view", "visible");
-        obs.unobserve(entry.target);
       });
     }, { threshold: 0.12 });
-
     nodes.forEach(function (node) {
       observer.observe(node);
     });
   }
 
+  /* ---------- Count-up numbers: reserved for measured results ---------- */
+
   function animateCounter(el) {
-    if (el.getAttribute("data-counter-complete") === "true") {
-      return;
-    }
-
     var target = parseFloat(el.getAttribute("data-target") || "0");
-    if (Number.isNaN(target)) {
+    if (Number.isNaN(target) || el.getAttribute("data-counter-complete") === "true") {
       return;
     }
-
     el.setAttribute("data-counter-complete", "true");
-    var suffix = el.getAttribute("data-suffix") || "";
     var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
     var decimals = Number.isInteger(target) ? 0 : 1;
-    var duration = parseInt(el.getAttribute("data-duration") || "1800", 10);
-    var startTime = performance.now();
-
-    function step(currentTime) {
-      var elapsed = currentTime - startTime;
-      var progress = Math.min(elapsed / duration, 1);
+    if (reduceMotion) {
+      el.textContent = prefix + target.toFixed(decimals) + suffix;
+      return;
+    }
+    var duration = parseInt(el.getAttribute("data-duration") || "1500", 10);
+    var start = performance.now();
+    function step(now) {
+      var progress = Math.min((now - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
-      var current = target * eased;
-      var value = decimals ? current.toFixed(decimals) : Math.floor(current).toString();
-      if (progress === 1) {
-        value = decimals ? target.toFixed(decimals) : target.toString();
-      }
-      el.textContent = prefix + value + suffix;
+      el.textContent = prefix + (progress === 1 ? target.toFixed(decimals) : (target * eased).toFixed(decimals)) + suffix;
       if (progress < 1) {
-        requestAnimationFrame(step);
+        window.requestAnimationFrame(step);
       }
     }
-
-    requestAnimationFrame(step);
+    window.requestAnimationFrame(step);
   }
 
-  function setupStatCounters() {
+  function setupCounters() {
     var counters = document.querySelectorAll("[data-counter]");
     if (!counters.length) {
       return;
     }
-
-    if (!window.IntersectionObserver) {
+    if (!("IntersectionObserver" in window)) {
       counters.forEach(animateCounter);
       return;
     }
-
-    var observer = new IntersectionObserver(function (entries, obs) {
+    var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) {
-          return;
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
         }
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
       });
     }, { threshold: 0.45 });
-
     counters.forEach(function (counter) {
       observer.observe(counter);
     });
   }
+
+  /* ---------- Tabs (Platform modules, investor demo videos) ---------- */
 
   function setupModuleTabs() {
     var tabs = document.querySelectorAll(".module-tab[data-module]");
     if (!tabs.length) {
       return;
     }
-
-    tabs.forEach(function (tab) {
+    function select(tab) {
+      var target = tab.getAttribute("data-module");
+      tabs.forEach(function (button) {
+        var active = button === tab;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", active ? "true" : "false");
+        button.setAttribute("tabindex", active ? "0" : "-1");
+      });
+      document.querySelectorAll(".module-content[data-module-panel]").forEach(function (panel) {
+        var shown = panel.getAttribute("data-module-panel") === target;
+        panel.classList.toggle("active", shown);
+        panel.hidden = !shown;
+      });
+    }
+    tabs.forEach(function (tab, index) {
       tab.addEventListener("click", function () {
-        var target = tab.getAttribute("data-module");
-        tabs.forEach(function (button) {
-          var isActive = button === tab;
-          button.classList.toggle("active", isActive);
-          button.setAttribute("aria-selected", isActive ? "true" : "false");
-        });
-        document.querySelectorAll(".module-content[data-module-panel]").forEach(function (panel) {
-          panel.classList.toggle("active", panel.getAttribute("data-module-panel") === target);
-        });
+        select(tab);
+      });
+      tab.addEventListener("keydown", function (event) {
+        var next = null;
+        if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+        if (event.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+        if (next) {
+          event.preventDefault();
+          select(next);
+          next.focus();
+        }
       });
     });
-  }
-
-  function setupEmailCapture() {
-    window.handleSubscribe = function (event) {
-      event.preventDefault();
-      var form = event.target;
-      var input = form.querySelector("input[type='email']");
-      if (!input || !input.value) {
-        return;
-      }
-      analytics.track("newsletter_subscribe", { source_path: window.location.pathname });
-      var endpoint = window.SELNEXA_WISHLIST_ENDPOINT || "";
-      if (!endpoint) {
-        showToast("Updates signup is not connected yet. Please email contact@selnexahealth.com.");
-        return;
-      }
-
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: input.value,
-          form_context: "newsletter",
-          source_path: window.location.pathname
-        })
-      }).then(function (response) {
-        if (!response.ok) {
-          throw new Error("Non-OK response");
-        }
-        showToast("Subscription received. We will send deployment updates monthly.");
-        form.reset();
-      }).catch(function () {
-        showToast("Signup could not be sent. Please email contact@selnexahealth.com.");
-      });
-    };
-  }
-
-  function setupWhatsAppFloat() {
-    if (document.querySelector(".whatsapp-float")) {
-      return;
-    }
-
-    var link = document.createElement("a");
-    link.href = "https://wa.me/263777726065?text=Hi%2C%20I'm%20interested%20in%20learning%20more%20about%20the%20SelNexa%20Health%20Platform.";
-    link.className = "whatsapp-float";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.setAttribute("aria-label", "Contact SelNexa Health on WhatsApp");
-    link.title = "Contact SelNexa Health on WhatsApp";
-
-    var icon = document.createElement("img");
-    icon.src = "/assets/WhatsApp%20svg.svg";
-    icon.alt = "";
-    icon.setAttribute("aria-hidden", "true");
-    icon.decoding = "async";
-    icon.loading = "eager";
-
-    link.appendChild(icon);
-    document.body.appendChild(link);
-  }
-
-  function setupReadingProgress() {
-    var progress = document.getElementById("reading-progress");
-    if (!progress) {
-      return;
-    }
-
-    function update() {
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progress.style.width = Math.min(100, Math.max(0, percent)) + "%";
-    }
-
-    window.addEventListener("scroll", update, { passive: true });
-    update();
-  }
-
-  function reorderInvestorPageSections() {
-    var path = window.location.pathname.toLowerCase();
-    if (path.indexOf("for-investors") === -1) {
-      return;
-    }
-
-    var hero = document.querySelector("main .hero");
-    var letter = document.getElementById("letter");
-    if (hero && letter && hero.nextElementSibling !== letter) {
-      hero.insertAdjacentElement("afterend", letter);
-    }
-  }
-
-  function setupCalendarEmbed() {
-    var placeholder = document.getElementById("cal-booking-placeholder");
-    if (!placeholder || window.__selnexaCalLoaded) {
-      return;
-    }
-
-    window.__selnexaCalLoaded = true;
-    (function (C, A, L) {
-      var p = function (a, ar) { a.q.push(ar); };
-      var d = C.document;
-      C.Cal = C.Cal || function () {
-        var cal = C.Cal;
-        var ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          d.head.appendChild(d.createElement("script")).src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          var api = function () { p(api, arguments); };
-          var namespace = ar[1];
-          api.q = api.q || [];
-          if (typeof namespace === "string") {
-            cal.ns[namespace] = api;
-            p(api, ar);
-          } else {
-            p(cal, ar);
-          }
-          return;
-        }
-        p(cal, ar);
-      };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    if (window.Cal) {
-      window.Cal("init", "selnexahealth", { origin: "https://cal.com" });
-      window.Cal("inline", {
-        elementOrSelector: "#cal-booking-placeholder",
-        calLink: "selnexahealth/platform-demo",
-        layout: "month_view"
-      });
-    }
+    var current = document.querySelector(".module-tab.active") || tabs[0];
+    select(current);
   }
 
   function setupVideoTabs() {
     document.querySelectorAll(".video-tab-controls .tab-btn[data-tab]").forEach(function (button) {
-      if (button.getAttribute("data-video-tab-bound") === "true") {
-        return;
-      }
-      button.setAttribute("data-video-tab-bound", "true");
       button.addEventListener("click", function () {
         var target = button.getAttribute("data-tab");
         var group = button.closest(".video-tabs") || document;
@@ -917,9 +237,11 @@
           tab.setAttribute("aria-selected", selected ? "true" : "false");
         });
         group.querySelectorAll(".video-tab-content").forEach(function (panel) {
-          panel.classList.toggle("hidden", panel.id !== "tab-" + target);
+          var shown = panel.id === "tab-" + target;
+          panel.classList.toggle("hidden", !shown);
+          panel.hidden = !shown;
           var video = panel.querySelector("video");
-          if (video && panel.id !== "tab-" + target) {
+          if (video && !shown) {
             video.pause();
           }
         });
@@ -927,395 +249,509 @@
     });
   }
 
-  function ensureOrganizationJsonLd() {
-    if (document.querySelector("script[data-selnexa-org-schema]")) {
-      return;
-    }
+  /* ---------- Module finder and WhatsApp button (styled in site-chrome.css) ---------- */
 
-    var script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.setAttribute("data-selnexa-org-schema", "true");
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "SelNexa Health",
-      "url": "https://www.selnexahealth.com",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
-      "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
-      "foundingDate": "2024",
-      "foundingLocation": "Harare, Zimbabwe",
-      "areaServed": ["ZW", "KE", "NG", "ZA"],
-      "sameAs": [
-        "https://www.linkedin.com/company/selnexahealth",
-        "https://twitter.com/selnexahealth",
-        "https://www.youtube.com/@selnexahealth"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Keith Tafangombe",
-        "jobTitle": "Founder & CEO",
-        "url": "https://www.linkedin.com/in/keithtafangombe"
-      }
-    });
-    document.head.appendChild(script);
+  var CHAT_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M20 11.5a7.5 7.5 0 0 1-11.1 6.6L4 19.5l1.4-4.4A7.5 7.5 0 1 1 20 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+  // Both floating widgets live in one labelled landmark so screen reader users can find them.
+  function floatingRegion() {
+    var region = document.querySelector(".sx-floats");
+    if (!region) {
+      region = document.createElement("aside");
+      region.className = "sx-floats";
+      region.setAttribute("aria-label", "Quick help");
+      document.body.appendChild(region);
+    }
+    return region;
   }
 
-  function isBookingForm(form) {
-    return !!(
-      form && (
-        form.classList.contains("appointment-form") ||
-        form.classList.contains("demo-form") ||
-        form.id === "appointmentForm" ||
-        form.id === "demo-form"
-      )
+  function setupModuleFinder() {
+    if (document.querySelector(".sx-finder-toggle")) {
+      return;
+    }
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "sx-float sx-finder-toggle";
+    toggle.setAttribute("aria-label", "Open module finder");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", "module-finder");
+    toggle.innerHTML = CHAT_ICON;
+
+    var panel = document.createElement("section");
+    panel.className = "sx-finder";
+    panel.id = "module-finder";
+    panel.hidden = true;
+    panel.setAttribute("aria-labelledby", "module-finder-title");
+    panel.innerHTML = [
+      '<div class="sx-finder__head"><h2 id="module-finder-title">Module finder</h2><button type="button" class="sx-finder__close" aria-label="Close module finder">&times;</button></div>',
+      '<div class="sx-finder__messages" aria-live="polite"><p>Tell us what kind of institution you run and we will suggest where to start.</p></div>',
+      '<div class="sx-finder__controls">',
+      '<label for="facility-recommendation">Institution type</label>',
+      '<select id="facility-recommendation">',
+      '<option value="centre">Health centre</option>',
+      '<option value="hospital">Hospital</option>',
+      '<option value="network">Network or government</option>',
+      "</select>",
+      '<button type="button" class="sx-finder__suggest">Suggest modules</button>',
+      '<a href="/appointments.html" class="sx-finder__demo" data-demo-trigger>Book a demo</a>',
+      "</div>"
+    ].join("");
+
+    var region = floatingRegion();
+    region.appendChild(toggle);
+    region.appendChild(panel);
+
+    function setOpen(open) {
+      panel.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close module finder" : "Open module finder");
+    }
+    toggle.addEventListener("click", function () {
+      setOpen(panel.hidden);
+      if (!panel.hidden) {
+        panel.querySelector("select").focus();
+      }
+    });
+    panel.querySelector(".sx-finder__close").addEventListener("click", function () {
+      setOpen(false);
+      toggle.focus();
+    });
+    panel.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    panel.querySelector(".sx-finder__suggest").addEventListener("click", function () {
+      var value = panel.querySelector("#facility-recommendation").value;
+      var message = value === "centre"
+        ? "Suggested start: Administration and Predictive Procurement."
+        : value === "hospital"
+        ? "Suggested start: all four modules (Administration, Predictive Procurement, Health Records and Real-Time Analytics)."
+        : "Suggested start: a network licence covering every module, with analytics across sites.";
+      var messages = panel.querySelector(".sx-finder__messages");
+      var item = document.createElement("p");
+      item.textContent = message;
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+      track("module_finder", { institution_type: value });
+    });
+  }
+
+  function setupWhatsApp() {
+    if (document.querySelector(".sx-whatsapp")) {
+      return;
+    }
+    var link = document.createElement("a");
+    link.href = "https://wa.me/263777726065?text=Hi%2C%20I'm%20interested%20in%20learning%20more%20about%20the%20SelNexa%20Health%20Platform.";
+    link.className = "sx-float sx-whatsapp";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", "Message SelNexa Health on WhatsApp (opens in a new tab)");
+    var icon = document.createElement("img");
+    icon.src = "/assets/whatsapp-icon.svg";
+    icon.alt = "";
+    icon.width = 28;
+    icon.height = 28;
+    link.appendChild(icon);
+    floatingRegion().appendChild(link);
+  }
+
+  /* ---------- Demo modal ---------- */
+
+  function preselectInterest(scope, value) {
+    var select = scope.querySelector("select[name='interest']");
+    if (!select || !value) {
+      return;
+    }
+    for (var i = 0; i < select.options.length; i += 1) {
+      if (select.options[i].value === value) {
+        select.selectedIndex = i;
+        return;
+      }
+    }
+  }
+
+  function focusables(container) {
+    return Array.prototype.filter.call(
+      container.querySelectorAll("a[href], button:not([disabled]), input:not([disabled]):not([type='hidden']), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])"),
+      function (el) {
+        return !el.closest(".sx-hp") && el.offsetParent !== null;
+      }
     );
   }
 
-  function ensureSchedulingFields(form) {
-    if (!form || form.querySelector("[name='booking_type']")) {
-      return;
-    }
+  function setupDemoModal() {
+    var dialog = document.getElementById("demo-modal");
+    var canOpen = !!(dialog && typeof dialog.showModal === "function");
+    var lastTrigger = null;
 
-    if (!isBookingForm(form)) {
-      return;
-    }
-
-    var container = document.createElement("div");
-    container.className = "form-group";
-    container.innerHTML = [
-      '<label for="booking_type">Booking Type *</label>',
-      '<select id="booking_type" name="booking_type" required>',
-      '<option value="demo">Platform Demo</option>',
-      '<option value="telemedicine">Telemedicine Appointment</option>',
-      '</select>'
-    ].join("");
-
-    var submitButton = form.querySelector("button[type='submit']");
-    if (submitButton && submitButton.parentElement === form) {
-      form.insertBefore(container, submitButton);
-    } else {
-      form.appendChild(container);
-    }
-  }
-
-  function ensureWishlistField(form) {
-    if (!isBookingForm(form) || form.querySelector("input[name='join_wishlist']")) {
-      return;
-    }
-
-    var wishlistOptIn = document.createElement("label");
-    wishlistOptIn.className = "checkbox";
-    wishlistOptIn.innerHTML = [
-      '<input type="checkbox" name="join_wishlist" value="yes">',
-      "Join the early-access wishlist for priority demo slots and launch updates."
-    ].join("");
-
-    var privacyCheckbox = form.querySelector("input[name='privacy']");
-    var privacyLabel = privacyCheckbox ? privacyCheckbox.closest("label") : null;
-    var submitButton = form.querySelector("button[type='submit']");
-
-    if (privacyLabel && privacyLabel.parentElement === form) {
-      form.insertBefore(wishlistOptIn, privacyLabel);
-      return;
-    }
-
-    if (submitButton && submitButton.parentElement === form) {
-      form.insertBefore(wishlistOptIn, submitButton);
-      return;
-    }
-
-    form.appendChild(wishlistOptIn);
-  }
-
-  function ensureHoneypotField(form) {
-    if (!form || form.querySelector("input[name='website']")) {
-      return;
-    }
-
-    var wrapper = document.createElement("div");
-    wrapper.className = "selnexa-honeypot";
-    wrapper.setAttribute("aria-hidden", "true");
-    wrapper.innerHTML = [
-      '<label for="website-' + Math.random().toString(36).slice(2) + '">Website</label>',
-      '<input type="text" name="website" tabindex="-1" autocomplete="off">'
-    ].join("");
-    form.appendChild(wrapper);
-  }
-
-  function ensureWishlistFirstCopy(form) {
-    if (!isBookingForm(form)) {
-      return;
-    }
-
-    var submitButton = form.querySelector("button[type='submit']");
-    var bookingTypeSelect = form.querySelector("select[name='booking_type']");
-
-    function updateButtonCopy() {
-      if (!submitButton) {
+    document.addEventListener("click", function (event) {
+      var trigger = event.target.closest("[data-demo-trigger]");
+      if (!trigger || !canOpen) {
         return;
       }
-
-      if (bookingTypeSelect && bookingTypeSelect.value === "telemedicine") {
-        submitButton.textContent = "Request Telemedicine / Join Wishlist →";
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
         return;
       }
-
-      submitButton.textContent = "Join Wishlist / Request Demo →";
-    }
-
-    updateButtonCopy();
-
-    if (bookingTypeSelect) {
-      bookingTypeSelect.addEventListener("change", updateButtonCopy);
-    }
-
-    var demoDialog = form.closest("dialog#demo-modal");
-    if (demoDialog) {
-      var heading = demoDialog.querySelector("h2");
-      if (heading) {
-        heading.textContent = "Request Demo or Join Wishlist";
+      event.preventDefault();
+      lastTrigger = trigger;
+      preselectInterest(dialog, trigger.getAttribute("data-interest"));
+      dialog.showModal();
+      var first = focusables(dialog).filter(function (el) {
+        return el.matches("input, select, textarea");
+      })[0];
+      if (first) {
+        first.focus();
       }
+      track("demo_modal_open", { from: window.location.pathname });
+    });
+
+    if (!canOpen) {
+      return;
     }
+
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+    dialog.querySelectorAll("[data-modal-close]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        dialog.close();
+      });
+    });
+    dialog.addEventListener("keydown", function (event) {
+      if (event.key !== "Tab") {
+        return;
+      }
+      var items = focusables(dialog);
+      if (!items.length) {
+        return;
+      }
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+    dialog.addEventListener("close", function () {
+      if (lastTrigger && document.body.contains(lastTrigger)) {
+        lastTrigger.focus();
+      }
+    });
   }
 
-  function queueFormSubmission(payload) {
+  /* ---------- Forms ---------- */
+
+  var FIELD_LABELS = {
+    name: "Name",
+    email: "Email",
+    phone: "Phone",
+    organisation: "Organisation",
+    role: "Role",
+    institution_type: "Institution type",
+    country: "Country",
+    interest: "Request",
+    topic: "Topic",
+    message: "Message"
+  };
+
+  function endpointFor(kind) {
+    return window.SELNEXA_FORM_ENDPOINT || (kind === "updates" ? window.SELNEXA_WISHLIST_ENDPOINT : window.SELNEXA_SCHEDULING_ENDPOINT) || "";
+  }
+
+  function clearErrors(form) {
+    form.querySelectorAll(".sx-error").forEach(function (node) {
+      node.remove();
+    });
+    form.querySelectorAll("[aria-invalid]").forEach(function (field) {
+      field.removeAttribute("aria-invalid");
+      var described = (field.getAttribute("aria-describedby") || "").split(" ").filter(function (id) {
+        return id && !/-error$/.test(id);
+      }).join(" ");
+      if (described) {
+        field.setAttribute("aria-describedby", described);
+      } else {
+        field.removeAttribute("aria-describedby");
+      }
+    });
+  }
+
+  function errorText(field) {
+    if (field.validity.valueMissing) {
+      if (field.type === "checkbox") return "Please tick this box to continue.";
+      if (field.tagName === "SELECT") return "Please choose an option.";
+      return "Please fill in this field.";
+    }
+    if (field.validity.typeMismatch && field.type === "email") {
+      return "Please enter an email address, like name@example.com.";
+    }
+    return field.validationMessage || "Please check this field.";
+  }
+
+  function validate(form) {
+    clearErrors(form);
+    var first = null;
+    var count = 0;
+    form.querySelectorAll("input, select, textarea").forEach(function (field) {
+      if (field.closest(".sx-hp") || field.type === "hidden" || field.disabled || field.checkValidity()) {
+        return;
+      }
+      count += 1;
+      var id = (field.id || field.name) + "-error";
+      var message = document.createElement("p");
+      message.className = "sx-error";
+      message.id = id;
+      message.textContent = errorText(field);
+      field.setAttribute("aria-invalid", "true");
+      field.setAttribute("aria-describedby", ((field.getAttribute("aria-describedby") || "") + " " + id).trim());
+      (field.closest(".sx-field") || field.parentNode).appendChild(message);
+      if (!first) {
+        first = field;
+      }
+    });
+    if (first) {
+      first.focus();
+    }
+    return count;
+  }
+
+  function collect(form) {
+    var data = {};
+    Array.prototype.forEach.call(form.elements, function (field) {
+      if (!field.name || field.name === "website" || field.disabled) {
+        return;
+      }
+      if (field.type === "checkbox") {
+        data[field.name] = field.checked ? "yes" : "no";
+      } else if (field.tagName === "SELECT") {
+        data[field.name] = field.value ? field.options[field.selectedIndex].text : "";
+      } else {
+        data[field.name] = String(field.value || "").trim();
+      }
+    });
+    return data;
+  }
+
+  function mailtoFor(kind, data) {
+    var subject = kind === "demo"
+      ? "Demo request" + (data.organisation ? " from " + data.organisation : "")
+      : kind === "updates"
+      ? "Please add me to SelNexa Health updates"
+      : "Message from the website" + (data.topic ? ": " + data.topic : "");
+    var lines = [];
+    Object.keys(FIELD_LABELS).forEach(function (key) {
+      if (data[key]) {
+        lines.push(FIELD_LABELS[key] + ": " + data[key]);
+      }
+    });
+    if (data.consent === "yes") {
+      lines.push("", "I agree to SelNexa Health using these details to reply to me.");
+    }
+    lines.push("", "Sent from " + window.location.href);
+    return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+  }
+
+  function setStatus(form, text, state) {
+    var status = form.querySelector(".sx-form__status") || form.querySelector(".capture-note");
+    if (!status) {
+      return;
+    }
+    status.className = status.classList.contains("capture-note") ? "capture-note" : "sx-form__status" + (state ? " is-" + state : "");
+    status.textContent = text;
+  }
+
+  function showDone(form, title, paragraphs, mailto) {
+    var box = document.createElement("div");
+    box.className = "sx-form-done";
+    box.setAttribute("tabindex", "-1");
+    var heading = document.createElement("h3");
+    heading.textContent = title;
+    box.appendChild(heading);
+    paragraphs.forEach(function (text) {
+      var p = document.createElement("p");
+      p.textContent = text;
+      box.appendChild(p);
+    });
+    if (mailto) {
+      var p = document.createElement("p");
+      var link = document.createElement("a");
+      link.href = mailto;
+      link.textContent = "Open the email again";
+      p.appendChild(link);
+      box.appendChild(p);
+    }
+    form.hidden = true;
+    form.parentNode.insertBefore(box, form.nextSibling);
+    box.focus();
+  }
+
+  function queueSubmission(endpoint, data) {
+    var store = storage();
+    if (!store) return;
     try {
-      var queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]");
-      queue.push(payload);
-      localStorage.setItem(QUEUE_KEY, JSON.stringify(queue));
+      var queue = JSON.parse(store.getItem(QUEUE_KEY) || "[]");
+      queue.push({ endpoint: endpoint, payload: data });
+      store.setItem(QUEUE_KEY, JSON.stringify(queue));
     } catch (err) {
-      // noop
+      // ignore
     }
   }
 
-  function flushQueuedSubmissions() {
+  function flushQueue() {
+    var store = storage();
+    if (!store || !navigator.onLine) return;
     var queue;
     try {
-      queue = JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]");
+      queue = JSON.parse(store.getItem(QUEUE_KEY) || "[]");
     } catch (err) {
       queue = [];
     }
-
-    if (!queue.length || !navigator.onLine) {
-      return;
-    }
-
+    if (!queue.length) return;
     var pending = [];
     var chain = Promise.resolve();
-
     queue.forEach(function (item) {
       chain = chain.then(function () {
-        if (!item.endpoint) {
-          return;
-        }
-
         return fetch(item.endpoint, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(item.payload)
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(item.payload),
+          credentials: "omit"
+        }).then(function (response) {
+          if (!response.ok) pending.push(item);
         }).catch(function () {
           pending.push(item);
         });
       });
     });
-
-    chain.finally(function () {
-      localStorage.setItem(QUEUE_KEY, JSON.stringify(pending));
+    chain.then(function () {
+      try {
+        store.setItem(QUEUE_KEY, JSON.stringify(pending));
+      } catch (err) {
+        // ignore
+      }
     });
   }
 
-  function showFormNotice(form, message, state) {
-    var existing = form.querySelector(".selnexa-form-notice");
-    if (existing) {
-      existing.remove();
+  function submit(form) {
+    var kind = form.getAttribute("data-sx-form") || "contact";
+    if (validate(form)) {
+      setStatus(form, "Please correct the highlighted fields.", "error");
+      return;
     }
+    var trap = form.querySelector("input[name='website']");
+    if (trap && trap.value) {
+      return;
+    }
+    var data = collect(form);
+    data.form = kind;
+    data.page = window.location.pathname;
+    data.submitted_at = new Date().toISOString();
+    var mailto = mailtoFor(kind, data);
+    var endpoint = endpointFor(kind);
+    track("form_submit", { form: kind });
 
-    var notice = document.createElement("p");
-    notice.className = "selnexa-form-notice " + (state || "info");
-    notice.textContent = message;
-    form.appendChild(notice);
-
-    window.setTimeout(function () {
-      notice.remove();
-    }, 5500);
-  }
-
-  function setupForms() {
-    var forms = document.querySelectorAll(".demo-form, .contact-form, .appointment-form, #appointmentForm");
-    if (!forms.length) {
+    if (!endpoint) {
+      showDone(form, "Your email app should open now", [
+        "We've put your details into a new email to " + CONTACT_EMAIL + ". Press send in your email app and it will reach us.",
+        "If nothing opened, email " + CONTACT_EMAIL + " or message us on WhatsApp on " + WHATSAPP_DISPLAY + "."
+      ], mailto);
+      window.location.href = mailto;
       return;
     }
 
-    forms.forEach(function (form) {
-      if (form.getAttribute("data-selnexa-form-bound") === "true") {
-        return;
+    if (!navigator.onLine) {
+      queueSubmission(endpoint, data);
+      showDone(form, "Saved on this device", [
+        "You're offline. Your request is saved on this device and will be sent automatically when you're back online."
+      ]);
+      return;
+    }
+
+    var button = form.querySelector("[type='submit']");
+    if (button) button.disabled = true;
+    setStatus(form, "Sending...", "");
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(data),
+      credentials: "omit"
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
       }
+      showDone(form, kind === "updates" ? "You're on the list" : "Thanks, it has reached us", [
+        kind === "updates" ? "We'll email you when there is news on the first pilot." : "We'll reply by email."
+      ]);
+    }).catch(function () {
+      if (button) button.disabled = false;
+      setStatus(form, "We couldn't send this just now. Please try again, or email " + CONTACT_EMAIL + ".", "error");
+    });
+  }
 
-      ensureSchedulingFields(form);
-      ensureWishlistField(form);
-      ensureWishlistFirstCopy(form);
-      ensureHoneypotField(form);
-      form.setAttribute("data-selnexa-form-bound", "true");
-
+  function setupForms() {
+    document.querySelectorAll("form[data-sx-form]").forEach(function (form) {
+      form.noValidate = true;
       form.addEventListener("submit", function (event) {
         event.preventDefault();
-
-        var privacy = form.querySelector("input[name='privacy']");
-        if (privacy && !privacy.checked) {
-          showFormNotice(form, "Please accept the privacy policy before submitting.", "error");
-          return;
-        }
-
-        var formData = new FormData(form);
-        var payload = {};
-        formData.forEach(function (value, key) {
-          payload[key] = value;
-        });
-
-        if (payload.website) {
-          showFormNotice(form, "Submission could not be accepted. Please contact contact@selnexahealth.com directly.", "error");
-          return;
-        }
-
-        var isBooking = isBookingForm(form);
-        var wishlistValue = (payload.join_wishlist || "").toString().toLowerCase();
-        var isWishlist = wishlistValue === "yes" || wishlistValue === "on" || wishlistValue === "true";
-        var isTelemedicine = payload.booking_type === "telemedicine";
-
-        if (isWishlist) {
-          payload.booking_type = "wishlist";
-        }
-
-        if (isBooking) {
-          payload.form_context = "book_demo";
-          payload.source_path = window.location.pathname;
-        }
-
-        payload.schema_version = "2026-09-04";
-        payload.submitted_at = new Date().toISOString();
-        payload.page_title = document.title || "";
-        payload.form_id = form.id || form.className || "selnexa-form";
-
-        var schedulingEndpoint = window.SELNEXA_SCHEDULING_ENDPOINT || "";
-        var wishlistEndpoint = window.SELNEXA_WISHLIST_ENDPOINT || "";
-        var endpoint = form.getAttribute("action") || (isWishlist ? (wishlistEndpoint || schedulingEndpoint) : schedulingEndpoint);
-
-        analytics.track("form_submit", {
-          form: form.id || form.className,
-          booking_type: payload.booking_type || "unspecified",
-          join_wishlist: isWishlist ? "yes" : "no"
-        });
-
-        if (!endpoint) {
-          showFormNotice(
-            form,
-            "This form is not connected yet. Please email contact@selnexahealth.com or use the WhatsApp button for a direct response.",
-            "warning"
-          );
-          return;
-        }
-
-        if (!navigator.onLine) {
-          queueFormSubmission({ endpoint: endpoint, payload: payload });
-          showFormNotice(form, "You are offline. The request was queued and will sync automatically.", "warning");
-          form.reset();
-          return;
-        }
-
-        fetch(endpoint, {
-          method: "POST",
-          mode: "cors",
-          credentials: "omit",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        }).then(function (response) {
-          if (!response.ok) {
-            throw new Error("Non-OK response");
-          }
-          showFormNotice(
-            form,
-            isWishlist
-              ? "You are on the wishlist. We will email you when early-access demo slots are available."
-              : isTelemedicine
-              ? "Telemedicine request received. Check your email for confirmation."
-              : isBooking
-              ? "Booking request received. Check your email for confirmation."
-              : "Submission received. Check your email for confirmation.",
-            "success"
-          );
-          form.reset();
-        }).catch(function () {
-          queueFormSubmission({ endpoint: endpoint, payload: payload });
-          showFormNotice(
-            form,
-            isWishlist
-              ? "Wishlist request queued due to network issue. We will retry shortly."
-              : isBooking
-              ? "Booking request queued due to network issue. We will retry shortly."
-              : "Submission queued due to network issue. We will retry shortly.",
-            "warning"
-          );
-          form.reset();
-        });
+        submit(form);
       });
     });
-
-    window.addEventListener("online", flushQueuedSubmissions);
-    flushQueuedSubmissions();
+    var params = new URLSearchParams(window.location.search);
+    var interest = params.get("interest") || params.get("type");
+    if (interest) {
+      document.querySelectorAll("form[data-sx-form='demo']").forEach(function (form) {
+        preselectInterest(form, interest);
+      });
+    }
+    var topic = params.get("topic");
+    if (topic) {
+      document.querySelectorAll("select[name='topic']").forEach(function (select) {
+        for (var i = 0; i < select.options.length; i += 1) {
+          if (select.options[i].value === topic) select.selectedIndex = i;
+        }
+      });
+    }
+    window.addEventListener("online", flushQueue);
+    flushQueue();
   }
+
+  /* ---------- Service worker and CTA tracking ---------- */
 
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) {
       return;
     }
-
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("/sw.js").catch(function () {
-        // noop
+        // ignore
       });
     });
   }
 
   function setupCtaTracking() {
     document.addEventListener("click", function (event) {
-      var target = event.target.closest("a, button");
-      if (!target) {
-        return;
-      }
-
-      var isCta = target.classList.contains("btn") || target.classList.contains("cta-nav") || target.getAttribute("data-analytics") === "cta";
-      if (isCta) {
-        analytics.track("cta_click", {
-          label: (target.textContent || "").trim(),
-          href: target.getAttribute("href") || "button"
-        });
+      var target = event.target.closest("a.btn, button.btn, .sx-cta");
+      if (target) {
+        track("cta_click", { label: (target.textContent || "").trim(), href: target.getAttribute("href") || "button" });
       }
     });
   }
 
   onReady(function () {
-    cleanupLegacyNavigationLabels();
-    enhanceNavigationMenus();
-    cleanupLegacyNavigationLabels();
-    setupPrimaryMenuToggle();
-    setupProgressBar();
-
-    setupThemeToggle();
-    setupLanguageSelector();
-    setupVoiceSearch();
-
-    setupBottomNav();
-    setupChatbot();
-    setupAnimations();
-    setupStatCounters();
+    setupHeader();
+    setupReveal();
+    setupCounters();
     setupModuleTabs();
-    setupEmailCapture();
-    setupWhatsAppFloat();
-    setupReadingProgress();
-    reorderInvestorPageSections();
-    setupCalendarEmbed();
     setupVideoTabs();
-    ensureOrganizationJsonLd();
+    setupModuleFinder();
+    setupWhatsApp();
+    setupDemoModal();
     setupForms();
     setupCtaTracking();
     registerServiceWorker();

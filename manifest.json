@@ -1,7 +1,7 @@
 {
     "name": "SelNexa Health",
     "short_name": "SelNexa",
-    "description": "Offline-first healthcare infrastructure for African health systems",
+    "description": "Offline-first health service management for health institutions",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
@@ -11,9 +11,9 @@
         { "src": "/assets/selnexa-logo.svg?v=9", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
     ],
     "shortcuts": [
-        { "name": "Book Appointment", "short_name": "Book", "url": "/appointments.html" },
-        { "name": "Case Studies", "short_name": "Cases", "url": "/case-studies.html" },
-        { "name": "Telemedicine", "short_name": "Telemed", "url": "/telemedicine.html" },
-        { "name": "Contact Us", "short_name": "Contact", "url": "/contact.html" }
+        { "name": "Book a demo", "short_name": "Demo", "url": "/appointments.html" },
+        { "name": "Platform", "short_name": "Platform", "url": "/features.html" },
+        { "name": "Impact", "short_name": "Impact", "url": "/case-studies.html" },
+        { "name": "Contact", "short_name": "Contact", "url": "/contact.html" }
     ]
 }
