@@ -256,7 +256,7 @@ const Login = () => {
               By signing in, you agree to our <a href="/terms.html" className="text-red-600 hover:underline">Terms of Service</a> and <a href="/privacy.html" className="text-red-600 hover:underline">Privacy Policy</a>
             </p>
             <p className="text-xs text-gray-400 text-center mt-2">
-              🔒 HIPAA-compliant • SSL/TLS encrypted • Secure authentication
+              🔒 SSL/TLS encrypted • Secure authentication
             </p>
           </div>
         </form>

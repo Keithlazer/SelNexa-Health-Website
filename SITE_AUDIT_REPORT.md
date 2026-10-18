@@ -1,5 +1,8 @@
 # SelNexa Health Site Audit
 
+> Note (October 2026): facility names have been removed from this document. It describes an earlier positioning pass that has since been superseded; see AUDIT-FINDINGS.md.
+
+
 Run date: 2026-07-02  
 Workspace: `keithlazer.github.io.worktrees/copilot-worktree-2026-05-11T11-29-45`
 
@@ -489,7 +492,7 @@ Fix:
 - Mobile hero clipping.
 - Rewrite awkward "Silicon Valley 'ports'" phrase.
 - Shorten long bios where they sound resume-like.
-- Add clearer proof for "Manicaland District Hospital" proof-of-concept.
+- Add clearer proof for "the Q3 2024 validation facility" proof-of-concept.
 
 ### Platform: `features.html` and `solutions/index.html`
 

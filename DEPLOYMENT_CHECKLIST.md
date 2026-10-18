@@ -1,5 +1,7 @@
 # Production Deployment Checklist
 
+> Note (October 2026): this document describes an earlier version of the site and is kept as a record only. Claims it lists as done, including foreign compliance badges and compliant logins, have since been removed. See AUDIT-FINDINGS.md.
+
 ## ✅ Pre-Deployment Verification
 
 ### 1. File Integrity Check

@@ -517,27 +517,14 @@ const Home = () => {
     }
   ]
 
+  // No real testimonials exist yet (pre-deployment). Keep this slot as a clearly labelled placeholder
+  // until a pilot partner gives written consent to be quoted.
   const testimonials = [
     {
-      quote:
-        'SelNexa cut our waiting-room congestion in weeks. Our team now spends more time with patients and less time untangling admin.',
-      name: 'Dr. Nyasha M.',
-      role: 'Medical Director',
-      org: 'Harare Community Clinic'
-    },
-    {
-      quote:
-        'Follow-up adherence improved because reminders and telemedicine are finally in one workflow. We can see who needs attention sooner.',
-      name: 'Sr. Tendai K.',
-      role: 'Clinical Operations Lead',
-      org: 'Bulawayo Family Health Network'
-    },
-    {
-      quote:
-        'The dashboard gave us a real-time picture of staffing and patient flow. It helped us reduce service delays during peak hours.',
-      name: 'Blessing T.',
-      role: 'Hospital Administrator',
-      org: 'Mutare District Facility'
+      quote: 'Testimonials will appear here once a pilot partner has agreed in writing to be quoted.',
+      name: 'Placeholder',
+      role: 'Not a real testimonial',
+      org: 'SelNexa Health'
     }
   ]
 

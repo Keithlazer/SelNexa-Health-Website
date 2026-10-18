@@ -684,7 +684,10 @@
                             <div class="traffic-lights"><span></span><span></span><span></span></div>
                             <div class="address-bar">Demo available on request</div>
                         </div>
-                        <img src="/assets/dashboard-hero.svg" alt="SelNexa Health Platform dashboard" class="hero-dashboard-shot" loading="lazy" decoding="async">
+                        <picture>
+                            <source type="image/webp" srcset="/assets/dashboard-hero-480.webp 480w, /assets/dashboard-hero-800.webp 800w, /assets/dashboard-hero-1200.webp 1200w" sizes="(max-width: 768px) 380px, 560px">
+                            <img src="/assets/dashboard-hero-1200.png" alt="The SelNexa Health Platform on a laptop and two phones: workspace selection, a patient's prescriptions and billing, and the admin portal" class="hero-dashboard-shot" width="1200" height="677" decoding="async" fetchpriority="high">
+                        </picture>
                     </div>
                     <div class="hero-floating-stat stat-card-3">
                         <strong>Flagship Platform</strong>
@@ -750,29 +753,23 @@
             </div>
         </section>
 
-        <section class="quick-metrics reveal" aria-label="Outcome snapshot">
+        <section class="quick-metrics reveal" aria-labelledby="pipeline-targets-title">
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">DEPLOYMENT PIPELINE</p>
-                    <h2>Pre-deployment design targets and pilot context</h2>
-                    <p>Early indicators and design targets are labeled clearly while field evidence is collected.</p>
+                    <h2 id="pipeline-targets-title">Where the Platform stands before its first pilot</h2>
+                    <p>No pilot has reported results yet. The first one will be measured against these engineering targets.</p>
                 </div>
-                <div class="metrics-grid">
-                    <article class="metric-card stat-card reveal" aria-label="Pilot context documented">
-                        <strong class="stat-card__number" data-counter data-target="1">1</strong>
-                        <p class="stat-card__label">Pilot context documented</p>
-                        <small class="stat-card__citation">Victoria Chitepo Hospital (confirmed next pilot site, pending approval)</small>
-                    </article>
-                    <article class="metric-card stat-card reveal" aria-label="Offline continuity design target">
-                        <strong class="stat-card__number" data-counter data-target="95" data-suffix="%">95%</strong>
-                        <p class="stat-card__label">Offline continuity design target</p>
-                        <small class="stat-card__citation">Pre-deployment reliability target</small>
-                    </article>
-                    <article class="metric-card stat-card reveal" aria-label="2G sync target">
-                        <strong class="stat-card__number" data-counter data-target="4" data-prefix="< ">4</strong>
-                        <p class="stat-card__label">2G sync latency design target (seconds)</p>
-                        <small class="stat-card__citation">Controlled test objective</small>
-                    </article>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Pilot status and engineering targets</caption>
+                        <tbody>
+                            <!-- Facility name withheld until written approval is in hand. Restore it here once approval exists (see CONTENT-TODO.md). -->
+                            <tr><th scope="row">Next pilot site</th><td><span class="spec-tag spec-tag--status">Status</span>A public hospital in Zimbabwe, confirmed and pending ministry approval</td></tr>
+                            <tr><th scope="row">Offline continuity</th><td><span class="spec-tag">Target</span>At least 95% of changes queued offline sync successfully once the connection returns</td></tr>
+                            <tr><th scope="row">Sync over 2G</th><td><span class="spec-tag">Target</span>Under 4 seconds sync latency, set as a controlled-test objective</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -785,7 +782,7 @@
                 </div>
                 <div class="mission-intro">
                     <div class="mission-paragraph">
-                        <p>Africa carries 25% of the world's disease burden but has access to only 3% of the world's healthcare workers and 1% of global health expenditure. The gap between the care people need and the care they can access is not a knowledge problem, it is an infrastructure, access, and systems problem.</p>
+                        <p>WHO's World Health Report 2006 found that the African Region carries 24% of the global disease burden with 3% of the world's health workers and less than 1% of world health spending. The gap between the care people need and the care they can get is not a knowledge problem. It's an infrastructure, access, and systems problem.</p>
                         <p>SelNexa Health operates as a professional collective of African trailblazers with a shared passion, vision and drive to improve healthcare delivery systems. We are filling the 'strategic absence' of youth in the health-tech sector by building the digital infrastructure required for continental health security and development.</p>
                         <p>Leading through Domestic Resource Mobilization and Action Oriented Partnerships, we aim to build sustainable systems that generate impact and revenue simultaneously because we believe the two are not in conflict.</p>
                     </div>
@@ -800,14 +797,14 @@
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-earth-africa"></i></div>
                         <h3>African-First Thinking</h3>
-                        <p class="pillar-body">Intelligent Health Systems keep care continuous on 2G and offline, ensuring continuity where only 23% of people live near a facility. Designed for Africa's lowest-connectivity clinic conditions.</p>
+                        <p class="pillar-body">The Platform is built to keep working on 2G and offline, for health institutions where the network and the power both drop out.</p>
                         <p class="pillar-proof">Offline-first · 2G-capable · Intelligent system continuity</p>
                     </article>
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-unlock"></i></div>
                         <h3>Results Matrix</h3>
-                        <p class="pillar-body">We publish a Results Matrix with indicators such as health professionals supported and offline continuity KPIs, backed by independent evaluation.</p>
-                        <p class="pillar-proof">Indicators published publicly · Independent baseline/midline/endline</p>
+                        <p class="pillar-body">Our Results Matrix lists the indicators we'll report, such as health professionals supported and offline continuity. Figures go in once the first pilot is independently evaluated.</p>
+                        <p class="pillar-proof">Indicators public now · Baseline, midline and endline evaluation planned for the first pilot</p>
                     </article>
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
@@ -833,25 +830,29 @@
         <section class="pipeline-section reveal" id="deployment-pipeline">
             <div class="container">
                 <p class="section-label">DEPLOYMENT PIPELINE</p>
-                <h2>In active talks with facilities across four markets</h2>
-                <p class="pipeline-description">We are in structured conversations with health service providers and hospital networks in Zimbabwe, Kenya, Nigeria, and South Africa. If your facility wants to be among the first deployment partners, apply for pilot access.</p>
+                <h2>Zimbabwe first, three more markets in early conversation</h2>
+                <p class="pipeline-description">Our first pilot is confirmed in Zimbabwe and waiting on ministry approval. We're also talking with health institutions in Kenya, Nigeria and South Africa, though none of those conversations is a deployment yet. If your institution wants to be among the first, apply for pilot access.</p>
 
                 <div class="deployment-map animate-on-scroll">
                     <div class="africa-map-card">
                         <div class="map-overlay-container">
-                            <img src="./assets/Africa%20Map.svg" alt="Africa Deployment Map" class="base-africa-img" loading="lazy" decoding="async" />
+                            <picture>
+                                <source srcset="/assets/africa-map.webp" type="image/webp">
+                                <img src="/assets/africa-map.png" alt="Map of Africa highlighting Zimbabwe, where the first pilot is pending approval, and Nigeria, Kenya and South Africa, where conversations are at an early stage" class="base-africa-img" width="1200" height="670" loading="lazy" decoding="async">
+                            </picture>
                         </div>
 
                         <div class="map-legend">
-                            <span class="legend-item"><span class="legend-dot map-dot-active"></span>Pilot active</span>
-                            <span class="legend-item"><span class="legend-dot map-dot-talks"></span>In active talks</span>
+                            <span class="legend-item"><span class="legend-dot map-dot-active"></span>First pilot, pending approval</span>
+                            <span class="legend-item"><span class="legend-dot map-dot-talks"></span>Early conversations</span>
                         </div>
                     </div>
 
                     <div class="pipeline-details">
                         <h3>Deployment pipeline by market</h3>
                         <div class="market-entry">
-                            <p><strong>Zimbabwe:</strong> next pilot site is Victoria Chitepo Hospital, pending government approval.</p>
+                            <!-- Facility name withheld until written approval is in hand. Restore it here once approval exists (see CONTENT-TODO.md). -->
+                            <p><strong>Zimbabwe:</strong> a public hospital is confirmed as the first pilot site, pending ministry approval.</p>
                         </div>
                         <div class="market-entry">
                             <p><strong>Kenya, Nigeria, South Africa:</strong> early conversations only, with no active deployments.</p>
@@ -924,7 +925,6 @@
                             <div class="audience-icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
                             <h3>Evaluate at your facility</h3>
                             <p>30-day guided pilot · No upfront commitment · Local implementation support</p>
-                            <span class="audience-metric">Setup time: ~2 weeks</span>
                             <a href="/appointments.html">Book Platform Demo →</a>
                         </article>
                         <article class="cta-audience-card partners">
@@ -1005,9 +1005,10 @@
                             <li><a href="/careers.html" data-i18n="nav.careers">Talent Development Hub</a></li>
                             <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
             </ul>
-                        <div class="trust-badges" aria-label="Compliance badges">
-                            <span><i class="fas fa-shield-heart" aria-hidden="true"></i> HIPAA</span>
-                            <span><i class="fas fa-lock" aria-hidden="true"></i> GDPR</span>
+                        <div class="footer-compliance" aria-label="Data protection">
+                          <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+                          <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+                          <p>Data residency configurable: in-country or regional</p>
                         </div>
           </div>
                     <div class="footer-column">
@@ -1028,8 +1029,6 @@
       </div>
     </footer>
 
-        <script src="/js/roi-calculator.js"></script>
-    
     <!-- Modals -->
     <dialog id="demo-modal" class="modal">
         <div class="modal-content">

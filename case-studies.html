@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impact Evidence | SelNexa Health</title>
-    <meta name="description" content="Validation notes for the SelNexa Health Platform: what has been built and tested so far, the Manicaland proof of concept, and the next pilot at Victoria Chitepo Hospital.">
+    <meta name="description" content="What the SelNexa Health Platform has built and tested so far, what the 2024 validation work confirmed, and how the first pilot will be measured.">
     <link rel="canonical" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/case-studies.html">
     <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/case-studies.html?lang=sn">
@@ -56,8 +56,8 @@
                 <p class="page-subtitle hero-animate">Real case studies take real pilots. Here's what's actually been built, tested, and proven, and exactly what happens next.</p>
                 <nav class="tab-links" aria-label="Impact page navigation">
                     <a href="#validated">What's Validated</a>
-                    <a href="#manicaland">Manicaland Proof of Concept</a>
-                    <a href="#next-pilot">Next: Victoria Chitepo Hospital</a>
+                    <a href="#validation-2024">Q3 2024 Validation</a>
+                    <a href="#next-pilot">Next: First Measured Pilot</a>
                     <a href="#comparison">How We Compare</a>
                 </nav>
                 <p class="hero-animate">A note on this page: everything below reflects work that has actually happened. No pilot results appear here until a pilot has run and been independently reviewed.</p>
@@ -70,42 +70,31 @@
                     <h2>What's Validated</h2>
                     <p>Offline-first architecture, built and working. The Platform runs as a progressive web app with a local write queue. Care teams can register patients, update records, and manage procurement during an outage, with automatic sync once connectivity returns. Both a secure hosted deployment and a fully offline LAN deployment mode are built and functioning.</p>
                     <p>Security and audit baseline in place. Role-based access control and full audit logging are implemented and documented, ahead of formal penetration testing.</p>
-                    <p>Engineering targets for first deployment:</p>
+                    <p>Engineering targets for the first pilot. Each row is a target, not a result.</p>
                 </div>
-                <div class="metrics-grid">
-                    <article class="metric-card stat-card reveal">
-                        <strong class="stat-card__number">95%+</strong>
-                        <p class="stat-card__label">Offline continuity replay success target</p>
-                    </article>
-                    <article class="metric-card stat-card reveal">
-                        <strong class="stat-card__number">&lt;24h</strong>
-                        <p class="stat-card__label">Breach notification readiness window</p>
-                    </article>
-                    <article class="metric-card stat-card reveal">
-                        <strong class="stat-card__number">FHIR</strong>
-                        <p class="stat-card__label">Interoperability compliance target</p>
-                    </article>
-                    <article class="metric-card stat-card reveal">
-                        <strong class="stat-card__number">2G</strong>
-                        <p class="stat-card__label">Minimum supported network condition</p>
-                    </article>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Engineering targets for the first pilot</caption>
+                        <tbody>
+                            <tr><th scope="row">Offline continuity</th><td><span class="spec-tag">Target</span>At least 95% of changes queued offline sync successfully once the connection returns</td></tr>
+                            <tr><th scope="row">Breach notification</th><td><span class="spec-tag">Target</span>Ready to notify the Data Protection Authority within 24 hours of becoming aware of a breach, as SI 155 of 2024 requires</td></tr>
+                            <tr><th scope="row">Interoperability</th><td><span class="spec-tag">Target</span>FHIR R4 alignment for the core patient record</td></tr>
+                            <tr><th scope="row">Minimum network</th><td><span class="spec-tag">Target</span>Usable on a 2G connection</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <p>These are the targets the Platform is engineered to hit at Victoria Chitepo Hospital. They are not reported field outcomes.</p>
+                <p class="spec-note">None of these figures has been measured in the field yet. The first pilot will report against them.</p>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll" id="manicaland">
+        <section class="section-spacer animate-on-scroll" id="validation-2024">
             <div class="container">
-                <span id="bulawayo" class="anchor-alias" aria-hidden="true"></span>
-                <span id="analytics-pilot" class="anchor-alias" aria-hidden="true"></span>
-                <span id="procurement-sa" class="anchor-alias" aria-hidden="true"></span>
-                <span id="ehr-project" class="anchor-alias" aria-hidden="true"></span>
                 <article class="page-card">
-                    <h2>Our Proof of Concept: Manicaland District Hospital</h2>
-                    <p>Timeframe: Q3 2024</p>
-                    <p>What we tested: core Platform workflows inside a live hospital, confirming the offline-first design holds up under real facility conditions, not just in development.</p>
-                    <p>Status: Complete. This directly shaped the hardening work now underway ahead of our next pilot.</p>
-                    <p>We're not attaching a performance number to this phase. It was a proof of concept, not a measured pilot, and we'd rather leave it unquantified than publish a figure we can't stand behind.</p>
+                    <h2>Q3 2024: controlled testing in a working facility</h2>
+                    <p>In the third quarter of 2024 we took the Platform's core workflows out of development and tested them, under controlled conditions, inside a working health facility.</p>
+                    <p>The question we cared about most was whether the offline-first write queue would hold. That's the part of the Platform that lets staff keep registering patients and updating records while the connection is down, then syncs the changes when it comes back. It held under real facility conditions, not just in development.</p>
+                    <p>What we learned there directly shaped the hardening work now underway, ahead of the first measured pilot.</p>
+                    <p>There's no performance number attached to this work. It was a proof of concept, not a measured pilot, and we'd rather leave it unquantified than publish a figure we can't stand behind.</p>
                 </article>
             </div>
         </section>
@@ -113,8 +102,9 @@
         <section class="section-spacer animate-on-scroll" id="next-pilot">
             <div class="container">
                 <article class="page-card">
-                    <h2>Next: Victoria Chitepo Hospital</h2>
-                    <p>Status: Confirmed as our next pilot site, pending government approval.</p>
+                    <!-- Facility name withheld until written approval is in hand. Restore it here once approval exists (see CONTENT-TODO.md). -->
+                    <h2>Next: our first measured pilot</h2>
+                    <p>A public hospital in Zimbabwe is confirmed as our next pilot site, pending ministry approval. We'll name it here once that approval is in writing.</p>
                     <p>This is where our first independently measured results will come from. Before it starts, this funding round is completing the groundwork: a formal DPIA, Data Protection Officer appointment, DHIS2 and FHIR interoperability mapping with the Ministry of Health, and independent security testing.</p>
                     <p>We're also in early conversations with facilities in Kenya, Nigeria, and South Africa. None of these are active deployments yet.</p>
                 </article>
@@ -134,7 +124,8 @@
             <div class="container">
                 <article class="page-card">
                     <h2>What We'll Measure, and Who Verifies It</h2>
-                    <p>When Victoria Chitepo Hospital goes live, we'll track the same indicators as our engineering targets above: offline continuity, sync reliability, and reporting timeliness, against a baseline set before deployment. Results get published here once they clear independent review. That applies whether they're good news or not.</p>
+                    <!-- Facility name withheld until written approval is in hand. Restore it here once approval exists (see CONTENT-TODO.md). -->
+                    <p>When the pilot goes live, we'll track the same indicators as our engineering targets above: offline continuity, sync reliability, and reporting timeliness, against a baseline set before deployment. Results get published here once they clear independent review. That applies whether they're good news or not.</p>
                     <p><a href="/appointments.html" class="btn btn-primary">See the Platform in action →</a></p>
                     <p><a href="#updates-signup" class="btn btn-secondary">Get notified when pilot results publish →</a></p>
                 </article>
@@ -181,9 +172,10 @@
               <li><a href="/careers.html" data-i18n="nav.careers">Talent Development Hub</a></li>
               <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
             </ul>
-              <div class="trust-badges" aria-label="Compliance badges">
-              <span>HIPAA</span>
-              <span>GDPR</span>
+              <div class="footer-compliance" aria-label="Data protection">
+                <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+                <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+                <p>Data residency configurable: in-country or regional</p>
               </div>
               <div class="social-links">
                 <a href="https://www.linkedin.com/company/selnexahealth" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -213,11 +205,11 @@
       "@context": "https://schema.org",
       "@type": "Report",
       "name": "SelNexa Health Impact Evidence",
-        "description": "Validation notes for the SelNexa Health Platform: what has been built and tested so far, the Manicaland proof of concept, and the next pilot at Victoria Chitepo Hospital.",
+        "description": "What the SelNexa Health Platform has built and tested so far, what the 2024 validation work confirmed, and how the first pilot will be measured.",
       "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "What's Validated", "url": "https://www.selnexahealth.com/case-studies.html#validated"},
-                {"@type": "ListItem", "position": 2, "name": "Manicaland Proof of Concept", "url": "https://www.selnexahealth.com/case-studies.html#manicaland"},
-                {"@type": "ListItem", "position": 3, "name": "Next: Victoria Chitepo Hospital", "url": "https://www.selnexahealth.com/case-studies.html#next-pilot"},
+                {"@type": "ListItem", "position": 2, "name": "Q3 2024 Validation", "url": "https://www.selnexahealth.com/case-studies.html#validation-2024"},
+                {"@type": "ListItem", "position": 3, "name": "Next: First Measured Pilot", "url": "https://www.selnexahealth.com/case-studies.html#next-pilot"},
                 {"@type": "ListItem", "position": 4, "name": "How We Compare", "url": "https://www.selnexahealth.com/case-studies.html#comparison"}
       ]
     }

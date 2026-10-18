@@ -1,5 +1,7 @@
 # SelNexa Health Site - Completion Report
 
+> Note (October 2026): this document describes an earlier version of the site and is kept as a record only. Claims it lists as done, including foreign compliance badges and compliant logins, have since been removed. See AUDIT-FINDINGS.md.
+
 ## 📋 Project Overview
 
 This document summarizes the comprehensive site rebuild completed for SelNexa Health, transforming it from a basic static site into a fully-featured enterprise healthcare web platform with hybrid static + SPA architecture.

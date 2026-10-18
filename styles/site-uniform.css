@@ -871,8 +871,9 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 /* Legend Styling Updates */
-.map-dot-active { background-color: #0d9488 !important; }
-.map-dot-talks { background-color: #1e3a8a !important; }
+/* Legend dots match the fills in /assets/africa-map.webp */
+.map-dot-active { background-color: #188e2e !important; }
+.map-dot-talks { background-color: #2b7ab7 !important; }
 
 .cta-split {
   display: grid;
@@ -1328,6 +1329,104 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .spec-item span:first-child {
   font-weight: 800;
   color: var(--uniform-primary);
+}
+
+/* main.css gives .quick-metrics white text for a dark gradient, then later swaps in a light
+   gradient. Keep the text dark so the section stays readable on every page. */
+.quick-metrics .section-header h2 {
+  color: #0f172a;
+}
+
+.quick-metrics .section-header p {
+  color: #475569;
+}
+
+/*
+ * Results convention:
+ * - Measured results: stat cards, only once a pilot has reported.
+ * - Engineering and design targets: rows in a .spec-table, each labelled with .spec-tag ("Target").
+ * - Projections: charts or tables on the investor page only.
+ */
+.spec-table-wrap {
+  overflow-x: auto;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.6rem;
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+}
+
+.spec-table caption {
+  text-align: left;
+  font-weight: 800;
+  color: var(--uniform-primary);
+  padding-bottom: 0.25rem;
+}
+
+.spec-table th,
+.spec-table td {
+  background: rgba(0, 76, 76, 0.05);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--uniform-text);
+  line-height: 1.5;
+}
+
+.spec-table th {
+  width: 34%;
+  font-weight: 800;
+  color: var(--uniform-primary);
+  border-radius: 8px 0 0 8px;
+}
+
+.spec-table td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.spec-tag {
+  display: inline-block;
+  margin: 0 0.5rem 0.2rem 0;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7a4f00;
+  vertical-align: 0.1em;
+}
+
+.spec-tag--status {
+  color: var(--uniform-primary);
+}
+
+.spec-tag--projection {
+  color: #5b3a8c;
+}
+
+.spec-note {
+  font-size: 0.9rem;
+  color: var(--uniform-muted);
+}
+
+html[data-theme="dark"] .spec-table th,
+html[data-theme="dark"] .spec-table td {
+  background: #13233a;
+  color: #e8f1ff;
+}
+
+html[data-theme="dark"] .spec-tag {
+  color: #f5c26b;
+}
+
+html[data-theme="dark"] .spec-tag--status,
+html[data-theme="dark"] .spec-tag--projection {
+  color: #9fe3e3;
 }
 
 .roi-calculator {
@@ -1855,6 +1954,19 @@ html[data-theme="dark"] .timeline-item {
   border-radius: 999px;
   padding: 0.2rem 0.6rem;
   font-size: 0.76rem;
+}
+
+/* Plain statements, not badges: none of these is a certification. */
+.footer-compliance {
+  margin-top: 0.85rem;
+}
+
+.footer-compliance p {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: inherit;
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {

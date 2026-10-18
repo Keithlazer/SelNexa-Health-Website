@@ -51,69 +51,57 @@
     <main id="main-content">
         <section class="page-hero">
             <div class="container">
-                <p class="page-overline">SECURITY & TRUST</p>
+                <p class="page-overline">SECURITY AND DATA PROTECTION</p>
                 <h1 class="page-title">Security and Compliance</h1>
-                <p class="page-subtitle">SelNexa Health applies defense-in-depth controls for organizational data and SelNexa Health Platform workflows, with governance aligned to Zimbabwe data protection obligations including authority and affected-individual breach notification timelines.</p>
+                <p class="page-subtitle">How the SelNexa Health Platform protects patient data today, what is still in progress, and what has not been done yet. The Platform is pre-deployment: no health institution runs it in production, and none of the controls below has been independently audited.</p>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll">
-            <div class="container page-grid">
-                <article class="page-card">
-                    <h2>Encryption Practices</h2>
-                    <ul>
-                        <li><strong>Data in transit:</strong> TLS-secured channels for all external data exchange.</li>
-                        <li><strong>Data at rest:</strong> AES-256 encryption for stored clinical records and backups.</li>
-                        <li><strong>Integrity:</strong> Tamper-evident audit trails for critical record history.</li>
-                    </ul>
-                </article>
-                <article class="page-card">
-                    <h2>Access Control & Audit Logging</h2>
-                    <ul>
-                        <li>Role-based access control with least-privilege defaults.</li>
-                        <li>Consent-aware sharing for patient-authorized record access.</li>
-                        <li>Comprehensive activity trails for account, record, and policy events.</li>
-                    </ul>
-                </article>
-                <article class="page-card">
-                    <h2>Data Governance</h2>
-                    <ul>
-                        <li>Data-controller governance designed for Zimbabwe licensing and DPO operating requirements.</li>
-                        <li>Breach workflow includes 24-hour authority notification readiness and 72-hour affected-individual notifications in high-risk cases.</li>
-                        <li>Transborder data-transfer controls apply adequate-protection checks and documented approval gates.</li>
-                    </ul>
-                </article>
+        <section class="section-spacer animate-on-scroll" aria-labelledby="built-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="built-title">Built into the Platform</h2>
+                    <p>Implemented and tested by our own team in development and in controlled testing. Independent security testing comes before the first pilot.</p>
+                </div>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Security controls built into the Platform</caption>
+                        <tbody>
+                            <tr><th scope="row">Encryption in transit</th><td><span class="spec-tag spec-tag--status">Built</span>TLS on every external connection</td></tr>
+                            <tr><th scope="row">Encryption at rest</th><td><span class="spec-tag spec-tag--status">Built</span>AES-256 for stored clinical records and backups</td></tr>
+                            <tr><th scope="row">Access control</th><td><span class="spec-tag spec-tag--status">Built</span>Role-based access with least-privilege defaults</td></tr>
+                            <tr><th scope="row">Audit trails</th><td><span class="spec-tag spec-tag--status">Built</span>Tamper-evident logs of account, record and policy events</td></tr>
+                            <tr><th scope="row">Consent</th><td><span class="spec-tag spec-tag--status">Built</span>Consent-aware access for patient-authorised record sharing</td></tr>
+                            <tr><th scope="row">Data residency</th><td><span class="spec-tag spec-tag--status">Built</span>Configurable per deployment: in-country or regional hosting</td></tr>
+                            <tr><th scope="row">Breach response</th><td><span class="spec-tag spec-tag--status">Built</span>A breach workflow designed around SI 155 of 2024: notify the Data Protection Authority within 24 hours of becoming aware of a breach, and affected people within 72 hours where the risk to them is high</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll">
-            <div class="container page-card">
-                <h2>Compliance and trust signals</h2>
-                <h3>Certified / active controls</h3>
-                <div class="trust-badges" aria-label="Certified and active controls">
-                    <span>SSL/TLS encryption</span>
-                    <span>RBAC + Audit Trails</span>
-                    <span>24h Authority Notice Readiness</span>
-                    <span>72h High-Risk Notice Workflow</span>
-                    <span>WCAG 2.1 AA accessibility baseline</span>
+        <section class="section-spacer animate-on-scroll" aria-labelledby="progress-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="progress-title">In progress and planned</h2>
+                    <p>We hold no security or compliance certification today. ISO/IEC 27001 and SOC 2 work is control mapping, not an audit.</p>
                 </div>
-                <p>These controls are active in current deployments and reviewed in operating governance cycles.</p>
-
-                <h3>In progress</h3>
-                <div class="trust-badges" aria-label="In progress certifications">
-                    <span>ISO/IEC 27001 readiness program</span>
-                    <span>SOC 2 controls mapping</span>
-                    <span>SI 155 DPO & licensing onboarding</span>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Compliance work in progress and planned</caption>
+                        <tbody>
+                            <tr><th scope="row">Zimbabwe data protection</th><td><span class="spec-tag spec-tag--status">In progress</span>Data controller licensing and Data Protection Officer appointment under SI 155 of 2024, aligned with the Cyber and Data Protection Act [Chapter 12:07]</td></tr>
+                            <tr><th scope="row">Impact assessment</th><td><span class="spec-tag spec-tag--status">In progress</span>A formal Data Protection Impact Assessment for the first pilot</td></tr>
+                            <tr><th scope="row">ISO/IEC 27001</th><td><span class="spec-tag spec-tag--status">In progress</span>Mapping our controls to the standard. No certification has been sought yet.</td></tr>
+                            <tr><th scope="row">SOC 2</th><td><span class="spec-tag spec-tag--status">In progress</span>Mapping our controls to the trust services criteria. No SOC 2 report exists.</td></tr>
+                            <tr><th scope="row">Cross-border transfers</th><td><span class="spec-tag spec-tag--status">In progress</span>Adequate-protection checks and documented approval before any personal data leaves the country</td></tr>
+                            <tr><th scope="row">Security testing</th><td><span class="spec-tag spec-tag--status">Planned</span>Independent penetration testing before the first pilot goes live</td></tr>
+                            <tr><th scope="row">Accessibility</th><td><span class="spec-tag">Target</span>WCAG 2.1 AA for the Platform's interfaces. Not yet independently audited.</td></tr>
+                            <tr><th scope="row">Evidence for reviewers</th><td><span class="spec-tag spec-tag--status">Planned</span>A pack of control evidence for procurement and due diligence teams, and compliance notes for each new country we enter</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <p>Programs listed as in progress are under documented implementation and external readiness preparation.</p>
-
-                <h3>Planned</h3>
-                <div class="trust-badges" aria-label="Planned trust milestones">
-                    <span>Formal third-party control attestation pack</span>
-                    <span>Regional compliance addendum library</span>
-                </div>
-                <p>Planned items are roadmap commitments and are published with status updates as evidence becomes available.</p>
-                <p><a href="/resources/whitepapers.html">Download privacy and security resources →</a></p>
+                <p><a href="/contact.html">Procurement or due diligence questions? Contact us →</a></p>
             </div>
         </section>
     </main>
@@ -145,11 +133,10 @@
               <li><a href="/careers.html" data-i18n="nav.careers">Talent Development Hub</a></li>
               <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
             </ul>
-            <div class="trust-badges" aria-label="Compliance badges">
-              <span>SSL</span>
-              <span>HIPAA</span>
-              <span>GDPR</span>
-              <span>WCAG 2.1 AA</span>
+            <div class="footer-compliance" aria-label="Data protection">
+              <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+              <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+              <p>Data residency configurable: in-country or regional</p>
             </div>
           </div>
           <div class="footer-column">

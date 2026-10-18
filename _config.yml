@@ -1,0 +1,53 @@
+# GitHub Pages builds this repository with Jekyll and publishes everything it is not told to skip.
+# Only the website itself should be served at www.selnexahealth.com. Internal documents, archived
+# material, the unused React demo app, and build tooling stay in the repository but are not published.
+# Note: the repository itself is public on GitHub, so excluding a file here does not make it private.
+exclude:
+  # Internal documents
+  - AUDIT-FINDINGS.md
+  - BEFORE-AFTER.md
+  - CONTENT-TODO.md
+  - COMPLETION_REPORT.md
+  - DELIVERY_DASHBOARD.md
+  - DEPLOYMENT_CHECKLIST.md
+  - DOCUMENTATION_INDEX.md
+  - FILE_MANIFEST.md
+  - FINAL_VERIFICATION_CHECKLIST.md
+  - IMPLEMENTATION_GUIDE.md
+  - LINK_OUTREACH.md
+  - PROJECT_COMPLETION.md
+  - QUICK_REFERENCE.md
+  - README.md
+  - README-site.md
+  - REDESIGN_IMPLEMENTATION_COMPLETE.md
+  - SEO_GUIDE.md
+  - SITE_AUDIT_REPORT.md
+  - STRATEGIC_REBRAND_SUMMARY.md
+  - STRATEGIC_REFINEMENTS_SUMMARY.md
+  - VISUAL_IMPLEMENTATION_GUIDE.md
+  - CNAME.txt
+  - assets/README.md
+  - styles/scripts/assets/README.md
+  # Archived material and unreferenced duplicates
+  - "SelNexa Website"
+  - "assets/SelNexa Health Platform Project Proposal - Copy.pdf"
+  - "assets/SelNexa Health Pitch PDF.pdf"
+  - modern-design-demo.html
+  # Source, partials and tooling (not part of the static site)
+  - build
+  - docs
+  - includes
+  - node_modules
+  - src
+  - test-results
+  - tools
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - tailwind.config.embed.js
+  - vite.config.js
+  - vite.config.embed.ts
+  - vite-brand-hierarchy.err
+  - vite-brand-hierarchy.log
+  - vite-home.err
+  - vite-home.log

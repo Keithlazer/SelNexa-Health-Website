@@ -652,8 +652,10 @@
         '<li><a href="/careers.html" data-i18n="nav.careers">Careers</a></li>',
         '<li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>',
         '</ul>',
-        '<div class="trust-badges" aria-label="Compliance badges">',
-        '<span>HIPAA</span><span>GDPR</span>',
+        '<div class="footer-compliance" aria-label="Data protection">',
+        "<p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>",
+        '<p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>',
+        '<p>Data residency configurable: in-country or regional</p>',
         '</div>'
       ].join("");
       target.appendChild(block);
@@ -764,38 +766,6 @@
         });
       });
     });
-  }
-
-  function setupRoiCalculator() {
-    var root = document.querySelector(".roi-calculator");
-    if (!root) {
-      return;
-    }
-
-    var patients = root.querySelector("#patients");
-    var adminTime = root.querySelector("#admin-time");
-    var patientsVal = root.querySelector("#patients-val");
-    var adminVal = root.querySelector("#admin-val");
-    var hoursSaved = root.querySelector("#hours-saved");
-    var costSaved = root.querySelector("#cost-saved");
-    if (!patients || !adminTime || !patientsVal || !adminVal || !hoursSaved || !costSaved) {
-      return;
-    }
-
-    function recalc() {
-      var patientCount = parseInt(patients.value, 10);
-      var minutes = parseInt(adminTime.value, 10);
-      var savedMinutesPerPatient = Math.max(1, Math.round(minutes * 0.35));
-      var monthlyHours = Math.round((patientCount * savedMinutesPerPatient * 22) / 60);
-      patientsVal.textContent = patientCount + " patients/day";
-      adminVal.textContent = minutes + " min";
-      hoursSaved.textContent = monthlyHours.toLocaleString();
-      costSaved.textContent = "$" + (monthlyHours * 5).toLocaleString();
-    }
-
-    patients.addEventListener("input", recalc);
-    adminTime.addEventListener("input", recalc);
-    recalc();
   }
 
   function setupEmailCapture() {
@@ -1025,14 +995,6 @@
       form.insertBefore(container, submitButton);
     } else {
       form.appendChild(container);
-    }
-
-    if (!form.querySelector("input[name='g-recaptcha-response']")) {
-      var recaptchaInput = document.createElement("input");
-      recaptchaInput.type = "hidden";
-      recaptchaInput.name = "g-recaptcha-response";
-      recaptchaInput.value = "pending-client-token";
-      form.appendChild(recaptchaInput);
     }
   }
 
@@ -1302,43 +1264,6 @@
     flushQueuedSubmissions();
   }
 
-  function setupPersonalizedTelemedicineDashboard() {
-    var path = window.location.pathname.toLowerCase();
-    if (path.indexOf("telemedicine") === -1) {
-      return;
-    }
-
-    var isLoggedIn = !!(localStorage.getItem("selnexa-user") || localStorage.getItem("selnexa-auth") || localStorage.getItem("isAuthenticated"));
-    if (!isLoggedIn || document.querySelector(".personalized-dashboard")) {
-      return;
-    }
-
-    var anchor = document.querySelector("main");
-    if (!anchor) {
-      return;
-    }
-
-    var panel = document.createElement("section");
-    panel.className = "personalized-dashboard animate-on-scroll";
-    panel.innerHTML = [
-      '<div class="container">',
-      '<h2>Your Operations Snapshot</h2>',
-      '<div class="dashboard-grid">',
-      '<article><h3>Queue Metrics</h3><p>Average wait time down to 1.1 hours this week.</p></article>',
-      '<article><h3>Inventory Alerts</h3><p>2 medium-risk medications flagged for reorder within 48 hours.</p></article>',
-      '<article><h3>Analytics Highlights</h3><p>Readmission trend improved by 12% versus last month.</p></article>',
-      '</div>',
-      '</div>'
-    ].join("");
-
-    var firstSection = anchor.querySelector("section");
-    if (firstSection && firstSection.nextSibling) {
-      anchor.insertBefore(panel, firstSection.nextSibling);
-    } else {
-      anchor.appendChild(panel);
-    }
-  }
-
   function registerServiceWorker() {
     if (!("serviceWorker" in navigator)) {
       return;
@@ -1384,7 +1309,6 @@
     setupAnimations();
     setupStatCounters();
     setupModuleTabs();
-    setupRoiCalculator();
     setupEmailCapture();
     setupWhatsAppFloat();
     setupReadingProgress();
@@ -1393,7 +1317,6 @@
     setupVideoTabs();
     ensureOrganizationJsonLd();
     setupForms();
-    setupPersonalizedTelemedicineDashboard();
     setupCtaTracking();
     registerServiceWorker();
   });

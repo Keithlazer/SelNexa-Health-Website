@@ -1,5 +1,7 @@
 # 🎯 Project Delivery Dashboard
 
+> Note (October 2026): this document describes an earlier version of the site and is kept as a record only. Claims it lists as done, including foreign compliance badges and compliant logins, have since been removed. See AUDIT-FINDINGS.md.
+
 **PROJECT:** SelNexa Health Website Transformation  
 **STATUS:** ✅ **100% COMPLETE**  
 **DATE:** December 3, 2025  

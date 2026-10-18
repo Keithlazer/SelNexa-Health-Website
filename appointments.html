@@ -55,12 +55,8 @@
         <section class="appointment-section">
             <div class="container">
                 <div class="section-header"><h2>Request a Platform Demo</h2><p>Fill out the form below and our team will follow up with available demo times.</p></div>
-                <div id="cal-booking-placeholder" class="animate-on-scroll" aria-label="Calendar booking widget"></div>
-                <p class="form-note">If the calendar does not load in your browser, use the fallback request form below.</p>
                 <div class="appointment-container">
                     <form class="appointment-form" id="appointmentForm" data-ajax="true" action="">
-                        <input type="hidden" name="calendar_provider" value="calendly-placeholder">
-                        <input type="hidden" name="g-recaptcha-response" value="pending-client-token">
                         <div class="form-group">
                             <label for="fname">Full Name *</label>
                             <input type="text" id="fname" name="name" required>
@@ -148,10 +144,9 @@
                             I agree to the privacy policy
                         </label>
                         <label class="checkbox">
-                            <input type="checkbox" name="hipaa_consent" required>
+                            <input type="checkbox" name="data_consent" required>
                             I consent to secure processing of health-related scheduling details.
                         </label>
-                        <p class="form-note">Protected by reCAPTCHA and queued for secure calendar synchronization.</p>
                         <button type="submit" class="btn btn-primary">Join Wishlist / Request Booking →</button>
                     </form>
                 </div>
@@ -218,7 +213,11 @@
                 <div class="footer-column"><h4>Platform</h4><ul><li><a href="/features.html">Platform Overview</a></li><li><a href="/solutions/administration.html">AI Administration</a></li><li><a href="/solutions/procurement.html">Predictive Procurement</a></li><li><a href="/solutions/records.html">Health Records</a></li></ul></div>
                 <div class="footer-column"><h4>Company</h4><ul><li><a href="/about.html">About SelNexa Health</a></li><li><a href="/projects.html">Projects</a></li><li><a href="/for-investors.html">Investors</a></li><li><a href="/contact.html">Contact</a></li></ul></div>
                 <div class="footer-column"><h4>Resources</h4><ul><li><a href="/resources.html">Resources Hub</a></li><li><a href="/resources/whitepapers.html">Whitepapers</a></li><li><a href="/resources/webinars.html">Webinars</a></li><li><a href="/resources.html#api-documentation">FHIR API Docs</a></li></ul></div>
-                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Service</a></li><li><a href="/security-and-compliance.html">Security & Compliance</a></li></ul><div class="trust-badges"><span>SSL</span><span>HIPAA</span><span>GDPR</span><span>WCAG</span></div></div>
+                <div class="footer-column"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/terms.html">Terms of Service</a></li><li><a href="/security-and-compliance.html">Security & Compliance</a></li></ul><div class="footer-compliance" aria-label="Data protection">
+  <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+  <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+  <p>Data residency configurable: in-country or regional</p>
+</div></div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 SelNexa Health. Building resilient healthcare systems for Africa.</p>

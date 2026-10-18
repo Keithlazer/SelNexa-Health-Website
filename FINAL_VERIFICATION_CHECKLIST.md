@@ -1,5 +1,8 @@
 # FINAL VERIFICATION: STRATEGIC REFINEMENTS COMPLETE
 
+> Note (October 2026): facility names have been removed from this document. It describes an earlier positioning pass that has since been superseded; see AUDIT-FINDINGS.md.
+
+
 **Status:** ✅ All value-leak fixes implemented  
 **Date:** January 9, 2026
 
@@ -16,23 +19,23 @@
 ```
 Homepage hero: 47%, 62%, Zero showing as primary metrics ✓
 About page: No mention of "4 facilities" or "50 patients" ✓
-For Investors: "Current Validation (Manicaland Pilot)" leading ✓
+For Investors: "Current Validation (Q3 2024 validation)" leading ✓
 ```
 
 ---
 
-### ✅ Gap 2: Manicaland Positioned as Hardened Proof-of-Concept
-- [x] Case study #1 renamed: "Manicaland District Hospital Hardened Proof-of-Concept"
+### ✅ Gap 2: the validation facility Positioned as Hardened Proof-of-Concept
+- [x] Case study #1 renamed: "the Q3 2024 validation facility Hardened Proof-of-Concept"
 - [x] Added: Infrastructure hostility details (8+ power outages/week, 2G connectivity)
 - [x] Added: Defensibility callout: "proves SelNexa operates where competitors fail"
-- [x] For Investors letter: Opens with Manicaland as battle-hardened proof
-- [x] For Investors forces: Manicaland is now Force #1 (hardened proof-of-concept)
+- [x] For Investors letter: Opens with the validation facility as battle-hardened proof
+- [x] For Investors forces: the validation facility is now Force #1 (hardened proof-of-concept)
 
 **Verification:**
 ```
-Homepage case studies: Manicaland showing power/connectivity metrics ✓
+Homepage case studies: the validation facility showing power/connectivity metrics ✓
 For Investors letter: "hardened proof-of-concept" language present ✓
-For Investors forces: Manicaland listed as Force #1 ✓
+For Investors forces: the validation facility listed as Force #1 ✓
 ```
 
 ---
@@ -57,13 +60,13 @@ Hybrid-Core framing competitive moat language ✓
 
 ### ✅ Gap 4: Keith Positioned as Systems Architect (Not Just Entrepreneur)
 - [x] About page: Keith's title now "Systems Architect for African Healthcare Resilience"
-- [x] About page: Bio highlights Manicaland architecture + deployment
+- [x] About page: Bio highlights validation-facility architecture + deployment
 - [x] About page: Language: "ground-truth expertise," "architectural imperatives"
 
 **Verification:**
 ```
 About page Keith bio: "Systems Architect" title present ✓
-Manicaland architecture credit explicit ✓
+validation-facility architecture credit explicit ✓
 "Turns local constraints into architectural imperatives" language present ✓
 ```
 
@@ -93,14 +96,14 @@ CSS classes implemented ✓
 ✅ Trust bar: volume metrics removed, efficiency ratios showing
 ✅ Infrastructure section: "Sovereign Resilience" heading
 ✅ Africa cards: Shield icon, Sovereign Resilience framing, Hybrid-Core moat language
-✅ Case studies: Manicaland showing as hardened proof with infrastructure details
+✅ Case studies: the validation facility showing as hardened proof with infrastructure details
 ✅ Defens callout: "proves SelNexa operates where competitors fail"
 ```
 
 ### [about.html](about.html)
 ```
 ✅ Keith: "Systems Architect" title
-✅ Keith bio: Manicaland architecture mentioned
+✅ Keith bio: validation-facility architecture mentioned
 ✅ Team grid: 3 cards (Keith + CTO + CMO placeholders)
 ✅ CTO/CMO: "Joining Q1 2026" badges
 ✅ Impact stats: Efficiency metrics only (no volume)
@@ -108,9 +111,9 @@ CSS classes implemented ✓
 
 ### [for-investors.html](for-investors.html)
 ```
-✅ Letter opening: Manicaland hardened proof emphasis
+✅ Letter opening: the hardened proof of concept emphasis
 ✅ Letter: Mentions infrastructure failures (power, connectivity)
-✅ Three forces: Manicaland as Force #1
+✅ Three forces: the validation facility as Force #1
 ✅ Financial section: Efficiency metrics focused (47%, 22%, Zero, 3.5x LTV/CAC)
 ✅ De-risk framing: "Hardened Environment Proof"
 ```
@@ -138,7 +141,7 @@ CSS classes implemented ✓
 |--------|--------|----------|
 | **Efficiency Proof** | ✅ Active | 47%, 62%, Zero downtime primary metrics |
 | **Technical Moat** | ✅ Active | "Sovereign Resilience" framing + hardened proof |
-| **Founder Credibility** | ✅ Active | "Systems Architect" + Manicaland deployment |
+| **Founder Credibility** | ✅ Active | "Systems Architect" + validation-facility deployment |
 | **Team Scaling** | ✅ Active | CTO/CMO placeholders with Q1 timeline |
 | **Market Defensibility** | ✅ Active | "Strategic Barrier" against Western competitors |
 
@@ -164,8 +167,8 @@ Your website is now positioned as:
 
 1. **Immediate (This Week):**
    - Review with founding team
-   - Confirm Manicaland metrics accuracy
-   - Prepare detailed Manicaland case study for due diligence
+   - Confirm validation-facility metrics accuracy
+   - Prepare detailed validation-facility case study for due diligence
 
 2. **Week 2:**
    - Update investor pitch deck to mirror narrative
@@ -173,7 +176,7 @@ Your website is now positioned as:
    - Prepare CTO/CMO job descriptions (for Q1 2026 hires)
 
 3. **Week 3+:**
-   - Investor outreach campaigns (lead with Manicaland hardened proof)
+   - Investor outreach campaigns (lead with the hardened proof of concept)
    - Advisor introductions
    - Series A conversations
 

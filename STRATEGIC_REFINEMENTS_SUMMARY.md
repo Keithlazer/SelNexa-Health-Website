@@ -1,5 +1,8 @@
 # STRATEGIC REFINEMENTS: VALUE LEAK FIXES
 
+> Note (October 2026): facility names have been removed from this document. It describes an earlier positioning pass that has since been superseded; see AUDIT-FINDINGS.md.
+
+
 **Date:** January 9, 2026  
 **Purpose:** Applied surgical refinements to eliminate investor-visible "value leaks"  
 **Status:** Ready for institutional investor review
@@ -25,10 +28,10 @@
 
 ---
 
-### Gap 2: Manicaland as "Test Pilot" vs. "Hardened Proof-of-Concept"
-**The Risk:** Positioning Manicaland as just another clinic test minimizes its strategic value. It was actually **the most hostile infrastructure environment** you could choose.
+### Gap 2: the validation facility as "Test Pilot" vs. "Hardened Proof-of-Concept"
+**The Risk:** Positioning the validation facility as just another clinic test minimizes its strategic value. It was actually **the most hostile infrastructure environment** you could choose.
 
-**The Fix:** Reframed Manicaland as **"Hardened Environment Validation"**:
+**The Fix:** Reframed the validation facility as **"Hardened Environment Validation"**:
 - Explicit mention: 8+ power outages/week, unpredictable 2G connectivity
 - Updated language: "Hardened proof-of-concept proving our tech works where competitors fail"
 - Moved from Case Study 1 (Nigeria) to **primary defensibility proof**
@@ -38,7 +41,7 @@
 - For Investors letter (moved to opening narrative)
 - For Investors three forces converging (now Force #1)
 
-**Strategic Value:** Investors understand that **Manicaland proves operational reliability Western competitors cannot claim**. This is defensibility, not just market validation.
+**Strategic Value:** Investors understand that **the validation facility proves operational reliability Western competitors cannot claim**. This is defensibility, not just market validation.
 
 ---
 
@@ -67,7 +70,7 @@
 **The Fix:** Updated Keith's positioning:
 - **Old:** "Healthcare entrepreneur and systems-builder"
 - **New:** "Systems Architect for African Healthcare Resilience"
-- Added: Direct Manicaland deployment credit ("architected and deployed the proof-of-concept")
+- Added: Direct validation-facility deployment credit ("architected and deployed the proof-of-concept")
 - Language: "Ground-truth expertise," "turns local constraints into architectural imperatives"
 
 **Where Changed:**
@@ -112,7 +115,7 @@ Shift = Feature → Moat narrative
 **Case Studies:**
 ```html
 <!-- OLD: Rural Clinic Network (Nigeria) -->
-<!-- NEW: Manicaland District Hospital Hardened Proof-of-Concept (Zimbabwe) -->
+<!-- NEW: the Q3 2024 validation facility Hardened Proof-of-Concept (Zimbabwe) -->
 <!-- Added: Power outage frequency (8+/week), connectivity type (2G) -->
 <!-- Added: Defensibility callout: "This pilot proves SelNexa operates where competitors fail" -->
 ```
@@ -130,7 +133,7 @@ Shift = Feature → Moat narrative
 ```html
 <!-- OLD: "healthcare entrepreneur and systems-builder" -->
 <!-- NEW: "Systems Architect for African Healthcare Resilience" -->
-<!-- Added: Manicaland architecture + deployment credit -->
+<!-- Added: validation-facility architecture + deployment credit -->
 ```
 
 **Impact Stats:**
@@ -144,14 +147,14 @@ Shift = Feature → Moat narrative
 ### 3. For Investors Page (for-investors.html)
 **Founders Letter:**
 ```html
-<!-- Added opening: Manicaland as hardened proof-of-concept -->
+<!-- Added opening: the validation facility as hardened proof-of-concept -->
 <!-- Added: Infrastructure failure examples (power outages, connectivity loss) -->
 <!-- Reframed: "proof Western platforms collapse here" -->
 ```
 
 **Three Forces Converging:**
 ```html
-<!-- Force #1 (NEW): Hardened Proof-of-Concept (Manicaland validation) -->
+<!-- Force #1 (NEW): Hardened Proof-of-Concept (Q3 2024 validation) -->
 <!-- Force #2: Technology Maturity -->
 <!-- Force #3: Policy & Market Readiness -->
 ```
@@ -193,7 +196,7 @@ Shift = Feature → Moat narrative
 
 - ✅ Homepage hero trust bar (volume → impact metrics)
 - ✅ Homepage infrastructure section (feature → moat narrative)
-- ✅ Homepage case studies (Manicaland repositioned)
+- ✅ Homepage case studies (validation work repositioned)
 - ✅ About page team (added CTO/CMO placeholders)
 - ✅ About page impact stats (volume → efficiency)
 - ✅ For Investors founders letter (hardened proof emphasis)
@@ -204,13 +207,13 @@ Shift = Feature → Moat narrative
 
 ## NEXT STEPS FOR GO-MARKET
 
-1. **Pitch Deck Alignment:** Update investor materials to mirror this narrative (Manicaland hardened proof first)
+1. **Pitch Deck Alignment:** Update investor materials to mirror this narrative (the hardened proof of concept first)
 
 2. **Email Sequences:** Emphasize efficiency metrics (47%, 62%, Zero downtime) in investor outreach, not volume
 
-3. **Advisor/Intro Calls:** Lead with "We operate reliably where Western platforms fail" (Manicaland proof)
+3. **Advisor/Intro Calls:** Lead with "We operate reliably where Western platforms fail" (validation-facility proof)
 
-4. **Due Diligence:** Prepare detailed Manicaland case study (power/connectivity incidents, outcomes)
+4. **Due Diligence:** Prepare detailed validation-facility case study (power/connectivity incidents, outcomes)
 
 5. **Hiring Signal:** CTO/CMO placeholder cards signal to market "we're scaling—join us"
 
