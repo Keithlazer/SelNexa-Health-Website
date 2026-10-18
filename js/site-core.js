@@ -576,24 +576,24 @@
     var toggle = document.createElement("button");
     toggle.type = "button";
     toggle.className = "chatbot-toggle";
-    toggle.setAttribute("aria-label", "Open SelNexa assistant");
+    toggle.setAttribute("aria-label", "Open module finder");
     toggle.innerHTML = '<i class="fas fa-comments" aria-hidden="true"></i>';
 
     var panel = document.createElement("section");
     panel.className = "chatbot-panel";
-    panel.setAttribute("aria-label", "SelNexa chatbot");
+    panel.setAttribute("aria-label", "Module finder");
     panel.innerHTML = [
-      '<header><h2>SelNexa Assistant</h2><button type="button" class="chatbot-close" aria-label="Close chat">&times;</button></header>',
-      '<div class="chatbot-messages"><p><strong>Assistant:</strong> I can answer FAQs, recommend modules by facility type, and help you schedule demos.</p></div>',
+      '<header><h2>Module finder</h2><button type="button" class="chatbot-close" aria-label="Close module finder">&times;</button></header>',
+      '<div class="chatbot-messages"><p>Tell us what kind of institution you run and we will suggest where to start.</p></div>',
       '<div class="chatbot-controls">',
-      '<label for="facility-recommendation">Facility Type</label>',
+      '<label for="facility-recommendation">Institution type</label>',
       '<select id="facility-recommendation">',
-      '<option value="clinic">Community Clinic</option>',
-      '<option value="hospital">Regional Hospital</option>',
-      '<option value="network">Network / Government</option>',
+      '<option value="centre">Health centre</option>',
+      '<option value="hospital">Hospital</option>',
+      '<option value="network">Network or government</option>',
       '</select>',
-      '<button type="button" class="chatbot-recommend">Recommend Modules</button>',
-      '<a href="/appointments.html" class="chatbot-demo-link">Book Platform Demo</a>',
+      '<button type="button" class="chatbot-recommend">Suggest modules</button>',
+      '<a href="/appointments.html" class="chatbot-demo-link">Book a demo</a>',
       '</div>'
     ].join("");
 
@@ -611,17 +611,17 @@
     panel.querySelector(".chatbot-recommend").addEventListener("click", function () {
       var value = panel.querySelector("#facility-recommendation").value;
       var message = "";
-      if (value === "clinic") {
-        message = "Recommended: AI Admin + Predictive Procurement for faster queue flow and cost control.";
+      if (value === "centre") {
+        message = "Suggested start: Administration and Predictive Procurement.";
       } else if (value === "hospital") {
-        message = "Recommended: AI Admin + Procurement + Health Records + Analytics for full hospital workflows.";
+        message = "Suggested start: all four modules (Administration, Predictive Procurement, Health Records and Real-Time Analytics).";
       } else {
-        message = "Recommended: Network License with all modules plus Telemedicine and unified analytics.";
+        message = "Suggested start: a network licence covering every module, with analytics across sites.";
       }
 
       var messages = panel.querySelector(".chatbot-messages");
       var item = document.createElement("p");
-      item.innerHTML = "<strong>Assistant:</strong> " + message;
+      item.textContent = message;
       messages.appendChild(item);
       messages.scrollTop = messages.scrollHeight;
       analytics.track("chatbot_recommendation", { facility_type: value });
@@ -941,7 +941,7 @@
       "name": "SelNexa Health",
       "url": "https://www.selnexahealth.com",
       "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
-      "description": "Youth-led health systems innovation organization building offline-first hospital management solutions for African health institutions and hospitals.",
+      "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "foundingLocation": "Harare, Zimbabwe",
       "areaServed": ["ZW", "KE", "NG", "ZA"],

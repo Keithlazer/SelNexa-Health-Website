@@ -12,6 +12,15 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Pitch deck page 11: confirm permission to show the Zimbabwe government emblem under "past sponsors and collaborators".
 - [ ] Git history: decide whether to rewrite history to remove the two facility names from past commits (needs a force push; the repository is public).
 
+## Messaging decisions
+
+- [ ] Homepage headline: choose one. Option 1 is live now.
+  1. Hospital software that keeps running when the power and the network don't.
+  2. Register patients, update records and order stock, with or without a connection.
+  3. Patient records and stock control that hold up through power cuts and dropped networks.
+  The supporting line stays the same for all three: "The SelNexa Health Platform runs registration, records, procurement, billing and reporting for health institutions. It keeps working offline and syncs when the connection comes back."
+- [ ] Pricing plan "Community Clinic" was renamed "Health Centre" (rule 5). Confirm the name.
+
 ## Claims to confirm or remove
 
 - [ ] Savings calculator: removed from the Platform page. Confirm it stays removed, or supply measured admin-time figures to rebuild it with every input editable.

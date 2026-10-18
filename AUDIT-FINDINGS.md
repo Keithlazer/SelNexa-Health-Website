@@ -155,4 +155,52 @@ One convention now applies everywhere, defined in `styles/site-uniform.css`: mea
 | `resources/guides.html:155-160`, `:172-180` | Pagination buttons for pages 2 and 3 that do not exist; empty "recommended" panel. | Removed. |
 | `case-studies.html:67-72` | Pre-existing contrast bug made the "What's Validated" heading and text white on pale green. | Fixed in `styles/site-uniform.css`. |
 
-**Flagged, not changed** (all in `CONTENT-TODO.md`): telemedicine beta and its features; the Mental Health Detection project; the "independent feasibility assessment" on the Impact page; homepage pilot terms (30-day guided pilot, no upfront commitment); pricing promises (48-hour quotes, outcome-linked discounts, Kenyan shilling billing); whitepapers and guides dated 2024 that may not exist; Africa CDC "5Cs" framework on the Platform page lists only four; module features beyond the platform description; the use-of-funds split differing between site and deck; the 2026 revenue projection; investor-page "AI procurement engine tuned to African disease burden".
+**Flagged, not changed (Phase 1)** (all in `CONTENT-TODO.md`): telemedicine beta and its features; the Mental Health Detection project; the "independent feasibility assessment" on the Impact page; homepage pilot terms (30-day guided pilot, no upfront commitment); pricing promises (48-hour quotes, outcome-linked discounts, Kenyan shilling billing); whitepapers and guides dated 2024 that may not exist; Africa CDC "5Cs" framework on the Platform page lists only four; module features beyond the platform description; the use-of-funds split differing between site and deck; the 2026 revenue projection; investor-page "AI procurement engine tuned to African disease burden".
+
+## Phase 2. Positioning and messaging
+
+### 2.1 Identity
+
+The site described SelNexa three ways. It now says one thing everywhere: SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.
+
+| File:line | Was | Now |
+|---|---|---|
+| `index.html:7`, `:23-29` (meta, Open Graph, Twitter) | "professional collective of African trailblazers and co-architects of the New Public Health Order" | Leads with what the product does (see 2.3). |
+| `index.html:620` (top banner) | "A professional collective of African health leaders and young professionals co-architecting the New Public Health Order" | The company line. |
+| `index.html:633` (brand tag in the header) | "Health systems innovation" | "Offline-first health software". |
+| `index.html:789-790` (mission) | "operates as a professional collective of African trailblazers", "filling the 'strategic absence' of youth" | Short founding line; the collective and youth story moved to the About page. |
+| `index.html:1109`, `js/site-core.js:974` (Organization JSON-LD) | "professional collective..." / "Youth-led health systems innovation organization" | Company line. |
+| `about.html:6-7`, `:64-66` | "African Healthcare Innovation Organization", "professional collective of African health systems leaders" | Company headline and a plain description of what the company builds. The collective and youth-led story is now a paragraph in the founding narrative on the same page. |
+| `about.html:178`, `:273` | "long-term African health systems organization", "ORGANIZATION TIMELINE" | "The clinicians, engineers and operators building SelNexa Health", "COMPANY TIMELINE". |
+| `press.html:42`, `:50`, `:71` | "Zimbabwe-based professional collective", "the organization's product strategy" | Company line and boilerplate. |
+| `projects.html:48`, `contact.html:51`, `:57`, `faq.html:51`, `blog.html:51`, `resources.html:56`, `resources/whitepapers.html:38` | "organization", "organizational work" | Company wording. |
+| Footers: `features.html:243`, `projects.html:151`, `for-investors.html:462` | "Zimbabwe-based health systems innovation organization", "offline-first hospital management product in pre-deployment readiness" | Company line (footers are rebuilt in Phase 3). |
+
+### 2.2 Homepage hero
+
+| File:line | Change |
+|---|---|
+| `index.html:671-673` | "Co-architecting Africa's New Public Health Order." replaced by "Hospital software that keeps running when the power and the network don't." Two alternatives are in `CONTENT-TODO.md` for you to choose from. |
+| `index.html:675` | Supporting line now names the product and what it covers: registration, records, procurement, billing and reporting, offline with sync. |
+| `index.html:677-678` | Primary button is "Book a demo"; secondary is "Watch the demo". |
+| `index.html:694` | Floating badge "Est. 2024 · Active" now reads "Pre-deployment". |
+| `index.html:784` | The New Public Health Order framing moved down to the mission section heading, with a short, accurate description of what Africa CDC's New Public Health Order calls for. |
+| `index.html:119-126`, `:584-591` | Hero title size reduced (desktop maximum 68px to 56px) so the longer headline fits in about four lines. Same font and weight. |
+
+### 2.3 Titles and meta descriptions
+
+Every indexable page has a new title (60 characters or fewer) and meta description (140 to 160 characters) that says what the page is, using the terms a buyer would search for: health service management, offline-first, hospitals, health institutions, Zimbabwe, Africa, FHIR, DHIS2. Existing Open Graph and Twitter tags were updated to match. The homepage title was "SelNexa Health | New Public Health Order Co-Architects" and is now "Offline-First Health Service Management | SelNexa Health". Pages without social tags get them in Phase 4.
+
+### 2.4 Homepage reweighted for health institutions
+
+`index.html:914-951` ("Work With Us") gave facilities, partners and investors equal cards. Facilities now take two thirds of the row with the primary "Book a demo" button; partners have a smaller card; investors get one quiet line linking to `for-investors.html`. The USD 4.69B market figure, the USD 150K seed amount and the "moat" framing are no longer on the homepage. The pipeline button "Apply for Pilot Access" became "Book a demo" so there is one action (see 3.2).
+
+### 2.5 Product and module naming
+
+- Product category: "health service management platform for health institutions" everywhere. Replaced "offline-first hospital management" and "hospital management system" in headings, meta, footers and body copy (`features.html:6-7`, `:49-50`; `index.html:826-827`; `projects.html:67`; `press.html:50`; `solutions/index.html:55`; `solutions/hospital-management.html:6-7`, `:48`, `:206`; all footer project links).
+- Modules: Administration, Predictive Procurement, Health Records, Real-Time Analytics (plus Telemedicine, labelled beta). "AI Administration" is now "Administration" in every nav, footer, tab, card, form option, pricing row and chatbot message; the AI capability is described inside the module text. The slug `solutions/administration.html` already matched, so no redirect was needed. "Procurement Optimization", "Procurement Intelligence", "Unified Health Records", "Secure Health Records", "Analytics & Reporting" and "Analytics" were brought into line.
+- Rule 5: removed "Clinic" as a facility type from every form and modal, renamed the "Community Clinic" pricing plan to "Health Centre" (`pricing.html:75`, `:113-115`, `:245`), changed the chatbot's options, and replaced "clinic discovery" on the Projects page (`projects.html:78`). "Clinical" and "clinician" are different words and stay.
+- `js/site-core.js:571-629`: the floating widget called itself "SelNexa Assistant" and said it could answer FAQs. It is a three-option module picker, so it is now labelled "Module finder" and its suggestions no longer promise outcomes.
+- `about.html:125`: "Silicon Valley 'ports'" (apparently a typo) rewritten.
+
+**Flagged, not changed (Phase 2):** headline choice; the "Health Centre" plan name.

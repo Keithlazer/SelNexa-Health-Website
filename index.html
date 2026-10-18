@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SelNexa Health | New Public Health Order Co-Architects</title>
-    <meta name="description" content="SelNexa Health is a professional collective of African trailblazers and co-architects of the New Public Health Order. Our flagship initiative, the SelNexa Health Platform, delivers offline-first, climate-resilient healthcare infrastructure for African health institutions and hospitals.">
+    <title>Offline-First Health Service Management | SelNexa Health</title>
+    <meta name="description" content="Offline-first health service management for hospitals and health institutions in Zimbabwe and Africa: registration, records, procurement, billing and reporting.">
     <meta name="language" content="en">
     <meta name="author" content="SelNexa Health">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -20,13 +20,13 @@
     <!-- Open Graph & Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SelNexa Health">
-    <meta property="og:title" content="SelNexa Health - New Public Health Order Co-Architects">
-    <meta property="og:description" content="SelNexa Health builds resilient African health systems. Our flagship, the SelNexa Health Platform, is an offline-first hospital management product.">
+    <meta property="og:title" content="Offline-First Health Service Management | SelNexa Health">
+    <meta property="og:description" content="Offline-first health service management for hospitals and health institutions in Zimbabwe and Africa: registration, records, procurement, billing and reporting.">
     <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
     <meta property="og:url" content="https://www.selnexahealth.com/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SelNexa Health - New Public Health Order Co-Architects">
-    <meta name="twitter:description" content="SelNexa Health builds resilient African healthcare systems. Our first initiative is the offline-first SelNexa Health Platform.">
+    <meta name="twitter:title" content="Offline-First Health Service Management | SelNexa Health">
+    <meta name="twitter:description" content="Offline-first health service management for hospitals and health institutions in Zimbabwe and Africa: registration, records, procurement, billing and reporting.">
     <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
     
     <!-- Geo Tags -->
@@ -117,9 +117,9 @@
             text-transform: uppercase; margin-bottom: 0.75rem;
         }
         .hero-title {
-            font-size: clamp(36px, 5.5vw, 68px);
+            font-size: clamp(34px, 4.4vw, 56px);
             font-weight: 900;
-            line-height: 1.02;
+            line-height: 1.05;
             letter-spacing: -0.04em;
             margin-bottom: 1.05rem;
             color: #fff;
@@ -281,6 +281,15 @@
         .cta-audience-card h3 { color: #fff; margin-bottom: 0.45rem; font-size: 1.05rem; }
         .cta-audience-card p { color: rgba(255,255,255,0.76); margin-bottom: 0.8rem; font-size: 0.95rem; }
         .cta-audience-card a { color: #fff; font-weight: 600; }
+        /* Facilities first: the institution card takes two thirds of the row and carries the primary button. */
+        .cta-split--facility-first { grid-template-columns: 2fr 1fr; align-items: stretch; }
+        .cta-audience-card--primary { background: rgba(255,255,255,0.12); border-color: rgba(232,160,32,0.6); padding: 1.5rem; }
+        .cta-audience-card--primary h3 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); }
+        .cta-audience-card--primary .btn { display: inline-flex; margin-top: 0.4rem; color: #fff; }
+        .cta-audience-card .audience-terms { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+        .cta-investor-line { margin-top: 1rem; font-size: 0.92rem; color: rgba(255,255,255,0.8); }
+        .cta-investor-line a { color: #fff; text-decoration: underline; font-weight: 600; }
+        @media (max-width: 1023px) { .cta-split--facility-first { grid-template-columns: 1fr; } }
         .footer .newsletter-row { margin-top: 1rem; display: flex; gap: 0.55rem; flex-wrap: wrap; }
         .footer .newsletter-row input {
             flex: 1; min-width: 180px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18);
@@ -582,7 +591,7 @@
             }
             .hero-floating-stat { display: none !important; }
             .hero-title {
-                font-size: clamp(2rem, 8.6vw, 2.55rem) !important;
+                font-size: clamp(1.75rem, 7.4vw, 2.2rem) !important;
                 max-width: 100% !important;
                 margin-inline: auto !important;
                 overflow-wrap: normal;
@@ -617,7 +626,7 @@
         <section class="top-banner reveal">
             <div class="top-banner-inner">
                 <span class="pulse-dot" aria-hidden="true"></span>
-                <span>A professional collective of African health leaders and young professionals co-architecting the New Public Health Order — one project at a time.</span>
+                <span>SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.</span>
                 <a href="#mission">Our Mission ↓</a>
             </div>
         </section>
@@ -630,7 +639,7 @@
                         <img src="/assets/selnexa-logo.svg" alt="SelNexa Health logo" class="logo">
                         <span class="brand-wordmark">
                             <span class="brand-name">SelNexa Health</span>
-                            <span class="brand-tag">Health systems innovation</span>
+                            <span class="brand-tag">Offline-first health software</span>
                         </span>
                     </a>
                 </div>
@@ -668,14 +677,11 @@
                         Pilot partner announcements pending facility approval
                     </div>
                     <p class="hero-eyebrow hero-animate">SELNEXA HEALTH</p>
-                    <h1 class="hero-title hero-animate">
-                        <span class="line-1">Co-architecting Africa's</span><br>
-                        <span class="line-2">New Public Health Order.</span>
-                    </h1>
-                    <p class="hero-subtitle hero-animate">Most African health institutions lose care continuity when power, connectivity, and admin systems fail. SelNexa Health built an offline-first platform that keeps registration, procurement, and records running in those conditions.</p>
+                    <h1 class="hero-title hero-animate">Hospital software that keeps running when the power and the network don't.</h1>
+                    <p class="hero-subtitle hero-animate">The SelNexa Health Platform runs registration, records, procurement, billing and reporting for health institutions. It keeps working offline and syncs when the connection comes back.</p>
                     <div class="hero-cta-group hero-ctas">
-                        <a class="btn btn-primary hero-primary-cta hero-animate" href="/features.html">See The Platform <span class="arrow">→</span></a>
-                        <a class="btn-ghost hero-animate" href="#platform-demo">Watch Demo ↓</a>
+                        <a class="btn btn-primary hero-primary-cta hero-animate" href="/appointments.html">Book a demo <span class="arrow">→</span></a>
+                        <a class="btn-ghost hero-animate" href="#platform-demo">Watch the demo ↓</a>
                     </div>
                 </div>
                 <div class="hero-visual reveal hero-mockup hero-animate">
@@ -691,7 +697,7 @@
                     </div>
                     <div class="hero-floating-stat stat-card-3">
                         <strong>Flagship Platform</strong>
-                        <span>Est. 2024 · Active</span>
+                        <span>Est. 2024 · Pre-deployment</span>
                     </div>
                 </div>
             </div>
@@ -701,8 +707,8 @@
             <div class="container">
                 <div class="sdg-trust-copy">
                     <p class="section-label">DEVELOPMENT ALIGNMENT</p>
-                    <h2>Built for public health outcomes, not vague digital-health promises</h2>
-                    <p>Our team links product delivery to universal health coverage priorities: continuity of care, stronger facility infrastructure, and partnership-led implementation that can be measured.</p>
+                    <h2>Built for public health outcomes</h2>
+                    <p>We tie the Platform to universal health coverage priorities: continuity of care, sturdier facility infrastructure, and partnerships whose results can be measured.</p>
                 </div>
                 <div class="sdg-marker-grid" aria-label="Sustainable Development Goal focus areas">
                     <article class="sdg-marker">
@@ -778,21 +784,21 @@
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">OUR MISSION</p>
-                    <h2>Why We Exist</h2>
+                    <h2>Co-architecting Africa's New Public Health Order</h2>
                 </div>
                 <div class="mission-intro">
                     <div class="mission-paragraph">
                         <p>WHO's World Health Report 2006 found that the African Region carries 24% of the global disease burden with 3% of the world's health workers and less than 1% of world health spending. The gap between the care people need and the care they can get is not a knowledge problem. It's an infrastructure, access, and systems problem.</p>
-                        <p>SelNexa Health operates as a professional collective of African trailblazers with a shared passion, vision and drive to improve healthcare delivery systems. We are filling the 'strategic absence' of youth in the health-tech sector by building the digital infrastructure required for continental health security and development.</p>
-                        <p>Leading through Domestic Resource Mobilization and Action Oriented Partnerships, we aim to build sustainable systems that generate impact and revenue simultaneously because we believe the two are not in conflict.</p>
+                        <p>We started SelNexa Health in Harare in 2024 because the software on offer to health institutions assumed stable power and fast internet. Ours assumes neither.</p>
+                        <p>Among other things, Africa CDC's New Public Health Order calls for stronger African public health institutions, more domestic resources for health, and respectful, action-oriented partnerships. We work in that frame. We're building a company that pays its way, because we don't think impact and revenue are in conflict.</p>
                     </div>
                 </div>
                 <div class="mission-pillars reveal stagger-children">
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
-                        <h3>Agile Innovation for Institutional Excellence</h3>
+                        <h3>Iterate fast, stay accountable</h3>
                         <p class="pillar-body">Healthcare crises do not pause for perfect products. We iterate fast while building strong, accountable institutions and implementation standards.</p>
-                        <p class="pillar-proof">Institution grade delivery · Field validated iteration · Youthled</p>
+                        <p class="pillar-proof">Institution-grade delivery · Field-tested iteration · Youth-led</p>
                     </article>
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-earth-africa"></i></div>
@@ -809,7 +815,7 @@
                     <article class="pillar-card card-accented">
                         <div class="pillar-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
                         <h3>Complementary, Not Competitive</h3>
-                        <p class="pillar-body">Our flagship platform is designed to build alongside existing systems such as DHIS2, ePMS, and Impilo  not against them. Integration is our default, not an afterthought.</p>
+                        <p class="pillar-body">The Platform is designed to sit alongside national systems such as DHIS2, ePMS and Impilo and feed data into them, rather than replace them.</p>
                         <p class="pillar-proof">Deployment evaluations published at completion</p>
                     </article>
                 </div>
@@ -819,9 +825,9 @@
         <section class="project-label-section reveal" id="project-01">
             <div class="container">
                 <div class="project-label">
-                    <p class="section-label">CURRENTLY ACTIVE · PRE-DEPLOYMENT STAGE</p>
-                    <h2>SelNexa Health Platform — Offline-first hospital management</h2>
-                    <p>The SelNexa Health Platform is our flagship product: a full-stack hospital management system built for the environments that most ERP platforms ignore. It anchors a broader portfolio of health systems initiatives.</p>
+                    <p class="section-label">FLAGSHIP PRODUCT · PRE-DEPLOYMENT</p>
+                    <h2>SelNexa Health Platform: health service management for health institutions</h2>
+                    <p>Our flagship product is an offline-first health service management platform for health institutions, built for the conditions most hospital software ignores. It anchors a small portfolio of related health projects.</p>
                     <a class="btn btn-secondary project-demo-btn" href="/features.html">Explore The Platform →</a>
                 </div>
             </div>
@@ -831,7 +837,7 @@
             <div class="container">
                 <p class="section-label">DEPLOYMENT PIPELINE</p>
                 <h2>Zimbabwe first, three more markets in early conversation</h2>
-                <p class="pipeline-description">Our first pilot is confirmed in Zimbabwe and waiting on ministry approval. We're also talking with health institutions in Kenya, Nigeria and South Africa, though none of those conversations is a deployment yet. If your institution wants to be among the first, apply for pilot access.</p>
+                <p class="pipeline-description">Our first pilot is confirmed in Zimbabwe and waiting on ministry approval. We're also talking with health institutions in Kenya, Nigeria and South Africa, though none of those conversations is a deployment yet. If your institution wants to be among the first, book a demo and tell us about your setting.</p>
 
                 <div class="deployment-map animate-on-scroll">
                     <div class="africa-map-card">
@@ -862,7 +868,7 @@
                 </div>
                 
                 <div class="pipeline-cta-wrapper">
-                    <a href="/appointments.html" class="btn btn-primary">Apply for Pilot Access <span class="arrow">→</span></a>
+                    <a href="/appointments.html" class="btn btn-primary">Book a demo <span class="arrow">→</span></a>
                 </div>
             </div>
         </section>
@@ -871,8 +877,8 @@
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">PLATFORM OVERVIEW</p>
-                    <h2>Three modules, one resilient operating layer</h2>
-                    <p>The SelNexa Health Platform unifies admin workflows, procurement continuity, and health records in one offline-first system for health systems strengthening.</p>
+                    <h2>Three modules that keep working offline</h2>
+                    <p>Administration, procurement and health records in one offline-first platform for health institutions.</p>
                     <div class="sdg-inline-set" aria-label="Platform SDG focus">
                         <span class="sdg-chip"><span class="sdg-art"><img src="/assets/SDG%203.svg" alt="SDG 3: Good Health and Well-being" loading="lazy" decoding="async"></span><span><strong>Continuity of care</strong><span>SDG 3</span></span></span>
                         <span class="sdg-chip"><span class="sdg-art"><img src="/assets/SDG%209.svg" alt="SDG 9: Industry, Innovation and Infrastructure" loading="lazy" decoding="async"></span><span><strong>Interoperable infrastructure</strong><span>SDG 9</span></span></span>
@@ -882,8 +888,8 @@
                 <div class="module-overview-grid reveal-group">
                     <article class="module-card reveal">
                         <div class="module-card__body">
-                            <h3>AI Administration</h3>
-                            <p>Digitize intake, scheduling, and billing workflows to reduce frontline admin load.</p>
+                            <h3>Administration</h3>
+                            <p>Digitise intake, scheduling and billing, with AI help on routine tasks such as suggesting appointment slots, so frontline staff spend less time on paperwork.</p>
                         </div>
                         <div class="module-card__cta">
                             <a href="/solutions/administration.html" class="btn-link">Explore administration →</a>
@@ -900,7 +906,7 @@
                     </article>
                     <article class="module-card reveal">
                         <div class="module-card__body">
-                            <h3>Unified Health Records</h3>
+                            <h3>Health Records</h3>
                             <p>Keep records available offline with secure sync, auditability, and FHIR-ready interoperability.</p>
                         </div>
                         <div class="module-card__cta">
@@ -919,28 +925,23 @@
             <div class="container">
                 <div class="cta-content">
                     <h2>Work With Us</h2>
-                    <p>Choose your path to collaborate with SelNexa Health.</p>
-                    <div class="cta-split">
-                        <article class="cta-audience-card facilities">
+                    <p>Start with a demo. If the Platform fits your institution, we plan a guided pilot together.</p>
+                    <div class="cta-split cta-split--facility-first">
+                        <article class="cta-audience-card facilities cta-audience-card--primary">
                             <div class="audience-icon"><i class="fas fa-hospital" aria-hidden="true"></i></div>
-                            <h3>Evaluate at your facility</h3>
-                            <p>30-day guided pilot · No upfront commitment · Local implementation support</p>
-                            <a href="/appointments.html">Book Platform Demo →</a>
+                            <h3>Evaluate the Platform at your institution</h3>
+                            <p>We walk through your registration, records, stock and billing workflows on the Platform, then plan a pilot with your team.</p>
+                            <p class="audience-terms">30-day guided pilot · No upfront commitment · Local implementation support</p>
+                            <a class="btn btn-primary" href="/appointments.html">Book a demo →</a>
                         </article>
                         <article class="cta-audience-card partners">
                             <div class="audience-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                             <h3>Co-design with us in the field</h3>
-                            <p>Field partnership · Implementation research · Community health access</p>
-                            <a href="/contact.html">Explore Partnership →</a>
-                        </article>
-                        <article class="cta-audience-card investors">
-                            <div class="audience-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-                            <h3>$4.69B market · Pre-deployment entry</h3>
-                            <p>Offline-first moat · African-led · Transparent M&amp;E</p>
-                            <span class="audience-badge">Seed round · USD 150K</span>
-                            <a href="/for-investors.html">View Investor Deck →</a>
+                            <p>Field partnerships, implementation research and community health access.</p>
+                            <a href="/contact.html">Talk to us about a partnership →</a>
                         </article>
                     </div>
+                    <p class="cta-investor-line">Investors can find our pitch deck and financial model on the <a href="/for-investors.html">investor page</a>.</p>
                     <div class="trust-chips">
                         <span class="trust-chip">✓ Guided pilot onboarding</span>
                         <span class="trust-chip">✓ Offline-first deployment</span>
@@ -980,7 +981,7 @@
                     <div class="footer-column">
             <h4>Platform</h4>
             <ul>
-                            <li><a href="/solutions/administration.html">AI Administration</a></li>
+                            <li><a href="/solutions/administration.html">Administration</a></li>
                             <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
                             <li><a href="/solutions/records.html">Health Records</a></li>
                             <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
@@ -989,7 +990,7 @@
                     <div class="footer-column">
                         <h4>Projects</h4>
                         <ul>
-                            <li><a href="/features.html">SelNexa Health Platform (offline-first hospital management)</a></li>
+                            <li><a href="/features.html">SelNexa Health Platform</a></li>
                             <li><a href="/contact.html">Project 02 — ContraWise (Scoping)</a></li>
                             <li><a href="/contact.html">Project 03 — Maternal Health (Research)</a></li>
                             <li><a href="/contact.html">Propose a Project →</a></li>
@@ -1051,7 +1052,6 @@
                     <select id="facility" name="facility" required>
                         <option value="">Select...</option>
                         <option value="hospital">Hospital</option>
-                        <option value="clinic">Clinic</option>
                         <option value="health-center">Health Center</option>
                     </select>
                 </div>
@@ -1105,7 +1105,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "SelNexa Health",
-        "description": "A professional collective of African trailblazers co-architecting the New Public Health Order, starting with an offline-first hospital management platform.",
+        "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
         "url": "https://www.selnexahealth.com",
         "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
         "foundingLocation": "Harare, Zimbabwe",
