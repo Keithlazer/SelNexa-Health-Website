@@ -396,3 +396,38 @@ Requested during the work: remove redundant files. 143 files (155 MB) deleted, e
 Also: `LINK_OUTREACH.md` and `SEO_GUIDE.md` moved to `docs/`; `README.md`, `assets/README.md` and `.github/copilot-instructions.md` rewritten to describe the site as it now is; `_config.yml` and `.gitignore` trimmed to match. Removing the unused scripts changed what the unused-rule removal sees, so the stylesheet bundles were rebuilt and every page compared screen by screen with the Phase 4 commit at 1366 and 390 px.
 
 The files are gone from the current tree but remain in the public history (see `CONTENT-TODO.md`, Repository).
+
+## Phase 5. Consistency and final checks
+
+### Searches across the whole repository
+
+| Check | Result |
+|---|---|
+| The names of the Q3 2024 validation facility and the next pilot facility, the province, the two foreign compliance regimes, the city | No occurrence in any file in the current tree. The only match for one of the search strings is four letters in a row inside the base64 image data of `assets/selnexa-logo.svg`, which is not text. |
+| "Clinic" as a facility type | None. The remaining matches are "clinician" and "clinical". |
+| Visible TODOs, placeholders, "coming soon", lorem ipsum | None on any page. |
+| HTML comments in published pages pointing to internal notes | Twelve comments read "Facility name withheld until written approval is in hand ... (see CONTENT-TODO.md)". They did not show on the page but could be read in the page source. Removed; the places they marked are now listed in `CONTENT-TODO.md`. |
+| Named facilities described as partners or pilot sites | None. "Partner" appears only as something the company is seeking, or in the SDG 17 label. |
+| Service worker | Every file in `CORE_ASSETS` exists. |
+
+### Wording
+
+| File | Was | Now |
+|---|---|---|
+| `press.html` (founder bio) | "leads ... its deployment partnerships" (there are none yet) | "planning for its first deployments" |
+| `about.html` (approach) | "We co-design with local partners to ensure..." | "We design with local health teams so that..." |
+| `blog/ai-healthcare-africa.html` (opening) | "Africa's healthcare landscape is experiencing a revolutionary transformation ... AI powered solutions are addressing longstanding challenges" | "AI is starting to appear in African health systems ... AI tools are being tried against long-standing problems"; "it's crucial to understand" is now "it helps to understand" |
+| `blog/why-ai-diagnostics-matter.html` | "Seamless integration ... without workflow disruption"; two em dashes | Plain wording; sentences split |
+| `blog/future-healthcare-systems.html` | "Seamless data exchange"; "Ready to Transform Your Healthcare System?" | "Data exchange between systems"; "See the SelNexa Health Platform" |
+| `blog/selnexa-telemedicine-zimbabwe.html` | Em dash in the heading | Colon |
+| `resources/whitepapers.html` | "leverage", "seamless" | "use"; removed |
+| `solutions/hospital-management.html` | "Reduce administrative overhead and streamline workflows" (stated as a result) | "Designed to cut administrative work and simplify daily workflows" |
+| `solutions/procurement.html` | "Transform Your Supply Chain" | "Plan your procurement rollout" |
+| `for-investors.html` | "Ecosystem Relationships"; three em dashes | "Partnerships"; sentences split and a comma in the dateline |
+| `index.html` | Logo strip landmark named "Platform integration ecosystem" | "Integrations" |
+
+No visible page text now contains an em dash. Bold is still used for list labels (for example on the investor page); reducing it further would mean rewriting those sections, which the brief rules out.
+
+### Final checks
+
+On all 33 pages: axe-core finds no violations (colour contrast included) at 1366 and 390 px; no page scrolls sideways at 360, 390, 768 or 1366 px; nothing on a 390 px screen is under 44 x 44 px apart from links inside sentences; all internal links, anchors and sitemap entries resolve; the interaction checks for the modal, forms, phone menu and module finder pass with and without JavaScript; `npm run check:site` reports every page and bundle up to date.

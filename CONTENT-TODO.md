@@ -4,7 +4,7 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 ## Approvals and people
 
-- [ ] Next pilot facility: once written approval exists, restore its name at every HTML comment reading "Facility name withheld until written approval is in hand" (the name is in this repository's git history before this branch).
+- [ ] Facility names: once written approval exists for the Q3 2024 validation facility or the next pilot facility, the names can go back in these places (both names are in this repository's git history before this branch): `index.html` (the "Next pilot site" row and the Zimbabwe line under the map), `about.html` (2026 timeline entry), `impact.html` ("Facilities in active pilot" row), `case-studies.html` ("Next: our first measured pilot" card and the paragraph starting "When the pilot goes live"), `for-investors.html` (hero subtitle and the founding paragraph), `solutions/hospital-management.html` ("Confirmed next pilot" and "Q3 2024 proof of concept" cards), `blog/ai-healthcare-africa.html` ("Proof of concept in Zimbabwe" section), `resources/guides.html` (the validation note card).
 - [ ] Next pilot wording: the brief said "a district hospital in Zimbabwe"; the site says "a public hospital in Zimbabwe". Confirm or correct.
 - [ ] Dr Farisai Mawere: supply registration body, specialty and institutional affiliation for her About page bio, and confirm her title (the pitch deck says "Health Liaison", the site says "Chief Medical Officer").
 - [ ] Advisors: names, roles and written consent for each, to restore the Advisory Network section on the About page.
