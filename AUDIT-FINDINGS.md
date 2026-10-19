@@ -378,3 +378,21 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 | Phone floating buttons | On a 390 px phone the WhatsApp and module finder buttons cover the ends of the full-width "Watch the demo" button on the first screen. This was already the case before this work. | Not changed; flagged here. |
 
 After these changes no page scrolls sideways at 360, 390, 768 or 1366 px, and the tap-target check finds nothing under 44 px apart from links inside sentences.
+
+## Repository cleanup
+
+Requested during the work: remove redundant files. 143 files (155 MB) deleted, each checked first for references from any published page, script, stylesheet, the service worker or the build. All are recoverable from git history.
+
+| Removed | Why |
+|---|---|
+| `src/`, `vite.config.*`, `tailwind.config.*`, `build/`, `.eslintrc.cjs`, the Vite logs, and the React, Vite, Tailwind and ESLint packages in `package.json` | A React demo app that was never deployed, and its tooling. |
+| `SelNexa Website/`, `styles/scripts/`, `assets/SelNexa Health Platform Project Proposal - Copy.pdf`, `SelNexa Health Logo Full 2.JPG` | Archived copies of old assets: original videos, proposal PDFs, an old logo. Already excluded from publishing. |
+| 14 internal reports in the root (`COMPLETION_REPORT.md`, `SITE_AUDIT_REPORT.md` and others) and `README-site.md` | Notes from earlier passes that describe pages, scripts and claims that no longer exist. Replaced by this file, `CONTENT-TODO.md`, `BEFORE-AFTER.md` and a new `README.md`. |
+| `js/a11y-mobile-test.js`, `calculators.js`, `chatbot.js`, `clear-sw.js`, `symptom-checker.js`, `worldmap.js`; `css/main.css`, `global.css`, `performance.css`, `symptom-checker.css`, `article.css`; `styles/critical.css`; `patch.css` | Loaded by no page. |
+| `modern-design-demo.html`, `llms.txt` (empty), `CNAME.txt`, `docs/CNAME` | A design test page, an empty file, and copies of `CNAME`. |
+| `test-results/`, `tools/mobile-smoke/`, `tools/a11y-scan.js` and its report | Old screenshots and a scanner that no longer ran. |
+| Five GitHub workflows (`clean-printed-css`, `fix-selnexa-printed-css`, `generate-assets`, `run-all`, `formsubmit-test`) and `.github/scripts/clean_html.py` | Manual workflows written for the old file layout. Four of them rewrite files and push to the repository; the fifth posts a test message to a personal email address through a form service the site no longer uses. The Lighthouse workflow is kept. |
+
+Also: `LINK_OUTREACH.md` and `SEO_GUIDE.md` moved to `docs/`; `README.md`, `assets/README.md` and `.github/copilot-instructions.md` rewritten to describe the site as it now is; `_config.yml` and `.gitignore` trimmed to match. Removing the unused scripts changed what the unused-rule removal sees, so the stylesheet bundles were rebuilt and every page compared screen by screen with the Phase 4 commit at 1366 and 390 px.
+
+The files are gone from the current tree but remain in the public history (see `CONTENT-TODO.md`, Repository).

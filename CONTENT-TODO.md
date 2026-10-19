@@ -9,7 +9,7 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Dr Farisai Mawere: supply registration body, specialty and institutional affiliation for her About page bio, and confirm her title (the pitch deck says "Health Liaison", the site says "Chief Medical Officer").
 - [ ] Advisors: names, roles and written consent for each, to restore the Advisory Network section on the About page.
 - [ ] Team photographs: the About page now serves the six cut-out portraits as small WebP files made from the old 0.6 to 1.4 MB SVG wrappers. Confirm each person is happy for their photo to be published, and send the original photos if you want sharper versions.
-- [ ] Old logo file: `SelNexa Health Logo Full 2.JPG` is a different, older logo (red heart, serif type) with a ® mark. It is no longer offered in the press kit or published. Confirm whether the trade mark is registered before using ® anywhere, and send a full logo (mark plus name) in the current design for the press kit.
+- [ ] Old logo file: `SelNexa Health Logo Full 2.JPG` was a different, older logo (red heart, serif type) with a ® mark. It has been removed from the repository (recoverable from git history). Confirm whether the trade mark is registered before using ® anywhere, and send a full logo (mark plus name) in the current design for the press kit.
 - [ ] Pitch deck page 11: confirm permission to show the Zimbabwe government emblem under "past sponsors and collaborators".
 - [ ] Git history: decide whether to rewrite history to remove the two facility names from past commits (needs a force push; the repository is public).
 
@@ -61,5 +61,4 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 ## Repository
 
-- [ ] `src/` React demo app is not deployed and contains placeholder product content (stats, ROI tool, telemedicine). Keep or delete?
-- [ ] `SelNexa Website/` holds archived copies of assets (about 120 MB, including both demo videos and a 24 MB PDF). Keep or delete?
+- [ ] Deleted files are still in the public git history. The repository is public, and earlier commits still hold the files removed during this work, among them the project proposal PDFs, the original demo videos (which show two real hospitals and two mobile numbers), the React demo app and the old internal reports. Removing them from history means rewriting it and force-pushing, which this work did not do. Decide whether that is needed, or whether the repository should be made private (GitHub Pages on a private repository needs a paid plan).

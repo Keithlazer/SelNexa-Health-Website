@@ -1,17 +1,19 @@
-This folder contains logo assets used across the site.
+# Assets
 
-Canonical production logo asset:
+| Files | Used for |
+|---|---|
+| `selnexa-logo-128.webp/.png` | Header logo |
+| `selnexa-logo-452.webp/.png` | Structured data and the press kit |
+| `selnexa-logo.svg`, `selnexa-logo-refined.svg` | Press kit downloads |
+| `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `apple-touch-icon.png` | App and home-screen icons (`/favicon.ico` sits at the site root) |
+| `dashboard-hero-*.webp/.png` | Homepage hero |
+| `admin-dashboard-screenshot.*`, `ehr-system-screenshot.*`, `queue-management-interface.*` | Product screenshots (AVIF, WebP and PNG) |
+| `africa-map.webp/.png` | Homepage map |
+| `team/` | Team portraits, 320 and 640 px |
+| `integrations/` | Integration logos in the homepage strip |
+| `sdg-*.svg`, `contrawise-logo.svg`, `whatsapp-icon.svg` | Icons and artwork |
+| `video/` | Demo videos and their poster frames |
+| `fonts/` | Montserrat (Latin subset) and the site icon font, with their licences |
+| `selnexa-health-pitch-deck.pdf` | Investor page download |
 
-- `selnexa-logo.svg`
-
-Legacy raster logo files were retired after the SVG migration.
-
-Feature screenshot slots now reference these files:
-
-- admin dashboard screenshot: `admin-dashboard-screenshot.png`
-- queue management screenshot: `queue-management-interface.png`
-- EHR screenshot: `ehr-system-screenshot.png`
-
-Place those files in this folder to populate the homepage and features page image sections.
-
-If you need channel-specific raster exports, generate them from `selnexa-logo.svg`.
+File names are lower case with hyphens. Give new images a width and height in the HTML, and offer WebP with a PNG or JPEG fallback.

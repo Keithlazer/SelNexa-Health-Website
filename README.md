@@ -13,7 +13,7 @@ Source for www.selnexahealth.com, a static site served by GitHub Pages from the 
 | `js/` | `site-core.js` (header, modal, forms, widgets), `form-endpoints.js`, and small page scripts. |
 | `assets/` | Images, fonts, videos and the pitch deck. |
 | `tools/` | `build-site.mjs` (copies the shared parts in, builds the stylesheet bundles), `build-icons.py` (icon font subset), `cloudflare-wishlist-relay.js` (optional form relay). |
-| `docs/` | Setup notes for the form relay and analytics. |
+| `docs/` | Notes on the form relay, analytics, search visibility and link outreach. |
 | `sw.js`, `offline.html`, `manifest.json` | Offline support. |
 
 `_config.yml` lists the files GitHub Pages does not publish (internal documents and tooling). The repository is public, so excluded files are still visible on GitHub.
