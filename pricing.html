@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
     <title>Pricing for Health Institutions | SelNexa Health Platform</title>
     <meta name="description" content="How SelNexa Health prices its offline-first health service management platform: per facility, scoped to size and modules, with no per-user seat licences.">
     <link rel="canonical" href="https://www.selnexahealth.com/pricing.html">
-    <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/pricing.html">
-    <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/pricing.html?lang=sn">
-    <link rel="alternate" hreflang="nd" href="https://www.selnexahealth.com/pricing.html?lang=nd">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Pricing for Health Institutions | SelNexa Health Platform">
+    <meta property="og:description" content="How SelNexa Health prices its offline-first health service management platform: per facility, scoped to size and modules, with no per-user seat licences.">
+    <meta property="og:url" content="https://www.selnexahealth.com/pricing.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pricing for Health Institutions | SelNexa Health Platform">
+    <meta name="twitter:description" content="How SelNexa Health prices its offline-first health service management platform: per facility, scoped to size and modules, with no per-user seat licences.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/a1a21dca6ab9.css">
+    <!-- /sx:styles -->
     <!-- sx:head -->
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#004c4c">
-    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -30,7 +43,7 @@
       "name": "SelNexa Health",
       "legalName": "SelNexa Health (Private) Limited",
       "url": "https://www.selnexahealth.com/",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
       "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
@@ -50,7 +63,7 @@
     <header class="sx-header" data-sx-header>
       <div class="sx-header__inner">
         <a href="/" class="sx-brand">
-          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
           <span class="sx-brand__text">
             <span class="sx-brand__name">SelNexa Health</span>
             <span class="sx-brand__tag">Offline-first health software</span>
@@ -135,6 +148,7 @@
         </section>
 
         <section class="section-spacer animate-on-scroll">
+            <h2 class="sr-only">What each plan includes</h2>
             <div class="container page-grid">
                 <article class="pricing-panel">
                     <h3>Health Centre Coverage</h3>
@@ -256,35 +270,6 @@
     </footer>
     <!-- /sx:footer -->
 
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "SelNexa Health Platform",
-            "description": "Offline-first health service management platform for health institutions: administration, procurement, health records and analytics.",
-            "brand": {
-                "@type": "Brand",
-                "name": "SelNexa Health"
-            },
-            "offers": [
-                {
-                    "@type": "Offer",
-                    "name": "Health Centre",
-                    "availability": "https://schema.org/PreOrder"
-                },
-                {
-                    "@type": "Offer",
-                    "name": "Regional Hospital",
-                    "availability": "https://schema.org/PreOrder"
-                },
-                {
-                    "@type": "Offer",
-                    "name": "Network License",
-                    "availability": "https://schema.org/PreOrder"
-                }
-            ]
-        }
-        </script>
 
     <!-- sx:demo-modal -->
     <dialog class="sx-modal" id="demo-modal" aria-labelledby="demo-modal-title">
@@ -371,8 +356,8 @@
     </dialog>
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
-    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
-    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

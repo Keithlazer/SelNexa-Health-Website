@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
     <title>Sessions and Webinars | SelNexa Health</title>
     <meta name="description" content="Request a session with the SelNexa Health team on AI in health care, or on integrating the Platform with the systems your health institution already runs.">
     <link rel="canonical" href="https://www.selnexahealth.com/resources/webinars.html">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../css/resources.css">
-    <link rel="stylesheet" href="../css/webinars.css">
-    <link rel="stylesheet" href="../styles/grid-typography-system.css">
-    <link rel="stylesheet" href="../styles/site-uniform.css">
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Sessions and Webinars | SelNexa Health">
+    <meta property="og:description" content="Request a session with the SelNexa Health team on AI in health care, or on integrating the Platform with the systems your health institution already runs.">
+    <meta property="og:url" content="https://www.selnexahealth.com/resources/webinars.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sessions and Webinars | SelNexa Health">
+    <meta name="twitter:description" content="Request a session with the SelNexa Health team on AI in health care, or on integrating the Platform with the systems your health institution already runs.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/main.css /css/resources.css /css/webinars.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/61aec514b860.css">
+    <!-- /sx:styles -->
     <!-- sx:head -->
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#004c4c">
-    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,7 +43,7 @@
       "name": "SelNexa Health",
       "legalName": "SelNexa Health (Private) Limited",
       "url": "https://www.selnexahealth.com/",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
       "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
@@ -44,7 +62,7 @@
     <header class="sx-header" data-sx-header>
       <div class="sx-header__inner">
         <a href="/" class="sx-brand">
-          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
           <span class="sx-brand__text">
             <span class="sx-brand__name">SelNexa Health</span>
             <span class="sx-brand__tag">Offline-first health software</span>
@@ -75,8 +93,8 @@
                 <h1>Healthcare Technology Webinars</h1>
                 <p>Join SelNexa Health sessions on African health systems innovation, Platform implementation, and infrastructure-aware healthcare technology.</p>
                 <div class="webinar-search">
-                    <input type="text" id="webinarSearch" placeholder="Search webinars...">
-                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                    <input type="search" id="webinarSearch" placeholder="Search webinars..." aria-label="Search webinars">
+                    <button type="button" class="search-btn" aria-label="Search webinars"><i class="fas fa-search" aria-hidden="true"></i></button>
                 </div>
             </div>
         </section>
@@ -95,6 +113,7 @@
                     </div>
                 </div>
 
+                <h2 class="sr-only">Sessions on request</h2>
                 <div class="webinars-grid" id="upcomingWebinars">
                     <div class="webinar-card" data-category="technology">
                         <div class="webinar-date">
@@ -109,7 +128,7 @@
                                 <span class="webinar-duration"><i class="fas fa-hourglass-half"></i> 45-60 min</span>
                             </div>
                             <div class="webinar-speakers">
-                                <img src="../assets/selnexa-logo.svg" alt="">
+                                <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" width="40" height="35" loading="lazy" decoding="async"></picture>
                                 <div class="speaker-info">
                                     <h4>SelNexa Health team</h4>
                                     <p>Healthcare technology and implementation</p>
@@ -132,7 +151,7 @@
                                 <span class="webinar-duration"><i class="fas fa-hourglass-half"></i> 45 min</span>
                             </div>
                             <div class="webinar-speakers">
-                                <img src="../assets/selnexa-logo.svg" alt="">
+                                <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" width="40" height="35" loading="lazy" decoding="async"></picture>
                                 <div class="speaker-info">
                                     <h4>SelNexa Health team</h4>
                                     <p>System integration and rollout planning</p>
@@ -309,8 +328,8 @@
     </dialog>
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
-    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
-    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html> 

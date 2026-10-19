@@ -31,7 +31,7 @@ exclude:
   # Archived material and unreferenced duplicates
   - "SelNexa Website"
   - "assets/SelNexa Health Platform Project Proposal - Copy.pdf"
-  - "assets/SelNexa Health Pitch PDF.pdf"
+  - "SelNexa Health Logo Full 2.JPG"
   - modern-design-demo.html
   # Source, partials and tooling (not part of the static site)
   - build

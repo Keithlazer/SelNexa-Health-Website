@@ -3,27 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
     <title>About SelNexa Health | Zimbabwean Health Software Company</title>
     <meta name="description" content="SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions. Meet the team and read how the company started.">
     <meta name="language" content="en">
     <meta name="author" content="SelNexa Health">
     <link rel="canonical" href="https://www.selnexahealth.com/about.html">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="/styles/main.css">
-    <!-- Grid & Typography System -->
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="About SelNexa Health | Zimbabwean Health Software Company">
+    <meta property="og:description" content="SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions. Meet the team and read how the company started.">
+    <meta property="og:url" content="https://www.selnexahealth.com/about.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About SelNexa Health | Zimbabwean Health Software Company">
+    <meta name="twitter:description" content="SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions. Meet the team and read how the company started.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+
+    <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/a1a21dca6ab9.css">
+    <!-- /sx:styles -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Simbarashe Keith Tafangombe",
+      "alternateName": "Keith Tafangombe",
+      "jobTitle": "Founder and CEO",
+      "worksFor": {
+        "@id": "https://www.selnexahealth.com/#organization"
+      },
+      "image": "https://www.selnexahealth.com/assets/team/keith-tafangombe-640.webp",
+      "sameAs": [
+        "https://www.linkedin.com/in/keithtafangombe"
+      ]
+    }
+    </script>
     <!-- sx:head -->
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#004c4c">
-    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,7 +62,7 @@
       "name": "SelNexa Health",
       "legalName": "SelNexa Health (Private) Limited",
       "url": "https://www.selnexahealth.com/",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
       "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
@@ -52,7 +82,7 @@
     <header class="sx-header" data-sx-header>
       <div class="sx-header__inner">
         <a href="/" class="sx-brand">
-          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
           <span class="sx-brand__text">
             <span class="sx-brand__name">SelNexa Health</span>
             <span class="sx-brand__tag">Offline-first health software</span>
@@ -181,15 +211,15 @@
                 </div>
                 <div class="sdg-marker-grid" aria-label="SelNexa Health SDG alignment">
                     <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/SDG%203.svg" alt="SDG 3: Good Health and Well-being" loading="lazy" decoding="async"></span>
+                        <span class="sdg-art"><img src="/assets/sdg-3.svg" alt="SDG 3: Good Health and Well-being" width="112" height="112" loading="lazy" decoding="async"></span>
                         <span><strong>SDG 3</strong><span>Equitable access, safer care, and resilient service delivery.</span></span>
                     </article>
                     <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/SDG%209.svg" alt="SDG 9: Industry, Innovation and Infrastructure" loading="lazy" decoding="async"></span>
+                        <span class="sdg-art"><img src="/assets/sdg-9.svg" alt="SDG 9: Industry, Innovation and Infrastructure" width="112" height="112" loading="lazy" decoding="async"></span>
                         <span><strong>SDG 9</strong><span>African-led digital health infrastructure built for constraint.</span></span>
                     </article>
                     <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/SDG%2017.svg" alt="SDG 17: Partnerships for the Goals" loading="lazy" decoding="async"></span>
+                        <span class="sdg-art"><img src="/assets/sdg-17.svg" alt="SDG 17: Partnerships for the Goals" width="112" height="112" loading="lazy" decoding="async"></span>
                         <span><strong>SDG 17</strong><span>Institutional partnerships for deployment, evaluation, and scale.</span></span>
                     </article>
                 </div>
@@ -207,7 +237,7 @@
                 <div class="team-grid">
                     <div class="team-card animate-on-scroll">
                       <div class="team-photo-wrap">
-                        <img src="/assets/team/Keith%20Tafangombe%20svg.svg" alt="Keith Tafangombe, Founder and CEO of SelNexa Health" class="team-photo" loading="lazy">
+                        <picture><source type="image/webp" srcset="/assets/team/keith-tafangombe-320.webp 320w, /assets/team/keith-tafangombe-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/keith-tafangombe-320.png" alt="Keith Tafangombe, Founder and CEO of SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                         <div class="team-photo-ring"></div>
                       </div>
                       <h3>Keith Tafangombe</h3>
@@ -216,12 +246,12 @@
                         Keith Tafangombe is a systems architect and healthcare operator from Zimbabwe. He founded SelNexa Health to build digital infrastructure that holds up in African health institutions, designed the SelNexa Health Platform, and leads the company's project portfolio.
                       </p>
                       <p class="team-leadership-note">African founder and health systems leader building from frontline infrastructure constraints, not imported assumptions.</p>
-                      <p><a href="https://www.linkedin.com/in/keithtafangombe" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
+                      <p><a class="standalone-link" href="https://www.linkedin.com/in/keithtafangombe" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
                     </div>
 
                                         <div class="team-card animate-on-scroll">
                                             <div class="team-photo-wrap">
-                                                <img src="/assets/team/Natalie%20Svg.svg" alt="Natalie Masvikeni, Co-Founder of ContraWise and Lead Developer at SelNexa Health" class="team-photo" loading="lazy">
+                                                <picture><source type="image/webp" srcset="/assets/team/natalie-masvikeni-320.webp 320w, /assets/team/natalie-masvikeni-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/natalie-masvikeni-320.png" alt="Natalie Masvikeni, Co-Founder of ContraWise and Lead Developer at SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                                                 <div class="team-photo-ring"></div>
                                             </div>
                                             <h3>Natalie Masvikeni</h3>
@@ -230,12 +260,12 @@
                                                 Natalie Masvikeni is the Co-Founder of ContraWise and the Lead Developer at SelNexa Health, where she leads product architecture, AI development, and full stack engineering for next-generation digital health solutions. She is a Computer Science student at Africa University with a strong foundation in frontend web development, and she has represented her university in international innovation and cybersecurity competitions, including an ISACA case study challenge where her team placed second globally.
                                             </p>
                                             <p class="team-leadership-note">Part of the next generation of African women building practical health technology.</p>
-                                            <p><a href="https://www.linkedin.com/in/natalie-masvikeni/" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
+                                            <p><a class="standalone-link" href="https://www.linkedin.com/in/natalie-masvikeni/" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
                                         </div>
                     
                     <div class="team-card animate-on-scroll">
                       <div class="team-photo-wrap">
-                        <img src="/assets/team/Guide%20Chitewe%20svg.svg" alt="Guide Chitewe, Chief Technology Officer of SelNexa Health" class="team-photo" loading="lazy">
+                        <picture><source type="image/webp" srcset="/assets/team/guide-chitewe-320.webp 320w, /assets/team/guide-chitewe-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/guide-chitewe-320.png" alt="Guide Chitewe, Chief Technology Officer of SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                         <div class="team-photo-ring"></div>
                       </div>
                       <h3>Guide Chitewe</h3>
@@ -250,7 +280,7 @@
                     
                     <div class="team-card animate-on-scroll">
                       <div class="team-photo-wrap">
-                        <img src="/assets/team/Dr%20Farisai%20Mawere%20svg.svg" alt="Dr Farisai Mawere, Chief Medical Officer of SelNexa Health" class="team-photo" loading="lazy">
+                        <picture><source type="image/webp" srcset="/assets/team/farisai-mawere-320.webp 320w, /assets/team/farisai-mawere-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/farisai-mawere-320.png" alt="Dr Farisai Mawere, Chief Medical Officer of SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                         <div class="team-photo-ring"></div>
                       </div>
                       <h3>Dr Farisai Mawere</h3>
@@ -262,7 +292,7 @@
 
                     <div class="team-card animate-on-scroll">
                       <div class="team-photo-wrap">
-                        <img src="/assets/team/Simbarashe%20Hunzvi%20Svg.svg" alt="Simbarashe Hunzvi, Chief Operating Officer of SelNexa Health" class="team-photo" loading="lazy">
+                        <picture><source type="image/webp" srcset="/assets/team/simbarashe-hunzvi-320.webp 320w, /assets/team/simbarashe-hunzvi-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/simbarashe-hunzvi-320.png" alt="Simbarashe Hunzvi, Chief Operating Officer of SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                         <div class="team-photo-ring"></div>
                       </div>
                       <h3>Simbarashe Hunzvi</h3>
@@ -272,12 +302,12 @@
                         Simbarashe Hunzvi is a civic leader and social impact advocate with extensive experience in youth leadership, community development, and socio-economic empowerment initiatives. His background includes involvement in regional and international leadership platforms focused on governance, innovation, and sustainable development. At SelNexa Health, he contributes strategic insight on community engagement, partnerships, and impact-driven leadership. His passion for systems change and inclusive development aligns strongly with the organization's mission of strengthening healthcare delivery and creating long-term social impact across African communities.
                       </p>
                       <p class="team-leadership-note">Connects community-centered implementation with partnerships, public accountability, and emerging leadership.</p>
-                      <p><a href="https://www.linkedin.com/in/simbarashe-hunzvi-103919128/" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
+                      <p><a class="standalone-link" href="https://www.linkedin.com/in/simbarashe-hunzvi-103919128/" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>
                     </div>
 
                                         <div class="team-card animate-on-scroll">
                                             <div class="team-photo-wrap">
-                                                <img src="/assets/team/Alton%20Matemera%20svg.svg" alt="Alton Matemera, Chief Financial Officer of SelNexa Health" class="team-photo" loading="lazy">
+                                                <picture><source type="image/webp" srcset="/assets/team/alton-matemera-320.webp 320w, /assets/team/alton-matemera-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="/assets/team/alton-matemera-320.png" alt="Alton Matemera, Chief Financial Officer of SelNexa Health" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>
                                                 <div class="team-photo-ring"></div>
                                             </div>
                                             <h3>Alton Matemera</h3>
@@ -507,8 +537,8 @@
     </dialog>
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
-    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
-    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

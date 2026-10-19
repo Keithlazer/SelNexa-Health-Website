@@ -3,22 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
     <title>FAQ: Offline Health Service Management | SelNexa Health</title>
     <meta name="description" content="Answers to common questions about the SelNexa Health Platform: offline operation, security, pricing, implementation, training and integration with DHIS2.">
     <link rel="canonical" href="https://www.selnexahealth.com/faq.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="FAQ: Offline Health Service Management | SelNexa Health">
+    <meta property="og:description" content="Answers to common questions about the SelNexa Health Platform: offline operation, security, pricing, implementation, training and integration with DHIS2.">
+    <meta property="og:url" content="https://www.selnexahealth.com/faq.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ: Offline Health Service Management | SelNexa Health">
+    <meta name="twitter:description" content="Answers to common questions about the SelNexa Health Platform: offline operation, security, pricing, implementation, training and integration with DHIS2.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/a1a21dca6ab9.css">
+    <!-- /sx:styles -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does implementation take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We don't have a measured figure yet; the first pilot will give us one. The timeline depends on the size of the institution, the records it already holds, and whether it uses the hosted deployment or the local network kit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about data security and privacy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our Security and Compliance page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work without internet connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Platform is built offline-first. Core workflows keep running without a connection, and changes sync when connectivity returns."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the pricing model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We price per facility, based on its size and the modules it uses, not per user. Until the first deployment, every quote is scoped with the institution directly. See how pricing works."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What training and support do you provide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Staff training is part of onboarding. Support arrangements for a pilot, including hours and channels, are agreed with each institution before go-live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it integrate with existing systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Platform's records are aligned with FHIR R4, and there are integration pathways to DHIS2, ePMS, Impilo, OpenMRS and HL7-based systems. Integration work for each deployment is scoped with you and your existing vendors."
+          }
+        }
+      ]
+    }
+    </script>
     <!-- sx:head -->
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#004c4c">
-    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +99,7 @@
       "name": "SelNexa Health",
       "legalName": "SelNexa Health (Private) Limited",
       "url": "https://www.selnexahealth.com/",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
       "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
@@ -46,7 +118,7 @@
     <header class="sx-header" data-sx-header>
       <div class="sx-header__inner">
         <a href="/" class="sx-brand">
-          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
           <span class="sx-brand__text">
             <span class="sx-brand__name">SelNexa Health</span>
             <span class="sx-brand__tag">Offline-first health software</span>
@@ -85,60 +157,42 @@
             <div class="container">
                 <div class="faq-container">
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>How long does implementation take?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">How long does implementation take?</h2>
                         <div class="faq-answer">
                             <p>We don't have a measured figure yet; the first pilot will give us one. The timeline depends on the size of the institution, the records it already holds, and whether it uses the hosted deployment or the local network kit.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>What about data security and privacy?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">What about data security and privacy?</h2>
                         <div class="faq-answer">
                             <p>The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our <a href="/security-and-compliance.html">Security and Compliance page</a>.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>Does it work without internet connection?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">Does it work without internet connection?</h2>
                         <div class="faq-answer">
                             <p>Yes. The Platform is built offline-first. Core workflows keep running without a connection, and changes sync when connectivity returns.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>What's the pricing model?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">What's the pricing model?</h2>
                         <div class="faq-answer">
                             <p>We price per facility, based on its size and the modules it uses, not per user. Until the first deployment, every quote is scoped with the institution directly. See <a href="/pricing.html">how pricing works</a>.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>What training and support do you provide?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">What training and support do you provide?</h2>
                         <div class="faq-answer">
                             <p>Staff training is part of onboarding. Support arrangements for a pilot, including hours and channels, are agreed with each institution before go-live.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                            <span>Can it integrate with existing systems?</span>
-                            <span class="faq-toggle">▼</span>
-                        </div>
+                        <h2 class="faq-question">Can it integrate with existing systems?</h2>
                         <div class="faq-answer">
                             <p>The Platform's records are aligned with FHIR R4, and there are integration pathways to DHIS2, ePMS, Impilo, OpenMRS and HL7-based systems. Integration work for each deployment is scoped with you and your existing vendors.</p>
                         </div>
@@ -318,8 +372,8 @@
     </dialog>
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
-    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
-    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

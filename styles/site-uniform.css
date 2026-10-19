@@ -116,7 +116,7 @@ header .navbar.scrolled {
 .btn.btn-primary {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #ffffff !important;
+  color: #0a1414 !important;
 }
 
 .nav-links a.btn:hover,
@@ -212,7 +212,7 @@ footer a:hover,
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(0, 76, 76, 0.7);
+  color: #3d6c6a;
   padding: 4px 10px;
   border: 1px solid rgba(232, 160, 32, 0.35);
   border-radius: 6px;
@@ -476,25 +476,30 @@ footer a:hover,
   padding-top: 20px;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
+/* Scroll reveal. Sections start hidden only when JavaScript is running (js/site-core.js reveals them) and the
+   visitor has not asked for reduced motion. Without JavaScript, or in browsers without the scripting media
+   feature, everything is visible from the start. Never put these classes on content in the first screen. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
 
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
 
-.reveal.visible,
-.reveal.revealed,
-.reveal.animate-in,
-.animate-on-scroll.in-view,
-.animate-on-scroll.animate-in {
-  opacity: 1;
-  transform: translateY(0);
+  .reveal.visible,
+  .reveal.revealed,
+  .reveal.animate-in,
+  .animate-on-scroll.in-view,
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .module-card,
@@ -583,7 +588,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .cta-nav {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #ffffff !important;
+  color: #0a1414 !important;
 }
 
 .btn-secondary,
@@ -601,15 +606,16 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   color: #ffffff !important;
 }
 
+/* Hero entrance: a short slide only. The text is never transparent, so it paints (and counts as the
+   largest contentful paint) straight away. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { transform: translateY(14px); }
+    to { transform: translateY(0); }
   }
 
   .hero-animate {
-    opacity: 0;
-    animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .hero-animate:nth-child(1) { animation-delay: 0.05s; }
@@ -737,44 +743,64 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   white-space: normal;
 }
 
+/* Integration logos: a static row without JavaScript or with reduced motion; js/site-core.js turns it into a
+   scrolling strip (with a pause button) by duplicating the list inside .strip-track. */
 .strip-marquee {
   display: block;
   width: 100%;
   overflow: hidden;
 }
 
-.strip-marquee:hover .strip-logos {
-  animation-play-state: paused;
-}
-
 .strip-logos {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.9rem;
-  width: max-content;
-  will-change: transform;
-  animation: marquee 26s linear infinite;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.integration-swiper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.integration-swiper .swiper-wrapper {
-  display: flex;
-  align-items: center;
-  transition-timing-function: linear;
-  will-change: transform;
-}
-
-.integration-swiper .swiper-slide {
+.strip-logos li {
   flex-shrink: 0;
-  width: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: clamp(8px, 1.3vw, 14px) clamp(12px, 2.2vw, 20px);
+}
+
+.strip-marquee.is-animated .strip-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.strip-marquee.is-animated .strip-logos {
+  flex-wrap: nowrap;
+}
+
+.strip-marquee.is-animated:hover .strip-track,
+.strip-marquee.is-animated:focus-within .strip-track,
+.strip-marquee.is-paused .strip-track {
+  animation-play-state: paused;
+}
+
+.strip-toggle {
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(0, 76, 76, 0.35);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #004c4c;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip-marquee.is-animated .strip-track {
+    animation: none;
+  }
 }
 
 .logo-slide__link {
@@ -844,15 +870,20 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
     border-radius: 16px;
     padding: clamp(1.5rem, 4vw, 3rem);
     box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.06);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.animate-on-scroll.visible .africa-map-card,
-.animate-on-scroll.in-view .africa-map-card {
-    opacity: 1;
-    transform: translateY(0);
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .africa-map-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .animate-on-scroll.visible .africa-map-card,
+    .animate-on-scroll.in-view .africa-map-card {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .map-overlay-container {
@@ -1998,4 +2029,111 @@ html[data-theme="dark"] .timeline-item {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* ---------- Accessibility (Phase 4) ---------- */
+
+/* Links inside running text are underlined, so they are not told apart by colour alone (WCAG 1.4.1). */
+main :where(p, li, td, dd, blockquote) a:not([class*="btn"]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Headings promoted for a correct outline keep the size they had before. */
+.minor-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.legal-heading {
+  margin: 0 0 1rem;
+  color: #1d3557;
+  font-size: 1.17rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* Tap targets: at least 44 x 44 px for controls and for links that stand on their own (links inside a
+   sentence are exempt). */
+.btn-link,
+.read-more,
+.standalone-link,
+.resource-card a,
+.team-badge a,
+.top-banner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+main select,
+main input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+main textarea,
+.filter-btn,
+.tab-btn,
+.module-tab {
+  min-height: 44px;
+}
+
+.search-btn {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.logo-slide__link {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+main summary {
+  padding-block: 0.7rem;
+  cursor: pointer;
+}
+
+.skip-link {
+  min-height: 44px;
+  padding: 12px 16px;
+}
+
+/* FAQ: questions are headings, answers always shown. */
+.faq-item {
+  margin-bottom: 1.75rem;
+}
+
+.faq-question {
+  margin: 0 0 0.4rem;
+  color: #0a2463;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Hero text contrast.
+   Heroes built on main.css sit on a dark mesh gradient (.hero-background), but grid-typography-system.css
+   colours their subtitle charcoal and the outline button dark teal, so both were close to invisible. The subtitle was also centred under a left-aligned heading.
+   :where() keeps these at the specificity of the rules they replace, so home-page.css still styles the homepage hero. */
+:where(.hero-background ~ .hero-content) .hero-overline {
+  color: var(--color-primary-teal);
+}
+
+:where(.hero-background ~ .hero-content) .hero-subtitle,
+:where(.hero-background ~ .hero-content) > p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-background ~ .hero-content > p {
+  margin-left: 0;
+}
+
+:where(.hero-background ~ .hero-content) .btn.btn-secondary {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
+.hero > .container p {
+  color: var(--uniform-muted);
 }

@@ -1,14 +1,14 @@
 @import url('/styles/site-uniform.css');
 
 :root {
-    --primary: #e63946;
+    --primary: #d62839;
     --primary-light: #ff4d5a;
     --primary-dark: #c1121f;
     --secondary: #fff1f2;
     --dark: #1d3557;
     --light: #ffffff;
     --gray: #f8f9fa;
-    --dark-gray: #6c757d;
+    --dark-gray: #5c636a;
     --accent: #2a9d8f;
     --success: #2a9d8f;
     --warning: #e9c46a;

@@ -3,22 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
     <title>Health Service Management Platform | SelNexa Health</title>
     <meta name="description" content="The SelNexa Health Platform keeps registration, records, procurement, billing and reporting running offline, syncs over 2G, and is aligned with FHIR R4.">
     <link rel="canonical" href="https://www.selnexahealth.com/features.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Health Service Management Platform | SelNexa Health">
+    <meta property="og:description" content="The SelNexa Health Platform keeps registration, records, procurement, billing and reporting running offline, syncs over 2G, and is aligned with FHIR R4.">
+    <meta property="og:url" content="https://www.selnexahealth.com/features.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Health Service Management Platform | SelNexa Health">
+    <meta name="twitter:description" content="The SelNexa Health Platform keeps registration, records, procurement, billing and reporting running offline, syncs over 2G, and is aligned with FHIR R4.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/a1a21dca6ab9.css">
+    <!-- /sx:styles -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SelNexa Health Platform",
+      "applicationCategory": "HealthApplication",
+      "applicationSubCategory": "Health service management",
+      "operatingSystem": "Web browser (installable web app)",
+      "description": "Offline-first health service management platform for health institutions: administration, predictive procurement, health records and real-time analytics, with a telemedicine beta. It keeps working without a connection and syncs when the connection returns.",
+      "url": "https://www.selnexahealth.com/features.html",
+      "featureList": [
+        "Administration",
+        "Predictive Procurement",
+        "Health Records",
+        "Real-Time Analytics",
+        "Telemedicine (beta)",
+        "Offline operation with queued sync",
+        "FHIR R4-aligned records"
+      ],
+      "screenshot": "https://www.selnexahealth.com/assets/admin-dashboard-screenshot.png",
+      "publisher": {
+        "@id": "https://www.selnexahealth.com/#organization"
+      }
+    }
+    </script>
     <!-- sx:head -->
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#004c4c">
-    <link rel="stylesheet" href="/styles/site-chrome.css?v=2ea93e220d">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -27,7 +68,7 @@
       "name": "SelNexa Health",
       "legalName": "SelNexa Health (Private) Limited",
       "url": "https://www.selnexahealth.com/",
-      "logo": "https://www.selnexahealth.com/assets/selnexa-logo.svg",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
       "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
       "foundingDate": "2024",
       "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
@@ -46,7 +87,7 @@
     <header class="sx-header" data-sx-header>
       <div class="sx-header__inner">
         <a href="/" class="sx-brand">
-          <img src="/assets/selnexa-logo.svg" alt="" class="sx-brand__logo" width="64" height="56">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
           <span class="sx-brand__text">
             <span class="sx-brand__name">SelNexa Health</span>
             <span class="sx-brand__tag">Offline-first health software</span>
@@ -119,20 +160,20 @@
                     <h2>Platform Modules</h2>
                     <p>These are capabilities of the SelNexa Health Platform, not separate company identities. Each module is designed for workflow efficiency, responsible data use, and deployment readiness in low-bandwidth care settings.</p>
                     <div class="sdg-inline-set" aria-label="Platform module SDG alignment">
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/SDG%203.svg" alt="SDG 3: Good Health and Well-being" loading="lazy" decoding="async"></span><span><strong>Continuity of care</strong><span>SDG 3</span></span></span>
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/SDG%209.svg" alt="SDG 9: Industry, Innovation and Infrastructure" loading="lazy" decoding="async"></span><span><strong>Infrastructure fit</strong><span>SDG 9</span></span></span>
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/SDG%2017.svg" alt="SDG 17: Partnerships for the Goals" loading="lazy" decoding="async"></span><span><strong>Action-oriented partnerships</strong><span>SDG 17</span></span></span>
+                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-3.svg" alt="SDG 3: Good Health and Well-being" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Continuity of care</strong><span>SDG 3</span></span></span>
+                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-9.svg" alt="SDG 9: Industry, Innovation and Infrastructure" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Infrastructure fit</strong><span>SDG 9</span></span></span>
+                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-17.svg" alt="SDG 17: Partnerships for the Goals" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Action-oriented partnerships</strong><span>SDG 17</span></span></span>
                     </div>
                 </div>
                 <div class="module-tabs" role="tablist" aria-label="SelNexa platform modules">
-                    <button class="module-tab active" data-module="admin" role="tab" aria-selected="true">Administration</button>
-                    <button class="module-tab" data-module="procurement" role="tab" aria-selected="false">Predictive Procurement</button>
-                    <button class="module-tab" data-module="records" role="tab" aria-selected="false">Health Records</button>
+                    <button type="button" class="module-tab active" data-module="admin" role="tab" id="tab-admin" aria-controls="module-admin" aria-selected="true">Administration</button>
+                    <button type="button" class="module-tab" data-module="procurement" role="tab" id="tab-procurement" aria-controls="module-procurement" aria-selected="false">Predictive Procurement</button>
+                    <button type="button" class="module-tab" data-module="records" role="tab" id="tab-records" aria-controls="module-records" aria-selected="false">Health Records</button>
                 </div>
 
-                <div class="module-content active animate-on-scroll" data-module-panel="admin" id="module-admin">
+                <div class="module-content active animate-on-scroll" data-module-panel="admin" id="module-admin" role="tabpanel" aria-labelledby="tab-admin" tabindex="0">
                     <div class="module-screenshot">
-                        <img src="/assets/admin-dashboard-screenshot.png" alt="SelNexa Super Admin dashboard interface" loading="lazy" decoding="async">
+                        <picture><source type="image/avif" srcset="/assets/admin-dashboard-screenshot.avif"><source type="image/webp" srcset="/assets/admin-dashboard-screenshot.webp"><img src="/assets/admin-dashboard-screenshot.png" alt="SelNexa Super Admin dashboard interface" width="958" height="690" loading="lazy" decoding="async"></picture>
                     </div>
                     <div class="module-details">
                         <h3>Administration</h3>
@@ -147,9 +188,9 @@
                     </div>
                 </div>
 
-                <div class="module-content animate-on-scroll" data-module-panel="procurement" id="module-procurement">
+                <div class="module-content animate-on-scroll" data-module-panel="procurement" id="module-procurement" role="tabpanel" aria-labelledby="tab-procurement" tabindex="0">
                     <div class="module-screenshot">
-                        <img src="/assets/queue-management-interface.png" alt="SelNexa queue and procurement management interface" loading="lazy" decoding="async">
+                        <picture><source type="image/avif" srcset="/assets/queue-management-interface.avif"><source type="image/webp" srcset="/assets/queue-management-interface.webp"><img src="/assets/queue-management-interface.png" alt="SelNexa queue and procurement management interface" width="967" height="688" loading="lazy" decoding="async"></picture>
                     </div>
                     <div class="module-details">
                         <h3>Predictive procurement</h3>
@@ -164,9 +205,9 @@
                     </div>
                 </div>
 
-                <div class="module-content animate-on-scroll" data-module-panel="records" id="module-records">
+                <div class="module-content animate-on-scroll" data-module-panel="records" id="module-records" role="tabpanel" aria-labelledby="tab-records" tabindex="0">
                     <div class="module-screenshot">
-                        <img src="/assets/ehr-system-screenshot.png" alt="SelNexa EHR system patient chart view" loading="lazy" decoding="async">
+                        <picture><source type="image/avif" srcset="/assets/ehr-system-screenshot.avif"><source type="image/webp" srcset="/assets/ehr-system-screenshot.webp"><img src="/assets/ehr-system-screenshot.png" alt="SelNexa EHR system patient chart view" width="948" height="694" loading="lazy" decoding="async"></picture>
                     </div>
                     <div class="module-details">
                         <h3>Offline-capable electronic health records</h3>
@@ -307,20 +348,6 @@
     </footer>
     <!-- /sx:footer -->
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "SelNexa Health Platform",
-      "applicationCategory": "HealthcareApplication",
-      "operatingSystem": "Web, Android",
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/PreOrder",
-        "description": "Pilot deployment pricing: contact for details"
-      }
-    }
-    </script>
     <!-- sx:demo-modal -->
     <dialog class="sx-modal" id="demo-modal" aria-labelledby="demo-modal-title">
       <div class="sx-modal__panel">
@@ -406,8 +433,8 @@
     </dialog>
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
-    <script src="/js/form-endpoints.js?v=ebca2b43fe" defer></script>
-    <script src="/js/site-core.js?v=798a4931d1" defer></script>
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

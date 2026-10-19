@@ -5,6 +5,20 @@
  * don't reach them; element+class selectors below win over their bare header/footer rules.
  */
 
+/* Montserrat, self-hosted: variable weight 100-900, cut down from Google Fonts' Latin file (v31) to Basic Latin,
+   Latin-1 and common punctuation, with kerning and ligatures (29 KB). Made with:
+   pyftsubset montserrat-latin.woff2 --unicodes="U+0020-007E,U+00A0-00FF,U+2013-2014,U+2018-2019,U+201C-201D,U+2022,U+2026,U+20AC,U+2122,U+2190-2193"
+     --layout-features="kern,liga,calt,mark,mkmk" --flavor=woff2
+   Licence: /assets/fonts/LICENSE-montserrat.txt */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/montserrat-latin-var.woff2") format("woff2");
+  unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+20AC, U+2122, U+2191, U+2193;
+}
+
 :root {
   --sx-teal: #004c4c;
   --sx-teal-hover: #0e7490;
@@ -72,6 +86,11 @@ header.sx-header.is-scrolled {
   min-height: 44px;
   color: var(--sx-navy);
   text-decoration: none;
+}
+
+.sx-brand picture {
+  display: flex;
+  flex-shrink: 0;
 }
 
 .sx-brand__logo {
@@ -419,6 +438,7 @@ footer.sx-footer .footer-compliance p {
 
 @media (max-width: 768px) {
   footer.sx-footer a {
+    min-width: 44px;
     min-height: 44px;
   }
 }

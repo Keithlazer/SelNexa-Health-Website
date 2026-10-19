@@ -287,3 +287,94 @@ Every indexable page has a new title (60 characters or fewer) and meta descripti
 - axe-core on nine pages covering all five templates, plus the open modal: no violations in the header, footer, modal, forms or floating widgets. The page-content issues it found are fixed in Phase 4.
 
 **Flagged, not changed (Phase 3):** contact@selnexahealth.com must receive mail, since every form falls back to it; the street address on the contact page; the privacy policy's contact address; overlap between `impact.html` and `case-studies.html`, and between `solutions/index.html` and `features.html`. All in `CONTENT-TODO.md`.
+
+## Phase 4. Performance, file names, accessibility, SEO, security, mobile
+
+Measurements before and after are in `BEFORE-AFTER.md`.
+
+### 4.1 Performance
+
+| Location | Finding | Action |
+|---|---|---|
+| `index.html:625-635` (hero), `index.html:996-1043` (inline script), `styles/site-uniform.css:610-619` | The homepage hero text and image sat inside a `reveal` block that stayed transparent until `js/site-core.js` ran, and an inline script then faded each hero line in from opacity 0 over up to 1.75 s. Lighthouse could not find a largest contentful paint on the local copy at all, and measured 14.3 s on the live site. | Hero, top banner and hero image are visible from the first paint. The hero keeps a short slide-in, without the fade. The inline script is gone. |
+| `styles/site-uniform.css:479-498`, `styles/grid-typography-system.css:202-212`, `index.html:526-527`, the Africa map card | Every section marked `reveal` or `animate-on-scroll` was invisible without JavaScript, on every page. | They start hidden only when scripting is on and the visitor has not asked for reduced motion (`@media (scripting: enabled) and (prefers-reduced-motion: no-preference)`). Without JavaScript, or in browsers that do not support that query, everything shows. |
+| Page heads on 18 pages | Google Fonts loaded Inter and Space Grotesk on 11 pages, although no stylesheet uses them; every stylesheet names Montserrat, which loaded on only some pages. | Montserrat is self-hosted: one variable-weight file cut down to Latin characters, punctuation and the kerning and ligature features (29 KB, `font-display: swap`, preloaded), declared once in `styles/site-chrome.css`. All Google Fonts links and preconnects removed. Licence in `assets/fonts/LICENSE-montserrat.txt`. |
+| Stylesheets on every page | Five to seven stylesheet requests per page, some loaded through `@import` chains (each import waits for the file before it), 17 to 34 KB compressed, most of it rules no page on the site uses. | Each page lists its stylesheets in a marker comment; `tools/build-site.mjs` joins them with the shared `site-chrome.css` and `icons.css` into one file in `styles/bundles/`, named by a hash of its content, and drops rules that match nothing in the pages using that file, the scripts or the shared parts (PurgeCSS, with a list of class names scripts add at run time). One request per page, 8 to 19 KB compressed. Checked by rendering all 33 pages with and without the unused-rule removal at 1366 and 390 px, one screen at a time: no differences. The source stylesheets are unchanged and stay the place to edit. |
+| `css/webinars.css` | The first line was corrupted (`+++++*******************+-11/`), which turned the first rule into garbage, and a stray `}` near the end. | Both fixed. The first rule targeted a class no page uses and was removed. |
+| Script start-up | Once the page painted early, the work `js/site-core.js` did at start-up (reading layout for the sticky header, building the floating widgets) landed after first paint and showed up as blocking time. | The header's first measurement waits for the next frame, and the floating widgets, logo strip and other non-essential parts are set up when the browser is idle. |
+| Font Awesome from cdnjs on 15 pages (about 100 KB of CSS and a 147 KB font on the homepage) | Nine other pages used Font Awesome icons without loading it, so their icons were blank. Six pages loaded it and used no icons. | `tools/build-icons.py` builds a subset of the 59 icons the site uses (6 KB, plus 1 KB for the three brand icons and the one regular icon) and `styles/icons.css`, loaded on every page. The subset is renamed "SelNexa Icons" because the font licence reserves the name "Font Awesome". Licence in `assets/fonts/LICENSE-icons.txt`. |
+| GSAP on 9 pages, ScrollTrigger and Swiper (CSS and JS) on the homepage | Nothing called GSAP or ScrollTrigger. Swiper ran only the integration logo strip. | All removed. The logo strip is a plain list; `js/site-core.js` turns it into a CSS-animated strip with a "Pause logos" button (WCAG 2.2.2) unless the visitor prefers reduced motion. |
+| `index.html:44-52` | `main.css` and `grid-typography-system.css` linked twice. | Duplicates removed. The 516-line inline `<style>` block moved to `styles/home-page.css` (see 4.5). |
+| Logo (`assets/selnexa-logo.svg`, 670 KB) | A PNG wrapped in an SVG, loaded on every page as the header logo and as the favicon. | Header uses a 128 px WebP (4 KB) with a PNG fallback; favicon is `favicon.ico` (16, 32 and 48 px); app icons are 192 and 512 px PNGs, with a maskable version. Structured data points to a 452 px PNG. The SVG stays for the press kit. |
+| Team portraits (`assets/team/*.svg`, 0.6 to 1.4 MB each, 4.3 MB in total) | PNG cut-outs wrapped in SVG, shown at 210 px or less. | WebP at 320 and 640 px (8 to 21 KB each, transparency kept) with a PNG fallback and `srcset`. |
+| Integration logos (`assets/*.svg`, up to 164 KB each) | PNGs wrapped in 2000 px SVGs, shown at 68 px. | 136 px WebP and PNG (1 to 3 KB each) in `assets/integrations/`. |
+| Screenshots on `features.html`, `solutions/hospital-management.html`, `blog/future-healthcare-systems.html` | PNG only, although AVIF and WebP copies already existed. | `<picture>` with AVIF, WebP and PNG. |
+| Demo videos (22.5 MB and 67.7 MB, 1080p at 60 fps) | Very large for a phone on a metered connection. They also showed two real hospitals as demo facilities (see Phase 1) and two realistic mobile numbers for the demo patient and her emergency contact. | Re-encoded at 720p, 30 fps, H.264 with fast start: 2.1 MB and 4.9 MB, in `assets/video/`. Hospital names and the two numbers are masked wherever they appear: frames were read with OCR ten times a second to place the masks, then the output was read again at fifteen frames a second (3,532 frames) and none of the names or numbers was found. Posters are frames from each video (WebP, 30 KB); `preload="none"`, width and height set. |
+| Every `<img>` | Most had no width or height, and images below the first screen were not lazy-loaded. | Width and height on every image; `loading="lazy"` and `decoding="async"` below the first screen. The homepage hero image loads normally rather than with high priority, because the largest element on a phone screen is the headline, which needs the font and stylesheet first. |
+| Unused and duplicate assets | `assets/Africa Map.svg` (5.9 MB, still published with the old "Pilot active" key baked in), four duplicate team portraits, a duplicate logo SVG, a duplicate pitch-deck PDF, the old WhatsApp SVG, an unused doodle SVG. | Deleted (recoverable from git history). |
+| `css/blog.css` | Empty file (one byte), so `blog/future-healthcare-systems.html` had no article styles: the author's logo showed at 764 px and the related-article images at full width. | Article styles written using the site's colours. |
+
+### 4.2 File names
+
+Every published file with a space or capital letter in its name was renamed or replaced: SDG icons (`sdg-3.svg`, `sdg-9.svg`, `sdg-17.svg`), integration logos (`assets/integrations/*.webp|png`), team portraits (`assets/team/<name>-320|640.webp`), videos (`assets/video/provider-demo.mp4`, `patient-demo.mp4`), the refined logo (`selnexa-logo-refined.svg`) and the ContraWise artwork (`contrawise-logo.svg`). `SelNexa Health Logo Full 2.JPG` is an older logo with a ® mark; it is no longer linked or published (see `CONTENT-TODO.md`). The only remaining file with spaces, the project proposal PDF, was already excluded from publishing.
+
+### 4.3 Accessibility
+
+| Location | Finding | Action |
+|---|---|---|
+| All pages | axe-core found 189 colour-contrast failures across 33 pages at two widths. Causes: a bright cyan (`#00b4d8`, 2.1 to 2.5:1) used for links, labels and outline buttons; white text on the amber buttons (2.2:1); the older red (`#e63946`) and grey (`#6c757d`) of the `home.css` pages (3.8 to 4.3:1); 70% teal section labels (4.2:1). | Text uses a deeper shade of the same cyan (`#0e7490`, 4.9:1 on cream); amber buttons have dark text (8.4:1); the red and grey are a shade darker (`#d62839`, `#5c636a`); section labels are solid teal. The bright cyan stays for icons, borders and backgrounds. No failures remain. |
+| Hero sections on `about.html`, `appointments.html`, `blog.html`, `contact.html`, `faq.html`, `features.html`, `for-investors.html` and the six `solutions/` pages | axe-core cannot measure text over a gradient, so these did not show up in its report; checked by eye. On the seven dark heroes the subtitle was charcoal and the outline button dark teal on dark blue, both close to invisible, and the subtitle sat off-centre under a left-aligned heading. On the solutions pages the subtitle was white on a near-white background. All of this was already the case on the live site. | Light subtitle and outline button on the dark heroes, subtitle aligned with the heading, dark grey subtitle on the solutions pages (`styles/site-uniform.css`, end of file). The homepage hero, which has its own styles, is unchanged. |
+| Links in running text | Once darkened, links in paragraphs were distinguishable from body text by colour alone. | Underlined. |
+| `faq.html:59-109` | The FAQ "accordion" was a set of `div`s with inline `onclick` handlers whose styles live in a stylesheet the page does not load; the answers were always visible and the arrows did nothing. | Questions are `h2` headings, answers stay visible, the dead handlers and arrows are gone. |
+| `features.html:125-165`, `for-investors.html:344-356` | Tab widgets without `aria-controls`, `tabpanel` roles or labels; the video tabs had no arrow-key support. | Complete tab markup; both widgets move with the arrow keys and keep one tab in the Tab order. |
+| `resources/guides.html:79-100` | Search box, category buttons and a sort menu with no script behind them; the search button and sort menu had no accessible name. | Search and category filter work (`js/guides.js`, results announced to screen readers); the sort menu (which offered "Most Popular" with no data) removed; names added. The Q3 2024 validation note was badged "Case Study"; it now says "Validation note". |
+| Heading order on 8 pages | `h3` or `h4` directly under the page `h1` or an `h2` (pricing, terms, three resources pages, five solutions pages). | Levels corrected; visually hidden `h2`s where a list had no heading; promoted headings keep their previous size. |
+| `index.html:583` | The top banner sat outside any landmark. | Named region. |
+| Below-the-fold content | Hidden without JavaScript (see 4.1). | Fixed. |
+| Logo strip | Moving content with no way to stop it. | Pause button; no motion with reduced motion. |
+| Images | Checked every `img`: alt text present everywhere; decorative images (avatars beside a name, related-article thumbnails beside their title) now have empty alt text. | |
+
+After these changes axe-core reports no violations on any of the 33 pages at 1366 and 390 px.
+
+### 4.4 SEO
+
+| Location | Finding | Action |
+|---|---|---|
+| 31 indexable pages | Open Graph and Twitter tags on 2 pages in full, partly on 7, missing on the rest. The shared image said "Pilot-ready platform" and used the old positioning. | The build step writes a complete set on every indexable page from the page's own title, description and canonical URL, so they cannot drift. New 1200 x 630 `og-image.png` in the same layout, with current wording. |
+| Structured data | Organization now on every page (Phase 3). The Platform page had a minimal SoftwareApplication with an invalid category; the FAQ, About and blog pages had none or broken ones (two blog posts listed the company as a Person and used relative logo URLs; one carried the same block twice); `case-studies.html` had a "Report" with list items, which is not valid; `pricing.html` had a Product with no prices, which search engines report as an error. | SoftwareApplication (features), FAQPage (built from the visible questions and answers), Person for the founder (About), BlogPosting on all four posts. The Report and Product blocks removed. |
+| `hreflang` alternates on 7 pages | Pointed to `?lang=fr`, `?lang=sn` and `?lang=nd` versions that never existed. | Removed. |
+| `sitemap.xml` | Last-modified dates from August. | Regenerated from each page's canonical URL (32 URLs, stubs excluded). |
+| Canonicals, `robots.txt`, `www` | Already consistent: every page has an absolute `https://www.` canonical, `robots.txt` allows everything and points to the sitemap, GitHub redirects the bare domain to `www`. | No change. |
+| `404.html` | Uses root-absolute links throughout, so it works at any depth. | No change beyond the shared chrome. |
+
+### 4.5 Security
+
+| Location | Finding | Action |
+|---|---|---|
+| Response headers | GitHub Pages sends HSTS (one year) and nothing else of note. It cannot send a Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy or Permissions-Policy. | A Content-Security-Policy and referrer policy are set by `<meta>` at the top of every page (`includes/csp.html`): scripts, styles, fonts, images and media from this site only, no inline script or style, forms may post to this site or `mailto:`. Checked in a browser: an injected inline script and a CDN script are both refused. |
+| Inline code | Inline scripts on `blog.html`, `resources.html` and `investors.html`, and a 516-line inline `<style>` on the homepage. | Moved to `js/blog-filter.js`, `js/resources-search.js` and `styles/home-page.css`; the redirect stub relies on its meta refresh. No inline handlers remain. |
+| Client-side secrets | Searched every published file and every tracked file for API keys, tokens, private keys and internal URLs. | None found. `js/form-endpoints.js` holds only an empty endpoint; the form relay keeps its API key in Cloudflare. |
+
+Headers GitHub Pages cannot send, for use if the site moves to a host that allows them or is put behind Cloudflare:
+
+```
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; frame-ancestors 'none'; upgrade-insecure-requests
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+```
+
+`frame-ancestors` and `X-Frame-Options` (protection against the site being framed) only work as headers, so they are not in the meta tag.
+
+### 4.6 Mobile
+
+| Location | Finding | Action |
+|---|---|---|
+| `resources/guides.html`, `resources/webinars.html` | 22 px wider than a 360 px screen: card grids with a fixed 350 px minimum column. | Columns can shrink to the screen width. |
+| Same pages | The search boxes were white-on-white (styled for a dark hero whose colours are never defined) and their icon was invisible. | Visible white field with a border and a teal icon. |
+| All pages | Tap targets under 44 x 44 px: standalone "→" links (19 px tall), selects and search inputs (19 px), filter and tab buttons (32 to 39 px), the search icon button (18 x 21 px), short footer links such as "FAQ" (31 px wide), the integration logos (42 px), the skip link (40 px). | All at least 44 px. Links inside sentences are exempt and left as they are. |
+| Phone floating buttons | On a 390 px phone the WhatsApp and module finder buttons cover the ends of the full-width "Watch the demo" button on the first screen. This was already the case before this work. | Not changed; flagged here. |
+
+After these changes no page scrolls sideways at 360, 390, 768 or 1366 px, and the tap-target check finds nothing under 44 px apart from links inside sentences.

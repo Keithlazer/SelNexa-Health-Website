@@ -106,7 +106,9 @@
         window.requestAnimationFrame(update);
       }
     }, { passive: true });
-    update();
+    // Only needed when the page loads already scrolled (back/forward). Reading the scroll height straight away
+    // would force a full layout inside this startup task, so wait for the first frame.
+    window.requestAnimationFrame(update);
   }
 
   /* ---------- Scroll reveal (skipped when the visitor prefers reduced motion) ---------- */
@@ -133,6 +135,45 @@
     }, { threshold: 0.12 });
     nodes.forEach(function (node) {
       observer.observe(node);
+    });
+  }
+
+  /* ---------- Logo strip: static list by default; scrolls (with a pause button) when motion is welcome ---------- */
+
+  function setupMarquee() {
+    if (reduceMotion) {
+      return;
+    }
+    document.querySelectorAll("[data-marquee]").forEach(function (box) {
+      var list = box.querySelector("ul");
+      if (!list || box.classList.contains("is-animated")) {
+        return;
+      }
+      var copy = list.cloneNode(true);
+      copy.setAttribute("aria-hidden", "true");
+      copy.removeAttribute("aria-label");
+      copy.querySelectorAll("a").forEach(function (link) {
+        link.setAttribute("tabindex", "-1");
+      });
+      copy.querySelectorAll("img").forEach(function (img) {
+        img.alt = "";
+      });
+      var track = document.createElement("div");
+      track.className = "strip-track";
+      list.parentNode.insertBefore(track, list);
+      track.appendChild(list);
+      track.appendChild(copy);
+
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "strip-toggle";
+      button.textContent = "Pause logos";
+      button.addEventListener("click", function () {
+        var paused = box.classList.toggle("is-paused");
+        button.textContent = paused ? "Play logos" : "Pause logos";
+      });
+      box.parentNode.insertBefore(button, box.nextSibling);
+      box.classList.add("is-animated");
     });
   }
 
@@ -227,24 +268,39 @@
   }
 
   function setupVideoTabs() {
-    document.querySelectorAll(".video-tab-controls .tab-btn[data-tab]").forEach(function (button) {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".video-tab-controls .tab-btn[data-tab]"));
+    function select(button) {
+      var target = button.getAttribute("data-tab");
+      var group = button.closest(".video-tabs") || document;
+      group.querySelectorAll(".tab-btn[data-tab]").forEach(function (tab) {
+        var selected = tab === button;
+        tab.classList.toggle("active", selected);
+        tab.setAttribute("aria-selected", selected ? "true" : "false");
+        tab.setAttribute("tabindex", selected ? "0" : "-1");
+      });
+      group.querySelectorAll(".video-tab-content").forEach(function (panel) {
+        var shown = panel.id === "tab-" + target;
+        panel.classList.toggle("hidden", !shown);
+        panel.hidden = !shown;
+        var video = panel.querySelector("video");
+        if (video && !shown) {
+          video.pause();
+        }
+      });
+    }
+    tabs.forEach(function (button, index) {
       button.addEventListener("click", function () {
-        var target = button.getAttribute("data-tab");
-        var group = button.closest(".video-tabs") || document;
-        group.querySelectorAll(".tab-btn[data-tab]").forEach(function (tab) {
-          var selected = tab === button;
-          tab.classList.toggle("active", selected);
-          tab.setAttribute("aria-selected", selected ? "true" : "false");
-        });
-        group.querySelectorAll(".video-tab-content").forEach(function (panel) {
-          var shown = panel.id === "tab-" + target;
-          panel.classList.toggle("hidden", !shown);
-          panel.hidden = !shown;
-          var video = panel.querySelector("video");
-          if (video && !shown) {
-            video.pause();
-          }
-        });
+        select(button);
+      });
+      button.addEventListener("keydown", function (event) {
+        var next = null;
+        if (event.key === "ArrowRight") next = tabs[(index + 1) % tabs.length];
+        if (event.key === "ArrowLeft") next = tabs[(index - 1 + tabs.length) % tabs.length];
+        if (next) {
+          event.preventDefault();
+          select(next);
+          next.focus();
+        }
       });
     });
   }
@@ -743,17 +799,24 @@
     });
   }
 
+  // Things the visitor can use straight away run first; extras wait until the browser is idle so they do not
+  // lengthen the first busy period after the page appears.
+  var whenIdle = window.requestIdleCallback
+    ? function (fn) { window.requestIdleCallback(fn, { timeout: 2500 }); }
+    : function (fn) { window.setTimeout(fn, 200); };
+
   onReady(function () {
     setupHeader();
-    setupReveal();
-    setupCounters();
-    setupModuleTabs();
-    setupVideoTabs();
-    setupModuleFinder();
-    setupWhatsApp();
     setupDemoModal();
     setupForms();
+    setupModuleTabs();
+    setupVideoTabs();
+    setupReveal();
+    setupCounters();
     setupCtaTracking();
+    whenIdle(setupMarquee);
+    whenIdle(setupModuleFinder);
+    whenIdle(setupWhatsApp);
     registerServiceWorker();
   });
 })();

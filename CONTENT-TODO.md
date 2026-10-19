@@ -8,7 +8,8 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Next pilot wording: the brief said "a district hospital in Zimbabwe"; the site says "a public hospital in Zimbabwe". Confirm or correct.
 - [ ] Dr Farisai Mawere: supply registration body, specialty and institutional affiliation for her About page bio, and confirm her title (the pitch deck says "Health Liaison", the site says "Chief Medical Officer").
 - [ ] Advisors: names, roles and written consent for each, to restore the Advisory Network section on the About page.
-- [ ] Team photographs: original photos with each person's consent to publish (current portraits are illustrations wrapped in SVG files of 0.6 to 1.4 MB each).
+- [ ] Team photographs: the About page now serves the six cut-out portraits as small WebP files made from the old 0.6 to 1.4 MB SVG wrappers. Confirm each person is happy for their photo to be published, and send the original photos if you want sharper versions.
+- [ ] Old logo file: `SelNexa Health Logo Full 2.JPG` is a different, older logo (red heart, serif type) with a ® mark. It is no longer offered in the press kit or published. Confirm whether the trade mark is registered before using ® anywhere, and send a full logo (mark plus name) in the current design for the press kit.
 - [ ] Pitch deck page 11: confirm permission to show the Zimbabwe government emblem under "past sponsors and collaborators".
 - [ ] Git history: decide whether to rewrite history to remove the two facility names from past commits (needs a force push; the repository is public).
 
@@ -47,7 +48,8 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Contact page street address: confirm it should be public.
 - [ ] About page: LinkedIn blocks automated link checks, so open the four team members' LinkedIn links by hand.
 - [ ] Demo booking calendar: `cal.com/selnexahealth` does not exist. Set one up if you want a calendar on the booking page; the form works without it.
-- [ ] Demo videos: the patient demo shows "Harare Central Hospital" and the provider demo "Mpilo Central Hospital" as demo facilities. Rename the demo facilities in the Platform's seed data before recording again.
+- [ ] Demo videos: the published copies now mask the two real hospitals used as demo facilities and two mobile numbers shown for the demo patient and her emergency contact. Before recording new demos, change the Platform's seed data to fictional facility names and `+263 77 000 0000`-style numbers. The unmasked originals are still in `SelNexa Website/` and in git history, both visible on GitHub because the repository is public.
+- [ ] Before adding any outside service (analytics, an embedded calendar or video, a chat widget), add its host to `includes/csp.html` and rebuild, or the browser will block it.
 - [ ] Privacy policy: have it reviewed against the Cyber and Data Protection Act, and name the form processor once forms are connected.
 - [ ] Terms of service: add governing law and have them reviewed.
 

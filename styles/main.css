@@ -9,6 +9,7 @@
     /* Primary Colors */
     --color-primary-dark: #0A2463;
     --color-primary-teal: #00B4D8;
+    --color-primary-teal-text: #0e7490; /* same hue, dark enough for text on light backgrounds */
     --color-accent-electric: #90E0EF;
     
     /* Secondary Colors */
@@ -163,7 +164,7 @@ p {
 }
 
 a {
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     text-decoration: none;
     transition: color var(--transition-base);
 }
@@ -707,8 +708,8 @@ a:hover {
 
 .btn-secondary {
     background: transparent;
-    color: var(--color-primary-teal);
-    border: 2px solid var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
+    border: 2px solid var(--color-primary-teal-text);
 }
 
 .btn-secondary:hover {
@@ -731,7 +732,7 @@ a:hover {
 .btn-link {
     background: none;
     border: none;
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     padding: 0;
     font-weight: 600;
     cursor: pointer;
@@ -1790,13 +1791,12 @@ section {
    ANIMATIONS
    ============================================ */
 
+/* Slide only: starting at opacity 0 kept hero text invisible at first paint (it delayed the largest contentful paint). */
 @keyframes fadeInUp {
     from {
-        opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
-        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -2594,7 +2594,7 @@ section {
 }
 
 .founder-card .role {
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     font-weight: 600;
     margin-bottom: var(--spacing-md);
 }
@@ -2704,7 +2704,7 @@ section {
 }
 
 .read-more {
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -2769,7 +2769,7 @@ section {
 
 .team-role {
     font-weight: 600;
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     margin-bottom: var(--spacing-md);
     font-size: var(--fs-small);
     text-transform: uppercase;
@@ -2787,7 +2787,7 @@ section {
     display: inline-block;
     padding: 0.5rem 1rem;
     background: rgba(0, 180, 216, 0.1);
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     border-radius: var(--radius-sm);
     font-size: var(--fs-small);
     font-weight: 600;
@@ -3084,7 +3084,7 @@ html[data-theme="dark"] .metric-card p {
 }
 
 .page-overline {
-    color: var(--color-primary-teal);
+    color: var(--color-primary-teal-text);
     font-weight: 700;
     letter-spacing: 0.12em;
     font-size: 0.8rem;
