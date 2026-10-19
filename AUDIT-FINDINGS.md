@@ -8,7 +8,7 @@ This file does not name the facility where the Q3 2024 proof of concept ran, the
 
 - **The GitHub repository is public** (`Keithlazer/SelNexa-Health-Website`). This file and `CONTENT-TODO.md` will be readable by anyone on GitHub once the branch is pushed. They are kept off the website itself by `_config.yml`, but that does not make them private.
 - **Git history still contains the removed names.** Every commit before this branch includes the Q3 2024 validation facility and the next pilot facility in page source. Removing them from history needs a history rewrite and a force push, which the brief rules out. Your call; see `CONTENT-TODO.md`.
-- **Nothing has been pushed or deployed.** All work is committed locally on this branch.
+- **Merged and live.** Merged into `main` through pull request #3 on 19 October 2026 and published by GitHub Pages the same day.
 
 ## Phase 1. Compliance and credibility
 
