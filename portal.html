@@ -1,58 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient Portal – SelNexa Health</title>
-  <meta name="description" content="SelNexa Health patient portal placeholder. Public access is not available yet.">
-  <meta name="robots" content="noindex,nofollow">
-  <link rel="stylesheet" href="styles/home.css">
-  <link rel="stylesheet" href="/styles/site-uniform.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page moved | SelNexa Health</title>
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://www.selnexahealth.com/contact.html">
+    <meta http-equiv="refresh" content="0; url=/contact.html">
 </head>
 <body>
-  <header id="header"><div class="container"><nav class="navbar"><a href="/" class="logo"><picture><source srcset="styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml"><source srcset="styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml"><img src="styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async"></picture></a><ul class="nav-links" id="primary-nav"><li><a href="/">Home</a></li><li><a href="/features.html">Platform</a></li><li><a href="/appointments.html">Appointments</a></li><li><a href="/contact.html">Contact</a></li></ul><button class="mobile-menu-btn" aria-controls="primary-nav" aria-expanded="false" aria-label="Menu"><i class="fas fa-bars" aria-hidden="true"></i></button></nav></div></header>
-  <main class="section"><div class="container">
-    <div class="section-title"><h1>Patient Portal</h1><p>Portal access is not publicly available yet. Contact SelNexa Health for pilot access and secure onboarding.</p></div>
-  <div class="tracker-container">
-      <form id="portalLogin">
-        <div class="form-group"><label for="portalEmail">Email</label><input type="email" id="portalEmail" required></div>
-        <div class="form-group"><label for="portalCode">One-time Code</label><input type="text" id="portalCode" placeholder="Enter OTP or leave blank to request"/></div>
-        <div class="form-group form-group-center">
-          <button type="button" class="btn" id="requestOtpBtn">Send Code</button>
-          <button type="submit" class="btn btn-outline ml-2">Sign In</button>
-        </div>
-      </form>
-      <div id="portalStatus" class="portal-status"></div>
-    </div>
-
-    <section id="portalDashboard" class="portal-dashboard" hidden>
-      <div class="section-title"><h2>Your Dashboard</h2><p>Upcoming appointments and actions.</p></div>
-      <div class="tracker-container">
-        <h3>Upcoming Appointments</h3>
-        <ul id="apptList" class="tracker-items"></ul>
-      </div>
-    </section>
-  </div></main>
-  <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-logo"><picture><source srcset="styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml"><source srcset="styles/scripts/assets/selnexa-logo.svg" type="image/svg+xml"><img src="styles/scripts/assets/selnexa-logo.svg" alt="SelNexa Health logo" class="logo-img" width="220" height="60" decoding="async"></picture></div><div class="footer-social"><a href="https://www.linkedin.com/company/selnexahealth" title="LinkedIn" aria-label="Connect with SelNexa Health on LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a><a href="https://twitter.com/selnexahealth" title="Twitter" aria-label="Follow SelNexa Health on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a><a href="mailto:contact@selnexahealth.com" title="Email" aria-label="Email SelNexa Health"><i class="fas fa-envelope" aria-hidden="true"></i><span class="sr-only">Email</span></a></div></div><div class="footer-bottom"><p>&copy; 2026 SelNexa Health. All rights reserved.</p><p><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p></div></div></footer>
-  <script>
-    const statusEl = document.getElementById('portalStatus');
-    const apptList = document.getElementById('apptList');
-    const dashboard = document.getElementById('portalDashboard');
-    const loginForm = document.getElementById('portalLogin');
-    const requestBtn = document.getElementById('requestOtpBtn');
-    requestBtn.addEventListener('click', () => {
-      statusEl.textContent = 'Portal access is not enabled on the public website. Please contact contact@selnexahealth.com for secure pilot onboarding.';
-      statusEl.style.color = 'orange';
-    });
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      statusEl.textContent = 'Public portal sign-in is disabled. Use the secure pilot onboarding channel provided by SelNexa Health.';
-      statusEl.style.color = 'orange';
-      dashboard.style.display = 'none';
-      apptList.innerHTML = '';
-    });
-  </script>
-  <script defer src="js/home.js"></script>
+    <p>There is no patient portal on the public website. Go to <a href="/contact.html">the SelNexa Health contact page</a>.</p>
 </body>
 </html>
-

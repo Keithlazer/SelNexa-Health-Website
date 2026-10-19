@@ -1,0 +1,47 @@
+<form class="sx-form" id="contact-form" data-sx-form="contact" action="mailto:contact@selnexahealth.com?subject=Message%20from%20the%20website" method="post" enctype="text/plain">
+  <p class="sx-form__note">Want to see the Platform? <a href="/appointments.html" data-demo-trigger>Book a demo</a> instead. Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+  <div class="sx-form__grid">
+    <div class="sx-field">
+      <label for="cf-name">Full name <span class="sx-req" aria-hidden="true">*</span></label>
+      <input id="cf-name" name="name" type="text" autocomplete="name" required>
+    </div>
+    <div class="sx-field">
+      <label for="cf-email">Email address <span class="sx-req" aria-hidden="true">*</span></label>
+      <input id="cf-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="sx-field">
+      <label for="cf-phone">Phone or WhatsApp</label>
+      <input id="cf-phone" name="phone" type="tel" autocomplete="tel">
+    </div>
+    <div class="sx-field">
+      <label for="cf-org">Organisation</label>
+      <input id="cf-org" name="organisation" type="text" autocomplete="organization">
+    </div>
+    <div class="sx-field">
+      <label for="cf-topic">What is it about? <span class="sx-req" aria-hidden="true">*</span></label>
+      <select id="cf-topic" name="topic" required>
+        <option value="">Select one</option>
+        <option value="platform">A question about the Platform</option>
+        <option value="partnership">A partnership or research collaboration</option>
+        <option value="investment">Investment</option>
+        <option value="careers">Careers or internships</option>
+        <option value="media">Media or press</option>
+        <option value="other">Something else</option>
+      </select>
+    </div>
+    <div class="sx-field sx-field--wide">
+      <label for="cf-message">Message <span class="sx-req" aria-hidden="true">*</span></label>
+      <textarea id="cf-message" name="message" rows="6" required></textarea>
+    </div>
+  </div>
+  <div class="sx-field sx-field--check">
+    <input id="cf-consent" name="consent" type="checkbox" value="yes" required>
+    <label for="cf-consent">I agree to SelNexa Health using these details to reply to me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="sx-req" aria-hidden="true">*</span></label>
+  </div>
+  <div class="sx-hp" aria-hidden="true">
+    <label for="cf-website">Leave this field empty</label>
+    <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <button type="submit" class="btn btn-primary sx-form__submit">Send message</button>
+  <p class="sx-form__status" role="status" aria-live="polite"></p>
+</form>

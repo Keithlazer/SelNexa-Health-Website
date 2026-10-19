@@ -1,11 +1,15 @@
-const CACHE_VERSION = "2026-08-09-v1";
+const CACHE_VERSION = "2026-10-19-v4";
 const STATIC_CACHE = `selnexa-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `selnexa-dynamic-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";
 
+// Every entry must exist: one missing file makes the whole install fail.
+// Stylesheet bundles and the shared JS carry a content hash (see tools/build-site.mjs) and are cached on first use.
+// home.css is only here for offline.html, the one page that still links a stylesheet directly.
 const CORE_ASSETS = [
   "/",
   "/index.html",
+  "/features.html",
   "/case-studies.html",
   "/telemedicine.html",
   "/pricing.html",
@@ -14,17 +18,15 @@ const CORE_ASSETS = [
   "/careers.html",
   "/security-and-compliance.html",
   "/appointments.html",
+  "/contact.html",
   "/offline.html",
-  "/styles/main.css",
   "/styles/home.css",
-  "/styles/grid-typography-system.css",
-  "/styles/site-uniform.css",
-  "/js/main.js",
-  "/js/home.js",
-  "/js/site-core.js",
-  "/js/i18n.js",
   "/manifest.json",
-  "/assets/selnexa-logo.svg"
+  "/favicon.ico",
+  "/assets/selnexa-logo-128.webp",
+  "/assets/selnexa-logo-128.png",
+  "/assets/fonts/montserrat-latin-var.woff2",
+  "/assets/fonts/icons-solid.woff2"
 ];
 
 self.addEventListener("install", (event) => {

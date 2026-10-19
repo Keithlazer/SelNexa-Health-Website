@@ -1,7 +1,4 @@
-+++++*******************+-11/ Webinars Page Styles */
-.webinars-page {
-    background-color: var(--white);
-}
+/* Webinars page styles. (A corrupted first line made browsers drop the old .webinars-page rule; it is removed so the page looks the same.) */
 
 .webinars-hero {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -58,27 +55,27 @@
 -
 .webinar-search input {
     width: 100%;
-    padding: 1rem 3rem 1rem 1.5rem;
-    border: none;
+    padding: 1rem 3.5rem 1rem 1.5rem;
+    border: 1px solid #8a94a6;
     border-radius: 2rem;
     font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--white);
+    background-color: #ffffff;
+    color: #1f2937;
     backdrop-filter: blur(5px);
 }
 
 .webinar-search input::placeholder {
-    color: rgba(255, 255, 255, 0.7);
+    color: #4b5563;
 }
 
 .webinar-search .search-btn {
     position: absolute;
-    right: 1rem;
+    right: 0.4rem;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: var(--white);
+    color: #004c4c;
     cursor: pointer;
     font-size: 1.1rem;
 }
@@ -129,7 +126,7 @@
 
 .webinars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
 }
 
@@ -317,5 +314,4 @@
 .webinar-card:nth-child(1) { animation-delay: 0.1s; }
 .webinar-card:nth-child(2) { animation-delay: 0.2s; }
 .webinar-card:nth-child(3) { animation-delay: 0.3s; }
-.webinar-card:nth-child(4) { animation-delay: 0.4s; }
-} 
+.webinar-card:nth-child(4) { animation-delay: 0.4s; } 

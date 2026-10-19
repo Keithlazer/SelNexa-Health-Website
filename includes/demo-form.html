@@ -1,0 +1,75 @@
+<form class="sx-form" id="demo-form" data-sx-form="demo" action="mailto:contact@selnexahealth.com?subject=Demo%20request" method="post" enctype="text/plain">
+  <p class="sx-form__note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+  <div class="sx-form__grid">
+    <div class="sx-field">
+      <label for="df-name">Full name <span class="sx-req" aria-hidden="true">*</span></label>
+      <input id="df-name" name="name" type="text" autocomplete="name" required>
+    </div>
+    <div class="sx-field">
+      <label for="df-email">Email address <span class="sx-req" aria-hidden="true">*</span></label>
+      <input id="df-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="sx-field">
+      <label for="df-phone">Phone or WhatsApp</label>
+      <input id="df-phone" name="phone" type="tel" autocomplete="tel">
+    </div>
+    <div class="sx-field">
+      <label for="df-org">Institution or organisation <span class="sx-req" aria-hidden="true">*</span></label>
+      <input id="df-org" name="organisation" type="text" autocomplete="organization" required>
+    </div>
+    <div class="sx-field">
+      <label for="df-role">Your role</label>
+      <input id="df-role" name="role" type="text" autocomplete="organization-title">
+    </div>
+    <div class="sx-field">
+      <label for="df-type">Type of institution <span class="sx-req" aria-hidden="true">*</span></label>
+      <select id="df-type" name="institution_type" required>
+        <option value="">Select one</option>
+        <option>Public hospital (district, provincial or central)</option>
+        <option>Mission or private hospital</option>
+        <option>Health centre</option>
+        <option>Network or group of health institutions</option>
+        <option>Ministry or government agency</option>
+        <option>NGO, funder or implementing partner</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="sx-field">
+      <label for="df-country">Country <span class="sx-req" aria-hidden="true">*</span></label>
+      <select id="df-country" name="country" required>
+        <option value="">Select one</option>
+        <option>Zimbabwe</option>
+        <optgroup label="Other African countries">
+          <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>C&ocirc;te d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option>
+        </optgroup>
+        <option>Outside Africa</option>
+      </select>
+    </div>
+    <div class="sx-field">
+      <label for="df-interest">What would you like? <span class="sx-req" aria-hidden="true">*</span></label>
+      <select id="df-interest" name="interest" required>
+        <option value="">Select one</option>
+        <option value="demo">A demo of the Platform</option>
+        <option value="pilot">To discuss a pilot at our institution</option>
+        <option value="quote">A quote for our institution</option>
+        <option value="telemedicine">Access to the telemedicine beta</option>
+        <option value="partnership">A partnership or research conversation</option>
+        <option value="other">Something else</option>
+      </select>
+    </div>
+    <div class="sx-field sx-field--wide">
+      <label for="df-message">Anything we should know?</label>
+      <textarea id="df-message" name="message" rows="4"></textarea>
+    </div>
+  </div>
+  <div class="sx-field sx-field--check">
+    <input id="df-consent" name="consent" type="checkbox" value="yes" required>
+    <label for="df-consent">I agree to SelNexa Health using these details to reply to me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="sx-req" aria-hidden="true">*</span></label>
+  </div>
+  <div class="sx-hp" aria-hidden="true">
+    <label for="df-website">Leave this field empty</label>
+    <input id="df-website" name="website" type="text" tabindex="-1" autocomplete="off">
+  </div>
+  <button type="submit" class="btn btn-primary sx-form__submit">Send demo request</button>
+  <p class="sx-form__status" role="status" aria-live="polite"></p>
+</form>

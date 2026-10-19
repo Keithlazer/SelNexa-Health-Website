@@ -1,0 +1,18 @@
+# GitHub Pages builds this repository with Jekyll and publishes everything it is not told to skip.
+# Only the website itself should be served at www.selnexahealth.com. Internal documents and build tooling
+# stay in the repository but are not published.
+# Note: the repository itself is public on GitHub, so excluding a file here does not make it private.
+exclude:
+  # Internal documents
+  - AUDIT-FINDINGS.md
+  - BEFORE-AFTER.md
+  - CONTENT-TODO.md
+  - README.md
+  - assets/README.md
+  - docs
+  # Partials and tooling (not part of the static site)
+  - includes
+  - node_modules
+  - tools
+  - package.json
+  - package-lock.json

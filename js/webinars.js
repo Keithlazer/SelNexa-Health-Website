@@ -1,8 +1,5 @@
-aq
 document.addEventListener('DOMContentLoaded', function() {
-***************** 
-+*
-    const   filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.filter-btn');
     const webinarGrids = document.querySelectorAll('.webinars-grid');
     const categorySelect = document.getElementById('categorySelect');
     const searchInput = document.getElementById('webinarSearch');

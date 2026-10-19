@@ -9,7 +9,7 @@
     --accent-light: #90e0ef;
     --light: #f8f9fa;
     --dark: #212529;
-    --gray: #6c757d;
+    --gray: #5c636a;
     --light-gray: #e9ecef;
     --success: #28a745;
     --border-radius: 12px;
@@ -160,23 +160,6 @@ img {
     color: var(--gray);
     max-width: 700px;
     margin: 0 auto;
-}
-
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.97);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 18px 0;
-    transition: var(--transition);
-}
-
-header.scrolled {
-    padding: 12px 0;
 }
 
 .navbar {
@@ -1320,11 +1303,6 @@ header.scrolled {
 }
 
 @media (max-width: 430px) {
-    header .container {
-        padding-left: max(0.7rem, env(safe-area-inset-left));
-        padding-right: max(0.7rem, env(safe-area-inset-right));
-    }
-
     .navbar {
         gap: 0.3rem;
     }
@@ -1604,91 +1582,3 @@ html[data-theme="dark"] .btn-outline:hover {
     min-width: 110px;
 }
 
-.chatbot-toggle {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 2150;
-}
-
-.chatbot-panel {
-    z-index: 2151;
-}
-
-@media (max-width: 767px) {
-    body {
-        padding-bottom: calc(5.35rem + env(safe-area-inset-bottom));
-    }
-
-    .chatbot-toggle {
-        right: 0.75rem;
-        bottom: calc(6rem + env(safe-area-inset-bottom));
-        width: 50px;
-        height: 50px;
-    }
-
-    .bottom-mobile-nav {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        background: rgba(20, 25, 36, 0.96);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        z-index: 2100;
-        -webkit-backdrop-filter: blur(14px);
-        backdrop-filter: blur(14px);
-        padding: 0.3rem 0 calc(0.45rem + env(safe-area-inset-bottom));
-    }
-
-    .bottom-mobile-nav a {
-        text-decoration: none;
-        color: #eef4ff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.16rem;
-        font-size: 0.68rem;
-        min-height: 3.55rem;
-        padding: 0.35rem 0.05rem;
-    }
-
-    .bottom-mobile-nav a i {
-        font-size: 0.94rem;
-    }
-
-    .bottom-mobile-nav a span {
-        display: block;
-        line-height: 1.08;
-        font-size: 0.66rem;
-        max-width: none;
-        text-align: center;
-        white-space: nowrap;
-        overflow-wrap: normal;
-    }
-
-    .bottom-mobile-nav a.active,
-    .bottom-mobile-nav a[aria-current="page"] {
-        color: #9eeeff;
-    }
-
-    .bottom-mobile-nav a.active i,
-    .bottom-mobile-nav a[aria-current="page"] i {
-        transform: translateY(-1px);
-    }
-
-    .chatbot-panel {
-        bottom: calc(9.4rem + env(safe-area-inset-bottom));
-        right: 0.6rem;
-        left: 0.6rem;
-        width: auto;
-        max-height: min(62vh, 420px);
-        overflow: auto;
-    }
-
-    .selnexa-toast {
-        bottom: calc(5.9rem + env(safe-area-inset-bottom));
-    }
-}

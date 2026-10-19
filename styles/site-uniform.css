@@ -116,7 +116,7 @@ header .navbar.scrolled {
 .btn.btn-primary {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #ffffff !important;
+  color: #0a1414 !important;
 }
 
 .nav-links a.btn:hover,
@@ -212,7 +212,7 @@ footer a:hover,
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(0, 76, 76, 0.7);
+  color: #3d6c6a;
   padding: 4px 10px;
   border: 1px solid rgba(232, 160, 32, 0.35);
   border-radius: 6px;
@@ -476,25 +476,30 @@ footer a:hover,
   padding-top: 20px;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
+/* Scroll reveal. Sections start hidden only when JavaScript is running (js/site-core.js reveals them) and the
+   visitor has not asked for reduced motion. Without JavaScript, or in browsers without the scripting media
+   feature, everything is visible from the start. Never put these classes on content in the first screen. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
 
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
 
-.reveal.visible,
-.reveal.revealed,
-.reveal.animate-in,
-.animate-on-scroll.in-view,
-.animate-on-scroll.animate-in {
-  opacity: 1;
-  transform: translateY(0);
+  .reveal.visible,
+  .reveal.revealed,
+  .reveal.animate-in,
+  .animate-on-scroll.in-view,
+  .animate-on-scroll.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .module-card,
@@ -583,7 +588,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .cta-nav {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #ffffff !important;
+  color: #0a1414 !important;
 }
 
 .btn-secondary,
@@ -601,15 +606,16 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   color: #ffffff !important;
 }
 
+/* Hero entrance: a short slide only. The text is never transparent, so it paints (and counts as the
+   largest contentful paint) straight away. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { transform: translateY(14px); }
+    to { transform: translateY(0); }
   }
 
   .hero-animate {
-    opacity: 0;
-    animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   .hero-animate:nth-child(1) { animation-delay: 0.05s; }
@@ -737,44 +743,64 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   white-space: normal;
 }
 
+/* Integration logos: a static row without JavaScript or with reduced motion; js/site-core.js turns it into a
+   scrolling strip (with a pause button) by duplicating the list inside .strip-track. */
 .strip-marquee {
   display: block;
   width: 100%;
   overflow: hidden;
 }
 
-.strip-marquee:hover .strip-logos {
-  animation-play-state: paused;
-}
-
 .strip-logos {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.9rem;
-  width: max-content;
-  will-change: transform;
-  animation: marquee 26s linear infinite;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.integration-swiper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.integration-swiper .swiper-wrapper {
-  display: flex;
-  align-items: center;
-  transition-timing-function: linear;
-  will-change: transform;
-}
-
-.integration-swiper .swiper-slide {
+.strip-logos li {
   flex-shrink: 0;
-  width: auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: clamp(8px, 1.3vw, 14px) clamp(12px, 2.2vw, 20px);
+}
+
+.strip-marquee.is-animated .strip-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.strip-marquee.is-animated .strip-logos {
+  flex-wrap: nowrap;
+}
+
+.strip-marquee.is-animated:hover .strip-track,
+.strip-marquee.is-animated:focus-within .strip-track,
+.strip-marquee.is-paused .strip-track {
+  animation-play-state: paused;
+}
+
+.strip-toggle {
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(0, 76, 76, 0.35);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #004c4c;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .strip-marquee.is-animated .strip-track {
+    animation: none;
+  }
 }
 
 .logo-slide__link {
@@ -844,15 +870,20 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
     border-radius: 16px;
     padding: clamp(1.5rem, 4vw, 3rem);
     box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.06);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.animate-on-scroll.visible .africa-map-card,
-.animate-on-scroll.in-view .africa-map-card {
-    opacity: 1;
-    transform: translateY(0);
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .africa-map-card {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .animate-on-scroll.visible .africa-map-card,
+    .animate-on-scroll.in-view .africa-map-card {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .map-overlay-container {
@@ -871,8 +902,9 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 /* Legend Styling Updates */
-.map-dot-active { background-color: #0d9488 !important; }
-.map-dot-talks { background-color: #1e3a8a !important; }
+/* Legend dots match the fills in /assets/africa-map.webp */
+.map-dot-active { background-color: #188e2e !important; }
+.map-dot-talks { background-color: #2b7ab7 !important; }
 
 .cta-split {
   display: grid;
@@ -954,14 +986,53 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border: 0;
   border-radius: 999px;
   padding: 0.85rem 1.15rem;
+  min-height: 44px;
   background: var(--uniform-accent);
-  color: #ffffff;
+  color: #0a1414;
   font-weight: 700;
   cursor: pointer;
 }
 
 .capture-note {
   font-size: 0.82rem;
+}
+
+/* Sign-up forms use the shared form handler (data-sx-form="updates"); text stays light on the dark band. */
+.email-capture h2 {
+  color: #ffffff;
+}
+
+.capture-form {
+  align-items: flex-end;
+}
+
+.capture-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.capture-field label {
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.capture-form .sx-form__status {
+  flex-basis: 100%;
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+}
+
+.email-capture .sx-error,
+.email-capture .sx-form__status.is-error {
+  color: #fecdca;
+}
+
+.capture-note a {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .team-section .team-grid {
@@ -1330,6 +1401,104 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   color: var(--uniform-primary);
 }
 
+/* main.css gives .quick-metrics white text for a dark gradient, then later swaps in a light
+   gradient. Keep the text dark so the section stays readable on every page. */
+.quick-metrics .section-header h2 {
+  color: #0f172a;
+}
+
+.quick-metrics .section-header p {
+  color: #475569;
+}
+
+/*
+ * Results convention:
+ * - Measured results: stat cards, only once a pilot has reported.
+ * - Engineering and design targets: rows in a .spec-table, each labelled with .spec-tag ("Target").
+ * - Projections: charts or tables on the investor page only.
+ */
+.spec-table-wrap {
+  overflow-x: auto;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.6rem;
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+}
+
+.spec-table caption {
+  text-align: left;
+  font-weight: 800;
+  color: var(--uniform-primary);
+  padding-bottom: 0.25rem;
+}
+
+.spec-table th,
+.spec-table td {
+  background: rgba(0, 76, 76, 0.05);
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--uniform-text);
+  line-height: 1.5;
+}
+
+.spec-table th {
+  width: 34%;
+  font-weight: 800;
+  color: var(--uniform-primary);
+  border-radius: 8px 0 0 8px;
+}
+
+.spec-table td:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
+.spec-tag {
+  display: inline-block;
+  margin: 0 0.5rem 0.2rem 0;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7a4f00;
+  vertical-align: 0.1em;
+}
+
+.spec-tag--status {
+  color: var(--uniform-primary);
+}
+
+.spec-tag--projection {
+  color: #5b3a8c;
+}
+
+.spec-note {
+  font-size: 0.9rem;
+  color: var(--uniform-muted);
+}
+
+html[data-theme="dark"] .spec-table th,
+html[data-theme="dark"] .spec-table td {
+  background: #13233a;
+  color: #e8f1ff;
+}
+
+html[data-theme="dark"] .spec-tag {
+  color: #f5c26b;
+}
+
+html[data-theme="dark"] .spec-tag--status,
+html[data-theme="dark"] .spec-tag--projection {
+  color: #9fe3e3;
+}
+
 .roi-calculator {
   background: linear-gradient(135deg, #ffffff, #f0f8f6);
   border: 1px solid var(--uniform-border);
@@ -1470,66 +1639,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   cursor: pointer;
   font-weight: 800;
   color: var(--uniform-primary);
-}
-
-#reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: var(--uniform-accent);
-  width: 0%;
-  z-index: 9999;
-  transition: width 0.1s linear;
-}
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  right: auto;
-  width: 52px;
-  height: 52px;
-  background: #25d366;
-  color: #ffffff;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
-  z-index: 2102;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.whatsapp-float img,
-.whatsapp-float svg {
-  width: 31px;
-  height: 31px;
-  display: block;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
-  color: #ffffff !important;
-}
-
-.whatsapp-float:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.35);
-  outline-offset: 4px;
-}
-
-@media (max-width: 767px) {
-  .whatsapp-float {
-    left: 0.75rem;
-    bottom: calc(6rem + env(safe-area-inset-bottom));
-    width: 50px;
-    height: 50px;
-  }
 }
 
 #cal-booking-placeholder {
@@ -1857,6 +1966,19 @@ html[data-theme="dark"] .timeline-item {
   font-size: 0.76rem;
 }
 
+/* Plain statements, not badges: none of these is a certification. */
+.footer-compliance {
+  margin-top: 0.85rem;
+}
+
+.footer-compliance p {
+  margin: 0 0 0.3rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: inherit;
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1907,4 +2029,111 @@ html[data-theme="dark"] .timeline-item {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* ---------- Accessibility (Phase 4) ---------- */
+
+/* Links inside running text are underlined, so they are not told apart by colour alone (WCAG 1.4.1). */
+main :where(p, li, td, dd, blockquote) a:not([class*="btn"]) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Headings promoted for a correct outline keep the size they had before. */
+.minor-heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.legal-heading {
+  margin: 0 0 1rem;
+  color: #1d3557;
+  font-size: 1.17rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* Tap targets: at least 44 x 44 px for controls and for links that stand on their own (links inside a
+   sentence are exempt). */
+.btn-link,
+.read-more,
+.standalone-link,
+.resource-card a,
+.team-badge a,
+.top-banner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+main select,
+main input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+main textarea,
+.filter-btn,
+.tab-btn,
+.module-tab {
+  min-height: 44px;
+}
+
+.search-btn {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.logo-slide__link {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+main summary {
+  padding-block: 0.7rem;
+  cursor: pointer;
+}
+
+.skip-link {
+  min-height: 44px;
+  padding: 12px 16px;
+}
+
+/* FAQ: questions are headings, answers always shown. */
+.faq-item {
+  margin-bottom: 1.75rem;
+}
+
+.faq-question {
+  margin: 0 0 0.4rem;
+  color: #0a2463;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Hero text contrast.
+   Heroes built on main.css sit on a dark mesh gradient (.hero-background), but grid-typography-system.css
+   colours their subtitle charcoal and the outline button dark teal, so both were close to invisible. The subtitle was also centred under a left-aligned heading.
+   :where() keeps these at the specificity of the rules they replace, so home-page.css still styles the homepage hero. */
+:where(.hero-background ~ .hero-content) .hero-overline {
+  color: var(--color-primary-teal);
+}
+
+:where(.hero-background ~ .hero-content) .hero-subtitle,
+:where(.hero-background ~ .hero-content) > p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-background ~ .hero-content > p {
+  margin-left: 0;
+}
+
+:where(.hero-background ~ .hero-content) .btn.btn-secondary {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
+.hero > .container p {
+  color: var(--uniform-muted);
 }

@@ -3,56 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Administration Module | SelNexa Health Platform</title>
-    <meta name="description" content="Automate patient administration with the SelNexa Health Platform's registration, appointment scheduling, and record management workflows.">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
+    <title>Administration Module | SelNexa Health Platform</title>
+    <meta name="description" content="Patient registration, scheduling, billing and reporting that keep working offline: the Administration module of the SelNexa Health Platform, with AI assistance.">
     <meta name="keywords" content="healthcare administration, patient registration, appointment scheduling, EHR, workflow automation">
-    <meta property="og:title" content="AI-Powered Administration | SelNexa Health">
-    <meta property="og:description" content="Automate patient registration and scheduling with offline-first workflows designed for constrained healthcare environments.">
-    <meta property="og:url" content="https://www.selnexahealth.com/solutions/administration.html">
     <link rel="canonical" href="https://www.selnexahealth.com/solutions/administration.html">
-    <link rel="apple-touch-icon" href="/assets/selnexa-logo.svg">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/home.css">
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Administration Module | SelNexa Health Platform">
+    <meta property="og:description" content="Patient registration, scheduling, billing and reporting that keep working offline: the Administration module of the SelNexa Health Platform, with AI assistance.">
+    <meta property="og:url" content="https://www.selnexahealth.com/solutions/administration.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Administration Module | SelNexa Health Platform">
+    <meta name="twitter:description" content="Patient registration, scheduling, billing and reporting that keep working offline: the Administration module of the SelNexa Health Platform, with AI assistance.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/home.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/cf0b795dfaf6.css">
+    <!-- /sx:styles -->
+    <!-- sx:head -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#004c4c">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.selnexahealth.com/#organization",
+      "name": "SelNexa Health",
+      "legalName": "SelNexa Health (Private) Limited",
+      "url": "https://www.selnexahealth.com/",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
+      "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
+      "foundingDate": "2024",
+      "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Harare", "addressCountry": "ZW" },
+      "email": "contact@selnexahealth.com",
+      "sameAs": ["https://www.linkedin.com/company/selnexa-health"]
+    }
+    </script>
+    <!-- /sx:head -->
 </head>
 <body>
+    <!-- sx:skip-link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- /sx:skip-link -->
 
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo" aria-label="SelNexa Health home">
-                    <picture>
-                        <img src="/assets/selnexa-logo.svg" alt="SelNexa Health logo" width="120" height="60" decoding="async">
-                    </picture>
-                </a>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/features.html">Platform</a></li>
-                    <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/case-studies.html">Impact</a></li>
-                    <li><a href="/for-investors.html">Investors</a></li>
-                    <li><a href="/resources.html">Resources</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
+    <!-- sx:header -->
+    <header class="sx-header" data-sx-header>
+      <div class="sx-header__inner">
+        <a href="/" class="sx-brand">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
+          <span class="sx-brand__text">
+            <span class="sx-brand__name">SelNexa Health</span>
+            <span class="sx-brand__tag">Offline-first health software</span>
+          </span>
+        </a>
+        <button type="button" class="sx-nav-toggle" aria-expanded="false" aria-controls="sx-menu">
+          <span class="sx-nav-toggle__bars" aria-hidden="true"></span>
+          <span class="sx-nav-toggle__label">Menu</span>
+        </button>
+        <nav class="sx-nav" aria-label="Main">
+          <ul class="sx-menu" id="sx-menu">
+            <li><a href="/features.html" data-nav="platform" aria-current="page">Platform</a></li>
+            <li><a href="/projects.html" data-nav="projects">Projects</a></li>
+            <li><a href="/case-studies.html" data-nav="impact">Impact</a></li>
+            <li><a href="/about.html" data-nav="about">About</a></li>
+            <li><a href="/contact.html" data-nav="contact">Contact</a></li>
+            <li class="sx-menu__cta"><a href="/appointments.html" class="sx-cta" data-nav="demo" data-demo-trigger>Book a demo</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sx-progress" aria-hidden="true"></div>
     </header>
+    <!-- /sx:header -->
 
     <main id="main-content">
         <!-- Hero -->
         <section class="hero solution-hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>AI-Powered Administration For Frontline Care Teams</h1>
-                    <p>Automate patient registration, scheduling, and record management with workflows designed for constrained healthcare environments, expanding workforce capacity where Africa averages just 1.55 healthcare workers per 1,000 people.</p>
+                    <h1>Administration for Frontline Care Teams</h1>
+                    <p>Automate patient registration, scheduling, and record management with workflows designed for constrained healthcare environments. Staff time is scarce: WHO puts the African Region at 1.55 doctors, nurses and midwives per 1,000 people (2018 data).</p>
                 </div>
             </div>
         </section>
@@ -72,7 +115,7 @@
                     <article class="feature-card">
                         <i class="fas fa-calendar-check" aria-hidden="true"></i>
                         <h3>Smart Appointment Scheduling</h3>
-                        <p>AI suggests optimal time slots, prevents double-booking, sends automatic reminders, and reduces no-shows.</p>
+                        <p>AI suggests time slots, prevents double-booking and sends automatic reminders, which are designed to cut no-shows.</p>
                     </article>
                     <article class="feature-card">
                         <i class="fas fa-folder-open" aria-hidden="true"></i>
@@ -100,7 +143,7 @@
                             <i class="fas fa-bolt" aria-hidden="true"></i>
                         </div>
                         <div class="benefit-content">
-                            <h4>Designed for Faster Triage-to-Documentation</h4>
+                            <h3 class="minor-heading">Designed for Faster Triage-to-Documentation</h3>
                             <p>Workflow orchestration reduces handoff lag between intake and clinical documentation.</p>
                         </div>
                     </div>
@@ -109,8 +152,8 @@
                             <i class="fas fa-check-circle" aria-hidden="true"></i>
                         </div>
                         <div class="benefit-content">
-                            <h4>Workforce Capacity Expanded</h4>
-                            <p>Automation reduces repetitive manual tasks and rework, freeing clinicians and front-desk teams to focus on care delivery.</p>
+                            <h3 class="minor-heading">Designed to Free Staff Time</h3>
+                            <p>Automation is meant to cut repetitive manual tasks and rework, so clinicians and front-desk teams can spend more time on care.</p>
                         </div>
                     </div>
                     <div class="benefit">
@@ -118,8 +161,8 @@
                             <i class="fas fa-users" aria-hidden="true"></i>
                         </div>
                         <div class="benefit-content">
-                            <h4>Reduced Paper Fallbacks</h4>
-                            <p>Digital intake and documentation reduce paper-heavy handoffs during outages.</p>
+                            <h3 class="minor-heading">Fewer Paper Fallbacks</h3>
+                            <p>Because intake and documentation keep working offline, staff shouldn't need to switch to paper during outages.</p>
                         </div>
                     </div>
                     <div class="benefit">
@@ -127,7 +170,7 @@
                             <i class="fas fa-lock" aria-hidden="true"></i>
                         </div>
                         <div class="benefit-content">
-                            <h4>Operational Accuracy at Scale</h4>
+                            <h3 class="minor-heading">Operational Accuracy at Scale</h3>
                             <p>Standardized workflows maintain compliance-ready records while supporting growth to multi-site operations.</p>
                         </div>
                     </div>
@@ -139,10 +182,11 @@
         <section class="section case-study">
             <div class="container">
                 <div class="section-title">
-                    <h2>Case Study Teaser</h2>
+                    <h2>Example scenario</h2>
                 </div>
                 <div class="case-study-box">
                     <h3>Scenario: High-Throughput Outpatient Facility</h3>
+                    <p><em>A hypothetical example of how the module is meant to work, not a case study.</em></p>
                     <p><strong>Challenge:</strong> Manual registration and scheduling cause long queues, inconsistent records, and operational strain.</p>
                     <p><strong>Platform response:</strong> Automated registration and scheduling linked to secure records workflows.</p>
                     <p><strong>Target outcomes:</strong></p>
@@ -151,7 +195,6 @@
                         <li>Reduced paper fallback events during outages</li>
                         <li>Improved queue predictability for frontline teams</li>
                     </ul>
-                    <p><a href="/case-studies.html#bulawayo" class="btn-link">Read full scenario →</a></p>
                 </div>
             </div>
         </section>
@@ -170,91 +213,171 @@
         <section class="section cta">
             <div class="container">
                 <h2>Ready to Automate Your Administration?</h2>
-                <p>Map your expected ROI and plan a guided pilot with offline-first deployment support.</p>
+                <p>Plan a guided pilot with offline-first deployment support.</p>
                 <div class="cta-buttons">
                     <a href="/pricing.html" class="btn btn-primary">See pricing options →</a>
-                    <a href="/appointments.html" class="btn btn-outline">Book Platform Demo →</a>
+                    <a href="/appointments.html" class="btn btn-outline" data-demo-trigger>Book a demo →</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h2>SelNexa Health</h2>
-                    <p>Building resilient healthcare infrastructure for African health institutions and hospitals.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/company/selnexahealth" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://twitter.com/selnexahealth" target="_blank" rel="noopener noreferrer">Twitter / X</a>
-                        <a href="https://www.youtube.com/@selnexahealth" target="_blank" rel="noopener noreferrer">YouTube</a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="/solutions/administration.html">AI Administration</a></li>
-                        <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
-                        <li><a href="/solutions/records.html">Health Records</a></li>
-                        <li><a href="/solutions/analytics.html">Analytics</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Projects</h4>
-                    <ul>
-                        <li><a href="/features.html">SelNexa Health Platform (offline-first hospital management)</a></li>
-                        <li><a href="/projects.html">Project Portfolio</a></li>
-                        <li><a href="/contact.html">Propose a Project</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="/case-studies.html">Case Studies</a></li>
-                        <li><a href="/telemedicine.html">Telemedicine</a></li>
-                        <li><a href="/pricing.html">Pricing</a></li>
-                        <li><a href="/for-investors.html">Investors</a></li>
-                        <li><a href="/resources.html">Resources</a></li>
-                        <li><a href="/careers.html">Talent Development Hub</a></li>
-                        <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="/privacy.html">Privacy Policy</a></li>
-                        <li><a href="/terms.html">Terms</a></li>
-                        <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
-                        <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
-                    </ul>
-                    <div class="trust-badges" aria-label="Compliance badges">
-                        <span>HIPAA</span>
-                        <span>GDPR</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 SelNexa Health · Made in Zimbabwe</p>
-            </div>
+    <!-- sx:footer -->
+    <footer class="sx-footer">
+      <div class="sx-footer__inner">
+        <div class="sx-footer__grid">
+          <div class="sx-footer__brand">
+            <p class="sx-footer__name">SelNexa Health</p>
+            <p>SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.</p>
+            <p>Harare, Zimbabwe<br><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></p>
+            <p><a href="https://www.linkedin.com/company/selnexa-health" target="_blank" rel="noopener noreferrer">SelNexa Health on LinkedIn</a></p>
           </div>
-          <div class="footer-column">
-            <h4>Legal</h4>
+          <div>
+            <h2 class="sx-footer__heading">Platform</h2>
             <ul>
-              <li><a href="/privacy.html">Privacy Policy</a></li>
-              <li><a href="/terms.html">Terms</a></li>
-              <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
-              <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
+              <li><a href="/features.html">Platform overview</a></li>
+              <li><a href="/solutions/hospital-management.html">For hospitals</a></li>
+              <li><a href="/solutions/">All modules</a></li>
+              <li><a href="/solutions/administration.html">Administration</a></li>
+              <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
+              <li><a href="/solutions/records.html">Health Records</a></li>
+              <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
+              <li><a href="/telemedicine.html">Telemedicine (beta)</a></li>
+              <li><a href="/pricing.html">Pricing</a></li>
             </ul>
           </div>
+          <div>
+            <h2 class="sx-footer__heading">Projects</h2>
+            <ul>
+              <li><a href="/projects.html#platform">SelNexa Health Platform</a></li>
+              <li><a href="/projects.html#contrawise">ContraWise</a></li>
+              <li><a href="/projects.html#maternal-health">Maternal Health</a></li>
+              <li><a href="/case-studies.html">Impact evidence</a></li>
+              <li><a href="/impact.html">Results Matrix</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Company</h2>
+            <ul>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/for-investors.html">Investors</a></li>
+              <li><a href="/resources.html">Resources</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/faq.html">FAQ</a></li>
+              <li><a href="/careers.html">Careers</a></li>
+              <li><a href="/press.html">Press</a></li>
+              <li><a href="/contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Data protection</h2>
+            <ul>
+              <li><a href="/security-and-compliance.html">Security and compliance</a></li>
+              <li><a href="/privacy.html">Privacy policy</a></li>
+              <li><a href="/terms.html">Terms of service</a></li>
+            </ul>
+            <div class="footer-compliance">
+              <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+              <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+              <p>Data residency configurable: in-country or regional</p>
+            </div>
+          </div>
         </div>
-        <div class="footer-bottom">
-          <p>Harare, Zimbabwe</p>
-          <p><a href="/appointments.html">Book Platform Demo</a> | <a href="/case-studies.html">Pilot Results</a> | <a href="/resources.html#api-documentation">FHIR API Docs</a></p>
+        <div class="sx-footer__bottom">
+          <p>&copy; 2026 SelNexa Health (Private) Limited, Harare, Zimbabwe</p>
+          <p><a href="/appointments.html" data-demo-trigger>Book a demo</a></p>
         </div>
       </div>
     </footer>
+    <!-- /sx:footer -->
 
-    <script src="/js/home.js" defer></script>
+    <!-- sx:demo-modal -->
+    <dialog class="sx-modal" id="demo-modal" aria-labelledby="demo-modal-title">
+      <div class="sx-modal__panel">
+        <button type="button" class="sx-modal__close" data-modal-close aria-label="Close">&times;</button>
+        <h2 id="demo-modal-title">Book a demo</h2>
+        <p class="sx-modal__intro">Tell us about your institution and we'll get back to you to arrange a time.</p>
+        <form class="sx-form" id="demo-form" data-sx-form="demo" action="mailto:contact@selnexahealth.com?subject=Demo%20request" method="post" enctype="text/plain">
+      <p class="sx-form__note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+      <div class="sx-form__grid">
+        <div class="sx-field">
+          <label for="df-name">Full name <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-email">Email address <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-phone">Phone or WhatsApp</label>
+          <input id="df-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="sx-field">
+          <label for="df-org">Institution or organisation <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-org" name="organisation" type="text" autocomplete="organization" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-role">Your role</label>
+          <input id="df-role" name="role" type="text" autocomplete="organization-title">
+        </div>
+        <div class="sx-field">
+          <label for="df-type">Type of institution <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-type" name="institution_type" required>
+            <option value="">Select one</option>
+            <option>Public hospital (district, provincial or central)</option>
+            <option>Mission or private hospital</option>
+            <option>Health centre</option>
+            <option>Network or group of health institutions</option>
+            <option>Ministry or government agency</option>
+            <option>NGO, funder or implementing partner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-country">Country <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-country" name="country" required>
+            <option value="">Select one</option>
+            <option>Zimbabwe</option>
+            <optgroup label="Other African countries">
+              <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>C&ocirc;te d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option>
+            </optgroup>
+            <option>Outside Africa</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-interest">What would you like? <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-interest" name="interest" required>
+            <option value="">Select one</option>
+            <option value="demo">A demo of the Platform</option>
+            <option value="pilot">To discuss a pilot at our institution</option>
+            <option value="quote">A quote for our institution</option>
+            <option value="telemedicine">Access to the telemedicine beta</option>
+            <option value="partnership">A partnership or research conversation</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="sx-field sx-field--wide">
+          <label for="df-message">Anything we should know?</label>
+          <textarea id="df-message" name="message" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="sx-field sx-field--check">
+        <input id="df-consent" name="consent" type="checkbox" value="yes" required>
+        <label for="df-consent">I agree to SelNexa Health using these details to reply to me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="sx-req" aria-hidden="true">*</span></label>
+      </div>
+      <div class="sx-hp" aria-hidden="true">
+        <label for="df-website">Leave this field empty</label>
+        <input id="df-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary sx-form__submit">Send demo request</button>
+      <p class="sx-form__status" role="status" aria-live="polite"></p>
+    </form>
+      </div>
+    </dialog>
+    <!-- /sx:demo-modal -->
+    <!-- sx:scripts -->
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
+    <!-- /sx:scripts -->
 </body>
 </html>

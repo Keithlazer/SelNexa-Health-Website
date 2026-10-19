@@ -3,172 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security & Compliance | SelNexa Health</title>
-    <meta name="description" content="Security architecture, compliance controls, and data governance for SelNexa Health and the SelNexa Health Platform.">
+    <!-- sx:csp -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- /sx:csp -->
+    <title>Security and Data Protection | SelNexa Health</title>
+    <meta name="description" content="How the SelNexa Health Platform protects patient data: encryption, access control, audit trails and SI 155 breach procedures, and what is still in progress.">
     <link rel="canonical" href="https://www.selnexahealth.com/security-and-compliance.html">
-    <link rel="alternate" hreflang="en" href="https://www.selnexahealth.com/security-and-compliance.html">
-    <link rel="alternate" hreflang="sn" href="https://www.selnexahealth.com/security-and-compliance.html?lang=sn">
-    <link rel="alternate" hreflang="nd" href="https://www.selnexahealth.com/security-and-compliance.html?lang=nd">
-    <link rel="icon" href="/assets/selnexa-logo.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/grid-typography-system.css">
-    <link rel="stylesheet" href="/styles/site-uniform.css">
+    <!-- sx:social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SelNexa Health">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:title" content="Security and Data Protection | SelNexa Health">
+    <meta property="og:description" content="How the SelNexa Health Platform protects patient data: encryption, access control, audit trails and SI 155 breach procedures, and what is still in progress.">
+    <meta property="og:url" content="https://www.selnexahealth.com/security-and-compliance.html">
+    <meta property="og:image" content="https://www.selnexahealth.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SelNexa Health: health service management that keeps working when the network doesn't.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Security and Data Protection | SelNexa Health">
+    <meta name="twitter:description" content="How the SelNexa Health Platform protects patient data: encryption, access control, audit trails and SI 155 breach procedures, and what is still in progress.">
+    <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
+    <!-- /sx:social -->
+    <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
+    <link rel="stylesheet" href="/styles/bundles/36a24502bafa.css">
+    <!-- /sx:styles -->
+    <!-- sx:head -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#004c4c">
+    <link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://www.selnexahealth.com/#organization",
+      "name": "SelNexa Health",
+      "legalName": "SelNexa Health (Private) Limited",
+      "url": "https://www.selnexahealth.com/",
+      "logo": "https://www.selnexahealth.com/assets/selnexa-logo-452.png",
+      "description": "Zimbabwean software company building offline-first systems for health institutions, starting with the SelNexa Health Platform for health service management.",
+      "foundingDate": "2024",
+      "founder": { "@type": "Person", "name": "Simbarashe Keith Tafangombe", "jobTitle": "Founder and CEO" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Harare", "addressCountry": "ZW" },
+      "email": "contact@selnexahealth.com",
+      "sameAs": ["https://www.linkedin.com/company/selnexa-health"]
+    }
+    </script>
+    <!-- /sx:head -->
 </head>
 <body>
+    <!-- sx:skip-link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- /sx:skip-link -->
 
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <a href="/" aria-label="SelNexa Health Home">
-                    <img src="/assets/selnexa-logo.svg" alt="SelNexa Health Logo" class="logo">
-                </a>
-            </div>
-            <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="primary-nav">
-                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="/features.html" class="nav-link">Platform</a></li>
-                <li class="nav-item"><a href="/projects.html" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="/case-studies.html" class="nav-link">Impact</a></li>
-                <li class="nav-item"><a href="/for-investors.html" class="nav-link">Investors</a></li>
-                <li class="nav-item"><a href="/resources.html" class="nav-link">Resources</a></li>
-                <li class="nav-item"><a href="/contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="/appointments.html" class="nav-link cta-nav">Book Platform Demo</a></li>
-            </ul>
-        </div>
-        <div class="navbar-progress"></div>
-    </nav>
+    <!-- sx:header -->
+    <header class="sx-header" data-sx-header>
+      <div class="sx-header__inner">
+        <a href="/" class="sx-brand">
+          <picture><source type="image/webp" srcset="/assets/selnexa-logo-128.webp"><img src="/assets/selnexa-logo-128.png" alt="" class="sx-brand__logo" width="64" height="56"></picture>
+          <span class="sx-brand__text">
+            <span class="sx-brand__name">SelNexa Health</span>
+            <span class="sx-brand__tag">Offline-first health software</span>
+          </span>
+        </a>
+        <button type="button" class="sx-nav-toggle" aria-expanded="false" aria-controls="sx-menu">
+          <span class="sx-nav-toggle__bars" aria-hidden="true"></span>
+          <span class="sx-nav-toggle__label">Menu</span>
+        </button>
+        <nav class="sx-nav" aria-label="Main">
+          <ul class="sx-menu" id="sx-menu">
+            <li><a href="/features.html" data-nav="platform">Platform</a></li>
+            <li><a href="/projects.html" data-nav="projects">Projects</a></li>
+            <li><a href="/case-studies.html" data-nav="impact">Impact</a></li>
+            <li><a href="/about.html" data-nav="about">About</a></li>
+            <li><a href="/contact.html" data-nav="contact">Contact</a></li>
+            <li class="sx-menu__cta"><a href="/appointments.html" class="sx-cta" data-nav="demo" data-demo-trigger>Book a demo</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sx-progress" aria-hidden="true"></div>
+    </header>
+    <!-- /sx:header -->
 
     <main id="main-content">
         <section class="page-hero">
             <div class="container">
-                <p class="page-overline">SECURITY & TRUST</p>
+                <p class="page-overline">SECURITY AND DATA PROTECTION</p>
                 <h1 class="page-title">Security and Compliance</h1>
-                <p class="page-subtitle">SelNexa Health applies defense-in-depth controls for organizational data and SelNexa Health Platform workflows, with governance aligned to Zimbabwe data protection obligations including authority and affected-individual breach notification timelines.</p>
+                <p class="page-subtitle">How the SelNexa Health Platform protects patient data today, what is still in progress, and what has not been done yet. The Platform is pre-deployment: no health institution runs it in production, and none of the controls below has been independently audited.</p>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll">
-            <div class="container page-grid">
-                <article class="page-card">
-                    <h2>Encryption Practices</h2>
-                    <ul>
-                        <li><strong>Data in transit:</strong> TLS-secured channels for all external data exchange.</li>
-                        <li><strong>Data at rest:</strong> AES-256 encryption for stored clinical records and backups.</li>
-                        <li><strong>Integrity:</strong> Tamper-evident audit trails for critical record history.</li>
-                    </ul>
-                </article>
-                <article class="page-card">
-                    <h2>Access Control & Audit Logging</h2>
-                    <ul>
-                        <li>Role-based access control with least-privilege defaults.</li>
-                        <li>Consent-aware sharing for patient-authorized record access.</li>
-                        <li>Comprehensive activity trails for account, record, and policy events.</li>
-                    </ul>
-                </article>
-                <article class="page-card">
-                    <h2>Data Governance</h2>
-                    <ul>
-                        <li>Data-controller governance designed for Zimbabwe licensing and DPO operating requirements.</li>
-                        <li>Breach workflow includes 24-hour authority notification readiness and 72-hour affected-individual notifications in high-risk cases.</li>
-                        <li>Transborder data-transfer controls apply adequate-protection checks and documented approval gates.</li>
-                    </ul>
-                </article>
+        <section class="section-spacer animate-on-scroll" aria-labelledby="built-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="built-title">Built into the Platform</h2>
+                    <p>Implemented and tested by our own team in development and in controlled testing. Independent security testing comes before the first pilot.</p>
+                </div>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Security controls built into the Platform</caption>
+                        <tbody>
+                            <tr><th scope="row">Encryption in transit</th><td><span class="spec-tag spec-tag--status">Built</span>TLS on every external connection</td></tr>
+                            <tr><th scope="row">Encryption at rest</th><td><span class="spec-tag spec-tag--status">Built</span>AES-256 for stored clinical records and backups</td></tr>
+                            <tr><th scope="row">Access control</th><td><span class="spec-tag spec-tag--status">Built</span>Role-based access with least-privilege defaults</td></tr>
+                            <tr><th scope="row">Audit trails</th><td><span class="spec-tag spec-tag--status">Built</span>Tamper-evident logs of account, record and policy events</td></tr>
+                            <tr><th scope="row">Consent</th><td><span class="spec-tag spec-tag--status">Built</span>Consent-aware access for patient-authorised record sharing</td></tr>
+                            <tr><th scope="row">Data residency</th><td><span class="spec-tag spec-tag--status">Built</span>Configurable per deployment: in-country or regional hosting</td></tr>
+                            <tr><th scope="row">Breach response</th><td><span class="spec-tag spec-tag--status">Built</span>A breach workflow designed around SI 155 of 2024: notify the Data Protection Authority within 24 hours of becoming aware of a breach, and affected people within 72 hours where the risk to them is high</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        <section class="section-spacer animate-on-scroll">
-            <div class="container page-card">
-                <h2>Compliance and trust signals</h2>
-                <h3>Certified / active controls</h3>
-                <div class="trust-badges" aria-label="Certified and active controls">
-                    <span>SSL/TLS encryption</span>
-                    <span>RBAC + Audit Trails</span>
-                    <span>24h Authority Notice Readiness</span>
-                    <span>72h High-Risk Notice Workflow</span>
-                    <span>WCAG 2.1 AA accessibility baseline</span>
+        <section class="section-spacer animate-on-scroll" aria-labelledby="progress-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="progress-title">In progress and planned</h2>
+                    <p>We hold no security or compliance certification today. ISO/IEC 27001 and SOC 2 work is control mapping, not an audit.</p>
                 </div>
-                <p>These controls are active in current deployments and reviewed in operating governance cycles.</p>
-
-                <h3>In progress</h3>
-                <div class="trust-badges" aria-label="In progress certifications">
-                    <span>ISO/IEC 27001 readiness program</span>
-                    <span>SOC 2 controls mapping</span>
-                    <span>SI 155 DPO & licensing onboarding</span>
+                <div class="spec-table-wrap">
+                    <table class="spec-table">
+                        <caption class="sr-only">Compliance work in progress and planned</caption>
+                        <tbody>
+                            <tr><th scope="row">Zimbabwe data protection</th><td><span class="spec-tag spec-tag--status">In progress</span>Data controller licensing and Data Protection Officer appointment under SI 155 of 2024, aligned with the Cyber and Data Protection Act [Chapter 12:07]</td></tr>
+                            <tr><th scope="row">Impact assessment</th><td><span class="spec-tag spec-tag--status">In progress</span>A formal Data Protection Impact Assessment for the first pilot</td></tr>
+                            <tr><th scope="row">ISO/IEC 27001</th><td><span class="spec-tag spec-tag--status">In progress</span>Mapping our controls to the standard. No certification has been sought yet.</td></tr>
+                            <tr><th scope="row">SOC 2</th><td><span class="spec-tag spec-tag--status">In progress</span>Mapping our controls to the trust services criteria. No SOC 2 report exists.</td></tr>
+                            <tr><th scope="row">Cross-border transfers</th><td><span class="spec-tag spec-tag--status">In progress</span>Adequate-protection checks and documented approval before any personal data leaves the country</td></tr>
+                            <tr><th scope="row">Security testing</th><td><span class="spec-tag spec-tag--status">Planned</span>Independent penetration testing before the first pilot goes live</td></tr>
+                            <tr><th scope="row">Accessibility</th><td><span class="spec-tag">Target</span>WCAG 2.1 AA for the Platform's interfaces. Not yet independently audited.</td></tr>
+                            <tr><th scope="row">Evidence for reviewers</th><td><span class="spec-tag spec-tag--status">Planned</span>A pack of control evidence for procurement and due diligence teams, and compliance notes for each new country we enter</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-                <p>Programs listed as in progress are under documented implementation and external readiness preparation.</p>
-
-                <h3>Planned</h3>
-                <div class="trust-badges" aria-label="Planned trust milestones">
-                    <span>Formal third-party control attestation pack</span>
-                    <span>Regional compliance addendum library</span>
-                </div>
-                <p>Planned items are roadmap commitments and are published with status updates as evidence becomes available.</p>
-                <p><a href="/resources/whitepapers.html">Download privacy and security resources →</a></p>
+                <p><a class="standalone-link" href="/contact.html">Procurement or due diligence questions? Contact us →</a></p>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-column">
-            <h2>SelNexa Health</h2>
-            <p>SelNexa Health builds sustainable healthcare systems for Africa. Our first initiative is the SelNexa Health Platform.</p>
+    <!-- sx:footer -->
+    <footer class="sx-footer">
+      <div class="sx-footer__inner">
+        <div class="sx-footer__grid">
+          <div class="sx-footer__brand">
+            <p class="sx-footer__name">SelNexa Health</p>
+            <p>SelNexa Health is a Zimbabwean software company building offline-first systems for health institutions.</p>
+            <p>Harare, Zimbabwe<br><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></p>
+            <p><a href="https://www.linkedin.com/company/selnexa-health" target="_blank" rel="noopener noreferrer">SelNexa Health on LinkedIn</a></p>
           </div>
-          <div class="footer-column">
-            <h4>Platform</h4>
+          <div>
+            <h2 class="sx-footer__heading">Platform</h2>
             <ul>
-              <li><a href="/solutions/administration.html">AI Administration</a></li>
+              <li><a href="/features.html">Platform overview</a></li>
+              <li><a href="/solutions/hospital-management.html">For hospitals</a></li>
+              <li><a href="/solutions/">All modules</a></li>
+              <li><a href="/solutions/administration.html">Administration</a></li>
               <li><a href="/solutions/procurement.html">Predictive Procurement</a></li>
               <li><a href="/solutions/records.html">Health Records</a></li>
               <li><a href="/solutions/analytics.html">Real-Time Analytics</a></li>
+              <li><a href="/telemedicine.html">Telemedicine (beta)</a></li>
+              <li><a href="/pricing.html">Pricing</a></li>
             </ul>
           </div>
-          <div class="footer-column footer-route-map">
-            <h4 data-i18n="footer.quickLinks">Quick Links</h4>
+          <div>
+            <h2 class="sx-footer__heading">Projects</h2>
             <ul>
-              <li><a href="/features.html">Platform Overview</a></li>
-              <li><a href="/projects.html">Projects</a></li>
-              <li><a href="/case-studies.html" data-i18n="nav.caseStudies">Impact</a></li>
-              <li><a href="/for-investors.html">Investors</a></li>
-              <li><a href="/resources.html" data-i18n="nav.resources">Resources</a></li>
-              <li><a href="/careers.html" data-i18n="nav.careers">Talent Development Hub</a></li>
-              <li><a href="/security-and-compliance.html" data-i18n="nav.security">Security & Compliance</a></li>
+              <li><a href="/projects.html#platform">SelNexa Health Platform</a></li>
+              <li><a href="/projects.html#contrawise">ContraWise</a></li>
+              <li><a href="/projects.html#maternal-health">Maternal Health</a></li>
+              <li><a href="/case-studies.html">Impact evidence</a></li>
+              <li><a href="/impact.html">Results Matrix</a></li>
             </ul>
-            <div class="trust-badges" aria-label="Compliance badges">
-              <span>SSL</span>
-              <span>HIPAA</span>
-              <span>GDPR</span>
-              <span>WCAG 2.1 AA</span>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Company</h2>
+            <ul>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/for-investors.html">Investors</a></li>
+              <li><a href="/resources.html">Resources</a></li>
+              <li><a href="/blog.html">Blog</a></li>
+              <li><a href="/faq.html">FAQ</a></li>
+              <li><a href="/careers.html">Careers</a></li>
+              <li><a href="/press.html">Press</a></li>
+              <li><a href="/contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 class="sx-footer__heading">Data protection</h2>
+            <ul>
+              <li><a href="/security-and-compliance.html">Security and compliance</a></li>
+              <li><a href="/privacy.html">Privacy policy</a></li>
+              <li><a href="/terms.html">Terms of service</a></li>
+            </ul>
+            <div class="footer-compliance">
+              <p>Aligned with Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024</p>
+              <p>ISO/IEC 27001 and SOC 2 control mapping in progress</p>
+              <p>Data residency configurable: in-country or regional</p>
             </div>
           </div>
-          <div class="footer-column">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="/privacy.html">Privacy Policy</a></li>
-              <li><a href="/terms.html">Terms</a></li>
-              <li><a href="/security-and-compliance.html">Security & Compliance</a></li>
-              <li><a href="mailto:contact@selnexahealth.com">contact@selnexahealth.com</a></li>
-            </ul>
-          </div>
         </div>
-        <div class="footer-bottom">
-          <p>Harare, Zimbabwe</p>
-          <p><a href="/resources/whitepapers.html">Security Whitepapers</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/contact.html">Contact Security Team</a></p>
+        <div class="sx-footer__bottom">
+          <p>&copy; 2026 SelNexa Health (Private) Limited, Harare, Zimbabwe</p>
+          <p><a href="/appointments.html" data-demo-trigger>Book a demo</a></p>
         </div>
       </div>
     </footer>
+    <!-- /sx:footer -->
 
-    <script src="/js/main.js"></script>
+    <!-- sx:demo-modal -->
+    <dialog class="sx-modal" id="demo-modal" aria-labelledby="demo-modal-title">
+      <div class="sx-modal__panel">
+        <button type="button" class="sx-modal__close" data-modal-close aria-label="Close">&times;</button>
+        <h2 id="demo-modal-title">Book a demo</h2>
+        <p class="sx-modal__intro">Tell us about your institution and we'll get back to you to arrange a time.</p>
+        <form class="sx-form" id="demo-form" data-sx-form="demo" action="mailto:contact@selnexahealth.com?subject=Demo%20request" method="post" enctype="text/plain">
+      <p class="sx-form__note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+      <div class="sx-form__grid">
+        <div class="sx-field">
+          <label for="df-name">Full name <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-email">Email address <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-phone">Phone or WhatsApp</label>
+          <input id="df-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="sx-field">
+          <label for="df-org">Institution or organisation <span class="sx-req" aria-hidden="true">*</span></label>
+          <input id="df-org" name="organisation" type="text" autocomplete="organization" required>
+        </div>
+        <div class="sx-field">
+          <label for="df-role">Your role</label>
+          <input id="df-role" name="role" type="text" autocomplete="organization-title">
+        </div>
+        <div class="sx-field">
+          <label for="df-type">Type of institution <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-type" name="institution_type" required>
+            <option value="">Select one</option>
+            <option>Public hospital (district, provincial or central)</option>
+            <option>Mission or private hospital</option>
+            <option>Health centre</option>
+            <option>Network or group of health institutions</option>
+            <option>Ministry or government agency</option>
+            <option>NGO, funder or implementing partner</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-country">Country <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-country" name="country" required>
+            <option value="">Select one</option>
+            <option>Zimbabwe</option>
+            <optgroup label="Other African countries">
+              <option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Comoros</option><option>Congo</option><option>C&ocirc;te d'Ivoire</option><option>Democratic Republic of the Congo</option><option>Djibouti</option><option>Egypt</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Eswatini</option><option>Ethiopia</option><option>Gabon</option><option>Gambia</option><option>Ghana</option><option>Guinea</option><option>Guinea-Bissau</option><option>Kenya</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Madagascar</option><option>Malawi</option><option>Mali</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>S&atilde;o Tom&eacute; and Pr&iacute;ncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option>
+            </optgroup>
+            <option>Outside Africa</option>
+          </select>
+        </div>
+        <div class="sx-field">
+          <label for="df-interest">What would you like? <span class="sx-req" aria-hidden="true">*</span></label>
+          <select id="df-interest" name="interest" required>
+            <option value="">Select one</option>
+            <option value="demo">A demo of the Platform</option>
+            <option value="pilot">To discuss a pilot at our institution</option>
+            <option value="quote">A quote for our institution</option>
+            <option value="telemedicine">Access to the telemedicine beta</option>
+            <option value="partnership">A partnership or research conversation</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="sx-field sx-field--wide">
+          <label for="df-message">Anything we should know?</label>
+          <textarea id="df-message" name="message" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="sx-field sx-field--check">
+        <input id="df-consent" name="consent" type="checkbox" value="yes" required>
+        <label for="df-consent">I agree to SelNexa Health using these details to reply to me, as set out in the <a href="/privacy.html">privacy policy</a>. <span class="sx-req" aria-hidden="true">*</span></label>
+      </div>
+      <div class="sx-hp" aria-hidden="true">
+        <label for="df-website">Leave this field empty</label>
+        <input id="df-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary sx-form__submit">Send demo request</button>
+      <p class="sx-form__status" role="status" aria-live="polite"></p>
+    </form>
+      </div>
+    </dialog>
+    <!-- /sx:demo-modal -->
+    <!-- sx:scripts -->
+    <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
+    <script src="/js/site-core.js?v=1d59c7eb02" defer></script>
+    <!-- /sx:scripts -->
 </body>
 </html>
