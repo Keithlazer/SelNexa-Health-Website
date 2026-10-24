@@ -431,3 +431,16 @@ No visible page text now contains an em dash. Bold is still used for list labels
 ### Final checks
 
 On all 33 pages: axe-core finds no violations (colour contrast included) at 1366 and 390 px; no page scrolls sideways at 360, 390, 768 or 1366 px; nothing on a 390 px screen is under 44 x 44 px apart from links inside sentences; all internal links, anchors and sitemap entries resolve; the interaction checks for the modal, forms, phone menu and module finder pass with and without JavaScript; `npm run check:site` reports every page and bundle up to date.
+
+## Data protection compliance service page
+
+Added 24 October 2026 from Keith's build spec, on branch `data-protection-service`.
+
+- New page `services/data-protection.html`, served at `/services/data-protection`. Copy as written in the spec. Built from the existing page hero, section header, card grid, button and note styles; three small variants added at the end of `styles/site-uniform.css` (a compact five-across grid, a card without the hover lift, and a callout with an accent rule) plus a reading-width wrapper and the sources list. Colours and sizes come from the existing custom properties.
+- Main menu: Services between Platform and Projects, linking straight to the page (one service, so no index page). Footer: a Services column. Footer grid widened from five to six columns.
+- `security-and-compliance.html`: one line at the bottom linking to the new page. Nothing else on that page changed.
+- Contact form: new topic "Data protection compliance". Both "Book a readiness call" buttons link to `/contact.html?topic=data-protection#contact-form`, which pre-selects it (the form already read `?topic=`).
+- `js/site-core.js`: any link with `data-track` sends its own event name through the existing `track()` hook.
+- Structured data: `Service` with `provider` pointing at the Organization `@id`, `areaServed` Zimbabwe, no offer or price.
+- `tools/build-site.mjs` now builds pages in `services/`; `sitemap.xml` lists the page.
+- Legal claims checked against SI 155 of 2024; the inspection start date and the stop-processing line could not be checked against the listed sources (see `CONTENT-TODO.md`).

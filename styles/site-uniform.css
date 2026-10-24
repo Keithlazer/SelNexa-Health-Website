@@ -2137,3 +2137,67 @@ main summary {
 .hero > .container p {
   color: var(--uniform-muted);
 }
+
+/* Service pages (services/*.html). Variants of the existing card and grid, not new components. */
+.page-prose {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-prose > p + p {
+  margin-top: var(--spacing-md);
+}
+
+/* Short label-and-line items, five across on a wide screen. */
+.page-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.page-grid--compact .page-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* A card that is a statement, not a link: no hover lift. */
+.page-card--plain,
+.page-card--plain:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* An emphasised line under a list. Uses the brand accent as a rule, not an alert colour. */
+.page-card--callout {
+  border-left: 4px solid var(--uniform-accent);
+  font-weight: 600;
+  color: var(--uniform-text);
+}
+
+.page-grid + .page-card--callout {
+  margin-top: var(--spacing-lg);
+}
+
+.page-hero .cta-buttons--start {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.page-sources {
+  border-top: 1px solid var(--uniform-border);
+  padding-top: var(--spacing-md);
+}
+
+main .page-sources li,
+main .page-sources p {
+  font-size: 0.875rem;
+  color: var(--uniform-muted);
+}
+
+.page-sources ul {
+  margin: var(--spacing-sm) 0;
+  padding-left: 1.2rem;
+}
+
+.page-sources li + li {
+  margin-top: 0.35rem;
+}
