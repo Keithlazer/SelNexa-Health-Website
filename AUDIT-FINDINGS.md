@@ -443,4 +443,4 @@ Added 24 October 2026 from Keith's build spec, on branch `data-protection-servic
 - `js/site-core.js`: any link with `data-track` sends its own event name through the existing `track()` hook.
 - Structured data: `Service` with `provider` pointing at the Organization `@id`, `areaServed` Zimbabwe, no offer or price.
 - `tools/build-site.mjs` now builds pages in `services/`; `sitemap.xml` lists the page.
-- Legal claims checked against SI 155 of 2024; the inspection start date and the stop-processing line could not be checked against the listed sources (see `CONTENT-TODO.md`).
+- Legal claims checked against SI 155 of 2024. The inspection start date is sourced to Veritas Bill Watch 27/2026 and worded "will begin", as Keith decided; the stop-processing line is a risk assessment, not a legal claim (see `CONTENT-TODO.md`).
