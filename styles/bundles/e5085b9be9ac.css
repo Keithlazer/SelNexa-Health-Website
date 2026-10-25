@@ -1331,6 +1331,14 @@ main textarea,
 
 /* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
 
+/* Service pages (services/*.html). Variants of the existing card and grid, not new components. */
+
+/* Short label-and-line items, five across on a wide screen. */
+
+/* A card that is a statement, not a link: no hover lift. */
+
+/* An emphasised line under a list. Uses the brand accent as a rule, not an alert colour. */
+
 /* ---- styles/site-chrome.css ---- */
 /*
  * Shared site chrome: header, footer, demo modal and forms.
@@ -1687,7 +1695,7 @@ footer.sx-footer {
 
 .sx-footer__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) repeat(4, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr));
   gap: 2rem;
 }
 

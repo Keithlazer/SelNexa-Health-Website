@@ -129,6 +129,7 @@ const PARTIALS = {
 // Which top-level nav item each page belongs to.
 function sectionFor(page) {
   if (page === "features.html" || page.startsWith("solutions/") || page === "pricing.html" || page === "telemedicine.html" || page === "faq.html") return "platform";
+  if (page.startsWith("services/")) return "services";
   if (page === "projects.html") return "projects";
   if (page === "case-studies.html" || page === "impact.html") return "impact";
   if (page === "about.html" || page === "careers.html" || page === "press.html") return "about";
@@ -149,7 +150,7 @@ function listPages() {
     for (const entry of fs.readdirSync(path.join(root, dir), { withFileTypes: true })) {
       const rel = dir ? `${dir}/${entry.name}` : entry.name;
       if (entry.isDirectory()) {
-        if (["blog", "resources", "solutions"].includes(rel)) walk(rel);
+        if (["blog", "resources", "services", "solutions"].includes(rel)) walk(rel);
         continue;
       }
       if (entry.name.endsWith(".html")) out.push(rel);
