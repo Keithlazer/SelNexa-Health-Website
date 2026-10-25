@@ -792,9 +792,10 @@
 
   function setupCtaTracking() {
     document.addEventListener("click", function (event) {
-      var target = event.target.closest("a.btn, button.btn, .sx-cta");
+      var target = event.target.closest("a.btn, button.btn, .sx-cta, [data-track]");
       if (target) {
-        track("cta_click", { label: (target.textContent || "").trim(), href: target.getAttribute("href") || "button" });
+        // data-track names its own event, so a page's calls to action can be counted apart from demo requests.
+        track(target.getAttribute("data-track") || "cta_click", { label: (target.textContent || "").trim(), href: target.getAttribute("href") || "button", page: window.location.pathname });
       }
     });
   }

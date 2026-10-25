@@ -6,7 +6,7 @@ Source for www.selnexahealth.com, a static site served by GitHub Pages from the 
 
 | Path | What it holds |
 |---|---|
-| `*.html`, `blog/`, `resources/`, `solutions/` | The pages. Plain HTML, committed complete. |
+| `*.html`, `blog/`, `resources/`, `services/`, `solutions/` | The pages. Plain HTML, committed complete. |
 | `includes/` | Header, footer, forms and shared `<head>` tags, written once and copied into every page. See `includes/README.md`. |
 | `styles/` | Source stylesheets. `styles/bundles/` is generated: one file per set of stylesheets, without unused rules. |
 | `css/` | Stylesheets for the blog and resources pages. |

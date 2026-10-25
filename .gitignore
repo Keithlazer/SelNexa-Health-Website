@@ -1,2 +1,7 @@
 node_modules/
 .env
+
+# Local assistant settings and skills installed with `npx skills add`
+.agents/
+.claude/
+skills-lock.json

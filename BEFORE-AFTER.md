@@ -1,13 +1,13 @@
 # Performance before and after
 
-Measured in October 2026. "Before" is the `main` branch as it stood when this work started (commit `21c14f9`, the version that was live). "After" is this branch at the end of Phase 4. Every number here was measured; nothing is estimated.
+Measured in October 2026. "Before" is the `main` branch as it stood when this work started (commit `21c14f9`, the version that was live). "After" is the rebuilt site: a local copy at the end of Phase 4, and the live site on 19 October 2026 after the merge (commit `a7c6cc6`). Every number here was measured; nothing is estimated.
 
 ## How it was measured
 
 - Lighthouse 12, mobile, simulated throttling: 300 ms round trip, 700 kbps down, 4x CPU slowdown (slower than Lighthouse's default, to match a weak 3G connection). Three runs per page; the tables give the median run. Run on the same Windows machine for every local measurement.
 - Local copies were served by a small static server that behaves like GitHub Pages (same file layout, no compression). The live site was measured at https://www.selnexahealth.com, which GitHub serves compressed.
 - Page weight: headless Chrome at 390 x 844, cache and service worker off, bytes as transferred, counting everything requested before the page finished loading ("first load") and then after scrolling to the bottom so lazy images load ("after scroll").
-- The "after" figures can only be measured locally until the branch is merged. Measure the live site again after merging.
+- The live site was measured again after the merge, with the same settings. GitHub serves it compressed and from a nearby cache, so live figures are the fairer comparison with "Before, live site".
 
 ## Lighthouse
 
@@ -20,6 +20,7 @@ Times in milliseconds. LCP is largest contentful paint, FCP first contentful pai
 | Before, live site | 57 | 8,005 | 14,310 (no LCP found in 1 of 3 runs) | 55 | 0.022 | 98 | 100 | 100 |
 | Before, local copy | 0 (no LCP found in any run) | 7,605 | none | n/a | 0 | 98 | 100 | 100 |
 | After, local copy | 80 | 2,427 | 3,512 | 147 | 0 | 100 | 100 | 100 |
+| After, live site | 84 | 2,155 | 3,659 | 93 | 0.019 | 100 | 100 | 100 |
 
 Before, Lighthouse often found no largest contentful paint at all, because the hero text and image stayed transparent until a script faded them in. When it did find one, it was 14.3 seconds.
 
@@ -30,6 +31,7 @@ Before, Lighthouse often found no largest contentful paint at all, because the h
 | Before, live site | 64 | 3,954 | 7,337 | 104 | 0 | 94 | 100 | 92 |
 | Before, local copy | 62 | 3,563 | 6,772 | 74 | 0 | 94 | 100 | 92 |
 | After, local copy | 77 | 2,427 | 3,036 | 493 | 0 | 100 | 100 | 100 |
+| After, live site | 89 | 2,333 | 2,859 | 54 | 0 | 100 | 100 | 100 |
 
 ### Platform (features.html)
 
@@ -38,12 +40,14 @@ Before, Lighthouse often found no largest contentful paint at all, because the h
 | Before, live site | 63 | 3,775 | 7,408 | 115 | 0 | 92 | 100 | 92 |
 | Before, local copy | 62 | 3,563 | 6,777 | 93 | 0 | 92 | 100 | 92 |
 | After, local copy | 84 | 2,090 | 3,313 | 255 | 0 | 100 | 100 | 100 |
+| After, live site | 88 | 2,047 | 2,727 | 188 | 0 | 100 | 100 | 100 |
 
 ### What these numbers do and do not show
 
-- Largest contentful paint is still above Google's 2.5 second "good" threshold on all three pages under this throttling. The largest element is now the page headline, which waits for the stylesheet and the font over a 700 kbps connection. Each page now makes one stylesheet request and preloads one 29 KB font; the remaining time is mostly the network itself.
-- Total blocking time went up (About: 74 to 493 ms; Platform: 93 to 255 ms; homepage: 55 to 147 ms). Before, most of the script work happened before the first paint, where Lighthouse does not count it. Now the page paints about a second earlier and the same start-up work lands after it. Start-up work was moved to idle time to reduce this. TBT also varied between runs on this machine (About ranged from 431 to 517 ms in the final runs and measured 234 ms in an earlier run of nearly the same build).
-- The Lighthouse runs were made before the last change in Phase 4, a few lines of CSS that fix the hero text colours. That change adds no requests.
+- On the live site, largest contentful paint fell from 14.3 s to 3.7 s on the homepage, 7.3 s to 2.9 s on About and 7.4 s to 2.7 s on the Platform page. All three are still above Google's 2.5 second "good" threshold under this throttling. The largest element is now the page headline, which waits for the stylesheet and the font over a 700 kbps connection. Each page now makes one stylesheet request and preloads one 29 KB font; the remaining time is mostly the network itself.
+- Total blocking time is mixed. On the live site it went from 55 to 93 ms on the homepage, 104 to 54 ms on About and 115 to 188 ms on the Platform page, all under Google's 200 ms "good" threshold. The local copy measured higher (147 to 493 ms) on the same machine. The page now paints about a second earlier, so start-up script work that used to happen before the first paint, where Lighthouse does not count it, now lands after it; start-up work was moved to idle time to reduce this. TBT varied a lot between runs (About ranged from 0 to 139 ms live and 431 to 517 ms locally).
+- Layout shift: the median is 0 or close to it on all three pages, but one live run on About measured 0.102 and one on the homepage 0.084, against Google's 0.1 threshold. Worth watching in real-user data.
+- The local runs were made before the last change in Phase 4, a few lines of CSS that fix the hero text colours. The live runs include it.
 
 ## Page weight
 

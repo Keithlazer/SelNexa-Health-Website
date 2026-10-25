@@ -41,6 +41,15 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Whitepapers on `resources/whitepapers.html` dated January to March 2024: confirm they exist and can be sent on request, or remove them.
 - [ ] Implementation guides on `resources/guides.html` ("available by request", "pilot-ready draft"): confirm they exist.
 
+## Data protection compliance service page (`/services/data-protection`)
+
+- [x] Inspection date: the page says inspections "will begin" on 1 September 2026, as Keith decided on 25 October 2026. Source: Veritas Bill Watch 27/2026 (28 July 2026), reporting POTRAZ Regulatory Notice 2 of 2026. If you have the notice itself, it can replace or join the Veritas link.
+- [x] "The practical risk is an order to stop processing until compliant" stays as a risk assessment, not a legal claim, as Keith decided on 25 October 2026. No source is cited for it.
+- [ ] Every other legal claim on the page was checked against the SI 155 text: licence for anyone who determines purposes and means (s 4(1)); tiers from 50 data subjects (s 6); six months from promulgation on 13 September 2024 (s 4(5)); 12-month validity and renewal at least 3 months before expiry (s 5); Form DP2 (s 12(2)); certification course (s 13(2)); 24 and 72 hour breach notification (s 17); level 11 or seven years for processing without a licence (s 4(6)); level 7 or two years for not appointing a DPO (s 12(6)). POTRAZ as the authority is shown on the SI's own forms. No action needed unless the law changes; update the "as at" date when you next review.
+- [ ] Analytics: both "Book a readiness call" links send a `dp_readiness_call` event and the "See what inspectors check" link sends `dp_inspector_checks`, but the site has no analytics installed, so nothing is recorded yet. Enquiries are still distinguishable without it: the contact form arrives with the topic "Data protection compliance" and the subject "Message from the website: Data protection compliance".
+- [ ] Positioning (the open question in the build spec): the page sits under its own Services menu item and the Platform stays the lead story everywhere else. The About page, homepage and investor page are unchanged and do not mention the service. Decide whether the About page and investor page should say SelNexa runs a compliance service, and how.
+- [ ] SelNexa's own status: the page does not say SelNexa is licensed, certified or acting as anyone's data protection officer. Tell me when any of those becomes true and whether it should appear.
+
 ## Contact and operations
 
 - [ ] Before this branch goes live, confirm contact@selnexahealth.com receives mail. Every form on the site falls back to opening an email to that address, and the footer, contact page and structured data all show it. (The site and deck used seven addresses before; only the privacy policy still gives a different one, keithtafangombe@selnexahealth.com.)

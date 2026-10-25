@@ -8,7 +8,7 @@ This file does not name the facility where the Q3 2024 proof of concept ran, the
 
 - **The GitHub repository is public** (`Keithlazer/SelNexa-Health-Website`). This file and `CONTENT-TODO.md` will be readable by anyone on GitHub once the branch is pushed. They are kept off the website itself by `_config.yml`, but that does not make them private.
 - **Git history still contains the removed names.** Every commit before this branch includes the Q3 2024 validation facility and the next pilot facility in page source. Removing them from history needs a history rewrite and a force push, which the brief rules out. Your call; see `CONTENT-TODO.md`.
-- **Nothing has been pushed or deployed.** All work is committed locally on this branch.
+- **Merged and live.** Merged into `main` through pull request #3 on 19 October 2026 and published by GitHub Pages the same day.
 
 ## Phase 1. Compliance and credibility
 
@@ -431,3 +431,16 @@ No visible page text now contains an em dash. Bold is still used for list labels
 ### Final checks
 
 On all 33 pages: axe-core finds no violations (colour contrast included) at 1366 and 390 px; no page scrolls sideways at 360, 390, 768 or 1366 px; nothing on a 390 px screen is under 44 x 44 px apart from links inside sentences; all internal links, anchors and sitemap entries resolve; the interaction checks for the modal, forms, phone menu and module finder pass with and without JavaScript; `npm run check:site` reports every page and bundle up to date.
+
+## Data protection compliance service page
+
+Added 24 October 2026 from Keith's build spec, on branch `data-protection-service`.
+
+- New page `services/data-protection.html`, served at `/services/data-protection`. Copy as written in the spec. Built from the existing page hero, section header, card grid, button and note styles; three small variants added at the end of `styles/site-uniform.css` (a compact five-across grid, a card without the hover lift, and a callout with an accent rule) plus a reading-width wrapper and the sources list. Colours and sizes come from the existing custom properties.
+- Main menu: Services between Platform and Projects, linking straight to the page (one service, so no index page). Footer: a Services column. Footer grid widened from five to six columns.
+- `security-and-compliance.html`: one line at the bottom linking to the new page. Nothing else on that page changed.
+- Contact form: new topic "Data protection compliance". Both "Book a readiness call" buttons link to `/contact.html?topic=data-protection#contact-form`, which pre-selects it (the form already read `?topic=`).
+- `js/site-core.js`: any link with `data-track` sends its own event name through the existing `track()` hook.
+- Structured data: `Service` with `provider` pointing at the Organization `@id`, `areaServed` Zimbabwe, no offer or price.
+- `tools/build-site.mjs` now builds pages in `services/`; `sitemap.xml` lists the page.
+- Legal claims checked against SI 155 of 2024. The inspection start date is sourced to Veritas Bill Watch 27/2026 and worded "will begin", as Keith decided; the stop-processing line is a risk assessment, not a legal claim (see `CONTENT-TODO.md`).
