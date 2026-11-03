@@ -525,3 +525,21 @@ Found and fixed along the way:
 - Card paragraphs on the resource pages used `--text-secondary`, which no stylesheet defines.
 
 Checked on all 31 pages at 375 and 1280px: no horizontal scroll, tap targets at least 44px, one `h1` per page, no axe-core 4.10 violations. Link check: 43 pages, 30 sitemap URLs, no problems. Distinct corner and shadow values measured on seven pages: at most 5 radii and 3 shadows (the homepage's status dot adds its animated pulse ring). No element on the solutions, privacy, terms or offline pages renders the old red. `npm run check:site` passes.
+
+## SDG icons on the homepage
+
+Added 3 November 2026 at Keith's request ("add the SDGs again to the main page, appropriately"), on branch `homepage-sdgs`.
+
+Checked against the UN Department of Global Communications' "Guidelines for the use of the SDG logo, including the colour wheel, and 17 icons" (September 2023) and the UN's SDG communications page. What applies to SelNexa:
+
+- Informational use, "primarily illustrative, non-commercial, and not intended to raise funds", needs no permission. The UN's FAQ adds that commercial entities need none for "corporate materials to communicate organization's SDG-related activities". Fundraising and commercial use need prior written permission and a licence, and the marks "may not be reproduced for the purpose of self-promotion".
+- "Each icon must be used in its entirety, including the number, title and graphic element." No cropping, no shape other than a square, no drop shadows, no colour changes; icons may be grouped "in one line or aligned to the left".
+- Materials using the icons link to https://www.un.org/sustainabledevelopment and carry the statement "The content of this publication has not been approved by the United Nations and does not reflect the views of the United Nations or its officials or Member States".
+
+What changed:
+
+- Homepage: the three icons are back once, in the "Built for public health outcomes" strip, beside the goal lines that were already there. Each line now names the goal as the UN titles it. The icons have empty alt text, because the line beside each one names the goal. The UN link and statement sit under them, from `includes/sdg-note.html`. The SDGs appear nowhere else on the homepage, as `DESIGN-DIRECTION.md` asks.
+- `assets/sdg-3.svg`, `sdg-9.svg` and `sdg-17.svg` held each icon small in the middle of a 1536 by 857 canvas, and the CSS enlarged them 1.86 times inside a clipped box with rounded corners. Each file's `viewBox` is now the icon square from its own clip path (the artwork is unchanged), and the CSS shows the icon whole, square and unrounded on every page. Colours checked against the guidelines: #4C9F38, #FD6925, #19486A.
+- The UN link and statement are added under the icons on the About, Platform, Investors, Impact and Projects pages too.
+
+Checked on all 31 pages at 375 and 1280px: no horizontal scroll, no axe-core violations; every SDG image loads and displays square. The investor page is left as it was, apart from the fixes above, pending Keith's decision (see `CONTENT-TODO.md`).

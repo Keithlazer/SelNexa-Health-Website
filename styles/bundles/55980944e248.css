@@ -240,6 +240,9 @@ footer a:hover,
 
 /* Keep article pages from drifting too narrow/wide in legacy templates */
 
+/* SDG icons follow the UN's guidelines (September 2023): each icon whole, square and unaltered, so no cropping,
+   rounded corners, shadows or colour changes. The files in assets/ are cropped to the icon square itself. */
+
 /* Scroll reveal. Sections start hidden only when JavaScript is running (js/site-core.js reveals them) and the
    visitor has not asked for reduced motion. Without JavaScript, or in browsers without the scripting media
    feature, everything is visible from the start. Never put these classes on content in the first screen. */
@@ -530,6 +533,15 @@ main textarea,
 
 /* Homepage development-alignment strip: the SDG focus areas as text, and the integration line that replaced the
    logo strip. */
+
+/* The UN asks for a link to its SDG site and this statement wherever its icons are used (includes/sdg-note.html). */
+.sdg-note {
+  grid-column: 1 / -1;
+  margin: 0.9rem 0 0;
+  color: var(--uniform-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
 
 /* Trust chips are a list; the tick is drawn, not typed, so screen readers do not announce it. */
 

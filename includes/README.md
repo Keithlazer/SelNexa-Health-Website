@@ -15,6 +15,7 @@ The header, footer, demo modal, forms and a few `<head>` tags are written once h
 | `contact-form.html` | The form on `contact.html` |
 | `scripts.html` | `js/form-endpoints.js` and `js/site-core.js` |
 | `trace-divider.html` | The connection trace as a section divider, between two sections at a page's major breaks only (DESIGN-DIRECTION.md). A page can hold it more than once |
+| `sdg-note.html` | Under every group of SDG icons: the link to the UN's SDG site and the statement the UN asks for on all materials that use its SDG icons |
 
 In a page, each part sits between two markers, for example `<!-- sx:footer -->` and `<!-- /sx:footer -->`. Anything between the markers is overwritten on the next build.
 

@@ -125,6 +125,7 @@ const PARTIALS = {
   "contact-form": () => read("contact-form.html"),
   scripts: () => read("scripts.html"),
   "trace-divider": () => read("trace-divider.html"),
+  "sdg-note": () => read("sdg-note.html"),
 };
 
 // Which top-level nav item each page belongs to.

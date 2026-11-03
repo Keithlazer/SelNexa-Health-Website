@@ -56,7 +56,8 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Floating buttons on phones (brief item 8): the brief assumed a sticky "Book a demo" bar, which the site does not have. What overlaps content is the WhatsApp button (left) and the module finder (right). Pick one: hide WhatsApp below 768px, drop the module finder, or keep both.
 - [ ] Module finder: the brief asks it to earn its place or go. It asks the visitor's institution type and links to the matching module. Keep or cut?
 - [ ] Administration module copy on the homepage: "with AI help on routine tasks such as suggesting appointment slots" is the vaguest feature claim on the page (brief, section 9). Say what it does concretely, or drop the clause.
-- [ ] SDG badges are still used on the About, Platform, investor, Impact and Projects pages. The UN publishes usage guidelines for the SDG marks; check them before the badges stay.
+- [x] SDG icons checked against the UN's guidelines (September 2023) and its SDG communications page, 3 November 2026. Companies may use the icons without permission when the use is "primarily illustrative", to communicate their SDG-related activities. Every page that shows them (homepage, About, Platform, Investors, Impact, Projects) now shows each icon whole and square, with no cropping or rounded corners, plus the link to the UN's SDG site and the statement the UN asks for.
+- [ ] Investor page SDG icons: the guidelines need prior UN permission and a licence for fundraising use ("intended to raise resources"), and they rule out use "for the purpose of self-promotion". The icons sit in the investor page's "Investment alignment" strip, next to the funding ask. Remove them from that page, or ask the UN through its permission request form (sdgpermissions@un.org).
 
 ## Design direction of 3 November 2026
 
