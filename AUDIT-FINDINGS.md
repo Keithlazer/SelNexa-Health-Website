@@ -479,3 +479,49 @@ Keith's audit and work order, on branch `site-brief-november` (built on `offline
 | Checkmark characters | Yes | The three "✓" trust chips are a `<ul>`; the tick is drawn in CSS, so screen readers do not announce it. |
 
 Also fixed: on phones, the wide tables on seven pages scroll sideways inside a box that keyboard users could not reach (axe-core 4.10, "scrollable-region-focusable"). Each wrapper is now focusable and a named region, labelled with its section heading.
+
+## Design direction: the open items
+
+Keith's answers of 3 November 2026 to the five items left open in `CONTENT-TODO.md`, on branch `design-direction-rollout`.
+
+Before that work: the redesigned Offline First article and the last corner fixes (commits `db25d39` and `e066bc7`) were pushed after PRs #6 and #7 had been merged, so `main` and the live site still had the earlier article. Both commits are merged into this branch.
+
+| Item | Decision | What changed |
+|---|---|---|
+| Four older blog posts | Retire | Each address redirects to the blog, as `blog/telemedicine-zimbabwe.html` already did (`noindex`, canonical to `/blog.html`, meta refresh; GitHub Pages cannot send a 301). Out of the sitemap (34 to 30 URLs), the blog index and the Resources page. The blog's topic and date filters and `js/blog-filter.js` are removed, with one post left to filter. The old post styles in `css/blog.css` are removed. No image was used only by these posts, so none is deleted. The outreach template in `docs/link-outreach.md` links to the new article. |
+| Body text | "Pick what's best" | Paragraphs and list items were `#4b5563` at weight 300, shrunk to 15.2px on phones. They are now `--uniform-text` (`#1f2937`, 13.5:1 on cream) at weight 400, never under 16px. Card text on the homepage, Resources, Guides and Webinars pages and in the article's steps and objectives goes from 14.4-15.5px to 16px; table text from 14.7-15.7px to 16px. The grey stays for dates, sources, notes and captions. |
+| Dark blocks | "Pick the best" | Nine pages opened on a dark hero and seventeen on a light one; the closing call-to-action bands were a navy-to-teal gradient with translucent cards; the homepage had three dark blocks. Now every page with a hero opens on the article's band (navy, one teal radial), which holds the page's headline. The homepage's second dark block is the mission statement, with its four pillar cards on cream below. The closing call-to-action bands and the sign-up band are on cream: they held invitations, not each page's key sentence, and sat directly above the dark footer. The privacy, terms, 404 and offline pages have no hero and no dark block. |
+| Connection trace | Major breaks only | 38 dividers on 25 pages (table below), from one partial, `includes/trace-divider.html`. Each sits on the seam between two sections. |
+| Photographs | Leave for now | Nothing changed. Still in `CONTENT-TODO.md`. |
+
+Where the trace sits (before the named section):
+
+| Page | Dividers |
+|---|---|
+| Home | the Platform section ("SelNexa Health Platform: health service management..."); "Work With Us" |
+| About | "Our Leadership Team"; "Join SelNexa Health's Work" |
+| Platform (`features.html`) | "Built for infrastructure reality from day one"; the closing call to action |
+| Investors | "Market opportunity"; "Financial model and targets"; "Partner with SelNexa Health" |
+| Impact (`case-studies.html`) | "Next: our first measured pilot"; "Follow pilot results" |
+| Results Matrix (`impact.html`) | "Indicators and where they stand" |
+| Careers | "Open Roles"; the closing section |
+| Pricing | "Need a custom deployment model?" |
+| Projects | "How We Decide What To Build" |
+| Security and compliance | "In progress and planned" |
+| Data protection service | "How we help"; "Find out where you stand" |
+| Solutions modules (records, administration, analytics, procurement) | "Example scenario"; the closing call to action |
+| Hospital management | "Validation snapshot"; the closing call to action |
+| Solutions index, Telemedicine, Contact, Book a demo, FAQ, Blog, Guides, Webinars, Whitepapers | the closing call to action |
+
+Found and fixed along the way:
+
+- The trace was drawn with `preserveAspectRatio="none"`, so its amber circle stretched into an oval at any width but 600px; in the article's 120px section marks it was a sliver. Strokes now keep their size (`vector-effect: non-scaling-stroke`) and the point is a round-capped zero-length line, so the mark looks the same at any width.
+- The solutions pages load `home.css`, not `main.css`, and had no coral, amber, electric or teal-text token. The palette tokens are now defined once in `styles/site-chrome.css`, which every page loads, like the radius and shadow tokens.
+- `home.css` had its own red and pink palette (`--primary: #d62839`). Red showed on the solutions pages' heading bars, a button, the hospital-management numbers and subheadings, and privacy page links. Those variables now point at the site palette (teal for accents and links, navy for hover).
+- PurgeCSS drops a rule written as `:is(...) :is(h1, h2, h3)`; the dark band rules are written as plain selector lists.
+- The three trust chips under the homepage call to action were dark text on the dark gradient band. On cream they read normally.
+- The homepage call-to-action cards had green and blue left borders, outside the palette's colour jobs; now amber marks only the main card.
+- The solutions page heroes filled the whole phone screen (`height: 100vh` in `home.css`); as dark bands they size to their content. Page hero buttons now line up with the left-aligned text instead of centring under it.
+- Card paragraphs on the resource pages used `--text-secondary`, which no stylesheet defines.
+
+Checked on all 31 pages at 375 and 1280px: no horizontal scroll, tap targets at least 44px, one `h1` per page, no axe-core 4.10 violations. Link check: 43 pages, 30 sitemap URLs, no problems. Distinct corner and shadow values measured on seven pages: at most 5 radii and 3 shadows (the homepage's status dot adds its animated pulse ring). No element on the solutions, privacy, terms or offline pages renders the old red. `npm run check:site` passes.
