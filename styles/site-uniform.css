@@ -152,7 +152,7 @@ footer,
   z-index: 9999;
   font-size: 14px;
   text-decoration: none;
-  border-radius: 0 0 var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   transition: top 0.2s;
 }
 
@@ -1091,7 +1091,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   inset: 0 auto auto 0;
   width: 100%;
   height: 3px;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-radius: var(--radius-md);
   background: linear-gradient(90deg, rgba(13, 148, 136, 0.9), rgba(232, 160, 32, 0.9));
   opacity: 0.9;
 }
@@ -1215,7 +1215,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   display: inline-flex;
   border-left: 3px solid var(--uniform-accent);
   background: rgba(232,160,32,0.1);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   padding: 0.75rem 0.9rem;
   color: #7a5412;
   font-weight: 700;
@@ -1333,11 +1333,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   width: 34%;
   font-weight: 800;
   color: var(--uniform-primary);
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-}
-
-.spec-table td:last-child {
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .spec-tag {
