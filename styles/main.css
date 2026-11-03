@@ -503,8 +503,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 15% 18%, rgba(201, 154, 63, 0.22), transparent 35%),
-                linear-gradient(135deg, #052849 0%, #0d4a62 52%, #081a2c 100%);
+    /* One teal radial on navy, the same ground as every dark band (DESIGN-DIRECTION.md). */
+    background: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark);
     opacity: 1;
 }
 

@@ -322,10 +322,11 @@ main :where(p, li) {
   font-size: 0.82rem;
 }
 
-/* Sign-up forms use the shared form handler (data-sx-form="updates"); text stays light on the dark band. */
+/* Sign-up forms use the shared form handler (data-sx-form="updates"). The band is light: it sits above the dark
+   footer, and it holds an invitation rather than the page's key sentence. */
 
 .capture-note a {
-  color: #ffffff;
+  color: var(--color-primary-teal-text);
   text-decoration: underline;
 }
 
@@ -514,8 +515,6 @@ main textarea,
    colours their subtitle charcoal and the outline button dark teal, so both were close to invisible. The subtitle was also centred under a left-aligned heading.
    :where() keeps these at the specificity of the rules they replace, so home-page.css still styles the homepage hero. */
 
-/* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
-
 /* Service pages (services/*.html). Variants of the existing card and grid, not new components. */
 
 /* Short label-and-line items, five across on a wide screen. */
@@ -524,10 +523,23 @@ main textarea,
 
 /* An emphasised line under a list. Uses the brand accent as a rule, not an alert colour. */
 
+/* Page heroes are left-aligned, so their buttons line up with the text rather than centring under it. */
+
 /* Homepage development-alignment strip: the SDG focus areas as text, and the integration line that replaced the
    logo strip. */
 
 /* Trust chips are a list; the tick is drawn, not typed, so screen readers do not announce it. */
+
+/* ---------- Dark blocks (DESIGN-DIRECTION.md) ----------
+   Every page opens on the same dark band as the article: navy with one teal radial. It holds the page's h1 and is
+   the page's first dark block. A page may have one more, holding its most important sentence (.dark-block; the
+   homepage mission statement). Nothing else on a page is dark. Each rule ends in a single selector because PurgeCSS
+   drops a rule written as :is(...) :is(h1, h2, h3). */
+
+/* The solutions pages' heroes (home.css .hero) filled the whole screen; as a dark band they size to their content. */
+
+/* Closing call-to-action bands sit on cream. They hold an invitation, not the page's key sentence, and a dark band
+   directly above the dark footer would merge with it. */
 
 /* ---- styles/site-chrome.css ---- */
 /*
