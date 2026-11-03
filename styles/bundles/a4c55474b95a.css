@@ -54,16 +54,8 @@
     --spacing-3xl: 6rem;
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 10px 40px rgba(0, 180, 216, 0.2);
-    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
     
     /* Border Radius */
-    --radius-sm: 0.5rem;
-    --radius-md: 1rem;
-    --radius-lg: 1.5rem;
-    --radius-xl: 2rem;
     
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -105,7 +97,7 @@ body {
     text-decoration: none;
     z-index: 9999;
     font-size: 14px;
-    border-radius: 0 0 4px 0;
+    border-radius: 0 0 var(--radius-sm) 0;
     transition: top 0.2s;
 }
 
@@ -286,7 +278,7 @@ section {
 .modal {
     border: none;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-lg);
     max-width: 500px;
     width: 90%;
     -webkit-backdrop-filter: blur(4px);
@@ -512,7 +504,7 @@ section {
 .tab-btn {
     padding: 0.75rem 1.5rem;
     border: 2px solid var(--primary-color);
-    border-radius: 2rem;
+    border-radius: var(--radius-lg);
     background: none;
     color: var(--primary-color);
     font-weight: 600;
@@ -543,9 +535,9 @@ section {
 
 .resource-card {
     background-color: var(--white);
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease;
     display: flex;
     gap: 1.5rem;
@@ -559,7 +551,7 @@ section {
     width: 50px;
     height: 50px;
     background-color: var(--light-bg);
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -596,7 +588,7 @@ section {
     background-color: var(--light-bg);
     color: var(--primary-color);
     padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
 }
 
 .resource-date {
@@ -607,7 +599,7 @@ section {
     background-color: var(--light-bg);
     color: var(--primary-color);
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -965,10 +957,10 @@ section {
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--color-glass-border);
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     padding: var(--spacing-base-32);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    box-shadow: var(--shadow-lg), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -979,7 +971,7 @@ section {
 .card:hover {
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     backdrop-filter: blur(25px) saturate(200%);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    box-shadow: var(--shadow-lg), 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
     transform: translateY(-8px) scale(1.02) translateZ(0);
     border-color: rgba(255, 255, 255, 0.3);
     z-index: 2;
@@ -1011,7 +1003,7 @@ section {
 .btn-primary {
     background: var(--color-gradient-primary);
     color: var(--color-neutral-white);
-    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -1031,7 +1023,7 @@ section {
 
 .btn-primary:hover {
     background: var(--color-gradient-primary);
-    box-shadow: 0 8px 24px rgba(0, 180, 216, 0.4);
+    box-shadow: var(--shadow-md);
     transform: translateY(-3px) scale(1.02);
     animation: btn-pulse 0.6s ease-out;
 }
@@ -1066,7 +1058,7 @@ section {
 
 .btn-secondary:hover {
     background: var(--color-gradient-secondary);
-    box-shadow: 0 6px 20px rgba(10, 36, 99, 0.3);
+    box-shadow: var(--shadow-md);
     transform: translateY(-2px) scale(1.01);
     border-color: rgba(255, 255, 255, 0.2);
 }
@@ -1084,7 +1076,7 @@ section {
         box-shadow: 0 8px 24px rgba(0, 180, 216, 0.5), 0 0 0 4px rgba(0, 180, 216, 0.1);
     }
     100% {
-        box-shadow: 0 8px 24px rgba(0, 180, 216, 0.4);
+        box-shadow: var(--shadow-md);
     }
 }
 
@@ -1203,7 +1195,6 @@ section {
   --uniform-primary: #004c4c;
   --uniform-accent: #e8a020;
   --uniform-border: rgba(15, 23, 42, 0.1);
-  --uniform-shadow: 0 12px 30px rgba(2, 14, 30, 0.08);
   --color-brand-primary: #004c4c;
   --color-brand-secondary: #0e7490;
   --color-brand-accent: #e8a020;
@@ -1228,19 +1219,10 @@ section {
   --text-2xl: 1.5rem;
   --text-3xl: clamp(1.75rem, 3vw, 2.25rem);
   --text-hero: clamp(2.2rem, 5vw, 3.4rem);
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-pill: 100px;
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
   --transition-slow: 0.4s ease;
   --transition-spring: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.04);
-  --shadow-hover: 0 12px 32px rgba(0,0,0,0.12);
 }
 html {
   scroll-behavior: smooth;
@@ -1290,8 +1272,8 @@ li {
 .webinar-card {
   background: var(--uniform-surface);
   border: 1px solid var(--uniform-border);
-  box-shadow: var(--uniform-shadow);
-  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
 }
 
 /* Footer consistency across .footer, .site-footer and plain footer tags */
@@ -1312,7 +1294,7 @@ footer,
   z-index: 9999;
   font-size: 14px;
   text-decoration: none;
-  border-radius: 0 0 4px 0;
+  border-radius: 0 0 var(--radius-sm) 0;
   transition: top 0.2s;
 }
 
@@ -1422,33 +1404,12 @@ main :where(p, li) {
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
 }
 
 @keyframes pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-success-rgb), 0.4); }
   50% { box-shadow: 0 0 0 6px rgba(var(--color-success-rgb), 0); }
-}
-
-/* Integration logos: a static row without JavaScript or with reduced motion; js/site-core.js turns it into a
-   scrolling strip (with a pause button) by duplicating the list inside .strip-track. */
-
-.strip-toggle {
-  min-height: 44px;
-  padding: 0 0.9rem;
-  border: 1px solid rgba(0, 76, 76, 0.35);
-  border-radius: 999px;
-  background: #ffffff;
-  color: #004c4c;
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 /* Legend Styling Updates */
@@ -1467,7 +1428,7 @@ main :where(p, li) {
 
 .module-tab {
   border: 1px solid var(--uniform-border);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: #ffffff;
   color: var(--uniform-primary);
   padding: 0.65rem 1rem;
@@ -1559,7 +1520,7 @@ main :where(p, li) {
 .video-tab-controls .tab-btn {
   border: 1px solid rgba(15, 23, 42, 0.2);
   background: #fff;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0.5rem 0.9rem;
   cursor: pointer;
 }
@@ -1572,7 +1533,7 @@ main :where(p, li) {
 .video-tab-content video {
   width: 100%;
   max-width: 960px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   display: block;
 }
 
@@ -1658,6 +1619,11 @@ main textarea,
 
 /* An emphasised line under a list. Uses the brand accent as a rule, not an alert colour. */
 
+/* Homepage development-alignment strip: the SDG focus areas as text, and the integration line that replaced the
+   logo strip. */
+
+/* Trust chips are a list; the tick is drawn, not typed, so screen readers do not announce it. */
+
 /* ---- styles/site-chrome.css ---- */
 /*
  * Shared site chrome: header, footer, demo modal and forms.
@@ -1692,6 +1658,16 @@ main textarea,
   --sx-error: #b42318;
   --sx-success: #05603a;
   --sx-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* The only corner and shadow values on the site. Every stylesheet loads this file last, so these win. */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
 .sr-only {
@@ -1727,7 +1703,7 @@ header.sx-header {
 
 header.sx-header.is-scrolled {
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 12px 32px rgba(2, 14, 30, 0.08);
+  box-shadow: var(--shadow-lg);
 }
 
 .sx-header__inner {
@@ -1822,7 +1798,7 @@ header.sx-header.is-scrolled {
   right: 0.6rem;
   bottom: 6px;
   height: 2px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: linear-gradient(90deg, var(--sx-amber), transparent);
   transform: scaleX(0);
   transform-origin: left;
@@ -1837,7 +1813,7 @@ header.sx-header.is-scrolled {
 .sx-menu a.sx-cta {
   margin-left: 0.35rem;
   padding: 0 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--sx-amber);
   color: var(--sx-dark);
   font-weight: 700;
@@ -1894,7 +1870,7 @@ footer.sx-footer :focus-visible,
     margin-left: auto;
     padding: 0 0.8rem;
     border: 1px solid rgba(0, 76, 76, 0.3);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--sx-teal);
     font: inherit;
@@ -1909,7 +1885,7 @@ footer.sx-footer :focus-visible,
     display: block;
     width: 18px;
     height: 2px;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
     background: currentColor;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
@@ -2123,9 +2099,9 @@ footer.sx-footer .footer-compliance p {
   height: 52px;
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   color: #ffffff;
-  box-shadow: 0 8px 22px rgba(2, 14, 30, 0.28);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -2165,10 +2141,10 @@ footer.sx-footer .footer-compliance p {
   overflow: auto;
   padding: 1rem;
   border: 1px solid rgba(10, 36, 99, 0.18);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: #ffffff;
   color: var(--sx-ink);
-  box-shadow: 0 18px 44px rgba(2, 14, 30, 0.25);
+  box-shadow: var(--shadow-lg);
   font-family: var(--sx-font);
 }
 
@@ -2194,7 +2170,7 @@ footer.sx-footer .footer-compliance p {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--sx-ink);
   font-size: 1.6rem;
@@ -2230,7 +2206,7 @@ footer.sx-footer .footer-compliance p {
 .sx-finder__demo {
   width: 100%;
   min-height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font: inherit;
   font-size: 0.95rem;
 }
@@ -2290,10 +2266,10 @@ dialog.sx-modal {
   padding: 0;
   overflow: auto;
   border: 0;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: #ffffff;
   color: var(--sx-ink);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-lg);
   font-family: var(--sx-font);
 }
 
@@ -2325,7 +2301,7 @@ dialog.sx-modal::backdrop {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--sx-ink);
   font-size: 1.8rem;
@@ -2388,7 +2364,7 @@ dialog.sx-modal::backdrop {
   min-height: 44px;
   padding: 0.6rem 0.75rem;
   border: 1px solid #8a94a6;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: #ffffff;
   color: var(--sx-ink);
   font: inherit;
@@ -2476,7 +2452,7 @@ dialog.sx-modal::backdrop {
 
 .sx-form-done {
   padding: 1.25rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: #ecfdf3;
   color: var(--sx-success);
 }

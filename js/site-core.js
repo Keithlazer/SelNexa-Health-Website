@@ -138,45 +138,6 @@
     });
   }
 
-  /* ---------- Logo strip: static list by default; scrolls (with a pause button) when motion is welcome ---------- */
-
-  function setupMarquee() {
-    if (reduceMotion) {
-      return;
-    }
-    document.querySelectorAll("[data-marquee]").forEach(function (box) {
-      var list = box.querySelector("ul");
-      if (!list || box.classList.contains("is-animated")) {
-        return;
-      }
-      var copy = list.cloneNode(true);
-      copy.setAttribute("aria-hidden", "true");
-      copy.removeAttribute("aria-label");
-      copy.querySelectorAll("a").forEach(function (link) {
-        link.setAttribute("tabindex", "-1");
-      });
-      copy.querySelectorAll("img").forEach(function (img) {
-        img.alt = "";
-      });
-      var track = document.createElement("div");
-      track.className = "strip-track";
-      list.parentNode.insertBefore(track, list);
-      track.appendChild(list);
-      track.appendChild(copy);
-
-      var button = document.createElement("button");
-      button.type = "button";
-      button.className = "strip-toggle";
-      button.textContent = "Pause logos";
-      button.addEventListener("click", function () {
-        var paused = box.classList.toggle("is-paused");
-        button.textContent = paused ? "Play logos" : "Pause logos";
-      });
-      box.parentNode.insertBefore(button, box.nextSibling);
-      box.classList.add("is-animated");
-    });
-  }
-
   /* ---------- Count-up numbers: reserved for measured results ---------- */
 
   function animateCounter(el) {
@@ -815,7 +776,6 @@
     setupReveal();
     setupCounters();
     setupCtaTracking();
-    whenIdle(setupMarquee);
     whenIdle(setupModuleFinder);
     whenIdle(setupWhatsApp);
     registerServiceWorker();
