@@ -55,9 +55,10 @@ iframe {
   max-width: 100%;
 }
 
+/* Running text is dark (DESIGN-DIRECTION.md: never thin grey). The muted grey is kept for dates, sources and notes. */
 p,
 li {
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .container {
@@ -244,7 +245,7 @@ footer a:hover,
 .sdg-footer-strip p {
   max-width: 64ch;
   margin-bottom: 0;
-  color: #4b5563 !important;
+  color: var(--uniform-text) !important;
 }
 
 .hero-sdg-line {
@@ -1030,7 +1031,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .story-eyebrow {
@@ -1105,8 +1106,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .timeline-item p {
   margin: 0;
-  color: var(--uniform-muted);
-  font-size: 0.97rem;
+  color: var(--uniform-text);
 }
 
 .timeline-dot {
@@ -1291,7 +1291,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .quick-metrics .section-header p {
-  color: #475569;
+  color: var(--uniform-text);
 }
 
 /*
@@ -1309,7 +1309,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border-collapse: separate;
   border-spacing: 0 0.6rem;
   margin-top: 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .spec-table caption {
@@ -1748,7 +1748,7 @@ html[data-theme="dark"] .timeline-item {
   .hero-content p,
   main :where(.section-header p, article p, .story-copy p, .letter-content p) {
     max-width: 100% !important;
-    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+    font-size: clamp(1rem, 3.8vw, 1.08rem);
     line-height: 1.55;
     overflow-wrap: break-word;
   }
@@ -1885,7 +1885,6 @@ html[data-theme="dark"] .timeline-item {
   .comparison-table th,
   .comparison-table td {
     padding: 0.75rem;
-    font-size: 0.92rem;
   }
 }
 
@@ -2080,7 +2079,7 @@ main .page-sources p {
 }
 
 .sdg-goals li {
-  color: #4b5563;
+  color: var(--uniform-text);
   line-height: 1.5;
 }
 

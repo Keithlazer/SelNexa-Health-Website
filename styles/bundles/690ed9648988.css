@@ -995,7 +995,7 @@ body {
     color: var(--color-neutral-charcoal);
     background-color: #f9f5ee;
     line-height: 1.72;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
 }
 
@@ -1104,7 +1104,7 @@ p, li, label {
     font-size: var(--fs-body);
     line-height: 1.72;
     letter-spacing: 0;
-    font-weight: 300;
+    font-weight: 400;
     color: inherit;
 }
 
@@ -1466,8 +1466,8 @@ section {
         font-size: 1.125rem;
     }
     
+    /* Body text holds at 16px on phones (DESIGN-DIRECTION.md); only the line height tightens. */
     p, li {
-        font-size: 0.95rem;
         line-height: 1.7;
     }
     
@@ -1606,9 +1606,10 @@ video {
   height: auto;
 }
 
+/* Running text is dark (DESIGN-DIRECTION.md: never thin grey). The muted grey is kept for dates, sources and notes. */
 p,
 li {
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .container {
@@ -1723,7 +1724,7 @@ footer a:hover,
 .sdg-trust-copy p {
   max-width: 64ch;
   margin-bottom: 0;
-  color: #4b5563 !important;
+  color: var(--uniform-text) !important;
 }
 
 .module-card {
@@ -2170,7 +2171,7 @@ main :where(.section-header p, .hero-subtitle, article p) {
 }
 
 .quick-metrics .section-header p {
-  color: #475569;
+  color: var(--uniform-text);
 }
 
 /*
@@ -2188,7 +2189,7 @@ main :where(.section-header p, .hero-subtitle, article p) {
   border-collapse: separate;
   border-spacing: 0 0.6rem;
   margin-top: 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .spec-table caption {
@@ -2290,7 +2291,7 @@ main :where(.section-header p, .hero-subtitle, article p) {
   .hero-content p,
   main :where(.section-header p, article p) {
     max-width: 100% !important;
-    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+    font-size: clamp(1rem, 3.8vw, 1.08rem);
     line-height: 1.55;
     overflow-wrap: break-word;
   }
@@ -2476,7 +2477,7 @@ main summary {
 }
 
 .sdg-goals li {
-  color: #4b5563;
+  color: var(--uniform-text);
   line-height: 1.5;
 }
 
@@ -2560,7 +2561,7 @@ h1, h2, h3 { letter-spacing: -0.03em; }
     margin-bottom: 1.05rem;
     color: #fff;
 }
-.hero-subtitle { font-weight: 300; font-size: 17px; line-height: 1.65; color: var(--text-inverse-muted); max-width: 64ch; }
+.hero-subtitle { font-weight: 400; font-size: 17px; line-height: 1.65; color: var(--text-inverse-muted); max-width: 64ch; }
 .hero-cta-group { display: flex; gap: 0.85rem; flex-wrap: wrap; }
 .btn-ghost {
     min-height: 52px; border: 1px solid rgba(255,255,255,0.45); background: transparent; color: #fff;
@@ -2611,7 +2612,7 @@ h1, h2, h3 { letter-spacing: -0.03em; }
     color: #0f172a;
 }
 .quick-metrics .section-header p {
-    color: #475569;
+    color: var(--uniform-text);
     max-width: 62ch;
 }
 .quick-metrics .section-label {
@@ -2642,7 +2643,7 @@ h1, h2, h3 { letter-spacing: -0.03em; }
     line-height: 1.3;
 }
 .module-card p {
-    font-size: clamp(0.95rem, 1.5vw, 1rem);
+    font-size: 1rem;
     line-height: 1.6;
     flex-grow: 1;
     margin-bottom: 1rem;
@@ -2682,9 +2683,6 @@ h1, h2, h3 { letter-spacing: -0.03em; }
     }
     .module-card h3 {
         font-size: 1.15rem;
-    }
-    .module-card p {
-        font-size: 0.9rem;
     }
 }
 .cta-split { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 1.25rem 0; }

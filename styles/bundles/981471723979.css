@@ -44,7 +44,7 @@ body {
 .skip-link:focus { top: 0; }
 
 h1, h2, h3, h4 { font-weight: 700; color: var(--dark); margin-bottom: 1rem; }
-p { margin-bottom: 1rem; color: #555; }
+p { margin-bottom: 1rem; color: #1f2937; }
 a { text-decoration: none; color: var(--primary); transition: var(--transition); }
 a:hover { color: var(--primary-light); }
 
@@ -158,9 +158,10 @@ video {
   height: auto;
 }
 
+/* Running text is dark (DESIGN-DIRECTION.md: never thin grey). The muted grey is kept for dates, sources and notes. */
 p,
 li {
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .container {

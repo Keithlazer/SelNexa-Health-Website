@@ -15,7 +15,7 @@ body {
     color: var(--color-neutral-charcoal);
     background-color: #f9f5ee;
     line-height: 1.72;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
 }
 
@@ -124,7 +124,7 @@ p, li, label {
     font-size: var(--fs-body);
     line-height: 1.72;
     letter-spacing: 0;
-    font-weight: 300;
+    font-weight: 400;
     color: inherit;
 }
 
@@ -858,8 +858,8 @@ section {
         font-size: 1.125rem;
     }
     
+    /* Body text holds at 16px on phones (DESIGN-DIRECTION.md); only the line height tightens. */
     p, li {
-        font-size: 0.95rem;
         line-height: 1.7;
     }
     

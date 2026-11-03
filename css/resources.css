@@ -104,9 +104,9 @@
 }
 
 .resource-content p {
-    color: var(--text-secondary);
+    color: var(--uniform-text);
     margin-bottom: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.5;
 }
 
@@ -289,9 +289,9 @@
 }
 
 .recommendation-card p {
-    color: var(--text-secondary);
+    color: var(--uniform-text);
     margin-bottom: 1.5rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.5;
 }
 
