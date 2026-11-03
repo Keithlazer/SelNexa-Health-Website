@@ -146,3 +146,158 @@
   color: #0a2463;
   font-size: 1rem;
 }
+
+/* Long-form article (blog/offline-first.html). Values come from the tokens in styles/main.css. */
+.blog-article {
+  max-width: 36rem;
+}
+
+.blog-article .blog-meta {
+  margin-bottom: var(--spacing-sm);
+}
+
+.blog-article .blog-byline {
+  font-size: 0.9rem;
+  color: var(--color-neutral-charcoal);
+  border-top: 1px solid rgba(10, 36, 99, 0.12);
+  padding-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.blog-article h1 {
+  font-size: var(--fs-h2);
+  line-height: 1.12;
+}
+
+.blog-article h2 {
+  margin-top: var(--spacing-xl);
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+
+.blog-article .pull {
+  margin: var(--spacing-xl) 0;
+  padding-left: var(--spacing-md);
+  border-left: 4px solid var(--color-cta-amber);
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.blog-article .flow {
+  margin: var(--spacing-lg) 0;
+}
+
+.blog-article .flow figcaption {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-neutral-charcoal);
+  margin-bottom: var(--spacing-sm);
+}
+
+.blog-article .steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-article .step {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: var(--spacing-sm);
+  background: var(--surface-raised);
+  border-radius: 14px;
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.blog-article .step h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.blog-article .step p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.blog-article .step .n {
+  width: 2rem; height: 2rem; border-radius: 9px;
+  display: grid; place-items: center;
+  font-weight: 800; color: #fff;
+  background: var(--color-primary-dark);
+}
+
+.blog-article .step.alt .n { background: var(--color-primary-teal-text); }
+/* White on amber is under 3:1, so the warning marker uses the dark text the site's amber buttons use. */
+.blog-article .step.warn .n { background: var(--color-cta-amber); color: var(--surface-dark); }
+
+.blog-article .step-break {
+  margin: var(--spacing-xs) 0 var(--spacing-sm) 3.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-neutral-charcoal);
+}
+
+.blog-article .objectives {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.blog-article .objectives h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.blog-article .objectives p {
+  margin: 0;
+}
+
+.blog-article .callout {
+  margin: var(--spacing-2xl) 0;
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-radius: 18px;
+  padding: var(--spacing-xl);
+}
+
+.blog-article .callout .callout-label {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-electric);
+}
+
+.blog-article .callout p {
+  color: #fff;
+}
+
+.blog-article .callout .callout-question {
+  font-size: var(--fs-h4);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.blog-article .callout p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-article .article-author {
+  margin: var(--spacing-xl) 0 var(--spacing-lg);
+}
+
+.blog-article .article-author p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-article .article-author h2 {
+  margin: 0 0 var(--spacing-xs);
+  font-size: 1rem;
+}
