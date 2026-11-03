@@ -6,23 +6,14 @@
 
 /* CSS Variables - Design System */
 :root {
-    /* Primary Colors */
-    --color-primary-dark: #0A2463;
-    --color-primary-teal: #00B4D8;
-    --color-primary-teal-text: #0e7490; /* same hue, dark enough for text on light backgrounds */
-    --color-accent-electric: #90E0EF;
+    /* The palette (primary, coral, green, amber, electric, surfaces) is defined in site-chrome.css. */
     
     /* Secondary Colors */
-    --color-secondary-coral: #FF6B6B;
-    --color-secondary-green: #06D6A0;
     --color-secondary-purple: #5F0F40;
     --color-warm-accent: #c99a3f;
-    --color-cta-amber: #E8A020;
     --color-cta-amber-light: #F4C157;
     --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
-    --surface-base: #f9f5ee;
-    --surface-raised: #ffffff;
     --surface-overlay: rgba(255, 255, 255, 0.72);
     --surface-inset: #f0ebe1;
     --surface-dark: #08131a;
@@ -97,7 +88,7 @@ body {
     text-decoration: none;
     z-index: 9999;
     font-size: 14px;
-    border-radius: 0 0 var(--radius-sm) 0;
+    border-radius: var(--radius-sm);
     transition: top 0.2s;
 }
 
@@ -503,8 +494,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 15% 18%, rgba(201, 154, 63, 0.22), transparent 35%),
-                linear-gradient(135deg, #052849 0%, #0d4a62 52%, #081a2c 100%);
+    /* One teal radial on navy, the same ground as every dark band (DESIGN-DIRECTION.md). */
+    background: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark);
     opacity: 1;
 }
 
@@ -3225,9 +3216,6 @@ html[data-theme="dark"] .plan-table td strong {
     margin-top: 0.75rem;
 }
 
-.blog-filter-card {
-    margin-bottom: 1.5rem;
-}
 
 .blog-cms-note {
     margin-top: 1.5rem;

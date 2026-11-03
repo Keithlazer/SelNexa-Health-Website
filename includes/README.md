@@ -14,6 +14,7 @@ The header, footer, demo modal, forms and a few `<head>` tags are written once h
 | `demo-form.html` | The demo request form (also used directly on `appointments.html`) |
 | `contact-form.html` | The form on `contact.html` |
 | `scripts.html` | `js/form-endpoints.js` and `js/site-core.js` |
+| `trace-divider.html` | The connection trace as a section divider, between two sections at a page's major breaks only (DESIGN-DIRECTION.md). A page can hold it more than once |
 
 In a page, each part sits between two markers, for example `<!-- sx:footer -->` and `<!-- /sx:footer -->`. Anything between the markers is overwritten on the next build.
 

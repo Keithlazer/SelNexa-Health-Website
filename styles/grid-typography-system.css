@@ -15,7 +15,7 @@ body {
     color: var(--color-neutral-charcoal);
     background-color: #f9f5ee;
     line-height: 1.72;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
 }
 
@@ -24,10 +24,8 @@ body {
    ============================================ */
 :root {
     /* Enhanced color palette with modern gradients */
-    --color-primary-teal: #00B4D8;           /* Bright cyan */
     --color-primary-teal-light: #48CAE4;     /* Light cyan */
     --color-primary-teal-dark: #0077B6;      /* Deep blue-cyan */
-    --color-primary-dark: #0A2463;           /* Navy blue */
     --color-primary-dark-light: #1E3A8A;     /* Lighter navy */
     --color-accent-gold: #FFD700;            /* Gold accent */
     --color-accent-gold-light: #FFE55C;      /* Light gold */
@@ -124,7 +122,7 @@ p, li, label {
     font-size: var(--fs-body);
     line-height: 1.72;
     letter-spacing: 0;
-    font-weight: 300;
+    font-weight: 400;
     color: inherit;
 }
 
@@ -858,8 +856,8 @@ section {
         font-size: 1.125rem;
     }
     
+    /* Body text holds at 16px on phones (DESIGN-DIRECTION.md); only the line height tightens. */
     p, li {
-        font-size: 0.95rem;
         line-height: 1.7;
     }
     

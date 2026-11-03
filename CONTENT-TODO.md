@@ -58,6 +58,16 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Administration module copy on the homepage: "with AI help on routine tasks such as suggesting appointment slots" is the vaguest feature claim on the page (brief, section 9). Say what it does concretely, or drop the clause.
 - [ ] SDG badges are still used on the About, Platform, investor, Impact and Projects pages. The UN publishes usage guidelines for the SDG marks; check them before the badges stay.
 
+## Design direction of 3 November 2026
+
+The Offline First article follows the direction in full, and the radius and shadow tokens apply site-wide. The items below were decided on 3 November 2026; only the photographs remain open.
+
+- [x] Connection trace as a section divider at major breaks only (your decision, 3 November 2026): 38 dividers on 25 pages, where a page moves from one part to the next (for example from what is built to what is planned on the Security page) and before each closing call to action. The list is in AUDIT-FINDINGS.md. To move or add one, place `<!-- sx:trace-divider --><!-- /sx:trace-divider -->` between two sections and run `npm run build:site`.
+- [x] Dark blocks (your decision, 3 November 2026: "pick the best"): every page with a hero now opens on the article's dark band, navy with one teal radial, holding the page's headline. The homepage's second dark block is the mission statement ("An infrastructure problem, not a knowledge problem"). The closing call-to-action bands and the sign-up band moved to cream: they held invitations rather than each page's key sentence, and sat directly above the dark footer. If a page needs a different sentence in its dark block, say which.
+- [x] Body text site-wide: running text is now dark (#1f2937) at regular weight and at least 16px on phones (your decision, 3 November 2026: "pick what's best"). The muted grey stays only for dates, sources, notes and captions.
+- [x] The four older blog posts: retired (your decision, 3 November 2026). Each address now redirects to the blog, the way `blog/telemedicine-zimbabwe.html` already did; they are out of the sitemap, the blog index and the Resources page. If a post comes back later, it uses the Offline First template and needs a named author.
+- [ ] Photographs of Zimbabwean health institutions (records rooms, paper registers, a health worker at a terminal), with permission from each place and person shown. None exist on the site yet. Left for now (3 November 2026).
+
 ## Contact and operations
 
 - [ ] Before this branch goes live, confirm contact@selnexahealth.com receives mail. Every form on the site falls back to opening an email to that address, and the footer, contact page and structured data all show it. (The site and deck used seven addresses before; only the privacy policy still gives a different one, keithtafangombe@selnexahealth.com.)

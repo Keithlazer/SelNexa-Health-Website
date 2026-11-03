@@ -55,9 +55,10 @@ iframe {
   max-width: 100%;
 }
 
+/* Running text is dark (DESIGN-DIRECTION.md: never thin grey). The muted grey is kept for dates, sources and notes. */
 p,
 li {
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .container {
@@ -152,7 +153,7 @@ footer,
   z-index: 9999;
   font-size: 14px;
   text-decoration: none;
-  border-radius: 0 0 var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   transition: top 0.2s;
 }
 
@@ -244,7 +245,7 @@ footer a:hover,
 .sdg-footer-strip p {
   max-width: 64ch;
   margin-bottom: 0;
-  color: #4b5563 !important;
+  color: var(--uniform-text) !important;
 }
 
 .hero-sdg-line {
@@ -795,14 +796,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   gap: 1rem;
 }
 
-.cta-audience-card {
-  border-left: 4px solid var(--audience-color, var(--uniform-accent));
-}
-
-.cta-audience-card.facilities { --audience-color: #22c55e; }
-.cta-audience-card.partners { --audience-color: #3b82f6; }
-.cta-audience-card.investors { --audience-color: #f59e0b; }
-
 .audience-icon {
   width: 42px;
   height: 42px;
@@ -810,8 +803,8 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-pill);
-  background: rgba(255,255,255,0.12);
-  color: #ffffff;
+  background: rgba(10, 36, 99, 0.08);
+  color: var(--color-primary-dark);
   margin-bottom: 0.8rem;
 }
 
@@ -827,8 +820,8 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .email-capture {
-  background: linear-gradient(135deg, #0a1414, #004c4c);
-  color: #ffffff;
+  background: var(--color-bg-secondary);
+  color: var(--uniform-text);
   padding: clamp(3rem, 7vw, 5rem) 1rem;
 }
 
@@ -839,7 +832,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .capture-inner p {
-  color: rgba(255,255,255,0.78);
+  color: var(--uniform-text);
   margin-left: auto;
   margin-right: auto;
 }
@@ -854,15 +847,15 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .capture-form input {
   min-width: min(320px, 100%);
-  border: 1px solid rgba(255,255,255,0.24);
+  border: 1px solid var(--uniform-muted);
   border-radius: var(--radius-pill);
   padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.1);
-  color: #ffffff;
+  background: var(--surface-raised, #ffffff);
+  color: var(--uniform-text);
 }
 
 .capture-form input::placeholder {
-  color: rgba(255,255,255,0.62);
+  color: var(--uniform-muted);
 }
 
 .capture-form button {
@@ -880,9 +873,10 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-size: 0.82rem;
 }
 
-/* Sign-up forms use the shared form handler (data-sx-form="updates"); text stays light on the dark band. */
+/* Sign-up forms use the shared form handler (data-sx-form="updates"). The band is light: it sits above the dark
+   footer, and it holds an invitation rather than the page's key sentence. */
 .email-capture h2 {
-  color: #ffffff;
+  color: var(--color-primary-dark);
 }
 
 .capture-form {
@@ -897,7 +891,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .capture-field label {
-  color: #ffffff;
+  color: var(--color-primary-dark);
   font-size: 0.92rem;
   font-weight: 600;
 }
@@ -905,16 +899,16 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .capture-form .sx-form__status {
   flex-basis: 100%;
   margin: 0;
-  color: rgba(255,255,255,0.85);
+  color: var(--uniform-text);
 }
 
 .email-capture .sx-error,
 .email-capture .sx-form__status.is-error {
-  color: #fecdca;
+  color: var(--sx-error);
 }
 
 .capture-note a {
-  color: #ffffff;
+  color: var(--color-primary-teal-text);
   text-decoration: underline;
 }
 
@@ -1030,7 +1024,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .story-eyebrow {
@@ -1091,7 +1085,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   inset: 0 auto auto 0;
   width: 100%;
   height: 3px;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-radius: var(--radius-md);
   background: linear-gradient(90deg, rgba(13, 148, 136, 0.9), rgba(232, 160, 32, 0.9));
   opacity: 0.9;
 }
@@ -1105,8 +1099,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .timeline-item p {
   margin: 0;
-  color: var(--uniform-muted);
-  font-size: 0.97rem;
+  color: var(--uniform-text);
 }
 
 .timeline-dot {
@@ -1215,7 +1208,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   display: inline-flex;
   border-left: 3px solid var(--uniform-accent);
   background: rgba(232,160,32,0.1);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   padding: 0.75rem 0.9rem;
   color: #7a5412;
   font-weight: 700;
@@ -1291,7 +1284,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .quick-metrics .section-header p {
-  color: #475569;
+  color: var(--uniform-text);
 }
 
 /*
@@ -1309,7 +1302,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border-collapse: separate;
   border-spacing: 0 0.6rem;
   margin-top: 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .spec-table caption {
@@ -1333,11 +1326,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   width: 34%;
   font-weight: 800;
   color: var(--uniform-primary);
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-}
-
-.spec-table td:last-child {
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .spec-tag {
@@ -1753,7 +1741,7 @@ html[data-theme="dark"] .timeline-item {
   .hero-content p,
   main :where(.section-header p, article p, .story-copy p, .letter-content p) {
     max-width: 100% !important;
-    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+    font-size: clamp(1rem, 3.8vw, 1.08rem);
     line-height: 1.55;
     overflow-wrap: break-word;
   }
@@ -1890,7 +1878,6 @@ html[data-theme="dark"] .timeline-item {
   .comparison-table th,
   .comparison-table td {
     padding: 0.75rem;
-    font-size: 0.92rem;
   }
 }
 
@@ -2005,11 +1992,6 @@ main summary {
   border-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
-.hero > .container p {
-  color: var(--uniform-muted);
-}
-
 /* Service pages (services/*.html). Variants of the existing card and grid, not new components. */
 .page-prose {
   max-width: 760px;
@@ -2049,7 +2031,8 @@ main summary {
   margin-top: var(--spacing-lg);
 }
 
-.page-hero .cta-buttons--start {
+/* Page heroes are left-aligned, so their buttons line up with the text rather than centring under it. */
+.page-hero .cta-buttons {
   justify-content: flex-start;
   align-items: center;
 }
@@ -2085,7 +2068,7 @@ main .page-sources p {
 }
 
 .sdg-goals li {
-  color: #4b5563;
+  color: var(--uniform-text);
   line-height: 1.5;
 }
 
@@ -2117,4 +2100,117 @@ ul.trust-chips {
   border: solid currentColor;
   border-width: 0 0.14em 0.14em 0;
   transform: rotate(45deg);
+}
+
+/* ---------- Dark blocks (DESIGN-DIRECTION.md) ----------
+   Every page opens on the same dark band as the article: navy with one teal radial. It holds the page's h1 and is
+   the page's first dark block. A page may have one more, holding its most important sentence (.dark-block; the
+   homepage mission statement). Nothing else on a page is dark. Each rule ends in a single selector because PurgeCSS
+   drops a rule written as :is(...) :is(h1, h2, h3). */
+.page-hero,
+.solution-hero,
+.guides-hero,
+.webinars-hero,
+.resources-hero,
+.hero:has(> .container),
+.dark-block {
+  background: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark);
+  color: #fff;
+}
+
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) h1,
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) h2,
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) h3 {
+  color: #fff;
+}
+
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) p,
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) .page-overline,
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) .section-label {
+  color: var(--color-accent-electric);
+  border-color: rgba(144, 224, 239, 0.45);
+}
+
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) a:not(.btn) {
+  color: var(--color-accent-electric);
+}
+
+:is(.page-hero, .solution-hero, .guides-hero, .webinars-hero, .resources-hero, .hero:has(> .container), .dark-block) .btn-secondary {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-block {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+/* The solutions pages' heroes (home.css .hero) filled the whole screen; as a dark band they size to their content. */
+.hero:has(> .container) {
+  height: auto;
+  min-height: 0;
+  padding-block: clamp(4rem, 10vw, 6.5rem) clamp(3rem, 7vw, 4.5rem);
+}
+
+/* Closing call-to-action bands sit on cream. They hold an invitation, not the page's key sentence, and a dark band
+   directly above the dark footer would merge with it. */
+.cta-section .cta-background {
+  display: none;
+}
+
+.cta-content,
+.cta-content h2 {
+  color: var(--color-primary-dark);
+}
+
+.cta-content p {
+  color: var(--uniform-text);
+}
+
+.cta-soft-link {
+  color: var(--color-primary-teal-text);
+}
+
+.cta-soft-link:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ---------- The connection trace (DESIGN-DIRECTION.md) ----------
+   Solid, broken, solid: the link drops and comes back. It is the site's one ornament, always aria-hidden and never
+   animated. It sits under the article hero, beside the article's section numbers and, as a divider
+   (includes/trace-divider.html), at a page's major breaks only. Strokes do not scale with the drawing, so the line
+   weight, the dashes and the amber point are the same at any width; the point is a round-capped zero-length line
+   because a circle would stretch into an oval. */
+.trace {
+  display: block;
+  width: 100%;
+  height: 14px;
+  overflow: visible;
+}
+
+.trace line {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.trace .live { stroke: var(--color-primary-teal); }
+.trace .lost { stroke: var(--color-secondary-coral); stroke-dasharray: 3 7; opacity: 0.85; }
+.trace .dot { stroke: var(--color-cta-amber); stroke-width: 7; }
+
+/* The divider takes no height and is centred on the seam between two sections, so it never leaves a strip of page
+   ground between sections that have their own. */
+.trace-divider {
+  position: relative;
+  z-index: 1;
+  width: min(600px, 100% - 2rem);
+  height: 0;
+  margin-inline: auto;
+}
+
+.trace-divider .trace {
+  transform: translateY(-50%);
 }

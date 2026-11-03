@@ -6,23 +6,14 @@
 
 /* CSS Variables - Design System */
 :root {
-    /* Primary Colors */
-    --color-primary-dark: #0A2463;
-    --color-primary-teal: #00B4D8;
-    --color-primary-teal-text: #0e7490; /* same hue, dark enough for text on light backgrounds */
-    --color-accent-electric: #90E0EF;
+    /* The palette (primary, coral, green, amber, electric, surfaces) is defined in site-chrome.css. */
     
     /* Secondary Colors */
-    --color-secondary-coral: #FF6B6B;
-    --color-secondary-green: #06D6A0;
     --color-secondary-purple: #5F0F40;
     --color-warm-accent: #c99a3f;
-    --color-cta-amber: #E8A020;
     --color-cta-amber-light: #F4C157;
     --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
-    --surface-base: #f9f5ee;
-    --surface-raised: #ffffff;
     --surface-overlay: rgba(255, 255, 255, 0.72);
     --surface-inset: #f0ebe1;
     --surface-dark: #08131a;
@@ -97,7 +88,7 @@ body {
     text-decoration: none;
     z-index: 9999;
     font-size: 14px;
-    border-radius: 0 0 var(--radius-sm) 0;
+    border-radius: var(--radius-sm);
     transition: top 0.2s;
 }
 
@@ -223,8 +214,8 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 15% 18%, rgba(201, 154, 63, 0.22), transparent 35%),
-                linear-gradient(135deg, #052849 0%, #0d4a62 52%, #081a2c 100%);
+    /* One teal radial on navy, the same ground as every dark band (DESIGN-DIRECTION.md). */
+    background: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark);
     opacity: 1;
 }
 
@@ -951,10 +942,6 @@ section {
     background: rgba(0, 180, 216, 0.12);
 }
 
-.blog-filter-card {
-    margin-bottom: 1.5rem;
-}
-
 @keyframes searchPulse {
     0% { box-shadow: 0 0 0 0 rgba(255, 196, 66, 0.6); }
     100% { box-shadow: 0 0 0 14px rgba(255, 196, 66, 0); }
@@ -978,7 +965,7 @@ body {
     color: var(--color-neutral-charcoal);
     background-color: #f9f5ee;
     line-height: 1.72;
-    font-weight: 300;
+    font-weight: 400;
     overflow-x: hidden;
 }
 
@@ -987,10 +974,8 @@ body {
    ============================================ */
 :root {
     /* Enhanced color palette with modern gradients */
-    --color-primary-teal: #00B4D8;           /* Bright cyan */
     --color-primary-teal-light: #48CAE4;     /* Light cyan */
     --color-primary-teal-dark: #0077B6;      /* Deep blue-cyan */
-    --color-primary-dark: #0A2463;           /* Navy blue */
     --color-primary-dark-light: #1E3A8A;     /* Lighter navy */
     --color-accent-gold: #FFD700;            /* Gold accent */
     --color-accent-gold-light: #FFE55C;      /* Light gold */
@@ -1087,7 +1072,7 @@ p, li, label {
     font-size: var(--fs-body);
     line-height: 1.72;
     letter-spacing: 0;
-    font-weight: 300;
+    font-weight: 400;
     color: inherit;
 }
 
@@ -1469,8 +1454,8 @@ section {
         font-size: 1.125rem;
     }
     
+    /* Body text holds at 16px on phones (DESIGN-DIRECTION.md); only the line height tightens. */
     p, li {
-        font-size: 0.95rem;
         line-height: 1.7;
     }
     
@@ -1595,9 +1580,10 @@ video {
   height: auto;
 }
 
+/* Running text is dark (DESIGN-DIRECTION.md: never thin grey). The muted grey is kept for dates, sources and notes. */
 p,
 li {
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .container {
@@ -1650,7 +1636,7 @@ footer,
   z-index: 9999;
   font-size: 14px;
   text-decoration: none;
-  border-radius: 0 0 var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   transition: top 0.2s;
 }
 
@@ -1712,7 +1698,7 @@ footer a:hover,
 .development-alignment p {
   max-width: 64ch;
   margin-bottom: 0;
-  color: #4b5563 !important;
+  color: var(--uniform-text) !important;
 }
 
 .sdg-marker-grid {
@@ -2006,8 +1992,8 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 /* Legend dots match the fills in /assets/africa-map.webp */
 
 .email-capture {
-  background: linear-gradient(135deg, #0a1414, #004c4c);
-  color: #ffffff;
+  background: var(--color-bg-secondary);
+  color: var(--uniform-text);
   padding: clamp(3rem, 7vw, 5rem) 1rem;
 }
 
@@ -2018,7 +2004,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .capture-inner p {
-  color: rgba(255,255,255,0.78);
+  color: var(--uniform-text);
   margin-left: auto;
   margin-right: auto;
 }
@@ -2033,15 +2019,15 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .capture-form input {
   min-width: min(320px, 100%);
-  border: 1px solid rgba(255,255,255,0.24);
+  border: 1px solid var(--uniform-muted);
   border-radius: var(--radius-pill);
   padding: 0.85rem 1rem;
-  background: rgba(255,255,255,0.1);
-  color: #ffffff;
+  background: var(--surface-raised, #ffffff);
+  color: var(--uniform-text);
 }
 
 .capture-form input::placeholder {
-  color: rgba(255,255,255,0.62);
+  color: var(--uniform-muted);
 }
 
 .capture-form button {
@@ -2059,9 +2045,10 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   font-size: 0.82rem;
 }
 
-/* Sign-up forms use the shared form handler (data-sx-form="updates"); text stays light on the dark band. */
+/* Sign-up forms use the shared form handler (data-sx-form="updates"). The band is light: it sits above the dark
+   footer, and it holds an invitation rather than the page's key sentence. */
 .email-capture h2 {
-  color: #ffffff;
+  color: var(--color-primary-dark);
 }
 
 .capture-form {
@@ -2076,7 +2063,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .capture-field label {
-  color: #ffffff;
+  color: var(--color-primary-dark);
   font-size: 0.92rem;
   font-weight: 600;
 }
@@ -2084,16 +2071,16 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .capture-form .sx-form__status {
   flex-basis: 100%;
   margin: 0;
-  color: rgba(255,255,255,0.85);
+  color: var(--uniform-text);
 }
 
 .email-capture .sx-error,
 .email-capture .sx-form__status.is-error {
-  color: #fecdca;
+  color: var(--sx-error);
 }
 
 .capture-note a {
-  color: #ffffff;
+  color: var(--color-primary-teal-text);
   text-decoration: underline;
 }
 
@@ -2202,7 +2189,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;
-  color: var(--uniform-muted);
+  color: var(--uniform-text);
 }
 
 .story-eyebrow {
@@ -2262,7 +2249,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   inset: 0 auto auto 0;
   width: 100%;
   height: 3px;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-radius: var(--radius-md);
   background: linear-gradient(90deg, rgba(13, 148, 136, 0.9), rgba(232, 160, 32, 0.9));
   opacity: 0.9;
 }
@@ -2276,8 +2263,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 
 .timeline-item p {
   margin: 0;
-  color: var(--uniform-muted);
-  font-size: 0.97rem;
+  color: var(--uniform-text);
 }
 
 .timeline-dot {
@@ -2348,7 +2334,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   display: inline-flex;
   border-left: 3px solid var(--uniform-accent);
   background: rgba(232,160,32,0.1);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-radius: var(--radius-sm);
   padding: 0.75rem 0.9rem;
   color: #7a5412;
   font-weight: 700;
@@ -2424,7 +2410,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 }
 
 .quick-metrics .section-header p {
-  color: #475569;
+  color: var(--uniform-text);
 }
 
 /*
@@ -2442,7 +2428,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   border-collapse: separate;
   border-spacing: 0 0.6rem;
   margin-top: 0.5rem;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .spec-table caption {
@@ -2466,11 +2452,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   width: 34%;
   font-weight: 800;
   color: var(--uniform-primary);
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-}
-
-.spec-table td:last-child {
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .spec-tag {
@@ -2613,7 +2594,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   .hero-content p,
   main :where(.section-header p, article p, .story-copy p) {
     max-width: 100% !important;
-    font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+    font-size: clamp(1rem, 3.8vw, 1.08rem);
     line-height: 1.55;
     overflow-wrap: break-word;
   }
@@ -2700,7 +2681,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
   .comparison-table th,
   .comparison-table td {
     padding: 0.75rem;
-    font-size: 0.92rem;
   }
 }
 
@@ -2805,11 +2785,6 @@ main summary {
   border-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Heroes built on home.css (the solutions pages) have a light background, but home.css colours their text white. */
-.hero > .container p {
-  color: var(--uniform-muted);
-}
-
 /* Service pages (services/*.html). Variants of the existing card and grid, not new components. */
 .page-prose {
   max-width: 760px;
@@ -2849,7 +2824,8 @@ main summary {
   margin-top: var(--spacing-lg);
 }
 
-.page-hero .cta-buttons--start {
+/* Page heroes are left-aligned, so their buttons line up with the text rather than centring under it. */
+.page-hero .cta-buttons {
   justify-content: flex-start;
   align-items: center;
 }
@@ -2878,6 +2854,102 @@ main .page-sources p {
    logo strip. */
 
 /* Trust chips are a list; the tick is drawn, not typed, so screen readers do not announce it. */
+
+/* ---------- Dark blocks (DESIGN-DIRECTION.md) ----------
+   Every page opens on the same dark band as the article: navy with one teal radial. It holds the page's h1 and is
+   the page's first dark block. A page may have one more, holding its most important sentence (.dark-block; the
+   homepage mission statement). Nothing else on a page is dark. Each rule ends in a single selector because PurgeCSS
+   drops a rule written as :is(...) :is(h1, h2, h3). */
+.page-hero,
+.hero:has(> .container) {
+  background: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark);
+  color: #fff;
+}
+
+:is(.page-hero, .hero:has(> .container)) h1,
+:is(.page-hero, .hero:has(> .container)) h2,
+:is(.page-hero, .hero:has(> .container)) h3 {
+  color: #fff;
+}
+
+:is(.page-hero, .hero:has(> .container)) p,
+:is(.page-hero, .hero:has(> .container)) li {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+:is(.page-hero, .hero:has(> .container)) .page-overline,
+:is(.page-hero, .hero:has(> .container)) .section-label {
+  color: var(--color-accent-electric);
+  border-color: rgba(144, 224, 239, 0.45);
+}
+
+:is(.page-hero, .hero:has(> .container)) a:not(.btn) {
+  color: var(--color-accent-electric);
+}
+
+:is(.page-hero, .hero:has(> .container)) .btn-secondary {
+  color: #fff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* The solutions pages' heroes (home.css .hero) filled the whole screen; as a dark band they size to their content. */
+.hero:has(> .container) {
+  height: auto;
+  min-height: 0;
+  padding-block: clamp(4rem, 10vw, 6.5rem) clamp(3rem, 7vw, 4.5rem);
+}
+
+/* Closing call-to-action bands sit on cream. They hold an invitation, not the page's key sentence, and a dark band
+   directly above the dark footer would merge with it. */
+.cta-section .cta-background {
+  display: none;
+}
+
+.cta-content,
+.cta-content h2 {
+  color: var(--color-primary-dark);
+}
+
+.cta-content p {
+  color: var(--uniform-text);
+}
+
+/* ---------- The connection trace (DESIGN-DIRECTION.md) ----------
+   Solid, broken, solid: the link drops and comes back. It is the site's one ornament, always aria-hidden and never
+   animated. It sits under the article hero, beside the article's section numbers and, as a divider
+   (includes/trace-divider.html), at a page's major breaks only. Strokes do not scale with the drawing, so the line
+   weight, the dashes and the amber point are the same at any width; the point is a round-capped zero-length line
+   because a circle would stretch into an oval. */
+.trace {
+  display: block;
+  width: 100%;
+  height: 14px;
+  overflow: visible;
+}
+
+.trace line {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.trace .live { stroke: var(--color-primary-teal); }
+.trace .lost { stroke: var(--color-secondary-coral); stroke-dasharray: 3 7; opacity: 0.85; }
+.trace .dot { stroke: var(--color-cta-amber); stroke-width: 7; }
+
+/* The divider takes no height and is centred on the seam between two sections, so it never leaves a strip of page
+   ground between sections that have their own. */
+.trace-divider {
+  position: relative;
+  z-index: 1;
+  width: min(600px, 100% - 2rem);
+  height: 0;
+  margin-inline: auto;
+}
+
+.trace-divider .trace {
+  transform: translateY(-50%);
+}
 
 /* ---- styles/site-chrome.css ---- */
 /*
@@ -2923,6 +2995,17 @@ main .page-sources p {
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+  /* The palette and its jobs (DESIGN-DIRECTION.md), here so every page has them whichever stylesheets it loads. */
+  --color-primary-dark: #0A2463;        /* headings, dark bands, primary UI */
+  --color-primary-teal: #00B4D8;        /* the live state: connection present, graphics, accents */
+  --color-primary-teal-text: #0e7490;   /* teal as text on light grounds; the lighter teal fails contrast */
+  --color-secondary-coral: #FF6B6B;     /* the lost state: disconnection, failure cases */
+  --color-secondary-green: #06D6A0;     /* resolved: sync complete, success */
+  --color-cta-amber: #E8A020;           /* calls to action, pull quotes, the moment of transition */
+  --color-accent-electric: #90E0EF;     /* eyebrows and labels on dark grounds only */
+  --surface-base: #f9f5ee;              /* page ground */
+  --surface-raised: #ffffff;            /* cards */
 }
 
 .sr-only {
@@ -3776,7 +3859,6 @@ dialog.sx-modal::backdrop {
 .fa-brain::before { content: "\f5dc"; }
 .fa-bullseye::before { content: "\f140"; }
 .fa-calendar-check::before { content: "\f274"; }
-.fa-chart-pie::before { content: "\f200"; }
 .fa-clipboard-list::before { content: "\f46d"; }
 .fa-envelope::before { content: "\f0e0"; }
 .fa-file-medical::before { content: "\f477"; }

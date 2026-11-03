@@ -1,10 +1,13 @@
 @import url('/styles/site-uniform.css');
 
 :root {
-    --primary: #d62839;
-    --primary-light: #ff4d5a;
-    --primary-dark: #c1121f;
-    --secondary: #fff1f2;
+    /* This file's own palette was red and pink, outside the site's colours; it now points at the site palette
+       (site-chrome.css), with teal for accents and links and navy for hover. The fallbacks are for offline.html,
+       which loads this file on its own. */
+    --primary: var(--color-primary-teal-text, #0e7490);
+    --primary-light: var(--color-primary-dark, #0A2463);
+    --primary-dark: var(--color-primary-dark, #0A2463);
+    --secondary: var(--color-bg-secondary, #f4f0e7);
     --dark: #1d3557;
     --light: #ffffff;
     --gray: #f8f9fa;
@@ -13,7 +16,7 @@
     --success: #2a9d8f;
     --warning: #e9c46a;
     --danger: #e63946;
-    --gradient-primary: linear-gradient(120deg, #e63946 0%, #1d3557 100%);
+    --gradient-primary: radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%), var(--color-primary-dark, #0A2463);
     --transition: all 0.3s ease;
 }
 
@@ -38,13 +41,13 @@ body {
     z-index: 9999;
     font-size: 14px;
     text-decoration: none;
-    border-radius: 0 0 var(--radius-sm) 0;
+    border-radius: var(--radius-sm);
     transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 700; color: var(--dark); margin-bottom: 1rem; }
-p { margin-bottom: 1rem; color: #555; }
+p { margin-bottom: 1rem; color: #1f2937; }
 a { text-decoration: none; color: var(--primary); transition: var(--transition); }
 a:hover { color: var(--primary-light); }
 
