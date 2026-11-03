@@ -706,6 +706,35 @@ section {
     flex-direction: column;
 }
 
+/* A card carrying an event logo (the Digital Health Week article): the logo sits above the text on phones and
+   beside it on wider screens. */
+.blog-card--logo .blog-image {
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-card--logo .blog-image img {
+    display: block;
+    width: 96px;
+    height: auto;
+}
+
+@media (min-width: 640px) {
+    .blog-card--logo {
+        display: grid;
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: var(--spacing-xl);
+        align-items: center;
+    }
+
+    .blog-card--logo .blog-image {
+        margin-bottom: 0;
+    }
+
+    .blog-card--logo .blog-image img {
+        width: 140px;
+    }
+}
+
 .blog-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
@@ -3867,7 +3896,6 @@ dialog.sx-modal::backdrop {
 .fa-language::before { content: "\f1ab"; }
 .fa-lightbulb::before { content: "\f0eb"; }
 .fa-map-marker-alt::before { content: "\f3c5"; }
-.fa-network-wired::before { content: "\f6ff"; }
 .fa-phone::before { content: "\f095"; }
 .fa-question-circle::before { content: "\f059"; }
 .fa-route::before { content: "\f4d7"; }

@@ -11,6 +11,7 @@
 | `africa-map.webp/.png` | Homepage map |
 | `team/` | Team portraits, 320 and 640 px |
 | `sdg-*.svg`, `contrawise-logo.svg`, `whatsapp-icon.svg` | Icons and artwork |
+| `digital-health-week.svg` | Digital Health Week logo on the blog card for the Offline First article. The export's empty canvas is cropped; the artwork is unchanged |
 | `video/` | Demo videos and their poster frames |
 | `fonts/` | Montserrat (Latin subset) and the site icon font, with their licences |
 | `selnexa-health-pitch-deck.pdf` | Investor page download |
