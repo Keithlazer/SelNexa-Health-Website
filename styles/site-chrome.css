@@ -41,6 +41,17 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+  /* The palette and its jobs (DESIGN-DIRECTION.md), here so every page has them whichever stylesheets it loads. */
+  --color-primary-dark: #0A2463;        /* headings, dark bands, primary UI */
+  --color-primary-teal: #00B4D8;        /* the live state: connection present, graphics, accents */
+  --color-primary-teal-text: #0e7490;   /* teal as text on light grounds; the lighter teal fails contrast */
+  --color-secondary-coral: #FF6B6B;     /* the lost state: disconnection, failure cases */
+  --color-secondary-green: #06D6A0;     /* resolved: sync complete, success */
+  --color-cta-amber: #E8A020;           /* calls to action, pull quotes, the moment of transition */
+  --color-accent-electric: #90E0EF;     /* eyebrows and labels on dark grounds only */
+  --surface-base: #f9f5ee;              /* page ground */
+  --surface-raised: #ffffff;            /* cards */
 }
 
 .sr-only {

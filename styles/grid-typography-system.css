@@ -24,10 +24,8 @@ body {
    ============================================ */
 :root {
     /* Enhanced color palette with modern gradients */
-    --color-primary-teal: #00B4D8;           /* Bright cyan */
     --color-primary-teal-light: #48CAE4;     /* Light cyan */
     --color-primary-teal-dark: #0077B6;      /* Deep blue-cyan */
-    --color-primary-dark: #0A2463;           /* Navy blue */
     --color-primary-dark-light: #1E3A8A;     /* Lighter navy */
     --color-accent-gold: #FFD700;            /* Gold accent */
     --color-accent-gold-light: #FFE55C;      /* Light gold */

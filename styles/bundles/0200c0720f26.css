@@ -6,23 +6,14 @@
 
 /* CSS Variables - Design System */
 :root {
-    /* Primary Colors */
-    --color-primary-dark: #0A2463;
-    --color-primary-teal: #00B4D8;
-    --color-primary-teal-text: #0e7490; /* same hue, dark enough for text on light backgrounds */
-    --color-accent-electric: #90E0EF;
+    /* The palette (primary, coral, green, amber, electric, surfaces) is defined in site-chrome.css. */
     
     /* Secondary Colors */
-    --color-secondary-coral: #FF6B6B;
-    --color-secondary-green: #06D6A0;
     --color-secondary-purple: #5F0F40;
     --color-warm-accent: #c99a3f;
-    --color-cta-amber: #E8A020;
     --color-cta-amber-light: #F4C157;
     --font-primary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-secondary: 'Montserrat', sans-serif;
-    --surface-base: #f9f5ee;
-    --surface-raised: #ffffff;
     --surface-overlay: rgba(255, 255, 255, 0.72);
     --surface-inset: #f0ebe1;
     --surface-dark: #08131a;
@@ -718,10 +709,8 @@ body {
    ============================================ */
 :root {
     /* Enhanced color palette with modern gradients */
-    --color-primary-teal: #00B4D8;           /* Bright cyan */
     --color-primary-teal-light: #48CAE4;     /* Light cyan */
     --color-primary-teal-dark: #0077B6;      /* Deep blue-cyan */
-    --color-primary-dark: #0A2463;           /* Navy blue */
     --color-primary-dark-light: #1E3A8A;     /* Lighter navy */
     --color-accent-gold: #FFD700;            /* Gold accent */
     --color-accent-gold-light: #FFE55C;      /* Light gold */
@@ -1647,6 +1636,43 @@ main textarea,
 /* Closing call-to-action bands sit on cream. They hold an invitation, not the page's key sentence, and a dark band
    directly above the dark footer would merge with it. */
 
+/* ---------- The connection trace (DESIGN-DIRECTION.md) ----------
+   Solid, broken, solid: the link drops and comes back. It is the site's one ornament, always aria-hidden and never
+   animated. It sits under the article hero, beside the article's section numbers and, as a divider
+   (includes/trace-divider.html), at a page's major breaks only. Strokes do not scale with the drawing, so the line
+   weight, the dashes and the amber point are the same at any width; the point is a round-capped zero-length line
+   because a circle would stretch into an oval. */
+.trace {
+  display: block;
+  width: 100%;
+  height: 14px;
+  overflow: visible;
+}
+
+.trace line {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.trace .live { stroke: var(--color-primary-teal); }
+.trace .lost { stroke: var(--color-secondary-coral); stroke-dasharray: 3 7; opacity: 0.85; }
+.trace .dot { stroke: var(--color-cta-amber); stroke-width: 7; }
+
+/* The divider takes no height and is centred on the seam between two sections, so it never leaves a strip of page
+   ground between sections that have their own. */
+.trace-divider {
+  position: relative;
+  z-index: 1;
+  width: min(600px, 100% - 2rem);
+  height: 0;
+  margin-inline: auto;
+}
+
+.trace-divider .trace {
+  transform: translateY(-50%);
+}
+
 /* ---- styles/site-chrome.css ---- */
 /*
  * Shared site chrome: header, footer, demo modal and forms.
@@ -1691,6 +1717,17 @@ main textarea,
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
+
+  /* The palette and its jobs (DESIGN-DIRECTION.md), here so every page has them whichever stylesheets it loads. */
+  --color-primary-dark: #0A2463;        /* headings, dark bands, primary UI */
+  --color-primary-teal: #00B4D8;        /* the live state: connection present, graphics, accents */
+  --color-primary-teal-text: #0e7490;   /* teal as text on light grounds; the lighter teal fails contrast */
+  --color-secondary-coral: #FF6B6B;     /* the lost state: disconnection, failure cases */
+  --color-secondary-green: #06D6A0;     /* resolved: sync complete, success */
+  --color-cta-amber: #E8A020;           /* calls to action, pull quotes, the moment of transition */
+  --color-accent-electric: #90E0EF;     /* eyebrows and labels on dark grounds only */
+  --surface-base: #f9f5ee;              /* page ground */
+  --surface-raised: #ffffff;            /* cards */
 }
 
 .sr-only {
