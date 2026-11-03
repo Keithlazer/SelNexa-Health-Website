@@ -495,7 +495,7 @@ section {
     border: 0;
 }
 
-.page-card,
+
 .resource-card {
     background: #ffffff;
     border-radius: var(--radius-md);
@@ -504,7 +504,7 @@ section {
     padding: var(--spacing-lg);
 }
 
-.page-card h3,
+
 .resource-card h3 {
     margin-bottom: var(--spacing-sm);
 }
@@ -664,159 +664,345 @@ section {
   font-size: 1rem;
 }
 
-/* Long-form article (blog/offline-first.html). Values come from the tokens in styles/main.css. */
-.blog-article {
-  max-width: 36rem;
+/* ---------- Long-form article template (blog/offline-first.html) ----------
+   Follows DESIGN-DIRECTION.md: a dark hero band, the connection trace, numbered sections, colour by job
+   (teal = connected, coral = link lost, amber = calls to action and the moment of transition), and no
+   values outside the site's tokens. */
+
+.article-page {
+  background: var(--surface-base);
 }
 
-.blog-article .blog-meta {
+/* site-uniform.css caps .blog-article at 860px for the older posts; this page needs the full width for its hero. */
+.article-page .blog-article {
+  max-width: none;
+}
+
+.article-measure {
+  max-width: 38rem;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* The connection trace: solid, broken, solid. A mark, never animated. */
+.trace {
+  display: block;
+  width: 100%;
+  height: 14px;
+}
+
+.trace line {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.trace .live { stroke: var(--color-primary-teal); }
+.trace .lost { stroke: var(--color-secondary-coral); stroke-dasharray: 3 7; opacity: 0.85; }
+.trace circle { fill: var(--color-cta-amber); }
+
+/* Hero band: the first of the page's two dark blocks. */
+.article-hero {
+  background:
+    radial-gradient(circle at 85% 0%, rgba(0, 180, 216, 0.22), transparent 55%),
+    var(--color-primary-dark);
+  color: #fff;
+  padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(2rem, 5vw, 3rem);
+}
+
+.article-hero .eyebrow {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-electric);
+}
+
+.article-hero h1 {
+  margin: 0 0 var(--spacing-md);
+  font-size: clamp(34px, 7vw, 56px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.article-hero .lead {
+  margin: 0 0 var(--spacing-md);
+  font-size: 19.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: #fff;
+}
+
+.article-hero .trace {
   margin-bottom: var(--spacing-sm);
 }
 
-.blog-article .blog-byline {
-  font-size: 0.9rem;
-  color: var(--color-neutral-charcoal);
-  border-top: 1px solid rgba(10, 36, 99, 0.12);
+.article-hero .byline {
+  margin: 0;
   padding-top: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.blog-article h1 {
-  font-size: var(--fs-h2);
-  line-height: 1.12;
-}
-
-.blog-article h2 {
-  margin-top: var(--spacing-xl);
-  font-size: var(--fs-h3);
-  line-height: 1.2;
-}
-
-.blog-article .pull {
-  margin: var(--spacing-xl) 0;
-  padding-left: var(--spacing-md);
-  border-left: 4px solid var(--color-cta-amber);
-  font-size: var(--fs-h4);
+.article-hero .byline-author {
+  display: block;
+  color: #fff;
   font-weight: 700;
+}
+
+.article-hero .byline-sep {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 0.6rem 0.2em;
+  border-radius: var(--radius-circle);
+  background: rgba(255, 255, 255, 0.55);
+  vertical-align: middle;
+}
+
+/* Body: dark, regular-weight text at a readable size. Never thin grey. */
+.article-body {
+  padding-block: clamp(2rem, 5vw, 3rem) clamp(3rem, 7vw, 5rem);
+}
+
+.blog-article .article-body p,
+.blog-article .article-body li {
+  font-size: clamp(17px, 1.6vw, 18px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-neutral-charcoal);
+}
+
+.blog-article .article-body .article-lede {
+  font-size: 19.5px;
+  font-weight: 500;
+  line-height: 1.6;
   color: var(--color-primary-dark);
 }
 
-.blog-article .flow {
+.blog-article .article-body a:not(.btn) {
+  color: var(--color-primary-teal-text);
+}
+
+.blog-article .article-section {
+  margin-top: var(--spacing-xl);
+  padding: 0;
+}
+
+.section-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-mark span {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--color-primary-teal-text);
+}
+
+.section-mark .trace {
+  width: 7.5rem;
+  height: 10px;
+}
+
+.blog-article .article-body h2 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: clamp(25px, 5vw, 32px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-primary-dark);
+}
+
+.blog-article .article-body h3 {
+  margin: 0 0 0.25rem;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--color-primary-dark);
+}
+
+/* Pull quote: amber is the moment of emphasis. */
+.blog-article .article-body .pull {
+  margin: var(--spacing-xl) 0;
+  padding-left: var(--spacing-md);
+  border-left: 4px solid var(--color-cta-amber);
+  font-size: clamp(20px, 3.4vw, 25px);
+  font-weight: 800;
+  line-height: 1.38;
+  color: var(--color-primary-dark);
+}
+
+/* How a record travels. Navy = on the device, teal = connected, coral = the failure case. */
+.flow {
   margin: var(--spacing-lg) 0;
 }
 
-.blog-article .flow figcaption {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-neutral-charcoal);
+.flow figcaption {
   margin-bottom: var(--spacing-sm);
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
 }
 
-.blog-article .steps {
+.steps {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.blog-article .step {
+.step {
   display: grid;
   grid-template-columns: 2.75rem 1fr;
   gap: var(--spacing-sm);
-  background: var(--surface-raised);
-  border-radius: 14px;
-  padding: var(--spacing-md);
-  box-shadow: var(--shadow-sm);
   margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-.blog-article .step h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1rem;
-}
-
-.blog-article .step p {
+.blog-article .article-body .step p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 15.5px;
+  line-height: 1.6;
 }
 
-.blog-article .step .n {
-  width: 2rem; height: 2rem; border-radius: 9px;
-  display: grid; place-items: center;
-  font-weight: 800; color: #fff;
+.step .n {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 800;
+  color: #fff;
   background: var(--color-primary-dark);
 }
 
-.blog-article .step.alt .n { background: var(--color-primary-teal-text); }
-/* White on amber is under 3:1, so the warning marker uses the dark text the site's amber buttons use. */
-.blog-article .step.warn .n { background: var(--color-cta-amber); color: var(--surface-dark); }
+/* Teal and coral are light: their marker text is navy, not white. */
+.step.alt .n { background: var(--color-primary-teal); color: var(--color-primary-dark); }
+.step.warn .n { background: var(--color-secondary-coral); color: var(--color-primary-dark); }
 
-.blog-article .step-break {
-  margin: var(--spacing-xs) 0 var(--spacing-sm) 3.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+/* The break between offline and connected: coral dashes, an amber point, then the label. */
+.blog-article .article-body .gap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.25rem 0 var(--spacing-sm) 3.75rem;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-neutral-charcoal);
+  color: var(--color-primary-dark);
 }
 
-.blog-article .objectives {
+.gap-line {
+  flex: 0 1 6rem;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--color-secondary-coral) 0 4px, transparent 4px 10px);
+}
+
+.gap-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-circle);
+  background: var(--color-cta-amber);
+}
+
+/* Three objectives, three across on wider screens. */
+.cards {
   display: grid;
   gap: var(--spacing-sm);
   margin: var(--spacing-md) 0 var(--spacing-lg);
 }
 
-.blog-article .objectives h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1rem;
+.objective {
+  padding: var(--spacing-md);
+  background: var(--surface-raised);
+  border-top: 4px solid var(--color-primary-teal);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-.blog-article .objectives p {
+.blog-article .article-body .objective p {
   margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
 }
 
-.blog-article .callout {
-  margin: var(--spacing-2xl) 0;
-  background: var(--color-primary-dark);
-  color: #fff;
-  border-radius: 18px;
+/* On wide screens the three cards step out of the text column so each has room to read. */
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    margin-inline: calc(50% - min(29rem, 50vw - 16px));
+  }
+}
+
+/* The closing test: the page's second dark block, holding its most important sentence. */
+.test {
+  margin: var(--spacing-2xl) 0 var(--spacing-xl);
   padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 100% 100%, rgba(0, 180, 216, 0.25), transparent 60%),
+    var(--color-primary-dark);
+  color: #fff;
 }
 
-.blog-article .callout .callout-label {
+.blog-article .article-body .test .test-label {
   margin: 0 0 var(--spacing-sm);
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-accent-electric);
 }
 
-.blog-article .callout p {
+.blog-article .article-body .test .test-question {
+  margin: 0 0 var(--spacing-sm);
+  font-size: clamp(20px, 3.4vw, 25px);
+  font-weight: 800;
+  line-height: 1.38;
   color: #fff;
 }
 
-.blog-article .callout .callout-question {
-  font-size: var(--fs-h4);
-  font-weight: 700;
-  line-height: 1.35;
+.blog-article .article-body .test .test-answer {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
 }
 
-.blog-article .callout p:last-child {
+.author {
+  padding: var(--spacing-md);
+  background: var(--surface-raised);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-article .article-body .author .author-name {
+  margin: 0 0 0.35rem;
+  font-size: 17px;
+}
+
+.blog-article .article-body .author p:last-child {
   margin-bottom: 0;
 }
 
-.blog-article .article-author {
-  margin: var(--spacing-xl) 0 var(--spacing-lg);
+.article-cta {
+  margin-top: var(--spacing-lg);
 }
 
-.blog-article .article-author p:last-child {
-  margin-bottom: 0;
-}
-
-.blog-article .article-author h2 {
-  margin: 0 0 var(--spacing-xs);
-  font-size: 1rem;
+@media (max-width: 480px) {
+  .test { padding: var(--spacing-lg); }
+  .blog-article .article-body .gap { margin-left: 0; }
 }
 
 /* ---- styles/grid-typography-system.css ---- */
@@ -1361,8 +1547,7 @@ li {
 .card,
 .resource-card,
 .guide-card,
-.webinar-card,
-.page-card {
+.webinar-card {
   background: var(--uniform-surface);
   border: 1px solid var(--uniform-border);
   box-shadow: var(--uniform-shadow);
@@ -1484,13 +1669,11 @@ main :where( article p) {
   }
 }
 
-.card,
-.page-card {
+.card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.card:hover,
-.page-card:hover {
+.card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
@@ -1684,13 +1867,6 @@ main :where(p, li) a:not([class*="btn"]) {
 }
 
 /* Headings promoted for a correct outline keep the size they had before. */
-.minor-heading {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-}
 
 /* Tap targets: at least 44 x 44 px for controls and for links that stand on their own (links inside a
    sentence are exempt). */
@@ -1734,11 +1910,6 @@ main textarea,
 /* Short label-and-line items, five across on a wide screen. */
 
 /* A card that is a statement, not a link: no hover lift. */
-.page-card--plain,
-.page-card--plain:hover {
-  transform: none;
-  box-shadow: var(--shadow-sm);
-}
 
 /* An emphasised line under a list. Uses the brand accent as a rule, not an alert colour. */
 
