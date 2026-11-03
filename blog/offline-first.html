@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
   <!-- /sx:social -->
   <!-- sx:styles /styles/main.css /css/blog.css /styles/grid-typography-system.css /styles/site-uniform.css -->
-  <link rel="stylesheet" href="/styles/bundles/86f9c7755029.css">
+  <link rel="stylesheet" href="/styles/bundles/f55d4643e0b7.css">
   <!-- /sx:styles -->
     <script type="application/ld+json">
     {
@@ -113,80 +113,99 @@
       <div class="sx-progress" aria-hidden="true"></div>
     </header>
     <!-- /sx:header -->
-  <main id="main-content" class="container section">
+  <main id="main-content" class="article-page">
     <article class="blog-article">
-      <p class="blog-meta"><span class="blog-category">Digital Health Week 2026</span></p>
-      <h1>Offline first: health software for institutions where the connection fails</h1>
-      <p class="lead">In many health institutions the internet isn't slow. It's absent for hours at a time. A system that only works online is a system that doesn't work.</p>
-      <p class="blog-byline">Keith Tafangombe, Founder and CEO, SelNexa Health <span aria-hidden="true">·</span> <time datetime="2026-11-04">4 November 2026</time> <span aria-hidden="true">·</span> 5 min read</p>
+      <header class="article-hero">
+        <div class="article-measure">
+          <p class="eyebrow">Digital Health Week 2026</p>
+          <h1>Offline first: health software for institutions where the connection fails</h1>
+          <p class="lead">In many health institutions the internet isn't slow. It's absent for hours at a time. A system that only works online is a system that doesn't work.</p>
+          <svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><circle cx="215" cy="7" r="3.5"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg>
+          <p class="byline"><span class="byline-author">Keith Tafangombe, Founder and CEO, SelNexa Health</span><span class="byline-meta"><time datetime="2026-11-04">4 November 2026</time><span class="byline-sep" aria-hidden="true"></span>5 min read</span></p>
+        </div>
+      </header>
 
-      <p>Most health software assumes the connection is there. Offline first assumes it isn't. In institutions where the power and the link both come and go, that one assumption decides whether the system works at all.</p>
+      <div class="article-measure article-body">
+        <p class="article-lede">Most health software assumes the connection is there. Offline first assumes it isn't. In institutions where the power and the link both come and go, that one assumption decides whether the system works at all.</p>
 
-      <p>The connection drops, returns for twenty minutes, drops again. Most systems are built for the opposite: a link that holds, with the occasional blip.</p>
+        <p>The connection drops, returns for twenty minutes, drops again. Most systems are built for the opposite: a link that holds, with the occasional blip.</p>
 
-      <p>This was written for Digital Health Week 2026. The roundtable SelNexa Health had scheduled for 4 November is postponed, so the material is here instead. A new date will follow.</p>
+        <p>This was written for Digital Health Week 2026. The roundtable SelNexa Health had scheduled for 4 November is postponed, so the material is here instead. A new date will follow.</p>
 
-      <h2>What actually breaks</h2>
-      <p>Ask an administrator what happens when the link goes and you get the same answer in different words. Work moves to paper. Registration details, visit notes, drug issues, all of it goes into a book or onto loose sheets, and someone types it back later, if there's time and if the sheets survive.</p>
-      <p>The cost isn't the paper. It's what happens between the paper and the system. Entries get captured twice or not at all. The monthly return goes in late, built from a count somebody did by hand. The record a clinician needs at the next visit isn't there, so the patient answers the same questions again.</p>
-      <p>And it's rarely the internet on its own. Power is usually the harder constraint. Software built around a server that runs twenty four hours stops when the power does, whatever the connection is doing. That single fact decides more about the architecture than bandwidth ever does.</p>
+        <section class="article-section" aria-labelledby="s-breaks">
+          <div class="section-mark" aria-hidden="true"><span>01</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><circle cx="215" cy="7" r="3.5"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
+          <h2 id="s-breaks">What actually breaks</h2>
+          <p>Ask an administrator what happens when the link goes and you get the same answer in different words. Work moves to paper. Registration details, visit notes, drug issues, all of it goes into a book or onto loose sheets, and someone types it back later, if there's time and if the sheets survive.</p>
+          <p>The cost isn't the paper. It's what happens between the paper and the system. Entries get captured twice or not at all. The monthly return goes in late, built from a count somebody did by hand. The record a clinician needs at the next visit isn't there, so the patient answers the same questions again.</p>
+          <p>And it's rarely the internet on its own. Power is usually the harder constraint. Software built around a server that runs twenty four hours stops when the power does, whatever the connection is doing. That single fact decides more about the architecture than bandwidth ever does.</p>
+        </section>
 
-      <p class="pull">Offline first is a decision made before the first line of code, not a fallback mode added afterwards.</p>
+        <p class="pull">Offline first is a decision made before the first line of code, not a fallback mode added afterwards.</p>
 
-      <h2>What offline first actually involves</h2>
-      <p>The application writes to local storage first and treats the server as somewhere data goes later, rather than something it needs in order to function. A local write queue holds every action until it can be sent. A service worker keeps the application loading with no network at all, so a health worker opens it and it's simply there. Sync runs when the link returns.</p>
+        <section class="article-section" aria-labelledby="s-involves">
+          <div class="section-mark" aria-hidden="true"><span>02</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><circle cx="215" cy="7" r="3.5"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
+          <h2 id="s-involves">What offline first actually involves</h2>
+          <p>The application writes to local storage first and treats the server as somewhere data goes later, rather than something it needs in order to function. A local write queue holds every action until it can be sent. A service worker keeps the application loading with no network at all, so a health worker opens it and it's simply there. Sync runs when the link returns.</p>
 
-      <figure class="flow">
-        <figcaption>How a record travels</figcaption>
-        <ol class="steps">
-          <li class="step"><span class="n" aria-hidden="true">1</span><div><h3>Write locally, first</h3><p>The health worker registers the patient and records the visit. It lands in local storage on the device immediately, with no network involved.</p></div></li>
-          <li class="step"><span class="n" aria-hidden="true">2</span><div><h3>The queue holds it</h3><p>Every action sits in a local write queue. The application keeps loading and keeps working whether or not there is a link.</p></div></li>
-        </ol>
-        <p class="step-break">Link returns</p>
-        <ol class="steps" start="3">
-          <li class="step alt"><span class="n" aria-hidden="true">3</span><div><h3>Sync, with rules</h3><p>The queue drains to the server. Where two devices changed the same record, both versions are kept and resolved by rules, not by whoever synced last.</p></div></li>
-          <li class="step alt"><span class="n" aria-hidden="true">4</span><div><h3>It reaches the national system</h3><p>A common record format, FHIR R4, carries it on to what the ministry already runs, with nobody retyping anything.</p></div></li>
-        </ol>
-        <div class="step warn"><span class="n" aria-hidden="true">!</span><div><h3>Where it goes wrong</h3><p>Last write wins. Whichever device syncs second overwrites the other, nobody is told, and the record is wrong in a way no one notices for months.</p></div></div>
-      </figure>
+          <figure class="flow">
+            <figcaption>How a record travels</figcaption>
+            <ol class="steps">
+              <li class="step"><span class="n" aria-hidden="true">1</span><div><h3>Write locally, first</h3><p>The health worker registers the patient and records the visit. It lands in local storage on the device immediately, with no network involved.</p></div></li>
+              <li class="step"><span class="n" aria-hidden="true">2</span><div><h3>The queue holds it</h3><p>Every action sits in a local write queue. The application keeps loading and keeps working whether or not there is a link.</p></div></li>
+            </ol>
+            <p class="gap"><span class="gap-line" aria-hidden="true"></span><span class="gap-dot" aria-hidden="true"></span><span class="gap-label">Link returns</span></p>
+            <ol class="steps" start="3">
+              <li class="step alt"><span class="n" aria-hidden="true">3</span><div><h3>Sync, with rules</h3><p>The queue drains to the server. Where two devices changed the same record, both versions are kept and resolved by rules, not by whoever synced last.</p></div></li>
+              <li class="step alt"><span class="n" aria-hidden="true">4</span><div><h3>It reaches the national system</h3><p>A common record format, FHIR R4, carries it on to what the ministry already runs, with nobody retyping anything.</p></div></li>
+            </ol>
+            <div class="step warn"><span class="n" aria-hidden="true">!</span><div><h3>Where it goes wrong</h3><p>Last write wins. Whichever device syncs second overwrites the other, nobody is told, and the record is wrong in a way no one notices for months.</p></div></div>
+          </figure>
 
-      <p>The part people underestimate is what happens when two copies disagree. Two health workers edit the same patient record while both are offline. Both edits are legitimate. When the link returns, the system has to work out what happened, and the easy answer quietly destroys data. The honest version keeps both and applies rules you can explain to the people whose records they are.</p>
+          <p>The part people underestimate is what happens when two copies disagree. Two health workers edit the same patient record while both are offline. Both edits are legitimate. When the link returns, the system has to work out what happened, and the easy answer quietly destroys data. The honest version keeps both and applies rules you can explain to the people whose records they are.</p>
+        </section>
 
-      <h2>Offline cannot mean isolated</h2>
-      <p>There's a failure on the other side of this. You build something that works well with no connection and it becomes an island. The data sits in the institution and never reaches the district, the province or the national system, and you've moved the problem rather than solved it.</p>
-      <p>So the integration work matters as much as the offline work. A common record format, and talking to what the ministry already runs instead of asking it to adopt something new.</p>
+        <section class="article-section" aria-labelledby="s-isolated">
+          <div class="section-mark" aria-hidden="true"><span>03</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><circle cx="215" cy="7" r="3.5"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
+          <h2 id="s-isolated">Offline cannot mean isolated</h2>
+          <p>There's a failure on the other side of this. You build something that works well with no connection and it becomes an island. The data sits in the institution and never reaches the district, the province or the national system, and you've moved the problem rather than solved it.</p>
+          <p>So the integration work matters as much as the offline work. A common record format, and talking to what the ministry already runs instead of asking it to adopt something new.</p>
+        </section>
 
-      <h2>Who owns the data, and who protects it</h2>
-      <p>Designing for disconnection multiplies the places data lives. Every device holding a local copy is another place it can leak, another device that can be stolen, another copy nobody is auditing. You can't design for offline and then treat security as a server-side problem.</p>
-      <p>In practice that means encryption at rest on the device, access tied to a role so a records clerk and a doctor don't see the same thing, and an audit trail that survives sync, so you can still say who did what after three days with no link.</p>
+        <section class="article-section" aria-labelledby="s-owns">
+          <div class="section-mark" aria-hidden="true"><span>04</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><circle cx="215" cy="7" r="3.5"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
+          <h2 id="s-owns">Who owns the data, and who protects it</h2>
+          <p>Designing for disconnection multiplies the places data lives. Every device holding a local copy is another place it can leak, another device that can be stolen, another copy nobody is auditing. You can't design for offline and then treat security as a server-side problem.</p>
+          <p>In practice that means encryption at rest on the device, access tied to a role so a records clerk and a doctor don't see the same thing, and an audit trail that survives sync, so you can still say who did what after three days with no link.</p>
 
-      <p class="pull">The institution holds custody of the record. The patient holds rights over it. The vendor holds neither.</p>
+          <p class="pull">The institution holds custody of the record. The patient holds rights over it. The vendor holds neither.</p>
 
-      <p>A vendor who can read patient records whenever it likes has built the thing wrong, and that includes us. Consent has to travel with the record rather than sit in a server the institution can't reach when it needs to check.</p>
+          <p>A vendor who can read patient records whenever it likes has built the thing wrong, and that includes us. Consent has to travel with the record rather than sit in a server the institution can't reach when it needs to check.</p>
 
-      <p>Transform Health, which convenes Digital Health Week, stewarded the <a href="https://transformhealthcoalition.org/health-data/" rel="noopener">Health Data Governance Principles</a>, built around three objectives.</p>
+          <p>Transform Health, which convenes Digital Health Week, stewarded the <a href="https://transformhealthcoalition.org/health-data/" rel="noopener">Health Data Governance Principles</a>, built around three objectives.</p>
 
-      <div class="objectives">
-        <div class="page-card page-card--plain"><h3>Protect people</h3><p>Guard individuals and communities against harm at every stage of the data lifecycle.</p></div>
-        <div class="page-card page-card--plain"><h3>Promote health value</h3><p>Get real benefit out of the data, for the patient in front of you and for the system.</p></div>
-        <div class="page-card page-card--plain"><h3>Prioritise equity</h3><p>The hardest one offline. The institutions with the worst connectivity tend to have the least capacity to hold anyone accountable for what happens to their data.</p></div>
+          <div class="cards">
+            <div class="objective"><h3>Protect people</h3><p>Guard individuals and communities against harm at every stage of the data lifecycle.</p></div>
+            <div class="objective"><h3>Promote health value</h3><p>Get real benefit out of the data, for the patient in front of you and for the system.</p></div>
+            <div class="objective"><h3>Prioritise equity</h3><p>The hardest one offline. The institutions with the worst connectivity tend to have the least capacity to hold anyone accountable for what happens to their data.</p></div>
+          </div>
+
+          <p>In Zimbabwe the anchors are the Cyber and Data Protection Act and SI 155 of 2024, with POTRAZ as the authority.</p>
+        </section>
+
+        <aside class="test" aria-labelledby="the-test">
+          <h2 id="the-test" class="test-label">The test</h2>
+          <p class="test-question">Can a health worker register a patient, record a visit and hand over a printed slip with no internet at all? And does that record reach the national system afterwards without anyone retyping it?</p>
+          <p class="test-answer">If either half is no, it isn't offline first. It's an online system with an error message.</p>
+        </aside>
+
+        <div class="author">
+          <h2 class="author-name">Keith Tafangombe</h2>
+          <p>Founder and CEO of SelNexa Health, a Harare company building software for health institutions. Written for Digital Health Week 2026, convened by Transform Health.</p>
+          <p><a href="mailto:keithtafangombe@selnexahealth.com">keithtafangombe@selnexahealth.com</a></p>
+        </div>
+
+        <p class="article-cta"><a href="/appointments.html" class="btn btn-primary" data-demo-trigger>Book a demo</a></p>
       </div>
-
-      <p>In Zimbabwe the anchors are the Cyber and Data Protection Act and SI 155 of 2024, with POTRAZ as the authority.</p>
-
-      <aside class="callout" aria-labelledby="the-test">
-        <h2 id="the-test" class="callout-label">The test</h2>
-        <p class="callout-question">Can a health worker register a patient, record a visit and hand over a printed slip with no internet at all? And does that record reach the national system afterwards without anyone retyping it?</p>
-        <p>If either half is no, it isn't offline first. It's an online system with an error message.</p>
-      </aside>
-
-      <div class="page-card page-card--plain article-author">
-        <h2 class="minor-heading">Keith Tafangombe</h2>
-        <p>Founder and CEO of SelNexa Health, a Harare company building software for health institutions. Written for Digital Health Week 2026, convened by Transform Health.</p>
-        <p><a href="mailto:keithtafangombe@selnexahealth.com">keithtafangombe@selnexahealth.com</a></p>
-      </div>
-
-      <p><a href="/appointments.html" class="btn btn-primary" data-demo-trigger>Book a demo</a></p>
     </article>
   </main>
     <!-- sx:footer -->

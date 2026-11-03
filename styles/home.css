@@ -38,7 +38,7 @@ body {
     z-index: 9999;
     font-size: 14px;
     text-decoration: none;
-    border-radius: 0 0 var(--radius-sm) 0;
+    border-radius: var(--radius-sm);
     transition: top 0.2s;
 }
 .skip-link:focus { top: 0; }
