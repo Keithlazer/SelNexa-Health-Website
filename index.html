@@ -36,8 +36,31 @@
     <meta name="geo.placename" content="Harare, Zimbabwe">
 
     <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css /styles/home-page.css -->
-    <link rel="stylesheet" href="/styles/bundles/b8d15b12364a.css">
+    <link rel="stylesheet" href="/styles/bundles/8c33d70245b4.css">
     <!-- /sx:styles -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "SelNexa Health",
+          "url": "https://www.selnexahealth.com/",
+          "publisher": { "@id": "https://www.selnexahealth.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "SelNexa Health Platform",
+          "applicationCategory": "HealthApplication",
+          "applicationSubCategory": "Health service management",
+          "operatingSystem": "Web browser (installable web app)",
+          "description": "Offline-first health service management platform for health institutions: administration, predictive procurement, health records and real-time analytics, with a telemedicine beta. It keeps working without a connection and syncs when the connection returns.",
+          "url": "https://www.selnexahealth.com/features.html",
+          "publisher": { "@id": "https://www.selnexahealth.com/#organization" }
+        }
+      ]
+    }
+    </script>
     <!-- sx:head -->
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -150,35 +173,13 @@
                     <h2>Built for public health outcomes</h2>
                     <p>We tie the Platform to universal health coverage priorities: continuity of care, sturdier facility infrastructure, and partnerships whose results can be measured.</p>
                 </div>
-                <div class="sdg-marker-grid" aria-label="Sustainable Development Goal focus areas">
-                    <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/sdg-3.svg" alt="SDG 3: Good Health and Well-being" width="112" height="112" loading="eager" decoding="async"></span>
-                        <span><strong>SDG 3</strong><span>Resilient care delivery and better access.</span></span>
-                    </article>
-                    <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/sdg-9.svg" alt="SDG 9: Industry, Innovation and Infrastructure" width="112" height="112" loading="eager" decoding="async"></span>
-                        <span><strong>SDG 9</strong><span>Offline-first digital health infrastructure.</span></span>
-                    </article>
-                    <article class="sdg-marker">
-                        <span class="sdg-art"><img src="/assets/sdg-17.svg" alt="SDG 17: Partnerships for the Goals" width="112" height="112" loading="eager" decoding="async"></span>
-                        <span><strong>SDG 17</strong><span>Respectful partnerships and domestic resource mobilization.</span></span>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="integration-strip animate-on-scroll" aria-label="Integrations">
-            <div class="container">
-                <p class="strip-label">The SelNexa Health Platform is built to integrate with</p>
-                <div class="strip-marquee" data-marquee>
-                    <ul class="strip-logos" aria-label="Standards and systems the Platform integrates with">
-                        <li><a class="logo-slide__link" href="https://dhis2.org/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/dhis2.webp"><img src="/assets/integrations/dhis2.png" alt="DHIS2" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
-                        <li><a class="logo-slide__link" href="https://www.undp.org/zimbabwe/publications/electronic-patient-management-system-epms-zimbabwe" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/epms.webp"><img src="/assets/integrations/epms.png" alt="ePMS" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
-                        <li><a class="logo-slide__link" href="https://www.zimttech.org/what-we-do/impilo-e-hr-cbs" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/impilo.webp"><img src="/assets/integrations/impilo.png" alt="Impilo" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
-                        <li><a class="logo-slide__link" href="https://www.hl7.org/fhir/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/fhir.webp"><img src="/assets/integrations/fhir.png" alt="FHIR R4" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
-                        <li><a class="logo-slide__link" href="https://www.hl7.org/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/hl7.webp"><img src="/assets/integrations/hl7.png" alt="HL7" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
-                        <li><a class="logo-slide__link" href="https://openmrs.org/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/assets/integrations/openmrs.webp"><img src="/assets/integrations/openmrs.png" alt="OpenMRS" class="logo-slide__image" width="68" height="68" loading="lazy" decoding="async"></picture><span class="sr-only"> (opens in a new tab)</span></a></li>
+                <div class="sdg-trust-detail">
+                    <ul class="sdg-goals" aria-label="Sustainable Development Goal focus areas">
+                        <li><strong>SDG 3</strong> Resilient care delivery and better access.</li>
+                        <li><strong>SDG 9</strong> Offline-first digital health infrastructure.</li>
+                        <li><strong>SDG 17</strong> Respectful partnerships and domestic resource mobilization.</li>
                     </ul>
+                    <p class="integration-line">Built to integrate with DHIS2, ePMS, Impilo and OpenMRS, over HL7 and FHIR R4.</p>
                 </div>
             </div>
         </section>
@@ -204,7 +205,7 @@
                     <h2 id="pipeline-targets-title">Where the Platform stands before its first pilot</h2>
                     <p>No pilot has reported results yet. The first one will be measured against these engineering targets.</p>
                 </div>
-                <div class="spec-table-wrap">
+                <div class="spec-table-wrap" tabindex="0" role="region" aria-label="Where the Platform stands before its first pilot, table">
                     <table class="spec-table">
                         <caption class="sr-only">Pilot status and engineering targets</caption>
                         <tbody>
@@ -221,7 +222,7 @@
             <div class="container">
                 <div class="section-header">
                     <p class="section-label">OUR MISSION</p>
-                    <h2>Co-architecting Africa's New Public Health Order</h2>
+                    <h2>An infrastructure problem, not a knowledge problem</h2>
                 </div>
                 <div class="mission-intro">
                     <div class="mission-paragraph">
@@ -315,11 +316,6 @@
                     <p class="section-label">PLATFORM OVERVIEW</p>
                     <h2>Three modules that keep working offline</h2>
                     <p>Administration, procurement and health records in one offline-first platform for health institutions.</p>
-                    <div class="sdg-inline-set" aria-label="Platform SDG focus">
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-3.svg" alt="SDG 3: Good Health and Well-being" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Continuity of care</strong><span>SDG 3</span></span></span>
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-9.svg" alt="SDG 9: Industry, Innovation and Infrastructure" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Interoperable infrastructure</strong><span>SDG 9</span></span></span>
-                        <span class="sdg-chip"><span class="sdg-art"><img src="/assets/sdg-17.svg" alt="SDG 17: Partnerships for the Goals" width="112" height="112" loading="lazy" decoding="async"></span><span><strong>Deployment partnerships</strong><span>SDG 17</span></span></span>
-                    </div>
                 </div>
                 <div class="module-overview-grid reveal-group">
                     <article class="module-card reveal">
@@ -378,11 +374,11 @@
                         </article>
                     </div>
                     <p class="cta-investor-line">Investors can find our pitch deck and financial model on the <a href="/for-investors.html">investor page</a>.</p>
-                    <div class="trust-chips">
-                        <span class="trust-chip">✓ Guided pilot onboarding</span>
-                        <span class="trust-chip">✓ Offline-first deployment</span>
-                        <span class="trust-chip">✓ Local support included</span>
-                    </div>
+                    <ul class="trust-chips">
+                        <li class="trust-chip">Guided pilot onboarding</li>
+                        <li class="trust-chip">Offline-first deployment</li>
+                        <li class="trust-chip">Local support included</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -569,7 +565,7 @@
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
     <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
-    <script src="/js/site-core.js?v=9adf1b12ef" defer></script>
+    <script src="/js/site-core.js?v=208e445329" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

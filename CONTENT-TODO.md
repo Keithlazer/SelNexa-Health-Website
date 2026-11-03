@@ -50,6 +50,14 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Positioning (the open question in the build spec): the page sits under its own Services menu item and the Platform stays the lead story everywhere else. The About page, homepage and investor page are unchanged and do not mention the service. Decide whether the About page and investor page should say SelNexa runs a compliance service, and how.
 - [ ] SelNexa's own status: the page does not say SelNexa is licensed, certified or acting as anyone's data protection officer. Tell me when any of those becomes true and whether it should appear.
 
+## Site brief of 3 November 2026: decisions needed
+
+- [ ] Hosting, for cache headers, security headers and Brotli (brief items 2, 3 and 10): GitHub Pages cannot set any of them. Two ways to get them: put Cloudflare (free plan) in front of GitHub Pages, which keeps this repository and its deploys as they are and lets response headers and Brotli be set there; or move the site to a host that reads a headers file (Netlify `_headers`, Cloudflare Pages `_headers`, Vercel `vercel.json`). Either needs your DNS account. The header set to apply is in `AUDIT-FINDINGS.md`, Phase 4.5.
+- [ ] Floating buttons on phones (brief item 8): the brief assumed a sticky "Book a demo" bar, which the site does not have. What overlaps content is the WhatsApp button (left) and the module finder (right). Pick one: hide WhatsApp below 768px, drop the module finder, or keep both.
+- [ ] Module finder: the brief asks it to earn its place or go. It asks the visitor's institution type and links to the matching module. Keep or cut?
+- [ ] Administration module copy on the homepage: "with AI help on routine tasks such as suggesting appointment slots" is the vaguest feature claim on the page (brief, section 9). Say what it does concretely, or drop the clause.
+- [ ] SDG badges are still used on the About, Platform, investor, Impact and Projects pages. The UN publishes usage guidelines for the SDG marks; check them before the badges stay.
+
 ## Contact and operations
 
 - [ ] Before this branch goes live, confirm contact@selnexahealth.com receives mail. Every form on the site falls back to opening an email to that address, and the footer, contact page and structured data all show it. (The site and deck used seven addresses before; only the privacy policy still gives a different one, keithtafangombe@selnexahealth.com.)

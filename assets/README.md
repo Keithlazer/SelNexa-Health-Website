@@ -10,7 +10,6 @@
 | `admin-dashboard-screenshot.*`, `ehr-system-screenshot.*`, `queue-management-interface.*` | Product screenshots (AVIF, WebP and PNG) |
 | `africa-map.webp/.png` | Homepage map |
 | `team/` | Team portraits, 320 and 640 px |
-| `integrations/` | Integration logos in the homepage strip |
 | `sdg-*.svg`, `contrawise-logo.svg`, `whatsapp-icon.svg` | Icons and artwork |
 | `video/` | Demo videos and their poster frames |
 | `fonts/` | Montserrat (Latin subset) and the site icon font, with their licences |

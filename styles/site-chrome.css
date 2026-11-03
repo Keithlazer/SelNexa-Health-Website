@@ -31,6 +31,16 @@
   --sx-error: #b42318;
   --sx-success: #05603a;
   --sx-font: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* The only corner and shadow values on the site. Every stylesheet loads this file last, so these win. */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
 .sr-only {
@@ -66,7 +76,7 @@ header.sx-header {
 
 header.sx-header.is-scrolled {
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 12px 32px rgba(2, 14, 30, 0.08);
+  box-shadow: var(--shadow-lg);
 }
 
 .sx-header__inner {
@@ -161,7 +171,7 @@ header.sx-header.is-scrolled {
   right: 0.6rem;
   bottom: 6px;
   height: 2px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: linear-gradient(90deg, var(--sx-amber), transparent);
   transform: scaleX(0);
   transform-origin: left;
@@ -177,7 +187,7 @@ header.sx-header.is-scrolled {
 .sx-menu a.sx-cta {
   margin-left: 0.35rem;
   padding: 0 1rem;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--sx-amber);
   color: var(--sx-dark);
   font-weight: 700;
@@ -234,7 +244,7 @@ footer.sx-footer :focus-visible,
     margin-left: auto;
     padding: 0 0.8rem;
     border: 1px solid rgba(0, 76, 76, 0.3);
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: var(--sx-teal);
     font: inherit;
@@ -249,7 +259,7 @@ footer.sx-footer :focus-visible,
     display: block;
     width: 18px;
     height: 2px;
-    border-radius: 2px;
+    border-radius: var(--radius-sm);
     background: currentColor;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
@@ -463,9 +473,9 @@ footer.sx-footer .footer-compliance p {
   height: 52px;
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   color: #ffffff;
-  box-shadow: 0 8px 22px rgba(2, 14, 30, 0.28);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -505,10 +515,10 @@ footer.sx-footer .footer-compliance p {
   overflow: auto;
   padding: 1rem;
   border: 1px solid rgba(10, 36, 99, 0.18);
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: #ffffff;
   color: var(--sx-ink);
-  box-shadow: 0 18px 44px rgba(2, 14, 30, 0.25);
+  box-shadow: var(--shadow-lg);
   font-family: var(--sx-font);
 }
 
@@ -534,7 +544,7 @@ footer.sx-footer .footer-compliance p {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--sx-ink);
   font-size: 1.6rem;
@@ -570,7 +580,7 @@ footer.sx-footer .footer-compliance p {
 .sx-finder__demo {
   width: 100%;
   min-height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font: inherit;
   font-size: 0.95rem;
 }
@@ -630,10 +640,10 @@ dialog.sx-modal {
   padding: 0;
   overflow: auto;
   border: 0;
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   background: #ffffff;
   color: var(--sx-ink);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-lg);
   font-family: var(--sx-font);
 }
 
@@ -665,7 +675,7 @@ dialog.sx-modal::backdrop {
   width: 44px;
   height: 44px;
   border: 0;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--sx-ink);
   font-size: 1.8rem;
@@ -728,7 +738,7 @@ dialog.sx-modal::backdrop {
   min-height: 44px;
   padding: 0.6rem 0.75rem;
   border: 1px solid #8a94a6;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: #ffffff;
   color: var(--sx-ink);
   font: inherit;
@@ -816,7 +826,7 @@ dialog.sx-modal::backdrop {
 
 .sx-form-done {
   padding: 1.25rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: #ecfdf3;
   color: var(--sx-success);
 }

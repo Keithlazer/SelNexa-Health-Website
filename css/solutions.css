@@ -30,7 +30,7 @@
 .overview-card {
     background: var(--light);
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     text-align: center;
     transition: all 0.3s ease;
@@ -58,7 +58,7 @@
 .feature-card {
     background: var(--light);
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
 }
 
@@ -92,7 +92,7 @@
 .benefit-card {
     background: var(--light);
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     text-align: center;
 }
@@ -130,7 +130,7 @@
 .case-study-metrics li {
     background: var(--gray);
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: var(--radius-sm);
     text-align: center;
 }
 
@@ -143,7 +143,7 @@
 
 .case-study-image img {
     width: 100%;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
 }
 
@@ -156,7 +156,7 @@
 .demo-form {
     background: var(--light);
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
 }
 
