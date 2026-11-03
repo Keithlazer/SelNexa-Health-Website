@@ -3810,6 +3810,7 @@ dialog.sx-modal::backdrop {
 .fa-language::before { content: "\f1ab"; }
 .fa-lightbulb::before { content: "\f0eb"; }
 .fa-map-marker-alt::before { content: "\f3c5"; }
+.fa-network-wired::before { content: "\f6ff"; }
 .fa-phone::before { content: "\f095"; }
 .fa-question-circle::before { content: "\f059"; }
 .fa-route::before { content: "\f4d7"; }
