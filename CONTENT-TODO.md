@@ -65,7 +65,7 @@ Done so far: the Offline First article follows the direction in full, and the ra
 - [ ] Connection trace as the section divider on every page: which pages and where (between every section, or only major breaks). Say if you want it everywhere and I will place it.
 - [ ] Dark blocks on other pages (one or two per page, each holding that page's most important sentence): the homepage candidate is the mission section. Choose the sentence for each page, or approve the mission section as the homepage's.
 - [ ] Body text on other pages is the light grey and light weight the direction rules out ("thin grey text"). Switching it site-wide to the article's dark regular-weight body text is a one-line change in each stylesheet set; approve before I apply it everywhere.
-- [ ] The four older blog posts (151 to about 600 words, authored as "SelNexa Health"): grow each to around 800 words with real sections, fold them into one piece, or retire them. The new article template needs a named author for the byline and author card.
+- [x] The four older blog posts: retired (your decision, 3 November 2026). Each address now redirects to the blog, the way `blog/telemedicine-zimbabwe.html` already did; they are out of the sitemap, the blog index and the Resources page. If a post comes back later, it uses the Offline First template and needs a named author.
 - [ ] Photographs of Zimbabwean health institutions (records rooms, paper registers, a health worker at a terminal), with permission from each place and person shown. None exist on the site yet.
 
 ## Contact and operations
