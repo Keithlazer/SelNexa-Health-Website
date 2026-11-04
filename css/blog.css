@@ -158,13 +158,17 @@
   color: var(--color-primary-dark);
 }
 
-/* How a record travels. Navy = on the device, teal = connected, coral = the failure case. */
+/* How a record travels: one rail, in the trace's colours, instead of a stack of cards. While the link is down
+   (steps 1 and 2) the rail is coral dashes; it turns teal at the amber point where the link returns (steps 3 and 4).
+   Markers: navy on the device, teal synced, coral for the failure case, which sits apart from the sequence. */
 .flow {
+  --rail-x: 1.375rem; /* centre of the 2.75rem marker column */
+  --row-gap: var(--spacing-lg);
   margin: var(--spacing-lg) 0;
 }
 
 .flow figcaption {
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -173,20 +177,19 @@
 }
 
 .steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .step {
+  position: relative;
   display: grid;
   grid-template-columns: 2.75rem 1fr;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
-  padding: var(--spacing-md);
-  background: var(--surface-raised);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
 .blog-article .article-body .step p {
@@ -196,6 +199,9 @@
 }
 
 .step .n {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
   display: grid;
   place-items: center;
   width: 2rem;
@@ -210,12 +216,36 @@
 .step.alt .n { background: var(--color-primary-teal); color: var(--color-primary-dark); }
 .step.warn .n { background: var(--color-secondary-coral); color: var(--color-primary-dark); }
 
-/* The break between offline and connected: coral dashes, an amber point, then the label. */
+/* The rail: each step draws the stretch from its marker down to the next one. */
+.steps .step::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: calc(-1 * var(--row-gap) - 1rem);
+  left: calc(var(--rail-x) - 1.25px);
+  width: 2.5px;
+  transform-origin: top;
+}
+
+.steps--offline .step::before {
+  background: repeating-linear-gradient(to bottom, var(--color-secondary-coral) 0 3px, transparent 3px 10px);
+  opacity: 0.85;
+}
+
+.steps--offline .step:last-child::before { bottom: 0; }
+.steps--live .step::before { background: var(--color-primary-teal); }
+.steps--live .step:first-child::before { top: 0; }
+.steps--live .step:last-child::before { display: none; }
+
+/* The link returns: the amber point on the rail, where coral turns to teal. */
 .blog-article .article-body .gap {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: var(--spacing-sm);
   align-items: center;
-  gap: 0.6rem;
-  margin: 0.25rem 0 var(--spacing-sm) 3.75rem;
+  margin: 0;
+  padding-block: var(--spacing-md);
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: 0.14em;
@@ -223,32 +253,92 @@
   color: var(--color-primary-dark);
 }
 
-.gap-line {
-  flex: 0 1 6rem;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, var(--color-secondary-coral) 0 4px, transparent 4px 10px);
+.gap::before,
+.gap::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--rail-x) - 1.25px);
+  width: 2.5px;
+  transform-origin: top;
+}
+
+.gap::before {
+  top: 0;
+  height: 50%;
+  background: repeating-linear-gradient(to bottom, var(--color-secondary-coral) 0 3px, transparent 3px 10px);
+  opacity: 0.85;
+}
+
+.gap::after {
+  top: 50%;
+  bottom: 0;
+  background: var(--color-primary-teal);
 }
 
 .gap-dot {
-  width: 7px;
-  height: 7px;
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  width: 12px;
+  height: 12px;
   border-radius: var(--radius-circle);
   background: var(--color-cta-amber);
 }
 
-/* Three objectives, three across on wider screens. */
+/* The failure case, set apart from the sequence by space and a coral rule. */
+.step.warn {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) 0;
+  border-left: 4px solid var(--color-secondary-coral);
+  background: rgba(255, 107, 107, 0.08);
+}
+
+/* The journey plays once as the figure comes into view (js/site-core.js adds .flow--armed, then .is-playing): steps 1
+   and 2 on the coral rail, the amber point, the teal rail, steps 3 and 4, then the failure case. It is the article's
+   only animation, because it explains the sequence. In print, with reduced motion or without JavaScript the figure
+   shows its final state. */
+@keyframes flow-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes flow-draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes flow-pop { 0% { transform: scale(0); } 70% { transform: scale(1.35); } 100% { transform: scale(1); } }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .flow--armed .step,
+  .flow--armed .gap-label { opacity: 0; }
+  .flow--armed .steps .step::before,
+  .flow--armed .gap::before,
+  .flow--armed .gap::after { transform: scaleY(0); }
+  .flow--armed .gap-dot { transform: scale(0); }
+
+  .flow--armed.is-playing .step,
+  .flow--armed.is-playing .gap-label { animation: flow-in 0.5s ease-out both; }
+  .flow--armed.is-playing .steps .step::before,
+  .flow--armed.is-playing .gap::before,
+  .flow--armed.is-playing .gap::after { animation: flow-draw 0.5s ease-in-out both; }
+  .flow--armed.is-playing .gap-dot { animation: flow-pop 0.4s ease-out both; }
+
+  .flow--armed.is-playing .steps--offline .step:nth-child(1)::before { animation-delay: 0.3s; }
+  .flow--armed.is-playing .steps--offline .step:nth-child(2) { animation-delay: 0.6s; }
+  .flow--armed.is-playing .steps--offline .step:nth-child(2)::before { animation-delay: 0.9s; }
+  .flow--armed.is-playing .gap::before { animation-delay: 1.3s; animation-duration: 0.3s; }
+  .flow--armed.is-playing .gap-dot { animation-delay: 1.6s; }
+  .flow--armed.is-playing .gap-label { animation-delay: 1.75s; }
+  .flow--armed.is-playing .gap::after { animation-delay: 1.9s; animation-duration: 0.3s; }
+  .flow--armed.is-playing .steps--live .step:nth-child(1) { animation-delay: 2.1s; }
+  .flow--armed.is-playing .steps--live .step:nth-child(1)::before { animation-delay: 2.3s; }
+  .flow--armed.is-playing .steps--live .step:nth-child(2) { animation-delay: 2.6s; }
+  .flow--armed.is-playing .step.warn { animation-delay: 3.3s; }
+}
+
+/* Three objectives as ruled columns, three across on wider screens. */
 .cards {
   display: grid;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg);
   margin: var(--spacing-md) 0 var(--spacing-lg);
 }
 
 .objective {
-  padding: var(--spacing-md);
-  background: var(--surface-raised);
+  padding-top: var(--spacing-sm);
   border-top: 4px solid var(--color-primary-teal);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
 .blog-article .article-body .objective p {
@@ -257,7 +347,7 @@
   line-height: 1.6;
 }
 
-/* On wide screens the three cards step out of the text column so each has room to read. */
+/* On wide screens the three columns step out of the text column so each has room to read. */
 @media (min-width: 900px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
@@ -298,16 +388,15 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
-/* Author card: the portrait (a head-and-shoulders crop of the About page photo) beside the name, role and links. */
+/* Author: the portrait (a head-and-shoulders crop of the About page photo) beside the name, role and links, under a
+   rule rather than in a card. */
 .author {
   display: grid;
   grid-template-columns: 80px minmax(0, 1fr);
   gap: var(--spacing-md);
   align-items: start;
-  padding: var(--spacing-md);
-  background: var(--surface-raised);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--uniform-border);
 }
 
 .author-photo {
@@ -333,7 +422,6 @@
 
 @media (max-width: 480px) {
   .test { padding: var(--spacing-lg); }
-  .blog-article .article-body .gap { margin-left: 0; }
   /* On phones the portrait sits above the name, so the text keeps the card's full width. */
   .author { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-sm); }
   .author-photo { width: 64px; height: 64px; }

@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
   <!-- /sx:social -->
   <!-- sx:styles /styles/main.css /css/blog.css /styles/grid-typography-system.css /styles/site-uniform.css -->
-  <link rel="stylesheet" href="/styles/bundles/81e4ea5316b5.css">
+  <link rel="stylesheet" href="/styles/bundles/7d47fbf1b761.css">
   <!-- /sx:styles -->
     <script type="application/ld+json">
     {
@@ -151,12 +151,12 @@
 
           <figure class="flow">
             <figcaption>How a record travels</figcaption>
-            <ol class="steps">
+            <ol class="steps steps--offline">
               <li class="step"><span class="n" aria-hidden="true">1</span><div><h3>Write locally, first</h3><p>The health worker registers the patient and records the visit. It lands in local storage on the device immediately, with no network involved.</p></div></li>
               <li class="step"><span class="n" aria-hidden="true">2</span><div><h3>The queue holds it</h3><p>Every action sits in a local write queue. The application keeps loading and keeps working whether or not there is a link.</p></div></li>
             </ol>
-            <p class="gap"><span class="gap-line" aria-hidden="true"></span><span class="gap-dot" aria-hidden="true"></span><span class="gap-label">Link returns</span></p>
-            <ol class="steps" start="3">
+            <p class="gap"><span class="gap-dot" aria-hidden="true"></span><span class="gap-label">Link returns</span></p>
+            <ol class="steps steps--live" start="3">
               <li class="step alt"><span class="n" aria-hidden="true">3</span><div><h3>Sync, with rules</h3><p>The queue drains to the server. Where two devices changed the same record, both versions are kept and resolved by rules, not by whoever synced last.</p></div></li>
               <li class="step alt"><span class="n" aria-hidden="true">4</span><div><h3>It reaches the national system</h3><p>A common record format, FHIR R4, carries it on to what the ministry already runs, with nobody retyping anything.</p></div></li>
             </ol>
@@ -374,7 +374,7 @@
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
     <script src="/js/form-endpoints.js?v=1a0d11e1d9" defer></script>
-    <script src="/js/site-core.js?v=208e445329" defer></script>
+    <script src="/js/site-core.js?v=32c9a490d3" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

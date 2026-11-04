@@ -543,3 +543,16 @@ What changed:
 - The UN link and statement are added under the icons on the About, Platform, Investors, Impact and Projects pages too.
 
 Checked on all 31 pages at 375 and 1280px: no horizontal scroll, no axe-core violations; every SDG image loads and displays square. The investor page is left as it was, apart from the fixes above, pending Keith's decision (see `CONTENT-TODO.md`).
+
+## Blog: motion and fewer cards
+
+Added 4 November 2026 at Keith's request ("more animation and less generic bubbles"), on branch `blog-motion`.
+
+`DESIGN-DIRECTION.md` rules out "animation on scroll for its own sake" and keeps motion only where it explains something, so the blog gets one animation, on the figure that describes a sequence:
+
+- "How a record travels" is now a timeline on one rail, in the trace's colours, instead of four separate cards. Steps 1 and 2 (on the device, link down) sit on coral dashes; an amber point marks "Link returns"; steps 3 and 4 (sync) sit on solid teal. The failure case is set apart with a coral rule.
+- The rail plays once as the figure scrolls into view: step 1, the coral rail, step 2, the amber point, the teal rail, steps 3 and 4, then the failure case, over about four seconds. With reduced motion, without JavaScript and in print the figure shows its final state. The player is a few lines in `js/site-core.js`, which carries a content hash, so the service worker never serves an old copy.
+- The three Health Data Governance objectives are ruled columns instead of cards, the author section sits under a rule instead of in a card, and the blog index entry is a ruled row without the 8px hover jump.
+- `.btn-link` turned electric blue on hover, about 1.6:1 on cream; it now turns navy (blog, homepage, Platform, Projects and 404 pages).
+
+Checked: the animation's order in browser frames at 0.15 to 4.2 seconds; reduced motion shows everything at once; no axe-core violations or horizontal scroll at 375 and 1280px on the six affected pages; the article now uses 4 radii and 2 shadows.

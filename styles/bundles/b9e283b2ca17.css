@@ -301,8 +301,9 @@ a:hover {
     transition: all var(--transition-base);
 }
 
+/* Navy, not electric: electric is for dark grounds only and is unreadable on cream. */
 .btn-link:hover {
-    color: var(--color-accent-electric);
+    color: var(--color-primary-dark);
     transform: translateX(4px);
 }
 
@@ -637,6 +638,8 @@ section {
     /* ============================================
    NEW PAGES STYLING
    ============================================ */
+
+/* A blog entry is a ruled row on the page ground, not a floating card. */
 
 /* A card carrying an event logo (the Digital Health Week article): the logo sits above the text on phones and
    beside it on wider screens. */

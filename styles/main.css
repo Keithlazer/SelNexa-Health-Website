@@ -722,8 +722,9 @@ a:hover {
     transition: all var(--transition-base);
 }
 
+/* Navy, not electric: electric is for dark grounds only and is unreadable on cream. */
 .btn-link:hover {
-    color: var(--color-accent-electric);
+    color: var(--color-primary-dark);
     transform: translateX(4px);
 }
 
@@ -2622,12 +2623,10 @@ section {
     margin-top: var(--spacing-2xl);
 }
 
+/* A blog entry is a ruled row on the page ground, not a floating card. */
 .blog-card {
-    background: var(--color-neutral-white);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-base);
+    padding: var(--spacing-lg) 0;
+    border-block: 1px solid var(--uniform-border, rgba(15, 23, 42, 0.1));
     display: flex;
     flex-direction: column;
 }
@@ -2659,11 +2658,6 @@ section {
     .blog-card--logo .blog-image img {
         width: 140px;
     }
-}
-
-.blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
 }
 
 .blog-category {
