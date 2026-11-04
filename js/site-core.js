@@ -158,6 +158,38 @@
     observer.observe(flow);
   }
 
+  /* ---------- Article contents rail (blog/offline-first.html, desktop) ----------
+     Marks the section being read with aria-current, so the rail shows where the reader is. The link changes state;
+     nothing moves. */
+
+  function setupArticleContents() {
+    var links = Array.prototype.slice.call(document.querySelectorAll(".article-contents a[href^='#']"));
+    if (!links.length || !("IntersectionObserver" in window)) {
+      return;
+    }
+    var linkFor = new Map();
+    links.forEach(function (link) {
+      var heading = document.getElementById(link.getAttribute("href").slice(1));
+      if (heading) {
+        linkFor.set(heading.closest("section, aside") || heading, link);
+      }
+    });
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        links.forEach(function (link) {
+          link.removeAttribute("aria-current");
+        });
+        linkFor.get(entry.target).setAttribute("aria-current", "location");
+      });
+    }, { rootMargin: "-35% 0px -60% 0px" });
+    linkFor.forEach(function (link, block) {
+      observer.observe(block);
+    });
+  }
+
   /* ---------- Count-up numbers: reserved for measured results ---------- */
 
   function animateCounter(el) {
@@ -795,6 +827,7 @@
     setupVideoTabs();
     setupReveal();
     setupRecordFlow();
+    setupArticleContents();
     setupCounters();
     setupCtaTracking();
     whenIdle(setupModuleFinder);
