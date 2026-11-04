@@ -9,7 +9,7 @@
 | `dashboard-hero-*.webp/.png` | Homepage hero |
 | `admin-dashboard-screenshot.*`, `ehr-system-screenshot.*`, `queue-management-interface.*` | Product screenshots (AVIF, WebP and PNG) |
 | `africa-map.webp/.png` | Homepage map |
-| `team/` | Team portraits, 320 and 640 px |
+| `team/` | Team portraits, 320 and 640 px; `keith-tafangombe-avatar-160` is a head-and-shoulders crop of Keith's for the article author card |
 | `sdg-*.svg`, `contrawise-logo.svg`, `whatsapp-icon.svg` | Icons and artwork |
 | `digital-health-week.svg` | Digital Health Week logo on the blog card for the Offline First article. The export's empty canvas is cropped; the artwork is unchanged |
 | `video/` | Demo videos and their poster frames |

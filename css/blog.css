@@ -298,11 +298,24 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+/* Author card: the portrait (a head-and-shoulders crop of the About page photo) beside the name, role and links. */
 .author {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: var(--spacing-md);
+  align-items: start;
   padding: var(--spacing-md);
   background: var(--surface-raised);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+}
+
+.author-photo {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-circle);
+  background: var(--surface-base);
 }
 
 .blog-article .article-body .author .author-name {
@@ -321,4 +334,7 @@
 @media (max-width: 480px) {
   .test { padding: var(--spacing-lg); }
   .blog-article .article-body .gap { margin-left: 0; }
+  /* On phones the portrait sits above the name, so the text keeps the card's full width. */
+  .author { grid-template-columns: minmax(0, 1fr); gap: var(--spacing-sm); }
+  .author-photo { width: 64px; height: 64px; }
 }
