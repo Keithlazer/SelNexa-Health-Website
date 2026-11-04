@@ -556,3 +556,16 @@ Added 4 November 2026 at Keith's request ("more animation and less generic bubbl
 - `.btn-link` turned electric blue on hover, about 1.6:1 on cream; it now turns navy (blog, homepage, Platform, Projects and 404 pages).
 
 Checked: the animation's order in browser frames at 0.15 to 4.2 seconds; reduced motion shows everything at once; no axe-core violations or horizontal scroll at 375 and 1280px on the six affected pages; the article now uses 4 radii and 2 shadows.
+
+## Article on desktop
+
+Added 4 November 2026 after Keith asked why the article sits in a narrow centred column on desktop, on branch `article-desktop`.
+
+The text column is 38rem on purpose (`DESIGN-DIRECTION.md`: "Body measure stays at or under 38rem"), but on a 1440px screen it left about 430px empty on each side and wrapped the headline onto five lines. From 1100px wide the text keeps its measure and the space around it is used:
+
+- The hero headline, standfirst, trace and byline span 55rem (three lines for the headline at 1440px); the standfirst stays at 38rem.
+- A contents rail ("In this article", sections 01 to 04 and The test) sits left of the text and stays in view while reading. The section being read gets a teal marker and `aria-current="location"`; nothing animates. Below 1100px the rail is hidden and the layout is as before.
+- Pull quotes and the three objectives step out into the right margin, up to 12rem and never closer than 2rem to the window edge.
+- Hero, rail and text share one left edge. Headings reached from the rail land below the sticky header (`scroll-margin-top`).
+
+Checked: the article at 375, 1100 and 1280px, and every page at 1440 and 1920px, with no horizontal scroll and no axe-core violations. The other pages already use the full 1200px container on desktop.

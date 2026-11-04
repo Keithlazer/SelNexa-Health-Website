@@ -786,7 +786,8 @@ header.sx-header.is-scrolled {
 }
 
 .sx-menu a:not(.sx-cta):hover::after,
-.sx-menu a:not(.sx-cta):focus-visible::after {
+.sx-menu a:not(.sx-cta):focus-visible::after,
+.sx-menu a[aria-current="page"]:not(.sx-cta)::after {
   transform: scaleX(1);
 }
 
