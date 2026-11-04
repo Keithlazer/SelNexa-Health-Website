@@ -138,6 +138,26 @@
     });
   }
 
+  /* ---------- "How a record travels" (blog/offline-first.html) ----------
+     Plays the record's journey once as the figure comes into view: the steps on the device while the link is down,
+     the link coming back, then the sync. The styles are in css/blog.css. Without JavaScript or with reduced motion
+     the figure shows its final state. */
+
+  function setupRecordFlow() {
+    var flow = document.querySelector(".flow");
+    if (!flow || reduceMotion || !("IntersectionObserver" in window)) {
+      return;
+    }
+    flow.classList.add("flow--armed");
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        flow.classList.add("is-playing");
+        observer.disconnect();
+      }
+    }, { rootMargin: "0px 0px -25% 0px" });
+    observer.observe(flow);
+  }
+
   /* ---------- Count-up numbers: reserved for measured results ---------- */
 
   function animateCounter(el) {
@@ -774,6 +794,7 @@
     setupModuleTabs();
     setupVideoTabs();
     setupReveal();
+    setupRecordFlow();
     setupCounters();
     setupCtaTracking();
     whenIdle(setupModuleFinder);
