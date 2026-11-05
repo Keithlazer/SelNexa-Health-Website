@@ -569,3 +569,11 @@ The text column is 38rem on purpose (`DESIGN-DIRECTION.md`: "Body measure stays 
 - Hero, rail and text share one left edge. Headings reached from the rail land below the sticky header (`scroll-margin-top`).
 
 Checked: the article at 375, 1100 and 1280px, and every page at 1440 and 1920px, with no horizontal scroll and no axe-core violations. The other pages already use the full 1200px container on desktop.
+
+## Article discussion
+
+Added 5 November 2026 at Keith's request (option 1 of four: a link to the article's LinkedIn post rather than a comment widget), on branch `article-discussion`.
+
+- "Discuss this article" sits after "The test": a button to the LinkedIn post where the article was shared and an "Email Keith" link (`keithtafangombe@selnexahealth.com`, with the subject filled in). The site stores no comments or personal data, and the Content Security Policy is unchanged.
+- The post link is the full linkedin.com address the short link `lnkd.in/p/dwT-G9NG` redirects to, without the tracking parameters LinkedIn adds when sharing (`utm_source`, `utm_medium`, and `rcm`, which is tied to the sharer's account).
+- The `BlogPosting` structured data gets `discussionUrl` pointing to the post. Both links carry `data-track` names for the existing click tracking.

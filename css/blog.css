@@ -388,6 +388,26 @@
   color: rgba(255, 255, 255, 0.88);
 }
 
+/* Discussion: comments on the article happen on its LinkedIn post, so the site stores no comments or personal
+   data. The LinkedIn button is secondary; the page's primary call to action stays "Book a demo". */
+.blog-article .article-discuss {
+  margin: 0 0 var(--spacing-xl);
+  padding: 0;
+}
+
+.blog-article .article-body .article-discuss h2 {
+  margin: 0 0 var(--spacing-sm);
+  font-size: 20px;
+}
+
+.blog-article .article-body .article-discuss-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm) var(--spacing-lg);
+  margin: var(--spacing-md) 0 0;
+}
+
 /* Author: the portrait (a head-and-shoulders crop of the About page photo) beside the name, role and links, under a
    rule rather than in a card. */
 .author {
