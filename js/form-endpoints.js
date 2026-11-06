@@ -4,7 +4,7 @@
   }
 
   // Where the demo, contact and updates forms send submissions (JSON POST).
-  // While this is empty, submitting a form opens a pre-filled email to contact@selnexahealth.com instead,
+  // While this is empty, submitting a form opens a pre-filled email instead (demo requests to sales@selnexahealth.com, everything else to contact@selnexahealth.com),
   // so nothing a visitor types is lost. Point it at a relay such as tools/cloudflare-wishlist-relay.js.
   // Do not put a raw recipient email address here.
   // When you set it, also add the endpoint's origin to connect-src in includes/csp.html

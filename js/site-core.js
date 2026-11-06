@@ -11,6 +11,7 @@
   window.__selnexaCoreLoaded = true;
 
   var CONTACT_EMAIL = "contact@selnexahealth.com";
+  var SALES_EMAIL = "sales@selnexahealth.com"; // demo and quote requests
   var WHATSAPP_DISPLAY = "+263 77 772 6065";
   var QUEUE_KEY = "selnexa-offline-form-queue";
   var reduceMotion = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -607,6 +608,10 @@
     return data;
   }
 
+  function emailFor(kind) {
+    return kind === "demo" ? SALES_EMAIL : CONTACT_EMAIL;
+  }
+
   function mailtoFor(kind, data) {
     var subject = kind === "demo"
       ? "Demo request" + (data.organisation ? " from " + data.organisation : "")
@@ -623,7 +628,7 @@
       lines.push("", "I agree to SelNexa Health using these details to reply to me.");
     }
     lines.push("", "Sent from " + window.location.href);
-    return "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
+    return "mailto:" + emailFor(kind) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(lines.join("\n"));
   }
 
   function setStatus(form, text, state) {
@@ -727,8 +732,8 @@
 
     if (!endpoint) {
       showDone(form, "Your email app should open now", [
-        "We've put your details into a new email to " + CONTACT_EMAIL + ". Press send in your email app and it will reach us.",
-        "If nothing opened, email " + CONTACT_EMAIL + " or message us on WhatsApp on " + WHATSAPP_DISPLAY + "."
+        "We've put your details into a new email to " + emailFor(kind) + ". Press send in your email app and it will reach us.",
+        "If nothing opened, email " + emailFor(kind) + " or message us on WhatsApp on " + WHATSAPP_DISPLAY + "."
       ], mailto);
       window.location.href = mailto;
       return;
@@ -759,7 +764,7 @@
       ]);
     }).catch(function () {
       if (button) button.disabled = false;
-      setStatus(form, "We couldn't send this just now. Please try again, or email " + CONTACT_EMAIL + ".", "error");
+      setStatus(form, "We couldn't send this just now. Please try again, or email " + emailFor(kind) + ".", "error");
     });
   }
 
