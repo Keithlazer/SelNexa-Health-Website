@@ -72,7 +72,7 @@ The Offline First article follows the direction in full, and the radius and shad
 ## Contact and operations
 
 - [ ] Digital Health Week logo on the blog card (added 3 November 2026 from the file you supplied): confirm the event's terms allow contributors to show it, since a logo can read as endorsement. Transform Health convenes the event.
-- [ ] Before this branch goes live, confirm contact@selnexahealth.com receives mail. Every form on the site falls back to opening an email to that address, and the footer, contact page and structured data all show it. (The site and deck used seven addresses before; only the privacy policy still gives a different one, keithtafangombe@selnexahealth.com.)
+- [x] Email addresses (6 November 2026): contact@selnexahealth.com and sales@selnexahealth.com are set up. contact@ is the general address (footer, contact form, privacy requests, structured data); sales@ takes demo and quote requests (the demo form, the Pricing quote and the Contact page); Keith's own address, keith@selnexahealth.com, appears only on the Offline First article. Send a test from each form once the changes are live.
 - [ ] Forms: to receive submissions without relying on the visitor's email app, deploy `tools/cloudflare-wishlist-relay.js` as a Cloudflare Worker (it needs a Resend API key and a FORM_TO_EMAIL address), then put its URL in `js/form-endpoints.js`. Instructions are at the top of the relay file.
 - [ ] Contact page street address: confirm it should be public.
 - [ ] About page: LinkedIn blocks automated link checks, so open the four team members' LinkedIn links by hand.

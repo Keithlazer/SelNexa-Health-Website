@@ -29,7 +29,7 @@ To change the header, footer or forms:
 
 `{{v:path}}` in a partial becomes a short hash of that file, so a changed stylesheet or script gets a new URL and visitors' service workers fetch the new copy.
 
-Forms: while `window.SELNEXA_FORM_ENDPOINT` in `js/form-endpoints.js` is empty, every form opens a pre-filled email to contact@selnexahealth.com. Set it to a form relay URL to receive submissions as JSON POSTs instead, and add that URL's origin to `connect-src` in `csp.html`.
+Forms: while `window.SELNEXA_FORM_ENDPOINT` in `js/form-endpoints.js` is empty, every form opens a pre-filled email: demo requests to sales@selnexahealth.com, everything else to contact@selnexahealth.com. Set it to a form relay URL to receive submissions as JSON POSTs instead, and add that URL's origin to `connect-src` in `csp.html`.
 
 The Content Security Policy allows scripts, styles, fonts, images and media from this site only. Anything added later from another host (an analytics script, an embedded video, a booking calendar) needs its host added to the matching directive in `csp.html`, or the browser will block it. Inline `<script>` blocks, `onclick` attributes, `<style>` blocks and `style` attributes are blocked too; put code in `js/` and styles in `styles/`.
 

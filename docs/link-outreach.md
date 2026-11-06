@@ -24,5 +24,5 @@ Thanks for considering — I can provide more details or a short write-up.
 
 Best,
 Keith Tafangombe
-keithtafangombe@selnexahealth.com
+keith@selnexahealth.com
 SelNexa Health
