@@ -10,6 +10,7 @@ exclude:
   - README.md
   - assets/README.md
   - docs
+  - data
   # Partials and tooling (not part of the static site)
   - includes
   - node_modules

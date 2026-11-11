@@ -577,3 +577,45 @@ Added 5 November 2026 at Keith's request (option 1 of four: a link to the articl
 - "Discuss this article" sits after "The test": a button to the LinkedIn post where the article was shared and an "Email Keith" link (`keithtafangombe@selnexahealth.com`, with the subject filled in). The site stores no comments or personal data, and the Content Security Policy is unchanged.
 - The post link is the full linkedin.com address the short link `lnkd.in/p/dwT-G9NG` redirects to, without the tracking parameters LinkedIn adds when sharing (`utm_source`, `utm_medium`, and `rcm`, which is tied to the sharer's account).
 - The `BlogPosting` structured data gets `discussionUrl` pointing to the post. Both links carry `data-track` names for the existing click tracking.
+
+## Site credibility fixes
+
+Keith's brief of 11 November 2026 (claims, positioning, contact details, pages, typography, search visibility), on branch `site-credibility-fixes`. One commit per task. Keith's answers of 12 November: sync target 95%; team section stays live with the confirmed roles (Kimberley Ncube not added, Farisai Mawere is Chief Medical Officer, the founder is "Keith Tafangombe"); pricing: both options; no POTRAZ licence number yet; Search Console already verified; every AI and roadmap feature named in the brief is in the Platform; keep self-hosted Montserrat; remove the proof of concept; drop regional hosting; rename the trust page to /security; "has stalled"; delete the deck.
+
+| Task | Before | After |
+|---|---|---|
+| A1 Pilot wording | Eleven places, five versions ("confirmed and pending ministry approval", "pending facility approval") | One line everywhere: "First pilot in preparation. We will name the site once approvals are in place." |
+| A2 Impact links | "Impact evidence", "View Impact Evidence", "See where the Platform stands" | "How we will measure impact", pointing to the Results Matrix |
+| A3 AI and roadmap claims | Present-tense claims for AI assistance, forecasting, analytics, telemedicine beta | Unchanged: Keith confirmed every one is in the Platform |
+| A4 Statistics | WHO World Health Report 2006 (24%, 3%, under 1%); WHO 2018 (1.55 per 1,000) | Zimbabwe 22 health workers per 10,000 in 2022 against WHO's 45; UHC index 68 to 71 (2015 to 2023). Both linked to their sources and checked against them |
+| A5 Sync target | 95% typed into five pages | 95% set once in data/facts.json and stamped by the build |
+| A6 Integration | Three wordings | "Designed to sit alongside national systems and exchange data with them through FHIR R4 (DHIS2, Impilo, ePMS, OpenMRS)." |
+| A7 Compliance | Footer: "Aligned with Zimbabwe's Cyber and Data Protection Act..." | "Built to Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024". ISO/IEC 27001 and SOC 2 were already "control mapping in progress" |
+| Rule 5 | Q3 2024 proof of concept in nine places, with a section, a timeline entry and two validation notes | Removed everywhere |
+| B1 Headline | "Hospital software that keeps running..." | "Health software that keeps running when the power and the network don't." Title and description match |
+| B2 Data location | "Configurable: in-country or regional" | "Patient data stays in Zimbabwe, and can stay in the building. The LAN kit runs the full system inside a health institution with no internet line." Regional hosting dropped |
+| B3 Product names | "Data protection compliance"; one "SelNexa platform" | "SelNexa data protection service"; "SelNexa Health Platform". PocketLedger, Dambo Watch and Lab Link never appeared |
+| B4 Demo captions | "Workflows in low-connectivity conditions", "Both demos show offline-first operation" | What each video shows. Neither shows the network switched off; a new recording is needed for that |
+| C1 Team | Six hand-written cards | Built from data/team.json; confirmed roles as the first role line; bios unchanged; section stays live |
+| C2 Emails | (done in PR #15) | No keithtafangombe@ or support@ address on the site |
+| C3 Address | "2157 Clifton Close, New Marlborough" on one page; "Harare" elsewhere | "2157 Clifton Close, Gulliver Road, New Marlborough, Harare, Zimbabwe" in the footer, Contact, press kit and structured data |
+| D1 Pitch deck | Public PDF, linked three times | Links replaced by "Request our investor deck" (email to keith@ with a filled subject); file deleted from the repository |
+| D2 Pricing | Platform pricing page with no prices, linked from about 40 places | Page and links removed (redirect left); data protection starting prices on the service page, dated 12 November 2026, with the POTRAZ fee note |
+| D3 Projects | ContraWise and Maternal Health with no detail | Hidden from the footer and the Projects grid until their status is supplied |
+| D4 Trust page | /security-and-compliance.html | /security (old address redirects); breach row names POTRAZ; licence block waits for the number |
+| D5 Placeholders | "TBA / Live" webinar dates; "AI is transforming healthcare" | "On request"; plain description. No lorem ipsum, TODO, broken images or dead links found |
+| E1 Fonts | Outfit in an unused stylesheet; form fields in Arial; offline page in Segoe UI | Stylesheet deleted; Montserrat (self-hosted) on headings, body, buttons and form fields on every page, including the offline page |
+| Copy rule | 158 instances of "offline-first" | "offline first" (file names and links unchanged) |
+| F1 Titles and descriptions | One title of 91 characters; ten descriptions of 155 to 202 | All titles under 60, all descriptions under 155, unique; canonical, Open Graph and Twitter tags on every public page |
+| F2 Structured data | Organization named "SelNexa Health", city only | "SelNexa Health (Private) Limited" with alternateName, full address, email, sales contact, logo, LinkedIn. SoftwareApplication unchanged (no ratings, reviews or prices) |
+| F3 Crawlers | robots.txt allowed all, named none | Googlebot, Bingbot, GPTBot, ClaudeBot and PerplexityBot allowed by name; sitemap lists the 29 public pages, dated 12 November |
+| F4 llms.txt | None | /llms.txt with a plain summary from facts on the site |
+| F5 Search Console | DNS verification record exists | No meta tag needed. The site did not appear in a web search for "SelNexa Health"; submit the sitemap and request indexing (CONTENT-TODO) |
+| F6 Without JavaScript | Main text already in the HTML | Unchanged |
+| G1 Accessibility | Alt text, labels, skip link present; #ff6b35 not used | Unchanged: no axe-core violations on any page at 375 or 1280px |
+
+Lighthouse, live site before this branch (11 November): homepage 65 / 100 / 100 / 100 on a simulated phone and 88 / 100 / 100 / 100 on desktop; data protection page 72 / 100 / 100 / 100 and 75 / 100 / 100 / 100 (Performance / Accessibility / Best Practices / SEO). Measured locally against an unchanged copy of main and this branch, Accessibility, Best Practices and SEO stay at 100; Performance moves within run-to-run noise (blocking time varies by seconds between runs of the same page). No performance work was done; the blocking time is style and layout work, recorded in CONTENT-TODO.
+
+Mail (no DNS changes made): MX at IONOS; SPF `include:_spf-eu.ionos.com ~all`; DKIM at s1-ionos and s2-ionos; DMARC `p=none` without a reporting address. All present and valid for mail sent through IONOS.
+
+Checks: all 31 pages at 375 and 1280px (no horizontal scroll, tap targets at least 44px, one h1, no axe-core violations); link check of 44 pages and 29 sitemap URLs with no problems; all structured data parses; `npm run check:site` passes.

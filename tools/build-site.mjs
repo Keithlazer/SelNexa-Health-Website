@@ -113,6 +113,30 @@ async function buildBundle(list, pages, htmlByPage) {
   return name;
 }
 
+// The About page team cards, built from data/team.json so names, roles and bios are kept in one place.
+const escapeHtml = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+function renderTeam() {
+  const { team } = JSON.parse(fs.readFileSync(path.join(root, "data", "team.json"), "utf8"));
+  return team.map((p) => {
+    const photo = `/assets/team/${p.photo}`;
+    const lines = [
+      '<div class="team-card animate-on-scroll">',
+      '  <div class="team-photo-wrap">',
+      `    <picture><source type="image/webp" srcset="${photo}-320.webp 320w, ${photo}-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="${photo}-320.png" alt="${escapeHtml(`${p.name}, ${p.role} at SelNexa Health`)}" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>`,
+      '    <div class="team-photo-ring"></div>',
+      "  </div>",
+      `  <h3>${escapeHtml(p.name)}</h3>`,
+      `  <p class="team-role">${escapeHtml(p.role)}</p>`,
+    ];
+    if (p.focus) lines.push(`  <p class="team-role">${escapeHtml(p.focus)}</p>`);
+    lines.push(`  <p class="team-bio">${escapeHtml(p.bio)}</p>`);
+    if (p.note) lines.push(`  <p class="team-leadership-note">${escapeHtml(p.note)}</p>`);
+    if (p.linkedin) lines.push(`  <p><a class="standalone-link" href="${escapeHtml(p.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>`);
+    lines.push("</div>");
+    return lines.join("\n");
+  }).join("\n\n");
+}
+
 const PARTIALS = {
   csp: () => read("csp.html"),
   social: (page, html) => social(page, html),
@@ -126,6 +150,7 @@ const PARTIALS = {
   scripts: () => read("scripts.html"),
   "trace-divider": () => read("trace-divider.html"),
   "sdg-note": () => read("sdg-note.html"),
+  team: () => renderTeam(),
 };
 
 // Which top-level nav item each page belongs to.
@@ -165,6 +190,17 @@ function listPages() {
 let stale = 0;
 let updated = 0;
 const STYLES_RE = /^([ \t]*)<!-- sx:styles ([^>]*?) -->[\s\S]*?<!-- \/sx:styles -->/m;
+
+// Figures shown on several pages live once in data/facts.json. A page marks each use inline as
+//   <!-- fact:sync_target -->95%<!-- /fact -->
+// and the build fills in the current value, so a figure can only be changed in one place.
+const facts = JSON.parse(fs.readFileSync(path.join(root, "data", "facts.json"), "utf8"));
+function stampFacts(page, html) {
+  return html.replace(/<!-- fact:([a-z_]+) -->[\s\S]*?<!-- \/fact -->/g, (m, key) => {
+    if (!(key in facts) || key.startsWith("_")) throw new Error(`${page}: unknown fact "${key}" (add it to data/facts.json)`);
+    return `<!-- fact:${key} -->${facts[key]}<!-- /fact -->`;
+  });
+}
 const pageStates = [];
 const htmlByPage = new Map();
 const groups = new Map(); // stylesheet list -> pages using it
@@ -189,6 +225,7 @@ for (const page of listPages()) {
       return `${indent}${open}\n${body}\n${indent}${close}`;
     });
   }
+  html = stampFacts(page, html);
   const styles = html.match(STYLES_RE);
   if (styles) {
     const list = styles[2].trim();

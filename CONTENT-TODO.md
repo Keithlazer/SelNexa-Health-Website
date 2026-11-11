@@ -6,11 +6,11 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 - [ ] Facility names: once written approval exists for the Q3 2024 validation facility or the next pilot facility, the names can go back in these places (both names are in this repository's git history before this branch): `index.html` (the "Next pilot site" row and the Zimbabwe line under the map), `about.html` (2026 timeline entry), `impact.html` ("Facilities in active pilot" row), `case-studies.html` ("Next: our first measured pilot" card and the paragraph starting "When the pilot goes live"), `for-investors.html` (hero subtitle and the founding paragraph), `solutions/hospital-management.html` ("Confirmed next pilot" and "Q3 2024 proof of concept" cards), `blog/ai-healthcare-africa.html` ("Proof of concept in Zimbabwe" section), `resources/guides.html` (the validation note card).
 - [ ] Next pilot wording: the brief said "a district hospital in Zimbabwe"; the site says "a public hospital in Zimbabwe". Confirm or correct.
-- [ ] Dr Farisai Mawere: supply registration body, specialty and institutional affiliation for her About page bio, and confirm her title (the pitch deck says "Health Liaison", the site says "Chief Medical Officer").
+- [ ] Dr Farisai Mawere: title confirmed as Chief Medical Officer (12 November 2026). Still to supply: registration body, specialty and institutional affiliation for her About page bio.
 - [ ] Advisors: names, roles and written consent for each, to restore the Advisory Network section on the About page.
 - [ ] Team photographs: the About page now serves the six cut-out portraits as small WebP files made from the old 0.6 to 1.4 MB SVG wrappers. Confirm each person is happy for their photo to be published, and send the original photos if you want sharper versions.
 - [ ] Old logo file: `SelNexa Health Logo Full 2.JPG` was a different, older logo (red heart, serif type) with a ® mark. It has been removed from the repository (recoverable from git history). Confirm whether the trade mark is registered before using ® anywhere, and send a full logo (mark plus name) in the current design for the press kit.
-- [ ] Pitch deck page 11: confirm permission to show the Zimbabwe government emblem under "past sponsors and collaborators".
+- [x] Pitch deck page 11 (government emblem): the deck is no longer on the site (12 November 2026); investors now request it by email. Check the emblem question before sending the deck to anyone.
 - [ ] Git history: decide whether to rewrite history to remove the two facility names from past commits (needs a force push; the repository is public).
 
 ## Messaging decisions
@@ -55,7 +55,7 @@ One line per item. Each needs information only Keith can give. The site shows no
 - [ ] Hosting, for cache headers, security headers and Brotli (brief items 2, 3 and 10): GitHub Pages cannot set any of them. Two ways to get them: put Cloudflare (free plan) in front of GitHub Pages, which keeps this repository and its deploys as they are and lets response headers and Brotli be set there; or move the site to a host that reads a headers file (Netlify `_headers`, Cloudflare Pages `_headers`, Vercel `vercel.json`). Either needs your DNS account. The header set to apply is in `AUDIT-FINDINGS.md`, Phase 4.5.
 - [ ] Floating buttons on phones (brief item 8): the brief assumed a sticky "Book a demo" bar, which the site does not have. What overlaps content is the WhatsApp button (left) and the module finder (right). Pick one: hide WhatsApp below 768px, drop the module finder, or keep both.
 - [ ] Module finder: the brief asks it to earn its place or go. It asks the visitor's institution type and links to the matching module. Keep or cut?
-- [ ] Administration module copy on the homepage: "with AI help on routine tasks such as suggesting appointment slots" is the vaguest feature claim on the page (brief, section 9). Say what it does concretely, or drop the clause.
+- [x] AI assistance, forecasting, predictive procurement, real-time analytics and the telemedicine beta: Keith confirmed on 12 November 2026 that all of them are in the Platform, so they stay as current capabilities.
 - [x] SDG icons checked against the UN's guidelines (September 2023) and its SDG communications page, 3 November 2026. Companies may use the icons without permission when the use is "primarily illustrative", to communicate their SDG-related activities. Every page that shows them (homepage, About, Platform, Investors, Impact, Projects) now shows each icon whole and square, with no cropping or rounded corners, plus the link to the UN's SDG site and the statement the UN asks for.
 - [ ] Investor page SDG icons: the guidelines need prior UN permission and a licence for fundraising use ("intended to raise resources"), and they rule out use "for the purpose of self-promotion". The icons sit in the investor page's "Investment alignment" strip, next to the funding ask. Remove them from that page, or ask the UN through its permission request form (sdgpermissions@un.org).
 
@@ -74,7 +74,7 @@ The Offline First article follows the direction in full, and the radius and shad
 - [ ] Digital Health Week logo on the blog card (added 3 November 2026 from the file you supplied): confirm the event's terms allow contributors to show it, since a logo can read as endorsement. Transform Health convenes the event.
 - [x] Email addresses (6 November 2026): contact@selnexahealth.com and sales@selnexahealth.com are set up. contact@ is the general address (footer, contact form, privacy requests, structured data); sales@ takes demo and quote requests (the demo form, the Pricing quote and the Contact page); Keith's own address, keith@selnexahealth.com, appears only on the Offline First article. Send a test from each form once the changes are live.
 - [ ] Forms: to receive submissions without relying on the visitor's email app, deploy `tools/cloudflare-wishlist-relay.js` as a Cloudflare Worker (it needs a Resend API key and a FORM_TO_EMAIL address), then put its URL in `js/form-endpoints.js`. Instructions are at the top of the relay file.
-- [ ] Contact page street address: confirm it should be public.
+- [x] Company address (confirmed by Keith, 12 November 2026): 2157 Clifton Close, Gulliver Road, New Marlborough, Harare, Zimbabwe. Used in the footer, the Contact page, the press kit and the Organization structured data.
 - [ ] About page: LinkedIn blocks automated link checks, so open the four team members' LinkedIn links by hand.
 - [ ] Demo booking calendar: `cal.com/selnexahealth` does not exist. Set one up if you want a calendar on the booking page; the form works without it.
 - [ ] Demo videos: the published copies now mask the two real hospitals used as demo facilities and two mobile numbers shown for the demo patient and her emergency contact. Before recording new demos, change the Platform's seed data to fictional facility names and `+263 77 000 0000`-style numbers. The unmasked originals are still in `SelNexa Website/` and in git history, both visible on GitHub because the repository is public.
@@ -87,6 +87,15 @@ The Offline First article follows the direction in full, and the radius and shad
 - [ ] Two pairs of pages overlap: `impact.html` ("Results Matrix") with `case-studies.html` (the Impact page in the menu), and `solutions/index.html` ("All modules") with `features.html` (Platform). Both pairs are linked from the footer for now. Merge them or keep both?
 - [ ] The language selector (French, Shona, Ndebele) was removed because it translated only menu labels. Translated pages would need full translations.
 - [ ] The phone-only bottom bar (Home, Platform, Impact, Contact, Demo) was removed because it duplicated the header menu. Say if you want it back.
+
+## Site credibility fixes of 12 November 2026: still open
+
+- [ ] ContraWise and Maternal Health: send a one-line status for each. Both are hidden from the footer and the Projects page until then; the cards can be restored from git history (commit before "D3").
+- [ ] POTRAZ licence number: when it is issued, the Security page (/security) gets an "Our POTRAZ licence" block. Nothing is shown until then.
+- [ ] Demo recording: neither demo video shows the network being switched off mid-task, so the site no longer claims they do. Record one that does. The provider video also shows support@selnexa.health and the phrase "clinic session" on screen; fix both in the demo environment before recording.
+- [ ] Search Console: the domain is verified by a DNS record (google-site-verification). Submit https://www.selnexahealth.com/sitemap.xml and request indexing of the homepage there, and add the site to Bing Webmaster Tools (it can import from Search Console), since Bing's index feeds several AI assistants.
+- [ ] Mail bounces: SPF, DKIM (IONOS s1/s2) and DMARC records all exist and are valid for mail sent through IONOS. Check the bounce message itself; mail sent through another service (for example Gmail "send as") is not covered by SPF. Consider adding rua=mailto:... to the DMARC record to receive reports, and moving from p=none to p=quarantine once reports are clean.
+- [ ] Performance: Lighthouse scores the homepage 65 for performance on a simulated phone because of about 3.3 seconds of blocking time, almost all of it style and layout work rather than scripts. Worth its own piece of work.
 
 ## Repository
 

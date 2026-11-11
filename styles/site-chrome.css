@@ -1,7 +1,7 @@
 /*
  * Shared site chrome: header, footer, demo modal and forms.
  * The markup lives in /includes and is stamped into every page by tools/build-site.mjs.
- * Class names start with "sx-" so the older page stylesheets (main.css, home.css, selnexa-main.css)
+ * Class names start with "sx-" so the older page stylesheets (main.css, home.css)
  * don't reach them; element+class selectors below win over their bare header/footer rules.
  */
 
@@ -17,6 +17,14 @@
   font-display: swap;
   src: url("/assets/fonts/montserrat-latin-var.woff2") format("woff2");
   unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-2019, U+201C-201D, U+2022, U+2026, U+20AC, U+2122, U+2191, U+2193;
+}
+
+/* Form fields and buttons use the page font; browsers otherwise give them their own system font. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 :root {

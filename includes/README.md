@@ -27,6 +27,10 @@ To change the header, footer or forms:
 
 `npm run check:site` exits with an error if any page is out of date.
 
+Figures used on several pages, such as the offline sync target, live once in `data/facts.json`. A page marks each use inline, for example `<!-- fact:sync_target -->95%<!-- /fact -->`, and the build fills in the value. Change the figure there, never in a page.
+
+The About page team cards come from `data/team.json` (name, role, optional focus line, bio, optional note, photo, optional LinkedIn). Edit the file and rebuild; the `<!-- sx:team -->` block in `about.html` is overwritten.
+
 `{{v:path}}` in a partial becomes a short hash of that file, so a changed stylesheet or script gets a new URL and visitors' service workers fetch the new copy.
 
 Forms: while `window.SELNEXA_FORM_ENDPOINT` in `js/form-endpoints.js` is empty, every form opens a pre-filled email: demo requests to sales@selnexahealth.com, everything else to contact@selnexahealth.com. Set it to a form relay URL to receive submissions as JSON POSTs instead, and add that URL's origin to `connect-src` in `csp.html`.
