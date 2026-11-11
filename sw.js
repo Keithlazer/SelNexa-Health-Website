@@ -1,4 +1,4 @@
-const CACHE_VERSION = "2026-10-19-v4";
+const CACHE_VERSION = "2026-11-12-v5";
 const STATIC_CACHE = `selnexa-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `selnexa-dynamic-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";
@@ -12,7 +12,6 @@ const CORE_ASSETS = [
   "/features.html",
   "/case-studies.html",
   "/telemedicine.html",
-  "/pricing.html",
   "/for-investors.html",
   "/resources.html",
   "/careers.html",

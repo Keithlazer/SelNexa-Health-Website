@@ -867,8 +867,7 @@ section {
 
 .page-card,
 .resource-card,
-.job-card,
-.pricing-panel {
+.job-card {
     background: #ffffff;
     border-radius: var(--radius-md);
     border: 1px solid rgba(10, 36, 99, 0.12);
@@ -878,8 +877,7 @@ section {
 
 .page-card h3,
 .resource-card h3,
-.job-card h3,
-.pricing-panel h3 {
+.job-card h3 {
     margin-bottom: var(--spacing-sm);
 }
 
@@ -897,43 +895,6 @@ section {
 
 .section-spacer {
     padding: var(--spacing-2xl) var(--spacing-lg);
-}
-
-.plan-table-wrap {
-    overflow-x: auto;
-    margin-top: var(--spacing-lg);
-}
-
-.plan-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 760px;
-    background: #ffffff;
-    color: #162a46;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-}
-
-.plan-table th,
-.plan-table td {
-    border: 1px solid rgba(10, 36, 99, 0.12);
-    padding: 0.85rem;
-    text-align: left;
-    vertical-align: top;
-}
-
-.plan-table td {
-    background: #ffffff;
-    color: #162a46;
-}
-
-.plan-table td strong {
-    color: #0a2463;
-}
-
-.plan-table th {
-    background: rgba(0, 180, 216, 0.12);
-    color: var(--color-primary-dark);
 }
 
 .tab-links {
@@ -1974,7 +1935,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .page-card,
 .mission-card,
 .team-card,
-.pricing-panel,
 .job-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -1983,7 +1943,6 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .page-card:hover,
 .mission-card:hover,
 .team-card:hover,
-.pricing-panel:hover,
 .job-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
