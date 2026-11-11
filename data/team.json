@@ -1,0 +1,53 @@
+{
+  "_comment": "The About page team cards are built from this file (npm run build:site). Photos are assets/team/<photo>-320.png/.webp and -640.webp.",
+  "team": [
+    {
+      "name": "Keith Tafangombe",
+      "role": "Founder and CEO",
+      "focus": "Systems Architect for African Healthcare Resilience",
+      "bio": "Keith Tafangombe is a systems architect and healthcare operator from Zimbabwe. He founded SelNexa Health to build digital infrastructure that holds up in African health institutions, designed the SelNexa Health Platform, and leads the company's project portfolio.",
+      "note": "African founder and health systems leader building from frontline infrastructure constraints, not imported assumptions.",
+      "photo": "keith-tafangombe",
+      "linkedin": "https://www.linkedin.com/in/keithtafangombe"
+    },
+    {
+      "name": "Natalie Masvikeni",
+      "role": "Lead Developer",
+      "focus": "Co-Founder of ContraWise",
+      "bio": "Natalie Masvikeni is the Co-Founder of ContraWise and the Lead Developer at SelNexa Health, where she leads product architecture, AI development, and full stack engineering for next-generation digital health solutions. She is a Computer Science student at Africa University with a strong foundation in frontend web development, and she has represented her university in international innovation and cybersecurity competitions, including an ISACA case study challenge where her team placed second globally.",
+      "note": "Part of the next generation of African women building practical health technology.",
+      "photo": "natalie-masvikeni",
+      "linkedin": "https://www.linkedin.com/in/natalie-masvikeni/"
+    },
+    {
+      "name": "Guide Chitewe",
+      "role": "Chief Technology Officer",
+      "focus": "Offline First Architecture and AI Infrastructure",
+      "bio": "Guide leads technology strategy for the SelNexa Health Platform, with focus on distributed systems reliability, low-bandwidth optimization, and resilient deployment architecture for constrained care settings.",
+      "note": "Builds infrastructure for the realities of African care delivery: intermittent power, low bandwidth, and local support needs.",
+      "photo": "guide-chitewe",
+      "linkedin": "https://www.linkedin.com/in/guide-chitewe-22b306286"
+    },
+    {
+      "name": "Dr Farisai Mawere",
+      "role": "Chief Medical Officer",
+      "bio": "Dr Mawere leads clinical governance at SelNexa Health. She reviews product decisions for patient safety and for how care is actually delivered in health institutions.",
+      "photo": "farisai-mawere"
+    },
+    {
+      "name": "Simbarashe Hunzvi",
+      "role": "Chief Operating Officer",
+      "focus": "Community Engagement, Partnerships & Impact Leadership",
+      "bio": "Simbarashe Hunzvi is a civic leader and social impact advocate with extensive experience in youth leadership, community development, and socio-economic empowerment initiatives. His background includes involvement in regional and international leadership platforms focused on governance, innovation, and sustainable development. At SelNexa Health, he contributes strategic insight on community engagement, partnerships, and impact-driven leadership. His passion for systems change and inclusive development aligns strongly with the organization's mission of strengthening healthcare delivery and creating long-term social impact across African communities.",
+      "note": "Connects community-centered implementation with partnerships, public accountability, and emerging leadership.",
+      "photo": "simbarashe-hunzvi",
+      "linkedin": "https://www.linkedin.com/in/simbarashe-hunzvi-103919128/"
+    },
+    {
+      "name": "Alton Matemera",
+      "role": "Chief Financial Officer",
+      "bio": "Lancaster University alumnus based in Lancaster, United Kingdom. Currently manages monthly stock and inventory tracking, and previously completed a project internship at Gambica Association Ltd, carrying out in depth research into motor controlled technologies while tracking project deliverables, maintaining team alignment, and documenting meeting minutes. As CFO, oversees financial planning and controls for the SelNexa Health Platform.",
+      "photo": "alton-matemera"
+    }
+  ]
+}

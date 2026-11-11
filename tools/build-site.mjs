@@ -113,6 +113,30 @@ async function buildBundle(list, pages, htmlByPage) {
   return name;
 }
 
+// The About page team cards, built from data/team.json so names, roles and bios are kept in one place.
+const escapeHtml = (text) => String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+function renderTeam() {
+  const { team } = JSON.parse(fs.readFileSync(path.join(root, "data", "team.json"), "utf8"));
+  return team.map((p) => {
+    const photo = `/assets/team/${p.photo}`;
+    const lines = [
+      '<div class="team-card animate-on-scroll">',
+      '  <div class="team-photo-wrap">',
+      `    <picture><source type="image/webp" srcset="${photo}-320.webp 320w, ${photo}-640.webp 640w" sizes="(max-width: 917px) 242px, (max-width: 1235px) 27vw, 326px"><img src="${photo}-320.png" alt="${escapeHtml(`${p.name}, ${p.role} at SelNexa Health`)}" class="team-photo" width="320" height="320" loading="lazy" decoding="async"></picture>`,
+      '    <div class="team-photo-ring"></div>',
+      "  </div>",
+      `  <h3>${escapeHtml(p.name)}</h3>`,
+      `  <p class="team-role">${escapeHtml(p.role)}</p>`,
+    ];
+    if (p.focus) lines.push(`  <p class="team-role">${escapeHtml(p.focus)}</p>`);
+    lines.push(`  <p class="team-bio">${escapeHtml(p.bio)}</p>`);
+    if (p.note) lines.push(`  <p class="team-leadership-note">${escapeHtml(p.note)}</p>`);
+    if (p.linkedin) lines.push(`  <p><a class="standalone-link" href="${escapeHtml(p.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn Profile →</a></p>`);
+    lines.push("</div>");
+    return lines.join("\n");
+  }).join("\n\n");
+}
+
 const PARTIALS = {
   csp: () => read("csp.html"),
   social: (page, html) => social(page, html),
@@ -126,6 +150,7 @@ const PARTIALS = {
   scripts: () => read("scripts.html"),
   "trace-divider": () => read("trace-divider.html"),
   "sdg-note": () => read("sdg-note.html"),
+  team: () => renderTeam(),
 };
 
 // Which top-level nav item each page belongs to.

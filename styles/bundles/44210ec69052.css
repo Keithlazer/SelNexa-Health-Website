@@ -793,17 +793,6 @@ section {
     margin-bottom: var(--spacing-md);
 }
 
-.team-badge {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: rgba(0, 180, 216, 0.1);
-    color: var(--color-primary-teal-text);
-    border-radius: var(--radius-sm);
-    font-size: var(--fs-small);
-    font-weight: 600;
-    margin-top: var(--spacing-md);
-}
-
 /* ============================================
    V4 GLOBAL ENHANCEMENTS
    ============================================ */
@@ -2736,8 +2725,7 @@ main :where(p, li, td) a:not([class*="btn"]) {
    sentence are exempt). */
 .btn-link,
 .standalone-link,
-.resource-card a,
-.team-badge a {
+.resource-card a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
