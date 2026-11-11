@@ -1,0 +1,4 @@
+{
+  "_comment": "Figures that appear on several pages. Edit them here and run npm run build:site; pages mark each one as <!-- fact:name -->value<!-- /fact -->.",
+  "sync_target": "95%"
+}

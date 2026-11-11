@@ -165,6 +165,17 @@ function listPages() {
 let stale = 0;
 let updated = 0;
 const STYLES_RE = /^([ \t]*)<!-- sx:styles ([^>]*?) -->[\s\S]*?<!-- \/sx:styles -->/m;
+
+// Figures shown on several pages live once in data/facts.json. A page marks each use inline as
+//   <!-- fact:sync_target -->95%<!-- /fact -->
+// and the build fills in the current value, so a figure can only be changed in one place.
+const facts = JSON.parse(fs.readFileSync(path.join(root, "data", "facts.json"), "utf8"));
+function stampFacts(page, html) {
+  return html.replace(/<!-- fact:([a-z_]+) -->[\s\S]*?<!-- \/fact -->/g, (m, key) => {
+    if (!(key in facts) || key.startsWith("_")) throw new Error(`${page}: unknown fact "${key}" (add it to data/facts.json)`);
+    return `<!-- fact:${key} -->${facts[key]}<!-- /fact -->`;
+  });
+}
 const pageStates = [];
 const htmlByPage = new Map();
 const groups = new Map(); // stylesheet list -> pages using it
@@ -189,6 +200,7 @@ for (const page of listPages()) {
       return `${indent}${open}\n${body}\n${indent}${close}`;
     });
   }
+  html = stampFacts(page, html);
   const styles = html.match(STYLES_RE);
   if (styles) {
     const list = styles[2].trim();
