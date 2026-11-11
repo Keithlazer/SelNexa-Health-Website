@@ -2597,6 +2597,5 @@ dialog.sx-modal::backdrop {
 
  .fas { font-family: "SelNexa Icons"; font-weight: 900; }
 .fa-book::before { content: "\f02d"; }
-.fa-file-alt::before { content: "\f15c"; }
 .fa-file-pdf::before { content: "\f1c1"; }
 .fa-video::before { content: "\f03d"; }

@@ -2295,7 +2295,7 @@ dialog.sx-modal::backdrop {
   src: url("/assets/fonts/icons-brands.woff2") format("woff2");
 }
 
- .fas, .far {
+ .fas {
   display: inline-block;
   font-style: normal;
   font-variant: normal;
@@ -2306,7 +2306,6 @@ dialog.sx-modal::backdrop {
 }
 
  .fas { font-family: "SelNexa Icons"; font-weight: 900; }
-.far { font-family: "SelNexa Icons"; font-weight: 400; }
 .fa-chart-bar::before { content: "\f080"; }
 .fa-chart-line::before { content: "\f201"; }
 .fa-cogs::before { content: "\f085"; }

@@ -1712,7 +1712,6 @@ main :where(p, li) a:not([class*="btn"]) {
 /* Tap targets: at least 44 x 44 px for controls and for links that stand on their own (links inside a
    sentence are exempt). */
 
-.standalone-link,
 .resource-card a {
   display: inline-flex;
   align-items: center;
@@ -2747,7 +2746,6 @@ dialog.sx-modal::backdrop {
 
  .fas { font-family: "SelNexa Icons"; font-weight: 900; }
 .fa-book::before { content: "\f02d"; }
-.fa-chart-line::before { content: "\f201"; }
 .fa-clipboard-check::before { content: "\f46c"; }
 .fa-file-alt::before { content: "\f15c"; }
 .fa-plug::before { content: "\f1e6"; }
