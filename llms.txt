@@ -1,0 +1,45 @@
+# SelNexa Health
+
+> SelNexa Health (Private) Limited is a software company in Harare, Zimbabwe, building offline first systems for health institutions. Its flagship product, the SelNexa Health Platform, runs registration, records, procurement, billing and reporting, keeps working without a connection and syncs when the connection returns. The company also sells a data protection compliance service under Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024.
+
+## Stage
+
+- Pre-deployment: no health institution is live on the Platform yet.
+- First pilot in preparation. We will name the site once approvals are in place.
+- Figures for the Platform's indicators will be published once the first pilot has been independently evaluated.
+
+## Products
+
+- SelNexa Health Platform: health service management for health institutions, with modules for administration, predictive procurement, health records, real-time analytics and a telemedicine beta. Records use FHIR R4. Designed to sit alongside national systems and exchange data with them through FHIR R4 (DHIS2, Impilo, ePMS, OpenMRS).
+- Patient data stays in Zimbabwe, and can stay in the building. The LAN kit runs the full system inside a health institution with no internet line.
+- SelNexa data protection service: gets health institutions licensed under SI 155 of 2024 with a certified data protection officer and working procedures. Readiness check, full compliance, and a retained data protection officer.
+
+## Security
+
+- TLS in transit, AES-256 at rest, role-based access, tamper-evident audit trails and consent-aware access.
+- Built to Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024. Breaches are reported to POTRAZ within 24 hours.
+- ISO/IEC 27001 and SOC 2: control mapping in progress. The company holds no security certification.
+
+## Key pages
+
+- [Home](https://www.selnexahealth.com/)
+- [SelNexa Health Platform](https://www.selnexahealth.com/features.html)
+- [Platform modules](https://www.selnexahealth.com/solutions/)
+- [SelNexa data protection service](https://www.selnexahealth.com/services/data-protection)
+- [Security and compliance](https://www.selnexahealth.com/security)
+- [Where the Platform stands](https://www.selnexahealth.com/case-studies.html)
+- [How we will measure impact (Results Matrix)](https://www.selnexahealth.com/impact.html)
+- [About and team](https://www.selnexahealth.com/about.html)
+- [Investors](https://www.selnexahealth.com/for-investors.html)
+- [Blog](https://www.selnexahealth.com/blog.html)
+- [FAQ](https://www.selnexahealth.com/faq.html)
+- [Contact](https://www.selnexahealth.com/contact.html)
+
+## Contact
+
+- General enquiries: contact@selnexahealth.com
+- Sales and demos: sales@selnexahealth.com
+- Founder and CEO, Keith Tafangombe: keith@selnexahealth.com
+- Phone and WhatsApp: +263 77 772 6065
+- Address: 2157 Clifton Close, Gulliver Road, New Marlborough, Harare, Zimbabwe
+- LinkedIn: https://www.linkedin.com/company/selnexa-health
