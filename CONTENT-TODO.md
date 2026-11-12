@@ -95,7 +95,7 @@ The Offline First article follows the direction in full, and the radius and shad
 - [ ] Demo recording: neither demo video shows the network being switched off mid-task, so the site no longer claims they do. Record one that does. The provider video also shows support@selnexa.health and the phrase "clinic session" on screen; fix both in the demo environment before recording.
 - [ ] Search Console: the domain is verified by a DNS record (google-site-verification). Submit https://www.selnexahealth.com/sitemap.xml and request indexing of the homepage there, and add the site to Bing Webmaster Tools (it can import from Search Console), since Bing's index feeds several AI assistants.
 - [ ] Mail bounces: SPF, DKIM (IONOS s1/s2) and DMARC records all exist and are valid for mail sent through IONOS. Check the bounce message itself; mail sent through another service (for example Gmail "send as") is not covered by SPF. Consider adding rua=mailto:... to the DMARC record to receive reports, and moving from p=none to p=quarantine once reports are clean.
-- [ ] Performance: Lighthouse scores the homepage 65 for performance on a simulated phone because of about 3.3 seconds of blocking time, almost all of it style and layout work rather than scripts. Worth its own piece of work.
+- [x] Performance (12 November 2026): the homepage no longer repaints continuously, and sections below the first screen are laid out only when reached; details in AUDIT-FINDINGS.md ("Speed"). Measure the live site with PageSpeed Insights (pagespeed.web.dev) after merging: scores taken on a busy Windows laptop varied too much to compare.
 
 ## Repository
 

@@ -191,6 +191,34 @@
     });
   }
 
+  /* ---------- Jumps to a point on the page ----------
+     Sections below the first screen skip layout until the reader nears them (site-uniform.css). Before any jump to
+     a #fragment, lay every section out so the browser scrolls using real heights, not estimates. */
+
+  function setupJumpLinks() {
+    var root = document.documentElement;
+    function showAll() {
+      root.classList.add("sx-show-all");
+    }
+    if (window.location.hash) {
+      showAll();
+      window.addEventListener("load", function () {
+        var target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+        if (target) {
+          target.scrollIntoView();
+        }
+      });
+    }
+    // Capture phase, so the class is on before the browser works out where to scroll.
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("a[href*='#']");
+      if (link && link.hash && link.pathname === window.location.pathname) {
+        showAll();
+      }
+    }, true);
+    window.addEventListener("hashchange", showAll);
+  }
+
   /* ---------- Count-up numbers: reserved for measured results ---------- */
 
   function animateCounter(el) {
@@ -833,6 +861,7 @@
     setupReveal();
     setupRecordFlow();
     setupArticleContents();
+    setupJumpLinks();
     setupCounters();
     setupCtaTracking();
     whenIdle(setupModuleFinder);
