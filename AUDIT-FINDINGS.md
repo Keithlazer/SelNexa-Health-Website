@@ -619,3 +619,32 @@ Lighthouse, live site before this branch (11 November): homepage 65 / 100 / 100 
 Mail (no DNS changes made): MX at IONOS; SPF `include:_spf-eu.ionos.com ~all`; DKIM at s1-ionos and s2-ionos; DMARC `p=none` without a reporting address. All present and valid for mail sent through IONOS.
 
 Checks: all 31 pages at 375 and 1280px (no horizontal scroll, tap targets at least 44px, one h1, no axe-core violations); link check of 44 pages and 29 sitemap URLs with no problems; all structured data parses; `npm run check:site` passes.
+
+## Speed
+
+Added 12 November 2026 at Keith's request, on branch `site-speed` (built on `site-credibility-fixes`).
+
+What was slow, measured with Chrome traces on a simulated phone (4x CPU slowdown):
+
+- The homepage never stopped working. A pulsing dot in the hero badge ran an endless animation, and the sticky header was a blurred translucent panel, so every pulse repainted the area under the blur: about 300 ms of main-thread work every second, for as long as the page was open (a cost in battery on phones as well as speed).
+- First load spent most of its time laying out the whole page, every section at once, about 700 objects. Hiding sections one at a time showed the cost spread across all of them; fonts, text wrapping and the hero background were ruled out.
+
+What changed:
+
+- The badge dot is still, and amber rather than "success" green, since the pilot is in preparation; the badge text is the electric label colour used on dark grounds. No element on any page runs an endless animation.
+- No blur anywhere: the header is opaque (#f9f5ee, white once scrolled), and the blur on the Guides and Webinars search boxes, which sat on solid white, is gone. `DESIGN-DIRECTION.md` rules out blurred translucent panels too.
+- Sections after the first are laid out only as the reader nears them (`content-visibility: auto` in site-uniform.css). Estimated heights would send jumps to a `#section` to the wrong place (measured: up to 1,700 px off), so js/site-core.js lays every section out normally before any jump, on arrival with a `#fragment` and on clicking a link to a point on the page. Jumps now land just below the header at 375 and 1280px, clicked or arrived at.
+- Anything a link jumps to now clears the sticky header (`scroll-margin-top`); before, targets landed under it.
+
+Results (median of seven alternating runs, simulated phone, homepage):
+
+| Measure | Before | After |
+|---|---|---|
+| Main-thread work in the 3 seconds after load | 1,088 ms | 14 ms |
+| Layout work during load, from off-screen sections alone | 2,373 ms | 977 ms |
+| Style work during load | 538 ms | 189 ms |
+| All main-thread work during load | 4,562 ms | 2,841 ms |
+
+Lighthouse scores on this machine varied too much to compare: its CPU benchmark ranged from 331 to 982 between runs because other programs were running, and the same unchanged page scored 50, 64 and 78. The live site should be measured with PageSpeed Insights after merging.
+
+Checks: every page at 375 and 1280px (no horizontal scroll, tap targets at least 44px, one h1, no axe-core violations, with every section laid out first, as a reader scrolling the page would see it); opening every investor FAQ answer grows its section as before; link check and `npm run check:site` pass.

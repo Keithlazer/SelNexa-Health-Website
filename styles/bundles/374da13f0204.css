@@ -593,7 +593,6 @@ section {
     font-size: 1rem;
     background-color: #ffffff;
     color: #1f2937;
-    backdrop-filter: blur(5px);
 }
 
 .webinar-search input::placeholder {
@@ -1504,11 +1503,6 @@ main :where(p, li) {
   box-shadow: var(--shadow-md);
 }
 
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-success-rgb), 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(var(--color-success-rgb), 0); }
-}
-
 /* Legend Styling Updates */
 /* Legend dots match the fills in /assets/africa-map.webp */
 
@@ -1798,6 +1792,26 @@ main textarea,
   transform: translateY(-50%);
 }
 
+/* Anything a link jumps to lands below the sticky header instead of under it. */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ---------- Speed ----------
+   Sections below the first one are laid out and painted only as the reader nears them, which roughly halves the
+   layout work on a long page's first load. contain-intrinsic-size reserves space so the scrollbar stays steady.
+   Estimated heights would make jumps to a #section land in the wrong place, so js/site-core.js adds
+   .sx-show-all (every section laid out normally) before any jump: on arrival with a #fragment and on clicking a
+   link to a point on the page. */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+html.sx-show-all main > section {
+  content-visibility: visible;
+}
+
 /* ---- styles/site-chrome.css ---- */
 /*
  * Shared site chrome: header, footer, demo modal and forms.
@@ -1885,9 +1899,9 @@ header.sx-header {
   z-index: 1000;
   margin: 0;
   padding: 0;
-  background: rgba(249, 245, 238, 0.9);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  /* Opaque, not blurred: a backdrop blur repaints everything scrolling beneath it, and DESIGN-DIRECTION.md rules out
+     blurred translucent panels. */
+  background: #f9f5ee;
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: none;
   font-family: var(--sx-font);
@@ -1895,7 +1909,7 @@ header.sx-header {
 }
 
 header.sx-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
+  background: #ffffff;
   box-shadow: var(--shadow-lg);
 }
 

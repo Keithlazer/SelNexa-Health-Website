@@ -61,7 +61,6 @@
     font-size: 1rem;
     background-color: #ffffff;
     color: #1f2937;
-    backdrop-filter: blur(5px);
 }
 
 .webinar-search input::placeholder {

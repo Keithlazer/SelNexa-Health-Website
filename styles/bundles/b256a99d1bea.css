@@ -1891,26 +1891,22 @@ main :where(.section-header p, .hero-subtitle, article p) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(var(--color-success-rgb), 0.08);
-  border: 0.5px solid rgba(var(--color-success-rgb), 0.25);
+  /* The homepage hero's status badge, on a dark ground: an electric label (DESIGN-DIRECTION.md), not "success"
+     green, because the pilot is still in preparation. */
+  background: rgba(144, 224, 239, 0.08);
+  border: 0.5px solid rgba(144, 224, 239, 0.35);
   border-radius: var(--radius-pill);
   padding: 6px 14px;
   font-size: 13px;
-  color: var(--color-success);
+  color: var(--color-accent-electric);
   margin-bottom: 1.5rem;
 }
 
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background: var(--color-success);
+  background: var(--color-cta-amber);
   border-radius: var(--radius-circle);
-  animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-success-rgb), 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(var(--color-success-rgb), 0); }
 }
 
 .demo-video-wrapper {
@@ -2620,6 +2616,26 @@ ul.trust-chips {
   transform: translateY(-50%);
 }
 
+/* Anything a link jumps to lands below the sticky header instead of under it. */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* ---------- Speed ----------
+   Sections below the first one are laid out and painted only as the reader nears them, which roughly halves the
+   layout work on a long page's first load. contain-intrinsic-size reserves space so the scrollbar stays steady.
+   Estimated heights would make jumps to a #section land in the wrong place, so js/site-core.js adds
+   .sx-show-all (every section laid out normally) before any jump: on arrival with a #fragment and on clicking a
+   link to a point on the page. */
+main > section:not(:first-child) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+html.sx-show-all main > section {
+  content-visibility: visible;
+}
+
 /* ---- styles/home-page.css ---- */
 /* Homepage styles (moved out of an inline <style> block in index.html). */
 :root {
@@ -2646,11 +2662,11 @@ h1, h2, h3 { letter-spacing: -0.03em; }
     letter-spacing: 0.04em;
 }
 .top-banner-inner { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; justify-content: center; text-align: center; }
+/* A still amber dot: the pilot is in preparation, so nothing pulses as if live, and an endless animation would keep
+   the page repainting. Amber marks the moment of transition (DESIGN-DIRECTION.md); green is kept for "resolved". */
 .pulse-dot {
-    width: 8px; height: 8px; border-radius: var(--radius-circle); background: #22C55E; display: inline-block;
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    width: 8px; height: 8px; border-radius: var(--radius-circle); background: var(--color-cta-amber); display: inline-block;
 }
-@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55); } 50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } }
 .top-banner a { color: #fff; text-decoration: none; font-weight: 600; }
 .hero {
     background: radial-gradient(120% 120% at 80% 0%, rgba(0, 122, 122, 0.2), transparent 55%), var(--surface-dark);
@@ -3020,9 +3036,9 @@ header.sx-header {
   z-index: 1000;
   margin: 0;
   padding: 0;
-  background: rgba(249, 245, 238, 0.9);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  /* Opaque, not blurred: a backdrop blur repaints everything scrolling beneath it, and DESIGN-DIRECTION.md rules out
+     blurred translucent panels. */
+  background: #f9f5ee;
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: none;
   font-family: var(--sx-font);
@@ -3030,7 +3046,7 @@ header.sx-header {
 }
 
 header.sx-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
+  background: #ffffff;
   box-shadow: var(--shadow-lg);
 }
 
