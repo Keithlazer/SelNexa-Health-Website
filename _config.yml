@@ -15,5 +15,8 @@ exclude:
   - includes
   - node_modules
   - tools
+  - scripts
+  - audit
+  - design-assets
   - package.json
   - package-lock.json

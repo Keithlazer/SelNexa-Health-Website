@@ -5,3 +5,9 @@ node_modules/
 .agents/
 .claude/
 skills-lock.json
+
+# Audit screenshots and raw results (rebuilt by scripts/screens.mjs and scripts/audit.mjs)
+audit/before/
+audit/after/
+audit/*.json
+audit/lighthouse/
