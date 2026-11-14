@@ -201,3 +201,16 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
     - The FAQ accordion. Its FAQPage JSON-LD is now generated from the accordion by the build (`<!-- sx:faqpage -->`).
     - Careers.
     - The workforce figure now follows WHO on Home, Features and Administration.
+- **Phase 4, blog**
+  - **Navigation:** "Blog" sits between About and Contact, marked current on blog.html and every page under blog/. The FAQ now marks About, its group in the footer.
+  - **Header width:** with eight items it no longer fits at 1024px; "Book a demo" was cut off. Nav text stays at 15.2px, and the header switches to its menu button below 1200px instead (`site-chrome.css` and `site-core.js`). Checked at 1024 (menu button), 1200, 1280 and 1440 (full nav).
+  - **One list of posts:** `data/posts.json` drives the listing (featured card, then a grid, with an empty state while there is only one post) and the homepage "From the blog" strip, placed above "Follow the build".
+  - **Reading time:** computed from the article text at 220 words a minute. The post said "5 min read"; the count gives 4.
+  - **Post template:**
+    - The author line now reads "Keith Tafangombe, Founder and CEO".
+    - Share links (LinkedIn, X, WhatsApp, copy link) are generated from the canonical URL. Copy link was tested: it writes the URL and announces "Link copied".
+    - "Back to blog" sits at the top and the bottom, with a navy "Book a demo" panel above the bottom link.
+    - Body text is 18px with 1.7 line height, at no more than 68ch.
+    - The existing BlogPosting JSON-LD (a kind of Article) is kept.
+  - **Meta:** the blog.html description, og:description and twitter:description no longer promise articles on AI or telemedicine.
+  - **Heroes:** inner-page heroes now fit their content. They were 88% of the screen tall, with a large empty band; the homepage keeps its tall hero.

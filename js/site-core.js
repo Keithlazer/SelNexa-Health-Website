@@ -86,7 +86,7 @@
     }
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 1023) {
+      if (window.innerWidth > 1199) {
         setOpen(false);
       }
     });

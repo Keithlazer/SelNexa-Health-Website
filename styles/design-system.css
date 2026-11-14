@@ -1222,7 +1222,7 @@ video:focus-visible {
   flex: 1;
   padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
 }
-.ds-post__body > p {
+.ds-post__body > p:not(.ds-eyebrow) {
   margin: 0 0 var(--ds-4);
   color: var(--ds-text);
 }
@@ -1313,6 +1313,10 @@ main h2.ds-blog__more {
 /* Article pages: a readable measure and size. */
 .article-body {
   font-size: 1.125rem;
+  line-height: 1.7;
+}
+.article-body p,
+.article-body li {
   line-height: 1.7;
 }
 .article-body > p,
@@ -1429,4 +1433,10 @@ main p a:not([class]):hover,
 main li a:not([class]):hover {
   text-decoration-color: var(--ds-gold);
   text-decoration-thickness: 2px;
+}
+
+/* Inner-page heroes: sized to their content instead of most of the screen. The homepage keeps its tall hero. */
+.hero:not(.hero--home) {
+  min-height: 0;
+  padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem) clamp(3rem, 2rem + 3vw, 4.5rem);
 }

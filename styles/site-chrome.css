@@ -238,7 +238,7 @@ footer.sx-footer :focus-visible,
   outline-offset: 2px;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1199px) { /* below 1200px the eight nav items no longer fit, so the header uses its menu button */
   .sx-header__inner {
     flex-wrap: wrap;
     row-gap: 0;
