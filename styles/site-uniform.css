@@ -107,7 +107,7 @@ header .navbar.scrolled {
 .btn.btn-primary {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #0a1414 !important;
+  color: #0a1414;
 }
 
 .nav-links a.btn:hover,
@@ -573,7 +573,7 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .cta-nav {
   background: var(--uniform-accent);
   border-color: var(--uniform-accent);
-  color: #0a1414 !important;
+  color: #0a1414;
 }
 
 .btn-secondary,
@@ -581,14 +581,14 @@ main :where(.section-header p, .page-subtitle, .hero-subtitle, article p, .story
 .btn-outline {
   background: transparent;
   border: 1.5px solid var(--uniform-primary);
-  color: var(--uniform-primary) !important;
+  color: var(--uniform-primary);
 }
 
 .btn-secondary:hover,
 .btn.btn-secondary:hover,
 .btn-outline:hover {
   background: var(--uniform-primary);
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* Hero entrance: a short slide only. The text is never transparent, so it paints (and counts as the

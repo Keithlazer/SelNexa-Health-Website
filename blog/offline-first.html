@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
   <!-- /sx:social -->
   <!-- sx:styles /styles/main.css /css/blog.css /styles/grid-typography-system.css /styles/site-uniform.css -->
-  <link rel="stylesheet" href="/styles/bundles/a1f2488f8f1b.css">
+  <link rel="stylesheet" href="/styles/bundles/d7456c209357.css">
   <!-- /sx:styles -->
     <script type="application/ld+json">
     {
@@ -150,7 +150,7 @@
 
           <p>This was written for Digital Health Week 2026. The roundtable SelNexa Health had scheduled for 4 November is postponed, so the material is here instead. A new date will follow.</p>
 
-          <section class="article-section" aria-labelledby="s-breaks">
+          <section class="article-section ds-section--cream" aria-labelledby="s-breaks">
             <div class="section-mark" aria-hidden="true"><span>01</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><line class="dot" x1="215" y1="7" x2="215" y2="7"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
             <h2 id="s-breaks">What actually breaks</h2>
             <p>Ask an administrator what happens when the link goes and you get the same answer in different words. Work moves to paper. Registration details, visit notes, drug issues, all of it goes into a book or onto loose sheets, and someone types it back later, if there's time and if the sheets survive.</p>
@@ -160,7 +160,7 @@
 
           <p class="pull">Offline first is a decision made before the first line of code, not a fallback mode added afterwards.</p>
 
-          <section class="article-section" aria-labelledby="s-involves">
+          <section class="article-section ds-section--white" aria-labelledby="s-involves">
             <div class="section-mark" aria-hidden="true"><span>02</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><line class="dot" x1="215" y1="7" x2="215" y2="7"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
             <h2 id="s-involves">What offline first actually involves</h2>
             <p>The application writes to local storage first and treats the server as somewhere data goes later, rather than something it needs in order to function. A local write queue holds every action until it can be sent. A service worker keeps the application loading with no network at all, so a health worker opens it and it's simply there. Sync runs when the link returns.</p>
@@ -182,14 +182,14 @@
             <p>The part people underestimate is what happens when two copies disagree. Two health workers edit the same patient record while both are offline. Both edits are legitimate. When the link returns, the system has to work out what happened, and the easy answer quietly destroys data. The honest version keeps both and applies rules you can explain to the people whose records they are.</p>
           </section>
 
-          <section class="article-section" aria-labelledby="s-isolated">
+          <section class="article-section ds-section--cream" aria-labelledby="s-isolated">
             <div class="section-mark" aria-hidden="true"><span>03</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><line class="dot" x1="215" y1="7" x2="215" y2="7"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
             <h2 id="s-isolated">Offline cannot mean isolated</h2>
             <p>There's a failure on the other side of this. You build something that works well with no connection and it becomes an island. The data sits in the institution and never reaches the district, the province or the national system, and you've moved the problem rather than solved it.</p>
             <p>So the integration work matters as much as the offline work. A common record format, and talking to what the ministry already runs instead of asking it to adopt something new.</p>
           </section>
 
-          <section class="article-section" aria-labelledby="s-owns">
+          <section class="article-section ds-section--white" aria-labelledby="s-owns">
             <div class="section-mark" aria-hidden="true"><span>04</span><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><line class="dot" x1="215" y1="7" x2="215" y2="7"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
             <h2 id="s-owns">Who owns the data, and who protects it</h2>
             <p>Designing for disconnection multiplies the places data lives. Every device holding a local copy is another place it can leak, another device that can be stolen, another copy nobody is auditing. You can't design for offline and then treat security as a server-side problem.</p>
@@ -227,7 +227,7 @@
           </div>
           <!-- /sx:share -->
 
-          <section class="article-discuss" aria-labelledby="discuss-title">
+          <section class="article-discuss ds-section--cream" aria-labelledby="discuss-title">
             <h2 id="discuss-title">Discuss this article</h2>
             <p>The discussion is on LinkedIn, where the article was shared. To reply privately, email Keith.</p>
             <p class="article-discuss-links"><a class="btn btn-secondary" href="https://www.linkedin.com/posts/keithtafangombe_digitalhealthweek2026-digitalhealth-share-7524027584087482371-FAzG/" target="_blank" rel="noopener noreferrer" data-track="blog_discuss_linkedin">Join the discussion on LinkedIn</a><a class="standalone-link" href="mailto:keith@selnexahealth.com?subject=Offline%20first%20article" data-track="blog_reply_email">Email Keith</a></p>

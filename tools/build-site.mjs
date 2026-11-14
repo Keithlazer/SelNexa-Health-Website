@@ -257,6 +257,29 @@ function renderShare(page, html) {
     "</div>",
   ].join("\n");
 }
+// Sections alternate cream and white down each page. The build sets ds-section--cream or ds-section--white on every
+// top-level <section> in <main>, skipping heroes and navy bands, so a page never stacks two of the same.
+const SURFACE_SKIP = /\b(hero|page-hero|solution-hero|guides-hero|webinars-hero|resources-hero|ds-band--navy|ds-cta|top-banner)\b/;
+function alternateSurfaces(html) {
+  const start = html.indexOf("<main");
+  const end = html.indexOf("</main>", start);
+  if (start < 0 || end < 0) return html;
+  let main = html.slice(start, end);
+  let depth = 0;
+  let n = 0;
+  main = main.replace(/<section\b([^>]*)>|<\/section>/g, (tag, attrs) => {
+    if (tag === "</section>") { depth -= 1; return tag; }
+    depth += 1;
+    if (depth !== 1) return tag;
+    const cls = (attrs.match(/class="([^"]*)"/) || [])[1] || "";
+    if (SURFACE_SKIP.test(cls)) return tag;
+    const surface = n++ % 2 === 0 ? "ds-section--cream" : "ds-section--white";
+    const next = `${cls.replace(/\s*\bds-section--(cream|white)\b/g, "").trim()} ${surface}`.trim();
+    return /class="/.test(attrs) ? tag.replace(/class="[^"]*"/, `class="${next}"`) : tag.replace("<section", `<section class="${next}"`);
+  });
+  return html.slice(0, start) + main + html.slice(end);
+}
+
 function stampReadTime(page, html) {
   if (!html.includes("<!-- read-time -->")) return html;
   const minutes = readingMinutes(`/${page}`);
@@ -353,6 +376,7 @@ for (const page of listPages()) {
   }
   html = stampFacts(page, html);
   html = stampReadTime(page, html);
+  html = alternateSurfaces(html);
   const styles = html.match(STYLES_RE);
   if (styles) {
     const list = styles[2].trim();

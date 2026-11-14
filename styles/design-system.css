@@ -1440,3 +1440,115 @@ main li a:not([class]):hover {
   min-height: 0;
   padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem) clamp(3rem, 2rem + 3vw, 4.5rem);
 }
+
+/* Status chips in tables: an icon and a word, so the meaning never rests on colour alone. */
+.ds-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: var(--ds-2);
+  padding: 0.125rem 0.625rem 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.ds-status .ds-i {
+  width: 1em;
+  height: 1em;
+}
+.ds-status--yes {
+  background: #e3f4ea;
+  color: var(--ds-success);
+}
+.ds-status--no {
+  background: #fdecea;
+  color: var(--ds-error);
+}
+.ds-status--partial {
+  background: var(--ds-cream);
+  color: var(--ds-navy);
+  border: 1px solid var(--ds-border);
+}
+
+/* Closing calls to action: the deep navy band on every page. */
+.ds-cta {
+  padding-block: var(--ds-section-y);
+  padding-inline: 0;
+  text-align: center;
+  overflow: hidden;
+}
+.ds-cta > .cta-background {
+  display: none;
+}
+.ds-cta .cta-content,
+.ds-cta > .container > * {
+  position: relative;
+}
+.ds-cta p,
+.ds-cta li {
+  color: var(--ds-text);
+}
+.ds-cta .cta-audience-card,
+.ds-cta .ds-card {
+  --ds-heading: var(--ds-navy);
+  --ds-text: var(--ds-ink);
+  --ds-text-muted: var(--ds-muted);
+  --ds-focus: var(--ds-navy);
+  --ds-link: var(--ds-navy);
+  text-align: left;
+}
+.ds-cta .cta-audience-card p,
+.ds-cta .cta-audience-card li {
+  color: var(--ds-ink);
+}
+.ds-cta .btn.btn-secondary,
+.ds-cta .ds-btn--secondary {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+.ds-cta .cta-audience-card .btn.btn-secondary {
+  border-color: var(--ds-navy);
+  color: var(--ds-navy);
+}
+.ds-cta .btn.btn-secondary:hover {
+  background: #ffffff;
+  color: var(--ds-navy);
+}
+
+/* On phones, a section that already has a container should not add its own side padding as well. */
+main > section:has(> .container) {
+  padding-inline: 0;
+}
+.ds-cta .trust-chip,
+.ds-cta .ds-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+}
+/* The trace divider reads as a stray line against the band's top edge, so it is dropped there. */
+.trace-divider:has(+ .ds-cta) {
+  display: none;
+}
+
+/* Resource metadata and tags read as chips. */
+.guide-tags .tag,
+.guide-meta .guide-type,
+.guide-meta .guide-level,
+.resource-meta .resource-type {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background: var(--ds-cream);
+  border: 1px solid var(--ds-border);
+  color: var(--ds-navy);
+  font-weight: 600;
+}
+.guide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-2);
+}
