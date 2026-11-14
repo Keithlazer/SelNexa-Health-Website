@@ -14,7 +14,7 @@ Every slot below works today with what the site has. Each one would look better 
   - Stock photography, stock illustration, and AI images of people or places presented as real.
   - Real patient data. Product screens must show the demo's synthetic data.
   - The name, logo or photograph of any health facility. No pilot site may be named until approvals are in place.
-  - A single Canva icon used as a site icon. Icons come only from the Phosphor set in `assets/icons/sprite.svg`.
+  - Single icon files. Site icons come only from the sprite, `assets/icons/sprite.svg`, which is built from the SelNexa icon set in `design-assets/icons/selnexa/`.
 
 ## Slots
 

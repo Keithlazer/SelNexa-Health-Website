@@ -7,8 +7,8 @@
 // - Raster files (PNG, JPEG, WebP, TIFF) are treated as 2x artwork. Each is written to assets/img/ at 2x (its own
 //   width) and 1x (half width), as WebP and AVIF: <name>-1x.webp, <name>-2x.webp, <name>-1x.avif, <name>-2x.avif.
 //   Put illustrations in incoming/illustrations/ to send their raster versions to assets/illustrations/ instead.
-// - Files in incoming/icons/ are skipped: site icons come only from the Phosphor sprite (assets/icons/sprite.svg),
-//   never from a single exported Canva icon.
+// - Files in incoming/icons/, and files named after a SelNexa site icon, are skipped: site icons come only from the sprite (assets/icons/sprite.svg, built from
+//   design-assets/icons/ by tools/build-icons.mjs), never from a single exported icon file.
 // The incoming files are left in place; delete them once the output is committed.
 import fs from "node:fs";
 import path from "node:path";
@@ -20,6 +20,8 @@ const dry = process.argv.includes("--dry-run");
 const incoming = path.join(root, "design-assets", "incoming");
 const kebab = (name) => name.toLowerCase().replace(/\.[a-z0-9]+$/, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const out = [];
+const siteIcons = new Set([...fs.readFileSync(path.join(root, "design-assets", "icons", "selnexa", "selnexa-icons-sprite.svg"), "utf8")
+  .matchAll(/<symbol id="([a-z0-9-]+)"/g)].map((m) => m[1]));
 
 function walk(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -30,7 +32,10 @@ for (const file of walk(incoming)) {
   const rel = path.relative(incoming, file).replace(/\\/g, "/");
   const ext = path.extname(file).toLowerCase();
   const name = kebab(path.basename(file));
-  if (rel.startsWith("icons/")) { console.log(`skip ${rel}: site icons come from the Phosphor sprite`); continue; }
+  if (rel.startsWith("icons/") || siteIcons.has(name) || name === "selnexa-icons-sprite") {
+    console.log(`skip ${rel}: site icons come from the sprite, see design-assets/icons/selnexa/`);
+    continue;
+  }
   if (rel === ".gitkeep" || rel.endsWith("README.md")) continue;
   const illustration = rel.startsWith("illustrations/");
   if (ext === ".svg") {

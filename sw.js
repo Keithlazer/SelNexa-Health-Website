@@ -1,4 +1,4 @@
-const CACHE_VERSION = "2026-11-14-v8";
+const CACHE_VERSION = "2026-11-14-v9";
 const STATIC_CACHE = `selnexa-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `selnexa-dynamic-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";

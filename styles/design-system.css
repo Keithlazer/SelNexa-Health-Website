@@ -376,6 +376,9 @@ body {
 .ds-subhead .ds-icon {
   margin: 0;
 }
+.funds-allocation .ds-subhead {
+  margin-top: 0;
+}
 .ds-subhead h3 {
   margin: 0;
 }
@@ -602,7 +605,18 @@ body {
 .ds-icon svg {
   width: 26px;
   height: 26px;
-  fill: var(--ds-gold);       /* the duotone back layer; the outline is currentColor */
+  fill: currentColor;
+}
+/* A smaller tile for table rows, spec rows and short lists. */
+.ds-icon--sm {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 10px;
+}
+.ds-icon--sm svg {
+  width: 20px;
+  height: 20px;
 }
 /* Inside a heading or a row, an icon tile sits beside the text rather than above it. */
 .feature .ds-icon,
@@ -610,15 +624,68 @@ body {
 .overview-card .ds-icon {
   margin-bottom: var(--ds-3);
 }
-.ds-band--navy .ds-icon,
-.dark-block .ds-icon {
-  background: rgba(232, 160, 32, 0.16);
-  color: var(--ds-gold);
+/* A row header or label with a small icon tile before it (tables, spec rows). */
+.ds-th {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-3);
 }
-.ds-band--navy .ds-card .ds-icon,
-.ds-band--navy .page-card .ds-icon {
-  background: var(--ds-gold-tint);
-  color: var(--ds-navy);
+/* A short list where each item has a small icon tile. */
+.ds-icon-list {
+  display: grid;
+  gap: var(--ds-3) var(--ds-5);
+  margin: var(--ds-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ds-icon-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-3);
+  margin: 0;
+  color: var(--ds-text);
+  font-weight: 600;
+}
+@media (min-width: 720px) {
+  .ds-icon-list--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .ds-icon-list--grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.page-grid + .minor-heading {
+  margin-top: var(--ds-7);
+}
+/* Icons in a post's byline */
+.byline-author .ds-i,
+.byline-meta .ds-i {
+  margin-right: 0.4em;
+}
+/* Key points under the home hero's buttons. */
+.ds-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-3) var(--ds-5);
+  margin: var(--ds-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ds-points li {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-3);
+  margin: 0;
+  color: var(--ds-text);
+  font-weight: 600;
+}
+.hero--home .hero-cta-group {
+  margin-bottom: 0;
+}
+@media (max-width: 768px) {
+  .hero--home .ds-points {
+    flex-direction: column;
+    width: fit-content;
+    margin-inline: auto;
+  }
 }
 /* Inline icons (UI and links) */
 .ds-i {
@@ -1071,6 +1138,23 @@ video:focus-visible {
   font-weight: 700;
   color: var(--ds-navy);
   min-width: 10rem;
+}
+/* On phones a row header's icon sits above its label, so the description column keeps its width. */
+@media (max-width: 600px) {
+  .spec-table tbody th {
+    min-width: 0;
+    width: 38%;
+  }
+  .spec-table th,
+  .spec-table td {
+    padding: 0.75rem;
+  }
+  .spec-table .ds-th,
+  .spec-item .ds-th {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ds-2);
+  }
 }
 
 /* ---------- Forms ---------- */

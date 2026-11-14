@@ -244,15 +244,16 @@ function renderShare(page, html) {
   if (!url || !title) throw new Error(`${page}: share links need a canonical URL and an h1`);
   const u = encodeURIComponent(url);
   const t = encodeURIComponent(title);
+  // Each service's button carries that company's own logo (design-assets/icons/brands/), in its brand colour.
   const link = (href, icon, label, track) =>
-    `  <a class="ds-share__link" href="${href}" target="_blank" rel="noopener noreferrer" data-track="${track}"><svg class="ds-i" aria-hidden="true" focusable="false"><use href="${SPRITE}#${icon}-line"></use></svg>${label}</a>`;
+    `  <a class="ds-share__link" href="${href}" target="_blank" rel="noopener noreferrer" data-track="${track}"><svg class="ds-i ds-i--brand" aria-hidden="true" focusable="false"><use href="${SPRITE}#${icon}"></use></svg>${label}</a>`;
   return [
     '<div class="ds-share" aria-label="Share this article" role="group">',
     '  <p class="ds-share__label">Share</p>',
-    link(`https://www.linkedin.com/sharing/share-offsite/?url=${u}`, "linkedin-logo", "LinkedIn", "share_linkedin"),
-    link(`https://x.com/intent/post?url=${u}&amp;text=${t}`, "x-logo", "X", "share_x"),
-    link(`https://wa.me/?text=${t}%20${u}`, "whatsapp-logo", "WhatsApp", "share_whatsapp"),
-    `  <button type="button" class="ds-share__link" data-copy-link="${url}"><svg class="ds-i" aria-hidden="true" focusable="false"><use href="${SPRITE}#link-line"></use></svg>Copy link</button>`,
+    link(`https://www.linkedin.com/sharing/share-offsite/?url=${u}`, "brand-linkedin", "LinkedIn", "share_linkedin"),
+    link(`https://x.com/intent/post?url=${u}&amp;text=${t}`, "brand-x", "X", "share_x"),
+    link(`https://wa.me/?text=${t}%20${u}`, "brand-whatsapp", "WhatsApp", "share_whatsapp"),
+    `  <button type="button" class="ds-share__link" data-copy-link="${url}"><svg class="ds-i" aria-hidden="true" focusable="false"><use href="${SPRITE}#blog-copy-link"></use></svg>Copy link</button>`,
     '  <span class="ds-share__status" role="status" aria-live="polite"></span>',
     "</div>",
   ].join("\n");

@@ -184,7 +184,7 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
   - **Phase 2, icons**
     - The icon font and `styles/icons.css` were deleted. Phosphor Icons 2.1.1 are drawn from one sprite, `assets/icons/sprite.svg`, with the licence alongside it.
     - `tools/build-icons.mjs` builds the sprite from the icons the pages reference.
-    - **Naming:** the brief writes `#name`. Duotone symbols for card tiles use `#name`, and regular symbols for inline UI use `#name-line`, so one sprite holds both weights.
+    - **Naming:** the brief writes `#name`. Duotone symbols for card tiles used `#name`, and regular symbols for inline UI used `#name-line`, so one sprite held both weights. The SelNexa icon set replaced this; see "Icon set" below.
     - **Brief icons:** every icon named in the brief exists in 2.1.1, so no substitutions were needed.
     - **Emoji replaced:** 🏠 house, ℹ️ info, ✨ squares-four, 📚 article, 📞 phone, 💼 tag ("Pricing discussion") and 📅 calendar-check.
     - **Icon-font mappings:** user-md to stethoscope, file-medical to file-text, arrow-up to trend-up, user-shield to user-circle-check, and boxes to package.
@@ -222,6 +222,14 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
   - `scripts/process-assets.mjs` uses sharp and SVGO to turn `design-assets/incoming/` into kebab-case WebP and AVIF at 1x and 2x, plus optimised SVG. Files in `incoming/icons/` are refused.
   - `design-assets/ASSET_REQUESTS.md` lists twelve slots with sizes. Nothing has arrived yet.
 - **Phase 7:** see below.
+- **Icon set, after Phase 7.** Keith's icon brief (`design-assets/icons/selnexa/README.md`) assigns 74 named icons to content slots.
+  - The 74 icons are Phosphor 2.1.1 regular icons under SelNexa names. The source sprite is in `design-assets/icons/selnexa/`, and `tools/build-icons.mjs` copies the ones the pages use into `assets/icons/sprite.svg`, with `LICENSE-phosphor.txt` beside it.
+  - **Placed:** 73 of the 74, each in the slot the brief names. On pages where a slot had no icon before (Security, Data protection, investors, Impact, Features specifications, the blog byline), the icons sit in small 36px tiles at the start of each row, so every row in a table has one.
+  - **Not placed:** `timeline-incorporated`. The About timeline has no incorporation entry, and the site does not state an incorporation date anywhere. See open question 7.
+  - **Added text:** three key points under the home hero's buttons ("Works without internet", "Keeps running in power cuts", "Patient data stays in Zimbabwe"), which repeat claims the site already makes. The Data protection page lists what Full compliance includes, with an icon per item; the card's sentence now points to that list.
+  - **One style:** every other icon on the site, including slots the brief does not list, is now Phosphor regular (`#name-line`), so the duotone weight is gone. Tiles are the brief's pale gold square with a navy icon on every surface, including the navy bands.
+  - **Share buttons:** LinkedIn, X and WhatsApp use each company's logo in its brand colour (`design-assets/icons/brands/`, paths from Simple Icons, CC0). Copy link uses `blog-copy-link`.
+  - **Phones:** in tables, a row's icon sits above its label, so the description column keeps its width.
 
 ## Phase 7: verification
 
@@ -312,3 +320,4 @@ The before and after screenshots were compared page by page. No page lost conten
 4. **Asset slots.** `design-assets/ASSET_REQUESTS.md` lists twelve slots, each with a size: a blog cover, six Open Graph images, three section illustrations, team portraits and full-resolution Platform screenshots. Nothing has arrived in `design-assets/incoming/` yet.
 5. **Reading time.** The post said "5 min read". Counted at 220 words a minute, the article body comes to 4 minutes, and the site now shows that.
 6. **Title tags.** Some `<title>` tags are still in Title Case, for example "Health Software That Keeps Running Offline". The brief's sentence-case rule covers headings, so the titles were left as they are. Say if they should match.
+7. **Incorporation date.** The icon brief has a timeline slot for "July 2026, incorporated". The site says SelNexa Health was founded in Harare in 2024 Q1 and gives no incorporation date, so no entry was added. Confirm the date and whether to add it to the timeline, and the `timeline-incorporated` icon goes with it.
