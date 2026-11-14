@@ -177,7 +177,7 @@ function readingMinutes(url) {
   const html = fs.readFileSync(file, "utf8");
   const start = html.indexOf('class="article-measure article-body"');
   if (start < 0) throw new Error(`${url}: no .article-body to time`);
-  const end = html.indexOf('<section class="article-discuss"', start);
+  const end = html.indexOf('class="article-discuss', start);
   const words = html.slice(start, end > 0 ? end : undefined).replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ")
     .split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
   return Math.max(1, Math.round(words / 220));
@@ -267,10 +267,13 @@ function alternateSurfaces(html) {
   let main = html.slice(start, end);
   let depth = 0;
   let n = 0;
-  main = main.replace(/<section\b([^>]*)>|<\/section>/g, (tag, attrs) => {
+  let inArticle = 0; // sections inside an <article> (a blog post's own parts) are left alone
+  main = main.replace(/<article\b[^>]*>|<\/article>|<section\b([^>]*)>|<\/section>/g, (tag, attrs) => {
+    if (tag.startsWith("<article")) { inArticle += 1; return tag; }
+    if (tag === "</article>") { inArticle -= 1; return tag; }
     if (tag === "</section>") { depth -= 1; return tag; }
     depth += 1;
-    if (depth !== 1) return tag;
+    if (depth !== 1 || inArticle) return tag;
     const cls = (attrs.match(/class="([^"]*)"/) || [])[1] || "";
     if (SURFACE_SKIP.test(cls)) return tag;
     const surface = n++ % 2 === 0 ? "ds-section--cream" : "ds-section--white";

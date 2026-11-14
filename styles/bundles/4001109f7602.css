@@ -3070,14 +3070,6 @@ footer.sx-footer .footer-compliance p,
 body {
   background: var(--ds-cream);
 }
-.ds-section--white {
-  --ds-surface: var(--ds-white);
-  background: var(--ds-white);
-}
-.ds-section--cream {
-  --ds-surface: var(--ds-cream);
-  background: var(--ds-cream);
-}
 
 /* The deep navy band, with an original contour pattern at 5% opacity. */
 
