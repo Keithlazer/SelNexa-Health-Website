@@ -27,8 +27,9 @@
     <meta name="twitter:image" content="https://www.selnexahealth.com/og-image.png">
     <!-- /sx:social -->
     <!-- sx:styles /styles/main.css /styles/grid-typography-system.css /styles/site-uniform.css -->
-    <link rel="stylesheet" href="/styles/bundles/bafeb0ad5025.css">
+    <link rel="stylesheet" href="/styles/bundles/315c28ec39bd.css">
     <!-- /sx:styles -->
+    <!-- sx:faqpage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -47,12 +48,12 @@
           "name": "What about data security and privacy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our Security and Compliance page."
+            "text": "The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our Security page."
           }
         },
         {
           "@type": "Question",
-          "name": "Does it work without internet connection?",
+          "name": "Does it work without an internet connection?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. The Platform is built offline first. Core workflows keep running without a connection, and changes sync when connectivity returns."
@@ -85,6 +86,7 @@
       ]
     }
     </script>
+    <!-- /sx:faqpage -->
     <!-- sx:head -->
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -132,11 +134,11 @@
         </button>
         <nav class="sx-nav" aria-label="Main">
           <ul class="sx-menu" id="sx-menu">
-            <li><a href="/features.html" data-nav="platform" aria-current="page">Platform</a></li>
+            <li><a href="/features.html" data-nav="platform">Platform</a></li>
             <li><a href="/services/data-protection" data-nav="services">Services</a></li>
             <li><a href="/projects.html" data-nav="projects">Projects</a></li>
             <li><a href="/case-studies.html" data-nav="impact">Impact</a></li>
-            <li><a href="/about.html" data-nav="about">About</a></li>
+            <li><a href="/about.html" data-nav="about" aria-current="page">About</a></li>
             <li><a href="/contact.html" data-nav="contact">Contact</a></li>
             <li class="sx-menu__cta"><a href="/appointments.html" class="sx-cta" data-nav="demo" data-demo-trigger>Book a demo</a></li>
           </ul>
@@ -151,59 +153,54 @@
             <div class="hero-background"><div class="mesh-gradient"></div></div>
             <div class="hero-content">
                 <div class="hero-overline">FREQUENTLY ASKED QUESTIONS</div>
-                <h1 class="hero-title">Common Questions About SelNexa Health</h1>
+                <h1 class="hero-title">Common questions about SelNexa Health</h1>
                 <p class="hero-subtitle">Answers about SelNexa Health and its flagship product, the SelNexa Health Platform.</p>
             </div>
         </section>
         
-        <section class="faq-section">
-            <div class="container">
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <h2 class="faq-question">How long does implementation take?</h2>
-                        <div class="faq-answer">
+        <section class="ds-section ds-section--cream" aria-label="Questions and answers">
+            <div class="ds-container">
+                <div class="ds-faq">
+                    <details open>
+                        <summary><h2>How long does implementation take?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
                             <p>We don't have a measured figure yet; the first pilot will give us one. The timeline depends on the size of the institution, the records it already holds, and whether it uses the hosted deployment or the local network kit.</p>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h2 class="faq-question">What about data security and privacy?</h2>
-                        <div class="faq-answer">
-                            <p>The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our <a href="/security">Security and Compliance page</a>.</p>
+                    </details>
+                    <details>
+                        <summary><h2>What about data security and privacy?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
+                            <p>The SelNexa Health Platform encrypts data in transit (TLS) and at rest (AES-256), uses role-based access, keeps tamper-evident audit trails and respects patient consent when records are shared. Independent security testing is planned before the first pilot. The details, including what is still in progress, are on our <a href="/security">Security page</a>.</p>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h2 class="faq-question">Does it work without internet connection?</h2>
-                        <div class="faq-answer">
+                    </details>
+                    <details>
+                        <summary><h2>Does it work without an internet connection?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
                             <p>Yes. The Platform is built offline first. Core workflows keep running without a connection, and changes sync when connectivity returns.</p>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h2 class="faq-question">What's the pricing model?</h2>
-                        <div class="faq-answer">
+                    </details>
+                    <details>
+                        <summary><h2>What's the pricing model?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
                             <p>We price per facility, based on its size and the modules it uses, not per user. Until the first deployment, every quote is scoped with the institution directly. For a quote, email <a href="mailto:sales@selnexahealth.com">sales@selnexahealth.com</a>.</p>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h2 class="faq-question">What training and support do you provide?</h2>
-                        <div class="faq-answer">
+                    </details>
+                    <details>
+                        <summary><h2>What training and support do you provide?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
                             <p>Staff training is part of onboarding. Support arrangements for a pilot, including hours and channels, are agreed with each institution before go-live.</p>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <h2 class="faq-question">Can it integrate with existing systems?</h2>
-                        <div class="faq-answer">
+                    </details>
+                    <details>
+                        <summary><h2>Can it integrate with existing systems?</h2><span class="ds-faq__toggle" aria-hidden="true"><svg class="ds-faq__plus" focusable="false"><use href="/assets/icons/sprite.svg#plus-line"></use></svg><svg class="ds-faq__minus" focusable="false"><use href="/assets/icons/sprite.svg#minus-line"></use></svg></span></summary>
+                        <div class="ds-faq__answer">
                             <p>The Platform is designed to sit alongside national systems and exchange data with them through FHIR R4 (DHIS2, Impilo, ePMS, OpenMRS). Integration work for each deployment is scoped with you and your existing vendors.</p>
                         </div>
-                    </div>
+                    </details>
                 </div>
             </div>
         </section>
-        
+
         <!-- sx:trace-divider -->
         <div class="trace-divider" aria-hidden="true"><svg class="trace" viewBox="0 0 600 14" preserveAspectRatio="none" focusable="false"><line class="live" x1="0" y1="7" x2="210" y2="7"/><line class="lost" x1="220" y1="7" x2="380" y2="7"/><line class="dot" x1="215" y1="7" x2="215" y2="7"/><line class="live" x1="390" y1="7" x2="600" y2="7"/></svg></div>
         <!-- /sx:trace-divider -->
@@ -211,7 +208,7 @@
             <div class="cta-background"><div class="cta-gradient"></div></div>
             <div class="container">
                 <div class="cta-content">
-                    <h2>Still Have Questions?</h2>
+                    <h2>Still have questions?</h2>
                     <p>Our team is ready to help. Book a Platform demo or contact SelNexa Health directly.</p>
                     <div class="cta-buttons">
                         <a href="/appointments.html" class="btn btn-primary" data-demo-trigger>Book a demo</a>
@@ -382,7 +379,7 @@
     <!-- /sx:demo-modal -->
     <!-- sx:scripts -->
     <script src="/js/form-endpoints.js?v=fd38fd6d56" defer></script>
-    <script src="/js/site-core.js?v=bd9f3fb97d" defer></script>
+    <script src="/js/site-core.js?v=ce7ef00987" defer></script>
     <!-- /sx:scripts -->
 </body>
 </html>

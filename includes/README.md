@@ -6,7 +6,7 @@ The header, footer, demo modal, forms and a few `<head>` tags are written once h
 |---|---|
 | `csp.html` | Top of `<head>`: Content Security Policy and referrer policy (GitHub Pages cannot send these as headers) |
 | (generated) `social` | After the canonical link: Open Graph and Twitter tags, built from the page's title, description and canonical URL |
-| `head.html` | End of `<head>`: icons, manifest, theme colour, font preload, `styles/site-chrome.css`, `styles/icons.css`, Organization structured data |
+| `head.html` | End of `<head>`: icons, manifest, theme colour, font preload, `styles/site-chrome.css`, Organization structured data |
 | `skip-link.html` | First thing in `<body>` |
 | `site-header.html` | Header and main navigation. The build marks the current section with `aria-current="page"` |
 | `site-footer.html` | Footer |
@@ -37,4 +37,4 @@ Forms: while `window.SELNEXA_FORM_ENDPOINT` in `js/form-endpoints.js` is empty, 
 
 The Content Security Policy allows scripts, styles, fonts, images and media from this site only. Anything added later from another host (an analytics script, an embedded video, a booking calendar) needs its host added to the matching directive in `csp.html`, or the browser will block it. Inline `<script>` blocks, `onclick` attributes, `<style>` blocks and `style` attributes are blocked too; put code in `js/` and styles in `styles/`.
 
-Icons come from `styles/icons.css`, a subset of Font Awesome built by `tools/build-icons.py`. After using a new `fa-` icon on a page, run that script again (instructions at the top of the file).
+Icons are Phosphor Icons 2.1.1 (MIT), drawn from one sprite, `assets/icons/sprite.svg`. Write `<span class="ds-icon" aria-hidden="true"><svg focusable="false"><use href="/assets/icons/sprite.svg#hospital"></use></svg></span>` for an icon tile on a card (duotone), or `<svg class="ds-i" aria-hidden="true" focusable="false"><use href="/assets/icons/sprite.svg#hospital-line"></use></svg>` for an inline icon (regular). Use the icon's name from phosphoricons.com. `npm run build:site` rebuilds the sprite with exactly the icons the pages reference (`tools/build-icons.mjs`).

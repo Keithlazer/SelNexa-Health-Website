@@ -1,4 +1,4 @@
-const CACHE_VERSION = "2026-11-12-v7";
+const CACHE_VERSION = "2026-11-14-v8";
 const STATIC_CACHE = `selnexa-static-${CACHE_VERSION}`;
 const DYNAMIC_CACHE = `selnexa-dynamic-${CACHE_VERSION}`;
 const OFFLINE_URL = "/offline.html";
@@ -25,7 +25,7 @@ const CORE_ASSETS = [
   "/assets/selnexa-logo-128.webp",
   "/assets/selnexa-logo-128.png",
   "/assets/fonts/montserrat-latin-var.woff2",
-  "/assets/fonts/icons-solid.woff2"
+  "/assets/icons/sprite.svg"
 ];
 
 self.addEventListener("install", (event) => {

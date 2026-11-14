@@ -1,0 +1,1432 @@
+/*
+ * SelNexa Health design system.
+ * Loaded last on every page by tools/build-site.mjs. The page stylesheets sit in the "legacy" cascade layer, so the
+ * unlayered rules here win over them without !important or extra specificity.
+ *
+ * Contents: tokens; type; surfaces and sections; layout and grids; eyebrow; cards; icon tiles; chips; buttons and
+ * links; focus; pull quote; banner; accordion; timeline; tables; forms; device frames.
+ *
+ * Colour comes from the brand palette already in site-chrome.css: navy #0A2463, gold #E8A020, cream #f9f5ee.
+ * Gold is used as text only on navy (6.6:1); on light grounds gold text uses --ds-gold-text (6.0:1 on white).
+ */
+
+:root {
+  /* Palette */
+  --ds-navy: #0a2463;
+  --ds-navy-deep: #071a47;          /* emphasis bands */
+  --ds-gold: #e8a020;
+  --ds-gold-hover: #cf8b18;
+  --ds-gold-text: #8a5800;          /* gold as text on white or cream */
+  --ds-gold-tint: #fcf1dc;          /* icon tiles, chips on white */
+  --ds-cream: #f9f5ee;
+  --ds-white: #ffffff;
+  --ds-ink: #1f2937;                /* body text, 14.7:1 on white */
+  --ds-muted: #4b5563;              /* secondary text, 7.6:1 on white */
+  --ds-border: rgba(10, 36, 99, 0.12);
+  --ds-error: #b42318;
+  --ds-success: #05603a;
+
+  /* Text on the current surface. Dark surfaces override these. */
+  --ds-heading: var(--ds-navy);
+  --ds-text: var(--ds-ink);
+  --ds-text-muted: var(--ds-muted);
+  --ds-focus: var(--ds-navy);
+  --ds-link: var(--ds-navy);
+
+  /* Type scale */
+  --ds-fs-h1: clamp(2.5rem, 1.95rem + 2.2vw, 3.5rem);
+  --ds-fs-h2: clamp(2rem, 1.75rem + 1vw, 2.5rem);
+  --ds-fs-h3: clamp(1.125rem, 1.04rem + 0.35vw, 1.375rem);
+  --ds-fs-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --ds-fs-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+  --ds-fs-small: clamp(0.8125rem, 0.8rem + 0.08vw, 0.875rem);
+
+  /* Spacing, 4/8 scale */
+  --ds-1: 0.25rem;
+  --ds-2: 0.5rem;
+  --ds-3: 0.75rem;
+  --ds-4: 1rem;
+  --ds-5: 1.5rem;
+  --ds-6: 2rem;
+  --ds-7: 3rem;
+  --ds-8: 4rem;
+  --ds-section-y: clamp(4rem, 8vw, 7rem);
+  --ds-max: 1200px;
+  --ds-prose: 68ch;
+
+  /* Shape */
+  --ds-radius: 16px;
+  --ds-radius-sm: 8px;
+  --ds-shadow: 0 1px 2px rgba(10, 36, 99, 0.04), 0 6px 18px rgba(10, 36, 99, 0.07);
+  --ds-shadow-hover: 0 2px 4px rgba(10, 36, 99, 0.05), 0 12px 28px rgba(10, 36, 99, 0.11);
+
+  /* Older tokens that coloured headings and nav links dark teal (#004c4c), outside the navy, gold and cream
+     palette. Pointing them at navy brings those headings and links into line without editing each rule. */
+  --uniform-primary: var(--ds-navy);
+  --color-brand-primary: var(--ds-navy);
+  --sx-teal: var(--ds-navy);
+  --sx-teal-hover: #1d3f8f;
+}
+
+/* Dark surfaces: heroes, the home mission block, the article header and the navy bands. */
+.hero,
+.page-hero,
+.dark-block,
+.article-hero,
+.test,
+.guides-hero,
+.webinars-hero,
+.resources-hero,
+.ds-band--navy {
+  --ds-heading: #ffffff;
+  --ds-text: rgba(255, 255, 255, 0.9);
+  --ds-text-muted: rgba(255, 255, 255, 0.78);
+  --ds-focus: var(--ds-gold);
+  --ds-link: #ffffff;
+}
+/* White cards inside a dark band go back to the light-surface colours. */
+.hero .ds-card,
+.hero .page-card,
+.hero .pillar-card,
+.page-hero .ds-card,
+.page-hero .page-card,
+.page-hero .pillar-card,
+.dark-block .ds-card,
+.dark-block .page-card,
+.dark-block .pillar-card,
+.ds-band--navy .ds-card,
+.ds-band--navy .page-card,
+.ds-band--navy .pillar-card {
+  --ds-heading: var(--ds-navy);
+  --ds-text: var(--ds-ink);
+  --ds-text-muted: var(--ds-muted);
+  --ds-focus: var(--ds-navy);
+  --ds-link: var(--ds-navy);
+}
+
+/* ---------- Type ---------- */
+
+body {
+  font-size: var(--ds-fs-body);
+  line-height: 1.6;
+}
+
+main h1,
+main h2,
+main h3,
+main h4 {
+  color: var(--ds-heading);
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
+}
+
+main p,
+main li {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+main h1 {
+  font-size: var(--ds-fs-h1);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+main h2:not(.test-label, .minor-heading, .author-name, .sr-only, .legal-heading) {
+  font-size: var(--ds-fs-h2);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+main h3:not(.minor-heading) {
+  font-size: var(--ds-fs-h3);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+main h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0 0 var(--ds-2);
+}
+
+/* A heading in a card that has to be an h2 for the outline still reads at card size. */
+main h2.ds-card-title {
+  font-size: var(--ds-fs-h3);
+  line-height: 1.3;
+  margin: 0 0 var(--ds-3);
+}
+
+main .minor-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Lead paragraphs under section headings. */
+.section-header > p:not(.ds-eyebrow, .section-label),
+.ds-section-head > p:not(.ds-eyebrow),
+.hero-subtitle,
+.page-subtitle {
+  font-size: var(--ds-fs-lead);
+  line-height: 1.6;
+}
+
+.ds-prose {
+  max-width: var(--ds-prose);
+}
+
+/* Small text never goes below 13px. */
+.sx-brand__tag {
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+}
+.contents-label,
+.contents-n,
+.gap-label,
+.test-label {
+  font-size: 0.8125rem;
+}
+.sx-footer p,
+.sx-footer li,
+.sx-footer a,
+.sx-footer small {
+  font-size: var(--ds-fs-small);
+}
+.sdg-note,
+figcaption,
+.capture-note,
+.blog-date,
+.address-bar {
+  font-size: var(--ds-fs-small);
+}
+/* The last labels that were set under 13px: footer notes, SDG captions, resource metadata, article marks. */
+footer.sx-footer .footer-compliance p,
+.sdg-marker span span,
+.sdg-chip span span,
+.hero-floating-stat span,
+.section-mark span,
+.article-hero .eyebrow,
+.guide-meta span,
+.guide-stats span,
+.guide-tags .tag,
+.webinar-meta span,
+.resource-meta span,
+.resource-type,
+.resource-date {
+  font-size: 0.8125rem;
+}
+.module-tab,
+.tab-btn,
+.filter-btn {
+  font-size: 0.9375rem;
+}
+
+/* ---------- Surfaces and sections ---------- */
+
+body {
+  background: var(--ds-cream);
+}
+
+.ds-section {
+  padding-block: var(--ds-section-y);
+  padding-inline: 0;
+}
+.ds-section--white {
+  --ds-surface: var(--ds-white);
+  background: var(--ds-white);
+}
+.ds-section--cream {
+  --ds-surface: var(--ds-cream);
+  background: var(--ds-cream);
+}
+
+/* The deep navy band, with an original contour pattern at 5% opacity. */
+.ds-band--navy {
+  position: relative;
+  isolation: isolate;
+  background: var(--ds-navy-deep);
+  color: var(--ds-text);
+}
+.ds-band--navy::before,
+.dark-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/patterns/contour.svg") center / cover no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+}
+.dark-block {
+  position: relative;
+  isolation: isolate;
+}
+.ds-band--navy p,
+.ds-band--navy li {
+  color: var(--ds-text);
+}
+
+/* ---------- Layout ---------- */
+
+.ds-container {
+  width: min(var(--ds-max), 100% - 2rem);
+  margin-inline: auto;
+}
+
+.ds-section-head {
+  max-width: 46rem;
+  margin: 0 auto var(--ds-7);
+  text-align: center;
+}
+.ds-section-head--start {
+  margin-inline: 0;
+  text-align: left;
+}
+.ds-section-head > h2 {
+  margin: 0 0 var(--ds-4);
+}
+.ds-section-head > p:not(.ds-eyebrow) {
+  margin: 0 auto;
+  color: var(--ds-text);
+  max-width: var(--ds-prose);
+}
+
+/* Grids: as many 16rem columns as fit. --4 is four across only when each card has 260px or more. */
+.ds-grid,
+.page-grid {
+  display: grid;
+  gap: var(--ds-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+.ds-grid--2 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .ds-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.ds-grid--4 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .ds-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1280px) {
+  .ds-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Older card grids, brought onto the same rule. */
+.feature-grid,
+.features-grid,
+.problems-grid,
+.overview-grid,
+.moat-grid,
+.benefits-grid,
+.solutions-grid,
+.guides-grid,
+.webinars-grid,
+.resources-grid,
+.module-overview-grid {
+  display: grid;
+  gap: var(--ds-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+.resources-grid.hidden {
+  display: none;
+}
+/* Benefit lists: icon beside the text, two columns where there is room. */
+.benefits-list {
+  display: grid;
+  gap: var(--ds-5) var(--ds-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(26rem, 100%), 1fr));
+}
+.benefit,
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ds-4);
+}
+.benefit .ds-icon,
+.feature .ds-icon {
+  margin-bottom: 0;
+}
+.page-grid.projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+}
+
+/* A heading with an icon tile beside it, between grids. */
+.ds-subhead {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-4);
+  margin: var(--ds-7) 0 var(--ds-5);
+}
+.ds-subhead .ds-icon {
+  margin: 0;
+}
+.ds-subhead h3 {
+  margin: 0;
+}
+
+/* A short note under a grid, such as a source or a scope line. */
+.ds-note {
+  max-width: var(--ds-prose);
+  margin: var(--ds-6) auto 0;
+  text-align: center;
+  color: var(--ds-text);
+}
+
+/* A plain list inside a card. */
+.ds-list {
+  margin: 0;
+  padding-left: 1.125rem;
+}
+.ds-list li + li {
+  margin-top: var(--ds-2);
+}
+
+/* ---------- Eyebrow ---------- */
+
+.ds-eyebrow,
+.section-label,
+.hero-overline,
+.page-overline,
+.story-eyebrow,
+.hero-eyebrow {
+  display: inline-block;
+  margin: 0 0 var(--ds-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ds-gold-text);
+  white-space: normal;
+  overflow: visible;
+}
+.hero .ds-eyebrow,
+.hero .section-label,
+.hero .hero-overline,
+.hero .page-overline,
+.hero .story-eyebrow,
+.hero .hero-eyebrow,
+.page-hero .ds-eyebrow,
+.page-hero .section-label,
+.page-hero .hero-overline,
+.page-hero .page-overline,
+.page-hero .story-eyebrow,
+.page-hero .hero-eyebrow,
+.dark-block .ds-eyebrow,
+.dark-block .section-label,
+.dark-block .hero-overline,
+.dark-block .page-overline,
+.dark-block .story-eyebrow,
+.dark-block .hero-eyebrow,
+.article-hero .ds-eyebrow,
+.article-hero .section-label,
+.article-hero .hero-overline,
+.article-hero .page-overline,
+.article-hero .story-eyebrow,
+.article-hero .hero-eyebrow,
+.guides-hero .ds-eyebrow,
+.guides-hero .section-label,
+.guides-hero .hero-overline,
+.guides-hero .page-overline,
+.guides-hero .story-eyebrow,
+.guides-hero .hero-eyebrow,
+.webinars-hero .ds-eyebrow,
+.webinars-hero .section-label,
+.webinars-hero .hero-overline,
+.webinars-hero .page-overline,
+.webinars-hero .story-eyebrow,
+.webinars-hero .hero-eyebrow,
+.resources-hero .ds-eyebrow,
+.resources-hero .section-label,
+.resources-hero .hero-overline,
+.resources-hero .page-overline,
+.resources-hero .story-eyebrow,
+.resources-hero .hero-eyebrow,
+.ds-band--navy .ds-eyebrow,
+.ds-band--navy .section-label,
+.ds-band--navy .hero-overline,
+.ds-band--navy .page-overline,
+.ds-band--navy .story-eyebrow,
+.ds-band--navy .hero-eyebrow {
+  color: var(--ds-gold);
+}
+
+/* ---------- Cards ---------- */
+
+.ds-card,
+.page-card,
+.job-card,
+.pillar-card,
+.mission-card,
+.problem-card,
+.benefit-card,
+.module-card,
+.cta-audience-card,
+.feature-card,
+.resource-card,
+.guide-card,
+.webinar-card,
+.team-card,
+.overview-card,
+.moat-card,
+.solution-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  box-shadow: var(--ds-shadow);
+  padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  color: var(--ds-text);
+  text-align: left;
+  align-items: stretch;
+}
+.ds-card > .ds-icon,
+.page-card > .ds-icon,
+.feature-card > .ds-icon,
+.problem-card > .ds-icon,
+.overview-card > .ds-icon,
+.moat-card > .ds-icon,
+.solution-card > .ds-icon,
+.mission-card > .ds-icon,
+.pillar-card > .ds-icon,
+.cta-audience-card > .ds-icon {
+  align-self: flex-start;
+}
+.feature-card p,
+.problem-card p,
+.overview-card p,
+.page-card p {
+  max-width: none;
+  margin-inline: 0;
+}
+.ds-card > :first-child {
+  margin-top: 0;
+}
+.ds-card > :last-child {
+  margin-bottom: 0;
+}
+.ds-card h3 {
+  margin: 0 0 var(--ds-3);
+}
+.ds-card p {
+  margin: 0 0 var(--ds-4);
+  color: var(--ds-text);
+}
+/* The last block (chips, a link, a status line) sits at the foot of the card, so cards in a row line up. */
+.ds-card > .ds-card__foot {
+  margin-top: auto;
+  padding-top: var(--ds-4);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ds-card:has(a),
+  .page-card:has(a),
+  .module-card:has(a),
+  .resource-card:has(a),
+  .guide-card:has(a),
+  .webinar-card:has(a),
+  .job-card:has(a) {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ds-card:has(a):hover,
+  .page-card:has(a):hover,
+  .module-card:has(a):hover,
+  .resource-card:has(a):hover,
+  .guide-card:has(a):hover,
+  .webinar-card:has(a):hover,
+  .job-card:has(a):hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ds-shadow-hover);
+  }
+}
+
+/* Indicator card: a short label over a value or status. */
+.ds-card--indicator {
+  border-top: 3px solid var(--ds-gold);
+}
+
+/* Job card */
+.ds-card--job .ds-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-2);
+  margin-bottom: var(--ds-3);
+}
+
+/* A gold label above a card heading (replaces bracketed subtitles in headings). */
+.ds-label,
+.ds-card .ds-label {
+  display: block;
+  margin: calc(var(--ds-2) * -1) 0 var(--ds-3);
+  font-size: var(--ds-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ds-gold-text);
+}
+
+/* ---------- Icon tiles ---------- */
+
+.ds-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--ds-4);
+  border-radius: 12px;
+  background: var(--ds-gold-tint);
+  color: var(--ds-navy);
+}
+.ds-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--ds-gold);       /* the duotone back layer; the outline is currentColor */
+}
+/* Inside a heading or a row, an icon tile sits beside the text rather than above it. */
+.feature .ds-icon,
+.benefit .ds-icon,
+.overview-card .ds-icon {
+  margin-bottom: var(--ds-3);
+}
+.ds-band--navy .ds-icon,
+.dark-block .ds-icon {
+  background: rgba(232, 160, 32, 0.16);
+  color: var(--ds-gold);
+}
+.ds-band--navy .ds-card .ds-icon,
+.ds-band--navy .page-card .ds-icon {
+  background: var(--ds-gold-tint);
+  color: var(--ds-navy);
+}
+/* Inline icons (UI and links) */
+.ds-i {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: -0.25em;
+  flex: none;
+  fill: currentColor;
+}
+
+/* ---------- Chips ---------- */
+
+.ds-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ds-chip,
+.trust-chip,
+.spec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 28px;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--ds-cream);
+  border: 1px solid var(--ds-border);
+  color: var(--ds-navy);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: normal;
+}
+.ds-card .ds-chip,
+.page-card .ds-chip {
+  background: var(--ds-cream);
+}
+.ds-section--cream .ds-chip:not(.ds-card .ds-chip) {
+  background: var(--ds-white);
+}
+.ds-chip--gold {
+  background: var(--ds-gold-tint);
+  border-color: rgba(232, 160, 32, 0.35);
+  color: var(--ds-gold-text);
+}
+.ds-chip--status,
+.spec-tag--status,
+.spec-tag--projection {
+  background: var(--ds-gold-tint);
+  border-color: rgba(232, 160, 32, 0.35);
+  color: var(--ds-gold-text);
+}
+.spec-tag {
+  margin-right: var(--ds-2);
+  vertical-align: 0.05em;
+}
+.dark-block .ds-chip,
+.ds-band--navy .ds-chip:not(.ds-card .ds-chip),
+.ds-band--navy .ds-chip:not(.page-card .ds-chip) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+}
+
+/* ---------- Buttons and links ---------- */
+
+.ds-btn,
+.btn.btn-primary,
+.btn.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ds-2);
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--ds-radius-sm);
+  border: 2px solid transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.ds-btn--primary,
+.btn.btn-primary {
+  background: var(--ds-gold);
+  border-color: var(--ds-gold);
+  color: var(--ds-navy);
+}
+.ds-btn--primary:hover,
+.btn.btn-primary:hover {
+  background: var(--ds-gold-hover);
+  border-color: var(--ds-gold-hover);
+  color: var(--ds-navy);
+}
+.ds-btn--secondary,
+.btn.btn-secondary {
+  background: transparent;
+  border-color: var(--ds-navy);
+  color: var(--ds-navy);
+}
+.ds-btn--secondary:hover,
+.btn.btn-secondary:hover {
+  background: var(--ds-navy);
+  color: #ffffff;
+}
+.hero .ds-btn--secondary,
+.hero .btn.btn-secondary,
+.page-hero .ds-btn--secondary,
+.page-hero .btn.btn-secondary,
+.dark-block .ds-btn--secondary,
+.dark-block .btn.btn-secondary,
+.ds-band--navy .ds-btn--secondary,
+.ds-band--navy .btn.btn-secondary {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+.hero .ds-btn--secondary:hover,
+.hero .btn.btn-secondary:hover,
+.page-hero .ds-btn--secondary:hover,
+.page-hero .btn.btn-secondary:hover,
+.dark-block .ds-btn--secondary:hover,
+.dark-block .btn.btn-secondary:hover,
+.ds-band--navy .ds-btn--secondary:hover,
+.ds-band--navy .btn.btn-secondary:hover {
+  background: #ffffff;
+  color: var(--ds-navy);
+}
+.btn.btn-primary::before,
+.btn.btn-secondary::before {
+  content: none;
+}
+.btn[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.75;
+}
+
+/* Text link: navy with a gold underline. */
+.ds-link,
+.btn-link,
+.standalone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 44px;
+  color: var(--ds-link);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--ds-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+.ds-link:hover,
+.btn-link:hover,
+.standalone-link:hover {
+  color: var(--ds-link);
+  text-decoration-color: currentColor;
+}
+.ds-link--arrow::after {
+  content: "";
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  -webkit-mask: url("/assets/icons/arrow-right.svg") center / contain no-repeat;
+  mask: url("/assets/icons/arrow-right.svg") center / contain no-repeat;
+}
+
+/* ---------- Focus ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--ds-focus);
+  outline-offset: 3px;
+}
+.sx-header :focus-visible,
+.sx-footer :focus-visible {
+  outline-color: var(--ds-gold);
+}
+.sx-header :focus-visible {
+  outline-color: var(--ds-navy);
+}
+video:focus-visible {
+  outline: 3px solid var(--ds-gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Pull quote ---------- */
+
+.ds-quote {
+  margin: var(--ds-6) 0;
+  padding: var(--ds-2) 0 var(--ds-2) var(--ds-5);
+  border-left: 4px solid var(--ds-gold);
+  max-width: 48rem;
+}
+.ds-quote p {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ds-heading);
+}
+
+/* ---------- Banner (a single notice for a section) ---------- */
+
+.ds-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-4);
+  margin: 0 0 var(--ds-6);
+  padding: var(--ds-4) var(--ds-5);
+  border-radius: var(--ds-radius);
+  border: 1px solid rgba(232, 160, 32, 0.4);
+  background: var(--ds-gold-tint);
+}
+.ds-banner p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--ds-3);
+  font-weight: 700;
+  color: var(--ds-navy);
+}
+.ds-banner .ds-i {
+  color: var(--ds-gold-text);
+}
+
+/* ---------- Accordion (FAQ) ---------- */
+
+.ds-faq {
+  max-width: 52rem;
+  margin-inline: auto;
+  display: grid;
+  gap: var(--ds-3);
+}
+.ds-faq details {
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  box-shadow: var(--ds-shadow);
+}
+.ds-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-4);
+  min-height: 56px;
+  padding: var(--ds-4) var(--ds-5);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--ds-radius);
+}
+.ds-faq summary::-webkit-details-marker {
+  display: none;
+}
+.ds-faq summary h2,
+.ds-faq summary h3 {
+  margin: 0;
+  font-size: var(--ds-fs-h3);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ds-heading);
+}
+.ds-faq__toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ds-gold-tint);
+  color: var(--ds-navy);
+}
+.ds-faq__toggle svg {
+  width: 20px;
+  height: 20px;
+}
+.ds-faq details:not([open]) .ds-faq__minus,
+.ds-faq details[open] .ds-faq__plus {
+  display: none;
+}
+.ds-faq__answer {
+  padding: 0 var(--ds-5) var(--ds-5);
+}
+.ds-faq__answer p {
+  margin: 0;
+  max-width: var(--ds-prose);
+}
+.ds-faq__group + .ds-faq__group {
+  margin-top: var(--ds-6);
+}
+
+/* ---------- Timeline ---------- */
+
+.ds-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--ds-5);
+  position: relative;
+}
+.ds-timeline__item {
+  position: relative;
+  padding-left: 3.25rem;
+}
+/* Vertical track on phones and tablets */
+.ds-timeline::before {
+  content: "";
+  position: absolute;
+  left: 23px;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(var(--ds-gold), rgba(232, 160, 32, 0.25));
+}
+.ds-timeline__dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ds-navy);
+  color: var(--ds-gold);
+  box-shadow: 0 0 0 6px var(--ds-surface, var(--ds-cream));
+}
+.ds-timeline__dot svg {
+  width: 24px;
+  height: 24px;
+}
+.ds-timeline__item .ds-card {
+  margin-left: var(--ds-4);
+}
+.ds-timeline .ds-timeline__year {
+  display: block;
+  margin: 0 0 var(--ds-2);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ds-gold-text);
+}
+@media (min-width: 960px) {
+  .ds-timeline {
+    grid-template-columns: repeat(var(--ds-steps, 4), minmax(0, 1fr));
+    gap: var(--ds-5);
+    padding-top: 72px;
+    align-items: start;
+  }
+  .ds-timeline::before {
+    left: calc(100% / var(--ds-steps, 4) / 2);
+    right: calc(100% / var(--ds-steps, 4) / 2);
+    top: 23px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ds-gold), rgba(232, 160, 32, 0.35));
+  }
+  .ds-timeline__item {
+    padding-left: 0;
+  }
+  .ds-timeline__dot {
+    top: -72px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ds-timeline__item .ds-card {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Tables ---------- */
+
+.ds-table-wrap,
+.spec-table-wrap,
+.plan-table-wrap,
+.comparison-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--ds-radius);
+  border: 1px solid var(--ds-border);
+  background: var(--ds-white);
+  box-shadow: var(--ds-shadow);
+}
+.ds-table,
+.spec-table,
+.plan-table,
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-fs-body);
+}
+.ds-table th,
+.ds-table td,
+.spec-table th,
+.spec-table td,
+.plan-table th,
+.plan-table td,
+.comparison-table th,
+.comparison-table td {
+  padding: 0.875rem 1.25rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--ds-border);
+  color: var(--ds-ink);
+}
+.ds-table thead th,
+.spec-table thead th,
+.plan-table thead th,
+.comparison-table thead th {
+  background: var(--ds-navy);
+  color: #ffffff;
+  font-weight: 700;
+}
+.ds-table tbody tr:nth-child(even),
+.spec-table tbody tr:nth-child(even),
+.plan-table tbody tr:nth-child(even),
+.comparison-table tbody tr:nth-child(even) {
+  background: #fbf8f2;
+}
+.ds-table tbody tr:last-child > *,
+.spec-table tbody tr:last-child > *,
+.plan-table tbody tr:last-child > *,
+.comparison-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.ds-table tbody th,
+.spec-table tbody th,
+.plan-table tbody th,
+.comparison-table tbody th {
+  font-weight: 700;
+  color: var(--ds-navy);
+  min-width: 10rem;
+}
+
+/* ---------- Forms ---------- */
+
+.ds-form label,
+.sx-form label,
+.contact-form label,
+.capture-form label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--ds-ink);
+}
+.ds-form input:not([type="checkbox"], [type="radio"], [type="hidden"]),
+.ds-form select,
+.ds-form textarea,
+.sx-form input:not([type="checkbox"], [type="radio"], [type="hidden"]),
+.sx-form select,
+.sx-form textarea,
+.contact-form input:not([type="checkbox"], [type="radio"], [type="hidden"]),
+.contact-form select,
+.contact-form textarea,
+.capture-form input:not([type="checkbox"], [type="radio"], [type="hidden"]),
+.capture-form select,
+.capture-form textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #9aa3b2;
+  border-radius: var(--ds-radius-sm);
+  background: #ffffff;
+  color: var(--ds-ink);
+  font-size: 1rem;
+}
+.ds-form textarea,
+.sx-form textarea,
+.contact-form textarea,
+.capture-form textarea {
+  min-height: 8rem;
+}
+.ds-form input:focus-visible,
+.ds-form select:focus-visible,
+.ds-form textarea:focus-visible,
+.sx-form input:focus-visible,
+.sx-form select:focus-visible,
+.sx-form textarea:focus-visible,
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible,
+.capture-form input:focus-visible,
+.capture-form select:focus-visible,
+.capture-form textarea:focus-visible {
+  outline: 3px solid var(--ds-navy);
+  outline-offset: 1px;
+  border-color: var(--ds-navy);
+}
+.ds-form input:user-invalid,
+.ds-form select:user-invalid,
+.ds-form textarea:user-invalid,
+.sx-form input:user-invalid,
+.sx-form select:user-invalid,
+.sx-form textarea:user-invalid,
+.contact-form input:user-invalid,
+.contact-form select:user-invalid,
+.contact-form textarea:user-invalid,
+.capture-form input:user-invalid,
+.capture-form select:user-invalid,
+.capture-form textarea:user-invalid {
+  border-color: var(--ds-error);
+  box-shadow: 0 0 0 1px var(--ds-error);
+}
+
+/* ---------- Device frames for Platform screenshots ---------- */
+
+.ds-device {
+  margin: 0;
+}
+.ds-device--laptop {
+  max-width: 880px;
+  margin-inline: auto;
+}
+.ds-device--laptop .ds-device__screen {
+  border: 10px solid #1b2236;
+  border-bottom-width: 14px;
+  border-radius: 14px 14px 4px 4px;
+  background: #1b2236;
+  overflow: hidden;
+  box-shadow: var(--ds-shadow-hover);
+}
+.ds-device--laptop .ds-device__base {
+  height: 14px;
+  margin: 0 -6%;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(#d9dde5, #b9c0cc);
+}
+.ds-device--phone {
+  max-width: 280px;
+  margin-inline: auto;
+}
+.ds-device--phone .ds-device__screen {
+  border: 10px solid #1b2236;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #1b2236;
+  box-shadow: var(--ds-shadow-hover);
+}
+.ds-device img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ds-device figcaption {
+  margin-top: var(--ds-4);
+  text-align: center;
+  color: var(--ds-text-muted);
+}
+
+/* ---------- Blog ---------- */
+
+.ds-post {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--ds-white);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius);
+  box-shadow: var(--ds-shadow);
+}
+.ds-post__cover {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1200 / 630;
+  position: relative;
+  isolation: isolate;
+  background: var(--ds-navy-deep);
+}
+.ds-post__cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/patterns/contour.svg") center / cover no-repeat;
+  opacity: 0.08;
+}
+.ds-post__cover--logo img {
+  width: auto;
+  height: 62%;
+  max-width: 70%;
+}
+.ds-post__cover--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ds-post__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+}
+.ds-post__body > p {
+  margin: 0 0 var(--ds-4);
+  color: var(--ds-text);
+}
+.ds-post__body > .ds-eyebrow {
+  margin-bottom: var(--ds-2);
+}
+.ds-post__body > .ds-link {
+  margin-top: auto;
+  align-self: flex-start;
+}
+main .ds-post .ds-post__title {
+  margin: 0 0 var(--ds-3);
+  font-size: var(--ds-fs-h3);
+  line-height: 1.3;
+}
+main .ds-post.ds-post--featured .ds-post__title {
+  font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  line-height: 1.2;
+}
+.ds-post__title a {
+  color: var(--ds-navy);
+  text-decoration: none;
+}
+.ds-post__title a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ds-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.ds-post .ds-post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-2) var(--ds-3);
+  font-size: var(--ds-fs-small);
+  color: var(--ds-muted);
+}
+.ds-post__meta > * + *::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: var(--ds-3);
+  border-radius: 50%;
+  background: var(--ds-gold);
+  vertical-align: middle;
+}
+@media (min-width: 860px) {
+  .ds-post--featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  }
+  .ds-post--featured .ds-post__cover {
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}
+.ds-blog__single {
+  grid-template-columns: 1fr;
+}
+main h2.ds-blog__more {
+  margin: var(--ds-8) 0 var(--ds-5);
+  font-size: var(--ds-fs-h3);
+}
+.ds-empty {
+  padding: var(--ds-6);
+  border: 1px dashed rgba(10, 36, 99, 0.25);
+  border-radius: var(--ds-radius);
+  background: var(--ds-white);
+  text-align: center;
+}
+.ds-empty p {
+  margin: 0;
+}
+.ds-section-head--split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--ds-4);
+  max-width: none;
+  text-align: left;
+}
+.ds-section-head--split h2 {
+  margin: 0;
+}
+
+/* Article pages: a readable measure and size. */
+.article-body {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.article-body > p,
+.article-body > ul,
+.article-body > ol,
+.article-body .article-section > p,
+.article-body .article-section > ul,
+.article-body .article-section > ol {
+  max-width: var(--ds-prose);
+}
+
+/* Share row */
+.ds-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-2);
+  margin: var(--ds-6) 0;
+}
+.ds-share .ds-share__label {
+  margin: 0 var(--ds-2) 0 0;
+  font-size: var(--ds-fs-small);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ds-gold-text);
+}
+.ds-share__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-2);
+  min-height: 44px;
+  padding: 0 var(--ds-4);
+  border: 1px solid var(--ds-border);
+  border-radius: 999px;
+  background: var(--ds-white);
+  color: var(--ds-navy);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.ds-share__link:hover {
+  border-color: var(--ds-navy);
+}
+.ds-share__status {
+  font-size: var(--ds-fs-small);
+  color: var(--ds-success);
+}
+
+/* Panel: a closing call to action inside a page or article. */
+.ds-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-4) var(--ds-6);
+  margin: var(--ds-7) 0 0;
+  padding: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  border-radius: var(--ds-radius);
+  background: var(--ds-navy-deep);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  --ds-heading: #ffffff;
+  --ds-text: rgba(255, 255, 255, 0.9);
+  --ds-focus: var(--ds-gold);
+}
+.ds-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("/assets/patterns/contour.svg") center / cover no-repeat;
+  opacity: 0.05;
+}
+.ds-panel h2 {
+  margin: 0 0 var(--ds-2);
+}
+main .ds-panel h2.ds-panel__title,
+main .ds-panel h2 {
+  font-size: var(--ds-fs-h3);
+}
+.ds-panel p {
+  margin: 0;
+  color: var(--ds-text);
+}
+
+.ds-back {
+  margin: 0 0 var(--ds-5);
+}
+.ds-back .ds-link::before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  background: currentColor;
+  -webkit-mask: url("/assets/icons/arrow-right.svg") center / contain no-repeat;
+  mask: url("/assets/icons/arrow-right.svg") center / contain no-repeat;
+  transform: scaleX(-1);
+}
+
+/* Links inside running text: the surface's link colour (navy on light, white on dark), underlined. */
+main p a:not([class]),
+main li a:not([class]),
+main td a:not([class]),
+main dd a:not([class]) {
+  color: var(--ds-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+main p a:not([class]):hover,
+main li a:not([class]):hover {
+  text-decoration-color: var(--ds-gold);
+  text-decoration-thickness: 2px;
+}

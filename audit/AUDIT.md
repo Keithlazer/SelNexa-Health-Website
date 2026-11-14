@@ -46,7 +46,7 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
 | S7 | Arrow characters (→) typed into link and button text on 17 pages | Low | Keep. They are text, not icons, and screen readers skip them in practice. The design system draws the arrow with CSS on `.text-link` so new copy doesn't need the character (1) |
 | S8 | The nav has no Blog link, and the highlighted item is inconsistent: Careers highlights About, FAQ highlights Platform, and Blog highlights nothing. | Medium | Add Blog between About and Contact, with `aria-current` on blog pages (4) |
 | S9 | Section surfaces are uneven. Some pages stack three cream sections in a row, and the dark hero is the only navy band. | Low | Alternate cream and white sections, and give each long page one deep navy band with the contour pattern (1, 5) |
-| S10 | Raster images served as PNG: africa-map.png has a WebP twin, but six team portraits (320px PNG), the author avatar and two product screenshots on Features and Hospital management do not. | Medium | WebP with PNG fallback for the portraits and avatar. Replace the two product screenshots with frames from the provider demo video (5) |
+| S10 | Two product screenshots on Features and Hospital management (queue-management-interface.png, ehr-system-screenshot.png) are PNG only. The audit also flagged the team portraits and the author avatar, but they already serve WebP with a PNG fallback: lazy images report no `currentSrc` until they load, which caused the false flag. | Medium | Replace the two product screenshots with WebP frames from the provider demo video (5) |
 | S11 | The native `<video>` controls on Home and Investors show no focus ring | Low | Add a focus ring on `video:focus-visible` (1) |
 
 ## Per page
@@ -180,3 +180,24 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
 ## Phase log
 
 - **Phase 0:** Audit, screenshots and scripts. Committed.
+- **Phases 1 to 3:** Committed together, because the design system, the icon sprite and the rebuilt sections share the same generated pages and stylesheet bundles.
+  - **Phase 1, design system** (`styles/design-system.css`, loaded last on every page)
+    - The build now wraps the page stylesheets in a cascade layer, `@layer legacy`. The design system's unlayered rules therefore win without `!important`.
+    - Old teal heading and nav tokens now point at navy.
+    - It adds the type scale, the cream, white and navy surfaces (with an original contour pattern, `assets/patterns/contour.svg`, at 5%), one eyebrow style, one card, icon tiles, chips, buttons, links, focus rings, a pull quote, a banner, the accordion, the timeline, tables, forms and device frames.
+    - Text under 13px is gone. The one exception is the SDG captions: their text was resized and the icons and disclaimer left untouched.
+    - Gold text on light grounds uses #8a5800 (6.0:1 on white), because the brand gold #E8A020 passes only on navy (6.6:1).
+  - **Phase 2, icons**
+    - The icon font and `styles/icons.css` were deleted. Phosphor Icons 2.1.1 are drawn from one sprite, `assets/icons/sprite.svg`, with the licence alongside it.
+    - `tools/build-icons.mjs` builds the sprite from the icons the pages reference.
+    - **Naming:** the brief writes `#name`. Duotone symbols for card tiles use `#name`, and regular symbols for inline UI use `#name-line`, so one sprite holds both weights.
+    - **Brief icons:** every icon named in the brief exists in 2.1.1, so no substitutions were needed.
+    - **Emoji replaced:** 🏠 house, ℹ️ info, ✨ squares-four, 📚 article, 📞 phone, 💼 tag ("Pricing discussion") and 📅 calendar-check.
+    - **Icon-font mappings:** user-md to stethoscope, file-medical to file-text, arrow-up to trend-up, user-shield to user-circle-check, and boxes to package.
+  - **Phase 3, sections**
+    - Home mission cards.
+    - Features design principles, with WHO and Africa CDC sources. The `#five-cs` anchor is kept for old links.
+    - About: mission, thesis and values; Leave no one behind on a navy band; the timeline.
+    - The FAQ accordion. Its FAQPage JSON-LD is now generated from the accordion by the build (`<!-- sx:faqpage -->`).
+    - Careers.
+    - The workforce figure now follows WHO on Home, Features and Administration.

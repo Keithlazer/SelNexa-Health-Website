@@ -852,6 +852,22 @@
     ? function (fn) { window.requestIdleCallback(fn, { timeout: 2500 }); }
     : function (fn) { window.setTimeout(fn, 200); };
 
+  // Blog share row: "Copy link" puts the article's address on the clipboard and says so.
+  function setupCopyLink() {
+    document.addEventListener("click", function (event) {
+      var button = event.target.closest && event.target.closest("[data-copy-link]");
+      if (!button) return;
+      var status = button.parentNode.querySelector(".ds-share__status");
+      var say = function (text) { if (status) status.textContent = text; };
+      var url = button.getAttribute("data-copy-link");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { say("Link copied"); }, function () { say("Copy this link: " + url); });
+      } else {
+        say("Copy this link: " + url);
+      }
+    });
+  }
+
   onReady(function () {
     setupHeader();
     setupDemoModal();
@@ -862,6 +878,7 @@
     setupRecordFlow();
     setupArticleContents();
     setupJumpLinks();
+    setupCopyLink();
     setupCounters();
     setupCtaTracking();
     whenIdle(setupModuleFinder);

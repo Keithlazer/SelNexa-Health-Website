@@ -65,14 +65,24 @@ function social(page, html) {
 // Stylesheet bundles. Each page lists its own stylesheets in the opening marker,
 //   <!-- sx:styles /styles/main.css /styles/site-uniform.css --> ... <!-- /sx:styles -->
 // and gets one <link> to a file in styles/bundles/ holding those files followed by the shared site-chrome.css
-// and icons.css, named by a hash of its content. One request instead of five or six, and no @import chains.
+// and design-system.css, named by a hash of its content. One request instead of five or six, and no @import chains.
 // Rules that match nothing in the pages using the bundle, the scripts or the partials are dropped (PurgeCSS).
-const SHARED_STYLES = ["styles/site-chrome.css", "styles/icons.css"];
+// The page stylesheets (main.css, site-uniform.css and the rest) go inside one cascade layer, "legacy". Unlayered
+// rules beat layered ones whatever their specificity, so the shared files below, and design-system.css above all,
+// set the look without fighting old selectors like `.section-header h2`. @font-face rules are moved out of the layer.
+const SHARED_STYLES = ["styles/site-chrome.css", "styles/design-system.css"];
 const BUNDLE_DIR = "styles/bundles";
 const bundles = new Map();
 
 function concatStyles(list, pages) {
-  const files = [...list.split(/\s+/).filter(Boolean).map((p) => p.replace(/^\//, "")), ...SHARED_STYLES];
+  const pageFiles = list.split(/\s+/).filter(Boolean).map((p) => p.replace(/^\//, ""));
+  const files = [...pageFiles, ...SHARED_STYLES];
+  const fontFaces = [];
+  const wrap = (rel, css) => {
+    if (!pageFiles.includes(rel)) return css;
+    const body = css.replace(/@font-face\s*\{[^}]*\}\s*/g, (m) => { fontFaces.push(m.trim()); return ""; });
+    return `@layer legacy {\n${body}\n}`;
+  };
   const text = files.map((rel) => {
     let css = fs.readFileSync(path.join(root, rel), "utf8").replace(/\r\n/g, "\n");
     // Pages list site-uniform.css themselves, after these files, so the old import is redundant.
@@ -82,9 +92,9 @@ function concatStyles(list, pages) {
       const target = m[1].replace(/^['"]|['"]$/g, "");
       if (!/^(data:|\/|https?:|#)/.test(target)) throw new Error(`${pages[0]}: ${rel} has a relative url(${target}), which would break in a bundle`);
     }
-    return `/* ---- ${rel} ---- */\n${css.trim()}\n`;
+    return `/* ---- ${rel} ---- */\n${wrap(rel, css.trim())}\n`;
   }).join("\n");
-  return { files, text };
+  return { files, text: `${[...new Set(fontFaces)].join("\n")}\n${text}` };
 }
 
 // Class and attribute names that scripts add at run time, so they never appear in the HTML.
@@ -151,15 +161,131 @@ const PARTIALS = {
   "trace-divider": () => read("trace-divider.html"),
   "sdg-note": () => read("sdg-note.html"),
   team: () => renderTeam(),
+  faqpage: (page, html) => renderFaqPage(page, html),
+  "blog-list": () => renderBlogList(),
+  "blog-strip": () => renderBlogStrip(),
+  share: (page, html) => renderShare(page, html),
 };
+
+// ---------- Blog ----------
+// data/posts.json lists the posts, newest first. Reading time is worked out from each post's .article-body text at
+// 220 words a minute, and stamped into the post's own byline wherever it has <!-- read-time -->…<!-- /read-time -->.
+const SPRITE = "/assets/icons/sprite.svg";
+const posts = JSON.parse(fs.readFileSync(path.join(root, "data", "posts.json"), "utf8")).posts;
+function readingMinutes(url) {
+  const file = path.join(root, url.replace(/^\//, ""));
+  const html = fs.readFileSync(file, "utf8");
+  const start = html.indexOf('class="article-measure article-body"');
+  if (start < 0) throw new Error(`${url}: no .article-body to time`);
+  const end = html.indexOf('<section class="article-discuss"', start);
+  const words = html.slice(start, end > 0 ? end : undefined).replace(/<(script|style|svg)[\s\S]*?<\/\1>/g, " ").replace(/<[^>]+>/g, " ")
+    .split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
+  return Math.max(1, Math.round(words / 220));
+}
+const longDate = (iso) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+function postMeta(p) {
+  return `<p class="ds-post__meta"><time datetime="${p.date}">${longDate(p.date)}</time><span>${readingMinutes(p.url)} min read</span></p>`;
+}
+function postCover(p, featured) {
+  if (!p.cover) return "";
+  const c = p.cover;
+  const img = `<img src="${c.src}" alt="${escapeHtml(c.alt || "")}" width="${c.width}" height="${c.height}"${featured ? "" : ' loading="lazy"'} decoding="async">`;
+  return `<a class="ds-post__cover ds-post__cover--${c.kind}" href="${p.url}" tabindex="-1" aria-hidden="true">${img}</a>`;
+}
+function postCard(p, { featured = false, heading = "h3" } = {}) {
+  return [
+    `<article class="ds-post${featured ? " ds-post--featured" : ""}">`,
+    `  ${postCover(p, featured)}`,
+    '  <div class="ds-post__body">',
+    p.label ? `    <p class="ds-eyebrow">${escapeHtml(p.label)}</p>` : "",
+    `    <${heading} class="ds-post__title"><a href="${p.url}">${escapeHtml(p.title)}</a></${heading}>`,
+    `    ${postMeta(p)}`,
+    `    <p>${escapeHtml(p.summary)}</p>`,
+    `    <a class="ds-link ds-link--arrow" href="${p.url}">Read the article<span class="sr-only">: ${escapeHtml(p.title)}</span></a>`,
+    "  </div>",
+    "</article>",
+  ].filter(Boolean).join("\n");
+}
+function renderBlogList() {
+  if (!posts.length) {
+    return '<div class="ds-empty"><h2>No articles yet</h2><p>The first article is on its way. <a href="/#updates">Follow the build</a> to hear when it is published.</p></div>';
+  }
+  const [first, ...rest] = posts;
+  const out = [postCard(first, { featured: true, heading: "h2" })];
+  out.push('<h2 class="ds-blog__more">More articles</h2>');
+  if (rest.length) out.push('<div class="ds-grid ds-blog__grid">', ...rest.map((p) => postCard(p)), "</div>");
+  else out.push('<div class="ds-empty"><p>More articles are on the way. <a href="/#updates">Follow the build</a> to hear when the next one is published.</p></div>');
+  return out.join("\n");
+}
+function renderBlogStrip() {
+  const latest = posts.slice(0, 3);
+  if (!latest.length) return "";
+  return [
+    '<section class="ds-section ds-section--white" id="from-the-blog" aria-labelledby="blog-strip-title">',
+    '  <div class="ds-container">',
+    '    <div class="ds-section-head ds-section-head--split">',
+    '      <div>',
+    '        <p class="ds-eyebrow">From the blog</p>',
+    '        <h2 id="blog-strip-title">Notes from the build</h2>',
+    "      </div>",
+    '      <a class="ds-link ds-link--arrow" href="/blog.html">All articles</a>',
+    "    </div>",
+    `    <div class="ds-grid${latest.length === 1 ? " ds-blog__single" : ""}">`,
+    ...latest.map((p) => postCard(p, { featured: latest.length === 1 })),
+    "    </div>",
+    "  </div>",
+    "</section>",
+  ].join("\n");
+}
+// Share links for a post, built from its canonical URL and its <h1>.
+function renderShare(page, html) {
+  const url = (html.match(/<link rel="canonical" href="([^"]+)"/) || [])[1];
+  const title = ((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/) || [])[1] || "").replace(/<[^>]+>/g, "").trim();
+  if (!url || !title) throw new Error(`${page}: share links need a canonical URL and an h1`);
+  const u = encodeURIComponent(url);
+  const t = encodeURIComponent(title);
+  const link = (href, icon, label, track) =>
+    `  <a class="ds-share__link" href="${href}" target="_blank" rel="noopener noreferrer" data-track="${track}"><svg class="ds-i" aria-hidden="true" focusable="false"><use href="${SPRITE}#${icon}-line"></use></svg>${label}</a>`;
+  return [
+    '<div class="ds-share" aria-label="Share this article" role="group">',
+    '  <p class="ds-share__label">Share</p>',
+    link(`https://www.linkedin.com/sharing/share-offsite/?url=${u}`, "linkedin-logo", "LinkedIn", "share_linkedin"),
+    link(`https://x.com/intent/post?url=${u}&amp;text=${t}`, "x-logo", "X", "share_x"),
+    link(`https://wa.me/?text=${t}%20${u}`, "whatsapp-logo", "WhatsApp", "share_whatsapp"),
+    `  <button type="button" class="ds-share__link" data-copy-link="${url}"><svg class="ds-i" aria-hidden="true" focusable="false"><use href="${SPRITE}#link-line"></use></svg>Copy link</button>`,
+    '  <span class="ds-share__status" role="status" aria-live="polite"></span>',
+    "</div>",
+  ].join("\n");
+}
+function stampReadTime(page, html) {
+  if (!html.includes("<!-- read-time -->")) return html;
+  const minutes = readingMinutes(`/${page}`);
+  return html.replace(/<!-- read-time -->[\s\S]*?<!-- \/read-time -->/g, `<!-- read-time -->${minutes} min read<!-- /read-time -->`);
+}
+
+// FAQPage structured data, built from the page's own accordion so the two always say the same thing. Each question
+// is a <details> in .ds-faq: the <summary> heading is the question and .ds-faq__answer is the answer.
+function renderFaqPage(page, html) {
+  const text = (s) => s.replace(/<[^>]+>/g, " ").replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&#39;|&rsquo;/g, "'")
+    .replace(/&quot;/g, '"').replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\s+/g, " ").replace(/ ([.,;:])/g, "$1").trim();
+  const items = [...html.matchAll(/<details[^>]*>\s*<summary[^>]*>\s*<h[23][^>]*>([\s\S]*?)<\/h[23]>[\s\S]*?<\/summary>\s*<div class="ds-faq__answer">([\s\S]*?)<\/div>\s*<\/details>/g)];
+  if (!items.length) throw new Error(`${page}: has <!-- sx:faqpage --> but no .ds-faq questions`);
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map(([, q, a]) => ({ "@type": "Question", name: text(q), acceptedAnswer: { "@type": "Answer", text: text(a) } })),
+  };
+  return `<script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n</script>`;
+}
 
 // Which top-level nav item each page belongs to.
 function sectionFor(page) {
-  if (page === "features.html" || page.startsWith("solutions/") || page === "pricing.html" || page === "telemedicine.html" || page === "faq.html") return "platform";
+  if (page === "features.html" || page.startsWith("solutions/") || page === "pricing.html" || page === "telemedicine.html") return "platform";
   if (page.startsWith("services/")) return "services";
   if (page === "projects.html") return "projects";
   if (page === "case-studies.html" || page === "impact.html") return "impact";
-  if (page === "about.html" || page === "careers.html" || page === "press.html") return "about";
+  if (page === "about.html" || page === "careers.html" || page === "press.html" || page === "faq.html") return "about";
+  if (page === "blog.html" || page.startsWith("blog/")) return "blog";
   if (page === "contact.html") return "contact";
   if (page === "appointments.html") return "demo";
   return null;
@@ -226,6 +352,7 @@ for (const page of listPages()) {
     });
   }
   html = stampFacts(page, html);
+  html = stampReadTime(page, html);
   const styles = html.match(STYLES_RE);
   if (styles) {
     const list = styles[2].trim();

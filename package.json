@@ -5,8 +5,8 @@
   "description": "Static website for SelNexa Health, served by GitHub Pages",
   "type": "module",
   "scripts": {
-    "build:site": "node tools/build-site.mjs",
-    "check:site": "node tools/build-site.mjs --check"
+    "build:site": "node tools/build-icons.mjs && node tools/build-site.mjs",
+    "check:site": "node tools/build-icons.mjs --check && node tools/build-site.mjs --check"
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1",

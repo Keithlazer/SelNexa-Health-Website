@@ -1,0 +1,13 @@
+{
+  "_comment": "Blog posts, newest first. tools/build-site.mjs builds the blog listing (blog.html) and the homepage 'From the blog' strip from this list, and works out each post's reading time from its article text. To publish a post: add its page under blog/, then add an entry here and run npm run build:site. cover is optional: an image shown on a navy panel (logo) or filling the panel (photo, 1200x630).",
+  "posts": [
+    {
+      "url": "/blog/offline-first.html",
+      "title": "Offline first: health software for institutions where the connection fails",
+      "summary": "What offline first design actually involves, and who owns and protects the data once it sits on a device.",
+      "date": "2026-11-04",
+      "label": "Digital Health Week 2026",
+      "cover": { "kind": "logo", "src": "/assets/digital-health-week.svg", "alt": "", "width": 140, "height": 160 }
+    }
+  ]
+}
