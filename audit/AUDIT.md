@@ -171,12 +171,6 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
 - **The five pillars:** "Strengthened public health institutions", "Strengthened public health workforce", "Expanded manufacturing of vaccines, diagnostics and therapeutics", "Increased domestic resources for health security" and "Respectful and action-oriented partnerships".
 - **The Platform supports four:** institutions, workforce, domestic resources and partnerships. It does not cover manufacturing.
 
-## Open questions for Keith
-
-1. **Vision statement.** The About section was titled "Mission And Vision" but has no vision statement. I have not written one. Send one and it goes in as a fourth card. Until then, the section is "Mission, thesis and values".
-2. **Zimbabwe workforce figure.** The site now uses WHO's "about 23 per 10,000 (2022)". If "just over 22" came from a source you want to keep, such as the 2022 Health Labour Market Analysis, send it and I'll cite it instead.
-3. **Careers mission.** Careers used a different mission sentence from About. I've used About's on both pages. Say if Careers should keep its own.
-
 ## Phase log
 
 - **Phase 0:** Audit, screenshots and scripts. Committed.
@@ -214,3 +208,107 @@ Severity: **High** means it breaks reading or trust, or misstates a fact. **Medi
     - The existing BlogPosting JSON-LD (a kind of Article) is kept.
   - **Meta:** the blog.html description, og:description and twitter:description no longer promise articles on AI or telemedicine.
   - **Heroes:** inner-page heroes now fit their content. They were 88% of the screen tall, with a large empty band; the homepage keeps its tall hero.
+- **Phase 5, every other page**
+  - **Sentence case:** 195 headings and button labels, with names, job titles, project and product names kept.
+  - **Screenshots:** Platform screenshots cut from the demo videos (WebP and AVIF, 640px and full width) go in laptop frames on the home flagship section, the modules page and Hospital management. The Features module screenshots are framed too.
+  - **Comparison table:** status chips with icons (Yes, No, Varies) replace the ✓ and ✗ characters. The feature names are now row headers.
+  - **Navy bands:** every closing call to action is a deep navy band, so each long page has one. The Data protection page's closing section joined them.
+  - **Alternation:** the build alternates cream and white down every page.
+  - **Phone gutters:** sections that have a container no longer add 32px of their own padding on phones.
+  - **Old overrides removed:** `!important` button colours that beat the design system are gone, and bare `.btn` links now have a variant. A legacy `transition: all` had delayed link focus rings by 0.3s; links now transition only their colours.
+  - **Card heights:** cards with very different contents (team, contact methods, the top cards on Careers) size to their content.
+  - **Thin pages:** Guides, Webinars and White papers list material that is "available by request" or "scheduled by request". That is their "coming soon" state, now tidy, with chips and icons.
+- **Phase 6, assets**
+  - `scripts/process-assets.mjs` uses sharp and SVGO to turn `design-assets/incoming/` into kebab-case WebP and AVIF at 1x and 2x, plus optimised SVG. Files in `incoming/icons/` are refused.
+  - `design-assets/ASSET_REQUESTS.md` lists twelve slots with sizes. Nothing has arrived yet.
+- **Phase 7:** see below.
+
+## Phase 7: verification
+
+### How it was checked
+
+- `node scripts/audit.mjs after` reruns every Phase 0 check on all 31 pages. Its results are in `audit/after.json`, which is kept out of git.
+- `node scripts/screens.mjs after` takes 124 screenshots into `audit/after/`. These were compared with `audit/before/` page by page.
+- Lighthouse (mobile, simulated throttling) ran three times per page on a local copy of the site, and the table shows the median. The JSON reports are in `audit/lighthouse/`, which is kept out of git.
+
+### Results
+
+| Check (31 pages, 4 widths) | Before | After |
+|---|---|---|
+| Horizontal overflow | 0 | 0 |
+| Words split mid-word | 2 (Careers, 1440px) | 0 |
+| Text under 13px (element instances) | 975 on 30 pages | 0 |
+| Cards with 120px or more of empty space | 27 | 6 (rows of like cards kept level: principles, modules, a benefit card) |
+| axe-core violations (375 and 1280px) | 0 | 0 |
+| Console errors or failed requests | 0 | 0 |
+| Broken internal links | 0 | 0 |
+| Pages without exactly one H1, or with skipped levels | 0 | 0 |
+| Pages using the icon font | 16 | 0 |
+| Pages with emoji or symbol icons | 3 | 0 |
+| Title Case headings | 107 | 19, all names, job titles or product names |
+| Header markup identical on every page | 30 of 30 | 30 of 30, Blog present and marked current on blog pages |
+| Focus stops without a visible ring | 2 (video controls) | 2, the same native video controls, which draw their own ring |
+
+Keyboard focus was checked on the homepage. All 38 stops show a 3px ring: navy on light grounds, gold on dark ones, and navy on white cards inside dark bands. The header and demo dialog use navy, because gold on cream is only 2:1.
+
+The before and after screenshots were compared page by page. No page lost content.
+
+### Lighthouse (mobile, median of three runs)
+
+| Page | Performance | Accessibility | Best practices | SEO | LCP | TBT | CLS | Performance runs |
+|---|---|---|---|---|---|---|---|---|
+| Home | 58 | 100 | 100 | 100 | 3.4 s | 3.9 s | 0 | 58 / 54 / 62 |
+| About | 61 | 100 | 100 | 100 | 2.8 s | 4.3 s | 0 | 60 / 61 / 62 |
+| Blog | 61 | 100 | 100 | 100 | 2.7 s | 5.0 s | 0 | 62 / 61 / 61 |
+| Blog post | 61 | 100 | 100 | 100 | 3.0 s | 2.4 s | 0 | 61 / 61 / 66 |
+| Careers | 65 | 100 | 100 | 100 | 2.7 s | 2.6 s | 0 | 66 / 61 / 65 |
+| FAQ | 62 | 100 | 100 | 100 | 2.7 s | 5.0 s | 0 | 62 / 65 / 61 |
+| Features | 65 | 100 | 100 | 100 | 2.9 s | 1.9 s | 0.007 | 68 / 65 / 61 |
+
+**Performance is below the 90 target on this machine, and the cause is the machine.**
+
+- Lighthouse rated the test machine at a benchmark index of 420 to 576; a typical desktop scores about 1,500. Mobile mode then slows the CPU four times more.
+- Most of the blocking time is "Other" work that Lighthouse cannot attribute to the page. On the blog listing that was 4.7 of its 5 seconds.
+- To separate the machine from the change, the unchanged `main` branch (c5ba879) was measured straight after, under the same conditions:
+
+| Page | `main`, performance (runs) | `ui-refresh`, performance (runs) |
+|---|---|---|
+| Home | 62 (62 / 72 / 62) | 61 (62 / 61 / 61) |
+| Blog | 68 (73 / 63 / 68) | 63 (62 / 63 / 63) |
+| Features | 62 (75 / 62 / 62) | 64 (64 / 65 / 63) |
+
+- The two branches overlap within the run-to-run spread. The refresh does not appear to have made the site slower, but this machine cannot show whether it reaches 90.
+- The only failing audit, back/forward cache, gives the reason "CacheLimitPrunedOnCriticalMemoryPressure", which Lighthouse marks "Not actionable".
+- **Next step:** measure the live site with PageSpeed Insights after merging. That measurement decides the 90 target.
+
+## Summary by page
+
+| Page | What changed |
+|---|---|
+| Home | WHO workforce figures with WHO sources. Four mission cards with Phosphor tiles, chips and even heights. A provider dashboard screenshot in a laptop frame. A "From the blog" strip. The navy call to action. Sentence case. |
+| About | "Mission, thesis and values": two cards and four value tiles, with no vision statement written. "Leave no one behind" on a navy band, with a pull quote. A centred timeline with dots above the cards, vertical on phones. A compact hero. The dash in the founding story removed. |
+| Features | "Four principles behind the Platform" with gold labels, WHO and Africa CDC sources, and four across at 1280px and wider. Framed module screenshots. The comparison table uses status chips. The navy call to action. |
+| Careers | One "Applications opening soon" banner with "Get notified". Role icons, department chips, and a 2×2 grid with no split words. "Data Scientist, Clinical Analytics". About's mission and values. |
+| FAQ | An accordion with plus and minus icons and the first question open. FAQPage JSON-LD generated from it. The link now reads "Security page". |
+| Blog | A featured card, a grid that grows from `data/posts.json`, an empty state, and a corrected description. |
+| Blog post | Author line, reading time, share links (copy link tested), Back to blog, a demo panel, and 18px body text at 1.7 line height. |
+| Solutions (6 pages) | Phosphor icons. Feature grids instead of single stacked columns. Benefits beside their icons. Sentence case. Screenshots on the modules page and Hospital management. |
+| Resources, Guides, Webinars, White papers | Phosphor icons, chips, sentence case and navy calls to action. These pages hold material "available by request" or "scheduled by request". That is their "coming soon" state, now tidy and consistent. |
+| Contact, Appointments, Press, Impact, Case studies, Security, Data protection, Projects, Investors, Telemedicine, Privacy, Terms, 404 | Type scale, cards, chips, sentence case, alternating surfaces and the navy call to action. On Appointments and the 404 page, emoji were replaced by icons. On Telemedicine, the card headings are sized as cards, so they no longer split. |
+
+## Not verified
+
+- **Real devices.** Everything was checked in headless Chromium at 375, 768, 1280 and 1440px. It was not checked in Safari, Firefox or on a real phone. `text-wrap` and `:has()` are progressive enhancements: older browsers wrap headings normally and keep the 32px section padding on phones.
+- **Live Lighthouse.** The scores above come from a local server on a busy machine. GitHub Pages compression and caching will change them.
+- **Share links.** LinkedIn, X and WhatsApp open their own share pages, which need a published URL to preview. Only copy link was exercised.
+
+## Open questions for Keith
+
+1. **Vision statement.** About has "Mission, thesis and values" and no vision. Send a vision statement and it becomes a third card beside the mission and the thesis.
+2. **Zimbabwe workforce figure.** The site now says "about 23 doctors, nurses and midwives per 10,000 people in 2022" (WHO Regional Office for Africa, 1 July 2026), against WHO's indicative threshold of 44.5 (Workforce 2030).
+   - The old "just over 22" isn't in either WHO source.
+   - Note that 23 against 44.5 is about half. WHO's own article says "less than half", but it doesn't say which threshold it used.
+3. **Careers mission and values.** Careers now uses About's mission sentence and four values. Say if Careers should keep its own wording.
+4. **Asset slots.** `design-assets/ASSET_REQUESTS.md` lists twelve slots, each with a size: a blog cover, six Open Graph images, three section illustrations, team portraits and full-resolution Platform screenshots. Nothing has arrived in `design-assets/incoming/` yet.
+5. **Reading time.** The post said "5 min read". Counted at 220 words a minute, the article body comes to 4 minutes, and the site now shows that.
+6. **Title tags.** Some `<title>` tags are still in Title Case, for example "Health Software That Keeps Running Offline". The brief's sentence-case rule covers headings, so the titles were left as they are. Say if they should match.

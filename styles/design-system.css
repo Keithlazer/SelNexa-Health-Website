@@ -219,7 +219,8 @@ footer.sx-footer .footer-compliance p,
 .webinar-meta span,
 .resource-meta span,
 .resource-type,
-.resource-date {
+.resource-date,
+.speaker-info p {
   font-size: 0.8125rem;
 }
 .module-tab,
@@ -778,6 +779,7 @@ body {
   text-decoration-color: var(--ds-gold);
   text-decoration-thickness: 2px;
   text-underline-offset: 0.3em;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease; /* not `all`: the focus ring must appear at once */
 }
 .ds-link:hover,
 .btn-link:hover,
@@ -796,19 +798,27 @@ body {
 
 /* ---------- Focus ---------- */
 
-:focus-visible {
+/* Written per element: PurgeCSS drops a bare :focus-visible. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: 3px solid var(--ds-focus);
   outline-offset: 3px;
 }
-.sx-header :focus-visible,
-.sx-footer :focus-visible {
+/* Gold on the dark footer; navy on the light header and the demo dialog (gold on cream is only 2:1). */
+footer.sx-footer :focus-visible {
   outline-color: var(--ds-gold);
 }
-.sx-header :focus-visible {
+header.sx-header :focus-visible,
+.sx-modal :focus-visible {
   outline-color: var(--ds-navy);
 }
 video:focus-visible {
-  outline: 3px solid var(--ds-gold);
+  outline: 3px solid var(--ds-focus);
   outline-offset: 3px;
 }
 
@@ -1142,6 +1152,7 @@ video:focus-visible {
 .ds-device--laptop {
   max-width: 880px;
   margin-inline: auto;
+  padding-inline: 6%; /* room for the base, which is wider than the screen */
 }
 .ds-device--laptop .ds-device__screen {
   border: 10px solid #1b2236;
@@ -1153,7 +1164,7 @@ video:focus-visible {
 }
 .ds-device--laptop .ds-device__base {
   height: 14px;
-  margin: 0 -6%;
+  margin: 0 -6.5%;
   border-radius: 0 0 14px 14px;
   background: linear-gradient(#d9dde5, #b9c0cc);
 }
@@ -1551,4 +1562,22 @@ main > section:has(> .container) {
   display: flex;
   flex-wrap: wrap;
   gap: var(--ds-2);
+}
+
+/* Cards whose contents differ a lot (people, contact methods) size to their content instead of to the row. */
+.ds-grid--start,
+.team-grid {
+  align-items: start;
+}
+.team-card {
+  align-self: start;
+}
+video:focus {
+  outline: 3px solid var(--ds-focus);
+  outline-offset: 3px;
+}
+
+/* Five short cards: three across, then two, rather than four and one. */
+.page-grid.page-grid--compact {
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
 }

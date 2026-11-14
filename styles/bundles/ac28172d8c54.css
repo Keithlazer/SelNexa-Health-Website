@@ -1657,7 +1657,8 @@ main h4 {
   font-size: var(--ds-fs-small);
 }
 /* The last labels that were set under 13px: footer notes, SDG captions, resource metadata, article marks. */
-footer.sx-footer .footer-compliance p {
+footer.sx-footer .footer-compliance p,
+.speaker-info p {
   font-size: 0.8125rem;
 }
 .module-tab,
@@ -1786,15 +1787,27 @@ body {
 /* Text link: navy with a gold underline. */
 
 /* ---------- Focus ---------- */
-.sx-header :focus-visible,
-.sx-footer :focus-visible {
+
+/* Written per element: PurgeCSS drops a bare :focus-visible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--ds-focus);
+  outline-offset: 3px;
+}
+/* Gold on the dark footer; navy on the light header and the demo dialog (gold on cream is only 2:1). */
+footer.sx-footer :focus-visible {
   outline-color: var(--ds-gold);
 }
-.sx-header :focus-visible {
+header.sx-header :focus-visible,
+.sx-modal :focus-visible {
   outline-color: var(--ds-navy);
 }
 video:focus-visible {
-  outline: 3px solid var(--ds-gold);
+  outline: 3px solid var(--ds-focus);
   outline-offset: 3px;
 }
 
@@ -1907,3 +1920,11 @@ main > section:has(> .container) {
 }
 
 /* Resource metadata and tags read as chips. */
+
+/* Cards whose contents differ a lot (people, contact methods) size to their content instead of to the row. */
+video:focus {
+  outline: 3px solid var(--ds-focus);
+  outline-offset: 3px;
+}
+
+/* Five short cards: three across, then two, rather than four and one. */
