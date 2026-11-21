@@ -13,6 +13,7 @@
 - SelNexa Health Platform: health service management for health institutions, with modules for administration, predictive procurement, health records, real-time analytics and a telemedicine beta. Records use FHIR R4. Designed to sit alongside national systems and exchange data with them through FHIR R4 (DHIS2, Impilo, ePMS, OpenMRS).
 - Patient data stays in Zimbabwe, and can stay in the building. The LAN kit runs the full system inside a health institution with no internet line.
 - SelNexa data protection service: gets health institutions licensed under SI 155 of 2024 with a certified data protection officer and working procedures. Readiness check, full compliance, and a retained data protection officer.
+- Pachena (proposed pilot): an independent lab that will test the AI chatbots young Zimbabweans use for sexual and reproductive health, publish scorecards in Shona, Ndebele and English, and run a complaints line. No tool has been tested yet.
 
 ## Security
 
@@ -25,6 +26,7 @@
 - [Home](https://www.selnexahealth.com/)
 - [SelNexa Health Platform](https://www.selnexahealth.com/features.html)
 - [Platform modules](https://www.selnexahealth.com/solutions/)
+- [Pachena](https://www.selnexahealth.com/pachena.html)
 - [SelNexa data protection service](https://www.selnexahealth.com/services/data-protection)
 - [Security and compliance](https://www.selnexahealth.com/security)
 - [Where the Platform stands](https://www.selnexahealth.com/case-studies.html)
