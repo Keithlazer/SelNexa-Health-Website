@@ -1,6 +1,6 @@
 # SelNexa Health
 
-> SelNexa Health (Private) Limited is a software company in Harare, Zimbabwe, building offline first systems for health institutions wherever power and connectivity fail. Its flagship product, the SelNexa Health Platform, runs registration, records, procurement, billing and reporting, keeps working without a connection and syncs when the connection returns. The company also sells a data protection compliance service under Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024.
+> SelNexa Health (Private) Limited is a digital health company in Harare, Zimbabwe, that builds tools and services for health systems. Its flagship product, the SelNexa Health Platform, runs registration, records, procurement, billing and reporting, keeps working without a connection and syncs when the connection returns. The company also sells a data protection compliance service under Zimbabwe's Cyber and Data Protection Act and SI 155 of 2024.
 
 ## Stage
 
