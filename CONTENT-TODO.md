@@ -15,9 +15,7 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 ## Messaging decisions
 
-- [ ] Homepage headline: choose one. Option 1 is live now.
-  1. Hospital software that keeps running when the power and the network don't.
-  2. Register patients, update records and order stock, with or without a connection.
+- [x] Homepage headline (23 November 2026): the hero now leads with what the Platform does ("Run registration, records, stock and billing in one system.") and gives the reliability promise in the subtitle. The tagline stays approved for applications, decks and social posts. Offline first is the proof point on Features and Security, not the headline.
   3. Patient records and stock control that hold up through power cuts and dropped networks.
   The supporting line stays the same for all three: "The SelNexa Health Platform runs registration, records, procurement, billing and reporting for health institutions. It keeps working offline and syncs when the connection comes back."
 - [ ] Pricing plan "Community Clinic" was renamed "Health Centre" (rule 5). Confirm the name.
@@ -87,6 +85,14 @@ The Offline First article follows the direction in full, and the radius and shad
 - [ ] Two pairs of pages overlap: `impact.html` ("Results Matrix") with `case-studies.html` (the Impact page in the menu), and `solutions/index.html` ("All modules") with `features.html` (Platform). Both pairs are linked from the footer for now. Merge them or keep both?
 - [ ] The language selector (French, Shona, Ndebele) was removed because it translated only menu labels. Translated pages would need full translations.
 - [ ] The phone-only bottom bar (Home, Platform, Impact, Contact, Demo) was removed because it duplicated the header menu. Say if you want it back.
+
+## Wider reach, 23 November 2026: still open
+
+- [ ] Footer line "Outside Zimbabwe, we review each deployment against that country's data protection law before go live" is a commitment. Keep it only if every deployment outside Zimbabwe will get that review.
+- [ ] Hosting outside Zimbabwe: the hosted service keeps data in Zimbabwe. For an institution in another country, say whether you will offer in-country hosting or only the LAN kit, then update the Security page and the Features data residency row.
+- [ ] Map on the homepage shows Africa only. Keep it while the pipeline is African, or replace it with a world map once there is a conversation outside Africa.
+- [ ] French and Portuguese versions of the home, Platform and contact pages would open Francophone and Lusophone markets. Needs full translations (see the language selector note above).
+- [ ] Not changed on purpose: the founding story, team bios, the For investors page (its African market thesis is the investment case) and the Pachena page.
 
 ## Site credibility fixes of 12 November 2026: still open
 

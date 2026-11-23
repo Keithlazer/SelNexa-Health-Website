@@ -187,6 +187,12 @@ main .minor-heading {
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
 }
+@media (max-width: 440px) {
+  /* The brand line doesn't fit beside the menu button on small phones; the footer and top banner carry it there. */
+  .sx-brand__tag {
+    display: none;
+  }
+}
 .contents-label,
 .contents-n,
 .gap-label,
