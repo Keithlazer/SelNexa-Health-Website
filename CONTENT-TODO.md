@@ -15,9 +15,7 @@ One line per item. Each needs information only Keith can give. The site shows no
 
 ## Messaging decisions
 
-- [ ] Homepage headline: choose one. Option 1 is live now.
-  1. Hospital software that keeps running when the power and the network don't.
-  2. Register patients, update records and order stock, with or without a connection.
+- [x] Homepage headline (23 November 2026): the hero now leads with what the Platform does ("Run registration, records, stock and billing in one system.") and gives the reliability promise in the subtitle. The tagline stays approved for applications, decks and social posts. Offline first is the proof point on Features and Security, not the headline.
   3. Patient records and stock control that hold up through power cuts and dropped networks.
   The supporting line stays the same for all three: "The SelNexa Health Platform runs registration, records, procurement, billing and reporting for health institutions. It keeps working offline and syncs when the connection comes back."
 - [ ] Pricing plan "Community Clinic" was renamed "Health Centre" (rule 5). Confirm the name.
